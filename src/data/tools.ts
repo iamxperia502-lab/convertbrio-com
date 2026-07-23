@@ -22,7 +22,7 @@ export type PdfOperation =
   | "jpg-to-pdf"
   | "compress"
   | "unlock";
-export type OfficeOperation = "word-to-pdf" | "pdf-to-word" | "word-to-jpg" | "word-to-png";
+export type OfficeOperation = "pdf-to-word";
 
 interface ToolBase {
   slug: string;
@@ -362,11 +362,11 @@ export const tools: Tool[] = [
     slug: "word-to-pdf",
     name: "Word to PDF",
     categories: ["convert", "document"],
-    kind: "office",
-    operation: "word-to-pdf",
+    kind: "office-soon",
     icon: "word",
     description: "Convert Word (.docx) documents to PDF.",
     accept: DOCX_ACCEPT,
+    comingSoonReason: "Temporarily unavailable while we migrate infrastructure — check back soon.",
   },
   {
     slug: "pdf-to-word",
@@ -382,21 +382,21 @@ export const tools: Tool[] = [
     slug: "word-to-jpg",
     name: "Word to JPG",
     categories: ["convert", "document"],
-    kind: "office",
-    operation: "word-to-jpg",
+    kind: "office-soon",
     icon: "word",
     description: "Export a Word (.docx) document's pages as JPG images.",
     accept: DOCX_ACCEPT,
+    comingSoonReason: "Temporarily unavailable while we migrate infrastructure — check back soon.",
   },
   {
     slug: "word-to-png",
     name: "Word to PNG",
     categories: ["convert", "document"],
-    kind: "office",
-    operation: "word-to-png",
+    kind: "office-soon",
     icon: "word",
     description: "Export a Word (.docx) document's pages as PNG images.",
     accept: DOCX_ACCEPT,
+    comingSoonReason: "Temporarily unavailable while we migrate infrastructure — check back soon.",
   },
   {
     slug: "excel-to-pdf",
@@ -406,7 +406,7 @@ export const tools: Tool[] = [
     icon: "word",
     description: "Convert Excel spreadsheets to PDF.",
     accept: ".xls,.xlsx",
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
+    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only PDF to Word conversion is currently supported.",
   },
   {
     slug: "pdf-to-excel",
@@ -416,7 +416,7 @@ export const tools: Tool[] = [
     icon: "pdf",
     description: "Convert tabular PDF data into an Excel spreadsheet.",
     accept: PDF_ACCEPT,
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
+    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only PDF to Word conversion is currently supported.",
   },
   {
     slug: "powerpoint-to-pdf",
@@ -426,7 +426,7 @@ export const tools: Tool[] = [
     icon: "word",
     description: "Convert PowerPoint presentations to PDF.",
     accept: ".ppt,.pptx",
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
+    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only PDF to Word conversion is currently supported.",
   },
   {
     slug: "compress-word",
@@ -436,7 +436,7 @@ export const tools: Tool[] = [
     icon: "shrink",
     description: "Reduce the file size of a Word document.",
     accept: ".doc,.docx",
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
+    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only PDF to Word conversion is currently supported.",
   },
   {
     slug: "compress-powerpoint",
@@ -446,7 +446,7 @@ export const tools: Tool[] = [
     icon: "shrink",
     description: "Reduce the file size of a PowerPoint presentation.",
     accept: ".ppt,.pptx",
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
+    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only PDF to Word conversion is currently supported.",
   },
   {
     slug: "merge-documents",
@@ -457,7 +457,7 @@ export const tools: Tool[] = [
     description: "Combine Word, Excel, and PowerPoint files into one PDF.",
     accept: OFFICE_ACCEPT,
     multiple: true,
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
+    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only PDF to Word conversion is currently supported.",
   },
   {
     slug: "remove-background",

@@ -13,6 +13,11 @@ interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
 
+declare module "*.wasm?module" {
+  const wasmModule: WebAssembly.Module;
+  export default wasmModule;
+}
+
 declare namespace App {
   interface Locals {
     supabase: import("@supabase/supabase-js").SupabaseClient | null;
