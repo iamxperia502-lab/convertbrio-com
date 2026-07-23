@@ -1,0 +1,257 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import Icon from "../../components/Icon.astro";
+import { getTool, isComingSoon } from "../../data/tools";
+
+const { slug } = Astro.params;
+const tool = slug ? getTool(slug) : undefined;
+
+if (!tool) {
+  return Astro.rewrite("/404");
+}
+
+const endpoint =
+  tool.kind === "image" ? "/api/convert/image" :
+  tool.kind === "pdf" ? "/api/convert/pdf" :
+  tool.kind === "office" ? "/api/convert/office" :
+  null;
+---
+
+<Layout title={tool.name} description={tool.description}>
+  <PageIntro eyebrow="Tool" title={tool.name} description={tool.description} />
+
+  <section class="bg-canvas">
+    <div class="container-page py-16 sm:py-20">
+      <div class="mx-auto max-w-2xl">
+        {
+          isComingSoon(tool) ? (
+            <div class="flex flex-col items-center gap-4 rounded-2xl border border-dashed border-hairline-strong px-6 py-14 text-center">
+              <span class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink">
+                <Icon name="clock" class="h-6 w-6" />
+              </span>
+              <p class="text-lg font-medium text-ink">Coming soon</p>
+              <p class="max-w-sm text-sm text-body">{tool.comingSoonReason}</p>
+              <a href="/all-tools" class="mt-2 text-sm text-brand-600 underline underline-offset-2 hover:text-brand-700">
+                Browse other tools
+              </a>
+            </div>
+          ) : (
+            <form
+              id="tool-form"
+              data-endpoint={endpoint}
+              class="flex flex-col gap-6 rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:p-8"
+            >
+              <input type="hidden" name="slug" value={tool.slug} />
+
+              <label
+                for="file-input"
+                id="dropzone"
+                class="group flex cursor-pointer flex-col items-center gap-3 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-12 text-center transition-colors duration-150 hover:border-brand-400 hover:bg-brand-50/40"
+              >
+                <span class="flex h-12 w-12 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600">
+                  <Icon name="cloud" class="h-5 w-5" />
+                </span>
+                <span class="text-sm font-medium text-ink">
+                  {tool.multiple ? "Drop files here, or browse" : "Drop a file here, or browse"}
+                </span>
+                <span class="text-xs text-mute">Up to 25 MB{tool.multiple ? " total" : ""}</span>
+                <input id="file-input" name="file" type="file" accept={tool.accept} multiple={tool.multiple} required class="sr-only" />
+              </label>
+
+              <p id="file-name" class="hidden text-center text-sm text-body" />
+
+              <div id="progress-wrap" class="hidden flex-col gap-1.5">
+                <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
+                  <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
+                </div>
+              </div>
+
+              {
+                tool.kind === "image" && tool.operation === "convert" && !tool.outputFormat && (
+                  <div class="flex flex-col gap-1.5">
+                    <label for="format" class="text-sm font-medium text-ink">Convert to</label>
+                    <select id="format" name="format" class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400">
+                      <option value="jpeg">JPG</option>
+                      <option value="png">PNG</option>
+                      <option value="webp">WEBP</option>
+                      <option value="avif">AVIF</option>
+                      <option value="gif">GIF</option>
+                    </select>
+                  </div>
+                )
+              }
+
+              {
+                tool.kind === "image" && tool.operation === "compress" && (
+                  <div class="flex flex-col gap-1.5">
+                    <label for="quality" class="text-sm font-medium text-ink">Quality</label>
+                    <input id="quality" name="quality" type="range" min="20" max="95" value="60" class="accent-ink" />
+                  </div>
+                )
+              }
+
+              {
+                tool.kind === "image" && tool.operation === "resize" && (
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1.5">
+                      <label for="width" class="text-sm font-medium text-ink">Width (px)</label>
+                      <input id="width" name="width" type="number" min="1" class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="height" class="text-sm font-medium text-ink">Height (px)</label>
+                      <input id="height" name="height" type="number" min="1" class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                tool.kind === "image" && tool.operation === "crop" && (
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1.5">
+                      <label for="left" class="text-sm font-medium text-ink">Left (px)</label>
+                      <input id="left" name="left" type="number" min="0" required class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="top" class="text-sm font-medium text-ink">Top (px)</label>
+                      <input id="top" name="top" type="number" min="0" required class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="width" class="text-sm font-medium text-ink">Width (px)</label>
+                      <input id="width" name="width" type="number" min="1" required class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="height" class="text-sm font-medium text-ink">Height (px)</label>
+                      <input id="height" name="height" type="number" min="1" required class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                tool.operation === "rotate" && (
+                  <div class="flex flex-col gap-1.5">
+                    <label for="degrees" class="text-sm font-medium text-ink">Rotate</label>
+                    <select id="degrees" name="degrees" class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400">
+                      <option value="90">90°</option>
+                      <option value="180">180°</option>
+                      <option value="270">270°</option>
+                    </select>
+                  </div>
+                )
+              }
+
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Convert
+              </button>
+
+              <p id="tool-status" role="status" aria-live="polite" class="text-center text-sm text-body" />
+            </form>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  {
+    !isComingSoon(tool) && (
+      <script>
+        import { submitConversion, downloadBlob } from "../../lib/upload-client";
+
+        const form = document.getElementById("tool-form") as HTMLFormElement | null;
+        const dropzone = document.getElementById("dropzone");
+        const fileInput = document.getElementById("file-input") as HTMLInputElement | null;
+        const status = document.getElementById("tool-status");
+        const fileName = document.getElementById("file-name");
+        const progressWrap = document.getElementById("progress-wrap");
+        const progressBar = document.getElementById("progress-bar");
+        const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+
+        const setProgress = (percent: number) => {
+          if (progressBar) progressBar.style.width = `${percent}%`;
+        };
+
+        const showSelectedFile = (file: File | undefined) => {
+          if (!fileName) return;
+          if (!file) {
+            fileName.classList.add("hidden");
+            fileName.textContent = "";
+            return;
+          }
+          fileName.textContent = `Selected: ${file.name}`;
+          fileName.classList.remove("hidden");
+        };
+
+        fileInput?.addEventListener("change", () => showSelectedFile(fileInput.files?.[0]));
+
+        ["dragenter", "dragover"].forEach((eventName) => {
+          dropzone?.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            dropzone.classList.add("border-brand-400", "bg-brand-50/40");
+          });
+        });
+        ["dragleave", "drop"].forEach((eventName) => {
+          dropzone?.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            dropzone.classList.remove("border-brand-400", "bg-brand-50/40");
+          });
+        });
+        dropzone?.addEventListener("drop", (event) => {
+          const dt = (event as DragEvent).dataTransfer;
+          if (dt?.files?.length && fileInput) {
+            fileInput.files = dt.files;
+            showSelectedFile(dt.files[0]);
+          }
+        });
+
+        form?.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const endpoint = form.dataset.endpoint;
+          if (!endpoint || !status) return;
+
+          if (!fileInput?.files?.length) {
+            status.textContent = "Choose a file first.";
+            return;
+          }
+
+          submitButton?.setAttribute("disabled", "true");
+          progressWrap?.classList.remove("hidden");
+          progressWrap?.classList.add("flex");
+          setProgress(0);
+          status.textContent = "Uploading… 0%";
+
+          try {
+            const { filename, blob } = await submitConversion({
+              endpoint,
+              formData: new FormData(form),
+              onProgress: (percent) => {
+                setProgress(percent);
+                status.textContent = `Uploading… ${percent}%`;
+              },
+              onUploaded: () => {
+                status.textContent = "Processing…";
+              },
+            });
+
+            downloadBlob(blob, filename);
+            setProgress(100);
+            status.textContent = `Done — ${filename} downloaded.`;
+            showSelectedFile(undefined);
+            if (fileName) {
+              fileName.textContent = `Converted: ${filename}`;
+              fileName.classList.remove("hidden");
+            }
+          } catch (err) {
+            status.textContent = err instanceof Error ? err.message : "Something went wrong. Try again.";
+          } finally {
+            submitButton?.removeAttribute("disabled");
+          }
+        });
+      </script>
+    )
+  }
+</Layout>

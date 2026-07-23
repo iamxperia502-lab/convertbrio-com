@@ -1,46 +1,28 @@
-# Astro Starter Kit: Basics
+# ConvertBrio
 
-```sh
-npm create astro@latest -- --template basics
-```
+File conversion, compression, and enhancement tools. Astro (server output) + Tailwind v4, deployed on Vercel, with Supabase for auth/database/storage and Razorpay for billing.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Commands
 
-## 🚀 Project Structure
+| Command           | Action                                       |
+| :----------------- | :-------------------------------------------- |
+| `npm install`       | Install dependencies                          |
+| `npm run dev`       | Start local dev server at `localhost:4321`    |
+| `npm run build`     | Build the production site to `./dist/`        |
+| `npm run preview`   | Preview the build locally before deploying    |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Auth setup (Supabase)
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+Sign in/sign up won't work until a Supabase project is connected:
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+1. Create a project at [supabase.com](https://supabase.com) (free tier is fine).
+2. In the Supabase SQL editor, run `supabase/migrations/20260711000000_init_schema.sql` — this creates the `profiles`, `conversion_jobs`, and `subscriptions` tables plus the trigger that auto-creates a profile on signup.
+3. In **Project Settings → API**, copy the Project URL, `anon` public key, and `service_role` secret key.
+4. Copy `.env.example` to `.env` and fill in those three values.
+5. Restart `npm run dev`.
 
-## 🧞 Commands
+Until this is done, the site still builds and runs — the Sign In/Sign Up pages just show a "not configured" notice instead of erroring.
 
-All commands are run from the root of the project, from a terminal:
+## Deployment
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Deploys to Vercel via `@astrojs/vercel` (already configured in `astro.config.mjs`). Set the same three env vars in the Vercel project's Environment Variables settings.

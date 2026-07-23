@@ -1,0 +1,107 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<Layout title="Contact" description="Get in touch with the ConvertBrio team for support, feedback, or partnership inquiries.">
+  <PageIntro
+    eyebrow="Contact"
+    title="Get in touch"
+    description="Questions, feedback, or a tool request? We read every message."
+  />
+
+  <section class="bg-canvas">
+    <div class="container-page grid grid-cols-1 gap-12 py-16 sm:py-20 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+      <div class="flex flex-col gap-8">
+        <div class="flex items-start gap-3">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink">
+            <Icon name="cloud" class="h-5 w-5" />
+          </span>
+          <div>
+            <h2 class="text-sm font-semibold text-ink">General support</h2>
+            <p class="mt-1 text-sm text-body">
+              <a href="mailto:support@convertbrio.com" class="text-brand-600 underline underline-offset-2 hover:text-brand-700">
+                support@convertbrio.com
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink">
+            <Icon name="merge" class="h-5 w-5" />
+          </span>
+          <div>
+            <h2 class="text-sm font-semibold text-ink">Business & partnerships</h2>
+            <p class="mt-1 text-sm text-body">
+              <a href="mailto:hello@convertbrio.com" class="text-brand-600 underline underline-offset-2 hover:text-brand-700">
+                hello@convertbrio.com
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <p class="text-sm leading-relaxed text-mute">
+          We typically respond within one business day.
+        </p>
+      </div>
+
+      <form class="flex flex-col gap-5 rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:p-8" method="post">
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div class="flex flex-col gap-1.5">
+            <label for="name" class="text-sm font-medium text-ink">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+              class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink placeholder:text-mute focus:border-brand-400"
+            />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="email" class="text-sm font-medium text-ink">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink placeholder:text-mute focus:border-brand-400"
+            />
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="subject" class="text-sm font-medium text-ink">Subject</label>
+          <input
+            id="subject"
+            name="subject"
+            type="text"
+            required
+            class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink placeholder:text-mute focus:border-brand-400"
+          />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="message" class="text-sm font-medium text-ink">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="resize-y rounded-lg border border-hairline bg-canvas px-3.5 py-3 text-sm text-ink placeholder:text-mute focus:border-brand-400"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="mt-2 inline-flex items-center justify-center gap-2 self-start rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+        >
+          Send message
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>

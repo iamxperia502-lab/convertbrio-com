@@ -1,0 +1,120 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import Icon from "../components/Icon.astro";
+
+const tiers = [
+  {
+    name: "Free",
+    price: "$0",
+    period: "forever",
+    desc: "For occasional conversions.",
+    features: [
+      "5 conversions per day",
+      "Files up to 25 MB",
+      "Standard conversion speed",
+      "Access to all basic tools",
+    ],
+    cta: "Get started",
+    href: "/all-tools",
+    featured: false,
+  },
+  {
+    name: "Pro",
+    price: "$9",
+    period: "per month",
+    desc: "For frequent, larger files.",
+    features: [
+      "Unlimited conversions",
+      "Files up to 1 GB",
+      "Priority processing speed",
+      "Batch & bulk conversion",
+      "No ads",
+    ],
+    cta: "Start free trial",
+    href: "/all-tools",
+    featured: true,
+  },
+  {
+    name: "Business",
+    price: "$29",
+    period: "per month",
+    desc: "For teams and automation.",
+    features: [
+      "Everything in Pro",
+      "5 team seats included",
+      "API access",
+      "Dedicated support",
+    ],
+    cta: "Contact sales",
+    href: "/contact",
+    featured: false,
+  },
+] as const;
+---
+
+<Layout title="Pricing" description="Simple, transparent pricing for ConvertBrio's file conversion, compression, and AI tools.">
+  <PageIntro
+    eyebrow="Pricing"
+    title="Simple pricing that scales with you"
+    description="Start free. Upgrade when you need larger files, faster processing, or a team."
+  />
+
+  <section aria-label="Pricing plans" class="bg-canvas">
+    <div class="container-page py-16 sm:py-20">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {
+          tiers.map((tier) => (
+            <div
+              class={`flex flex-col gap-6 rounded-2xl border p-8 ${
+                tier.featured
+                  ? "border-neutral-900 bg-neutral-900 text-white shadow-card-lg"
+                  : "border-hairline bg-canvas text-ink shadow-card"
+              }`}
+            >
+              <div>
+                <div class="flex items-center justify-between">
+                  <h2 class={`text-lg font-semibold ${tier.featured ? "text-white" : "text-ink"}`}>{tier.name}</h2>
+                  {tier.featured && (
+                    <span class="rounded-full bg-white/15 px-2.5 py-1 font-mono text-[11px] text-white">Popular</span>
+                  )}
+                </div>
+                <p class={`mt-1 text-sm ${tier.featured ? "text-white/65" : "text-mute"}`}>{tier.desc}</p>
+              </div>
+
+              <div class="flex items-baseline gap-1.5">
+                <span class="text-4xl font-semibold tracking-[-0.02em]">{tier.price}</span>
+                <span class={`text-sm ${tier.featured ? "text-white/60" : "text-mute"}`}>/{tier.period}</span>
+              </div>
+
+              <ul class="flex flex-col gap-3">
+                {tier.features.map((feature) => (
+                  <li class="flex items-start gap-2.5 text-sm">
+                    <Icon
+                      name="check"
+                      class={`mt-0.5 h-4 w-4 shrink-0 ${tier.featured ? "text-white" : "text-success"}`}
+                    />
+                    <span class={tier.featured ? "text-white/85" : "text-body"}>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={tier.href}
+                class={`mt-auto inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-medium transition-opacity hover:opacity-90 ${
+                  tier.featured ? "bg-white text-neutral-900" : "bg-ink text-canvas"
+                }`}
+              >
+                {tier.cta}
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="mt-10 text-center text-sm text-mute">
+        All plans include 256-bit encryption and automatic file deletion. Prices in USD.
+      </p>
+    </div>
+  </section>
+</Layout>

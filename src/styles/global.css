@@ -1,0 +1,159 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Brand accent — restrained electric indigo, used sparingly against the monochrome system */
+  --color-brand-50: #eef1ff;
+  --color-brand-100: #dee3ff;
+  --color-brand-200: #b8c2ff;
+  --color-brand-300: #8d9aff;
+  --color-brand-400: #6272ff;
+  --color-brand-500: #3d54f5;
+  --color-brand-600: #2c3fd6;
+  --color-brand-700: #2331ab;
+  --color-brand-800: #1c2786;
+  --color-brand-900: #171f66;
+
+  /* Neutral ink/canvas scale — matches DESIGN.md's captured token values */
+  --color-ink: #171717;
+  --color-body: #4d4d4d;
+  --color-mute: #888888;
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #fafafa;
+  --color-canvas-soft-2: #f5f5f5;
+  --color-hairline: #ebebeb;
+  --color-hairline-strong: #a1a1a1;
+
+  /* Semantic */
+  --color-success: #16794e;
+  --color-success-soft: #e3f6ec;
+  --color-warning: #a15c07;
+  --color-warning-soft: #fdf1dc;
+  --color-error: #c22a2a;
+  --color-error-soft: #fbe6e6;
+
+  /* Fonts — Inter/JetBrains Mono stand in for the brand's proprietary Geist/Geist Mono faces */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Radius scale — DESIGN.md's rounded.* ladder */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill-sm: 64px;
+  --radius-pill: 100px;
+
+  /* Shadows: stacked, subtle — DESIGN.md elevation levels 2-5, hairline ring instead of a heavy drop */
+  --shadow-hairline: 0 0 0 1px var(--color-hairline);
+  --shadow-card: 0px 1px 1px rgba(15, 15, 20, 0.02), 0px 2px 2px rgba(15, 15, 20, 0.04), 0 0 0 1px var(--color-hairline);
+  --shadow-card-md: 0px 2px 2px rgba(15, 15, 20, 0.04), 0px 8px 8px -8px rgba(15, 15, 20, 0.04), 0 0 0 1px var(--color-hairline);
+  --shadow-card-lg: 0px 2px 2px rgba(15, 15, 20, 0.04), 0px 8px 16px -4px rgba(15, 15, 20, 0.05), 0 0 0 1px var(--color-hairline);
+  --shadow-modal: 0px 1px 1px rgba(15, 15, 20, 0.02), 0px 8px 16px -4px rgba(15, 15, 20, 0.05), 0px 24px 32px -8px rgba(15, 15, 20, 0.07), 0 0 0 1px var(--color-hairline);
+
+  --container-page: 1400px;
+}
+
+/* Class-based dark mode: toggled via .dark on <html>, driven by the theme-toggle script in Layout.astro */
+@custom-variant dark (&:where(.dark, .dark *));
+
+.dark {
+  --color-ink: #f2f2f2;
+  --color-body: #b0b0b0;
+  --color-mute: #808080;
+  --color-canvas: #0a0a0a;
+  --color-canvas-soft: #141414;
+  --color-canvas-soft-2: #1e1e1e;
+  --color-hairline: #262626;
+  --color-hairline-strong: #454545;
+
+  --color-success: #3ddb96;
+  --color-success-soft: #10291e;
+  --color-warning: #e2a53d;
+  --color-warning-soft: #2c2109;
+  --color-error: #f16565;
+  --color-error-soft: #2c1414;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "ss02";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    color-scheme: light;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-canvas);
+  }
+
+  a,
+  button,
+  input,
+  label,
+  select,
+  textarea {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    scroll-margin-top: 5rem;
+  }
+
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    max-width: var(--container-page);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Subtle dot-grid backdrop — the site's one recurring decorative motif, used sparingly at section scale */
+  .bg-grid-dots {
+    background-image: radial-gradient(var(--color-hairline-strong) 1px, transparent 1px);
+    background-size: 24px 24px;
+    -webkit-mask-image: radial-gradient(ellipse 60% 100% at 50% 0%, black 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 60% 100% at 50% 0%, black 40%, transparent 100%);
+  }
+}

@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import SocialAuthButtons from "../components/SocialAuthButtons.astro";
+
+if (Astro.locals.user) {
+  return Astro.redirect("/dashboard");
+}
+
+const error = Astro.url.searchParams.get("error");
+const supabaseConfigured = Astro.locals.supabase !== null;
+---
+
+<Layout title="Sign Up" description="Create a free ConvertBrio account.">
+  <PageIntro eyebrow="Account" title="Create your account" description="Free to start. Upgrade any time for larger files and unlimited conversions." />
+
+  <section class="bg-canvas">
+    <div class="container-page py-16 sm:py-20">
+      <div class="mx-auto max-w-sm">
+        {
+          !supabaseConfigured && (
+            <p class="mb-6 rounded-lg border border-warning-soft bg-warning-soft px-4 py-3 text-sm text-warning">
+              Accounts aren't set up yet — this environment has no Supabase project configured.
+            </p>
+          )
+        }
+        {
+          error && (
+            <p class="mb-6 rounded-lg border border-error-soft bg-error-soft px-4 py-3 text-sm text-error">
+              {error}
+            </p>
+          )
+        }
+
+        <div class="rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:p-8">
+          <SocialAuthButtons disabled={!supabaseConfigured} />
+
+          <div class="my-6 flex items-center gap-3" aria-hidden="true">
+            <div class="h-px flex-1 bg-hairline"></div>
+            <span class="text-xs font-medium uppercase tracking-wide text-mute">Or continue with email</span>
+            <div class="h-px flex-1 bg-hairline"></div>
+          </div>
+
+          <form class="flex flex-col gap-5" method="post" action="/api/auth/sign-up">
+            <div class="flex flex-col gap-1.5">
+              <label for="email" class="text-sm font-medium text-ink">Email</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+                disabled={!supabaseConfigured}
+                class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink placeholder:text-mute focus:border-brand-400 disabled:opacity-50"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label for="password" class="text-sm font-medium text-ink">Password</label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+                disabled={!supabaseConfigured}
+                class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink placeholder:text-mute focus:border-brand-400 disabled:opacity-50"
+              />
+              <p class="text-xs text-mute">At least 8 characters.</p>
+            </div>
+
+            <button
+              type="submit"
+              disabled={!supabaseConfigured}
+              class="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Create account
+            </button>
+          </form>
+        </div>
+
+        <p class="mt-6 text-center text-sm text-mute">
+          Already have an account? <a href="/sign-in" class="text-brand-600 underline underline-offset-2 hover:text-brand-700">Sign in</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

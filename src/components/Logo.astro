@@ -1,0 +1,26 @@
+---
+interface Props {
+  size?: number;
+  showWordmark?: boolean;
+  class?: string;
+}
+
+const { size = 26, showWordmark = true, class: className = "" } = Astro.props;
+---
+
+<a href="/" class={`inline-flex shrink-0 items-center gap-2 rounded-sm ${className}`} aria-label="ConvertBrio home">
+  <svg width={size} height={size} viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="26" height="26" rx="7" fill="#171717" />
+    <!-- Two transforming file shapes: a folded-corner page mid-turn into the accent page behind it -->
+    <path d="M8.5 6.5h5.4L17 9.9v9.6a1 1 0 0 1-1 1H8.5a1 1 0 0 1-1-1V7.5a1 1 0 0 1 1-1Z" fill="#6272FF" opacity="0.55" />
+    <path d="M7.5 5.5h5.4L16 8.9v9.6a1 1 0 0 1-1 1H7.5a1 1 0 0 1-1-1V6.5a1 1 0 0 1 1-1Z" fill="#F5F5F5" />
+    <path d="M12.9 5.5 16 8.9h-2.1a1 1 0 0 1-1-1V5.5Z" fill="#C7C9D1" />
+  </svg>
+  {
+    showWordmark && (
+      <span translate="no" class="text-[15px] font-semibold tracking-[-0.01em] text-ink">
+        ConvertBrio
+      </span>
+    )
+  }
+</a>

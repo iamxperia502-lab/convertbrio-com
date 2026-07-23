@@ -1,11 +1,70 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import UploadBox from "../components/UploadBox.astro";
+import PopularTools from "../components/PopularTools.astro";
+import ToolCategories from "../components/ToolCategories.astro";
+import SecuritySection from "../components/SecuritySection.astro";
+import CtaSection from "../components/CtaSection.astro";
+import SeoContent from "../components/SeoContent.astro";
+import FaqSection from "../components/FaqSection.astro";
+import { homepageFaq } from "../data/faq";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const seoTitle = "Online File Converter – Free, Secure & Fast | ConvertBrio";
+const description =
+  "Free online file converter for images, PDFs, and documents. Convert, compress, and reduce image size online in seconds — no installs, no sign-up.";
+const siteUrl = "https://convertbrio.com/";
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "ConvertBrio",
+  url: siteUrl,
+  description,
+};
+
+const softwareApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "ConvertBrio",
+  url: siteUrl,
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any (web-based)",
+  description,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: homepageFaq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="ConvertBrio" seoTitle={seoTitle} description={description} canonical="/">
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+  </Fragment>
+
+  <Hero />
+  <UploadBox />
+  <PopularTools />
+  <ToolCategories />
+  <SecuritySection />
+  <SeoContent />
+  <FaqSection />
+  <CtaSection />
 </Layout>

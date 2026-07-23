@@ -1,0 +1,164 @@
+---
+import { categories } from "../data/tools";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const navLinks = [
+  ...categories.map((cat) => ({ label: cat.name, href: `/all-tools#${cat.id}` })),
+  { label: "All Tools", href: "/all-tools" },
+  { label: "Pricing", href: "/pricing" },
+];
+
+const currentPath = Astro.url.pathname;
+const user = Astro.locals.user;
+---
+
+<header class="sticky top-0 z-40 border-b border-hairline bg-canvas/90 backdrop-blur-sm">
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a href="/" class="flex shrink-0 items-center gap-2 rounded-sm" aria-label="ConvertBrio home">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="26" height="26" rx="7" fill="#16171B" />
+        <path d="M8 13.5L11.2 16.7L18 9.3" stroke="#EEF1FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span translate="no" class="text-[15px] font-semibold tracking-[-0.01em] text-ink">ConvertBrio</span>
+    </a>
+
+    <nav aria-label="Primary" class="hidden min-w-0 flex-1 items-center justify-center lg:flex">
+      <ul class="flex items-center gap-1 text-sm text-body">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="whitespace-nowrap rounded-full px-3 py-2 transition-colors hover:bg-canvas-soft-2 hover:text-ink"
+                aria-current={currentPath === link.href ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="hidden shrink-0 items-center gap-2 lg:flex">
+      {
+        user ? (
+          <>
+            <a
+              href="/dashboard"
+              class="rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
+            >
+              Dashboard
+            </a>
+            <form method="post" action="/api/auth/sign-out">
+              <button
+                type="submit"
+                class="rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
+              >
+                Sign Out
+              </button>
+            </form>
+          </>
+        ) : (
+          <>
+            <a
+              href="/sign-in"
+              class="rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
+            >
+              Sign In
+            </a>
+            <a
+              href="/all-tools"
+              class="rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
+            >
+              Get Started
+            </a>
+          </>
+        )
+      }
+    </div>
+
+    <ThemeToggle class="shrink-0" />
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="inline-flex items-center justify-center rounded-md p-2 text-ink lg:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <svg id="icon-open" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+      <svg id="icon-close" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true" class="hidden">
+        <path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-hairline lg:hidden">
+    <nav aria-label="Mobile" class="container-page flex flex-col gap-1 py-4">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-md px-3 py-2.5 text-[15px] text-body transition-colors hover:bg-canvas-soft-2 hover:text-ink"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <div class="mt-2 flex flex-col gap-2 border-t border-hairline pt-4">
+        {
+          user ? (
+            <>
+              <a
+                href="/dashboard"
+                class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
+              >
+                Dashboard
+              </a>
+              <form method="post" action="/api/auth/sign-out">
+                <button type="submit" class="w-full rounded-full bg-ink px-4 py-2.5 text-center text-[15px] font-medium text-canvas">
+                  Sign Out
+                </button>
+              </form>
+            </>
+          ) : (
+            <>
+              <a
+                href="/sign-in"
+                class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
+              >
+                Sign In
+              </a>
+              <a
+                href="/all-tools"
+                class="rounded-full bg-ink px-4 py-2.5 text-center text-[15px] font-medium text-canvas"
+              >
+                Get Started
+              </a>
+            </>
+          )
+        }
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
+
+  toggle?.addEventListener("click", () => {
+    const expanded = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!expanded));
+    toggle.setAttribute("aria-label", expanded ? "Open menu" : "Close menu");
+    menu?.classList.toggle("hidden");
+    iconOpen?.classList.toggle("hidden");
+    iconClose?.classList.toggle("hidden");
+  });
+</script>

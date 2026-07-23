@@ -1,0 +1,227 @@
+---
+import Icon from "./Icon.astro";
+
+const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TIFF"];
+---
+
+<section id="upload" class="border-b border-hairline bg-canvas-soft scroll-mt-16">
+  <div class="container-page pb-16 sm:pb-24">
+    <form
+      id="quick-convert-form"
+      class="mx-auto max-w-3xl rounded-2xl border border-hairline bg-canvas p-2 shadow-card-lg sm:p-3"
+    >
+      <input type="hidden" name="slug" id="quick-slug" value="image-converter" />
+
+      <label
+        for="file-input"
+        id="dropzone"
+        class="group flex cursor-pointer flex-col items-center gap-4 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-14 text-center transition-colors duration-150 hover:border-brand-400 hover:bg-brand-500/10 sm:py-16"
+      >
+        <span
+          class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600"
+        >
+          <Icon name="cloud" class="h-6 w-6" />
+        </span>
+
+        <span class="flex flex-col gap-1">
+          <span class="text-lg font-medium text-ink">Drop a file here, or browse</span>
+          <span class="text-sm text-mute">Up to 25&nbsp;MB</span>
+        </span>
+
+        <span
+          class="pointer-events-none inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-canvas"
+        >
+          Browse Files
+        </span>
+
+        <input id="file-input" name="file" type="file" class="sr-only" />
+      </label>
+
+      <div id="progress-wrap" class="hidden flex-col gap-1.5 px-4 pt-4">
+        <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
+          <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
+        </div>
+      </div>
+
+      <div id="quick-options" class="hidden flex-col items-center gap-4 px-4 py-5">
+        <div id="quick-format-field" class="flex flex-col gap-1.5">
+          <label for="quick-format" class="text-sm font-medium text-ink">Convert to</label>
+          <select
+            id="quick-format"
+            name="format"
+            class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400"
+          >
+            <option value="jpeg">JPG</option>
+            <option value="png">PNG</option>
+            <option value="webp">WEBP</option>
+            <option value="avif">AVIF</option>
+            <option value="gif">GIF</option>
+          </select>
+        </div>
+
+        <button
+          id="quick-convert-btn"
+          type="submit"
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Convert
+        </button>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-2 px-4 py-5">
+        {
+          formats.map((format) => (
+            <span class="rounded-full bg-canvas-soft-2 px-2.5 py-1 font-mono text-[11px] text-mute">
+              {format}
+            </span>
+          ))
+        }
+      </div>
+    </form>
+
+    <p id="upload-status" role="status" aria-live="polite" class="mt-4 text-center text-sm text-body">
+      No file selected yet.
+    </p>
+
+    <p class="mt-2 flex items-center justify-center gap-1.5 text-center text-xs text-mute">
+      <Icon name="lock" class="h-3.5 w-3.5" />
+      Files are encrypted in transit and deleted automatically within 1 hour.
+    </p>
+  </div>
+</section>
+
+<script>
+  import { submitConversion, downloadBlob } from "../lib/upload-client";
+
+  const form = document.getElementById("quick-convert-form") as HTMLFormElement | null;
+  const dropzone = document.getElementById("dropzone");
+  const input = document.getElementById("file-input") as HTMLInputElement | null;
+  const slugField = document.getElementById("quick-slug") as HTMLInputElement | null;
+  const options = document.getElementById("quick-options");
+  const formatField = document.getElementById("quick-format-field");
+  const convertButton = document.getElementById("quick-convert-btn") as HTMLButtonElement | null;
+  const status = document.getElementById("upload-status");
+  const progressWrap = document.getElementById("progress-wrap");
+  const progressBar = document.getElementById("progress-bar");
+
+  const setProgress = (percent: number) => {
+    if (progressBar) progressBar.style.width = `${percent}%`;
+  };
+
+  const IMAGE_TYPES = new Set([
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/heic",
+    "image/heif",
+    "image/avif",
+    "image/gif",
+    "image/tiff",
+  ]);
+
+  type Kind = "image" | "pdf" | "unsupported";
+
+  const detectKind = (file: File): Kind => {
+    if (IMAGE_TYPES.has(file.type)) return "image";
+    if (file.type === "application/pdf") return "pdf";
+    return "unsupported";
+  };
+
+  const handleFile = (file: File | undefined) => {
+    if (!status || !options || !slugField || !formatField || !convertButton) return;
+
+    if (!file) {
+      status.textContent = "No file selected yet.";
+      options.classList.add("hidden");
+      options.classList.remove("flex");
+      return;
+    }
+
+    const kind = detectKind(file);
+
+    if (kind === "unsupported") {
+      status.textContent = `We don't support quick-converting "${file.name}" here yet — browse All Tools for the right converter.`;
+      options.classList.add("hidden");
+      options.classList.remove("flex");
+      return;
+    }
+
+    status.textContent = `Selected: ${file.name}`;
+    options.classList.remove("hidden");
+    options.classList.add("flex");
+
+    if (kind === "image") {
+      slugField.value = "image-converter";
+      formatField.classList.remove("hidden");
+      formatField.classList.add("flex");
+    } else {
+      slugField.value = "pdf-to-jpg";
+      formatField.classList.add("hidden");
+      formatField.classList.remove("flex");
+    }
+  };
+
+  input?.addEventListener("change", () => handleFile(input.files?.[0]));
+
+  ["dragenter", "dragover"].forEach((eventName) => {
+    dropzone?.addEventListener(eventName, (event) => {
+      event.preventDefault();
+      dropzone.classList.add("border-brand-400", "bg-brand-500/10");
+    });
+  });
+
+  ["dragleave", "drop"].forEach((eventName) => {
+    dropzone?.addEventListener(eventName, (event) => {
+      event.preventDefault();
+      dropzone.classList.remove("border-brand-400", "bg-brand-500/10");
+    });
+  });
+
+  dropzone?.addEventListener("drop", (event) => {
+    const dt = (event as DragEvent).dataTransfer;
+    const file = dt?.files?.[0];
+    if (file && input) {
+      input.files = dt.files;
+      handleFile(file);
+    }
+  });
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!status || !input?.files?.length || !slugField) return;
+
+    const file = input.files[0];
+    const kind = detectKind(file);
+    if (kind === "unsupported") return;
+
+    const endpoint = kind === "image" ? "/api/convert/image" : "/api/convert/pdf";
+
+    convertButton?.setAttribute("disabled", "true");
+    progressWrap?.classList.remove("hidden");
+    progressWrap?.classList.add("flex");
+    setProgress(0);
+    status.textContent = "Uploading… 0%";
+
+    try {
+      const { filename, blob } = await submitConversion({
+        endpoint,
+        formData: new FormData(form),
+        onProgress: (percent) => {
+          setProgress(percent);
+          status.textContent = `Uploading… ${percent}%`;
+        },
+        onUploaded: () => {
+          status.textContent = "Processing…";
+        },
+      });
+
+      downloadBlob(blob, filename);
+      setProgress(100);
+      status.textContent = `Done — ${filename} downloaded.`;
+    } catch (err) {
+      status.textContent = err instanceof Error ? err.message : "Something went wrong. Try again.";
+    } finally {
+      convertButton?.removeAttribute("disabled");
+    }
+  });
+</script>

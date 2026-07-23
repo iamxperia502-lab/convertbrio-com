@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import Icon from "../components/Icon.astro";
+
+const values = [
+  {
+    icon: "shrink",
+    title: "Fast by default",
+    desc: "Every tool is built to process files in seconds, not minutes — no matter the queue.",
+  },
+  {
+    icon: "shield",
+    title: "Private by design",
+    desc: "Files are encrypted and automatically deleted. We never sell or review your data.",
+  },
+  {
+    icon: "sparkle",
+    title: "Genuinely useful AI",
+    desc: "AI tools that solve real problems — enhancement, restoration, and cleanup — not gimmicks.",
+  },
+] as const;
+
+const stats = [
+  { label: "Files processed", value: "12M+" },
+  { label: "Tools available", value: "50+" },
+  { label: "Countries served", value: "180+" },
+] as const;
+---
+
+<Layout
+  title="About"
+  description="ConvertBrio builds fast, private, and simple file conversion tools for images, PDFs, and documents."
+>
+  <PageIntro
+    eyebrow="About ConvertBrio"
+    title="File tools that get out of your way"
+    description="ConvertBrio started with a simple idea: converting a file shouldn't require installing software, creating an account, or waiting in a queue."
+  />
+
+  <section aria-label="Our values" class="bg-canvas">
+    <div class="container-page py-16 sm:py-20">
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {
+          values.map((value) => (
+            <div class="flex flex-col gap-3 rounded-xl border border-hairline bg-canvas p-6 shadow-card">
+              <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink">
+                <Icon name={value.icon} class="h-5 w-5" />
+              </span>
+              <h2 class="text-base font-semibold text-ink">{value.title}</h2>
+              <p class="text-sm leading-relaxed text-body">{value.desc}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="ConvertBrio in numbers" class="border-y border-hairline bg-canvas-soft">
+    <div class="container-page py-14">
+      <dl class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+        {
+          stats.map((stat) => (
+            <div class="text-center">
+              <dt class="text-sm text-mute">{stat.label}</dt>
+              <dd class="mt-1 text-3xl font-semibold tracking-[-0.02em] text-ink">{stat.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section aria-label="Our approach" class="bg-canvas">
+    <div class="container-page flex flex-col gap-4 py-16 sm:py-20">
+      <h2 class="text-2xl font-semibold tracking-[-0.01em] text-ink">Our approach</h2>
+      <p class="max-w-2xl leading-relaxed text-body">
+        We focus on the tools people actually use every day — image conversion, PDF editing,
+        document formatting, and compression — and make each one fast, accurate, and free to try.
+        Where AI genuinely improves a result, like enhancing a low-resolution photo, we use it. Where
+        it wouldn't help, we leave it out.
+      </p>
+      <p class="max-w-2xl leading-relaxed text-body">
+        ConvertBrio is built by a small, independent team. If you have feedback or a tool you’d like
+        to see, <a href="/contact" class="font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700">reach out</a>.
+      </p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,89 @@
+---
+import Icon from "./Icon.astro";
+
+const categories = [
+  {
+    id: "pdf",
+    name: "PDF Tools",
+    icon: "pdf",
+    desc: "Merge, split, compress, and convert PDFs.",
+    examples: ["Merge PDF", "Split PDF", "PDF to Word", "Compress PDF"],
+  },
+  {
+    id: "image",
+    name: "Image Tools",
+    icon: "image",
+    desc: "Convert, resize, crop, and optimize images.",
+    examples: ["Image Converter", "Resize Image", "Crop Image", "HEIC to JPG"],
+  },
+  {
+    id: "document",
+    name: "Document Tools",
+    icon: "word",
+    desc: "Convert between Word, Excel, and PDF.",
+    examples: ["Word to PDF", "Excel to PDF", "PowerPoint to PDF"],
+  },
+  {
+    id: "compress",
+    name: "Compression",
+    icon: "shrink",
+    desc: "Reduce file size without losing quality.",
+    examples: ["Compress PDF", "Compress Image", "Reduce to Target Size"],
+  },
+  {
+    id: "ocr",
+    name: "OCR",
+    icon: "ocr",
+    desc: "Extract editable text from scans and images.",
+    examples: ["OCR PDF", "Image to Text", "Scan to Word"],
+  },
+  {
+    id: "ai",
+    name: "AI Tools",
+    icon: "sparkle",
+    desc: "Enhance, upscale, and clean up with AI.",
+    examples: ["AI Image Enhancer", "AI Upscaler", "Background Remover"],
+  },
+] as const;
+---
+
+<section aria-labelledby="categories-heading" class="border-b border-hairline bg-canvas-soft">
+  <div class="container-page py-16 sm:py-20">
+    <div class="mb-10 flex flex-col gap-2 sm:mb-12">
+      <h2 id="categories-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink sm:text-3xl">
+        Browse by category
+      </h2>
+      <p class="text-body">Every tool, organized the way you think about your files.</p>
+    </div>
+
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        categories.map((cat) => (
+          <li id={cat.id} class="scroll-mt-20">
+            <div class="flex h-full flex-col gap-4 rounded-xl border border-hairline bg-canvas p-6 shadow-card">
+              <span class="flex h-11 w-11 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink">
+                <Icon name={cat.icon} class="h-5 w-5" />
+              </span>
+              <div>
+                <h3 class="text-base font-semibold text-ink">{cat.name}</h3>
+                <p class="mt-1 text-sm leading-relaxed text-body">{cat.desc}</p>
+              </div>
+              <ul class="flex flex-wrap gap-2">
+                {cat.examples.map((example) => (
+                  <li class="rounded-full bg-canvas-soft-2 px-2.5 py-1 text-xs text-body">{example}</li>
+                ))}
+              </ul>
+              <a
+                href="/all-tools"
+                class="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 transition-colors hover:text-brand-700"
+              >
+                Explore {cat.name.toLowerCase()}
+                <Icon name="arrow" class="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

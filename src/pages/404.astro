@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Page not found">
+  <section class="bg-canvas">
+    <div class="container-page flex flex-col items-center gap-4 py-24 text-center sm:py-32">
+      <p class="font-mono text-sm text-mute">404</p>
+      <h1 class="text-3xl font-semibold tracking-[-0.01em] text-ink sm:text-4xl">Page not found</h1>
+      <p class="max-w-md text-body">
+        The page you're looking for doesn't exist yet, or the link may be outdated.
+      </p>
+      <a
+        href="/"
+        class="mt-4 inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+      >
+        Back to homepage
+      </a>
+    </div>
+  </section>
+</Layout>

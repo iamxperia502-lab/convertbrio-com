@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+import Icon from "../components/Icon.astro";
+
+// The middleware already redirects unauthenticated requests to /sign-in
+// before this page renders, so `user` is guaranteed here.
+const user = Astro.locals.user!;
+const supabase = Astro.locals.supabase!;
+
+const { data: profile } = await supabase.from("profiles").select("plan").eq("id", user.id).maybeSingle();
+const plan = profile?.plan ?? "free";
+
+const { data: jobs } = await supabase
+  .from("conversion_jobs")
+  .select("id, tool_slug, status, created_at")
+  .eq("user_id", user.id)
+  .order("created_at", { ascending: false })
+  .limit(10);
+
+const planLabels: Record<string, string> = { free: "Free", pro: "Pro", business: "Business" };
+const planLabel = planLabels[plan] ?? "Free";
+---
+
+<Layout title="Dashboard" description="Your ConvertBrio account, plan, and recent conversions.">
+  <PageIntro eyebrow="Account" title={`Welcome back`} description={user.email} />
+
+  <section class="bg-canvas">
+    <div class="container-page flex flex-col gap-8 py-16 sm:py-20">
+      <div class="flex flex-col justify-between gap-4 rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:flex-row sm:items-center sm:p-8">
+        <div>
+          <p class="font-mono text-xs uppercase tracking-wide text-mute">Current plan</p>
+          <p class="mt-1 text-2xl font-semibold text-ink">{planLabel}</p>
+        </div>
+        <a
+          href="/pricing"
+          class="inline-flex items-center justify-center gap-2 self-start rounded-full border border-hairline px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-hairline-strong sm:self-auto"
+        >
+          {plan === "free" ? "Upgrade plan" : "Manage plan"}
+        </a>
+      </div>
+
+      <div>
+        <h2 class="text-lg font-semibold text-ink">Recent conversions</h2>
+
+        {
+          jobs && jobs.length > 0 ? (
+            <ul class="mt-4 flex flex-col gap-3">
+              {jobs.map((job) => (
+                <li class="flex items-center justify-between gap-3 rounded-lg border border-hairline bg-canvas-soft px-4 py-3.5">
+                  <div class="flex items-center gap-3">
+                    <Icon name="pdf" class="h-4 w-4 shrink-0 text-mute" />
+                    <span class="text-sm text-ink">{job.tool_slug}</span>
+                  </div>
+                  <span class="text-xs text-mute">{job.status}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div class="mt-4 flex flex-col items-center gap-3 rounded-2xl border border-dashed border-hairline-strong px-6 py-14 text-center">
+              <span class="flex h-12 w-12 items-center justify-center rounded-full bg-canvas-soft-2 text-ink">
+                <Icon name="cloud" class="h-5 w-5" />
+              </span>
+              <p class="text-sm text-body">No conversions yet.</p>
+              <a href="/all-tools" class="text-sm text-brand-600 underline underline-offset-2 hover:text-brand-700">
+                Browse all tools
+              </a>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
