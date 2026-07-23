@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 import { PDFDocument, StandardFonts, degrees, rgb } from "pdf-lib";
 import JSZip from "jszip";
-import { PDFiumLibrary } from "@hyzyla/pdfium/browser/base64";
+import { PDFiumLibrary } from "@hyzyla/pdfium";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
@@ -16,13 +16,26 @@ function baseName(filename: string) {
   return dot > 0 ? filename.slice(0, dot) : filename;
 }
 
+// Workers disallows *dynamic* WASM compilation (WebAssembly.instantiate from raw
+// bytes at request time) as a security restriction — only WASM modules imported
+// statically at build time (and thus precompiled ahead of time) are allowed. That
+// rules out @hyzyla/pdfium's "browser/base64" build, which instantiates at runtime;
+// this statically-imported module + a custom instantiateWasm hook is the fix.
+import pdfiumWasmModule from "@hyzyla/pdfium/pdfium.wasm?module";
+
 // pdfium is WASM (works in Cloudflare Workers), unlike the old pdfjs-dist + `canvas`
 // pairing, which needed a native canvas 2D context to rasterize pages. The library
 // instance is cached at module scope since Workers isolates get reused across requests.
 let pdfiumLibrary: ReturnType<typeof PDFiumLibrary.init> | null = null;
 function getPdfiumLibrary() {
   if (!pdfiumLibrary) {
-    pdfiumLibrary = PDFiumLibrary.init({ disableBase64Warning: true });
+    pdfiumLibrary = PDFiumLibrary.init({
+      instantiateWasm(imports, successCallback) {
+        const instance = new WebAssembly.Instance(pdfiumWasmModule, imports);
+        successCallback(instance, pdfiumWasmModule);
+        return instance.exports;
+      },
+    });
   }
   return pdfiumLibrary;
 }

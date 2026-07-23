@@ -16,7 +16,9 @@ import encodeAvif, { init as initAvifEncode } from "@jsquash/avif/encode";
 import resize, { initResize } from "@jsquash/resize";
 import { GIFEncoder, quantize, applyPalette } from "gifenc";
 import { GifReader } from "omggif";
-import { heicTo, isHeic } from "heic-to";
+// @ts-expect-error - libheif-js ships .d.ts files that don't resolve cleanly against
+// this deep .mjs subpath; the HeifModule shape used below is declared locally instead.
+import createHeifModule from "libheif-js/libheif-wasm/libheif-bundle.mjs";
 
 // Vite's `?module` suffix compiles the .wasm to a WebAssembly.Module at build time
 // instead of a URL, which is what jsquash's `init()` functions expect to run without
@@ -30,6 +32,7 @@ import webpEncWasm from "@jsquash/webp/codec/enc/webp_enc.wasm?module";
 import avifDecWasm from "@jsquash/avif/codec/dec/avif_dec.wasm?module";
 import avifEncWasm from "@jsquash/avif/codec/enc/avif_enc.wasm?module";
 import resizeWasm from "@jsquash/resize/lib/resize/pkg/squoosh_resize_bg.wasm?module";
+import heifWasm from "libheif-js/libheif-wasm/libheif.wasm?module";
 
 export interface RawImage {
   width: number;
@@ -78,12 +81,51 @@ function encodeGif(image: RawImage): Uint8Array {
   return gif.bytes();
 }
 
+interface HeifImage {
+  get_width(): number;
+  get_height(): number;
+  display(
+    target: { data: Uint8ClampedArray; width: number; height: number },
+    callback: (result: { data: Uint8ClampedArray; width: number; height: number } | null) => void
+  ): void;
+}
+interface HeifModule {
+  HeifDecoder: new () => { decode(buffer: Uint8Array): HeifImage[] };
+}
+
+let heifModuleReady: Promise<HeifModule> | null = null;
+function getHeifModule(): Promise<HeifModule> {
+  if (!heifModuleReady) {
+    heifModuleReady = createHeifModule({
+      instantiateWasm(imports: WebAssembly.Imports, successCallback: (instance: WebAssembly.Instance, module: WebAssembly.Module) => void) {
+        const instance = new WebAssembly.Instance(heifWasm, imports);
+        successCallback(instance, heifWasm);
+        return instance.exports;
+      },
+    });
+  }
+  return heifModuleReady;
+}
+
+async function decodeHeic(buffer: Uint8Array): Promise<RawImage> {
+  const heif = await getHeifModule();
+  const images = new heif.HeifDecoder().decode(buffer);
+  if (images.length === 0) throw new Error("No image found in HEIC file.");
+  const image = images[0];
+  const width = image.get_width();
+  const height = image.get_height();
+  const data = await new Promise<Uint8ClampedArray>((resolve, reject) => {
+    image.display({ data: new Uint8ClampedArray(width * height * 4), width, height }, (result) => {
+      if (!result) return reject(new Error("HEIC decoding failed."));
+      resolve(result.data);
+    });
+  });
+  return { width, height, data };
+}
+
 export async function decodeImage(format: ImageFormat, buffer: Uint8Array): Promise<RawImage> {
   if (format === "heic") {
-    const blob = await heicTo({ blob: new Blob([buffer]), type: "image/png" });
-    const png = new Uint8Array(await blob.arrayBuffer());
-    await initAll();
-    return decodePng(png);
+    return decodeHeic(buffer);
   }
   if (format === "gif") {
     return decodeGif(buffer);
@@ -124,12 +166,19 @@ export async function encodeImage(
   }
 }
 
+// HEIC/HEIF is an ISO base media file: bytes 4-8 are "ftyp", bytes 8-12 name the
+// brand. AVIF uses the same container with a different brand, checked below it.
+const HEIC_BRANDS = new Set(["mif1", "msf1", "heic", "heix", "hevc", "hevx"]);
+
 export async function detectFormat(buffer: Uint8Array): Promise<ImageFormat | null> {
-  if (await isHeic(new Blob([buffer]))) return "heic";
+  if (buffer.length >= 12 && String.fromCharCode(...buffer.slice(4, 8)) === "ftyp") {
+    const brand = String.fromCharCode(...buffer.slice(8, 12));
+    if (HEIC_BRANDS.has(brand)) return "heic";
+    return "avif";
+  }
   if (buffer.length >= 3 && buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff) return "jpeg";
   if (buffer.length >= 8 && buffer[0] === 0x89 && buffer[1] === 0x50 && buffer[2] === 0x4e && buffer[3] === 0x47) return "png";
   if (buffer.length >= 12 && buffer[8] === 0x57 && buffer[9] === 0x45 && buffer[10] === 0x42 && buffer[11] === 0x50) return "webp";
-  if (buffer.length >= 12 && String.fromCharCode(...buffer.slice(4, 8)) === "ftyp") return "avif";
   if (buffer.length >= 3 && buffer[0] === 0x47 && buffer[1] === 0x49 && buffer[2] === 0x46) return "gif";
   return null;
 }

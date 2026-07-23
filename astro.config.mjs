@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
-import vercel from '@astrojs/vercel';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,9 +14,11 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  adapter: vercel({
-    // Headless-Chromium-backed Word conversions (see src/lib/chromium.ts) need
-    // more than the default function timeout, especially on a cold start.
-    maxDuration: 60,
+  adapter: cloudflare({
+    // Astro's default Cloudflare image service uses the Images binding, which
+    // this project isn't provisioning (see src/lib/image-pipeline.ts for why:
+    // avoids extra Cloudflare product billing). No <Image>/astro:assets usage
+    // exists in this codebase, so this is a no-op safety default.
+    imageService: 'passthrough',
   })
 });
