@@ -40,6 +40,14 @@ export interface RawImage {
   data: Uint8ClampedArray;
 }
 
+// jsquash's TS defs type decode/encode/resize inputs as the DOM ImageData type, but at
+// runtime they only ever touch {width, height, data} — RawImage's shape exactly, minus
+// ImageData's unused `colorSpace` field and its stricter ArrayBuffer-only typed-array
+// generics. This cast bridges the two without copying data.
+function asImageData(image: RawImage): ImageData {
+  return image as unknown as ImageData;
+}
+
 export type ImageFormat = "jpeg" | "png" | "webp" | "avif" | "gif" | "heic";
 export type WritableImageFormat = "jpeg" | "png" | "webp" | "avif" | "gif";
 
@@ -95,16 +103,14 @@ interface HeifModule {
 
 let heifModuleReady: Promise<HeifModule> | null = null;
 function getHeifModule(): Promise<HeifModule> {
-  if (!heifModuleReady) {
-    heifModuleReady = createHeifModule({
-      instantiateWasm(imports: WebAssembly.Imports, successCallback: (instance: WebAssembly.Instance, module: WebAssembly.Module) => void) {
-        const instance = new WebAssembly.Instance(heifWasm, imports);
-        successCallback(instance, heifWasm);
-        return instance.exports;
-      },
-    });
-  }
-  return heifModuleReady;
+  heifModuleReady ??= createHeifModule({
+    instantiateWasm(imports: WebAssembly.Imports, successCallback: (instance: WebAssembly.Instance) => void) {
+      const instance = new WebAssembly.Instance(heifWasm, imports);
+      successCallback(instance);
+      return instance.exports;
+    },
+  });
+  return heifModuleReady!;
 }
 
 async function decodeHeic(buffer: Uint8Array): Promise<RawImage> {
@@ -132,16 +138,16 @@ export async function decodeImage(format: ImageFormat, buffer: Uint8Array): Prom
   }
 
   await initAll();
-  switch (format) {
-    case "jpeg":
-      return decodeJpeg(buffer);
-    case "png":
-      return decodePng(buffer);
-    case "webp":
-      return decodeWebp(buffer);
-    case "avif":
-      return decodeAvif(buffer);
-  }
+  const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength) as ArrayBuffer;
+  const decoded = await (format === "jpeg"
+    ? decodeJpeg(arrayBuffer)
+    : format === "png"
+      ? decodePng(arrayBuffer)
+      : format === "webp"
+        ? decodeWebp(arrayBuffer)
+        : decodeAvif(arrayBuffer));
+  if (!decoded) throw new Error(`Failed to decode ${format} image.`);
+  return decoded;
 }
 
 export async function encodeImage(
@@ -154,15 +160,16 @@ export async function encodeImage(
   }
 
   await initAll();
+  const imageData = asImageData(image);
   switch (format) {
     case "jpeg":
-      return new Uint8Array(await encodeJpeg(image, { quality }));
+      return new Uint8Array(await encodeJpeg(imageData, { quality }));
     case "png":
-      return new Uint8Array(await encodePng(image));
+      return new Uint8Array(await encodePng(imageData));
     case "webp":
-      return new Uint8Array(await encodeWebp(image, { quality }));
+      return new Uint8Array(await encodeWebp(imageData, { quality }));
     case "avif":
-      return new Uint8Array(await encodeAvif(image, { quality }));
+      return new Uint8Array(await encodeAvif(imageData, { quality }));
   }
 }
 
@@ -245,10 +252,7 @@ export async function resizeImage(
   if (finalWidth === image.width && finalHeight === image.height) return image;
 
   await initAll();
-  const result = await resize(
-    { width: image.width, height: image.height, data: image.data },
-    { width: finalWidth, height: finalHeight }
-  );
+  const result = await resize(asImageData(image), { width: finalWidth, height: finalHeight });
   return { width: finalWidth, height: finalHeight, data: new Uint8ClampedArray(result.data) };
 }
 

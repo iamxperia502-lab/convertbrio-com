@@ -120,7 +120,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
     await finalizeConversionJob(jobId, outputBuffer, contentType);
 
-    return new Response(outputBuffer, {
+    return new Response(new Uint8Array(outputBuffer), {
       status: 200,
       headers: {
         "Content-Type": contentType,

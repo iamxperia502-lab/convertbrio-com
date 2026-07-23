@@ -28,15 +28,13 @@ import pdfiumWasmModule from "@hyzyla/pdfium/pdfium.wasm?module";
 // instance is cached at module scope since Workers isolates get reused across requests.
 let pdfiumLibrary: ReturnType<typeof PDFiumLibrary.init> | null = null;
 function getPdfiumLibrary() {
-  if (!pdfiumLibrary) {
-    pdfiumLibrary = PDFiumLibrary.init({
-      instantiateWasm(imports, successCallback) {
-        const instance = new WebAssembly.Instance(pdfiumWasmModule, imports);
-        successCallback(instance, pdfiumWasmModule);
-        return instance.exports;
-      },
-    });
-  }
+  pdfiumLibrary ??= PDFiumLibrary.init({
+    instantiateWasm(imports, successCallback) {
+      const instance = new WebAssembly.Instance(pdfiumWasmModule, imports);
+      successCallback(instance);
+      return instance.exports;
+    },
+  });
   return pdfiumLibrary;
 }
 
