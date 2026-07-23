@@ -2,6 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import Icon from "../components/Icon.astro";
+
+const error = Astro.url.searchParams.get("error");
+const notice = Astro.url.searchParams.get("notice");
 ---
 
 <Layout title="Contact" description="Get in touch with the ConvertBrio team for support, feedback, or partnership inquiries.">
@@ -47,7 +50,21 @@ import Icon from "../components/Icon.astro";
         </p>
       </div>
 
-      <form class="flex flex-col gap-5 rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:p-8" method="post">
+      <form class="flex flex-col gap-5 rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:p-8" method="post" action="/api/contact">
+        {
+          error && (
+            <p class="rounded-lg border border-error-soft bg-error-soft px-4 py-3 text-sm text-error">
+              {error}
+            </p>
+          )
+        }
+        {
+          notice && (
+            <p class="rounded-lg border border-success-soft bg-success-soft px-4 py-3 text-sm text-success">
+              {notice}
+            </p>
+          )
+        }
         <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <div class="flex flex-col gap-1.5">
             <label for="name" class="text-sm font-medium text-ink">Name</label>

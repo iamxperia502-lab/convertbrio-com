@@ -2,7 +2,10 @@
 import Layout from "../../layouts/Layout.astro";
 import PageIntro from "../../components/PageIntro.astro";
 import Icon from "../../components/Icon.astro";
+import ToolContent from "../../components/ToolContent.astro";
+import FaqSection from "../../components/FaqSection.astro";
 import { getTool, isComingSoon } from "../../data/tools";
+import { toolContent } from "../../data/toolContent";
 
 const { slug } = Astro.params;
 const tool = slug ? getTool(slug) : undefined;
@@ -16,9 +19,28 @@ const endpoint =
   tool.kind === "pdf" ? "/api/convert/pdf" :
   tool.kind === "office" ? "/api/convert/office" :
   null;
+
+const content = toolContent[tool.slug];
+
+const faqSchema = content && {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: content.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
 ---
 
 <Layout title={tool.name} description={tool.description}>
+  <Fragment slot="head">
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />}
+  </Fragment>
+
   <PageIntro eyebrow="Tool" title={tool.name} description={tool.description} />
 
   <section class="bg-canvas">
@@ -49,23 +71,34 @@ const endpoint =
                 id="dropzone"
                 class="group flex cursor-pointer flex-col items-center gap-3 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-12 text-center transition-colors duration-150 hover:border-brand-400 hover:bg-brand-50/40"
               >
-                <span class="flex h-12 w-12 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600">
-                  <Icon name="cloud" class="h-5 w-5" />
-                </span>
-                <span class="text-sm font-medium text-ink">
-                  {tool.multiple ? "Drop files here, or browse" : "Drop a file here, or browse"}
-                </span>
-                <span class="text-xs text-mute">Up to 25 MB{tool.multiple ? " total" : ""}</span>
+                <div id="dropzone-idle" class="flex flex-col items-center gap-3">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600">
+                    <Icon name="cloud" class="h-5 w-5" />
+                  </span>
+                  <span class="text-sm font-medium text-ink">
+                    {tool.multiple ? "Drop files here, or browse" : "Drop a file here, or browse"}
+                  </span>
+                  <span class="text-xs text-mute">Up to 25 MB{tool.multiple ? " total" : ""}</span>
+                </div>
+
+                <div id="dropzone-uploading" class="hidden w-full max-w-[16rem] flex-col items-center gap-3">
+                  <span id="progress-percent" class="text-3xl font-semibold tabular-nums text-ink">0%</span>
+                  <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
+                    <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
+                  </div>
+                  <span class="text-xs text-mute">Uploading…</span>
+                </div>
+
+                <div id="dropzone-done" class="hidden flex-col items-center gap-2">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-full bg-success-soft text-success">
+                    <Icon name="check" class="h-5 w-5" />
+                  </span>
+                  <span id="done-filename" class="max-w-full truncate text-sm font-medium text-ink" />
+                  <span class="text-xs text-mute">Drop or browse to replace</span>
+                </div>
+
                 <input id="file-input" name="file" type="file" accept={tool.accept} multiple={tool.multiple} required class="sr-only" />
               </label>
-
-              <p id="file-name" class="hidden text-center text-sm text-body" />
-
-              <div id="progress-wrap" class="hidden flex-col gap-1.5">
-                <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
-                  <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
-                </div>
-              </div>
 
               {
                 tool.kind === "image" && tool.operation === "convert" && !tool.outputFormat && (
@@ -158,35 +191,68 @@ const endpoint =
   </section>
 
   {
+    content && (
+      <>
+        <ToolContent title={content.title} intro={content.intro} sections={content.sections} relatedTools={content.relatedTools} />
+        <FaqSection items={content.faq} heading={`${tool.name} FAQ`} description={content.faqDescription} id={`faq-${tool.slug}`} />
+      </>
+    )
+  }
+
+  {
     !isComingSoon(tool) && (
       <script>
         import { submitConversion, downloadBlob } from "../../lib/upload-client";
 
         const form = document.getElementById("tool-form") as HTMLFormElement | null;
         const dropzone = document.getElementById("dropzone");
+        const dropzoneIdle = document.getElementById("dropzone-idle");
+        const dropzoneUploading = document.getElementById("dropzone-uploading");
+        const dropzoneDone = document.getElementById("dropzone-done");
+        const doneFilename = document.getElementById("done-filename");
         const fileInput = document.getElementById("file-input") as HTMLInputElement | null;
         const status = document.getElementById("tool-status");
-        const fileName = document.getElementById("file-name");
-        const progressWrap = document.getElementById("progress-wrap");
+        const progressPercent = document.getElementById("progress-percent");
         const progressBar = document.getElementById("progress-bar");
         const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
 
         const setProgress = (percent: number) => {
           if (progressBar) progressBar.style.width = `${percent}%`;
+          if (progressPercent) progressPercent.textContent = `${percent}%`;
         };
 
-        const showSelectedFile = (file: File | undefined) => {
-          if (!fileName) return;
-          if (!file) {
-            fileName.classList.add("hidden");
-            fileName.textContent = "";
-            return;
-          }
-          fileName.textContent = `Selected: ${file.name}`;
-          fileName.classList.remove("hidden");
+        const showIdle = () => {
+          dropzoneUploading?.classList.add("hidden");
+          dropzoneUploading?.classList.remove("flex");
+          dropzoneDone?.classList.add("hidden");
+          dropzoneDone?.classList.remove("flex");
+          dropzoneIdle?.classList.remove("hidden");
         };
 
-        fileInput?.addEventListener("change", () => showSelectedFile(fileInput.files?.[0]));
+        const showUploading = () => {
+          dropzoneIdle?.classList.add("hidden");
+          dropzoneDone?.classList.add("hidden");
+          dropzoneDone?.classList.remove("flex");
+          dropzoneUploading?.classList.remove("hidden");
+          dropzoneUploading?.classList.add("flex");
+        };
+
+        const showDone = (label: string) => {
+          dropzoneIdle?.classList.add("hidden");
+          dropzoneUploading?.classList.add("hidden");
+          dropzoneUploading?.classList.remove("flex");
+          dropzoneDone?.classList.remove("hidden");
+          dropzoneDone?.classList.add("flex");
+          if (doneFilename) doneFilename.textContent = label;
+        };
+
+        const selectedFileLabel = (files: FileList) =>
+          files.length > 1 ? `${files.length} files selected` : files[0].name;
+
+        fileInput?.addEventListener("change", () => {
+          if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
+          else showIdle();
+        });
 
         ["dragenter", "dragover"].forEach((eventName) => {
           dropzone?.addEventListener(eventName, (event) => {
@@ -204,7 +270,7 @@ const endpoint =
           const dt = (event as DragEvent).dataTransfer;
           if (dt?.files?.length && fileInput) {
             fileInput.files = dt.files;
-            showSelectedFile(dt.files[0]);
+            showDone(selectedFileLabel(dt.files));
           }
         });
 
@@ -219,8 +285,7 @@ const endpoint =
           }
 
           submitButton?.setAttribute("disabled", "true");
-          progressWrap?.classList.remove("hidden");
-          progressWrap?.classList.add("flex");
+          showUploading();
           setProgress(0);
           status.textContent = "Uploading… 0%";
 
@@ -234,19 +299,16 @@ const endpoint =
               },
               onUploaded: () => {
                 status.textContent = "Processing…";
+                if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
               },
             });
 
             downloadBlob(blob, filename);
-            setProgress(100);
             status.textContent = `Done — ${filename} downloaded.`;
-            showSelectedFile(undefined);
-            if (fileName) {
-              fileName.textContent = `Converted: ${filename}`;
-              fileName.classList.remove("hidden");
-            }
           } catch (err) {
             status.textContent = err instanceof Error ? err.message : "Something went wrong. Try again.";
+            if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
+            else showIdle();
           } finally {
             submitButton?.removeAttribute("disabled");
           }

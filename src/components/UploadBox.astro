@@ -17,31 +17,43 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
         id="dropzone"
         class="group flex cursor-pointer flex-col items-center gap-4 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-14 text-center transition-colors duration-150 hover:border-brand-400 hover:bg-brand-500/10 sm:py-16"
       >
-        <span
-          class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600"
-        >
-          <Icon name="cloud" class="h-6 w-6" />
-        </span>
+        <div id="dropzone-idle" class="flex flex-col items-center gap-4">
+          <span
+            class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600"
+          >
+            <Icon name="cloud" class="h-6 w-6" />
+          </span>
 
-        <span class="flex flex-col gap-1">
-          <span class="text-lg font-medium text-ink">Drop a file here, or browse</span>
-          <span class="text-sm text-mute">Up to 25&nbsp;MB</span>
-        </span>
+          <span class="flex flex-col gap-1">
+            <span class="text-lg font-medium text-ink">Drop a file here, or browse</span>
+            <span class="text-sm text-mute">Up to 25&nbsp;MB</span>
+          </span>
 
-        <span
-          class="pointer-events-none inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-canvas"
-        >
-          Browse Files
-        </span>
+          <span
+            class="pointer-events-none inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-canvas"
+          >
+            Browse Files
+          </span>
+        </div>
+
+        <div id="dropzone-uploading" class="hidden w-full max-w-xs flex-col items-center gap-4">
+          <span id="progress-percent" class="text-4xl font-semibold tabular-nums text-ink">0%</span>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
+            <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
+          </div>
+          <span class="text-sm text-mute">Uploading…</span>
+        </div>
+
+        <div id="dropzone-done" class="hidden flex-col items-center gap-2">
+          <span class="flex h-14 w-14 items-center justify-center rounded-full bg-success-soft text-success">
+            <Icon name="check" class="h-6 w-6" />
+          </span>
+          <span id="done-filename" class="max-w-full truncate text-lg font-medium text-ink" />
+          <span class="text-sm text-mute">Drop or browse to replace</span>
+        </div>
 
         <input id="file-input" name="file" type="file" class="sr-only" />
       </label>
-
-      <div id="progress-wrap" class="hidden flex-col gap-1.5 px-4 pt-4">
-        <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
-          <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
-        </div>
-      </div>
 
       <div id="quick-options" class="hidden flex-col items-center gap-4 px-4 py-5">
         <div id="quick-format-field" class="flex flex-col gap-1.5">
@@ -95,17 +107,50 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
 
   const form = document.getElementById("quick-convert-form") as HTMLFormElement | null;
   const dropzone = document.getElementById("dropzone");
+  const dropzoneIdle = document.getElementById("dropzone-idle");
+  const dropzoneUploading = document.getElementById("dropzone-uploading");
+  const dropzoneDone = document.getElementById("dropzone-done");
+  const doneFilename = document.getElementById("done-filename");
   const input = document.getElementById("file-input") as HTMLInputElement | null;
   const slugField = document.getElementById("quick-slug") as HTMLInputElement | null;
   const options = document.getElementById("quick-options");
   const formatField = document.getElementById("quick-format-field");
   const convertButton = document.getElementById("quick-convert-btn") as HTMLButtonElement | null;
   const status = document.getElementById("upload-status");
-  const progressWrap = document.getElementById("progress-wrap");
+  const progressPercent = document.getElementById("progress-percent");
   const progressBar = document.getElementById("progress-bar");
 
   const setProgress = (percent: number) => {
     if (progressBar) progressBar.style.width = `${percent}%`;
+    if (progressPercent) progressPercent.textContent = `${percent}%`;
+  };
+
+  const showIdle = () => {
+    dropzoneUploading?.classList.add("hidden");
+    dropzoneUploading?.classList.remove("flex");
+    dropzoneDone?.classList.add("hidden");
+    dropzoneDone?.classList.remove("flex");
+    dropzoneIdle?.classList.remove("hidden");
+    dropzoneIdle?.classList.add("flex");
+  };
+
+  const showUploading = () => {
+    dropzoneIdle?.classList.add("hidden");
+    dropzoneIdle?.classList.remove("flex");
+    dropzoneDone?.classList.add("hidden");
+    dropzoneDone?.classList.remove("flex");
+    dropzoneUploading?.classList.remove("hidden");
+    dropzoneUploading?.classList.add("flex");
+  };
+
+  const showDone = (label: string) => {
+    dropzoneIdle?.classList.add("hidden");
+    dropzoneIdle?.classList.remove("flex");
+    dropzoneUploading?.classList.add("hidden");
+    dropzoneUploading?.classList.remove("flex");
+    dropzoneDone?.classList.remove("hidden");
+    dropzoneDone?.classList.add("flex");
+    if (doneFilename) doneFilename.textContent = label;
   };
 
   const IMAGE_TYPES = new Set([
@@ -134,6 +179,7 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
       status.textContent = "No file selected yet.";
       options.classList.add("hidden");
       options.classList.remove("flex");
+      showIdle();
       return;
     }
 
@@ -143,12 +189,14 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
       status.textContent = `We don't support quick-converting "${file.name}" here yet — browse All Tools for the right converter.`;
       options.classList.add("hidden");
       options.classList.remove("flex");
+      showIdle();
       return;
     }
 
     status.textContent = `Selected: ${file.name}`;
     options.classList.remove("hidden");
     options.classList.add("flex");
+    showDone(file.name);
 
     if (kind === "image") {
       slugField.value = "image-converter";
@@ -197,8 +245,7 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
     const endpoint = kind === "image" ? "/api/convert/image" : "/api/convert/pdf";
 
     convertButton?.setAttribute("disabled", "true");
-    progressWrap?.classList.remove("hidden");
-    progressWrap?.classList.add("flex");
+    showUploading();
     setProgress(0);
     status.textContent = "Uploading… 0%";
 
@@ -212,14 +259,15 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
         },
         onUploaded: () => {
           status.textContent = "Processing…";
+          showDone(file.name);
         },
       });
 
       downloadBlob(blob, filename);
-      setProgress(100);
       status.textContent = `Done — ${filename} downloaded.`;
     } catch (err) {
       status.textContent = err instanceof Error ? err.message : "Something went wrong. Try again.";
+      showDone(file.name);
     } finally {
       convertButton?.removeAttribute("disabled");
     }
