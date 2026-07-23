@@ -74,7 +74,7 @@ const categories = [
                 ))}
               </ul>
               <a
-                href="/all-tools"
+                href={cat.id === "ocr" ? "/tools/ocr-pdf" : `/all-tools#${cat.id}`}
                 class="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 transition-colors hover:text-brand-700"
               >
                 Explore {cat.name.toLowerCase()}
