@@ -19,13 +19,12 @@ import {
 // per-plan limits (Pro/Business get raised caps).
 const MAX_BYTES = 25 * 1024 * 1024;
 
-const WRITABLE_FORMATS = ["jpeg", "png", "webp", "avif", "gif"] as const;
+const WRITABLE_FORMATS = ["jpeg", "png", "webp", "gif"] as const;
 
 const FORMAT_MIME: Record<WritableImageFormat, string> = {
   jpeg: "image/jpeg",
   png: "image/png",
   webp: "image/webp",
-  avif: "image/avif",
   gif: "image/gif",
 };
 

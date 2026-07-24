@@ -12,16 +12,7 @@ export const categories: { id: CategoryId; name: string; icon: keyof typeof icon
 ];
 
 export type ImageOperation = "convert" | "compress" | "resize" | "crop" | "rotate";
-export type PdfOperation =
-  | "merge"
-  | "split"
-  | "rotate"
-  | "add-page-numbers"
-  | "pdf-to-jpg"
-  | "pdf-to-png"
-  | "jpg-to-pdf"
-  | "compress"
-  | "unlock";
+export type PdfOperation = "merge" | "split" | "rotate" | "add-page-numbers" | "jpg-to-pdf" | "compress" | "unlock";
 export type OfficeOperation = "pdf-to-word";
 
 interface ToolBase {
@@ -37,7 +28,7 @@ interface ToolBase {
 export interface ImageTool extends ToolBase {
   kind: "image";
   operation: ImageOperation;
-  outputFormat?: "jpeg" | "png" | "webp" | "avif" | "gif";
+  outputFormat?: "jpeg" | "png" | "webp" | "gif";
 }
 
 export interface PdfTool extends ToolBase {
@@ -51,13 +42,13 @@ export interface OfficeTool extends ToolBase {
 }
 
 export interface ComingSoonTool extends ToolBase {
-  kind: "office-soon" | "ai";
+  kind: "office-soon" | "image-soon" | "pdf-soon" | "ai";
   comingSoonReason: string;
 }
 
 export type Tool = ImageTool | PdfTool | OfficeTool | ComingSoonTool;
 
-const IMAGE_ACCEPT = "image/jpeg,image/png,image/webp,image/heic,image/heif,image/avif,image/gif";
+const IMAGE_ACCEPT = "image/jpeg,image/png,image/webp,image/heic,image/heif,image/gif";
 const PDF_ACCEPT = "application/pdf";
 const OFFICE_ACCEPT = ".doc,.docx,.xls,.xlsx,.ppt,.pptx,application/pdf";
 const DOCX_ACCEPT = ".docx";
@@ -70,7 +61,7 @@ export const tools: Tool[] = [
     kind: "image",
     operation: "convert",
     icon: "image",
-    description: "Convert images between JPG, PNG, WEBP, AVIF, HEIC, and GIF.",
+    description: "Convert images between JPG, PNG, WEBP, HEIC, and GIF.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -110,12 +101,11 @@ export const tools: Tool[] = [
     slug: "jpg-to-avif",
     name: "JPG to AVIF",
     categories: ["convert", "image"],
-    kind: "image",
-    operation: "convert",
-    outputFormat: "avif",
+    kind: "image-soon",
     icon: "image",
     description: "Convert JPG images to AVIF.",
     accept: "image/jpeg",
+    comingSoonReason: "Temporarily unavailable while we're on a smaller hosting plan — check back soon.",
   },
   {
     slug: "png-to-jpg",
@@ -143,12 +133,11 @@ export const tools: Tool[] = [
     slug: "png-to-avif",
     name: "PNG to AVIF",
     categories: ["convert", "image"],
-    kind: "image",
-    operation: "convert",
-    outputFormat: "avif",
+    kind: "image-soon",
     icon: "image",
     description: "Convert PNG images to AVIF.",
     accept: "image/png",
+    comingSoonReason: "Temporarily unavailable while we're on a smaller hosting plan — check back soon.",
   },
   {
     slug: "webp-to-jpg",
@@ -176,45 +165,41 @@ export const tools: Tool[] = [
     slug: "webp-to-avif",
     name: "WEBP to AVIF",
     categories: ["convert", "image"],
-    kind: "image",
-    operation: "convert",
-    outputFormat: "avif",
+    kind: "image-soon",
     icon: "image",
     description: "Convert WEBP images to AVIF.",
     accept: "image/webp",
+    comingSoonReason: "Temporarily unavailable while we're on a smaller hosting plan — check back soon.",
   },
   {
     slug: "avif-to-jpg",
     name: "AVIF to JPG",
     categories: ["convert", "image"],
-    kind: "image",
-    operation: "convert",
-    outputFormat: "jpeg",
+    kind: "image-soon",
     icon: "image",
     description: "Convert AVIF images to JPG.",
     accept: "image/avif",
+    comingSoonReason: "Temporarily unavailable while we're on a smaller hosting plan — check back soon.",
   },
   {
     slug: "avif-to-png",
     name: "AVIF to PNG",
     categories: ["convert", "image"],
-    kind: "image",
-    operation: "convert",
-    outputFormat: "png",
+    kind: "image-soon",
     icon: "image",
     description: "Convert AVIF images to PNG.",
     accept: "image/avif",
+    comingSoonReason: "Temporarily unavailable while we're on a smaller hosting plan — check back soon.",
   },
   {
     slug: "avif-to-webp",
     name: "AVIF to WEBP",
     categories: ["convert", "image"],
-    kind: "image",
-    operation: "convert",
-    outputFormat: "webp",
+    kind: "image-soon",
     icon: "image",
     description: "Convert AVIF images to WEBP.",
     accept: "image/avif",
+    comingSoonReason: "Temporarily unavailable while we're on a smaller hosting plan — check back soon.",
   },
   {
     slug: "compress-image",
@@ -321,21 +306,21 @@ export const tools: Tool[] = [
     slug: "pdf-to-jpg",
     name: "PDF to JPG",
     categories: ["convert", "pdf"],
-    kind: "pdf",
-    operation: "pdf-to-jpg",
+    kind: "pdf-soon",
     icon: "pdf",
     description: "Export every PDF page as a JPG image.",
     accept: PDF_ACCEPT,
+    comingSoonReason: "Temporarily unavailable while we're on a smaller hosting plan — check back soon.",
   },
   {
     slug: "pdf-to-png",
     name: "PDF to PNG",
     categories: ["convert", "pdf"],
-    kind: "pdf",
-    operation: "pdf-to-png",
+    kind: "pdf-soon",
     icon: "pdf",
     description: "Export every PDF page as a PNG image.",
     accept: PDF_ACCEPT,
+    comingSoonReason: "Temporarily unavailable while we're on a smaller hosting plan — check back soon.",
   },
   {
     slug: "jpg-to-pdf",
@@ -520,5 +505,5 @@ export function toolsByCategory(categoryId: CategoryId): Tool[] {
 }
 
 export function isComingSoon(tool: Tool): tool is ComingSoonTool {
-  return tool.kind === "office-soon" || tool.kind === "ai";
+  return tool.kind === "office-soon" || tool.kind === "image-soon" || tool.kind === "pdf-soon" || tool.kind === "ai";
 }

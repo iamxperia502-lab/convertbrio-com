@@ -11,8 +11,6 @@ import decodePng, { init as initPngDecode } from "@jsquash/png/decode";
 import encodePng, { init as initPngEncode } from "@jsquash/png/encode";
 import decodeWebp, { init as initWebpDecode } from "@jsquash/webp/decode";
 import encodeWebp, { init as initWebpEncode } from "@jsquash/webp/encode";
-import decodeAvif, { init as initAvifDecode } from "@jsquash/avif/decode";
-import encodeAvif, { init as initAvifEncode } from "@jsquash/avif/encode";
 import resize, { initResize } from "@jsquash/resize";
 import { GIFEncoder, quantize, applyPalette } from "gifenc";
 import { GifReader } from "omggif";
@@ -29,8 +27,6 @@ import jpegEncWasm from "@jsquash/jpeg/codec/enc/mozjpeg_enc.wasm?module";
 import pngWasm from "@jsquash/png/codec/pkg/squoosh_png_bg.wasm?module";
 import webpDecWasm from "@jsquash/webp/codec/dec/webp_dec.wasm?module";
 import webpEncWasm from "@jsquash/webp/codec/enc/webp_enc.wasm?module";
-import avifDecWasm from "@jsquash/avif/codec/dec/avif_dec.wasm?module";
-import avifEncWasm from "@jsquash/avif/codec/enc/avif_enc.wasm?module";
 import resizeWasm from "@jsquash/resize/lib/resize/pkg/squoosh_resize_bg.wasm?module";
 import heifWasm from "libheif-js/libheif-wasm/libheif.wasm?module";
 
@@ -48,8 +44,8 @@ function asImageData(image: RawImage): ImageData {
   return image as unknown as ImageData;
 }
 
-export type ImageFormat = "jpeg" | "png" | "webp" | "avif" | "gif" | "heic";
-export type WritableImageFormat = "jpeg" | "png" | "webp" | "avif" | "gif";
+export type ImageFormat = "jpeg" | "png" | "webp" | "gif" | "heic";
+export type WritableImageFormat = "jpeg" | "png" | "webp" | "gif";
 
 let wasmReady: Promise<void> | null = null;
 
@@ -62,8 +58,6 @@ function initAll(): Promise<void> {
       initPngEncode(pngWasm),
       initWebpDecode(webpDecWasm),
       initWebpEncode(webpEncWasm),
-      initAvifDecode(avifDecWasm),
-      initAvifEncode(avifEncWasm),
       initResize(resizeWasm),
     ]).then(() => undefined);
   }
@@ -139,13 +133,7 @@ export async function decodeImage(format: ImageFormat, buffer: Uint8Array): Prom
 
   await initAll();
   const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength) as ArrayBuffer;
-  const decoded = await (format === "jpeg"
-    ? decodeJpeg(arrayBuffer)
-    : format === "png"
-      ? decodePng(arrayBuffer)
-      : format === "webp"
-        ? decodeWebp(arrayBuffer)
-        : decodeAvif(arrayBuffer));
+  const decoded = await (format === "jpeg" ? decodeJpeg(arrayBuffer) : format === "png" ? decodePng(arrayBuffer) : decodeWebp(arrayBuffer));
   if (!decoded) throw new Error(`Failed to decode ${format} image.`);
   return decoded;
 }
@@ -168,20 +156,19 @@ export async function encodeImage(
       return new Uint8Array(await encodePng(imageData));
     case "webp":
       return new Uint8Array(await encodeWebp(imageData, { quality }));
-    case "avif":
-      return new Uint8Array(await encodeAvif(imageData, { quality }));
   }
 }
 
-// HEIC/HEIF is an ISO base media file: bytes 4-8 are "ftyp", bytes 8-12 name the
-// brand. AVIF uses the same container with a different brand, checked below it.
+// HEIC/HEIF is an ISO base media file: bytes 4-8 are "ftyp", bytes 8-12 name the brand.
 const HEIC_BRANDS = new Set(["mif1", "msf1", "heic", "heix", "hevc", "hevx"]);
 
 export async function detectFormat(buffer: Uint8Array): Promise<ImageFormat | null> {
-  if (buffer.length >= 12 && String.fromCharCode(...buffer.slice(4, 8)) === "ftyp") {
-    const brand = String.fromCharCode(...buffer.slice(8, 12));
-    if (HEIC_BRANDS.has(brand)) return "heic";
-    return "avif";
+  if (
+    buffer.length >= 12 &&
+    String.fromCharCode(...buffer.slice(4, 8)) === "ftyp" &&
+    HEIC_BRANDS.has(String.fromCharCode(...buffer.slice(8, 12)))
+  ) {
+    return "heic";
   }
   if (buffer.length >= 3 && buffer[0] === 0xff && buffer[1] === 0xd8 && buffer[2] === 0xff) return "jpeg";
   if (buffer.length >= 8 && buffer[0] === 0x89 && buffer[1] === 0x50 && buffer[2] === 0x4e && buffer[3] === 0x47) return "png";

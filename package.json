@@ -13,8 +13,6 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.1.4",
-    "@hyzyla/pdfium": "^2.1.13",
-    "@jsquash/avif": "^2.1.1",
     "@jsquash/jpeg": "^1.6.0",
     "@jsquash/png": "^3.1.1",
     "@jsquash/resize": "^2.1.1",
