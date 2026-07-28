@@ -125,7 +125,7 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "When are uploaded files deleted?",
     answer:
-      "ConvertBrio automatically deletes both your original upload and the converted output from our servers within an hour of processing. Files aren't kept, archived, or used for any purpose beyond completing your conversion, so nothing lingers on our servers after your download is ready.",
+      "ConvertBrio automatically deletes both your original upload and the converted output from our servers within 24 hours of processing. Files aren't kept, archived, or used for any purpose beyond completing your conversion, so nothing lingers on our servers after your download is ready.",
   },
   {
     question: "Do I need to install any software?",

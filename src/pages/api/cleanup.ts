@@ -2,11 +2,12 @@ import type { APIRoute } from "astro";
 import { createSupabaseAdminClient } from "../../lib/supabase/admin";
 import { CONVERSIONS_BUCKET } from "../../lib/conversion-jobs";
 
-// Invoked hourly by the Vercel Cron in vercel.json. Deletes conversion_jobs
-// rows past their expires_at, and the storage objects they reference —
-// this is what makes the homepage's "deleted automatically within 1 hour"
-// claim true. Secured by CRON_SECRET, which Vercel's native Cron Jobs
-// feature sends automatically as a Bearer token when that env var is set.
+// Invoked daily by the Vercel Cron in vercel.json (Hobby plan only allows
+// daily cron schedules). Deletes conversion_jobs rows past their expires_at,
+// and the storage objects they reference — this is what makes the homepage's
+// "deleted automatically within 24 hours" claim true. Secured by CRON_SECRET,
+// which Vercel's native Cron Jobs feature sends automatically as a Bearer
+// token when that env var is set.
 export const GET: APIRoute = async ({ request }) => {
   const cronSecret = import.meta.env.CRON_SECRET;
   if (cronSecret && request.headers.get("authorization") !== `Bearer ${cronSecret}`) {

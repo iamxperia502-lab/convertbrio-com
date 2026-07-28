@@ -39,7 +39,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and File Limits",
-        body: "Every upload is encrypted in transit and processed automatically — no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within an hour. Free conversions support files up to 25 MB; paid plans raise that limit and add batch conversion for people who need to process many images at once.",
+        body: "Every upload is encrypted in transit and processed automatically — no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within 24 hours. Free conversions support files up to 25 MB; paid plans raise that limit and add batch conversion for people who need to process many images at once.",
       },
     ],
     relatedTools: [
@@ -645,7 +645,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and Batch Compression",
-        body: "Every upload is encrypted in transit and automatically deleted from ConvertBrio's servers within an hour. Free use covers one image at a time up to 25 MB; paid plans add batch compression for anyone processing large photo libraries or galleries at once.",
+        body: "Every upload is encrypted in transit and automatically deleted from ConvertBrio's servers within 24 hours. Free use covers one image at a time up to 25 MB; paid plans add batch compression for anyone processing large photo libraries or galleries at once.",
       },
     ],
     relatedTools: [
