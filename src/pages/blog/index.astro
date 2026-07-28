@@ -1,0 +1,52 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric" });
+---
+
+<Layout
+  title="Blog"
+  description="Practical guides on file formats, PDFs, images, and document conversion — how they work, what actually shrinks or breaks them, and how to fix common problems."
+  canonical="/blog"
+>
+  <PageIntro
+    eyebrow="Blog"
+    title="Guides on files, formats, and conversion"
+    description="Practical answers to the file problems people actually run into — no fluff, no filler."
+  />
+
+  <section class="bg-canvas">
+    <div class="container-page py-16 sm:py-20">
+      <div class="mx-auto grid max-w-3xl gap-8">
+        {
+          posts.map((post) => (
+            <article class="border-b border-hairline pb-8 last:border-b-0 last:pb-0">
+              <a href={`/blog/${post.id}`} class="group flex flex-col gap-2">
+                <p class="font-mono text-xs uppercase tracking-wide text-mute">
+                  <time datetime={post.data.pubDate.toISOString()}>{dateFormatter.format(post.data.pubDate)}</time>
+                </p>
+                <h2 class="text-xl font-semibold tracking-[-0.01em] text-ink group-hover:underline sm:text-2xl">
+                  {post.data.title}
+                </h2>
+                <p class="text-balance text-body">{post.data.description}</p>
+              </a>
+            </article>
+          ))
+        }
+        {
+          posts.length === 0 && (
+            <p class="text-body">No posts yet — check back soon.</p>
+          )
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
