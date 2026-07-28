@@ -47,6 +47,35 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
   const jobId = await recordConversionAttempt(slug, locals.user?.id ?? null);
 
+  if (tool.operation === "remove-background") {
+    try {
+      const { removeBackground } = await import("@imgly/background-removal-node");
+      // Pass a Blob with an explicit MIME type: the library wraps a raw
+      // Buffer/Uint8Array in `new Blob([...])` with no type, which fails its
+      // own format detection ("Unsupported format: " with an empty type).
+      const inputBlob = new Blob([await file.arrayBuffer()], { type: file.type || "image/png" });
+      // The "small" model is ~42MB vs. "medium"'s ~84MB; astro.config.mjs
+      // only bundles the model tier selected here, so keep these in sync.
+      const outputBlob = await removeBackground(inputBlob, { model: "small" });
+      const outputBuffer = Buffer.from(await outputBlob.arrayBuffer());
+      const filename = `${baseName(file.name)}-no-bg.png`;
+
+      await finalizeConversionJob(jobId, outputBuffer, "image/png");
+
+      return new Response(outputBuffer, {
+        status: 200,
+        headers: {
+          "Content-Type": "image/png",
+          "Content-Disposition": contentDisposition(filename),
+        },
+      });
+    } catch (err) {
+      await failConversionJob(jobId);
+      const message = err instanceof Error ? err.message : "Background removal failed.";
+      return new Response(JSON.stringify({ error: message }), { status: 422 });
+    }
+  }
+
   try {
     const inputBuffer = Buffer.from(await file.arrayBuffer());
     // .rotate() with no args auto-orients the pixels per EXIF before any further op.

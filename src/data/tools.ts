@@ -11,7 +11,7 @@ export const categories: { id: CategoryId; name: string; icon: keyof typeof icon
   { id: "ai", name: "AI Tools", icon: "sparkle", desc: "Enhance and restore images with AI models." },
 ];
 
-export type ImageOperation = "convert" | "compress" | "resize" | "crop" | "rotate";
+export type ImageOperation = "convert" | "compress" | "resize" | "crop" | "rotate" | "remove-background";
 export type PdfOperation =
   | "merge"
   | "split"
@@ -21,7 +21,8 @@ export type PdfOperation =
   | "pdf-to-png"
   | "jpg-to-pdf"
   | "compress"
-  | "unlock";
+  | "unlock"
+  | "ocr";
 export type OfficeOperation = "word-to-pdf" | "pdf-to-word" | "word-to-jpg" | "word-to-png";
 
 interface ToolBase {
@@ -352,11 +353,11 @@ export const tools: Tool[] = [
     slug: "ocr-pdf",
     name: "OCR PDF",
     categories: ["pdf"],
-    kind: "ai",
+    kind: "pdf",
+    operation: "ocr",
     icon: "ocr",
     description: "Make scanned PDFs searchable with text recognition.",
     accept: PDF_ACCEPT,
-    comingSoonReason: "OCR PDF needs a dedicated text-recognition engine — coming in a later update.",
   },
   {
     slug: "word-to-pdf",
@@ -463,11 +464,12 @@ export const tools: Tool[] = [
     slug: "remove-background",
     name: "Remove Background",
     categories: ["image", "ai"],
-    kind: "ai",
+    kind: "image",
+    operation: "remove-background",
+    outputFormat: "png",
     icon: "sparkle",
     description: "Automatically remove the background from a photo.",
     accept: IMAGE_ACCEPT,
-    comingSoonReason: "AI tools need an external model provider that isn't connected yet.",
   },
   {
     slug: "ai-image-enhancer",

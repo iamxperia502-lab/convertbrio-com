@@ -1192,19 +1192,19 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "ocr-pdf": {
     title: "OCR PDF: Make Scanned Documents Searchable and Editable",
     intro:
-      "A scanned page or photographed document is just an image to a computer — you can't search it, copy text from it, or edit a single word without retyping the whole thing. Optical character recognition (OCR) fixes that by recognizing the text inside the image and turning it into real, selectable characters. ConvertBrio's OCR PDF tool is in active development and will bring this capability to every scanned PDF you upload.",
+      "A scanned page or photographed document is just an image to a computer — you can't search it, copy text from it, or edit a single word without retyping the whole thing. Optical character recognition (OCR) fixes that by recognizing the text inside the image and turning it into real, selectable characters. ConvertBrio's OCR PDF tool scans every page you upload and hands back a searchable version in seconds.",
     sections: [
       {
-        heading: "What OCR PDF Will Do",
-        body: "Once live, OCR PDF will scan every page of your document, recognize printed text, and layer it back onto the file as searchable, selectable, and copyable text — without changing how the page looks. That means a scanned contract, textbook chapter, or old report becomes something you can search with Ctrl+F, copy quotes from, or run through a text editor.",
+        heading: "What OCR PDF Does",
+        body: "OCR PDF scans every page of your document, recognizes the printed text, and layers it back onto the file as searchable, selectable, and copyable text — without changing how the page looks. A scanned contract, textbook chapter, or old report becomes something you can search with Ctrl+F, copy quotes from, or run through a text editor.",
       },
       {
         heading: "Why This Matters",
         body: "Businesses and individuals frequently end up with document archives that are technically digital but functionally unusable — filing cabinets of PDFs that can't be searched or referenced without opening and reading each one manually. OCR turns that archive into something you can actually query, dramatically cutting the time spent hunting for information buried in scanned paperwork.",
       },
       {
-        heading: "What You Can Do Right Now",
-        body: "While OCR PDF is being built, ConvertBrio's PDF to JPG and PDF to PNG tools let you export scanned pages as images for viewing or sharing, and PDF to Word can extract text from PDFs that already contain a text layer (as opposed to a pure scanned image). Check back as this feature nears launch, or explore the rest of ConvertBrio's PDF tools in the meantime.",
+        heading: "Getting the Best Results",
+        body: "OCR accuracy depends on the source scan — clean, high-contrast, reasonably high-resolution pages recognize best. Handwriting, heavy skew, or very low-resolution scans may recognize less reliably. Larger, multi-page documents take longer to process since every page runs through text recognition individually.",
       },
     ],
     relatedTools: [
@@ -1212,22 +1212,22 @@ export const toolContent: Record<string, ToolContentEntry> = {
       { label: "PDF to JPG", href: "/tools/pdf-to-jpg" },
       { label: "Compress PDF", href: "/tools/compress-pdf" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming OCR PDF tool.",
+    faqDescription: "Common questions about ConvertBrio's OCR PDF tool.",
     faq: [
       {
-        question: "Is OCR PDF available yet?",
+        question: "What does OCR PDF give me back?",
         answer:
-          "Not yet — OCR PDF needs a dedicated text-recognition engine that ConvertBrio is currently building. It's coming in a later update.",
+          "A PDF that looks identical to the one you uploaded, but with an invisible text layer behind the scanned image — so you can search, select, and copy text that used to just be pixels.",
       },
       {
-        question: "What will OCR PDF let me do once it launches?",
+        question: "Does it change how my document looks?",
         answer:
-          "It will recognize printed text inside scanned PDF pages and make it searchable, selectable, and copyable, without changing how the page looks visually.",
+          "No. The original page image is preserved exactly; the recognized text is added as an invisible layer on top, so visually nothing changes.",
       },
       {
         question: "Can I extract text from a PDF today?",
         answer:
-          "If your PDF already contains a text layer (rather than being a pure scanned image), ConvertBrio's PDF to Word tool can extract that text now. Purely scanned, image-only PDFs will need OCR once it's available.",
+          "Yes — OCR PDF handles scanned, image-only pages directly. If your PDF already contains a real text layer instead of a scanned image, ConvertBrio's PDF to Word tool can extract that text too.",
       },
     ],
   },
@@ -1663,21 +1663,21 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "remove-background": {
-    title: "AI Background Remover: Coming Soon to ConvertBrio",
+    title: "AI Background Remover: Automatic Transparent Cutouts",
     intro:
-      "Cutting a subject out of its background usually requires design software and a fair amount of manual masking. ConvertBrio is building an AI-powered background remover that will do it automatically — upload a photo, and get back the subject on a transparent background in seconds.",
+      "Cutting a subject out of its background usually requires design software and a fair amount of manual masking. ConvertBrio's AI background remover does it automatically — upload a photo, and get back the subject on a transparent background in seconds.",
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "Remove Background will use an AI model to detect the main subject of a photo — a person, product, or object — and automatically erase everything else, leaving a clean transparent background ready to drop onto a new backdrop, a website, or a design project.",
+        heading: "What This Tool Does",
+        body: "Remove Background uses an AI model to detect the main subject of a photo — a person, product, or object — and automatically erases everything else, leaving a clean transparent background ready to drop onto a new backdrop, a website, or a design project.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "AI image tools like this one require connecting to an external model provider capable of running background segmentation reliably at scale, which ConvertBrio is currently setting up. This is different infrastructure from the deterministic image and PDF tools already live on the site.",
+        heading: "Getting the Best Results",
+        body: "This works best on photos with a clear, distinct subject — a person, product shot, or single object against a reasonably uncluttered background. Busy scenes, low-contrast edges, or multiple overlapping subjects may produce a less clean cutout, as with any AI-based segmentation.",
       },
       {
-        heading: "What You Can Do Right Now",
-        body: "While this launches, ConvertBrio's Crop Image tool can manually remove unwanted areas around a subject, and Image Converter can export the result as a PNG to preserve any transparency you add yourself in an external editor.",
+        heading: "What Else You Can Do",
+        body: "ConvertBrio's Crop Image tool can manually trim unwanted areas around a subject, and Image Converter can export any result as a PNG to preserve transparency.",
       },
     ],
     relatedTools: [
@@ -1685,22 +1685,22 @@ export const toolContent: Record<string, ToolContentEntry> = {
       { label: "AI Photo Restoration", href: "/tools/ai-photo-restoration" },
       { label: "Image Converter", href: "/tools/image-converter" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming AI background remover.",
+    faqDescription: "Common questions about ConvertBrio's AI background remover.",
     faq: [
-      {
-        question: "Is the background remover available yet?",
-        answer:
-          "Not yet — AI tools like this need an external model provider that ConvertBrio hasn't connected yet. It's in development.",
-      },
       {
         question: "Will it work on any type of photo?",
         answer:
-          "Once live, it's designed to detect common subjects like people, products, and objects. Results for unusual or highly complex images may vary, as with any AI-based segmentation tool.",
+          "It's designed to detect common subjects like people, products, and objects. Results for unusual, cluttered, or highly complex images may vary, as with any AI-based segmentation tool.",
       },
       {
         question: "What output format will I get?",
         answer:
-          "The result will be a PNG with a transparent background, which is the standard lossless format for images without a solid backdrop.",
+          "A PNG with a transparent background, which is the standard lossless format for images without a solid backdrop.",
+      },
+      {
+        question: "Does it work on photos with multiple subjects?",
+        answer:
+          "It's optimized for a single clear subject. Photos with multiple overlapping subjects may have less precise edges around each one.",
       },
     ],
   },

@@ -20,17 +20,58 @@ export async function renderPdfToImages(bytes: Uint8Array, format: "jpeg" | "png
   const { getDocument } = await import("pdfjs-dist/legacy/build/pdf.mjs");
   const { createCanvas } = await import("canvas");
 
-  const pdf = await getDocument({ data: bytes }).promise;
+  // pdfjs-dist 6.x's own Node canvas factory defaults to @napi-rs/canvas, a
+  // different native module than the `canvas` (node-canvas) package used
+  // below. Any page with an embedded raster image needs pdfjs to create
+  // internal mask/pattern canvases via this factory, and drawing an
+  // @napi-rs/canvas object onto a node-canvas context throws "Image or
+  // Canvas expected" (the native instanceof check fails across packages).
+  // Supplying our own factory keeps every canvas on node-canvas.
+  class NodeCanvasFactory {
+    create(width: number, height: number) {
+      if (width <= 0 || height <= 0) {
+        throw new Error("Invalid canvas size");
+      }
+      const canvas = createCanvas(width, height);
+      const context = canvas.getContext("2d");
+      return { canvas, context };
+    }
+    reset(canvasAndContext: { canvas: any; context: any }, width: number, height: number) {
+      if (!canvasAndContext.canvas) {
+        throw new Error("Canvas is not specified");
+      }
+      if (width <= 0 || height <= 0) {
+        throw new Error("Invalid canvas size");
+      }
+      canvasAndContext.canvas.width = width;
+      canvasAndContext.canvas.height = height;
+    }
+    destroy(canvasAndContext: { canvas: any; context: any }) {
+      if (!canvasAndContext.canvas) {
+        throw new Error("Canvas is not specified");
+      }
+      canvasAndContext.canvas.width = 0;
+      canvasAndContext.canvas.height = 0;
+      canvasAndContext.canvas = null;
+      canvasAndContext.context = null;
+    }
+  }
+
+  const pdf = await getDocument({
+    data: bytes,
+    CanvasFactory: NodeCanvasFactory,
+  }).promise;
   const images: Buffer[] = [];
+  const canvasFactory = new NodeCanvasFactory();
 
   for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
     const page = await pdf.getPage(pageNum);
     const viewport = page.getViewport({ scale: 2 });
-    const canvas = createCanvas(viewport.width, viewport.height);
-    const context = canvas.getContext("2d");
+    const { canvas, context } = canvasFactory.create(viewport.width, viewport.height);
     // @ts-expect-error - pdfjs-dist's RenderParameters type expects a DOM CanvasRenderingContext2D; node-canvas's is compatible at runtime.
     await page.render({ canvasContext: context, viewport, canvas }).promise;
     images.push(format === "png" ? canvas.toBuffer("image/png") : canvas.toBuffer("image/jpeg", { quality: 0.9 }));
+    canvasFactory.destroy({ canvas, context });
   }
 
   return images;
@@ -162,6 +203,46 @@ export const POST: APIRoute = async ({ request, locals }) => {
           contentType = "application/zip";
           filename = `${baseName(files[0].name)}-pages.zip`;
         }
+        break;
+      }
+
+      case "ocr": {
+        // Tesseract's built-in PDF renderer produces a searchable PDF per
+        // page (original page image + an invisible text layer). We render
+        // each source page to an image, OCR it, then stitch the resulting
+        // single-page PDFs back into one document with pdf-lib.
+        const { createWorker } = await import("tesseract.js");
+        // Vercel's serverless functions only allow writes under /tmp; without
+        // this, tesseract.js defaults to caching its language data in the
+        // (read-only) function bundle directory and fails at runtime.
+        const worker = await createWorker("eng", undefined, { cachePath: "/tmp", dataPath: "/tmp" });
+        try {
+          const pageImages = await renderPdfToImages(new Uint8Array(await files[0].arrayBuffer()), "png");
+          const pagePdfBuffers: Buffer[] = [];
+          for (const image of pageImages) {
+            const result = await worker.recognize(image, {}, { pdf: true });
+            if (!result.data.pdf) {
+              throw new Error("Text recognition failed for a page.");
+            }
+            pagePdfBuffers.push(Buffer.from(result.data.pdf));
+          }
+
+          if (pagePdfBuffers.length === 1) {
+            outputBuffer = pagePdfBuffers[0];
+          } else {
+            const merged = await PDFDocument.create();
+            for (const buf of pagePdfBuffers) {
+              const src = await PDFDocument.load(buf);
+              const copiedPages = await merged.copyPages(src, src.getPageIndices());
+              copiedPages.forEach((page) => merged.addPage(page));
+            }
+            outputBuffer = Buffer.from(await merged.save());
+          }
+        } finally {
+          await worker.terminate();
+        }
+        contentType = "application/pdf";
+        filename = `${baseName(files[0].name)}-ocr.pdf`;
         break;
       }
 
