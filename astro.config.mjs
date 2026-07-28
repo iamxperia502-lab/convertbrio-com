@@ -7,7 +7,7 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://convertbrio.com',
+  site: 'https://www.convertbrio.com',
   output: 'server',
 
   vite: {

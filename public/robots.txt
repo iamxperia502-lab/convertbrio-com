@@ -6,4 +6,4 @@ Disallow: /sign-in
 Disallow: /sign-up
 Disallow: /auth/
 
-Sitemap: https://convertbrio.com/sitemap.xml
+Sitemap: https://www.convertbrio.com/sitemap.xml

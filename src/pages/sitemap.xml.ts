@@ -14,7 +14,7 @@ const staticPaths: { path: string; changefreq: string; priority: string }[] = [
 ];
 
 export const GET: APIRoute = ({ site }) => {
-  const base = (site?.toString() ?? "https://convertbrio.com/").replace(/\/$/, "");
+  const base = (site?.toString() ?? "https://www.convertbrio.com/").replace(/\/$/, "");
   const lastmod = new Date().toISOString().slice(0, 10);
 
   const urls = [
