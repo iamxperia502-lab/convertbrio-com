@@ -34,5 +34,11 @@
     "@types/node": "^26.1.1",
     "puppeteer": "^25.3.0",
     "typescript": "^6.0.3"
+  },
+  "allowScripts": {
+    "canvas@3.2.3": true,
+    "esbuild@0.28.1": true,
+    "fsevents@2.3.3": true,
+    "puppeteer@25.3.0": true
   }
 }
