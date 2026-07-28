@@ -27,6 +27,15 @@ const bgRemovalFiles = readdirSync(bgRemovalDistPath, { withFileTypes: true })
   .concat([...smallModelHashes])
   .map((name) => `node_modules/@imgly/background-removal-node/dist/${name}`);
 
+// tesseract.js-core loads its WASM binaries (picked at runtime based on CPU
+// SIMD support) from raw .wasm files that Vercel's static tracer also can't
+// detect from a computed path. Only ~18MB total across all variants, so
+// just include all of them rather than guess which one gets picked.
+const tesseractCoreDir = fileURLToPath(new URL('./node_modules/tesseract.js-core/', import.meta.url));
+const tesseractWasmFiles = readdirSync(tesseractCoreDir)
+  .filter((name) => name.endsWith('.wasm'))
+  .map((name) => `node_modules/tesseract.js-core/${name}`);
+
 // onnxruntime-node ships prebuilt native binaries (each with its own ~10-25MB
 // libonnxruntime shared library alongside the small .node binding) for every
 // OS/arch, but Vercel's Node.js functions run linux/x64 — the other five
@@ -50,7 +59,7 @@ export default defineConfig({
     // Headless-Chromium-backed Word conversions (see src/lib/chromium.ts) need
     // more than the default function timeout, especially on a cold start.
     maxDuration: 60,
-    includeFiles: bgRemovalFiles,
+    includeFiles: [...bgRemovalFiles, ...tesseractWasmFiles],
     excludeFiles: onnxExcludeFiles,
   })
 });
