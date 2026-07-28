@@ -212,10 +212,20 @@ export const POST: APIRoute = async ({ request, locals }) => {
         // each source page to an image, OCR it, then stitch the resulting
         // single-page PDFs back into one document with pdf-lib.
         const { createWorker } = await import("tesseract.js");
-        // Vercel's serverless functions only allow writes under /tmp; without
-        // this, tesseract.js defaults to caching its language data in the
-        // (read-only) function bundle directory and fails at runtime.
-        const worker = await createWorker("eng", undefined, { cachePath: "/tmp", dataPath: "/tmp" });
+        const worker = await createWorker("eng", undefined, {
+          // Vercel's serverless functions only allow writes under /tmp;
+          // without this, tesseract.js defaults to caching its downloaded
+          // language data in the (read-only) function bundle directory and
+          // fails at runtime.
+          cachePath: "/tmp",
+          // Without an errorHandler, tesseract.js re-throws any internal
+          // worker error at the top level, crashing the whole Node process
+          // (and with it, the whole serverless function) instead of just
+          // failing this one request. The actual failure still reaches our
+          // own try/catch below via the rejected recognize()/createWorker()
+          // promise; this only stops it from also taking down the process.
+          errorHandler: (e) => console.error("[tesseract]", e),
+        });
         try {
           const pageImages = await renderPdfToImages(new Uint8Array(await files[0].arrayBuffer()), "png");
           const pagePdfBuffers: Buffer[] = [];
