@@ -17,22 +17,24 @@ function baseName(filename: string) {
 export async function renderPdfToImages(bytes: Uint8Array, format: "jpeg" | "png"): Promise<Buffer[]> {
   // Dynamic import: pdfjs-dist's Node build and `canvas` are only needed by
   // this one operation, so a failure here shouldn't break the whole route.
-  const { getDocument } = await import("pdfjs-dist/legacy/build/pdf.mjs");
+  //
+  // `canvas` must be imported, and globalThis.DOMMatrix polyfilled, BEFORE
+  // pdfjs-dist - pdfjs-dist's own module has a top-level
+  // `const SCALE_MATRIX = new DOMMatrix();` that runs during import itself,
+  // not deferred to render time. It normally self-polyfills this from
+  // @napi-rs/canvas (the package we deliberately avoid, per the
+  // NodeCanvasFactory below), but that polyfill silently no-ops if
+  // @napi-rs/canvas fails to load its native binary for the platform - which
+  // happens on Vercel's Linux runtime even though it happens to work on some
+  // local machines - crashing the import itself with "DOMMatrix is not
+  // defined" before any of our own code even runs.
   const { createCanvas, DOMMatrix } = await import("canvas");
-
-  // pdfjs-dist tries to self-polyfill `globalThis.DOMMatrix` (needed when
-  // rendering pages with image transforms) from @napi-rs/canvas, the same
-  // package we're deliberately avoiding below. That polyfill silently no-ops
-  // if @napi-rs/canvas fails to load its native binary for the platform -
-  // which it does on Vercel's Linux runtime even though it happens to work
-  // on some local machines, surfacing as "DOMMatrix is not defined" deep
-  // inside page.render(). Polyfill it ourselves from `canvas` instead, which
-  // we already depend on and know works.
   if (!globalThis.DOMMatrix) {
     // node-canvas's DOMMatrix is a runtime-compatible implementation, just
     // typed slightly differently than the DOM lib's built-in declaration.
     globalThis.DOMMatrix = DOMMatrix as unknown as typeof globalThis.DOMMatrix;
   }
+  const { getDocument } = await import("pdfjs-dist/legacy/build/pdf.mjs");
 
   // pdfjs-dist 6.x's own Node canvas factory defaults to @napi-rs/canvas, a
   // different native module than the `canvas` (node-canvas) package used
