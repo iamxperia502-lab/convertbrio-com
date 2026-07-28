@@ -36,6 +36,11 @@ const tesseractWasmFiles = readdirSync(tesseractCoreDir)
   .filter((name) => name.endsWith('.wasm'))
   .map((name) => `node_modules/tesseract.js-core/${name}`);
 
+// pdfjs-dist's Node build loads its worker script from a path Vercel's
+// static tracer also can't detect - "Setting up fake worker failed: Cannot
+// find module .../pdf.worker.mjs" at runtime without this.
+const pdfjsWorkerFile = 'node_modules/pdfjs-dist/legacy/build/pdf.worker.mjs';
+
 // onnxruntime-node ships prebuilt native binaries (each with its own ~10-25MB
 // libonnxruntime shared library alongside the small .node binding) for every
 // OS/arch, but Vercel's Node.js functions run linux/x64 — the other five
@@ -59,7 +64,7 @@ export default defineConfig({
     // Headless-Chromium-backed Word conversions (see src/lib/chromium.ts) need
     // more than the default function timeout, especially on a cold start.
     maxDuration: 60,
-    includeFiles: [...bgRemovalFiles, ...tesseractWasmFiles],
+    includeFiles: [...bgRemovalFiles, ...tesseractWasmFiles, pdfjsWorkerFile],
     excludeFiles: onnxExcludeFiles,
   })
 });
