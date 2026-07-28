@@ -41,6 +41,16 @@ const tesseractWasmFiles = readdirSync(tesseractCoreDir)
 // find module .../pdf.worker.mjs" at runtime without this.
 const pdfjsWorkerFile = 'node_modules/pdfjs-dist/legacy/build/pdf.worker.mjs';
 
+// pdfjs-dist also loads its standard (non-embedded) font substitutes from a
+// path resolved at runtime (see standardFontDataUrl in
+// src/pages/api/convert/pdf.ts), which the static tracer misses the same way
+// it misses pdf.worker.mjs above - "UnknownErrorException: Ensure that the
+// `standardFontDataUrl` API parameter is provided" without these.
+const pdfjsStandardFontsDir = fileURLToPath(new URL('./node_modules/pdfjs-dist/standard_fonts/', import.meta.url));
+const pdfjsStandardFontsFiles = readdirSync(pdfjsStandardFontsDir).map(
+  (name) => `node_modules/pdfjs-dist/standard_fonts/${name}`
+);
+
 // onnxruntime-node ships prebuilt native binaries (each with its own ~10-25MB
 // libonnxruntime shared library alongside the small .node binding) for every
 // OS/arch, but Vercel's Node.js functions run linux/x64 — the other five
@@ -64,7 +74,7 @@ export default defineConfig({
     // Headless-Chromium-backed Word conversions (see src/lib/chromium.ts) need
     // more than the default function timeout, especially on a cold start.
     maxDuration: 60,
-    includeFiles: [...bgRemovalFiles, ...tesseractWasmFiles, pdfjsWorkerFile],
+    includeFiles: [...bgRemovalFiles, ...tesseractWasmFiles, pdfjsWorkerFile, ...pdfjsStandardFontsFiles],
     excludeFiles: onnxExcludeFiles,
   })
 });

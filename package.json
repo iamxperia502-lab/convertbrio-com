@@ -24,6 +24,7 @@
     "docx": "^9.7.1",
     "jszip": "^3.10.1",
     "mammoth": "^1.12.0",
+    "path2d": "^0.3.3",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^6.1.200",
     "puppeteer-core": "^25.3.0",

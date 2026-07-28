@@ -1,9 +1,20 @@
 import type { APIRoute } from "astro";
+import { fileURLToPath } from "node:url";
 import { PDFDocument, StandardFonts, degrees, rgb } from "pdf-lib";
 import JSZip from "jszip";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
+
+// pdfjs-dist needs this to substitute a fallback font for any text that uses
+// a standard PDF font (Helvetica, Times, etc.) without embedding it - the
+// common case for most real-world PDFs, as opposed to files pdf-lib itself
+// generates with embedded fonts. Without it, pdfjs throws
+// "UnknownErrorException: Ensure that the `standardFontDataUrl` API
+// parameter is provided" while rendering any page that hits this path.
+// `import.meta.resolve` (not a relative path) so this keeps working
+// regardless of how the package manager nests/hoists node_modules.
+const standardFontDataUrl = fileURLToPath(new URL("./standard_fonts/", import.meta.resolve("pdfjs-dist/package.json")));
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires per-plan limits.
 const MAX_BYTES = 25 * 1024 * 1024;
@@ -28,11 +39,23 @@ export async function renderPdfToImages(bytes: Uint8Array, format: "jpeg" | "png
   // happens on Vercel's Linux runtime even though it happens to work on some
   // local machines - crashing the import itself with "DOMMatrix is not
   // defined" before any of our own code even runs.
-  const { createCanvas, DOMMatrix } = await import("canvas");
+  const { createCanvas, DOMMatrix, CanvasRenderingContext2D } = await import("canvas");
   if (!globalThis.DOMMatrix) {
     // node-canvas's DOMMatrix is a runtime-compatible implementation, just
     // typed slightly differently than the DOM lib's built-in declaration.
     globalThis.DOMMatrix = DOMMatrix as unknown as typeof globalThis.DOMMatrix;
+  }
+  // Same self-polyfill gap as DOMMatrix above, for the same reason: pdfjs-dist
+  // tries to source `Path2D` from @napi-rs/canvas and no-ops with just a
+  // warning if that package isn't available, then throws a plain
+  // "Path2D is not defined" the moment page rendering actually reaches a
+  // fill/stroke/clip call - node-canvas has no Path2D implementation of its
+  // own, so `path2d` (a small, dependency-free polyfill built for exactly
+  // this node-canvas + pdfjs-dist combination) supplies one.
+  if (!globalThis.Path2D) {
+    const { Path2D, applyPath2DToCanvasRenderingContext } = await import("path2d");
+    applyPath2DToCanvasRenderingContext(CanvasRenderingContext2D as any);
+    globalThis.Path2D = Path2D as unknown as typeof globalThis.Path2D;
   }
   const { getDocument } = await import("pdfjs-dist/legacy/build/pdf.mjs");
 
@@ -76,6 +99,7 @@ export async function renderPdfToImages(bytes: Uint8Array, format: "jpeg" | "png
   const pdf = await getDocument({
     data: bytes,
     CanvasFactory: NodeCanvasFactory,
+    standardFontDataUrl,
   }).promise;
   const images: Buffer[] = [];
   const canvasFactory = new NodeCanvasFactory();
