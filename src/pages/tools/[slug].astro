@@ -34,10 +34,39 @@ const faqSchema = content && {
     },
   })),
 };
+
+const base = Astro.site?.toString().replace(/\/$/, "") ?? "https://www.convertbrio.com";
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: base },
+    { "@type": "ListItem", position: 2, name: "All Tools", item: `${base}/all-tools` },
+    { "@type": "ListItem", position: 3, name: tool.name, item: `${base}/tools/${tool.slug}` },
+  ],
+};
+
+const softwareApplicationSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: tool.name,
+  url: `${base}/tools/${tool.slug}`,
+  applicationCategory: "UtilitiesApplication",
+  operatingSystem: "Any (web-based)",
+  description: tool.description,
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+};
 ---
 
 <Layout title={tool.name} description={tool.description}>
   <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} is:inline />
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />}
   </Fragment>
 
