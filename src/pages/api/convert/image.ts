@@ -1,27 +1,17 @@
 import type { APIRoute } from "astro";
+import sharp from "sharp";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
-import {
-  decodeImage,
-  encodeImage,
-  detectFormat,
-  cropImage,
-  rotateImage,
-  resizeImage,
-  readJpegOrientation,
-  applyExifOrientation,
-  type RawImage,
-  type WritableImageFormat,
-} from "../../../lib/image-pipeline";
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires
 // per-plan limits (Pro/Business get raised caps).
 const MAX_BYTES = 25 * 1024 * 1024;
 
 const WRITABLE_FORMATS = ["jpeg", "png", "webp", "avif", "gif"] as const;
+type WritableFormat = (typeof WRITABLE_FORMATS)[number];
 
-const FORMAT_MIME: Record<WritableImageFormat, string> = {
+const FORMAT_MIME: Record<WritableFormat, string> = {
   jpeg: "image/jpeg",
   png: "image/png",
   webp: "image/webp",
@@ -29,7 +19,7 @@ const FORMAT_MIME: Record<WritableImageFormat, string> = {
   gif: "image/gif",
 };
 
-function isWritableFormat(value: string): value is WritableImageFormat {
+function isWritableFormat(value: string): value is WritableFormat {
   return (WRITABLE_FORMATS as readonly string[]).includes(value);
 }
 
@@ -58,33 +48,24 @@ export const POST: APIRoute = async ({ request, locals }) => {
   const jobId = await recordConversionAttempt(slug, locals.user?.id ?? null);
 
   try {
-    const inputBuffer = new Uint8Array(await file.arrayBuffer());
-    const detectedFormat = await detectFormat(inputBuffer);
-    if (!detectedFormat) {
-      throw new Error("Unrecognized or unsupported image format.");
-    }
-
-    let image: RawImage = await decodeImage(detectedFormat, inputBuffer);
-    if (detectedFormat === "jpeg") {
-      const orientation = readJpegOrientation(inputBuffer);
-      image = applyExifOrientation(image, orientation);
-    }
+    const inputBuffer = Buffer.from(await file.arrayBuffer());
+    // .rotate() with no args auto-orients the pixels per EXIF before any further op.
+    let image = sharp(inputBuffer, { failOn: "none" }).rotate();
+    const metadata = await sharp(inputBuffer).metadata();
 
     const requestedFormat = String(form.get("format") ?? "");
-    const outputFormat: WritableImageFormat =
-      tool.outputFormat ??
-      (isWritableFormat(requestedFormat) ? requestedFormat : null) ??
-      (isWritableFormat(detectedFormat) ? detectedFormat : "jpeg");
-
-    let quality = 85;
+    let outputFormat: WritableFormat =
+      tool.outputFormat ?? (isWritableFormat(requestedFormat) ? requestedFormat : null) ?? (isWritableFormat(metadata.format ?? "") ? (metadata.format as WritableFormat) : "jpeg");
 
     switch (tool.operation) {
       case "convert": {
-        quality = Number(form.get("quality") ?? 85);
+        const quality = Number(form.get("quality") ?? 85);
+        image = image.toFormat(outputFormat, { quality });
         break;
       }
       case "compress": {
-        quality = Number(form.get("quality") ?? 60);
+        const quality = Number(form.get("quality") ?? 60);
+        image = image.toFormat(outputFormat, { quality });
         break;
       }
       case "resize": {
@@ -93,7 +74,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         if (!width && !height) {
           throw new Error("Provide a width and/or height to resize.");
         }
-        image = await resizeImage(image, width, height);
+        image = image.resize(width, height, { fit: "inside", withoutEnlargement: true }).toFormat(outputFormat);
         break;
       }
       case "crop": {
@@ -104,17 +85,17 @@ export const POST: APIRoute = async ({ request, locals }) => {
         if (!width || !height) {
           throw new Error("Provide a crop width and height.");
         }
-        image = cropImage(image, left, top, width, height);
+        image = image.extract({ left, top, width, height }).toFormat(outputFormat);
         break;
       }
       case "rotate": {
         const degrees = Number(form.get("degrees") ?? 90);
-        image = rotateImage(image, degrees);
+        image = image.rotate(degrees).toFormat(outputFormat);
         break;
       }
     }
 
-    const outputBuffer = await encodeImage(outputFormat, image, quality);
+    const outputBuffer = await image.toBuffer();
     const contentType = FORMAT_MIME[outputFormat];
     const filename = `${baseName(file.name)}.${outputFormat === "jpeg" ? "jpg" : outputFormat}`;
 

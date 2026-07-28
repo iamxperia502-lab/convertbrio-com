@@ -1,11 +1,9 @@
 import type { APIRoute } from "astro";
 import { PDFDocument, StandardFonts, degrees, rgb } from "pdf-lib";
 import JSZip from "jszip";
-import { PDFiumLibrary } from "@hyzyla/pdfium/browser/base64";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
-import { encodeImage, type RawImage } from "../../../lib/image-pipeline";
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires per-plan limits.
 const MAX_BYTES = 25 * 1024 * 1024;
@@ -16,36 +14,23 @@ function baseName(filename: string) {
   return dot > 0 ? filename.slice(0, dot) : filename;
 }
 
-// pdfium is WASM (works in Cloudflare Workers), unlike the old pdfjs-dist + `canvas`
-// pairing, which needed a native canvas 2D context to rasterize pages. The library
-// instance is cached at module scope since Workers isolates get reused across requests.
-let pdfiumLibrary: ReturnType<typeof PDFiumLibrary.init> | null = null;
-function getPdfiumLibrary() {
-  if (!pdfiumLibrary) {
-    pdfiumLibrary = PDFiumLibrary.init({ disableBase64Warning: true });
-  }
-  return pdfiumLibrary;
-}
+export async function renderPdfToImages(bytes: Uint8Array, format: "jpeg" | "png"): Promise<Buffer[]> {
+  // Dynamic import: pdfjs-dist's Node build and `canvas` are only needed by
+  // this one operation, so a failure here shouldn't break the whole route.
+  const { getDocument } = await import("pdfjs-dist/legacy/build/pdf.mjs");
+  const { createCanvas } = await import("canvas");
 
-export async function renderPdfToImages(bytes: Uint8Array, format: "jpeg" | "png"): Promise<Uint8Array[]> {
-  const library = await getPdfiumLibrary();
-  const document = await library.loadDocument(bytes);
-  const images: Uint8Array[] = [];
+  const pdf = await getDocument({ data: bytes }).promise;
+  const images: Buffer[] = [];
 
-  try {
-    for (const page of document.pages()) {
-      // Identity render callback: pdfium hands back the raw RGBA bitmap instead of
-      // encoding it itself, and we encode via the same jsquash pipeline image.ts uses.
-      const rendered = await page.render({ scale: 2, render: async (options) => options.data });
-      const image: RawImage = {
-        width: rendered.width,
-        height: rendered.height,
-        data: new Uint8ClampedArray(rendered.data.buffer, rendered.data.byteOffset, rendered.data.length),
-      };
-      images.push(await encodeImage(format, image, 90));
-    }
-  } finally {
-    document.destroy();
+  for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+    const page = await pdf.getPage(pageNum);
+    const viewport = page.getViewport({ scale: 2 });
+    const canvas = createCanvas(viewport.width, viewport.height);
+    const context = canvas.getContext("2d");
+    // @ts-expect-error - pdfjs-dist's RenderParameters type expects a DOM CanvasRenderingContext2D; node-canvas's is compatible at runtime.
+    await page.render({ canvasContext: context, viewport, canvas }).promise;
+    images.push(format === "png" ? canvas.toBuffer("image/png") : canvas.toBuffer("image/jpeg", { quality: 0.9 }));
   }
 
   return images;
@@ -75,7 +60,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   const jobId = await recordConversionAttempt(slug, locals.user?.id ?? null);
 
   try {
-    let outputBuffer: Uint8Array;
+    let outputBuffer: Buffer;
     let contentType: string;
     let filename: string;
 
