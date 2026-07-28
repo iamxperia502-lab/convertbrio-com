@@ -25,32 +25,7 @@ function groupItemsIntoLines(items: TextItem[]): string[] {
     .map((row) => row.parts.sort((a, b) => a.transform[4] - b.transform[4]).map((p) => p.str).join(" "));
 }
 
-interface PdfjsWorkerGlobal {
-  pdfjsWorker?: { WorkerMessageHandler: unknown };
-  DOMMatrix?: unknown;
-}
-
 export async function pdfToDocx(pdfBytes: Uint8Array): Promise<Buffer> {
-  const workerGlobal = globalThis as PdfjsWorkerGlobal;
-
-  // pdfjs-dist's text-extraction path still references DOMMatrix internally even
-  // though we never render/rasterize here. Workers has no DOM, so this needs a
-  // pure-JS stand-in — CSSMatrix implements the same constructor/method surface.
-  if (typeof workerGlobal.DOMMatrix === "undefined") {
-    const { default: CSSMatrix } = await import("dommatrix");
-    workerGlobal.DOMMatrix = CSSMatrix;
-  }
-
-  // pdfjs-dist normally offloads parsing to a Web Worker, falling back to
-  // dynamically import()-ing its worker script by file path when none is available
-  // (its "fake worker" path) — that dynamic path doesn't resolve inside a bundled
-  // Workers deployment. Registering globalThis.pdfjsWorker makes it run the worker's
-  // message handler directly on the main thread instead, skipping that lookup.
-  if (!workerGlobal.pdfjsWorker) {
-    const { WorkerMessageHandler } = await import("pdfjs-dist/legacy/build/pdf.worker.mjs");
-    workerGlobal.pdfjsWorker = { WorkerMessageHandler };
-  }
-
   const { getDocument } = await import("pdfjs-dist/legacy/build/pdf.mjs");
   const { Document, Packer, Paragraph, PageBreak } = await import("docx");
 
