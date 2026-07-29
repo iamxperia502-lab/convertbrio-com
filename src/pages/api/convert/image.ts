@@ -1,10 +1,12 @@
 import type { APIRoute } from "astro";
 import sharp from "sharp";
+import type { Sharp, Metadata } from "sharp";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
 import { detectFaces } from "../../../lib/face-detection";
 import { computeCropBox, PASSPORT_PHOTO_PX, PASSPORT_PHOTO_DPI } from "../../../lib/passport-photo";
+import { looksLikeHeic, decodeHeicFallback, sharpFromHeicFallback } from "../../../lib/heic-fallback";
 
 // Face detection runs on a downscaled copy for speed; detected coordinates
 // are then scaled back up to the full-resolution image for the actual crop,
@@ -86,10 +88,21 @@ export const POST: APIRoute = async ({ request, locals }) => {
   if (tool.operation === "passport-photo") {
     try {
       const inputBuffer = Buffer.from(await file.arrayBuffer());
-      // .rotate() with no args auto-orients per EXIF - detection and the
-      // final crop both need to work in this same upright coordinate space.
-      const upright = sharp(inputBuffer, { failOn: "none" }).rotate();
-      const uprightBuffer = await upright.toBuffer();
+      // uprightBuffer is a re-encoded buffer (not the original bytes) so
+      // every sharp() call below can treat it uniformly, regardless of
+      // which branch produced it.
+      let uprightBuffer: Buffer;
+      try {
+        // .rotate() with no args auto-orients per EXIF - detection and the
+        // final crop both need to work in this same upright coordinate space.
+        uprightBuffer = await sharp(inputBuffer, { failOn: "none" }).rotate().toBuffer();
+      } catch (err) {
+        if (!looksLikeHeic(inputBuffer)) throw err;
+        // See lib/heic-fallback.ts for why sharp's native HEIC decode fails
+        // on some real iPhone photos. Re-encode to PNG (lossless) so the
+        // rest of this handler doesn't need to know a fallback happened.
+        uprightBuffer = await sharpFromHeicFallback(await decodeHeicFallback(inputBuffer)).png().toBuffer();
+      }
       const { width: fullWidth, height: fullHeight } = await sharp(uprightBuffer).metadata();
       if (!fullWidth || !fullHeight) {
         throw new Error("Couldn't read this image's dimensions.");
@@ -177,9 +190,21 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
   try {
     const inputBuffer = Buffer.from(await file.arrayBuffer());
-    // .rotate() with no args auto-orients the pixels per EXIF before any further op.
-    let image = sharp(inputBuffer, { failOn: "none" }).rotate();
-    const metadata = await sharp(inputBuffer).metadata();
+    let image: Sharp;
+    let metadata: Metadata;
+    try {
+      // .rotate() with no args auto-orients the pixels per EXIF before any further op.
+      image = sharp(inputBuffer, { failOn: "none" }).rotate();
+      metadata = await sharp(inputBuffer).metadata();
+    } catch (err) {
+      if (!looksLikeHeic(inputBuffer)) throw err;
+      // See lib/heic-fallback.ts for why sharp's native HEIC decode fails on
+      // some real iPhone photos. Already upright, so no .rotate() needed.
+      const decoded = await decodeHeicFallback(inputBuffer);
+      image = sharpFromHeicFallback(decoded);
+      // Only `.format` is read below; the rest of Metadata isn't needed here.
+      metadata = { format: "heif", width: decoded.width, height: decoded.height } as Metadata;
+    }
 
     const requestedFormat = String(form.get("format") ?? "");
     let outputFormat: WritableFormat =
