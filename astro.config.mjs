@@ -51,6 +51,11 @@ const pdfjsStandardFontsFiles = readdirSync(pdfjsStandardFontsDir).map(
   (name) => `node_modules/pdfjs-dist/standard_fonts/${name}`
 );
 
+// The vendored YuNet face-detection model (see src/lib/face-detection.ts) is
+// loaded from a computed path at runtime, the same category of file the
+// static tracer misses as pdf.worker.mjs and the standard fonts above.
+const passportPhotoModelFile = 'src/lib/models/yunet.onnx';
+
 // onnxruntime-node ships prebuilt native binaries (each with its own ~10-25MB
 // libonnxruntime shared library alongside the small .node binding) for every
 // OS/arch, but Vercel's Node.js functions run linux/x64 — the other five
@@ -74,7 +79,7 @@ export default defineConfig({
     // Headless-Chromium-backed Word conversions (see src/lib/chromium.ts) need
     // more than the default function timeout, especially on a cold start.
     maxDuration: 60,
-    includeFiles: [...bgRemovalFiles, ...tesseractWasmFiles, pdfjsWorkerFile, ...pdfjsStandardFontsFiles],
+    includeFiles: [...bgRemovalFiles, ...tesseractWasmFiles, pdfjsWorkerFile, ...pdfjsStandardFontsFiles, passportPhotoModelFile],
     excludeFiles: onnxExcludeFiles,
   })
 });

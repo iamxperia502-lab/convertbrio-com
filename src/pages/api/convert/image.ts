@@ -3,6 +3,13 @@ import sharp from "sharp";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
+import { detectFaces } from "../../../lib/face-detection";
+import { computeCropBox, PASSPORT_PHOTO_PX, PASSPORT_PHOTO_DPI } from "../../../lib/passport-photo";
+
+// Face detection runs on a downscaled copy for speed; detected coordinates
+// are then scaled back up to the full-resolution image for the actual crop,
+// so output quality doesn't depend on the detection resolution.
+const FACE_DETECTION_MAX_DIMENSION = 640;
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires
 // per-plan limits (Pro/Business get raised caps).
@@ -72,6 +79,98 @@ export const POST: APIRoute = async ({ request, locals }) => {
     } catch (err) {
       await failConversionJob(jobId);
       const message = err instanceof Error ? err.message : "Background removal failed.";
+      return new Response(JSON.stringify({ error: message }), { status: 422 });
+    }
+  }
+
+  if (tool.operation === "passport-photo") {
+    try {
+      const inputBuffer = Buffer.from(await file.arrayBuffer());
+      // .rotate() with no args auto-orients per EXIF - detection and the
+      // final crop both need to work in this same upright coordinate space.
+      const upright = sharp(inputBuffer, { failOn: "none" }).rotate();
+      const uprightBuffer = await upright.toBuffer();
+      const { width: fullWidth, height: fullHeight } = await sharp(uprightBuffer).metadata();
+      if (!fullWidth || !fullHeight) {
+        throw new Error("Couldn't read this image's dimensions.");
+      }
+
+      const detectionScale = Math.min(1, FACE_DETECTION_MAX_DIMENSION / Math.max(fullWidth, fullHeight));
+      const detectionWidth = Math.round(fullWidth * detectionScale);
+      const detectionHeight = Math.round(fullHeight * detectionScale);
+      const { data: rgba } = await sharp(uprightBuffer)
+        .resize(detectionWidth, detectionHeight)
+        .ensureAlpha()
+        .raw()
+        .toBuffer({ resolveWithObject: true });
+
+      const detected = await detectFaces(rgba, detectionWidth, detectionHeight);
+      if (detected.length === 0) {
+        throw new Error("No face found in this photo. Try a clear, front-facing photo with good lighting.");
+      }
+      if (detected.length > 1) {
+        throw new Error("This photo has more than one face. Upload a photo with just one person.");
+      }
+
+      // Scale the detection (run on a downscaled copy) back up to full-res
+      // source-image coordinates.
+      const inverseScale = 1 / detectionScale;
+      const face = detected[0];
+      const faceFullRes = {
+        x: face.x * inverseScale,
+        y: face.y * inverseScale,
+        width: face.width * inverseScale,
+        height: face.height * inverseScale,
+        eyeRight: [face.eyeRight[0] * inverseScale, face.eyeRight[1] * inverseScale] as [number, number],
+        eyeLeft: [face.eyeLeft[0] * inverseScale, face.eyeLeft[1] * inverseScale] as [number, number],
+        confidence: face.confidence,
+      };
+
+      const cropBox = computeCropBox(faceFullRes, fullWidth, fullHeight);
+      if (!cropBox) {
+        throw new Error("Not enough space around the face in this photo. Try a photo taken further back, with more room above the head and around the shoulders.");
+      }
+
+      // Explicit .png() rather than inheriting the upload's original format
+      // (often JPEG): the Blob type below must match the actual bytes for
+      // @imgly/background-removal-node's format detection, and lossless PNG
+      // avoids compounding compression artifacts before the cutout step.
+      const croppedBuffer = await sharp(uprightBuffer)
+        .extract({ left: cropBox.left, top: cropBox.top, width: cropBox.size, height: cropBox.size })
+        .png()
+        .toBuffer();
+
+      const { removeBackground } = await import("@imgly/background-removal-node");
+      const cutoutBlob = await removeBackground(new Blob([croppedBuffer], { type: "image/png" }), { model: "small" });
+      const cutoutBuffer = Buffer.from(await cutoutBlob.arrayBuffer());
+
+      // Two passes: withMetadata() preserves whatever metadata is already on
+      // its input, not just the field being set, so setting density in the
+      // same call that still touches cutoutBuffer would let the original
+      // photo's EXIF (potentially including GPS) leak into the download.
+      // sharp strips all metadata by default when withMetadata() is never
+      // called, so the first pass (no withMetadata) produces a clean buffer
+      // with nothing left to inherit before density is set on it.
+      const flattenedBuffer = await sharp(cutoutBuffer)
+        .flatten({ background: "#ffffff" })
+        .resize(PASSPORT_PHOTO_PX, PASSPORT_PHOTO_PX)
+        .jpeg({ quality: 95 })
+        .toBuffer();
+      const outputBuffer = await sharp(flattenedBuffer).withMetadata({ density: PASSPORT_PHOTO_DPI }).jpeg({ quality: 95 }).toBuffer();
+
+      const filename = `${baseName(file.name)}-passport-photo.jpg`;
+      await finalizeConversionJob(jobId, outputBuffer, "image/jpeg");
+
+      return new Response(outputBuffer, {
+        status: 200,
+        headers: {
+          "Content-Type": "image/jpeg",
+          "Content-Disposition": contentDisposition(filename),
+        },
+      });
+    } catch (err) {
+      await failConversionJob(jobId);
+      const message = err instanceof Error ? err.message : "Couldn't create a passport photo from this image.";
       return new Response(JSON.stringify({ error: message }), { status: 422 });
     }
   }

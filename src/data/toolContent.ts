@@ -1705,6 +1705,63 @@ export const toolContent: Record<string, ToolContentEntry> = {
     ],
   },
 
+  "passport-photo-maker": {
+    title: "Passport Photo Maker: Free Online Passport Size Photo Tool",
+    intro:
+      "A compliant passport photo needs a plain white background, the subject centered and correctly sized, and printed at the right physical dimensions — normally a trip to a pharmacy or photo studio. ConvertBrio's passport photo maker does all three automatically: upload a selfie or any clear headshot, and get back a print-ready 2x2 inch photo with a clean white background in seconds.",
+    sections: [
+      {
+        heading: "How It Works",
+        body: "Upload a photo, and ConvertBrio detects your face, crops and centers it to standard passport proportions, removes the original background, and replaces it with solid white — then outputs a 2x2 inch photo at 600 DPI (1200x1200 pixels), the size used for both US and Indian passport and visa photos. There's nothing to position or adjust manually.",
+      },
+      {
+        heading: "Getting the Best Result",
+        body: "Use a well-lit, front-facing photo with your whole head and shoulders visible and some space around them — a phone selfie against a plain wall works well. Avoid photos where the head is cropped tight at the edges, since the tool needs room above the head and around the shoulders to compute a correctly-proportioned crop. One person per photo; group photos or heavily cropped close-ups won't process correctly.",
+      },
+      {
+        heading: "What This Tool Doesn't Guarantee",
+        body: "This produces a professional-looking, correctly-sized and centered photo with a genuine white background — not a certified compliance check. It doesn't verify lighting evenness, expression, glasses glare, or the other criteria an official ICAO or government photo review checks by hand. For a passport application with strict acceptance requirements, treat this as a strong starting point and confirm against your country's current photo requirements before submitting.",
+      },
+      {
+        heading: "Privacy",
+        body: "Face detection and background removal both run on ConvertBrio's own servers using self-hosted, open-source models — your photo is never sent to a third-party API or reviewed by a person. Uploaded and generated files are automatically deleted within 24 hours.",
+      },
+    ],
+    relatedTools: [
+      { label: "Remove Background", href: "/tools/remove-background" },
+      { label: "Crop Image", href: "/tools/crop-image" },
+      { label: "Resize Image", href: "/tools/resize-image" },
+    ],
+    faqDescription: "Common questions about ConvertBrio's passport photo maker.",
+    faq: [
+      {
+        question: "What size photo does this produce?",
+        answer:
+          "A 2x2 inch (1200x1200 pixel) photo at 600 DPI — the standard size for both US and Indian passport and visa photos.",
+      },
+      {
+        question: "Is this free?",
+        answer:
+          "Yes. Uploading a photo and generating a passport-size photo with a white background doesn't require an account or payment.",
+      },
+      {
+        question: "Will this photo definitely be accepted for my passport application?",
+        answer:
+          "It produces a correctly-sized, centered photo with a genuine white background, which covers the most common rejection reasons. It doesn't run a full official compliance check (lighting, expression, glasses glare), so confirm against your country's current requirements before submitting an official application.",
+      },
+      {
+        question: "What if it says no face was found, or more than one face?",
+        answer:
+          "Use a clear, front-facing, well-lit photo with exactly one person in frame. Group photos, side profiles, or very dark/blurry images can prevent face detection from working correctly.",
+      },
+      {
+        question: "Why did it say there's not enough space around the face?",
+        answer:
+          "The tool needs visible margin above the head and around the shoulders in the original photo to compute a correctly-proportioned crop. If your photo is already tightly cropped to the face, take a new one from a bit further back.",
+      },
+    ],
+  },
+
   "ai-image-enhancer": {
     title: "AI Image Enhancer: Coming Soon to ConvertBrio",
     intro:

@@ -11,7 +11,7 @@ export const categories: { id: CategoryId; name: string; icon: keyof typeof icon
   { id: "ai", name: "AI Tools", icon: "sparkle", desc: "Enhance and restore images with AI models." },
 ];
 
-export type ImageOperation = "convert" | "compress" | "resize" | "crop" | "rotate" | "remove-background";
+export type ImageOperation = "convert" | "compress" | "resize" | "crop" | "rotate" | "remove-background" | "passport-photo";
 export type PdfOperation =
   | "merge"
   | "split"
@@ -469,6 +469,17 @@ export const tools: Tool[] = [
     outputFormat: "png",
     icon: "sparkle",
     description: "Automatically remove the background from a photo.",
+    accept: IMAGE_ACCEPT,
+  },
+  {
+    slug: "passport-photo-maker",
+    name: "Passport Photo Maker",
+    categories: ["image", "ai"],
+    kind: "image",
+    operation: "passport-photo",
+    outputFormat: "jpeg",
+    icon: "idCard",
+    description: "Turn a selfie into a passport-size photo with a white background, auto-cropped and centered.",
     accept: IMAGE_ACCEPT,
   },
   {
