@@ -35,7 +35,7 @@ interface ImageBlock {
   x: number;
   width: number;
   height: number;
-  imgId: string;
+  jpeg: Buffer | null;
 }
 
 type PageBlock = { kind: "line"; line: Line } | { kind: "image"; image: ImageBlock };
@@ -150,7 +150,21 @@ function itemsToRuns(items: RawItem[]): StyledRun[] {
 
 const IMAGE_OPS = new Set(["paintImageXObject", "paintImageXObjectRepeat", "paintJpegXObject"]);
 
-async function extractImages(opList: any, OPS: Record<string, number>): Promise<ImageBlock[]> {
+// Real-world "scanned"/signed PDFs are often just one full-page raster image
+// per page at scan resolution (2000-3000+ px per side). Building full-res
+// ImageData for those and PNG-encoding them was slow enough to risk Vercel's
+// 60s function limit. Downsampling during the pixel copy (rather than
+// copying at full res and scaling after) bounds the work regardless of
+// source resolution, and Word doesn't need scan-DPI images anyway.
+const MAX_IMAGE_DIMENSION = 1600;
+
+// Resolves each image's pixel data and CTM-derived position/size in the same
+// pass as the operator list that produced them, on the same page object.
+// Decoded image data must be read back here, not deferred to a later pass
+// over other pages first - pdf.js's per-page object cache isn't guaranteed
+// to still have it by then, and re-requesting a since-evicted object id
+// hangs forever instead of rejecting.
+async function extractImages(page: any, opList: any, OPS: Record<string, number>, deadline: number): Promise<ImageBlock[]> {
   const opNameByCode = new Map<number, string>();
   for (const [name, code] of Object.entries(OPS)) {
     if (IMAGE_OPS.has(name) || name === "save" || name === "restore" || name === "transform") {
@@ -184,7 +198,7 @@ async function extractImages(opList: any, OPS: Record<string, number>): Promise<
         y: Math.max(...ys),
         width: Math.max(...xs) - Math.min(...xs),
         height: Math.max(...ys) - Math.min(...ys),
-        imgId: args[0],
+        jpeg: Date.now() < deadline ? await imageToJpeg(page, args[0]) : null,
       });
     }
   }
@@ -192,37 +206,51 @@ async function extractImages(opList: any, OPS: Record<string, number>): Promise<
   return images;
 }
 
-async function imageToPng(page: any, imgId: string): Promise<Buffer | null> {
+async function imageToJpeg(page: any, imgId: string): Promise<Buffer | null> {
   try {
-    const img: any = await new Promise((resolve, reject) => {
-      try {
-        page.objs.get(imgId, resolve);
-      } catch (e) {
-        reject(e);
-      }
-    });
+    // By the time this runs, page.getOperatorList() has already fully
+    // resolved every object it references - but when the same image
+    // resource is reused across pages, pdf.js promotes it from this page's
+    // own `objs` into the document-wide `commonObjs` instead, so it must be
+    // checked too. Using the synchronous has()/get() pair (rather than the
+    // callback form of .get(), which registers a pending entry and waits
+    // forever if the id never resolves on *this* cache) avoids hanging when
+    // the id turns out to live on the other cache.
+    const img: any = page.objs.has(imgId)
+      ? page.objs.get(imgId)
+      : page.commonObjs.has(imgId)
+        ? page.commonObjs.get(imgId)
+        : null;
     if (!img?.width || !img?.height || !img?.data) return null;
-
-    const canvas = createCanvas(img.width, img.height);
-    const ctx = canvas.getContext("2d");
-    const imageData = ctx.createImageData(img.width, img.height);
-
     // ImageKind: 1 = grayscale 1bpp (unsupported here), 2 = RGB 24bpp, 3 = RGBA 32bpp.
-    if (img.kind === 3) {
-      imageData.data.set(img.data);
-    } else if (img.kind === 2) {
-      for (let i = 0, j = 0; i < img.data.length; i += 3, j += 4) {
-        imageData.data[j] = img.data[i];
-        imageData.data[j + 1] = img.data[i + 1];
-        imageData.data[j + 2] = img.data[i + 2];
-        imageData.data[j + 3] = 255;
+    const channels = img.kind === 3 ? 4 : img.kind === 2 ? 3 : null;
+    if (!channels) return null;
+
+    const scale = Math.min(1, MAX_IMAGE_DIMENSION / Math.max(img.width, img.height));
+    const outWidth = Math.max(1, Math.round(img.width * scale));
+    const outHeight = Math.max(1, Math.round(img.height * scale));
+
+    const canvas = createCanvas(outWidth, outHeight);
+    const ctx = canvas.getContext("2d");
+    const imageData = ctx.createImageData(outWidth, outHeight);
+
+    for (let oy = 0; oy < outHeight; oy++) {
+      const sy = Math.min(img.height - 1, Math.floor(oy / scale));
+      for (let ox = 0; ox < outWidth; ox++) {
+        const sx = Math.min(img.width - 1, Math.floor(ox / scale));
+        const srcIdx = (sy * img.width + sx) * channels;
+        const dstIdx = (oy * outWidth + ox) * 4;
+        imageData.data[dstIdx] = img.data[srcIdx];
+        imageData.data[dstIdx + 1] = img.data[srcIdx + 1];
+        imageData.data[dstIdx + 2] = img.data[srcIdx + 2];
+        imageData.data[dstIdx + 3] = channels === 4 ? img.data[srcIdx + 3] : 255;
       }
-    } else {
-      return null;
     }
 
     ctx.putImageData(imageData, 0, 0);
-    return canvas.toBuffer("image/png");
+    // JPEG encodes much faster than PNG for photographic/scanned content,
+    // which is the common case for embedded raster images in real PDFs.
+    return canvas.toBuffer("image/jpeg", { quality: 0.85 });
   } catch {
     return null;
   }
@@ -356,6 +384,12 @@ export async function pdfToDocx(pdfBytes: Uint8Array): Promise<Buffer> {
 
   const pdf = await getDocument({ data: pdfBytes, standardFontDataUrl }).promise;
 
+  // Safety net on top of the per-image resolution cap: if a document still
+  // has enough large images to run long (the Vercel function has a hard 60s
+  // limit), stop embedding further images rather than timing out with
+  // nothing to show for it. The rest of the text/tables still complete.
+  const imageDeadline = Date.now() + 40_000;
+
   const pages: { lines: Line[]; images: ImageBlock[]; width: number }[] = [];
   const allSizes: number[] = [];
 
@@ -365,7 +399,7 @@ export async function pdfToDocx(pdfBytes: Uint8Array): Promise<Buffer> {
     // must run before getTextContent's fontName lookups resolve to anything.
     const opList = await page.getOperatorList();
     const lines = await extractLines(page);
-    const images = await extractImages(opList, OPS as Record<string, number>);
+    const images = await extractImages(page, opList, OPS as Record<string, number>, imageDeadline);
     const [x0, , x1] = page.view;
     pages.push({ lines, images, width: x1 - x0 });
     for (const line of lines) {
@@ -468,15 +502,14 @@ export async function pdfToDocx(pdfBytes: Uint8Array): Promise<Buffer> {
         paragraphLines.push(block.line);
       } else {
         flushParagraphs();
-        const png = await imageToPng(await pdf.getPage(pageIndex + 1), block.image.imgId);
-        if (png) {
+        if (block.image.jpeg) {
           const POINTS_TO_PX = 96 / 72;
           children.push(
             new DocxParagraph({
               children: [
                 new ImageRun({
-                  type: "png",
-                  data: png,
+                  type: "jpg",
+                  data: block.image.jpeg,
                   transformation: {
                     width: Math.max(1, Math.round(block.image.width * POINTS_TO_PX)),
                     height: Math.max(1, Math.round(block.image.height * POINTS_TO_PX)),
