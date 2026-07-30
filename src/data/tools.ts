@@ -376,7 +376,7 @@ export const tools: Tool[] = [
     kind: "office",
     operation: "pdf-to-word",
     icon: "pdf",
-    description: "Convert a PDF into an editable Word document (text-only — complex layouts and images aren't preserved).",
+    description: "Convert a PDF into an editable Word document, preserving paragraphs, bold/italic, headings, simple tables, and images (complex multi-column layouts may not match exactly).",
     accept: PDF_ACCEPT,
   },
   {

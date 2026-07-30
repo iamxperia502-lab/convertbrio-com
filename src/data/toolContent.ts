@@ -1278,15 +1278,15 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "pdf-to-word": {
     title: "PDF to Word Converter: Turn a PDF Into an Editable Document",
     intro:
-      "Need to edit a PDF's text but don't have the original source file? ConvertBrio's PDF to Word converter extracts the text content from your PDF into an editable DOCX file that opens in Microsoft Word or Google Docs, so you can make changes without retyping the whole document.",
+      "Need to edit a PDF's text but don't have the original source file? ConvertBrio's PDF to Word converter rebuilds your PDF as an editable DOCX file — paragraphs, bold/italic, headings, simple tables, and images included — that opens in Microsoft Word or Google Docs, so you can make changes without retyping the whole document.",
     sections: [
       {
         heading: "How to Convert PDF to Word",
-        body: "Upload your PDF and ConvertBrio extracts its text content into a DOCX file, which downloads automatically and opens directly in Word, Google Docs, or any compatible word processor.",
+        body: "Upload your PDF and ConvertBrio rebuilds it as a DOCX file, which downloads automatically and opens directly in Word, Google Docs, or any compatible word processor.",
       },
       {
         heading: "What Carries Over (and What Might Not)",
-        body: "This conversion focuses on text content, so straightforward documents like letters, reports, and contracts convert cleanly. Complex layouts — multi-column pages, intricate tables, or documents with heavy embedded imagery — may not carry over exactly, since converting a fixed-layout PDF back into flexible, editable text has inherent limitations.",
+        body: "Straightforward documents like letters, reports, and contracts convert cleanly, keeping paragraphs, bold/italic text, headings, basic tables, and images intact. Complex layouts — multi-column pages, intricate nested tables, or heavily designed pages — may not carry over exactly, since converting a fixed-layout PDF back into flexible, editable text has inherent limitations.",
       },
       {
         heading: "When This Tool Is the Right Fit",
@@ -1303,12 +1303,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I convert a PDF to an editable Word document?",
         answer:
-          "Upload your PDF to ConvertBrio's PDF to Word tool, and it extracts the text into a DOCX file you can open and edit in Microsoft Word or Google Docs.",
+          "Upload your PDF to ConvertBrio's PDF to Word tool, and it rebuilds the content — including formatting, tables, and images — into a DOCX file you can open and edit in Microsoft Word or Google Docs.",
       },
       {
         question: "Will complex layouts and images convert correctly?",
         answer:
-          "This conversion is text-focused, so complex layouts, multi-column designs, and embedded images may not carry over exactly. Simple text documents convert most reliably.",
+          "Paragraphs, bold/italic text, headings, simple tables, and images are preserved. Complex multi-column layouts or intricately designed pages may not carry over exactly, since a fixed-layout PDF doesn't map perfectly onto editable, reflowing text.",
       },
       {
         question: "Can I convert a scanned PDF to Word?",

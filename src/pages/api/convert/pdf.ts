@@ -1,21 +1,10 @@
 import type { APIRoute } from "astro";
-import { fileURLToPath } from "node:url";
 import { PDFDocument, StandardFonts, degrees, rgb } from "pdf-lib";
 import JSZip from "jszip";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
-import { ensureDomMatrixPolyfill } from "../../../lib/pdfjs-node-polyfills";
-
-// pdfjs-dist needs this to substitute a fallback font for any text that uses
-// a standard PDF font (Helvetica, Times, etc.) without embedding it - the
-// common case for most real-world PDFs, as opposed to files pdf-lib itself
-// generates with embedded fonts. Without it, pdfjs throws
-// "UnknownErrorException: Ensure that the `standardFontDataUrl` API
-// parameter is provided" while rendering any page that hits this path.
-// `import.meta.resolve` (not a relative path) so this keeps working
-// regardless of how the package manager nests/hoists node_modules.
-const standardFontDataUrl = fileURLToPath(new URL("./standard_fonts/", import.meta.resolve("pdfjs-dist/package.json")));
+import { ensureDomMatrixPolyfill, standardFontDataUrl } from "../../../lib/pdfjs-node-polyfills";
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires per-plan limits.
 const MAX_BYTES = 25 * 1024 * 1024;
