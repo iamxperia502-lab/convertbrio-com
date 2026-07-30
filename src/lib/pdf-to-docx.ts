@@ -240,10 +240,21 @@ async function imageToJpeg(page: any, imgId: string): Promise<Buffer | null> {
         const sx = Math.min(img.width - 1, Math.floor(ox / scale));
         const srcIdx = (sy * img.width + sx) * channels;
         const dstIdx = (oy * outWidth + ox) * 4;
-        imageData.data[dstIdx] = img.data[srcIdx];
-        imageData.data[dstIdx + 1] = img.data[srcIdx + 1];
-        imageData.data[dstIdx + 2] = img.data[srcIdx + 2];
-        imageData.data[dstIdx + 3] = channels === 4 ? img.data[srcIdx + 3] : 255;
+        if (channels === 4) {
+          // JPEG has no alpha channel. Transparent PDF images (logos,
+          // stamps) commonly carry meaningless (often black) RGB under
+          // full transparency, so a naive RGB copy renders as solid black
+          // once alpha is dropped. Composite over white first instead.
+          const alpha = img.data[srcIdx + 3] / 255;
+          imageData.data[dstIdx] = Math.round(img.data[srcIdx] * alpha + 255 * (1 - alpha));
+          imageData.data[dstIdx + 1] = Math.round(img.data[srcIdx + 1] * alpha + 255 * (1 - alpha));
+          imageData.data[dstIdx + 2] = Math.round(img.data[srcIdx + 2] * alpha + 255 * (1 - alpha));
+        } else {
+          imageData.data[dstIdx] = img.data[srcIdx];
+          imageData.data[dstIdx + 1] = img.data[srcIdx + 1];
+          imageData.data[dstIdx + 2] = img.data[srcIdx + 2];
+        }
+        imageData.data[dstIdx + 3] = 255;
       }
     }
 
