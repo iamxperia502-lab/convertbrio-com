@@ -1,4 +1,5 @@
 import { withPage } from "./chromium";
+import { ensureDomMatrixPolyfill } from "./pdfjs-node-polyfills";
 
 function wrapHtmlDocument(bodyHtml: string): string {
   return `<!doctype html>
@@ -61,6 +62,9 @@ function groupItemsIntoLines(items: TextItem[]): string[] {
 }
 
 export async function pdfToDocx(pdfBytes: Uint8Array): Promise<Buffer> {
+  // Text-only extraction never renders a canvas, but pdfjs-dist still runs
+  // `new DOMMatrix()` at import time; see ensureDomMatrixPolyfill.
+  await ensureDomMatrixPolyfill();
   const { getDocument } = await import("pdfjs-dist/legacy/build/pdf.mjs");
   const { Document, Packer, Paragraph, PageBreak } = await import("docx");
 

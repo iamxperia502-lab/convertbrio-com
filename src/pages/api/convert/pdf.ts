@@ -5,6 +5,7 @@ import JSZip from "jszip";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
+import { ensureDomMatrixPolyfill } from "../../../lib/pdfjs-node-polyfills";
 
 // pdfjs-dist needs this to substitute a fallback font for any text that uses
 // a standard PDF font (Helvetica, Times, etc.) without embedding it - the
@@ -29,22 +30,9 @@ export async function renderPdfToImages(bytes: Uint8Array, format: "jpeg" | "png
   // Dynamic import: pdfjs-dist's Node build and `canvas` are only needed by
   // this one operation, so a failure here shouldn't break the whole route.
   //
-  // `canvas` must be imported, and globalThis.DOMMatrix polyfilled, BEFORE
-  // pdfjs-dist - pdfjs-dist's own module has a top-level
-  // `const SCALE_MATRIX = new DOMMatrix();` that runs during import itself,
-  // not deferred to render time. It normally self-polyfills this from
-  // @napi-rs/canvas (the package we deliberately avoid, per the
-  // NodeCanvasFactory below), but that polyfill silently no-ops if
-  // @napi-rs/canvas fails to load its native binary for the platform - which
-  // happens on Vercel's Linux runtime even though it happens to work on some
-  // local machines - crashing the import itself with "DOMMatrix is not
-  // defined" before any of our own code even runs.
-  const { createCanvas, DOMMatrix, CanvasRenderingContext2D } = await import("canvas");
-  if (!globalThis.DOMMatrix) {
-    // node-canvas's DOMMatrix is a runtime-compatible implementation, just
-    // typed slightly differently than the DOM lib's built-in declaration.
-    globalThis.DOMMatrix = DOMMatrix as unknown as typeof globalThis.DOMMatrix;
-  }
+  // `canvas` must be imported BEFORE pdfjs-dist; see ensureDomMatrixPolyfill.
+  const { createCanvas, CanvasRenderingContext2D } = await import("canvas");
+  await ensureDomMatrixPolyfill();
   // Same self-polyfill gap as DOMMatrix above, for the same reason: pdfjs-dist
   // tries to source `Path2D` from @napi-rs/canvas and no-ops with just a
   // warning if that package isn't available, then throws a plain
