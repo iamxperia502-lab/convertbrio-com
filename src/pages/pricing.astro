@@ -1,53 +1,59 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import Icon from "../components/Icon.astro";
+import { useTranslations } from "../i18n/utils";
+
+const lang = Astro.currentLocale ?? "en";
+const t = useTranslations(lang);
+const localePath = (path: string) => getRelativeLocaleUrl(lang, path);
 
 const tiers = [
   {
-    name: "Free",
+    name: t("pricing.free.name"),
     price: "$0",
-    period: "forever",
-    desc: "For occasional conversions.",
+    period: t("pricing.free.period"),
+    desc: t("pricing.free.desc"),
     features: [
-      "5 conversions per day",
-      "Files up to 25 MB",
-      "Standard conversion speed",
-      "Access to all basic tools",
+      t("pricing.free.feature1"),
+      t("pricing.free.feature2"),
+      t("pricing.free.feature3"),
+      t("pricing.free.feature4"),
     ],
-    cta: "Get started",
-    href: "/all-tools",
+    cta: t("pricing.free.cta"),
+    href: localePath("/all-tools"),
     featured: false,
   },
   {
-    name: "Pro",
+    name: t("pricing.pro.name"),
     price: "$9",
-    period: "per month",
-    desc: "For frequent, larger files.",
+    period: t("pricing.pro.period"),
+    desc: t("pricing.pro.desc"),
     features: [
-      "Unlimited conversions",
-      "Files up to 1 GB",
-      "Priority processing speed",
-      "Batch & bulk conversion",
-      "No ads",
+      t("pricing.pro.feature1"),
+      t("pricing.pro.feature2"),
+      t("pricing.pro.feature3"),
+      t("pricing.pro.feature4"),
+      t("pricing.pro.feature5"),
     ],
-    cta: "Start free trial",
-    href: "/all-tools",
+    cta: t("pricing.pro.cta"),
+    href: localePath("/all-tools"),
     featured: true,
   },
   {
-    name: "Business",
+    name: t("pricing.business.name"),
     price: "$29",
-    period: "per month",
-    desc: "For teams and automation.",
+    period: t("pricing.business.period"),
+    desc: t("pricing.business.desc"),
     features: [
-      "Everything in Pro",
-      "5 team seats included",
-      "API access",
-      "Dedicated support",
+      t("pricing.business.feature1"),
+      t("pricing.business.feature2"),
+      t("pricing.business.feature3"),
+      t("pricing.business.feature4"),
     ],
-    cta: "Contact sales",
-    href: "/contact",
+    cta: t("pricing.business.cta"),
+    href: localePath("/contact"),
     featured: false,
   },
 ] as const;
@@ -55,9 +61,9 @@ const tiers = [
 
 <Layout title="Pricing" description="Simple, transparent pricing for ConvertBrio's file conversion, compression, and AI tools.">
   <PageIntro
-    eyebrow="Pricing"
-    title="Simple pricing that scales with you"
-    description="Start free. Upgrade when you need larger files, faster processing, or a team."
+    eyebrow={t("pricing.eyebrow")}
+    title={t("pricing.title")}
+    description={t("pricing.description")}
   />
 
   <section aria-label="Pricing plans" class="bg-canvas">
@@ -76,7 +82,7 @@ const tiers = [
                 <div class="flex items-center justify-between">
                   <h2 class={`text-lg font-semibold ${tier.featured ? "text-white" : "text-ink"}`}>{tier.name}</h2>
                   {tier.featured && (
-                    <span class="rounded-full bg-white/15 px-2.5 py-1 font-mono text-[11px] text-white">Popular</span>
+                    <span class="rounded-full bg-white/15 px-2.5 py-1 font-mono text-[11px] text-white">{t("pricing.popular")}</span>
                   )}
                 </div>
                 <p class={`mt-1 text-sm ${tier.featured ? "text-white/65" : "text-mute"}`}>{tier.desc}</p>
@@ -113,7 +119,7 @@ const tiers = [
       </div>
 
       <p class="mt-10 text-center text-sm text-mute">
-        All plans include 256-bit encryption and automatic file deletion. Prices in USD.
+        {t("pricing.footnote")}
       </p>
     </div>
   </section>

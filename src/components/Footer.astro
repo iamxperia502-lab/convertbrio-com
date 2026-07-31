@@ -1,45 +1,52 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "../i18n/utils";
+
+const lang = Astro.currentLocale ?? "en";
+const t = useTranslations(lang);
+const localePath = (path: string) => getRelativeLocaleUrl(lang, path);
+
 const columns = [
   {
-    heading: "Convert",
+    heading: t("footer.heading.convert"),
     links: [
-      { label: "Image Converter", href: "/tools/image-converter" },
-      { label: "HEIC to JPG", href: "/tools/heic-to-jpg" },
-      { label: "Word to PDF", href: "/tools/word-to-pdf" },
-      { label: "PDF to Word", href: "/tools/pdf-to-word" },
+      { label: t("footer.link.imageConverter"), href: localePath("/tools/image-converter") },
+      { label: t("footer.link.heicToJpg"), href: localePath("/tools/heic-to-jpg") },
+      { label: t("footer.link.wordToPdf"), href: localePath("/tools/word-to-pdf") },
+      { label: t("footer.link.pdfToWord"), href: localePath("/tools/pdf-to-word") },
     ],
   },
   {
-    heading: "Compress",
+    heading: t("footer.heading.compress"),
     links: [
-      { label: "Image Compressor", href: "/tools/compress-image" },
-      { label: "Compress PDF", href: "/tools/compress-pdf" },
+      { label: t("footer.link.imageCompressor"), href: localePath("/tools/compress-image") },
+      { label: t("footer.link.compressPdf"), href: localePath("/tools/compress-pdf") },
     ],
   },
   {
-    heading: "Tools",
+    heading: t("footer.heading.tools"),
     links: [
-      { label: "PDF Tools", href: "/all-tools#pdf" },
-      { label: "Image Tools", href: "/all-tools#image" },
-      { label: "Document Tools", href: "/all-tools#document" },
-      { label: "AI Tools", href: "/all-tools#ai" },
-      { label: "All Tools", href: "/all-tools" },
+      { label: t("footer.link.pdfTools"), href: `${localePath("/all-tools")}#pdf` },
+      { label: t("footer.link.imageTools"), href: `${localePath("/all-tools")}#image` },
+      { label: t("footer.link.documentTools"), href: `${localePath("/all-tools")}#document` },
+      { label: t("footer.link.aiTools"), href: `${localePath("/all-tools")}#ai` },
+      { label: t("footer.link.allTools"), href: localePath("/all-tools") },
     ],
   },
   {
-    heading: "Company",
+    heading: t("footer.heading.company"),
     links: [
-      { label: "About", href: "/about" },
-      { label: "Blog", href: "/blog" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Contact", href: "/contact" },
+      { label: t("footer.link.about"), href: localePath("/about") },
+      { label: t("footer.link.blog"), href: localePath("/blog") },
+      { label: t("footer.link.pricing"), href: localePath("/pricing") },
+      { label: t("footer.link.contact"), href: localePath("/contact") },
     ],
   },
   {
-    heading: "Legal",
+    heading: t("footer.heading.legal"),
     links: [
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms of Service", href: "/terms" },
+      { label: t("footer.link.privacy"), href: localePath("/privacy") },
+      { label: t("footer.link.terms"), href: localePath("/terms") },
     ],
   },
 ];
@@ -51,14 +58,14 @@ const year = new Date().getFullYear();
   <div class="container-page py-16">
     <div class="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
       <div class="col-span-2 sm:col-span-3 lg:col-span-1">
-        <a href="/" class="inline-flex items-center gap-2" aria-label="ConvertBrio home">
+        <a href={localePath("/")} class="inline-flex items-center gap-2" aria-label="ConvertBrio home">
           <svg width="24" height="24" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect width="26" height="26" rx="7" fill="#16171B" />
             <path d="M8 13.5L11.2 16.7L18 9.3" stroke="#EEF1FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           <span translate="no" class="text-[15px] font-semibold tracking-[-0.01em] text-ink">ConvertBrio</span>
         </a>
-        <p class="mt-3 max-w-[22ch] text-sm leading-relaxed text-mute">Convert. Compress. Enhance.</p>
+        <p class="mt-3 max-w-[22ch] text-sm leading-relaxed text-mute">{t("footer.tagline")}</p>
       </div>
 
       {
@@ -80,7 +87,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="mt-14 flex flex-col gap-4 border-t border-hairline pt-8 sm:flex-row sm:items-center sm:justify-between">
-      <p class="text-sm text-mute">© {year} ConvertBrio. All rights reserved.</p>
+      <p class="text-sm text-mute">© {year} ConvertBrio. {t("footer.rights")}</p>
       <p class="text-sm text-mute">convertbrio.com</p>
     </div>
   </div>
