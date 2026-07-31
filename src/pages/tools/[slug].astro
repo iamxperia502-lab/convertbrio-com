@@ -4,8 +4,14 @@ import PageIntro from "../../components/PageIntro.astro";
 import Icon from "../../components/Icon.astro";
 import ToolContent from "../../components/ToolContent.astro";
 import FaqSection from "../../components/FaqSection.astro";
-import { getTool, isComingSoon } from "../../data/tools";
+import { getTool, isComingSoon, tools } from "../../data/tools";
 import { toolContent } from "../../data/toolContent";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return tools.map((tool) => ({ params: { slug: tool.slug } }));
+}
 
 const { slug } = Astro.params;
 const tool = slug ? getTool(slug) : undefined;
