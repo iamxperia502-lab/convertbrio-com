@@ -51,12 +51,19 @@ export interface OfficeTool extends ToolBase {
   operation: OfficeOperation;
 }
 
+export type AiOperation = "upscale" | "enhance";
+
+export interface AiTool extends ToolBase {
+  kind: "ai";
+  operation: AiOperation;
+}
+
 export interface ComingSoonTool extends ToolBase {
-  kind: "office-soon" | "ai";
+  kind: "office-soon" | "ai-soon";
   comingSoonReason: string;
 }
 
-export type Tool = ImageTool | PdfTool | OfficeTool | ComingSoonTool;
+export type Tool = ImageTool | PdfTool | OfficeTool | AiTool | ComingSoonTool;
 
 const IMAGE_ACCEPT = "image/jpeg,image/png,image/webp,image/heic,image/heif,image/avif,image/gif";
 const PDF_ACCEPT = "application/pdf";
@@ -487,40 +494,40 @@ export const tools: Tool[] = [
     name: "AI Image Enhancer",
     categories: ["ai"],
     kind: "ai",
+    operation: "enhance",
     icon: "sparkle",
     description: "Sharpen and improve photo quality with AI.",
     accept: IMAGE_ACCEPT,
-    comingSoonReason: "AI tools need an external model provider that isn't connected yet.",
   },
   {
     slug: "ai-upscaler",
     name: "AI Upscaler",
     categories: ["ai"],
     kind: "ai",
+    operation: "upscale",
     icon: "sparkle",
     description: "Increase image resolution with AI upscaling.",
     accept: IMAGE_ACCEPT,
-    comingSoonReason: "AI tools need an external model provider that isn't connected yet.",
   },
   {
     slug: "ai-object-remover",
     name: "AI Object Remover",
     categories: ["ai"],
-    kind: "ai",
+    kind: "ai-soon",
     icon: "sparkle",
     description: "Erase unwanted objects from a photo with AI.",
     accept: IMAGE_ACCEPT,
-    comingSoonReason: "AI tools need an external model provider that isn't connected yet.",
+    comingSoonReason: "Needs a mask-drawing tool plus an inpainting model that isn't on the free tier — coming once that's in place.",
   },
   {
     slug: "ai-photo-restoration",
     name: "AI Photo Restoration",
     categories: ["ai"],
-    kind: "ai",
+    kind: "ai-soon",
     icon: "sparkle",
     description: "Restore old or damaged photos with AI.",
     accept: IMAGE_ACCEPT,
-    comingSoonReason: "AI tools need an external model provider that isn't connected yet.",
+    comingSoonReason: "Scratch and damage repair needs a diffusion model that isn't available on the free tier yet.",
   },
 ];
 
@@ -533,5 +540,5 @@ export function toolsByCategory(categoryId: CategoryId): Tool[] {
 }
 
 export function isComingSoon(tool: Tool): tool is ComingSoonTool {
-  return tool.kind === "office-soon" || tool.kind === "ai";
+  return tool.kind === "office-soon" || tool.kind === "ai-soon";
 }

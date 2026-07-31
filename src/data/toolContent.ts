@@ -1763,21 +1763,21 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "ai-image-enhancer": {
-    title: "AI Image Enhancer: Coming Soon to ConvertBrio",
+    title: "AI Image Enhancer",
     intro:
-      "Blurry, low-quality, or poorly-lit photos often can't be fixed with basic editing tools. ConvertBrio is building an AI image enhancer that will automatically sharpen detail, correct clarity, and improve overall photo quality with a single upload.",
+      "Blurry, low-quality, or poorly-lit photos often can't be fixed with basic editing tools. ConvertBrio's AI image enhancer automatically sharpens detail, reduces compression artifacts, and improves overall photo quality with a single upload.",
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "AI Image Enhancer will use a machine learning model trained to improve photo quality — sharpening soft detail, reducing noise, and boosting overall clarity — without requiring manual adjustment of individual settings.",
+        heading: "What This Tool Does",
+        body: "AI Image Enhancer runs your photo through a machine learning model trained to improve quality — sharpening soft detail, cleaning up JPEG compression artifacts, and boosting overall clarity — without requiring manual adjustment of individual settings.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "This tool needs an external AI model provider connected and running reliably, which ConvertBrio is currently setting up as part of its broader AI toolset, alongside upscaling, object removal, and photo restoration.",
+        heading: "How It Works",
+        body: "Upload an image and a bundled AI super-resolution model reconstructs detail and removes noise directly on ConvertBrio's servers, then returns the enhanced version for download — no third-party AI service involved.",
       },
       {
-        heading: "What You Can Do Right Now",
-        body: "In the meantime, ConvertBrio's Resize Image and Compress Image tools let you adjust dimensions and file size manually, and Crop Image can help isolate the best part of a photo while AI enhancement is being built.",
+        heading: "When To Use It",
+        body: "Reach for this when a photo looks soft, over-compressed, or slightly noisy. If you also need to change dimensions or file size, pair it with Resize Image or Compress Image.",
       },
     ],
     relatedTools: [
@@ -1785,42 +1785,42 @@ export const toolContent: Record<string, ToolContentEntry> = {
       { label: "AI Photo Restoration", href: "/tools/ai-photo-restoration" },
       { label: "Compress Image", href: "/tools/compress-image" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming AI image enhancer.",
+    faqDescription: "Common questions about ConvertBrio's AI image enhancer.",
     faq: [
       {
-        question: "Is the AI image enhancer available yet?",
+        question: "What kind of improvements does it make?",
         answer:
-          "Not yet — it needs an external AI model provider that ConvertBrio is currently connecting. It's part of a broader set of AI tools in development.",
-      },
-      {
-        question: "What kind of improvements will it make?",
-        answer:
-          "Once live, it will focus on sharpening soft detail, reducing noise, and improving overall clarity automatically, without manual adjustment.",
+          "It sharpens soft detail, reduces compression noise, and improves overall clarity automatically, without manual adjustment.",
       },
       {
         question: "How is this different from AI Upscaler?",
         answer:
           "AI Image Enhancer focuses on improving quality and clarity at the same resolution, while AI Upscaler is designed specifically to increase an image's resolution.",
       },
+      {
+        question: "Why did processing take a little while?",
+        answer:
+          "The first request after a period of inactivity can take a few extra seconds while the server loads the model. After that, processing is quick.",
+      },
     ],
   },
 
   "ai-upscaler": {
-    title: "AI Upscaler: Coming Soon to ConvertBrio",
+    title: "AI Upscaler",
     intro:
-      "Enlarging a small or low-resolution image with ordinary resizing tools usually leaves it blurry and pixelated. ConvertBrio is building an AI upscaler that will use machine learning to intelligently increase image resolution, reconstructing detail rather than just stretching pixels.",
+      "Enlarging a small or low-resolution image with ordinary resizing tools usually leaves it blurry and pixelated. ConvertBrio's AI upscaler uses machine learning to intelligently increase image resolution, reconstructing detail rather than just stretching pixels.",
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "AI Upscaler will take a lower-resolution image and generate a larger version with reconstructed detail, producing noticeably sharper results than simple pixel stretching for use cases like printing, enlarging old photos, or preparing images for high-resolution displays.",
+        heading: "What This Tool Does",
+        body: "AI Upscaler takes a lower-resolution image and generates a larger version with reconstructed detail, producing noticeably sharper results than simple pixel stretching for use cases like printing, enlarging old photos, or preparing images for high-resolution displays.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "Like ConvertBrio's other AI tools, upscaling requires an external model provider capable of running resolution-enhancement reliably, which is currently being connected as part of the site's broader AI toolset.",
+        heading: "How It Works",
+        body: "Upload an image and a bundled AI super-resolution model trained for real-world photos reconstructs plausible detail at roughly 4x the original resolution, directly on ConvertBrio's servers with no third-party AI service involved.",
       },
       {
-        heading: "What You Can Do Right Now",
-        body: "For now, ConvertBrio's Resize Image tool can scale an image to a specific pixel size, though without the intelligent detail reconstruction an AI-based upscaler provides. That capability arrives with this tool's launch.",
+        heading: "When To Use It",
+        body: "Use this when you need a larger version of an existing image without the blur that ordinary resizing introduces. For a same-size quality cleanup instead of enlargement, use AI Image Enhancer.",
       },
     ],
     relatedTools: [
@@ -1828,22 +1828,22 @@ export const toolContent: Record<string, ToolContentEntry> = {
       { label: "AI Image Enhancer", href: "/tools/ai-image-enhancer" },
       { label: "AI Photo Restoration", href: "/tools/ai-photo-restoration" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming AI upscaler.",
+    faqDescription: "Common questions about ConvertBrio's AI upscaler.",
     faq: [
-      {
-        question: "Is the AI upscaler available yet?",
-        answer:
-          "Not yet — it requires an external AI model provider that ConvertBrio is currently connecting, as part of its broader AI toolset in development.",
-      },
       {
         question: "How is AI upscaling different from just resizing an image larger?",
         answer:
           "Ordinary resizing stretches existing pixels, which blurs the result. AI upscaling reconstructs plausible detail using a trained model, typically producing much sharper results at larger sizes.",
       },
       {
-        question: "What can I use for resizing images today?",
+        question: "Is there a file size limit?",
         answer:
-          "ConvertBrio's Resize Image tool lets you scale an image to specific pixel dimensions now, while AI-based upscaling is being developed.",
+          "Uploads are capped at 20 MB to keep processing time reasonable on the model that powers this tool.",
+      },
+      {
+        question: "Why did processing take a little while?",
+        answer:
+          "The first request after a period of inactivity can take a few extra seconds while the server loads the model. After that, processing is quick.",
       },
     ],
   },

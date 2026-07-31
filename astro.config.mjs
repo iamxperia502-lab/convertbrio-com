@@ -1,7 +1,20 @@
 // @ts-check
 import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 import { defineConfig } from 'astro/config';
+
+/**
+ * Recursively list all file paths (not directories) under `dir`.
+ * @param {string} dir
+ * @returns {string[]}
+ */
+function listFilesRecursive(dir) {
+  return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = join(dir, entry.name);
+    return entry.isDirectory() ? listFilesRecursive(entryPath) : [entryPath];
+  });
+}
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -56,6 +69,38 @@ const pdfjsStandardFontsFiles = readdirSync(pdfjsStandardFontsDir).map(
 // static tracer misses as pdf.worker.mjs and the standard fonts above.
 const passportPhotoModelFile = 'src/lib/models/yunet.onnx';
 
+// upscaler's Node build and the esrgan-slim model package (src/pages/api/convert/ai.ts)
+// are pulled in via createRequire() rather than a static import, which Vercel's
+// static file tracer doesn't follow - "Cannot find module 'upscaler/node'" at
+// runtime without this. Both are tiny (under 1MB and ~6MB respectively), so just
+// include every file rather than hand-pick the ones actually loaded at runtime.
+const upscalerNodeDir = fileURLToPath(new URL('./node_modules/upscaler/dist/node/', import.meta.url));
+const upscalerNodeFiles = [
+  // Node's own module resolver reads this at runtime to map the "./node"
+  // subpath export to dist/node/.../cjs/index.js - without it, require()
+  // fails before it ever looks at the dist files below.
+  'node_modules/upscaler/package.json',
+  ...listFilesRecursive(upscalerNodeDir).map((/** @type {string} */ path) => `node_modules/upscaler/dist/node/${path.slice(upscalerNodeDir.length)}`),
+];
+const esrganSlimDir = fileURLToPath(new URL('./node_modules/@upscalerjs/esrgan-slim/', import.meta.url));
+const esrganSlimFiles = listFilesRecursive(esrganSlimDir).map(
+  (/** @type {string} */ path) => `node_modules/@upscalerjs/esrgan-slim/${path.slice(esrganSlimDir.length)}`
+);
+// upscaler's shared upscaler.js unconditionally requires this as a fallback
+// default model, even when a custom model is passed in - it's a transitive
+// dependency of `upscaler` rather than something ai.ts imports directly.
+const defaultModelDir = fileURLToPath(new URL('./node_modules/@upscalerjs/default-model/', import.meta.url));
+const defaultModelFiles = listFilesRecursive(defaultModelDir).map(
+  (/** @type {string} */ path) => `node_modules/@upscalerjs/default-model/${path.slice(defaultModelDir.length)}`
+);
+// upscaler declares @tensorflow/tfjs-core as a peer dependency separate from
+// the copy @tensorflow/tfjs-node bundles internally for its own kernels -
+// Node resolves the top-level package first, so it has to ship too.
+const tfjsCoreDir = fileURLToPath(new URL('./node_modules/@tensorflow/tfjs-core/', import.meta.url));
+const tfjsCoreFiles = listFilesRecursive(tfjsCoreDir).map(
+  (/** @type {string} */ path) => `node_modules/@tensorflow/tfjs-core/${path.slice(tfjsCoreDir.length)}`
+);
+
 // onnxruntime-node ships prebuilt native binaries (each with its own ~10-25MB
 // libonnxruntime shared library alongside the small .node binding) for every
 // OS/arch, but Vercel's Node.js functions run linux/x64 — the other five
@@ -94,7 +139,17 @@ export default defineConfig({
     // Headless-Chromium-backed Word conversions (see src/lib/chromium.ts) need
     // more than the default function timeout, especially on a cold start.
     maxDuration: 60,
-    includeFiles: [...bgRemovalFiles, ...tesseractWasmFiles, pdfjsWorkerFile, ...pdfjsStandardFontsFiles, passportPhotoModelFile],
+    includeFiles: [
+      ...bgRemovalFiles,
+      ...tesseractWasmFiles,
+      pdfjsWorkerFile,
+      ...pdfjsStandardFontsFiles,
+      passportPhotoModelFile,
+      ...upscalerNodeFiles,
+      ...esrganSlimFiles,
+      ...defaultModelFiles,
+      ...tfjsCoreFiles,
+    ],
     excludeFiles: onnxExcludeFiles,
   })
 });

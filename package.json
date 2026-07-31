@@ -19,6 +19,8 @@
     "@supabase/supabase-js": "^2.110.2",
     "@tailwindcss/vite": "^4.3.2",
     "@techstark/opencv-js": "^5.0.0-release.1",
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "@upscalerjs/esrgan-slim": "^1.0.0",
     "@vercel/speed-insights": "^2.0.0",
     "astro": "^7.0.7",
     "canvas": "^3.2.3",
@@ -32,7 +34,8 @@
     "puppeteer-core": "^25.3.0",
     "sharp": "^0.35.3",
     "tailwindcss": "^4.3.2",
-    "tesseract.js": "^7.0.0"
+    "tesseract.js": "^7.0.0",
+    "upscaler": "^1.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
@@ -48,6 +51,8 @@
     "puppeteer@25.3.0": true,
     "sharp@0.32.6": true,
     "onnxruntime-node@1.17.3": true,
-    "tesseract.js@7.0.0": true
+    "tesseract.js@7.0.0": true,
+    "@tensorflow/tfjs-node@4.22.0": true,
+    "core-js@3.29.1": true
   }
 }
