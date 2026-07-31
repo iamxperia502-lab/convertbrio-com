@@ -71,13 +71,23 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
           </select>
         </div>
 
-        <button
-          id="quick-convert-btn"
-          type="submit"
-          class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          Convert
-        </button>
+        <div class="flex w-full max-w-xs gap-3">
+          <button
+            id="quick-reset-btn"
+            type="button"
+            class="inline-flex items-center justify-center gap-2 rounded-full border border-hairline-strong bg-canvas px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Reupload
+          </button>
+
+          <button
+            id="quick-convert-btn"
+            type="submit"
+            class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            Convert
+          </button>
+        </div>
       </div>
 
       <div class="flex flex-wrap items-center justify-center gap-2 px-4 py-5">
@@ -116,6 +126,7 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
   const options = document.getElementById("quick-options");
   const formatField = document.getElementById("quick-format-field");
   const convertButton = document.getElementById("quick-convert-btn") as HTMLButtonElement | null;
+  const resetButton = document.getElementById("quick-reset-btn") as HTMLButtonElement | null;
   const status = document.getElementById("upload-status");
   const progressPercent = document.getElementById("progress-percent");
   const progressBar = document.getElementById("progress-bar");
@@ -210,6 +221,12 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
   };
 
   input?.addEventListener("change", () => handleFile(input.files?.[0]));
+
+  resetButton?.addEventListener("click", () => {
+    if (input) input.value = "";
+    setProgress(0);
+    handleFile(undefined);
+  });
 
   ["dragenter", "dragover"].forEach((eventName) => {
     dropzone?.addEventListener(eventName, (event) => {

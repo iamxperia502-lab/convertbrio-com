@@ -204,12 +204,22 @@ const softwareApplicationSchema = {
                 )
               }
 
-              <button
-                type="submit"
-                class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                Convert
-              </button>
+              <div class="flex gap-3">
+                <button
+                  id="reset-btn"
+                  type="button"
+                  class="hidden items-center justify-center gap-2 rounded-full border border-hairline-strong bg-canvas px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Reupload
+                </button>
+
+                <button
+                  type="submit"
+                  class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  Convert
+                </button>
+              </div>
 
               <p id="tool-status" role="status" aria-live="polite" class="text-center text-sm text-body" />
             </form>
@@ -244,6 +254,7 @@ const softwareApplicationSchema = {
         const progressPercent = document.getElementById("progress-percent");
         const progressBar = document.getElementById("progress-bar");
         const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+        const resetButton = document.getElementById("reset-btn") as HTMLButtonElement | null;
 
         const setProgress = (percent: number) => {
           if (progressBar) progressBar.style.width = `${percent}%`;
@@ -256,6 +267,8 @@ const softwareApplicationSchema = {
           dropzoneDone?.classList.add("hidden");
           dropzoneDone?.classList.remove("flex");
           dropzoneIdle?.classList.remove("hidden");
+          resetButton?.classList.add("hidden");
+          resetButton?.classList.remove("inline-flex");
         };
 
         const showUploading = () => {
@@ -264,6 +277,8 @@ const softwareApplicationSchema = {
           dropzoneDone?.classList.remove("flex");
           dropzoneUploading?.classList.remove("hidden");
           dropzoneUploading?.classList.add("flex");
+          resetButton?.classList.add("hidden");
+          resetButton?.classList.remove("inline-flex");
         };
 
         const showDone = (label: string) => {
@@ -273,7 +288,18 @@ const softwareApplicationSchema = {
           dropzoneDone?.classList.remove("hidden");
           dropzoneDone?.classList.add("flex");
           if (doneFilename) doneFilename.textContent = label;
+          resetButton?.classList.remove("hidden");
+          resetButton?.classList.add("inline-flex");
         };
+
+        const resetForm = () => {
+          if (fileInput) fileInput.value = "";
+          if (status) status.textContent = "";
+          setProgress(0);
+          showIdle();
+        };
+
+        resetButton?.addEventListener("click", resetForm);
 
         const selectedFileLabel = (files: FileList) =>
           files.length > 1 ? `${files.length} files selected` : files[0].name;
