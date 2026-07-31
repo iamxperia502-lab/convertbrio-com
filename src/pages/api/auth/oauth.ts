@@ -21,6 +21,7 @@ export const GET: APIRoute = async ({ request, cookies, url, redirect }) => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider,
     options: {
+      ...(provider === "azure" ? { scopes: "email" } : {}),
       redirectTo: `${url.origin}/auth/callback?next=${encodeURIComponent(safeNext)}`,
     },
   });
