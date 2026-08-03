@@ -26,6 +26,14 @@ const model4x = require("@upscalerjs/esrgan-slim/4x");
 // used for background removal in api/convert/image.ts.
 const MAX_BYTES = 20 * 1024 * 1024;
 
+// The ESRGAN models' intermediate feature maps run at ~input resolution
+// (64 channels, float32) before the upscaling step, so memory scales with
+// input pixel count rather than file size. A file well under MAX_BYTES can
+// still OOM the function - e.g. a 1616x944 PNG (86 KB) blew past available
+// memory with "OOM when allocating tensor with shape[1,944,1616,64]".
+// Downscaling first keeps that feature-map size bounded.
+const MAX_DIMENSION = 1024;
+
 const MODEL_BY_OPERATION: Record<AiOperation, unknown> = {
   upscale: model4x.default ?? model4x,
   enhance: model2x.default ?? model2x,
@@ -68,6 +76,15 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const upscaler = new Upscaler({ model });
 
     inputTensor = tf.node.decodeImage(inputBuffer, 3) as import("@tensorflow/tfjs-node").Tensor3D;
+
+    const [height, width] = inputTensor.shape;
+    if (height > MAX_DIMENSION || width > MAX_DIMENSION) {
+      const scale = MAX_DIMENSION / Math.max(height, width);
+      const resized = tf.image.resizeBilinear(inputTensor, [Math.round(height * scale), Math.round(width * scale)]) as import("@tensorflow/tfjs-node").Tensor3D;
+      inputTensor.dispose();
+      inputTensor = resized;
+    }
+
     outputTensor = (await upscaler.upscale(inputTensor, { output: "tensor" })) as import("@tensorflow/tfjs-node").Tensor3D;
     const outputBuffer: Buffer = await tf.node.encodePng(outputTensor);
 
