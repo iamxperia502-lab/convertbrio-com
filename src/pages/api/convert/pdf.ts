@@ -1,10 +1,12 @@
 import type { APIRoute } from "astro";
 import { PDFDocument, StandardFonts, degrees, rgb } from "pdf-lib";
 import JSZip from "jszip";
+import sharp from "sharp";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
 import { ensureDomMatrixPolyfill, standardFontDataUrl } from "../../../lib/pdfjs-node-polyfills";
+import { looksLikeHeic, decodeHeicFallback, sharpFromHeicFallback } from "../../../lib/heic-fallback";
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires per-plan limits.
 const MAX_BYTES = 25 * 1024 * 1024;
@@ -273,11 +275,31 @@ export const POST: APIRoute = async ({ request, locals }) => {
         break;
       }
 
-      case "jpg-to-pdf": {
+      case "jpg-to-pdf":
+      case "image-to-pdf": {
         const doc = await PDFDocument.create();
         for (const file of files) {
-          const bytes = new Uint8Array(await file.arrayBuffer());
-          const image = file.type === "image/png" ? await doc.embedPng(bytes) : await doc.embedJpg(bytes);
+          const inputBuffer = Buffer.from(await file.arrayBuffer());
+          let embedBuffer: Buffer;
+          let isPng: boolean;
+          if (file.type === "image/jpeg" || file.type === "image/png") {
+            embedBuffer = inputBuffer;
+            isPng = file.type === "image/png";
+          } else {
+            // pdf-lib only embeds JPEG/PNG, so normalize WEBP/HEIC/AVIF/GIF
+            // to PNG first. .rotate() with no args auto-orients per EXIF,
+            // matching the upright handling in api/convert/image.ts.
+            try {
+              embedBuffer = await sharp(inputBuffer, { failOn: "none" }).rotate().png().toBuffer();
+            } catch (err) {
+              if (!looksLikeHeic(inputBuffer)) throw err;
+              // See lib/heic-fallback.ts for why sharp's native HEIC decode
+              // fails on some real iPhone photos.
+              embedBuffer = await sharpFromHeicFallback(await decodeHeicFallback(inputBuffer)).png().toBuffer();
+            }
+            isPng = true;
+          }
+          const image = isPng ? await doc.embedPng(embedBuffer) : await doc.embedJpg(embedBuffer);
           const page = doc.addPage([image.width, image.height]);
           page.drawImage(image, { x: 0, y: 0, width: image.width, height: image.height });
         }

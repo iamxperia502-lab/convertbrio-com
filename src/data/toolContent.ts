@@ -1189,6 +1189,50 @@ export const toolContent: Record<string, ToolContentEntry> = {
     ],
   },
 
+  "image-to-pdf": {
+    title: "Image to PDF Converter: Combine Photos Into One Document",
+    intro:
+      "Whether you're submitting scanned pages, building a photo portfolio, or turning receipts into one shareable file, ConvertBrio's Image to PDF tool combines one or more images — JPG, PNG, WEBP, HEIC, AVIF, or GIF — into a single PDF document, in the order you choose.",
+    sections: [
+      {
+        heading: "How to Convert Images to PDF",
+        body: "Upload one or more images in any common format, arrange them in the order you want them to appear, and ConvertBrio combines them into a single PDF with one image per page. The result downloads ready to share, print, or submit.",
+      },
+      {
+        heading: "Common Uses",
+        body: "This is the standard way to submit scanned ID documents, combine iPhone HEIC photos of receipts or contracts into one file for an application, or turn a set of images into a simple, shareable document without needing design or PDF-editing software.",
+      },
+      {
+        heading: "Combining Many Images at Once",
+        body: "You can upload multiple images in a single pass for free. For high-volume needs — like converting dozens of scanned pages regularly — ConvertBrio's paid plans add batch processing for faster, larger workflows.",
+      },
+    ],
+    relatedTools: [
+      { label: "JPG to PDF", href: "/tools/jpg-to-pdf" },
+      { label: "PDF to JPG", href: "/tools/pdf-to-jpg" },
+      { label: "Merge PDF", href: "/tools/merge-pdf" },
+      { label: "Compress PDF", href: "/tools/compress-pdf" },
+    ],
+    faqDescription: "Common questions about converting images to PDF.",
+    faq: [
+      {
+        question: "Can I combine multiple images into one PDF?",
+        answer:
+          "Yes — upload as many images as you need in a single pass, and ConvertBrio combines them into one PDF with each image placed on its own page in the order you arrange them.",
+      },
+      {
+        question: "Does this work with iPhone HEIC photos?",
+        answer:
+          "Yes — Image to PDF accepts HEIC and HEIF photos directly, along with JPG, PNG, WEBP, AVIF, and GIF, so you don't need to convert your iPhone photos first.",
+      },
+      {
+        question: "What image formats does this tool accept?",
+        answer:
+          "Image to PDF accepts JPG, PNG, WEBP, HEIC, HEIF, AVIF, and GIF images, all combined into a single PDF.",
+      },
+    ],
+  },
+
   "ocr-pdf": {
     title: "OCR PDF: Make Scanned Documents Searchable and Editable",
     intro:

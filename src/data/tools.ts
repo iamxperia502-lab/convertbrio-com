@@ -20,6 +20,7 @@ export type PdfOperation =
   | "pdf-to-jpg"
   | "pdf-to-png"
   | "jpg-to-pdf"
+  | "image-to-pdf"
   | "compress"
   | "unlock"
   | "ocr";
@@ -354,6 +355,17 @@ export const tools: Tool[] = [
     icon: "image",
     description: "Combine one or more images into a single PDF.",
     accept: "image/jpeg,image/png",
+    multiple: true,
+  },
+  {
+    slug: "image-to-pdf",
+    name: "Image to PDF",
+    categories: ["convert", "image"],
+    kind: "pdf",
+    operation: "image-to-pdf",
+    icon: "image",
+    description: "Combine JPG, PNG, WEBP, HEIC, AVIF, or GIF images into a single PDF.",
+    accept: IMAGE_ACCEPT,
     multiple: true,
   },
   {
