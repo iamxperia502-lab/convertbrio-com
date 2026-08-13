@@ -122,7 +122,7 @@ const softwareApplicationSchema = {
                   <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
                     <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
                   </div>
-                  <span class="text-xs text-mute">Uploading…</span>
+                  <span id="progress-label" class="text-xs text-mute">Uploading…</span>
                 </div>
 
                 <div id="dropzone-done" class="hidden flex-col items-center gap-2">
@@ -260,12 +260,45 @@ const softwareApplicationSchema = {
         const status = document.getElementById("tool-status");
         const progressPercent = document.getElementById("progress-percent");
         const progressBar = document.getElementById("progress-bar");
+        const progressLabel = document.getElementById("progress-label");
         const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
         const resetButton = document.getElementById("reset-btn") as HTMLButtonElement | null;
 
         const setProgress = (percent: number) => {
           if (progressBar) progressBar.style.width = `${percent}%`;
           if (progressPercent) progressPercent.textContent = `${percent}%`;
+        };
+
+        // The upload phase has real byte-level progress from the browser, but
+        // the server does the actual conversion (PDF/AI/etc.) in one
+        // synchronous pass with no progress channel back to the client. So
+        // the upload gets a slice of the bar (0-UPLOAD_WEIGHT%), and once it
+        // finishes, a trickle animation eases the rest of the bar toward
+        // PROCESSING_CEILING - never claiming 100% before the response
+        // actually arrives - so the bar stays visibly alive instead of
+        // freezing on a static "Processing…" message.
+        const UPLOAD_WEIGHT = 35;
+        const PROCESSING_CEILING = 96;
+        let processingTimer: number | undefined;
+
+        const stopProcessingTrickle = () => {
+          if (processingTimer !== undefined) {
+            window.clearInterval(processingTimer);
+            processingTimer = undefined;
+          }
+          progressBar?.classList.remove("animate-pulse");
+        };
+
+        const startProcessingTrickle = (startPercent: number) => {
+          let current = startPercent;
+          if (progressLabel) progressLabel.textContent = "Processing…";
+          progressBar?.classList.add("animate-pulse");
+          processingTimer = window.setInterval(() => {
+            current += (PROCESSING_CEILING - current) * 0.06;
+            const rounded = Math.min(PROCESSING_CEILING, Math.round(current));
+            setProgress(rounded);
+            if (status) status.textContent = `Processing… ${rounded}%`;
+          }, 200);
         };
 
         const showIdle = () => {
@@ -302,7 +335,9 @@ const softwareApplicationSchema = {
         const resetForm = () => {
           if (fileInput) fileInput.value = "";
           if (status) status.textContent = "";
+          stopProcessingTrickle();
           setProgress(0);
+          if (progressLabel) progressLabel.textContent = "Uploading…";
           showIdle();
         };
 
@@ -349,6 +384,7 @@ const softwareApplicationSchema = {
           submitButton?.setAttribute("disabled", "true");
           showUploading();
           setProgress(0);
+          if (progressLabel) progressLabel.textContent = "Uploading…";
           status.textContent = "Uploading… 0%";
 
           try {
@@ -356,22 +392,26 @@ const softwareApplicationSchema = {
               endpoint,
               formData: new FormData(form),
               onProgress: (percent) => {
-                setProgress(percent);
+                const weighted = Math.round((percent / 100) * UPLOAD_WEIGHT);
+                setProgress(weighted);
                 status.textContent = `Uploading… ${percent}%`;
               },
               onUploaded: () => {
-                status.textContent = "Processing…";
-                if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
+                startProcessingTrickle(UPLOAD_WEIGHT);
               },
             });
 
-            downloadBlob(blob, filename);
+            stopProcessingTrickle();
+            setProgress(100);
             status.textContent = `Done — ${filename} downloaded.`;
+            downloadBlob(blob, filename);
+            if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
           } catch (err) {
             status.textContent = err instanceof Error ? err.message : "Something went wrong. Try again.";
             if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
             else showIdle();
           } finally {
+            stopProcessingTrickle();
             submitButton?.removeAttribute("disabled");
           }
         });
