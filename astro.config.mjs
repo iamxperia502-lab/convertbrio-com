@@ -121,6 +121,18 @@ export default defineConfig({
   // 200s as distinct URLs.
   trailingSlash: 'never',
 
+  // The site ships one global stylesheet (Tailwind's compiled output, ~10KB
+  // gzipped), and PageSpeed Insights flagged its <link rel="stylesheet"> as
+  // the last render-blocking request on mobile — a full network round trip
+  // before the browser can paint anything. Inlining it into each page's
+  // <head> trades a small amount of per-page HTML weight (it's no longer a
+  // separately cached file) for removing that round trip from the critical
+  // path entirely, which matters more for first-time/crawler visits than
+  // the repeat-view caching we give up.
+  build: {
+    inlineStylesheets: 'always',
+  },
+
   vite: {
     plugins: [tailwindcss()]
   },
