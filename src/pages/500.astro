@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+Astro.response.status = 500;
+Astro.response.statusText = "Internal Server Error";
 ---
 
-<Layout title="Something went wrong" noindex>
+<Layout title="Something went wrong" noindex follow noCanonical>
   <section class="bg-canvas">
     <div class="container-page flex flex-col items-center gap-4 py-24 text-center sm:py-32">
       <p class="font-mono text-sm text-mute">500</p>

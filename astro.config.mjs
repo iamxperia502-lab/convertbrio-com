@@ -115,6 +115,11 @@ const onnxExcludeFiles = onnxPlatformsToExclude.flatMap((platform) =>
 export default defineConfig({
   site: 'https://www.convertbrio.com',
   output: 'server',
+  // Canonical URL format has no trailing slash — see the redirect in
+  // src/middleware.ts that 308s the trailing-slash form to this one, so
+  // "/tools/compress-image/" and "/tools/compress-image" don't both serve
+  // 200s as distinct URLs.
+  trailingSlash: 'never',
 
   vite: {
     plugins: [tailwindcss()]

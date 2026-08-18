@@ -5,6 +5,13 @@ import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import Icon from "../components/Icon.astro";
 import { categories, toolsByCategory, isComingSoon } from "../data/tools";
+import type { CategoryId } from "../data/tools";
+
+// Coming-soon tools aren't live yet, so they're hidden from this listing
+// entirely rather than shown as unclickable placeholders — nothing to
+// navigate to means nothing worth surfacing here.
+const liveToolsByCategory = (categoryId: CategoryId) =>
+  toolsByCategory(categoryId).filter((tool) => !isComingSoon(tool));
 ---
 
 <Layout
@@ -40,47 +47,37 @@ import { categories, toolsByCategory, isComingSoon } from "../data/tools";
   <div class="bg-canvas">
     <div class="container-page flex flex-col gap-14 py-16 sm:gap-16 sm:py-20">
       {
-        categories.map((cat) => (
-          <section id={cat.id} aria-labelledby={`${cat.id}-heading`} class="scroll-mt-24">
-            <div class="mb-6 flex items-start gap-3">
-              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink">
-                <Icon name={cat.icon} class="h-5 w-5" />
-              </span>
-              <div>
-                <h2 id={`${cat.id}-heading`} class="text-xl font-semibold tracking-[-0.01em] text-ink">
-                  {cat.name}
-                </h2>
-                <p class="text-sm text-body">{cat.desc}</p>
+        categories
+          .filter((cat) => liveToolsByCategory(cat.id).length > 0)
+          .map((cat) => (
+            <section id={cat.id} aria-labelledby={`${cat.id}-heading`} class="scroll-mt-24">
+              <div class="mb-6 flex items-start gap-3">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink">
+                  <Icon name={cat.icon} class="h-5 w-5" />
+                </span>
+                <div>
+                  <h2 id={`${cat.id}-heading`} class="text-xl font-semibold tracking-[-0.01em] text-ink">
+                    {cat.name}
+                  </h2>
+                  <p class="text-sm text-body">{cat.desc}</p>
+                </div>
               </div>
-            </div>
 
-            <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              {toolsByCategory(cat.id).map((tool) => (
-                <li>
-                  <a
-                    href={isComingSoon(tool) ? undefined : `/tools/${tool.slug}`}
-                    aria-disabled={isComingSoon(tool) ? "true" : undefined}
-                    class={`flex items-center justify-between gap-3 rounded-lg border border-hairline px-4 py-3.5 transition-colors ${
-                      isComingSoon(tool)
-                        ? "cursor-default bg-canvas-soft-2/60 text-mute"
-                        : "bg-canvas-soft hover:border-hairline-strong hover:bg-canvas-soft-2"
-                    }`}
-                  >
-                    <span class="flex items-center gap-3">
+              <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {liveToolsByCategory(cat.id).map((tool) => (
+                  <li>
+                    <a
+                      href={`/tools/${tool.slug}`}
+                      class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas-soft px-4 py-3.5 transition-colors hover:border-hairline-strong hover:bg-canvas-soft-2"
+                    >
                       <Icon name={tool.icon} class="h-4 w-4 shrink-0 text-mute" />
-                      <span class={`text-sm ${isComingSoon(tool) ? "text-mute" : "text-ink"}`}>{tool.name}</span>
-                    </span>
-                    {isComingSoon(tool) && (
-                      <span class="shrink-0 rounded-full bg-canvas-soft-2 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-mute">
-                        Soon
-                      </span>
-                    )}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))
+                      <span class="text-sm text-ink">{tool.name}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))
       }
     </div>
   </div>

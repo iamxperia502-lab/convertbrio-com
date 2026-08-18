@@ -11,6 +11,15 @@ interface Props {
   canonical?: string;
   image?: string;
   noindex?: boolean;
+  // Only meaningful when noindex is true — pages that shouldn't be indexed
+  // (e.g. coming-soon tools, error pages) but still link to real content
+  // should stay crawlable so link equity flows through, rather than being
+  // walled off with nofollow.
+  follow?: boolean;
+  // Omits the canonical tag entirely. Use for pages that shouldn't claim a
+  // canonical URL at all, like 404s (there's no "canonical" version of a
+  // page that doesn't exist).
+  noCanonical?: boolean;
 }
 
 const {
@@ -20,12 +29,14 @@ const {
   canonical,
   image = "/web-app-manifest-512x512.png",
   noindex = false,
+  follow = true,
+  noCanonical = false,
 } = Astro.props;
 
 const pageTitle = seoTitle ?? (title === "ConvertBrio" ? title : `${title} · ConvertBrio`);
 const canonicalUrl = new URL(canonical ?? Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(image, Astro.site);
-const robotsContent = noindex ? "noindex, nofollow" : "index, follow";
+const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "nofollow"}`;
 ---
 
 <!doctype html>
@@ -52,7 +63,7 @@ const robotsContent = noindex ? "noindex, nofollow" : "index, follow";
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
     <meta name="robots" content={robotsContent} />
-    <link rel="canonical" href={canonicalUrl} />
+    {!noCanonical && <link rel="canonical" href={canonicalUrl} />}
     <meta name="theme-color" id="theme-color-meta" content="#ffffff" />
 
     <script is:inline>

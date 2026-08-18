@@ -34,6 +34,12 @@ interface ToolBase {
   description: string;
   accept: string;
   multiple?: boolean;
+  // Overrides for the <title> tag and meta description on the tool's page.
+  // Falls back to `name`/`description` when omitted. Use this to add
+  // search intent ("Free Online", "No Signup", the exact output) without
+  // cluttering the on-page heading, which stays plain.
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export interface ImageTool extends ToolBase {
@@ -80,6 +86,9 @@ export const tools: Tool[] = [
     operation: "convert",
     icon: "image",
     description: "Convert images between JPG, PNG, WEBP, AVIF, HEIC, and GIF.",
+    seoTitle: "Free Online Image Converter — JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
+    seoDescription:
+      "Convert images between JPG, PNG, WEBP, AVIF, HEIC, and GIF in your browser. Free, no signup, files deleted automatically after conversion.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -91,6 +100,9 @@ export const tools: Tool[] = [
     outputFormat: "jpeg",
     icon: "heic",
     description: "Convert iPhone HEIC photos to universally-supported JPG.",
+    seoTitle: "Convert HEIC to JPG Free — No Signup | ConvertBrio",
+    seoDescription:
+      "Convert iPhone HEIC or HEIF photos to JPG online, free and without an account. Fast, private conversion that works in any browser — no app to install.",
     accept: "image/heic,image/heif",
   },
   {
@@ -233,6 +245,9 @@ export const tools: Tool[] = [
     operation: "compress",
     icon: "shrink",
     description: "Shrink image file size while keeping quality intact.",
+    seoTitle: "Compress Image to an Exact File Size (KB) | ConvertBrio",
+    seoDescription:
+      "Compress a JPG, PNG, WEBP, HEIC, or AVIF to an exact KB target — like 100 KB for a visa, job portal, or government form — or use the quality slider. Free, no signup, unlimited use.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -273,6 +288,9 @@ export const tools: Tool[] = [
     operation: "merge",
     icon: "merge",
     description: "Combine multiple PDFs into a single document.",
+    seoTitle: "Merge PDF Files Free Online — No Signup | ConvertBrio",
+    seoDescription:
+      "Combine multiple PDFs into one document, in any order, free and without creating an account. Files are encrypted and deleted automatically after merging.",
     accept: PDF_ACCEPT,
     multiple: true,
   },
@@ -294,6 +312,9 @@ export const tools: Tool[] = [
     operation: "compress",
     icon: "shrink",
     description: "Reduce PDF file size (best-effort — image re-encoding and metadata cleanup).",
+    seoTitle: "Compress PDF File Size Free Online | ConvertBrio",
+    seoDescription:
+      "Reduce a PDF's file size by re-encoding embedded images and stripping unnecessary metadata. Free, no signup, results vary with how image-heavy the PDF is.",
     accept: PDF_ACCEPT,
   },
   {
@@ -386,6 +407,9 @@ export const tools: Tool[] = [
     operation: "word-to-pdf",
     icon: "word",
     description: "Convert Word (.docx) documents to PDF.",
+    seoTitle: "Convert Word to PDF Free Online — No Signup | ConvertBrio",
+    seoDescription:
+      "Convert a Word (.docx) document to a print-ready PDF that preserves your formatting. Free, no account required, files deleted automatically after conversion.",
     accept: DOCX_ACCEPT,
   },
   {
@@ -396,6 +420,9 @@ export const tools: Tool[] = [
     operation: "pdf-to-word",
     icon: "pdf",
     description: "Convert a PDF into an editable Word document, preserving paragraphs, bold/italic, headings, simple tables, and images (complex multi-column layouts may not match exactly).",
+    seoTitle: "Convert PDF to Word (Editable DOCX) Free | ConvertBrio",
+    seoDescription:
+      "Turn a PDF into an editable Word document — paragraphs, headings, bold/italic, simple tables, and images preserved. Free, no signup, complex multi-column layouts may not match exactly.",
     accept: PDF_ACCEPT,
   },
   {
@@ -488,6 +515,9 @@ export const tools: Tool[] = [
     outputFormat: "png",
     icon: "sparkle",
     description: "Automatically remove the background from a photo.",
+    seoTitle: "Remove Background from Image Free — AI, No Signup | ConvertBrio",
+    seoDescription:
+      "Automatically remove a photo's background with AI and download a transparent PNG. Free, no account, no manual masking required.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -519,6 +549,9 @@ export const tools: Tool[] = [
     operation: "upscale",
     icon: "sparkle",
     description: "Increase image resolution with AI upscaling.",
+    seoTitle: "AI Image Upscaler Free Online — No Signup | ConvertBrio",
+    seoDescription:
+      "Increase an image's resolution with AI upscaling, free and without an account. Sharpen low-resolution photos before printing or resizing.",
     accept: IMAGE_ACCEPT,
   },
   {

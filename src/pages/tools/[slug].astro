@@ -76,7 +76,13 @@ const softwareApplicationSchema = isComingSoon(tool)
     };
 ---
 
-<Layout title={tool.name} description={tool.description} noindex={isComingSoon(tool)}>
+<Layout
+  title={tool.name}
+  seoTitle={tool.seoTitle}
+  description={tool.seoDescription ?? tool.description}
+  noindex={isComingSoon(tool)}
+  follow
+>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
     {softwareApplicationSchema && <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} is:inline />}
