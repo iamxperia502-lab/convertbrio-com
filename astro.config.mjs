@@ -116,21 +116,6 @@ export default defineConfig({
   site: 'https://www.convertbrio.com',
   output: 'server',
 
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'es', 'fr', 'de', 'pt'],
-    routing: {
-      prefixDefaultLocale: false,
-      fallbackType: 'rewrite',
-    },
-    fallback: {
-      es: 'en',
-      fr: 'en',
-      de: 'en',
-      pt: 'en',
-    },
-  },
-
   vite: {
     plugins: [tailwindcss()]
   },

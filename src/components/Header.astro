@@ -1,32 +1,24 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import { categories } from "../data/tools";
 import ThemeToggle from "./ThemeToggle.astro";
-import LanguageSwitcher from "./LanguageSwitcher.astro";
-import { useTranslations } from "../i18n/utils";
-import type { ui } from "../i18n/ui";
 
-const lang = Astro.currentLocale ?? "en";
-const t = useTranslations(lang);
-const localePath = (path: string) => getRelativeLocaleUrl(lang, path);
-
-const categoryLabels: Record<string, keyof typeof ui.en> = {
-  convert: "nav.category.convert",
-  compress: "nav.category.compress",
-  pdf: "nav.category.pdf",
-  image: "nav.category.image",
-  document: "nav.category.document",
-  ai: "nav.category.ai",
+const categoryLabels: Record<string, string> = {
+  convert: "Convert",
+  compress: "Compress",
+  pdf: "PDF Tools",
+  image: "Image Tools",
+  document: "Document Tools",
+  ai: "AI Tools",
 };
 
 const navLinks = [
   ...categories.map((cat) => ({
-    label: t(categoryLabels[cat.id] ?? cat.name),
-    href: `${localePath("/all-tools")}#${cat.id}`,
+    label: categoryLabels[cat.id] ?? cat.name,
+    href: `/all-tools#${cat.id}`,
   })),
-  { label: t("nav.allTools"), href: localePath("/all-tools") },
-  { label: t("nav.blog"), href: localePath("/blog") },
-  { label: t("nav.pricing"), href: localePath("/pricing") },
+  { label: "All Tools", href: "/all-tools" },
+  { label: "Blog", href: "/blog" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -35,7 +27,7 @@ const user = Astro.locals.user;
 
 <header class="sticky top-0 z-40 border-b border-hairline bg-canvas/90 backdrop-blur-sm">
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <a href={localePath("/")} class="flex shrink-0 items-center gap-2 rounded-sm" aria-label="ConvertBrio home">
+    <a href="/" class="flex shrink-0 items-center gap-2 rounded-sm" aria-label="ConvertBrio home">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect width="26" height="26" rx="7" fill="#16171B" />
         <path d="M8 13.5L11.2 16.7L18 9.3" stroke="#EEF1FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -66,38 +58,37 @@ const user = Astro.locals.user;
         user ? (
           <>
             <a
-              href={localePath("/dashboard")}
+              href="/dashboard"
               class="rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
             >
-              {t("nav.dashboard")}
+              Dashboard
             </a>
             <form method="post" action="/api/auth/sign-out">
               <button
                 type="submit"
                 class="rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
               >
-                {t("nav.signOut")}
+                Sign Out
               </button>
             </form>
           </>
         ) : (
           <>
             <a
-              href={localePath("/sign-in")}
+              href="/sign-in"
               class="rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
             >
-              {t("nav.signIn")}
+              Sign In
             </a>
             <a
-              href={localePath("/all-tools")}
+              href="/all-tools"
               class="rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
             >
-              {t("nav.getStarted")}
+              Get Started
             </a>
           </>
         )
       }
-      <LanguageSwitcher />
     </div>
 
     <ThemeToggle class="shrink-0" />
@@ -108,9 +99,9 @@ const user = Astro.locals.user;
       class="inline-flex items-center justify-center rounded-md p-2 text-ink lg:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      aria-label={t("a11y.openMenu")}
-      data-label-open={t("a11y.openMenu")}
-      data-label-close={t("a11y.closeMenu")}
+      aria-label="Open menu"
+      data-label-open="Open menu"
+      data-label-close="Close menu"
     >
       <svg id="icon-open" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
         <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
@@ -138,37 +129,34 @@ const user = Astro.locals.user;
           user ? (
             <>
               <a
-                href={localePath("/dashboard")}
+                href="/dashboard"
                 class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
               >
-                {t("nav.dashboard")}
+                Dashboard
               </a>
               <form method="post" action="/api/auth/sign-out">
                 <button type="submit" class="w-full rounded-full bg-ink px-4 py-2.5 text-center text-[15px] font-medium text-canvas">
-                  {t("nav.signOut")}
+                  Sign Out
                 </button>
               </form>
             </>
           ) : (
             <>
               <a
-                href={localePath("/sign-in")}
+                href="/sign-in"
                 class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
               >
-                {t("nav.signIn")}
+                Sign In
               </a>
               <a
-                href={localePath("/all-tools")}
+                href="/all-tools"
                 class="rounded-full bg-ink px-4 py-2.5 text-center text-[15px] font-medium text-canvas"
               >
-                {t("nav.getStarted")}
+                Get Started
               </a>
             </>
           )
         }
-      </div>
-      <div class="mt-2 border-t border-hairline pt-4">
-        <LanguageSwitcher />
       </div>
     </nav>
   </div>

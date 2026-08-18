@@ -3,9 +3,6 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { languages } from "../i18n/ui";
-import { stripLocalePrefix, useTranslations } from "../i18n/utils";
 
 interface Props {
   title: string;
@@ -29,13 +26,10 @@ const pageTitle = seoTitle ?? (title === "ConvertBrio" ? title : `${title} · Co
 const canonicalUrl = new URL(canonical ?? Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(image, Astro.site);
 const robotsContent = noindex ? "noindex, nofollow" : "index, follow";
-const lang = Astro.currentLocale ?? "en";
-const t = useTranslations(lang);
-const barePath = stripLocalePrefix(Astro.url.pathname);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang="en">
   <head>
     <!-- Google Tag Manager -->
     <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -59,12 +53,6 @@ const barePath = stripLocalePrefix(Astro.url.pathname);
     <meta name="description" content={description} />
     <meta name="robots" content={robotsContent} />
     <link rel="canonical" href={canonicalUrl} />
-    {
-      Object.keys(languages).map((code) => (
-        <link rel="alternate" hreflang={code} href={new URL(getRelativeLocaleUrl(code, barePath), Astro.site)} />
-      ))
-    }
-    <link rel="alternate" hreflang="x-default" href={new URL(barePath, Astro.site)} />
     <meta name="theme-color" id="theme-color-meta" content="#ffffff" />
 
     <script is:inline>
@@ -107,7 +95,7 @@ const barePath = stripLocalePrefix(Astro.url.pathname);
       href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-canvas"
     >
-      {t("a11y.skipToContent")}
+      Skip to content
     </a>
     <Header />
     <main id="main-content" class="flex-1">
