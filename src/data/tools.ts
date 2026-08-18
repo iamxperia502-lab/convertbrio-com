@@ -554,3 +554,7 @@ export function toolsByCategory(categoryId: CategoryId): Tool[] {
 export function isComingSoon(tool: Tool): tool is ComingSoonTool {
   return tool.kind === "office-soon" || tool.kind === "ai-soon";
 }
+
+// Live tool count for marketing copy — computed so it can't drift out of
+// sync with tools.ts as tools are added, removed, or marked coming-soon.
+export const liveToolCount = tools.filter((tool) => !isComingSoon(tool)).length;

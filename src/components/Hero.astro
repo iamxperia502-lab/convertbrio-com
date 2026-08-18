@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+import { liveToolCount } from "../data/tools";
 ---
 
 <section class="relative overflow-hidden border-b border-hairline bg-canvas">
@@ -40,7 +41,7 @@ import Icon from "./Icon.astro";
         href="/all-tools"
         class="inline-flex items-center justify-center gap-2 rounded-full border border-hairline px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
       >
-        Browse 50+ other tools
+        Browse all {liveToolCount} tools
       </a>
     </div>
   </div>

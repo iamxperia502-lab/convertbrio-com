@@ -336,7 +336,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "How the Conversion Works",
-        body: "Upload your PNG file and ConvertBrio outputs an AVIF version, preserving transparency and resolution. The process runs entirely in your browser and completes in seconds for typical image sizes.",
+        body: "Upload your PNG file and ConvertBrio outputs an AVIF version, preserving transparency and resolution. Conversion runs on ConvertBrio's servers and completes in seconds for typical image sizes.",
       },
       {
         heading: "Compatibility Notes",
@@ -805,7 +805,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "merge-pdf": {
     title: "Merge PDF Online: Combine Multiple PDFs Into One File",
     intro:
-      "Joining scanned pages, invoices, reports, or chapters into a single document usually means opening desktop software or paying for a subscription. ConvertBrio's merge tool does it directly in your browser — upload multiple PDFs, arrange them in order, and download one combined file in seconds.",
+      "Joining scanned pages, invoices, reports, or chapters into a single document usually means opening desktop software or paying for a subscription. ConvertBrio's merge tool does it from your browser with no install — upload multiple PDFs, arrange them in order, and download one combined file in seconds.",
     sections: [
       {
         heading: "How to Merge PDF Files",
@@ -1451,7 +1451,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "excel-to-pdf": {
     title: "Excel to PDF Converter: Coming Soon to ConvertBrio",
     intro:
-      "Turning a spreadsheet into a fixed, shareable PDF is one of the most requested document conversions, and ConvertBrio is building support for it now. Once live, Excel to PDF will let you convert .xls and .xlsx spreadsheets into print-ready PDF documents directly in your browser, with no Excel installation required on the receiving end.",
+      "Turning a spreadsheet into a fixed, shareable PDF is one of the most requested document conversions, and ConvertBrio is building support for it now. Once live, Excel to PDF will let you convert .xls and .xlsx spreadsheets into print-ready PDF documents from your browser, with no Excel installation required on the receiving end.",
     sections: [
       {
         heading: "What This Tool Will Do",
@@ -1535,7 +1535,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "powerpoint-to-pdf": {
     title: "PowerPoint to PDF Converter: Coming Soon to ConvertBrio",
     intro:
-      "Sharing a presentation with someone who doesn't have PowerPoint, or locking in a final version before it goes out for review, usually means converting it to PDF first. ConvertBrio is building PowerPoint to PDF support so you'll be able to do that conversion directly in your browser.",
+      "Sharing a presentation with someone who doesn't have PowerPoint, or locking in a final version before it goes out for review, usually means converting it to PDF first. ConvertBrio is building PowerPoint to PDF support so you'll be able to do that conversion from your browser, with no software to install.",
     sections: [
       {
         heading: "What This Tool Will Do",

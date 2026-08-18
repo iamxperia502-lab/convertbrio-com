@@ -4,6 +4,7 @@ export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import Icon from "../components/Icon.astro";
+import { liveToolCount } from "../data/tools";
 
 const values = [
   {
@@ -23,11 +24,6 @@ const values = [
   },
 ] as const;
 
-const stats = [
-  { label: "Files processed", value: "12M+" },
-  { label: "Tools available", value: "50+" },
-  { label: "Countries served", value: "180+" },
-] as const;
 ---
 
 <Layout
@@ -58,29 +54,15 @@ const stats = [
     </div>
   </section>
 
-  <section aria-label="ConvertBrio in numbers" class="border-y border-hairline bg-canvas-soft">
-    <div class="container-page py-14">
-      <dl class="grid grid-cols-1 gap-8 sm:grid-cols-3">
-        {
-          stats.map((stat) => (
-            <div class="text-center">
-              <dt class="text-sm text-mute">{stat.label}</dt>
-              <dd class="mt-1 text-3xl font-semibold tracking-[-0.02em] text-ink">{stat.value}</dd>
-            </div>
-          ))
-        }
-      </dl>
-    </div>
-  </section>
-
   <section aria-label="Our approach" class="bg-canvas">
     <div class="container-page flex flex-col gap-4 py-16 sm:py-20">
       <h2 class="text-2xl font-semibold tracking-[-0.01em] text-ink">Our approach</h2>
       <p class="max-w-2xl leading-relaxed text-body">
         We focus on the tools people actually use every day — image conversion, PDF editing,
         document formatting, and compression — and make each one fast, accurate, and free to try.
-        Where AI genuinely improves a result, like enhancing a low-resolution photo, we use it. Where
-        it wouldn't help, we leave it out.
+        {liveToolCount} tools are live today, with more shipping regularly. Where AI genuinely
+        improves a result, like enhancing a low-resolution photo, we use it. Where it wouldn't
+        help, we leave it out.
       </p>
       <p class="max-w-2xl leading-relaxed text-body">
         ConvertBrio is built by a small, independent team. If you have feedback or a tool you’d like

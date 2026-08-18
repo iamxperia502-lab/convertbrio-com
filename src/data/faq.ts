@@ -14,7 +14,7 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "How do I convert files online for free?",
     answer:
-      "Open any tool on ConvertBrio's homepage, upload your file, choose an output format, and click convert — no account or payment required. Every core conversion, including image, PDF, and document conversions, runs directly in your browser, giving you a fast, no-cost way to convert files online.",
+      "Open any tool on ConvertBrio's homepage, upload your file, choose an output format, and click convert — no account or payment required. Your file is sent over an encrypted connection to ConvertBrio's servers, converted there in seconds, and the result comes back to you, ready to download.",
   },
   {
     question: "Is ConvertBrio free to use?",
@@ -25,7 +25,7 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Can I convert files on my phone?",
     answer:
-      "Yes. ConvertBrio runs entirely in your mobile browser, so you can convert, compress, or merge files on a phone or tablet without installing an app. The upload box works with your device's camera roll and file picker, and every tool is built to work on small touchscreens as well as desktops.",
+      "Yes. Open ConvertBrio in your phone or tablet's browser and every tool works the same as on desktop, with no app to install. The upload box works with your device's camera roll and file picker, and every tool is built for small touchscreens as well as desktops.",
   },
   {
     question: "How do I convert AVIF to JPG?",
@@ -114,13 +114,13 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Can ConvertBrio extract text from images or scanned PDFs?",
     answer:
-      "Full OCR text extraction is in development and launching soon, so scanned PDFs and photographed pages will become searchable, copyable text with no manual typing required. In the meantime, ConvertBrio's PDF to JPG, PDF to PNG, and PDF to Word tools can help you rework scanned documents today.",
-    link: { href: "/tools/ocr-pdf", label: "Preview OCR PDF" },
+      "Yes. ConvertBrio's OCR PDF tool scans every page, recognizes the text, and hands back a searchable, copyable PDF. It currently recognizes English text; support for other languages isn't available yet.",
+    link: { href: "/tools/ocr-pdf", label: "Try OCR PDF" },
   },
   {
     question: "Are uploaded files secure?",
     answer:
-      "Yes. Every file you upload to ConvertBrio is encrypted in transit, processed automatically, and never reviewed by a person. Each conversion runs in an isolated process, so your documents and images stay private from the moment they're uploaded until they're removed from our servers.",
+      "Every file you upload to ConvertBrio travels over an encrypted (HTTPS) connection and is stored encrypted at rest. Conversion is fully automated — no one manually opens or reviews your file as part of processing — and each conversion runs in its own isolated server process.",
   },
   {
     question: "When are uploaded files deleted?",
@@ -130,7 +130,7 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Do I need to install any software?",
     answer:
-      "No. ConvertBrio works entirely inside your web browser on desktop or mobile, so there's nothing to download or install. Just open the tool you need, upload your file, and download the result — the same browser-based process works for image, PDF, and document conversions alike.",
+      "No. You use ConvertBrio entirely from your web browser on desktop or mobile — there's nothing to download or install. Upload your file, and ConvertBrio's servers do the actual conversion; you just wait a few seconds and download the result.",
   },
   {
     question: "Which file formats does ConvertBrio support?",
