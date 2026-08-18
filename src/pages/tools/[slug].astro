@@ -4,6 +4,7 @@ import PageIntro from "../../components/PageIntro.astro";
 import Icon from "../../components/Icon.astro";
 import ToolContent from "../../components/ToolContent.astro";
 import FaqSection from "../../components/FaqSection.astro";
+import CompressImageBenchmark from "../../components/CompressImageBenchmark.astro";
 import { getTool, isComingSoon, tools } from "../../data/tools";
 import { toolContent } from "../../data/toolContent";
 
@@ -256,6 +257,8 @@ const softwareApplicationSchema = isComingSoon(tool)
       </div>
     </div>
   </section>
+
+  {tool.slug === "compress-image" && <CompressImageBenchmark />}
 
   {
     content && (
