@@ -153,9 +153,25 @@ const softwareApplicationSchema = {
 
               {
                 tool.kind === "image" && tool.operation === "compress" && (
-                  <div class="flex flex-col gap-1.5">
-                    <label for="quality" class="text-sm font-medium text-ink">Quality</label>
-                    <input id="quality" name="quality" type="range" min="20" max="95" value="60" class="accent-ink" />
+                  <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-1.5">
+                      <label for="targetKb" class="text-sm font-medium text-ink">Target size (KB)</label>
+                      <input
+                        id="targetKb"
+                        name="targetKb"
+                        type="number"
+                        min="5"
+                        placeholder="e.g. 100"
+                        class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400"
+                      />
+                      <span class="text-xs text-mute">
+                        We'll adjust quality — and dimensions if needed — to fit this limit. Leave blank to use the quality slider instead.
+                      </span>
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="quality" class="text-sm font-medium text-ink">Quality (used if no target size)</label>
+                      <input id="quality" name="quality" type="range" min="20" max="95" value="60" class="accent-ink" />
+                    </div>
                   </div>
                 )
               }

@@ -37,6 +37,58 @@ function baseName(filename: string) {
   return dot > 0 ? filename.slice(0, dot) : filename;
 }
 
+const MIN_COMPRESS_QUALITY = 10;
+const MAX_COMPRESS_QUALITY = 95;
+const MAX_DOWNSCALE_STEPS = 6;
+
+async function encodeAtQuality(base: Sharp, format: WritableFormat, quality: number, width?: number) {
+  let pipeline = base.clone();
+  if (width) pipeline = pipeline.resize({ width, withoutEnlargement: true });
+  // PNG only shrinks with quality when palette quantization is enabled.
+  const options = format === "png" ? { quality, palette: true } : { quality };
+  return pipeline.toFormat(format, options).toBuffer();
+}
+
+// Binary-searches JPEG/WEBP/AVIF/PNG quality to fit under targetBytes, then
+// returns the settings to re-apply to the caller's own pipeline (rather than
+// a buffer) so the caller keeps a single `image.toFormat(...).toBuffer()`
+// call site. If even the minimum quality doesn't fit, falls back to
+// progressively downscaling dimensions — matching the "quality and, if
+// necessary, dimensions" promise made on the tool's marketing/FAQ copy.
+async function findCompressSettings(
+  base: Sharp,
+  format: WritableFormat,
+  targetBytes: number,
+): Promise<{ quality: number; width?: number }> {
+  let low = MIN_COMPRESS_QUALITY;
+  let high = MAX_COMPRESS_QUALITY;
+  let bestQuality: number | null = null;
+
+  while (low <= high) {
+    const quality = Math.floor((low + high) / 2);
+    const buffer = await encodeAtQuality(base, format, quality);
+    if (buffer.length <= targetBytes) {
+      bestQuality = quality;
+      low = quality + 1;
+    } else {
+      high = quality - 1;
+    }
+  }
+
+  if (bestQuality !== null) return { quality: bestQuality };
+
+  const metadata = await base.clone().metadata();
+  let width = metadata.width;
+  let buffer = await encodeAtQuality(base, format, MIN_COMPRESS_QUALITY);
+
+  for (let i = 0; i < MAX_DOWNSCALE_STEPS && buffer.length > targetBytes && width && width > 50; i++) {
+    width = Math.round(width * 0.85);
+    buffer = await encodeAtQuality(base, format, MIN_COMPRESS_QUALITY, width);
+  }
+
+  return { quality: MIN_COMPRESS_QUALITY, width };
+}
+
 export const POST: APIRoute = async ({ request, locals }) => {
   const form = await request.formData();
   const file = form.get("file");
@@ -217,8 +269,16 @@ export const POST: APIRoute = async ({ request, locals }) => {
         break;
       }
       case "compress": {
-        const quality = Number(form.get("quality") ?? 60);
-        image = image.toFormat(outputFormat, { quality });
+        const targetKb = Number(form.get("targetKb") ?? 0);
+        if (targetKb > 0) {
+          const { quality, width } = await findCompressSettings(image, outputFormat, targetKb * 1024);
+          if (width) image = image.resize({ width, withoutEnlargement: true });
+          const options = outputFormat === "png" ? { quality, palette: true } : { quality };
+          image = image.toFormat(outputFormat, options);
+        } else {
+          const quality = Number(form.get("quality") ?? 60);
+          image = image.toFormat(outputFormat, { quality });
+        }
         break;
       }
       case "resize": {
