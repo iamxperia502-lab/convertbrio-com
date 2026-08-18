@@ -27,7 +27,10 @@ const endpoint =
   tool.kind === "ai" ? "/api/convert/ai" :
   null;
 
-const content = toolContent[tool.slug];
+// Coming-soon tools don't work yet, so they get no FAQ/SEO content or
+// SoftwareApplication schema below — publishing either would claim
+// functionality the tool doesn't have.
+const content = isComingSoon(tool) ? undefined : toolContent[tool.slug];
 
 const faqSchema = content && {
   "@context": "https://schema.org",
@@ -54,26 +57,28 @@ const breadcrumbSchema = {
   ],
 };
 
-const softwareApplicationSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: tool.name,
-  url: `${base}/tools/${tool.slug}`,
-  applicationCategory: "UtilitiesApplication",
-  operatingSystem: "Any (web-based)",
-  description: tool.description,
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-};
+const softwareApplicationSchema = isComingSoon(tool)
+  ? null
+  : {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: tool.name,
+      url: `${base}/tools/${tool.slug}`,
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Any (web-based)",
+      description: tool.description,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+      },
+    };
 ---
 
-<Layout title={tool.name} description={tool.description}>
+<Layout title={tool.name} description={tool.description} noindex={isComingSoon(tool)}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
-    <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} is:inline />
+    {softwareApplicationSchema && <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} is:inline />}
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />}
   </Fragment>
 

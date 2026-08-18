@@ -1468,7 +1468,6 @@ export const toolContent: Record<string, ToolContentEntry> = {
     ],
     relatedTools: [
       { label: "Word to PDF", href: "/tools/word-to-pdf" },
-      { label: "PDF to Excel", href: "/tools/pdf-to-excel" },
       { label: "Merge PDF", href: "/tools/merge-pdf" },
     ],
     faqDescription: "Common questions about ConvertBrio's upcoming Excel to PDF tool.",
@@ -1511,7 +1510,6 @@ export const toolContent: Record<string, ToolContentEntry> = {
     ],
     relatedTools: [
       { label: "PDF to Word", href: "/tools/pdf-to-word" },
-      { label: "Excel to PDF", href: "/tools/excel-to-pdf" },
       { label: "PDF to JPG", href: "/tools/pdf-to-jpg" },
     ],
     faqDescription: "Common questions about ConvertBrio's upcoming PDF to Excel tool.",
@@ -1639,7 +1637,6 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
     ],
     relatedTools: [
-      { label: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
       { label: "Compress PDF", href: "/tools/compress-pdf" },
       { label: "Compress Image", href: "/tools/compress-image" },
     ],
@@ -1684,7 +1681,6 @@ export const toolContent: Record<string, ToolContentEntry> = {
     relatedTools: [
       { label: "Merge PDF", href: "/tools/merge-pdf" },
       { label: "Word to PDF", href: "/tools/word-to-pdf" },
-      { label: "Excel to PDF", href: "/tools/excel-to-pdf" },
     ],
     faqDescription: "Common questions about ConvertBrio's upcoming Merge Documents tool.",
     faq: [
@@ -1726,7 +1722,6 @@ export const toolContent: Record<string, ToolContentEntry> = {
     ],
     relatedTools: [
       { label: "Crop Image", href: "/tools/crop-image" },
-      { label: "AI Photo Restoration", href: "/tools/ai-photo-restoration" },
       { label: "Image Converter", href: "/tools/image-converter" },
     ],
     faqDescription: "Common questions about ConvertBrio's AI background remover.",
@@ -1826,7 +1821,6 @@ export const toolContent: Record<string, ToolContentEntry> = {
     ],
     relatedTools: [
       { label: "AI Upscaler", href: "/tools/ai-upscaler" },
-      { label: "AI Photo Restoration", href: "/tools/ai-photo-restoration" },
       { label: "Compress Image", href: "/tools/compress-image" },
     ],
     faqDescription: "Common questions about ConvertBrio's AI image enhancer.",
@@ -1870,7 +1864,6 @@ export const toolContent: Record<string, ToolContentEntry> = {
     relatedTools: [
       { label: "Resize Image", href: "/tools/resize-image" },
       { label: "AI Image Enhancer", href: "/tools/ai-image-enhancer" },
-      { label: "AI Photo Restoration", href: "/tools/ai-photo-restoration" },
     ],
     faqDescription: "Common questions about ConvertBrio's AI upscaler.",
     faq: [
@@ -1913,7 +1906,6 @@ export const toolContent: Record<string, ToolContentEntry> = {
     relatedTools: [
       { label: "Crop Image", href: "/tools/crop-image" },
       { label: "Remove Background", href: "/tools/remove-background" },
-      { label: "AI Photo Restoration", href: "/tools/ai-photo-restoration" },
     ],
     faqDescription: "Common questions about ConvertBrio's upcoming AI object remover.",
     faq: [

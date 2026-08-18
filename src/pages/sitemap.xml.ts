@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import { tools } from "../data/tools";
+import { tools, isComingSoon } from "../data/tools";
 
 export const prerender = true;
 
@@ -28,12 +28,14 @@ export const GET: APIRoute = async ({ site }) => {
       priority,
       lastmod,
     })),
-    ...tools.map((tool) => ({
-      loc: `${base}/tools/${tool.slug}`,
-      changefreq: "weekly",
-      priority: "0.8",
-      lastmod,
-    })),
+    ...tools
+      .filter((tool) => !isComingSoon(tool))
+      .map((tool) => ({
+        loc: `${base}/tools/${tool.slug}`,
+        changefreq: "weekly",
+        priority: "0.8",
+        lastmod,
+      })),
     ...posts.map((post) => ({
       loc: `${base}/blog/${post.id}`,
       changefreq: "monthly",
