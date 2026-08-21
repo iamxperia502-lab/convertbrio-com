@@ -1534,44 +1534,44 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "powerpoint-to-pdf": {
-    title: "PowerPoint to PDF Converter: Coming Soon to ConvertBrio",
+    title: "PowerPoint to PDF Converter: Share Slides Without PowerPoint Installed",
     intro:
-      "Sharing a presentation with someone who doesn't have PowerPoint, or locking in a final version before it goes out for review, usually means converting it to PDF first. ConvertBrio is building PowerPoint to PDF support so you'll be able to do that conversion from your browser, with no software to install.",
+      "Sharing a presentation with someone who doesn't have PowerPoint, or locking in a final version before it goes out for review, usually means converting it to PDF first. ConvertBrio's PowerPoint to PDF converter does that conversion from your browser, with no software to install.",
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "PowerPoint to PDF will convert .ppt and .pptx presentations into a fixed-layout PDF that preserves slide design, fonts, and images, so recipients can view it exactly as designed without needing PowerPoint installed.",
+        heading: "How to Convert PowerPoint to PDF",
+        body: "Upload your .pptx file and ConvertBrio renders each slide as a page in a PDF, preserving your text, images, and layout. The converted file downloads automatically and is ready to email, print, or share with anyone, regardless of what software they have installed.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "Presentation files have their own layout and rendering logic, distinct from the Word document pipeline ConvertBrio currently supports. Building reliable PowerPoint rendering is part of the broader Excel/PowerPoint conversion work currently underway.",
+        heading: "Why Convert to PDF Before Sharing",
+        body: "A PDF displays identically on every device, while a .pptx file needs PowerPoint (or a compatible viewer) installed and can look different depending on the fonts available. Converting to PDF locks in your slide design before a presentation goes out for review or gets sent to a client.",
       },
       {
-        heading: "What's Available Right Now",
-        body: "While this tool is being built, ConvertBrio's Word to PDF and PDF to Word tools handle document-based conversions today. Check back as presentation support becomes available.",
+        heading: "What Carries Over (and What Doesn't)",
+        body: "Text, images, and slide layout convert cleanly. Animations, transitions, and elements like charts, SmartArt, and embedded tables don't carry over to the static PDF — if your deck relies heavily on those, review the converted PDF before sending it out.",
       },
     ],
     relatedTools: [
       { label: "Word to PDF", href: "/tools/word-to-pdf" },
+      { label: "Excel to PDF", href: "/tools/excel-to-pdf" },
       { label: "Merge PDF", href: "/tools/merge-pdf" },
-      { label: "Compress PDF", href: "/tools/compress-pdf" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming PowerPoint to PDF tool.",
+    faqDescription: "Common questions about converting PowerPoint presentations to PDF.",
     faq: [
       {
-        question: "Is PowerPoint to PDF available yet?",
+        question: "How do I convert a PowerPoint file to PDF?",
         answer:
-          "Not yet — presentation conversion needs its own rendering pipeline, which is part of the Excel/PowerPoint support ConvertBrio is currently building. Only Word ↔ PDF/JPG/PNG conversion is available today.",
+          "Upload your .pptx file to ConvertBrio's PowerPoint to PDF tool, and it generates a PDF with one page per slide, ready to download, no PowerPoint installation required.",
       },
       {
-        question: "Will slide design and formatting be preserved?",
+        question: "Will animations or transitions carry over?",
         answer:
-          "That's the goal — the converted PDF is intended to preserve slide layout, fonts, and images so the presentation looks the same as it does in PowerPoint.",
+          "No — a PDF is a static document, so animations, transitions, and elements like charts, SmartArt, and embedded tables won't appear in the converted file. Text, images, and slide layout are preserved.",
       },
       {
-        question: "What can I convert today instead?",
+        question: "Does this work with legacy .ppt files?",
         answer:
-          "Word to PDF and PDF to Word are live now for document conversions while presentation support is being developed.",
+          "Not yet — only the modern .pptx format is supported. Save your presentation as .pptx in PowerPoint (File → Save As) and try again.",
       },
     ],
   },

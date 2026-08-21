@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
-import { wordToPdf, pdfToDocx, excelToPdf } from "../../../lib/office-convert";
+import { wordToPdf, pdfToDocx, excelToPdf, powerpointToPdf } from "../../../lib/office-convert";
 import { renderPdfToImages } from "./pdf";
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires
@@ -85,6 +85,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
       case "excel-to-pdf": {
         outputBuffer = await excelToPdf(Buffer.from(await file.arrayBuffer()));
+        contentType = "application/pdf";
+        filename = `${baseName(file.name)}.pdf`;
+        break;
+      }
+
+      case "powerpoint-to-pdf": {
+        outputBuffer = await powerpointToPdf(Buffer.from(await file.arrayBuffer()));
         contentType = "application/pdf";
         filename = `${baseName(file.name)}.pdf`;
         break;

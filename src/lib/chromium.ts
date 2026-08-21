@@ -4,6 +4,7 @@
 interface MinimalPage {
   setContent(html: string, options?: { waitUntil?: string }): Promise<void>;
   pdf(options: Record<string, unknown>): Promise<Uint8Array>;
+  close(): Promise<void>;
 }
 
 interface MinimalBrowser {
@@ -33,6 +34,33 @@ export async function withPage<T>(fn: (page: MinimalPage) => Promise<T>): Promis
   try {
     const page = await browser.newPage();
     return await fn(page);
+  } finally {
+    await browser.close();
+  }
+}
+
+// Renders each HTML string to its own PDF page, reusing a single browser
+// across the whole batch instead of paying Chromium's launch cost — which
+// is especially steep for @sparticuz/chromium on Vercel — once per item.
+// Each item still gets its own `page`: reusing one `page` across repeated
+// setContent()/pdf() calls causes the second setContent's `networkidle0`
+// wait to hang indefinitely (observed empirically), so a fresh page per
+// item is used instead — still far cheaper than a fresh browser launch.
+export async function renderPdfPages(
+  htmlPages: string[],
+  pdfOptions: (index: number) => Record<string, unknown>,
+): Promise<Buffer[]> {
+  const browser = await launchBrowser();
+  try {
+    const buffers: Buffer[] = [];
+    for (let i = 0; i < htmlPages.length; i++) {
+      const page = await browser.newPage();
+      await page.setContent(htmlPages[i], { waitUntil: "networkidle0" });
+      const bytes = await page.pdf(pdfOptions(i));
+      await page.close();
+      buffers.push(Buffer.from(bytes));
+    }
+    return buffers;
   } finally {
     await browser.close();
   }

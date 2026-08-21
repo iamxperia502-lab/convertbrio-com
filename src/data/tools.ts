@@ -24,7 +24,13 @@ export type PdfOperation =
   | "compress"
   | "unlock"
   | "ocr";
-export type OfficeOperation = "word-to-pdf" | "pdf-to-word" | "word-to-jpg" | "word-to-png" | "excel-to-pdf";
+export type OfficeOperation =
+  | "word-to-pdf"
+  | "pdf-to-word"
+  | "word-to-jpg"
+  | "word-to-png"
+  | "excel-to-pdf"
+  | "powerpoint-to-pdf";
 
 interface ToolBase {
   slug: string;
@@ -469,11 +475,11 @@ export const tools: Tool[] = [
     slug: "powerpoint-to-pdf",
     name: "PowerPoint to PDF",
     categories: ["convert", "document"],
-    kind: "office-soon",
+    kind: "office",
+    operation: "powerpoint-to-pdf",
     icon: "word",
     description: "Convert PowerPoint presentations to PDF.",
     accept: ".ppt,.pptx",
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
   },
   {
     slug: "compress-word",
