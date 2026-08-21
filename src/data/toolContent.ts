@@ -1662,43 +1662,44 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "merge-documents": {
-    title: "Merge Documents: Coming Soon to ConvertBrio",
+    title: "Merge Documents: Combine Word, Excel & PowerPoint Into One PDF",
     intro:
-      "Combining a mix of Word, Excel, and PowerPoint files into a single PDF today usually means converting each one separately and merging them by hand. ConvertBrio is building a Merge Documents tool that will do the whole process in one step.",
+      "Combining a mix of Word, Excel, and PowerPoint files into a single PDF usually means converting each one separately and merging them by hand. ConvertBrio's Merge Documents tool does the whole process in one step.",
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "Merge Documents will accept multiple files across Word, Excel, and PowerPoint formats, convert each into PDF, and combine them into a single ordered document — useful for assembling a report, proposal, or presentation packet made up of pieces created in different Office applications.",
+        heading: "How to Merge Documents",
+        body: "Upload multiple files — any mix of Word, Excel, PowerPoint, and PDF — and ConvertBrio converts each one to PDF and combines them into a single ordered document. The merged PDF downloads automatically, ready to email, print, or archive.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "This tool depends on Excel and PowerPoint conversion support, which ConvertBrio is currently building. Since Merge Documents needs all three document types working reliably, it launches after that underlying support is in place.",
+        heading: "Why Merge Into One PDF",
+        body: "A single PDF is easier to share, review, and archive than a scattered set of files in different formats, and it guarantees the recipient sees everything in the intended order without needing Word, Excel, or PowerPoint installed.",
       },
       {
-        heading: "What You Can Do Right Now",
-        body: "Today, you can convert a Word document to PDF with Word to PDF, then combine multiple PDFs — including ones you already have — using ConvertBrio's Merge PDF tool. Full mixed-format merging arrives once Excel and PowerPoint support ships.",
+        heading: "Keeping Document Order",
+        body: "Files are combined in the order you upload them, so arrange your selection before uploading if the final document needs a specific sequence — for example, a cover page, then a report, then supporting spreadsheet data.",
       },
     ],
     relatedTools: [
-      { label: "Merge PDF", href: "/tools/merge-pdf" },
       { label: "Word to PDF", href: "/tools/word-to-pdf" },
+      { label: "Excel to PDF", href: "/tools/excel-to-pdf" },
+      { label: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming Merge Documents tool.",
+    faqDescription: "Common questions about merging Word, Excel, and PowerPoint files into one PDF.",
     faq: [
       {
-        question: "Is Merge Documents available yet?",
+        question: "What file types can I combine?",
         answer:
-          "Not yet — it depends on Excel and PowerPoint conversion, which ConvertBrio is currently building. Only Word ↔ PDF/JPG/PNG conversion is supported today.",
+          "Any mix of Word (.docx), Excel (.xlsx, .xls), PowerPoint (.pptx), and PDF files in the same upload — each non-PDF file is converted to PDF first, then all of them are merged together.",
       },
       {
-        question: "What file types will it combine?",
+        question: "What order do my files merge in?",
         answer:
-          "Once live, it will accept Word, Excel, and PowerPoint files together and combine them into a single ordered PDF document.",
+          "Files are combined in the order you upload them. Arrange your file selection beforehand if you need a specific sequence in the final document.",
       },
       {
-        question: "How can I combine documents today?",
+        question: "Does this work with legacy .doc/.ppt/.xls files?",
         answer:
-          "Convert Word files to PDF individually with Word to PDF, then combine the resulting PDFs using ConvertBrio's Merge PDF tool.",
+          "Legacy .doc and .ppt formats aren't supported — save those files as .docx or .pptx first. Legacy .xls spreadsheets do work, since ConvertBrio's Excel conversion reads that format natively.",
       },
     ],
   },

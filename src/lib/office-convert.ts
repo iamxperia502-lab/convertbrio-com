@@ -37,3 +37,4 @@ export async function wordToPdf(docxBuffer: Buffer): Promise<Buffer> {
 export { pdfToDocx } from "./pdf-to-docx";
 export { excelToPdf } from "./excel-to-pdf";
 export { powerpointToPdf } from "./pptx-to-pdf";
+export { mergePdfBuffers } from "./merge-pdf-buffers";

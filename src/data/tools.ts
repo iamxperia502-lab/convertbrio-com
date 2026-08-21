@@ -30,7 +30,8 @@ export type OfficeOperation =
   | "word-to-jpg"
   | "word-to-png"
   | "excel-to-pdf"
-  | "powerpoint-to-pdf";
+  | "powerpoint-to-pdf"
+  | "merge-documents";
 
 interface ToolBase {
   slug: string;
@@ -505,12 +506,12 @@ export const tools: Tool[] = [
     slug: "merge-documents",
     name: "Merge Documents",
     categories: ["document"],
-    kind: "office-soon",
+    kind: "office",
+    operation: "merge-documents",
     icon: "merge",
     description: "Combine Word, Excel, and PowerPoint files into one PDF.",
     accept: OFFICE_ACCEPT,
     multiple: true,
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
   },
   {
     slug: "remove-background",

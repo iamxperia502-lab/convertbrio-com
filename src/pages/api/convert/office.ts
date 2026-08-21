@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
-import { wordToPdf, pdfToDocx, excelToPdf, powerpointToPdf } from "../../../lib/office-convert";
+import { wordToPdf, pdfToDocx, excelToPdf, powerpointToPdf, mergePdfBuffers } from "../../../lib/office-convert";
 import { renderPdfToImages } from "./pdf";
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires
@@ -15,6 +15,15 @@ const DOCX_MIME = "application/vnd.openxmlformats-officedocument.wordprocessingm
 function baseName(filename: string) {
   const dot = filename.lastIndexOf(".");
   return dot > 0 ? filename.slice(0, dot) : filename;
+}
+
+function detectOfficeKind(file: File): "docx" | "xlsx" | "pptx" | "pdf" | "unsupported" {
+  const ext = file.name.toLowerCase().split(".").pop() ?? "";
+  if (ext === "pdf" || file.type === "application/pdf") return "pdf";
+  if (ext === "docx") return "docx";
+  if (ext === "xlsx" || ext === "xls") return "xlsx";
+  if (ext === "pptx") return "pptx";
+  return "unsupported"; // legacy .doc/.ppt or an unrecognized extension
 }
 
 export const POST: APIRoute = async ({ request, locals }) => {
@@ -94,6 +103,25 @@ export const POST: APIRoute = async ({ request, locals }) => {
         outputBuffer = await powerpointToPdf(Buffer.from(await file.arrayBuffer()));
         contentType = "application/pdf";
         filename = `${baseName(file.name)}.pdf`;
+        break;
+      }
+
+      case "merge-documents": {
+        const pdfBuffers: Buffer[] = [];
+        for (const f of files) {
+          const buf = Buffer.from(await f.arrayBuffer());
+          switch (detectOfficeKind(f)) {
+            case "pdf": pdfBuffers.push(buf); break;
+            case "docx": pdfBuffers.push(await wordToPdf(buf)); break;
+            case "xlsx": pdfBuffers.push(await excelToPdf(buf)); break;
+            case "pptx": pdfBuffers.push(await powerpointToPdf(buf)); break;
+            case "unsupported":
+              throw new Error(`"${f.name}" is a legacy .doc/.ppt/.xls file — please save it as .docx/.pptx/.xlsx and try again.`);
+          }
+        }
+        outputBuffer = await mergePdfBuffers(pdfBuffers);
+        contentType = "application/pdf";
+        filename = "merged.pdf";
         break;
       }
     }
