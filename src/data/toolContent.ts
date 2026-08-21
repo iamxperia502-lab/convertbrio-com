@@ -1449,43 +1449,44 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "excel-to-pdf": {
-    title: "Excel to PDF Converter: Coming Soon to ConvertBrio",
+    title: "Excel to PDF Converter: Lock In Your Spreadsheet Layout for Sharing",
     intro:
-      "Turning a spreadsheet into a fixed, shareable PDF is one of the most requested document conversions, and ConvertBrio is building support for it now. Once live, Excel to PDF will let you convert .xls and .xlsx spreadsheets into print-ready PDF documents from your browser, with no Excel installation required on the receiving end.",
+      "A spreadsheet can look different depending on the column widths, fonts, or software version it's opened with — which is a problem when you need a financial report, invoice, or data table to look exactly the same everywhere. ConvertBrio's Excel to PDF converter turns your spreadsheet into a fixed, print-ready PDF that displays identically no matter what device or software opens it.",
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "Excel to PDF will take your spreadsheet — formulas, formatting, and all — and render it as a fixed-layout PDF that looks the same no matter what device or software opens it. That makes it easy to share financial reports, invoices, and data tables with people who don't have Excel installed, or to lock in a snapshot of a spreadsheet before it changes further.",
+        heading: "How to Convert Excel to PDF",
+        body: "Upload your .xls or .xlsx file and ConvertBrio renders each sheet as a page (or set of pages) in a PDF, preserving your data, cell formatting, and merged cells. The converted file downloads automatically and is ready to email, print, or archive.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "Excel and PowerPoint conversion require a different rendering pipeline than the Word ↔ PDF/JPG/PNG conversions ConvertBrio currently supports, since spreadsheets and slide decks have fundamentally different layout logic than word processing documents. That pipeline is in active development.",
+        heading: "Why Convert to PDF Before Sharing",
+        body: "PDF is the standard format for finished documents because it displays identically across every device and operating system — unlike a spreadsheet, which can reflow or look different depending on what's installed. Converting locks in your layout before a report, invoice, or data table goes out the door, and means the recipient doesn't need Excel installed to view it.",
       },
       {
-        heading: "What's Available Right Now",
-        body: "While Excel to PDF is being built, ConvertBrio's Word to PDF, PDF to Word, Word to JPG, and Word to PNG tools are all fully functional today for document-based conversions. Check ConvertBrio's tools page periodically for updates as spreadsheet support rolls out.",
+        heading: "Common Use Cases",
+        body: "This tool is commonly used for sharing financial reports and invoices with people who don't have Excel, archiving a fixed snapshot of a spreadsheet before it changes further, and preparing data tables for print or official distribution.",
       },
     ],
     relatedTools: [
       { label: "Word to PDF", href: "/tools/word-to-pdf" },
+      { label: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
       { label: "Merge PDF", href: "/tools/merge-pdf" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming Excel to PDF tool.",
+    faqDescription: "Common questions about converting Excel spreadsheets to PDF.",
     faq: [
       {
-        question: "Is Excel to PDF available yet?",
+        question: "How do I convert an Excel file to PDF?",
         answer:
-          "Not yet — Excel and PowerPoint conversion require a rendering pipeline ConvertBrio is still building. Currently only Word ↔ PDF/JPG/PNG conversion is supported.",
+          "Upload your .xls or .xlsx file to ConvertBrio's Excel to PDF tool, and it generates a formatted PDF version ready to download, no Microsoft Excel installation required.",
       },
       {
-        question: "What formats will this tool support?",
+        question: "Will my spreadsheet's formatting and formulas stay the same?",
         answer:
-          "Once available, it will convert .xls and .xlsx spreadsheet files into print-ready PDF documents.",
+          "Cell formatting, merged cells, and layout are preserved. Formulas convert to their last-calculated value rather than staying live formulas, since a PDF is a fixed, static document rather than an editable spreadsheet.",
       },
       {
-        question: "Can I convert other document types today?",
+        question: "What if my spreadsheet has multiple sheets?",
         answer:
-          "Yes — Word to PDF, PDF to Word, Word to JPG, and Word to PNG are all live now and cover common document conversion needs while spreadsheet support is being built.",
+          "Each sheet in your workbook is converted and placed on its own page (or set of pages) in the resulting PDF, in the same order they appear in the original file.",
       },
     ],
   },

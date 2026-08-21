@@ -1,6 +1,6 @@
 import { withPage } from "./chromium";
 
-function wrapHtmlDocument(bodyHtml: string): string {
+export function wrapHtmlDocument(bodyHtml: string, extraCss = ""): string {
   return `<!doctype html>
 <html>
 <head>
@@ -10,6 +10,7 @@ function wrapHtmlDocument(bodyHtml: string): string {
   img { max-width: 100%; }
   table { border-collapse: collapse; width: 100%; }
   td, th { border: 1px solid #ccc; padding: 4px 8px; }
+  ${extraCss}
 </style>
 </head>
 <body>${bodyHtml}</body>
@@ -34,3 +35,4 @@ export async function wordToPdf(docxBuffer: Buffer): Promise<Buffer> {
 }
 
 export { pdfToDocx } from "./pdf-to-docx";
+export { excelToPdf } from "./excel-to-pdf";

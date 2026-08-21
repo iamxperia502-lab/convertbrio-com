@@ -24,7 +24,7 @@ export type PdfOperation =
   | "compress"
   | "unlock"
   | "ocr";
-export type OfficeOperation = "word-to-pdf" | "pdf-to-word" | "word-to-jpg" | "word-to-png";
+export type OfficeOperation = "word-to-pdf" | "pdf-to-word" | "word-to-jpg" | "word-to-png" | "excel-to-pdf";
 
 interface ToolBase {
   slug: string;
@@ -449,11 +449,11 @@ export const tools: Tool[] = [
     slug: "excel-to-pdf",
     name: "Excel to PDF",
     categories: ["convert", "document"],
-    kind: "office-soon",
+    kind: "office",
+    operation: "excel-to-pdf",
     icon: "word",
     description: "Convert Excel spreadsheets to PDF.",
     accept: ".xls,.xlsx",
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
   },
   {
     slug: "pdf-to-excel",
