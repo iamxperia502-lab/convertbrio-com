@@ -267,6 +267,15 @@ const softwareApplicationSchema = isComingSoon(tool)
                 </button>
               </div>
 
+              <a
+                id="download-link"
+                href="#"
+                class="hidden items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+              >
+                <Icon name="download" class="h-4 w-4" />
+                <span id="download-link-label">Download result</span>
+              </a>
+
               <p id="tool-status" role="status" aria-live="polite" class="text-center text-sm text-body" />
             </form>
           )
@@ -289,7 +298,7 @@ const softwareApplicationSchema = isComingSoon(tool)
   {
     !isComingSoon(tool) && (
       <script>
-        import { submitConversion, downloadBlob } from "../../lib/upload-client";
+        import { submitConversion, createDownloadHandle } from "../../lib/upload-client";
 
         const form = document.getElementById("tool-form") as HTMLFormElement | null;
         const dropzone = document.getElementById("dropzone");
@@ -304,6 +313,15 @@ const softwareApplicationSchema = isComingSoon(tool)
         const progressLabel = document.getElementById("progress-label");
         const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
         const resetButton = document.getElementById("reset-btn") as HTMLButtonElement | null;
+        const downloadLink = document.getElementById("download-link") as HTMLAnchorElement | null;
+        const downloadLinkLabel = document.getElementById("download-link-label");
+        const downloadHandle = downloadLink ? createDownloadHandle(downloadLink) : null;
+
+        const hideDownloadLink = () => {
+          downloadHandle?.revoke();
+          downloadLink?.classList.add("hidden");
+          downloadLink?.classList.remove("flex");
+        };
 
         const setProgress = (percent: number) => {
           if (progressBar) progressBar.style.width = `${percent}%`;
@@ -350,6 +368,7 @@ const softwareApplicationSchema = isComingSoon(tool)
           dropzoneIdle?.classList.remove("hidden");
           resetButton?.classList.add("hidden");
           resetButton?.classList.remove("inline-flex");
+          hideDownloadLink();
         };
 
         const showUploading = () => {
@@ -360,6 +379,7 @@ const softwareApplicationSchema = isComingSoon(tool)
           dropzoneUploading?.classList.add("flex");
           resetButton?.classList.add("hidden");
           resetButton?.classList.remove("inline-flex");
+          hideDownloadLink();
         };
 
         const showDone = (label: string) => {
@@ -388,6 +408,7 @@ const softwareApplicationSchema = isComingSoon(tool)
           files.length > 1 ? `${files.length} files selected` : files[0].name;
 
         fileInput?.addEventListener("change", () => {
+          hideDownloadLink();
           if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
           else showIdle();
         });
@@ -408,6 +429,7 @@ const softwareApplicationSchema = isComingSoon(tool)
           const dt = (event as DragEvent).dataTransfer;
           if (dt?.files?.length && fileInput) {
             fileInput.files = dt.files;
+            hideDownloadLink();
             showDone(selectedFileLabel(dt.files));
           }
         });
@@ -444,9 +466,15 @@ const softwareApplicationSchema = isComingSoon(tool)
 
             stopProcessingTrickle();
             setProgress(100);
-            status.textContent = `Done — ${filename} downloaded.`;
-            downloadBlob(blob, filename);
+            status.textContent = `Done — ${filename} downloaded. If it didn't start, use the button below.`;
             if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
+            if (downloadHandle && downloadLink) {
+              downloadHandle.set(blob, filename);
+              if (downloadLinkLabel) downloadLinkLabel.textContent = `Download ${filename}`;
+              downloadLink.classList.remove("hidden");
+              downloadLink.classList.add("flex");
+              downloadLink.click();
+            }
           } catch (err) {
             status.textContent = err instanceof Error ? err.message : "Something went wrong. Try again.";
             if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));

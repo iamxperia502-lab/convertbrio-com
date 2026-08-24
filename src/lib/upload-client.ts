@@ -50,13 +50,31 @@ export function submitConversion({ endpoint, formData, onProgress, onUploaded }:
   });
 }
 
-export function downloadBlob(blob: Blob, filename: string) {
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
+/**
+ * Wraps a real, visible <a download> element so the browser's own download
+ * triggers it - not just a one-shot programmatic click. Object URLs used to
+ * be created, clicked, and revoked immediately in the same tick, which
+ * triggers an automatic download but leaves nothing for the user to click
+ * again if that download silently doesn't register (blocked, missed,
+ * dismissed) - the only recovery was re-uploading and re-converting from
+ * scratch. Keeping the URL alive on a persistent button fixes that.
+ */
+export function createDownloadHandle(anchor: HTMLAnchorElement) {
+  let currentUrl: string | null = null;
+
+  function revoke() {
+    if (currentUrl) {
+      URL.revokeObjectURL(currentUrl);
+      currentUrl = null;
+    }
+  }
+
+  function set(blob: Blob, filename: string) {
+    revoke();
+    currentUrl = URL.createObjectURL(blob);
+    anchor.href = currentUrl;
+    anchor.download = filename;
+  }
+
+  return { set, revoke };
 }
