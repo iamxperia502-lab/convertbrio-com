@@ -471,6 +471,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
         heading: "Things to Check Before Switching",
         body: "AVIF is supported by all current major browsers, but confirm your content management system and any third-party tools in your workflow accept AVIF uploads before replacing WEBP site-wide. For personal projects and modern websites, the switch is usually seamless.",
       },
+      {
+        heading: "Limits and Privacy",
+        body: "Uploads are capped at 25 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
+      },
     ],
     relatedTools: [
       { label: "JPG to AVIF", href: "/tools/jpg-to-avif" },
@@ -557,6 +561,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
         heading: "Expected File Size",
         body: "Because PNG doesn't compress as aggressively as AVIF, the converted file will typically be noticeably larger than the source — often several times the size. That trade-off is expected and comes with the benefit of lossless, widely-compatible output.",
       },
+      {
+        heading: "Limits and Privacy",
+        body: "Uploads are capped at 25 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
+      },
     ],
     relatedTools: [
       { label: "AVIF to JPG", href: "/tools/avif-to-jpg" },
@@ -599,6 +607,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         heading: "Compression Trade-Offs",
         body: "WEBP files are typically a bit larger than the equivalent AVIF at the same visual quality, since AVIF's compression is generally more advanced. The difference is usually small enough that the compatibility gain is worth it for most use cases.",
+      },
+      {
+        heading: "Limits and Privacy",
+        body: "Uploads are capped at 25 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -862,6 +874,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
         heading: "Rejoining Pages Later",
         body: "If you split a PDF and later need to recombine some or all of the resulting pages into a new document, ConvertBrio's Merge PDF tool can put them back together in whatever order you choose.",
       },
+      {
+        heading: "Download Format and Limits",
+        body: "Because splitting produces one file per page, the result downloads as a single ZIP archive containing every page as its own PDF, ready to extract. Uploads are capped at 25 MB, and both the original and the resulting pages are deleted from ConvertBrio's servers within 24 hours of processing.",
+      },
     ],
     relatedTools: [
       { label: "Merge PDF", href: "/tools/merge-pdf" },
@@ -873,12 +889,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I split a PDF into separate pages?",
         answer:
-          "Upload your PDF to ConvertBrio's Split PDF tool, and it separates every page into its own individual file, which you can then download and use independently.",
+          "Upload your PDF to ConvertBrio's Split PDF tool, and it separates every page into its own individual file, bundled together as one ZIP download.",
       },
       {
         question: "Can I extract just one page from a PDF?",
         answer:
-          "Yes — splitting breaks the document into individual pages, so you can take the specific page you need and discard or ignore the rest.",
+          "Yes — splitting breaks the document into individual pages inside a ZIP file, so you can pull out the specific page you need and discard or ignore the rest.",
       },
       {
         question: "Can I put the split pages back together afterward?",
@@ -1034,6 +1050,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
         heading: "Combining With Other PDF Tools",
         body: "If you're assembling a document from multiple sources, merge the files first with Merge PDF, then add page numbers to the combined result so the numbering reflects the final document structure rather than each individual piece.",
       },
+      {
+        heading: "Numbering Style and Limits",
+        body: "Numbers are stamped bottom-center on every page in a plain sans-serif style, starting at 1 — there's currently no option to change position, starting number, or format like \"Page X of Y\". Uploads are capped at 25 MB and the file is deleted from ConvertBrio's servers within 24 hours of processing.",
+      },
     ],
     relatedTools: [
       { label: "Merge PDF", href: "/tools/merge-pdf" },
@@ -1048,9 +1068,9 @@ export const toolContent: Record<string, ToolContentEntry> = {
           "Upload your document to ConvertBrio's Add Page Numbers tool, and it stamps a sequential number onto every page automatically before you download the result.",
       },
       {
-        question: "Can I number pages after merging multiple PDFs?",
+        question: "Can I change the position or starting number?",
         answer:
-          "Yes — merge your files first with Merge PDF, then run the combined document through Add Page Numbers so the numbering matches the final assembled document.",
+          "Not currently — numbers are always placed bottom-center, starting at 1. If you need a different position, starting number, or a \"Page X of Y\" format, use PDF-editing software for full control.",
       },
       {
         question: "Does this tool renumber pages that already have numbers?",
@@ -1162,6 +1182,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         heading: "Combining Many Images at Once",
         body: "You can upload multiple images in a single pass for free. For high-volume needs — like converting dozens of scanned pages regularly — ConvertBrio's paid plans add batch processing for faster, larger workflows.",
+      },
+      {
+        heading: "Limits and Privacy",
+        body: "The combined size of all uploaded images is capped at 25 MB per conversion. Files are processed on ConvertBrio's servers, not in your browser, and both the source images and the resulting PDF are deleted within 24 hours.",
       },
     ],
     relatedTools: [
@@ -1422,6 +1446,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
         heading: "When JPG Might Be Better",
         body: "If file size matters more than pixel-perfect sharpness — for quick sharing or casual previews — Word to JPG produces a smaller file with only a minor difference in visual quality for most documents.",
       },
+      {
+        heading: "Layout, Downloads, and Limits",
+        body: "Your DOCX is first laid out on a standard A4 page, so complex Word-specific formatting like headers/footers, footnotes, or unusual page sizes may render slightly differently than in Word itself. A single-page document downloads as one PNG; multi-page documents download as a ZIP file containing one PNG per page. Uploads are capped at 25 MB and files are deleted from ConvertBrio's servers within 24 hours.",
+      },
     ],
     relatedTools: [
       { label: "Word to JPG", href: "/tools/word-to-jpg" },
@@ -1438,12 +1466,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Does Word to PNG support multi-page documents?",
         answer:
-          "Yes — each page in your DOCX file is rendered as a separate PNG image, giving you the full document as a set of images.",
+          "Yes — each page in your DOCX file is rendered as a separate PNG image. A single-page document downloads directly as a PNG; multiple pages download together as a ZIP file.",
       },
       {
-        question: "Will the PNG files be larger than JPG exports?",
+        question: "Will my document's exact formatting be preserved?",
         answer:
-          "Generally yes, since PNG doesn't discard detail the way JPG does. If file size matters more than sharpness, Word to JPG may be the more practical option.",
+          "Text, headings, lists, tables, and images carry over, but very complex Word-specific layouts (custom headers/footers, unusual page sizes) may render slightly differently since the page is rebuilt on a standard A4 layout rather than rendered by Word itself.",
       },
     ],
   },
@@ -1678,6 +1706,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
         heading: "Keeping Document Order",
         body: "Files are combined in the order you upload them, so arrange your selection before uploading if the final document needs a specific sequence — for example, a cover page, then a report, then supporting spreadsheet data.",
       },
+      {
+        heading: "Limits and Privacy",
+        body: "You can combine up to 25 files with a combined size of 25 MB in one pass. Each file is converted and processed on ConvertBrio's servers, not in your browser, and every file — originals and the merged output — is deleted within 24 hours of processing.",
+      },
     ],
     relatedTools: [
       { label: "Word to PDF", href: "/tools/word-to-pdf" },
@@ -1720,6 +1752,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         heading: "What Else You Can Do",
         body: "ConvertBrio's Crop Image tool can manually trim unwanted areas around a subject, and Image Converter can export any result as a PNG to preserve transparency.",
+      },
+      {
+        heading: "Limits and Privacy",
+        body: "Uploads are capped at 25 MB, and processing happens on ConvertBrio's servers, not in your browser. Both the original photo and the cutout are deleted within 24 hours of processing, whether or not you download the result.",
       },
     ],
     relatedTools: [
@@ -1806,41 +1842,41 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "ai-image-enhancer": {
     title: "AI Image Enhancer",
     intro:
-      "Blurry, low-quality, or poorly-lit photos often can't be fixed with basic editing tools. ConvertBrio's AI image enhancer automatically sharpens detail, reduces compression artifacts, and improves overall photo quality with a single upload.",
+      "Flat, underexposed, or slightly soft photos often just need consistent auto-adjustment rather than manual editing. ConvertBrio's image enhancer automatically balances exposure and color and sharpens detail in one step, no sliders required.",
     sections: [
       {
         heading: "What This Tool Does",
-        body: "AI Image Enhancer runs your photo through a machine learning model trained to improve quality — sharpening soft detail, cleaning up JPEG compression artifacts, and boosting overall clarity — without requiring manual adjustment of individual settings.",
+        body: "Image Enhancer applies a fixed, automatic set of adjustments to your photo — stretching contrast to use the full tonal range, lifting saturation and brightness slightly, and sharpening detail — producing a consistently improved result without you tuning individual settings.",
       },
       {
         heading: "How It Works",
-        body: "Upload an image and a bundled AI super-resolution model reconstructs detail and removes noise directly on ConvertBrio's servers, then returns the enhanced version for download — no third-party AI service involved.",
+        body: "Upload an image and ConvertBrio runs it through an automatic image-processing pipeline (contrast normalization, color, and sharpening) directly on our servers — a deterministic algorithm rather than a generative AI model, which is why results are consistent and processing is fast.",
       },
       {
-        heading: "When To Use It",
-        body: "Reach for this when a photo looks soft, over-compressed, or slightly noisy. If you also need to change dimensions or file size, pair it with Resize Image or Compress Image.",
+        heading: "What It Won't Fix",
+        body: "This is an enhancement pass, not a resolution-increasing or restoration tool — it won't sharply recover detail from a very low-resolution image, fix motion blur or out-of-focus shots, or reconstruct missing detail. For increasing resolution with a trained super-resolution model, use AI Upscaler instead.",
       },
     ],
     relatedTools: [
       { label: "AI Upscaler", href: "/tools/ai-upscaler" },
       { label: "Compress Image", href: "/tools/compress-image" },
     ],
-    faqDescription: "Common questions about ConvertBrio's AI image enhancer.",
+    faqDescription: "Common questions about ConvertBrio's image enhancer.",
     faq: [
       {
         question: "What kind of improvements does it make?",
         answer:
-          "It sharpens soft detail, reduces compression noise, and improves overall clarity automatically, without manual adjustment.",
+          "It automatically stretches contrast, lifts color and brightness slightly, and sharpens detail — a fixed, consistent adjustment pass rather than manual per-photo editing.",
       },
       {
         question: "How is this different from AI Upscaler?",
         answer:
-          "AI Image Enhancer focuses on improving quality and clarity at the same resolution, while AI Upscaler is designed specifically to increase an image's resolution.",
+          "Image Enhancer applies automatic adjustments at the same resolution using a fixed image-processing pipeline. AI Upscaler is a separate tool that uses a trained super-resolution model to increase an image's resolution and reconstruct detail.",
       },
       {
-        question: "Why did processing take a little while?",
+        question: "Is there a file size limit?",
         answer:
-          "The first request after a period of inactivity can take a few extra seconds while the server loads the model. After that, processing is quick.",
+          "Uploads are capped at 20 MB. The original and enhanced files are deleted from ConvertBrio's servers within 24 hours of processing.",
       },
     ],
   },
@@ -1860,7 +1896,11 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "When To Use It",
-        body: "Use this when you need a larger version of an existing image without the blur that ordinary resizing introduces. For a same-size quality cleanup instead of enlargement, use AI Image Enhancer.",
+        body: "Use this when you need a larger version of an existing image without the blur that ordinary resizing introduces. For a same-size quality cleanup instead of enlargement, use Image Enhancer.",
+      },
+      {
+        heading: "Limits and What to Expect",
+        body: "Uploads are capped at 20 MB, and very large source images are automatically downscaled before upscaling to keep processing time and memory use reasonable — so extremely high-resolution inputs won't gain much from this tool. Output is always a PNG at 4x the (possibly downscaled) input's resolution. Results are best on real-world photos; the model can struggle with dense text, line art, or heavily stylized graphics.",
       },
     ],
     relatedTools: [
@@ -1877,12 +1917,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a file size limit?",
         answer:
-          "Uploads are capped at 20 MB to keep processing time reasonable on the model that powers this tool.",
+          "Uploads are capped at 20 MB. Files and results are deleted from ConvertBrio's servers within 24 hours of processing.",
       },
       {
         question: "Why did processing take a little while?",
         answer:
-          "The first request after a period of inactivity can take a few extra seconds while the server loads the model. After that, processing is quick.",
+          "The upscaling model runs directly on ConvertBrio's servers and processes large images in tiles to manage memory, so processing typically takes a few seconds longer than a simple format conversion.",
       },
     ],
   },

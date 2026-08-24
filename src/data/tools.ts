@@ -545,7 +545,7 @@ export const tools: Tool[] = [
     kind: "ai",
     operation: "enhance",
     icon: "sparkle",
-    description: "Sharpen and improve photo quality with AI.",
+    description: "Automatically balance color and sharpen a photo in one click.",
     accept: IMAGE_ACCEPT,
   },
   {
