@@ -25,6 +25,17 @@ const websiteSchema = {
   description,
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "ConvertBrio",
+  url: siteUrl,
+  founder: {
+    "@type": "Person",
+    name: "Subham Sharma",
+  },
+};
+
 const softwareApplicationSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -57,6 +68,7 @@ const faqSchema = {
 <Layout title="ConvertBrio" seoTitle={seoTitle} description={description} canonical="/">
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline />
     <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} is:inline />
     <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
   </Fragment>

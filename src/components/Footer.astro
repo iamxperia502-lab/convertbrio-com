@@ -81,7 +81,26 @@ const year = new Date().getFullYear();
 
     <div class="mt-14 flex flex-col gap-4 border-t border-hairline pt-8 sm:flex-row sm:items-center sm:justify-between">
       <p class="text-sm text-mute">© {year} ConvertBrio. All rights reserved.</p>
-      <p class="text-sm text-mute">convertbrio.com</p>
+      <div class="flex items-center gap-4">
+        <button
+          type="button"
+          id="cb-manage-cookies-link"
+          class="text-sm text-mute underline underline-offset-2 transition-colors hover:text-ink"
+        >
+          Manage cookie preferences
+        </button>
+        <p class="text-sm text-mute">convertbrio.com</p>
+      </div>
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById("cb-manage-cookies-link");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      window.dispatchEvent(new CustomEvent("cb:open-consent"));
+    });
+  })();
+</script>
