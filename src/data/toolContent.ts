@@ -39,7 +39,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and File Limits",
-        body: "Every upload is encrypted in transit and processed automatically — no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within 24 hours. Free conversions support files up to 25 MB; paid plans raise that limit and add batch conversion for people who need to process many images at once.",
+        body: "Every upload is encrypted in transit and processed automatically — no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within 24 hours. Files up to 25 MB are supported, free, with no account required.",
       },
     ],
     relatedTools: [
@@ -62,7 +62,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a file size limit?",
         answer:
-          "Free conversions support images up to 25 MB. If you regularly work with larger files or need to convert many images at once, ConvertBrio's paid plans raise the size limit and add batch processing.",
+          "Conversions support images up to 25 MB, free, with no account required.",
       },
     ],
   },
@@ -82,7 +82,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Converting Multiple iPhone Photos",
-        body: "You can convert one HEIC file at a time for free. If you regularly export batches of iPhone photos and need to convert many at once, ConvertBrio's paid plans support batch processing so you're not uploading files one by one.",
+        body: "This tool converts one HEIC file at a time. If you need to convert several iPhone photos, ConvertBrio's Image Converter also accepts HEIC input, but currently processes one file per upload as well.",
       },
     ],
     relatedTools: [
@@ -657,7 +657,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and Batch Compression",
-        body: "Every upload is encrypted in transit and automatically deleted from ConvertBrio's servers within 24 hours. Free use covers one image at a time up to 25 MB; paid plans add batch compression for anyone processing large photo libraries or galleries at once.",
+        body: "Every upload is encrypted in transit and automatically deleted from ConvertBrio's servers within 24 hours. This tool compresses one image at a time, up to 25 MB, free, with no account required.",
       },
     ],
     relatedTools: [
@@ -680,7 +680,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I compress multiple images at once?",
         answer:
-          "Compressing one image at a time is free with no account required. Batch compression for many images in a single pass is available on ConvertBrio's paid plans.",
+          "Compressing one image at a time is free with no account required. This tool doesn't currently support compressing multiple images in a single pass.",
       },
     ],
   },
@@ -829,7 +829,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "File Order and Limits",
-        body: "The order you upload or arrange files in determines the order they appear in the merged PDF, so double-check the sequence before converting. Free merges work with files up to 25 MB each; paid plans raise that limit for larger documents.",
+        body: "The order you upload or arrange files in determines the order they appear in the merged PDF, so double-check the sequence before converting. Merges work with files up to 25 MB each, free, with no account required.",
       },
     ],
     relatedTools: [
@@ -852,7 +852,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a limit to how many PDFs I can merge?",
         answer:
-          "You can combine multiple files in a single upload, each up to 25 MB on the free tier. If you regularly merge larger or more numerous files, ConvertBrio's paid plans raise those limits.",
+          "You can combine multiple files in a single upload, each up to 25 MB, free, with no account required.",
       },
     ],
   },
@@ -1181,7 +1181,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Combining Many Images at Once",
-        body: "You can upload multiple images in a single pass for free. For high-volume needs — like converting dozens of scanned pages regularly — ConvertBrio's paid plans add batch processing for faster, larger workflows.",
+        body: "You can upload multiple images in a single pass, free, with no account required.",
       },
       {
         heading: "Limits and Privacy",
@@ -1228,7 +1228,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Combining Many Images at Once",
-        body: "You can upload multiple images in a single pass for free. For high-volume needs — like converting dozens of scanned pages regularly — ConvertBrio's paid plans add batch processing for faster, larger workflows.",
+        body: "You can upload multiple images in a single pass, free, with no account required.",
       },
     ],
     relatedTools: [

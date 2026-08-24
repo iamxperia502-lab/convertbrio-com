@@ -14,7 +14,7 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Is ConvertBrio free to use?",
     answer:
-      "Yes. ConvertBrio's core tools are free, including image conversion, PDF conversion, compression, and document conversion, with no sign-up required. Paid plans are optional and built for people who need larger file-size limits or batch processing of many files at once; everyday conversions never require payment.",
+      "Yes. Every ConvertBrio tool — image conversion, PDF conversion, compression, document conversion, and more — is free to use, with no sign-up and no paid plan required.",
     link: { href: "/pricing", label: "See pricing" },
   },
   {
@@ -25,7 +25,7 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Can I convert multiple images at once?",
     answer:
-      "Yes. Tools like Image to PDF and Merge PDF accept several files in a single upload today, letting you combine multiple images or documents in one pass. Converting many separate images at once across every image tool, known as batch processing, is available on paid plans for higher-volume needs.",
+      "Yes, on tools built for it. Image to PDF, Merge PDF, and Merge Documents accept several files in a single upload today, letting you combine multiple images or documents in one pass — free, no account required. Most single-format conversion tools currently process one file at a time.",
     link: { href: "/tools/jpg-to-pdf", label: "Combine images into a PDF" },
   },
   {
