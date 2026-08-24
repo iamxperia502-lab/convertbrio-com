@@ -1,0 +1,13 @@
+---
+// Server-rendered (not prerendered) so this issues a real HTTP redirect at
+// request time, in both `astro dev` and production - a prerendered/static
+// page can't guarantee a true 30x the way a request-time redirect can.
+export const prerender = false;
+
+import { getTool } from "../../data/tools";
+
+const tool = getTool("internet-speed-test");
+const destination = tool && tool.kind === "external" ? tool.externalUrl : "https://liveinternetspeed.com/";
+
+return Astro.redirect(destination, 302);
+---

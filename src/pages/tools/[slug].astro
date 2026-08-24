@@ -11,7 +11,11 @@ import { toolContent } from "../../data/toolContent";
 export const prerender = true;
 
 export function getStaticPaths() {
-  return tools.map((tool) => ({ params: { slug: tool.slug } }));
+  // External tools (e.g. internet-speed-test) have their own dedicated
+  // route that redirects instead of rendering this conversion-form
+  // template - generating a path for them here would collide with that
+  // static route at build time.
+  return tools.filter((tool) => tool.kind !== "external").map((tool) => ({ params: { slug: tool.slug } }));
 }
 
 const { slug } = Astro.params;
@@ -19,6 +23,13 @@ const tool = slug ? getTool(slug) : undefined;
 
 if (!tool) {
   return Astro.rewrite("/404");
+}
+
+// Excluded from getStaticPaths above, so this shouldn't be reachable in
+// production - defensive fallback, and narrows `tool`'s type for the rest
+// of this file (external tools have no `operation`/conversion form).
+if (tool.kind === "external") {
+  return Astro.redirect(tool.externalUrl, 302);
 }
 
 const endpoint =

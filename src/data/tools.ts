@@ -39,7 +39,8 @@ interface ToolBase {
   categories: CategoryId[];
   icon: keyof typeof icons;
   description: string;
-  accept: string;
+  // Not meaningful for ExternalTool (no upload form), so optional.
+  accept?: string;
   multiple?: boolean;
   // Overrides for the <title> tag and meta description on the tool's page.
   // Falls back to `name`/`description` when omitted. Use this to add
@@ -77,7 +78,18 @@ export interface ComingSoonTool extends ToolBase {
   comingSoonReason: string;
 }
 
-export type Tool = ImageTool | PdfTool | OfficeTool | AiTool | ComingSoonTool;
+// A tool that lives on a separate ConvertBrio-owned property rather than
+// running through the /api/convert/* upload form - e.g. the internet speed
+// test, which needs a live network connection to a nearby test server
+// (liveinternetspeed.com) rather than a file conversion. Excluded from
+// [slug].astro's getStaticPaths (see there) since it has its own static
+// route that redirects instead of rendering the conversion form.
+export interface ExternalTool extends ToolBase {
+  kind: "external";
+  externalUrl: string;
+}
+
+export type Tool = ImageTool | PdfTool | OfficeTool | AiTool | ComingSoonTool | ExternalTool;
 
 const IMAGE_ACCEPT = "image/jpeg,image/png,image/webp,image/heic,image/heif,image/avif,image/gif";
 const PDF_ACCEPT = "application/pdf";
@@ -581,6 +593,15 @@ export const tools: Tool[] = [
     accept: IMAGE_ACCEPT,
     comingSoonReason: "Scratch and damage repair needs a diffusion model that isn't available on the free tier yet.",
   },
+  {
+    slug: "internet-speed-test",
+    name: "Internet Speed Test",
+    categories: [],
+    kind: "external",
+    icon: "globe",
+    description: "Test your download, upload, and ping speed.",
+    externalUrl: "https://liveinternetspeed.com/",
+  },
 ];
 
 export function getTool(slug: string): Tool | undefined {
@@ -597,4 +618,7 @@ export function isComingSoon(tool: Tool): tool is ComingSoonTool {
 
 // Live tool count for marketing copy — computed so it can't drift out of
 // sync with tools.ts as tools are added, removed, or marked coming-soon.
-export const liveToolCount = tools.filter((tool) => !isComingSoon(tool)).length;
+// Excludes external tools (e.g. internet-speed-test): they're a link to a
+// companion property, not a ConvertBrio conversion tool, so counting them
+// here would inflate the "N tools" claim beyond what it's meant to mean.
+export const liveToolCount = tools.filter((tool) => !isComingSoon(tool) && tool.kind !== "external").length;

@@ -67,7 +67,10 @@ export const GET: APIRoute = async ({ site }) => {
       lastmod,
     })),
     ...tools
-      .filter((tool) => !isComingSoon(tool))
+      // Coming-soon tools have nothing to index yet, and external tools
+      // (e.g. internet-speed-test) are a redirect, not a 200 page - a
+      // sitemap should only list canonical, indexable, HTTP 200 URLs.
+      .filter((tool) => !isComingSoon(tool) && tool.kind !== "external")
       .map((tool) => ({
         loc: `${base}/tools/${tool.slug}`,
         changefreq: "weekly",

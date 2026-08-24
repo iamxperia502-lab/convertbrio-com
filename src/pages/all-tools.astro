@@ -4,7 +4,7 @@ export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 import Icon from "../components/Icon.astro";
-import { categories, toolsByCategory, isComingSoon } from "../data/tools";
+import { categories, toolsByCategory, isComingSoon, tools } from "../data/tools";
 import type { CategoryId } from "../data/tools";
 
 // Coming-soon tools aren't live yet, so they're hidden from this listing
@@ -12,6 +12,12 @@ import type { CategoryId } from "../data/tools";
 // navigate to means nothing worth surfacing here.
 const liveToolsByCategory = (categoryId: CategoryId) =>
   toolsByCategory(categoryId).filter((tool) => !isComingSoon(tool));
+
+// External tools (currently just the speed test) don't belong to any of
+// the file-conversion categories above and live on a separate ConvertBrio
+// property, so they get their own section rather than being force-fit
+// into "Image Tools" or similar.
+const externalTools = tools.filter((tool) => tool.kind === "external");
 ---
 
 <Layout
@@ -78,6 +84,45 @@ const liveToolsByCategory = (categoryId: CategoryId) =>
               </ul>
             </section>
           ))
+      }
+
+      {
+        externalTools.length > 0 && (
+          <section id="more-tools" aria-labelledby="more-tools-heading" class="scroll-mt-24">
+            <div class="mb-6 flex items-start gap-3">
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink">
+                <Icon name="globe" class="h-5 w-5" />
+              </span>
+              <div>
+                <h2 id="more-tools-heading" class="text-xl font-semibold tracking-[-0.01em] text-ink">
+                  More tools
+                </h2>
+                <p class="text-sm text-body">Companion tools on other ConvertBrio properties.</p>
+              </div>
+            </div>
+
+            <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {externalTools.map((tool) => (
+                <li>
+                  <a
+                    href={`/tools/${tool.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas-soft px-4 py-3.5 transition-colors hover:border-hairline-strong hover:bg-canvas-soft-2"
+                  >
+                    <Icon name={tool.icon} class="h-4 w-4 shrink-0 text-mute" />
+                    <span class="flex flex-col">
+                      <span class="text-sm text-ink">{tool.name}</span>
+                      <span class="text-xs text-mute">
+                        {tool.kind === "external" && new URL(tool.externalUrl).hostname} ↗
+                      </span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
       }
     </div>
   </div>
