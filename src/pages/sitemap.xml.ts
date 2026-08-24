@@ -50,6 +50,7 @@ const staticPaths: { path: string; changefreq: string; priority: string; lastmod
   { path: "/contact", changefreq: "monthly", priority: "0.5", lastmod: lastModified("src/pages/contact.astro") },
   { path: "/privacy", changefreq: "yearly", priority: "0.3", lastmod: lastModified("src/pages/privacy.astro") },
   { path: "/terms", changefreq: "yearly", priority: "0.3", lastmod: lastModified("src/pages/terms.astro") },
+  { path: "/trust", changefreq: "monthly", priority: "0.4", lastmod: lastModified("src/pages/trust.astro") },
 ];
 
 const toolsLastmod = lastModified("src/pages/tools/[slug].astro", "src/data/tools.ts", "src/data/toolContent.ts");

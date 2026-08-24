@@ -1,0 +1,79 @@
+---
+export const prerender = true;
+
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "../components/PageIntro.astro";
+
+const updated = "August 25, 2026";
+---
+
+<Layout
+  title="Trust & Security"
+  description="How ConvertBrio handles your files, reports of abuse or security issues, and corrections to published guides."
+>
+  <PageIntro eyebrow={`Last updated ${updated}`} title="Trust & Security" />
+
+  <section class="bg-canvas">
+    <div class="container-page py-16 sm:py-20">
+      <article class="prose prose-neutral max-w-2xl prose-headings:font-semibold prose-headings:tracking-[-0.01em] prose-a:text-brand-600 prose-a:no-underline hover:prose-a:underline">
+        <p>
+          ConvertBrio is independently operated by Subham Sharma, based in India. This page
+          summarizes how we handle your files, how to report abuse or a security issue, and how
+          we handle corrections to published guides. For the full legal detail, see our
+          <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms of Service</a>.
+        </p>
+
+        <h2>How your files are handled</h2>
+        <p>
+          Files are transmitted over an encrypted (HTTPS/TLS) connection and stored encrypted at
+          rest while processing. Every conversion runs as an automated process — no one manually
+          opens, reviews, or reads the contents of your file at any point, including for AI tools
+          like the image enhancer, upscaler, and background remover, where uploads are used only
+          to produce your output and never to train or improve any model. Uploaded and converted
+          files are automatically deleted within 24 hours of processing via a daily cleanup job,
+          whether or not you download the result — this isn't a manual or best-effort process, it
+          runs on a schedule regardless of what happens on our end.
+        </p>
+
+        <h2>Reporting abuse or misuse</h2>
+        <p>
+          File-upload services can be misused — to process content someone doesn't have the
+          rights to, or for other abuse. If you believe a file processed through ConvertBrio
+          involves illegal content, copyright infringement, or another form of misuse, report it
+          via <a href="/contact">our contact form</a> or
+          <a href="mailto:abuse@convertbrio.com">abuse@convertbrio.com</a>. We don't display
+          uploaded filenames or results publicly, and we review abuse reports directly rather than
+          through an automated queue.
+        </p>
+        <p>
+          Tools like Unlock PDF are built only to remove owner-level restrictions from documents
+          you already have the right to edit — see the
+          <a href="/tools/unlock-pdf">Unlock PDF tool</a> and our guide on
+          <a href="/blog/pdf-password-restrictions-explained">PDF password restrictions</a> for
+          exactly what that does and doesn't cover. They're not built or intended to bypass
+          protection on files you don't own or aren't authorized to modify.
+        </p>
+
+        <h2>Reporting a security issue</h2>
+        <p>
+          If you find a security vulnerability in ConvertBrio — anything from an access-control
+          issue to a way to see another user's data — please report it to
+          <a href="mailto:security@convertbrio.com">security@convertbrio.com</a> or through
+          <a href="/contact">the contact form</a> before disclosing it publicly. As an
+          independently operated project, response times won't match a large company's security
+          team, but every report is read and taken seriously.
+        </p>
+
+        <h2>Corrections to guides and articles</h2>
+        <p>
+          Articles on the <a href="/blog">ConvertBrio blog</a> are written to be accurate and
+          practical, and are reviewed before publishing. If you spot a factual error, an outdated
+          claim, or something that no longer matches how a tool actually behaves, let us know via
+          <a href="/contact">the contact form</a> — corrections are made directly in the article,
+          not silently, and the page's stated date reflects when it was last substantively
+          updated.
+        </p>
+      </article>
+    </div>
+  </section>
+</Layout>
