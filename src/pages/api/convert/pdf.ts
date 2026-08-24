@@ -196,11 +196,22 @@ export const POST: APIRoute = async ({ request, locals }) => {
       }
 
       case "unlock": {
-        // Only lifts owner-password/permission restrictions on PDFs pdf-lib can
-        // still parse. A PDF that requires a password just to *open* can't be
-        // decrypted here since we don't collect a password in this tool.
-        const src = await PDFDocument.load(await files[0].arrayBuffer(), { ignoreEncryption: true });
-        outputBuffer = Buffer.from(await src.save());
+        // pdf-lib has no decryption support at all - `ignoreEncryption` only
+        // skips its "throw if encrypted" guard, it doesn't decrypt the
+        // object streams. Passing an actually-encrypted PDF through that
+        // path used to return HTTP 200 with a corrupted file (confirmed:
+        // pypdf can't read the "unlocked" output - "Cannot find Root object
+        // in pdf"), silently failing while reporting success. Until this
+        // tool has real decryption (e.g. shelling out to qpdf, or a
+        // password-aware library), fail honestly instead of faking success.
+        const buf = await files[0].arrayBuffer();
+        const probe = await PDFDocument.load(buf, { ignoreEncryption: true });
+        if (probe.isEncrypted) {
+          throw new Error(
+            "This PDF is password-protected or encrypted, and ConvertBrio can't remove that protection yet. This tool currently only works on PDFs that aren't encrypted."
+          );
+        }
+        outputBuffer = Buffer.from(await probe.save());
         contentType = "application/pdf";
         filename = `${baseName(files[0].name)}-unlocked.pdf`;
         break;
@@ -324,7 +335,15 @@ export const POST: APIRoute = async ({ request, locals }) => {
     });
   } catch (err) {
     await failConversionJob(jobId);
-    const message = err instanceof Error ? err.message : "Conversion failed.";
+    let message = err instanceof Error ? err.message : "Conversion failed.";
+    // pdf-lib's own error for encrypted input names its API directly
+    // ("PDFDocument.load(..., { ignoreEncryption: true })"), which is
+    // meaningless to an end user. Every operation here except "unlock"
+    // loads without ignoreEncryption, so this only fires for genuinely
+    // encrypted input.
+    if (message.includes("is encrypted")) {
+      message = "This PDF is password-protected or encrypted, and ConvertBrio can't process protected PDFs yet.";
+    }
     return new Response(JSON.stringify({ error: message }), { status: 422 });
   }
 };

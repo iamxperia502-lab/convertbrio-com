@@ -248,6 +248,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
       // .rotate() with no args auto-orients the pixels per EXIF before any further op.
       image = sharp(inputBuffer, { failOn: "none" }).rotate();
       metadata = await sharp(inputBuffer).metadata();
+      // Sharp can read HEIC metadata from the container's header boxes alone,
+      // without invoking the actual HEVC pixel decoder - so a file that will
+      // fail to decode can still pass the metadata() check above. Force a
+      // cheap real decode now so that failure is caught here (and routed to
+      // the HEIC fallback below) instead of surfacing as a raw libvips error
+      // deep inside the operation pipeline further down.
+      await image.clone().resize(8, 8).raw().toBuffer();
     } catch (err) {
       if (!looksLikeHeic(inputBuffer)) throw err;
       // See lib/heic-fallback.ts for why sharp's native HEIC decode fails on
