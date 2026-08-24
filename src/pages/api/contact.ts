@@ -35,6 +35,10 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   });
 
   if (!response.ok) {
+    // Resend's error body (invalid key, unverified domain, etc.) has no
+    // other visibility - the user only ever sees a generic message, so
+    // this is the only place the real cause is diagnosable.
+    console.error("Resend contact email failed:", response.status, await response.text());
     return redirect(`/contact?error=${encodeURIComponent("Couldn't send your message. Try again in a moment.")}`);
   }
 
