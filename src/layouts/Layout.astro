@@ -162,6 +162,12 @@ const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "
          for first paint. -->
     <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 
+    <!-- Warms the connection for Google's consent-message origin (loaded by
+         the AdSense/consent script above) — PageSpeed Insights measured
+         ~300ms LCP savings from this alone. Connection hint only; doesn't
+         change what the consent/ad script does or when it fires. -->
+    <link rel="preconnect" href="https://fundingchoicesmessages.google.com" />
+
     <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col bg-canvas text-ink antialiased">

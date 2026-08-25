@@ -1,0 +1,26 @@
+# ConvertBrio
+
+> ConvertBrio is a free, browser-based file converter and compressor. It converts and compresses images, PDFs, and documents, with uploaded files encrypted in transit and deleted automatically within 24 hours. No account or software install is required for the core tools.
+
+## Core tools
+
+- [All tools](https://www.convertbrio.com/all-tools): Full catalogue of every conversion, compression, and editing tool on the site.
+- [Image Converter](https://www.convertbrio.com/tools/image-converter): Convert between JPG, PNG, WEBP, AVIF, GIF, and HEIC.
+- [Compress Image](https://www.convertbrio.com/tools/compress-image): Reduce image file size to an exact target while keeping quality intact.
+- [HEIC to JPG](https://www.convertbrio.com/tools/heic-to-jpg): Convert iPhone photos to JPG.
+- [Merge PDF](https://www.convertbrio.com/tools/merge-pdf): Combine multiple PDFs into one file.
+- [Compress PDF](https://www.convertbrio.com/tools/compress-pdf): Reduce PDF file size.
+- [PDF to Word](https://www.convertbrio.com/tools/pdf-to-word): Convert PDF documents to editable DOCX.
+- [Word to PDF](https://www.convertbrio.com/tools/word-to-pdf): Convert Word documents to PDF.
+- [OCR PDF](https://www.convertbrio.com/tools/ocr-pdf): Extract text from scanned PDF pages.
+
+## Company
+
+- [About](https://www.convertbrio.com/about): What ConvertBrio is and who runs it.
+- [Trust & privacy](https://www.convertbrio.com/trust): Data handling, file retention, and security practices.
+- [Pricing](https://www.convertbrio.com/pricing): Free and paid plan details.
+- [Blog](https://www.convertbrio.com/blog): Articles on file formats and conversion.
+
+## Optional
+
+- [Sitemap](https://www.convertbrio.com/sitemap.xml): Machine-readable index of every page on the site.
