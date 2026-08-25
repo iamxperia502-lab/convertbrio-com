@@ -4,122 +4,120 @@ import Icon from "./Icon.astro";
 const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TIFF"];
 ---
 
-<section id="upload" class="border-b border-hairline bg-canvas-soft scroll-mt-16">
-  <div class="container-page pb-16 sm:pb-24">
-    <form
-      id="quick-convert-form"
-      class="mx-auto max-w-3xl rounded-2xl border border-hairline bg-canvas p-2 shadow-card-lg sm:p-3"
+<div class="mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none">
+  <form
+    id="quick-convert-form"
+    class="rounded-2xl border border-hairline bg-canvas-soft p-2 shadow-card-lg sm:p-3"
+  >
+    <input type="hidden" name="slug" id="quick-slug" value="image-converter" />
+
+    <label
+      for="file-input"
+      id="dropzone"
+      class="group flex cursor-pointer flex-col items-center gap-4 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-10 text-center transition-colors duration-150 hover:border-brand-400 hover:bg-brand-500/10 sm:py-12"
     >
-      <input type="hidden" name="slug" id="quick-slug" value="image-converter" />
-
-      <label
-        for="file-input"
-        id="dropzone"
-        class="group flex cursor-pointer flex-col items-center gap-4 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-14 text-center transition-colors duration-150 hover:border-brand-400 hover:bg-brand-500/10 sm:py-16"
-      >
-        <div id="dropzone-idle" class="flex flex-col items-center gap-4">
-          <span
-            class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600"
-          >
-            <Icon name="cloud" class="h-6 w-6" />
-          </span>
-
-          <span class="flex flex-col gap-1">
-            <span class="text-lg font-medium text-ink">Drop a file here, or browse</span>
-            <span class="text-sm text-mute">Up to 25&nbsp;MB</span>
-          </span>
-
-          <span
-            class="pointer-events-none inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-canvas"
-          >
-            Browse Files
-          </span>
-        </div>
-
-        <div id="dropzone-uploading" class="hidden w-full max-w-xs flex-col items-center gap-4">
-          <span id="progress-percent" class="text-4xl font-semibold tabular-nums text-ink">0%</span>
-          <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
-            <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
-          </div>
-          <span class="text-sm text-mute">Uploading…</span>
-        </div>
-
-        <div id="dropzone-done" class="hidden flex-col items-center gap-2">
-          <span class="flex h-14 w-14 items-center justify-center rounded-full bg-success-soft text-success">
-            <Icon name="check" class="h-6 w-6" />
-          </span>
-          <span id="done-filename" class="max-w-full truncate text-lg font-medium text-ink" />
-          <span class="text-sm text-mute">Drop or browse to replace</span>
-        </div>
-
-        <input id="file-input" name="file" type="file" class="sr-only" />
-      </label>
-
-      <div id="quick-options" class="hidden flex-col items-center gap-4 px-4 py-5">
-        <div id="quick-format-field" class="flex flex-col gap-1.5">
-          <label for="quick-format" class="text-sm font-medium text-ink">Convert to</label>
-          <select
-            id="quick-format"
-            name="format"
-            class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400"
-          >
-            <option value="jpeg">JPG</option>
-            <option value="png">PNG</option>
-            <option value="webp">WEBP</option>
-            <option value="avif">AVIF</option>
-            <option value="gif">GIF</option>
-          </select>
-        </div>
-
-        <div class="flex w-full max-w-xs gap-3">
-          <button
-            id="quick-reset-btn"
-            type="button"
-            class="inline-flex items-center justify-center gap-2 rounded-full border border-hairline-strong bg-canvas px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            Reupload
-          </button>
-
-          <button
-            id="quick-convert-btn"
-            type="submit"
-            class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            Convert
-          </button>
-        </div>
-
-        <a
-          id="quick-download-link"
-          href="#"
-          class="hidden w-full max-w-xs items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+      <div id="dropzone-idle" class="flex flex-col items-center gap-4">
+        <span
+          class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600"
         >
-          <Icon name="download" class="h-4 w-4" />
-          <span id="quick-download-link-label">Download result</span>
-        </a>
+          <Icon name="cloud" class="h-6 w-6" />
+        </span>
+
+        <span class="flex flex-col gap-1">
+          <span class="text-lg font-medium text-ink">Drop a file here, or browse</span>
+          <span class="text-sm text-mute">Up to 25&nbsp;MB</span>
+        </span>
+
+        <span
+          class="pointer-events-none inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-canvas"
+        >
+          Browse Files
+        </span>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-2 px-4 py-5">
-        {
-          formats.map((format) => (
-            <span class="rounded-full bg-canvas-soft-2 px-2.5 py-1 font-mono text-[11px] text-mute">
-              {format}
-            </span>
-          ))
-        }
+      <div id="dropzone-uploading" class="hidden w-full max-w-xs flex-col items-center gap-4">
+        <span id="progress-percent" class="text-4xl font-semibold tabular-nums text-ink">0%</span>
+        <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
+          <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
+        </div>
+        <span class="text-sm text-mute">Uploading…</span>
       </div>
-    </form>
 
-    <p id="upload-status" role="status" aria-live="polite" class="mt-4 text-center text-sm text-body">
-      No file selected yet.
-    </p>
+      <div id="dropzone-done" class="hidden flex-col items-center gap-2">
+        <span class="flex h-14 w-14 items-center justify-center rounded-full bg-success-soft text-success">
+          <Icon name="check" class="h-6 w-6" />
+        </span>
+        <span id="done-filename" class="max-w-full truncate text-lg font-medium text-ink" />
+        <span class="text-sm text-mute">Drop or browse to replace</span>
+      </div>
 
-    <p class="mt-2 flex items-center justify-center gap-1.5 text-center text-xs text-mute">
-      <Icon name="lock" class="h-3.5 w-3.5" />
-      Files are encrypted in transit and deleted automatically within 24 hours.
-    </p>
-  </div>
-</section>
+      <input id="file-input" name="file" type="file" class="sr-only" />
+    </label>
+
+    <div id="quick-options" class="hidden flex-col items-center gap-4 px-4 py-5">
+      <div id="quick-format-field" class="flex flex-col gap-1.5">
+        <label for="quick-format" class="text-sm font-medium text-ink">Convert to</label>
+        <select
+          id="quick-format"
+          name="format"
+          class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400"
+        >
+          <option value="jpeg">JPG</option>
+          <option value="png">PNG</option>
+          <option value="webp">WEBP</option>
+          <option value="avif">AVIF</option>
+          <option value="gif">GIF</option>
+        </select>
+      </div>
+
+      <div class="flex w-full max-w-xs gap-3">
+        <button
+          id="quick-reset-btn"
+          type="button"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-hairline-strong bg-canvas px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Reupload
+        </button>
+
+        <button
+          id="quick-convert-btn"
+          type="submit"
+          class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          Convert
+        </button>
+      </div>
+
+      <a
+        id="quick-download-link"
+        href="#"
+        class="hidden w-full max-w-xs items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+      >
+        <Icon name="download" class="h-4 w-4" />
+        <span id="quick-download-link-label">Download result</span>
+      </a>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-2 px-4 py-5">
+      {
+        formats.map((format) => (
+          <span class="rounded-full bg-canvas-soft-2 px-2.5 py-1 font-mono text-[11px] text-mute">
+            {format}
+          </span>
+        ))
+      }
+    </div>
+  </form>
+
+  <p id="upload-status" role="status" aria-live="polite" class="mt-4 text-center text-sm text-body">
+    No file selected yet.
+  </p>
+
+  <p class="mt-2 flex items-center justify-center gap-1.5 text-center text-xs text-mute">
+    <Icon name="lock" class="h-3.5 w-3.5" />
+    Files are encrypted in transit and deleted automatically within 24 hours.
+  </p>
+</div>
 
 <script>
   // The real upload logic (and its upload-client import) is loaded lazily —

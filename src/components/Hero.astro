@@ -3,7 +3,7 @@ import Icon from "./Icon.astro";
 import { liveToolCount } from "../data/tools";
 ---
 
-<section class="relative overflow-hidden border-b border-hairline bg-canvas">
+<section id="upload" class="relative overflow-hidden border-b border-hairline bg-canvas scroll-mt-16">
   <div
     class="pointer-events-none absolute inset-x-0 top-[-12rem] -z-10 flex justify-center"
     aria-hidden="true"
@@ -11,38 +11,46 @@ import { liveToolCount } from "../data/tools";
     <div class="h-[26rem] w-[46rem] rounded-full bg-brand-100 opacity-40 blur-3xl"></div>
   </div>
 
-  <div class="container-page flex flex-col items-center gap-6 pb-16 pt-20 text-center sm:pt-28">
-    <p
-      class="inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas-soft px-3 py-1 font-mono text-xs text-body"
-    >
-      <Icon name="check" class="h-3.5 w-3.5 text-success" />
-      Free, private, no sign-up
-    </p>
-
-    <h1 class="max-w-4xl text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.02em] text-ink sm:text-5xl sm:leading-[1.08] lg:text-6xl">
-      Convert, compress, and edit your files — right in the browser.
-    </h1>
-
-    <p class="max-w-xl text-balance text-base leading-relaxed text-body sm:text-lg">
-      Images, PDFs, and documents — {liveToolCount} tools, no software to install. Need a
-      photo at an exact file size for a form or portal? Our compressor hits your target KB
-      exactly, no trial-and-error with a quality slider.
-    </p>
-
-    <div class="mt-2 flex flex-col gap-3 sm:flex-row">
-      <a
-        href="/tools/compress-image"
-        class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas shadow-card transition-transform duration-150 hover:-translate-y-0.5 hover:opacity-90"
+  <div
+    class="container-page grid gap-12 pb-16 pt-20 sm:pt-28 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-10 lg:py-24"
+  >
+    <div class="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left">
+      <p
+        class="inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas-soft px-3 py-1 font-mono text-xs text-body"
       >
-        Compress to Exact Size
-        <Icon name="arrow" class="h-4 w-4" />
-      </a>
-      <a
-        href="/all-tools"
-        class="inline-flex items-center justify-center gap-2 rounded-full border border-hairline px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
-      >
-        Browse all {liveToolCount} tools
-      </a>
+        <Icon name="check" class="h-3.5 w-3.5 text-success" />
+        Free, private, no sign-up
+      </p>
+
+      <h1 class="text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.02em] text-ink sm:text-5xl sm:leading-[1.08] lg:text-[2.75rem] lg:leading-[1.1]">
+        Convert, compress, and edit your files — right in the browser.
+      </h1>
+
+      <p class="max-w-xl text-balance text-base leading-relaxed text-body sm:text-lg">
+        Images, PDFs, and documents — {liveToolCount} tools, no software to install. Need a
+        photo at an exact file size for a form or portal? Our compressor hits your target KB
+        exactly, no trial-and-error with a quality slider.
+      </p>
+
+      <div class="mt-2 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="/tools/compress-image"
+          class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas shadow-card transition-transform duration-150 hover:-translate-y-0.5 hover:opacity-90"
+        >
+          Compress to Exact Size
+          <Icon name="arrow" class="h-4 w-4" />
+        </a>
+        <a
+          href="/all-tools"
+          class="inline-flex items-center justify-center gap-2 rounded-full border border-hairline px-6 py-3 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
+        >
+          Browse all {liveToolCount} tools
+        </a>
+      </div>
+    </div>
+
+    <div class="w-full">
+      <slot />
     </div>
   </div>
 </section>
