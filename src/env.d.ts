@@ -7,6 +7,7 @@ interface ImportMetaEnv {
   readonly SUPABASE_SERVICE_ROLE_KEY: string;
   readonly CRON_SECRET?: string;
   readonly RESEND_API_KEY?: string;
+  readonly BLOB_READ_WRITE_TOKEN?: string;
 }
 
 interface ImportMeta {

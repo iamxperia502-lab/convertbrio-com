@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { PDFDocument, StandardFonts, degrees, rgb } from "pdf-lib";
+import { PDFDocument, PDFName, PDFNumber, PDFArray, PDFRawStream, StandardFonts, degrees, rgb } from "pdf-lib";
 import JSZip from "jszip";
 import sharp from "sharp";
 import { getTool } from "../../../data/tools";
@@ -7,10 +7,20 @@ import { recordConversionAttempt, finalizeConversionJob, failConversionJob } fro
 import { contentDisposition } from "../../../lib/content-disposition";
 import { ensureDomMatrixPolyfill, standardFontDataUrl } from "../../../lib/pdfjs-node-polyfills";
 import { looksLikeHeic, decodeHeicFallback, sharpFromHeicFallback } from "../../../lib/heic-fallback";
+import { resolveConversionForm } from "../../../lib/blob-input";
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires per-plan limits.
-const MAX_BYTES = 25 * 1024 * 1024;
+// Uploads route through Vercel Blob (see resolveConversionForm in
+// lib/blob-input.ts), so this is a real processing-capacity limit, not a
+// request-body-size workaround.
+const MAX_BYTES = 100 * 1024 * 1024;
 const MAX_FILES = 25;
+// OCR is per-page (render + tesseract recognize), not per-byte - measured
+// ~2s/page including render, which at 300s (astro.config.mjs maxDuration)
+// caps out well before a byte-size limit would catch a many-page scan (e.g.
+// a 60 MB PDF with 400 small page images would still time out). This bounds
+// wall-clock time directly instead of trusting file size as a proxy for it.
+const MAX_OCR_PAGES = 100;
 
 function baseName(filename: string) {
   const dot = filename.lastIndexOf(".");
@@ -96,8 +106,119 @@ export async function renderPdfToImages(bytes: Uint8Array, format: "jpeg" | "png
   return images;
 }
 
+// Longest side, in pixels, that any re-encoded image is allowed to keep.
+// Most embedded photos/scans come in well above what's useful for screen
+// or print (phone scanner apps in particular often export 3000px+ pages),
+// so downsampling first is where most of the real size reduction comes from.
+const IMAGE_MAX_DIMENSION = 2000;
+const IMAGE_JPEG_QUALITY = 64;
+// Below this, a JPEG's own re-encoding overhead (headers, tables) tends to
+// eat whatever's saved, so skip re-encoding it at all.
+const IMAGE_MIN_BYTES = 8 * 1024;
+
+function singleFilterName(filter: unknown): string | null {
+  if (filter instanceof PDFName) return filter.asString();
+  if (filter instanceof PDFArray && filter.size() === 1) {
+    const entry = filter.get(0);
+    if (entry instanceof PDFName) return entry.asString();
+  }
+  return null;
+}
+
+// Re-encodes embedded JPEG (DCTDecode) images at a lower quality/resolution
+// in place. This is intentionally narrow in scope: pdf-lib can decode
+// FlateDecode-compressed raw image samples too, but it doesn't apply PNG/TIFF
+// predictors (a very common case for those), so reinterpreting that data
+// without them would silently corrupt pixels. DCTDecode streams are already
+// literal JPEG bytes, so they're safe to hand straight to sharp. CMYK JPEGs,
+// indexed/exotic color spaces, and images with a custom /Decode array or a
+// stencil /Mask are skipped since they need color-managed handling this
+// tool doesn't attempt - those objects are left untouched rather than risk
+// producing a corrupted-looking PDF.
+async function compressEmbeddedImages(doc: PDFDocument): Promise<void> {
+  const context = doc.context;
+
+  for (const [ref, obj] of context.enumerateIndirectObjects()) {
+    if (!(obj instanceof PDFRawStream)) continue;
+    const dict = obj.dict;
+
+    const subtype = dict.lookup(PDFName.of("Subtype"));
+    if (!(subtype instanceof PDFName) || subtype.asString() !== "/Image") continue;
+    if (dict.lookup(PDFName.of("Decode"))) continue;
+    if (dict.lookup(PDFName.of("Mask"))) continue;
+    if (dict.lookup(PDFName.of("ImageMask"))) continue;
+
+    if (singleFilterName(dict.lookup(PDFName.of("Filter"))) !== "/DCTDecode") continue;
+
+    const colorSpace = dict.lookup(PDFName.of("ColorSpace"));
+    if (!(colorSpace instanceof PDFName)) continue;
+    const csName = colorSpace.asString();
+    if (csName !== "/DeviceGray" && csName !== "/DeviceRGB") continue;
+
+    const original = obj.getContents();
+    if (original.length < IMAGE_MIN_BYTES) continue;
+
+    let output: Buffer;
+    let outWidth: number;
+    let outHeight: number;
+    try {
+      const input = sharp(Buffer.from(original), { failOn: "none" });
+      const meta = await input.metadata();
+      if (!meta.width || !meta.height) continue;
+      // Channel count mismatched against the declared color space means this
+      // JPEG isn't what the dict claims it is - leave it alone.
+      const expectedChannels = csName === "/DeviceGray" ? 1 : 3;
+      if (meta.channels !== expectedChannels) continue;
+
+      const longestSide = Math.max(meta.width, meta.height);
+      let pipeline = input;
+      if (longestSide > IMAGE_MAX_DIMENSION) {
+        pipeline = pipeline.resize({
+          width: meta.width >= meta.height ? IMAGE_MAX_DIMENSION : undefined,
+          height: meta.height > meta.width ? IMAGE_MAX_DIMENSION : undefined,
+          withoutEnlargement: true,
+        });
+      }
+      output = await pipeline
+        .jpeg({
+          quality: IMAGE_JPEG_QUALITY,
+          mozjpeg: true,
+          chromaSubsampling: csName === "/DeviceGray" ? "4:4:4" : "4:2:0",
+        })
+        .toBuffer();
+
+      const outMeta = await sharp(output).metadata();
+      if (!outMeta.width || !outMeta.height) continue;
+      outWidth = outMeta.width;
+      outHeight = outMeta.height;
+    } catch {
+      // Anything sharp can't decode/re-encode is left as-is.
+      continue;
+    }
+
+    if (output.length >= original.length) continue;
+
+    const newDict = dict.clone(context);
+    newDict.set(PDFName.of("Width"), PDFNumber.of(outWidth));
+    newDict.set(PDFName.of("Height"), PDFNumber.of(outHeight));
+    newDict.set(PDFName.of("BitsPerComponent"), PDFNumber.of(8));
+    newDict.set(PDFName.of("Filter"), PDFName.of("DCTDecode"));
+    newDict.delete(PDFName.of("DecodeParms"));
+    newDict.delete(PDFName.of("Length1"));
+    newDict.set(PDFName.of("Length"), PDFNumber.of(output.length));
+
+    context.assign(ref, PDFRawStream.of(newDict, new Uint8Array(output)));
+  }
+}
+
 export const POST: APIRoute = async ({ request, locals }) => {
-  const form = await request.formData();
+  let form: FormData;
+  try {
+    form = await resolveConversionForm(request);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Upload failed.";
+    return new Response(JSON.stringify({ error: message }), { status: 400 });
+  }
   const slug = String(form.get("slug") ?? "");
   const files = form.getAll("file").filter((f): f is File => f instanceof File);
 
@@ -179,10 +300,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
       }
 
       case "compress": {
-        // Best-effort: pdf-lib can't re-encode embedded images like Ghostscript,
-        // but object streams + dropping stale metadata still shave real size off
-        // most PDFs. See the tool description in src/data/tools.ts.
+        // Best-effort: this re-encodes embedded JPEGs (the bulk of most
+        // PDFs' size) at a lower quality/resolution via sharp, then strips
+        // metadata and re-saves with object streams. It doesn't touch
+        // Flate-compressed raw image samples, CMYK/indexed color spaces, or
+        // vector content - see compressEmbeddedImages() for why. Results
+        // vary with how image-heavy the source PDF is.
         const src = await PDFDocument.load(await files[0].arrayBuffer());
+        await compressEmbeddedImages(src);
         src.setTitle("");
         src.setAuthor("");
         src.setSubject("");
@@ -241,6 +366,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
         // page (original page image + an invisible text layer). We render
         // each source page to an image, OCR it, then stitch the resulting
         // single-page PDFs back into one document with pdf-lib.
+        const ocrSourceBytes = await files[0].arrayBuffer();
+        const ocrPageCount = (await PDFDocument.load(ocrSourceBytes)).getPageCount();
+        if (ocrPageCount > MAX_OCR_PAGES) {
+          throw new Error(
+            `OCR supports PDFs up to ${MAX_OCR_PAGES} pages (this one has ${ocrPageCount}). Try splitting it first.`,
+          );
+        }
+
         const { createWorker } = await import("tesseract.js");
         const worker = await createWorker("eng", undefined, {
           // Vercel's serverless functions only allow writes under /tmp;
@@ -257,7 +390,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
           errorHandler: (e) => console.error("[tesseract]", e),
         });
         try {
-          const pageImages = await renderPdfToImages(new Uint8Array(await files[0].arrayBuffer()), "png");
+          const pageImages = await renderPdfToImages(new Uint8Array(ocrSourceBytes), "png");
           const pagePdfBuffers: Buffer[] = [];
           for (const image of pageImages) {
             const result = await worker.recognize(image, {}, { pdf: true });

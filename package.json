@@ -21,6 +21,7 @@
     "@techstark/opencv-js": "^5.0.0-release.1",
     "@tensorflow/tfjs-node": "^4.22.0",
     "@upscalerjs/esrgan-slim": "^1.0.0",
+    "@vercel/blob": "^2.8.0",
     "@vercel/speed-insights": "^2.0.0",
     "astro": "^7.0.7",
     "canvas": "^3.2.3",

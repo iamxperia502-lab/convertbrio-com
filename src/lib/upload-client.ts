@@ -1,3 +1,5 @@
+import { upload } from "@vercel/blob/client";
+
 export interface SubmitConversionOptions {
   endpoint: string;
   formData: FormData;
@@ -10,44 +12,97 @@ export interface SubmitConversionResult {
   blob: Blob;
 }
 
-// XMLHttpRequest (not fetch) because it's the only way to get real upload
-// progress events across browsers — fetch has no cross-browser hook for
-// request-body upload progress.
-export function submitConversion({ endpoint, formData, onProgress, onUploaded }: SubmitConversionOptions): Promise<SubmitConversionResult> {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", endpoint);
-    xhr.responseType = "blob";
+const BLOB_HANDLE_UPLOAD_URL = "/api/blob-upload";
+// Mirrors MAX_BYTES in the convert API routes (src/pages/api/convert/*.ts),
+// enforced again server-side in lib/blob-input.ts's onBeforeGenerateToken -
+// this is just what the client asks for, so an oversized file fails fast
+// during upload with a clear message rather than after a wasted round trip.
+const MAX_UPLOAD_BYTES = 100 * 1024 * 1024;
 
-    xhr.upload.addEventListener("progress", (event) => {
-      if (!event.lengthComputable) return;
-      const percent = Math.round((event.loaded / event.total) * 100);
-      onProgress(percent);
-      if (percent >= 100) onUploaded();
-    });
+interface BlobFileRef {
+  pathname: string;
+  name: string;
+  type: string;
+}
 
-    xhr.addEventListener("load", async () => {
-      if (xhr.status < 200 || xhr.status >= 300) {
-        let message = "Conversion failed.";
-        try {
-          const text = await (xhr.response as Blob).text();
-          message = JSON.parse(text).error ?? message;
-        } catch {
-          // Response wasn't JSON — fall back to the default message.
-        }
-        reject(new Error(message));
-        return;
-      }
+// Files go straight from the browser to Vercel Blob storage - Vercel
+// Functions have a hard 4.5 MB request body limit that raw multipart uploads
+// used to hit well under the 25/100 MB caps this site promises. Uploaded one
+// at a time (Blob's upload() is single-file), with progress aggregated
+// across all files by byte share so multi-file tools still show one smooth
+// combined percentage.
+async function uploadFilesToBlob(files: File[], onProgress: (percent: number) => void): Promise<BlobFileRef[]> {
+  const totalBytes = files.reduce((sum, file) => sum + file.size, 0) || 1;
+  const loadedByFile = new Array(files.length).fill(0);
 
-      const disposition = xhr.getResponseHeader("Content-Disposition") ?? "";
-      const match = disposition.match(/filename="([^"]+)"/);
-      resolve({ filename: match?.[1] ?? "converted", blob: xhr.response as Blob });
-    });
+  const reportProgress = () => {
+    const loaded = loadedByFile.reduce((sum, n) => sum + n, 0);
+    onProgress(Math.min(100, Math.round((loaded / totalBytes) * 100)));
+  };
 
-    xhr.addEventListener("error", () => reject(new Error("Something went wrong. Try again.")));
+  return Promise.all(
+    files.map(async (file, index) => {
+      const result = await upload(file.name, file, {
+        access: "private",
+        handleUploadUrl: BLOB_HANDLE_UPLOAD_URL,
+        clientPayload: JSON.stringify({ maxBytes: MAX_UPLOAD_BYTES }),
+        onUploadProgress: ({ loaded }) => {
+          loadedByFile[index] = loaded;
+          reportProgress();
+        },
+      });
+      return { pathname: result.pathname, name: file.name, type: file.type };
+    }),
+  );
+}
 
-    xhr.send(formData);
+// Uploads every "file" entry in formData to Blob storage, then POSTs the
+// remaining fields plus blob references as JSON to `endpoint` - the server
+// side (resolveConversionForm in lib/blob-input.ts) fetches each blob's
+// bytes and reconstructs a FormData equivalent to what this used to send
+// directly, so every convert route's own logic is unaffected by this swap.
+export async function submitConversion({ endpoint, formData, onProgress, onUploaded }: SubmitConversionOptions): Promise<SubmitConversionResult> {
+  const files = formData.getAll("file").filter((f): f is File => f instanceof File);
+  const fields: Record<string, string> = {};
+  for (const [key, value] of formData.entries()) {
+    if (key === "file") continue;
+    fields[key] = String(value);
+  }
+
+  if (files.length === 0) {
+    throw new Error("Choose a file first.");
+  }
+
+  let blobFiles: BlobFileRef[];
+  try {
+    blobFiles = await uploadFilesToBlob(files, onProgress);
+  } catch (err) {
+    throw new Error(err instanceof Error ? err.message : "Upload failed. Try again.");
+  }
+
+  onUploaded();
+
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ fields, files: blobFiles }),
   });
+
+  if (!response.ok) {
+    let message = "Conversion failed.";
+    try {
+      const data = await response.json();
+      message = data.error ?? message;
+    } catch {
+      // Response wasn't JSON — fall back to the default message.
+    }
+    throw new Error(message);
+  }
+
+  const disposition = response.headers.get("Content-Disposition") ?? "";
+  const match = disposition.match(/filename="([^"]+)"/);
+  const blob = await response.blob();
+  return { filename: match?.[1] ?? "converted", blob };
 }
 
 /**

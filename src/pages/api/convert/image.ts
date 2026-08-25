@@ -7,6 +7,7 @@ import { contentDisposition } from "../../../lib/content-disposition";
 import { detectFaces } from "../../../lib/face-detection";
 import { computeCropBox, PASSPORT_PHOTO_PX, PASSPORT_PHOTO_DPI } from "../../../lib/passport-photo";
 import { looksLikeHeic, decodeHeicFallback, sharpFromHeicFallback } from "../../../lib/heic-fallback";
+import { resolveConversionForm } from "../../../lib/blob-input";
 
 // Face detection runs on a downscaled copy for speed; detected coordinates
 // are then scaled back up to the full-resolution image for the actual crop,
@@ -14,8 +15,10 @@ import { looksLikeHeic, decodeHeicFallback, sharpFromHeicFallback } from "../../
 const FACE_DETECTION_MAX_DIMENSION = 640;
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires
-// per-plan limits (Pro/Business get raised caps).
-const MAX_BYTES = 25 * 1024 * 1024;
+// per-plan limits (Pro/Business get raised caps). Uploads route through
+// Vercel Blob (see resolveConversionForm in lib/blob-input.ts), so this is a
+// real processing-capacity limit, not a request-body-size workaround.
+const MAX_BYTES = 100 * 1024 * 1024;
 
 const WRITABLE_FORMATS = ["jpeg", "png", "webp", "avif", "gif"] as const;
 type WritableFormat = (typeof WRITABLE_FORMATS)[number];
@@ -90,7 +93,13 @@ async function findCompressSettings(
 }
 
 export const POST: APIRoute = async ({ request, locals }) => {
-  const form = await request.formData();
+  let form: FormData;
+  try {
+    form = await resolveConversionForm(request);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Upload failed.";
+    return new Response(JSON.stringify({ error: message }), { status: 400 });
+  }
   const file = form.get("file");
   const slug = String(form.get("slug") ?? "");
 

@@ -5,8 +5,14 @@ import util from "node:util";
 import { getTool, type AiOperation } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
+import { resolveConversionForm } from "../../../lib/blob-input";
 
-const MAX_BYTES = 20 * 1024 * 1024;
+// Uploads route through Vercel Blob (see resolveConversionForm in
+// lib/blob-input.ts), so this is a real processing-capacity limit, not a
+// request-body-size workaround. The tiling approach below (UPSCALE_TILE_SIZE)
+// already bounds per-tensor memory independent of input file size, so this
+// cap is mainly about keeping wall-clock time/tile count reasonable.
+const MAX_BYTES = 100 * 1024 * 1024;
 
 // The ESRGAN model's intermediate feature maps run at ~input resolution
 // (64 channels, float32) before the upscaling step, so memory scales with
@@ -167,7 +173,13 @@ async function upscaleLocally(inputBuffer: Buffer): Promise<Buffer> {
 }
 
 export const POST: APIRoute = async ({ request, locals }) => {
-  const form = await request.formData();
+  let form: FormData;
+  try {
+    form = await resolveConversionForm(request);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Upload failed.";
+    return new Response(JSON.stringify({ error: message }), { status: 400 });
+  }
   const file = form.get("file");
   const slug = String(form.get("slug") ?? "");
 

@@ -138,9 +138,11 @@ export default defineConfig({
   },
 
   adapter: vercel({
-    // Headless-Chromium-backed Word conversions (see src/lib/chromium.ts) need
-    // more than the default function timeout, especially on a cold start.
-    maxDuration: 60,
+    // 300s is Hobby's actual ceiling (with Fluid Compute) - large files (up to
+    // the 100 MB MAX_BYTES caps in the convert routes) need real headroom for
+    // heavy operations like OCR, AI upscaling, and PDF rasterization, well
+    // beyond what Chromium's cold start alone required.
+    maxDuration: 300,
     includeFiles: [
       ...bgRemovalFiles,
       ...tesseractWasmFiles,

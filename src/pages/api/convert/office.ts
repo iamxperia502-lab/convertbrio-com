@@ -4,10 +4,13 @@ import { recordConversionAttempt, finalizeConversionJob, failConversionJob } fro
 import { contentDisposition } from "../../../lib/content-disposition";
 import { wordToPdf, pdfToDocx, excelToPdf, powerpointToPdf, mergePdfBuffers } from "../../../lib/office-convert";
 import { renderPdfToImages } from "./pdf";
+import { resolveConversionForm } from "../../../lib/blob-input";
 
 // Free-tier cap from pricing.astro. A global hard cap until M3 wires
-// per-plan limits (Pro/Business get raised caps).
-const MAX_BYTES = 25 * 1024 * 1024;
+// per-plan limits (Pro/Business get raised caps). Uploads route through
+// Vercel Blob (see resolveConversionForm in lib/blob-input.ts), so this is a
+// real processing-capacity limit, not a request-body-size workaround.
+const MAX_BYTES = 100 * 1024 * 1024;
 const MAX_FILES = 25;
 
 const DOCX_MIME = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
@@ -27,7 +30,13 @@ function detectOfficeKind(file: File): "docx" | "xlsx" | "pptx" | "pdf" | "unsup
 }
 
 export const POST: APIRoute = async ({ request, locals }) => {
-  const form = await request.formData();
+  let form: FormData;
+  try {
+    form = await resolveConversionForm(request);
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Upload failed.";
+    return new Response(JSON.stringify({ error: message }), { status: 400 });
+  }
   const slug = String(form.get("slug") ?? "");
   const files = form.getAll("file").filter((f): f is File => f instanceof File);
 

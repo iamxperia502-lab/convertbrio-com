@@ -39,7 +39,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and File Limits",
-        body: "Every upload is encrypted in transit and processed automatically — no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within 24 hours. Files up to 25 MB are supported, free, with no account required.",
+        body: "Every upload is encrypted in transit and processed automatically — no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within 24 hours. Files up to 100 MB are supported, free, with no account required.",
       },
     ],
     relatedTools: [
@@ -62,7 +62,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a file size limit?",
         answer:
-          "Conversions support images up to 25 MB, free, with no account required.",
+          "Conversions support images up to 100 MB, free, with no account required.",
       },
     ],
   },
@@ -473,7 +473,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 25 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
+        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -563,7 +563,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 25 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
+        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -610,7 +610,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 25 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
+        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -657,7 +657,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and Batch Compression",
-        body: "Every upload is encrypted in transit and automatically deleted from ConvertBrio's servers within 24 hours. This tool compresses one image at a time, up to 25 MB, free, with no account required.",
+        body: "Every upload is encrypted in transit and automatically deleted from ConvertBrio's servers within 24 hours. This tool compresses one image at a time, up to 100 MB, free, with no account required.",
       },
     ],
     relatedTools: [
@@ -829,7 +829,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "File Order and Limits",
-        body: "The order you upload or arrange files in determines the order they appear in the merged PDF, so double-check the sequence before converting. Merges work with files up to 25 MB each, free, with no account required.",
+        body: "The order you upload or arrange files in determines the order they appear in the merged PDF, so double-check the sequence before converting. Merges work with files up to 100 MB each, free, with no account required.",
       },
     ],
     relatedTools: [
@@ -852,7 +852,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a limit to how many PDFs I can merge?",
         answer:
-          "You can combine multiple files in a single upload, each up to 25 MB, free, with no account required.",
+          "You can combine multiple files in a single upload, each up to 100 MB, free, with no account required.",
       },
     ],
   },
@@ -876,7 +876,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Download Format and Limits",
-        body: "Because splitting produces one file per page, the result downloads as a single ZIP archive containing every page as its own PDF, ready to extract. Uploads are capped at 25 MB, and both the original and the resulting pages are deleted from ConvertBrio's servers within 24 hours of processing.",
+        body: "Because splitting produces one file per page, the result downloads as a single ZIP archive containing every page as its own PDF, ready to extract. Uploads are capped at 100 MB, and both the original and the resulting pages are deleted from ConvertBrio's servers within 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -1052,7 +1052,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Numbering Style and Limits",
-        body: "Numbers are stamped bottom-center on every page in a plain sans-serif style, starting at 1 — there's currently no option to change position, starting number, or format like \"Page X of Y\". Uploads are capped at 25 MB and the file is deleted from ConvertBrio's servers within 24 hours of processing.",
+        body: "Numbers are stamped bottom-center on every page in a plain sans-serif style, starting at 1 — there's currently no option to change position, starting number, or format like \"Page X of Y\". Uploads are capped at 100 MB and the file is deleted from ConvertBrio's servers within 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -1185,7 +1185,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "The combined size of all uploaded images is capped at 25 MB per conversion. Files are processed on ConvertBrio's servers, not in your browser, and both the source images and the resulting PDF are deleted within 24 hours.",
+        body: "The combined size of all uploaded images is capped at 100 MB per conversion. Files are processed on ConvertBrio's servers, not in your browser, and both the source images and the resulting PDF are deleted within 24 hours.",
       },
     ],
     relatedTools: [
@@ -1448,7 +1448,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Layout, Downloads, and Limits",
-        body: "Your DOCX is first laid out on a standard A4 page, so complex Word-specific formatting like headers/footers, footnotes, or unusual page sizes may render slightly differently than in Word itself. A single-page document downloads as one PNG; multi-page documents download as a ZIP file containing one PNG per page. Uploads are capped at 25 MB and files are deleted from ConvertBrio's servers within 24 hours.",
+        body: "Your DOCX is first laid out on a standard A4 page, so complex Word-specific formatting like headers/footers, footnotes, or unusual page sizes may render slightly differently than in Word itself. A single-page document downloads as one PNG; multi-page documents download as a ZIP file containing one PNG per page. Uploads are capped at 100 MB and files are deleted from ConvertBrio's servers within 24 hours.",
       },
     ],
     relatedTools: [
@@ -1708,7 +1708,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "You can combine up to 25 files with a combined size of 25 MB in one pass. Each file is converted and processed on ConvertBrio's servers, not in your browser, and every file — originals and the merged output — is deleted within 24 hours of processing.",
+        body: "You can combine up to 25 files with a combined size of 100 MB in one pass. Each file is converted and processed on ConvertBrio's servers, not in your browser, and every file — originals and the merged output — is deleted within 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -1755,7 +1755,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 25 MB, and processing happens on ConvertBrio's servers, not in your browser. Both the original photo and the cutout are deleted within 24 hours of processing, whether or not you download the result.",
+        body: "Uploads are capped at 100 MB, and processing happens on ConvertBrio's servers, not in your browser. Both the original photo and the cutout are deleted within 24 hours of processing, whether or not you download the result.",
       },
     ],
     relatedTools: [
@@ -1876,7 +1876,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a file size limit?",
         answer:
-          "Uploads are capped at 20 MB. The original and enhanced files are deleted from ConvertBrio's servers within 24 hours of processing.",
+          "Uploads are capped at 100 MB. The original and enhanced files are deleted from ConvertBrio's servers within 24 hours of processing.",
       },
     ],
   },
@@ -1900,7 +1900,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and What to Expect",
-        body: "Uploads are capped at 20 MB, and very large source images are automatically downscaled before upscaling to keep processing time and memory use reasonable — so extremely high-resolution inputs won't gain much from this tool. Output is always a PNG at 4x the (possibly downscaled) input's resolution. Results are best on real-world photos; the model can struggle with dense text, line art, or heavily stylized graphics.",
+        body: "Uploads are capped at 100 MB, and very large source images are automatically downscaled before upscaling to keep processing time and memory use reasonable — so extremely high-resolution inputs won't gain much from this tool. Output is always a PNG at 4x the (possibly downscaled) input's resolution. Results are best on real-world photos; the model can struggle with dense text, line art, or heavily stylized graphics.",
       },
     ],
     relatedTools: [
@@ -1917,7 +1917,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a file size limit?",
         answer:
-          "Uploads are capped at 20 MB. Files and results are deleted from ConvertBrio's servers within 24 hours of processing.",
+          "Uploads are capped at 100 MB. Files and results are deleted from ConvertBrio's servers within 24 hours of processing.",
       },
       {
         question: "Why did processing take a little while?",
