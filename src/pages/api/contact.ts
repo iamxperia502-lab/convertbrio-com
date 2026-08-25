@@ -1,10 +1,7 @@
 import type { APIRoute } from "astro";
 
-// Temporary: Resend's sandbox mode only allows sending to the account's own
-// address until a domain is verified (convertbrio.com is added in Resend but
-// not yet DNS-verified). Switch back to the real inbox once that's done.
-const CONTACT_RECIPIENT = "iamxperia502@gmail.com";
-const FROM_ADDRESS = "ConvertBrio <onboarding@resend.dev>";
+const CONTACT_RECIPIENT = "s.subham58@gmail.com";
+const FROM_ADDRESS = "ConvertBrio <contact@convertbrio.com>";
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   const form = await request.formData();
