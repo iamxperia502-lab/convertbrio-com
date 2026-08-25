@@ -2,7 +2,6 @@
 import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import ConsentBanner from "../components/ConsentBanner.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
@@ -47,21 +46,21 @@ const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4630473399054348"
      crossorigin="anonymous"></script>
 
-    <!-- Google Consent Mode v2: default to denied for analytics/ad storage
-         until the visitor makes a choice in the cookie banner (see
-         ConsentBanner.astro) or in Google's own EU consent message (see
-         Privacy & messaging in AdSense, which now also runs on this site).
-         Must run before gtag.js/GTM load so the first hit already carries
-         the denied signal. -->
+    <!-- Google Consent Mode v2: granted by default everywhere, denied by
+         default in the EEA/UK/Switzerland until the visitor responds to
+         Google's own EU consent message (AdSense > Privacy & messaging),
+         which is the sole consent UI on this site. Must run before
+         gtag.js/GTM load so the first hit already carries the right
+         signal. -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
 
-      // Microsoft Clarity is gated on analytics consent regardless of which
-      // system granted it - our own banner or Google's EU consent message -
-      // since both ultimately speak the same Consent Mode dataLayer/gtag
-      // protocol. Installed here, before anything else can push, so it
-      // catches the very first consent update on the page.
+      // Microsoft Clarity is gated on analytics consent, granted either by
+      // the default below or by Google's EU consent message - both speak
+      // the same Consent Mode dataLayer/gtag protocol. Installed here,
+      // before anything else can push, so it catches the very first
+      // consent update on the page.
       (function () {
         var clarityLoaded = false;
         function loadClarity() {
@@ -86,25 +85,19 @@ const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "
       })();
 
       gtag('consent', 'default', {
+        analytics_storage: 'granted',
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted'
+      });
+      gtag('consent', 'default', {
         analytics_storage: 'denied',
         ad_storage: 'denied',
         ad_user_data: 'denied',
         ad_personalization: 'denied',
-        wait_for_update: 500
+        wait_for_update: 500,
+        region: ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']
       });
-      (function () {
-        try {
-          var stored = JSON.parse(localStorage.getItem('cb-consent') || 'null');
-          if (stored && stored.version === 1) {
-            gtag('consent', 'update', {
-              analytics_storage: stored.analytics ? 'granted' : 'denied',
-              ad_storage: stored.advertising ? 'granted' : 'denied',
-              ad_user_data: stored.advertising ? 'granted' : 'denied',
-              ad_personalization: stored.advertising ? 'granted' : 'denied'
-            });
-          }
-        } catch (e) {}
-      })();
     </script>
 
     <!-- Google tag (gtag.js) -->
@@ -123,7 +116,7 @@ const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "
     <!-- End Google Tag Manager -->
 
     <!-- Microsoft Clarity loads only after analytics consent is granted —
-         see ConsentBanner.astro, which injects it on accept. -->
+         see the Consent Mode script above, which injects it once granted. -->
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -187,7 +180,6 @@ const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "
       <slot />
     </main>
     <Footer />
-    <ConsentBanner />
     <SpeedInsights />
   </body>
 </html>

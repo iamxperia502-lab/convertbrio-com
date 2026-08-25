@@ -101,7 +101,17 @@ const year = new Date().getFullYear();
     var btn = document.getElementById("cb-manage-cookies-link");
     if (!btn) return;
     btn.addEventListener("click", function () {
-      window.dispatchEvent(new CustomEvent("cb:open-consent"));
+      // Reopens Google's own EU consent message (AdSense > Privacy &
+      // messaging), the only consent UI on this site. googlefc.callbackQueue
+      // and showRevocationMessage() are Google's documented public API for
+      // exactly this "manage/withdraw consent" use case.
+      if (window.googlefc && window.googlefc.callbackQueue) {
+        window.googlefc.callbackQueue.push({
+          CONSENT_DATA_READY: function () {
+            window.googlefc.showRevocationMessage();
+          },
+        });
+      }
     });
   })();
 </script>
