@@ -12,6 +12,7 @@ import SeoContent from "../components/SeoContent.astro";
 import FaqSection from "../components/FaqSection.astro";
 import { homepageFaq } from "../data/faq";
 import { liveToolCount } from "../data/tools";
+import { alternatesFor } from "../data/i18n";
 
 const seoTitle = "ConvertBrio — Free Online File Converter & Compressor";
 const description = `Convert, compress & edit images, PDFs, and documents online — free, private, no sign-up. ${liveToolCount} tools including an image compressor that hits an exact KB target.`;
@@ -71,7 +72,7 @@ const faqSchema = {
   description={description}
   canonical="/"
   lang="en"
-  alternates={{ en: "/", pt: "/pt" }}
+  alternates={alternatesFor("/")}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline />

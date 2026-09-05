@@ -4,7 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
-import { HTML_LANG, type Locale } from "../data/i18n";
+import { HTML_LANG, HREFLANG, LOCALES, DEFAULT_LOCALE, type Locale } from "../data/i18n";
 
 interface Props {
   title: string;
@@ -50,9 +50,14 @@ const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "
 
 const hreflangs = alternates
   ? [
-      alternates.en && { hreflang: "en", href: new URL(alternates.en, Astro.site).toString() },
-      alternates.pt && { hreflang: "pt-BR", href: new URL(alternates.pt, Astro.site).toString() },
-      alternates.en && { hreflang: "x-default", href: new URL(alternates.en, Astro.site).toString() },
+      ...LOCALES.filter((l) => alternates[l]).map((l) => ({
+        hreflang: HREFLANG[l],
+        href: new URL(alternates[l]!, Astro.site).toString(),
+      })),
+      alternates[DEFAULT_LOCALE] && {
+        hreflang: "x-default",
+        href: new URL(alternates[DEFAULT_LOCALE]!, Astro.site).toString(),
+      },
     ].filter((entry): entry is { hreflang: string; href: string } => Boolean(entry))
   : [];
 ---

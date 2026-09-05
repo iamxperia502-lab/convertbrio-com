@@ -1,0 +1,17 @@
+---
+import ToolPage from "../../../components/ToolPage.astro";
+import { NON_DEFAULT_LOCALES, LOCALIZED_TOOL_SLUGS, type Locale } from "../../../data/i18n";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LOCALES.flatMap((lang) =>
+    LOCALIZED_TOOL_SLUGS.map((slug) => ({ params: { lang, slug } }))
+  );
+}
+
+const { lang, slug } = Astro.params;
+if (!lang || !slug) return Astro.rewrite("/404");
+---
+
+<ToolPage slug={slug} lang={lang as Locale} />

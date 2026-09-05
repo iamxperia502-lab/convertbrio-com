@@ -3,7 +3,14 @@ import { execFileSync } from "node:child_process";
 import { getCollection } from "astro:content";
 import { tools, isComingSoon } from "../data/tools";
 import { toolContent } from "../data/toolContent";
-import { PT_TOOL_SLUGS } from "../data/i18n";
+import {
+  LOCALIZED_TOOL_SLUGS,
+  NON_DEFAULT_LOCALES,
+  LOCALES,
+  DEFAULT_LOCALE,
+  HREFLANG,
+  localePath,
+} from "../data/i18n";
 
 export const prerender = true;
 
@@ -14,10 +21,8 @@ const repoRoot = process.cwd();
 const buildDate = new Date().toISOString().slice(0, 10);
 
 // Real lastmod per page, taken from the git history of the source file(s)
-// that actually drive that page's content — rather than stamping every URL
-// with today's build date regardless of whether anything on it changed.
-// Falls back to the build date if git isn't available (e.g. a shallow
-// checkout with no history for that file).
+// that actually drive that page's content. Falls back to the build date if
+// git isn't available (e.g. a shallow checkout with no history for a file).
 function lastModified(...relativePaths: string[]): string {
   try {
     const dates = relativePaths.map((path) =>
@@ -42,18 +47,20 @@ interface SitemapUrl {
   alternates?: { hreflang: string; href: string }[];
 }
 
-const staticPaths: { path: string; changefreq: string; priority: string; lastmod: string }[] = [
+const staticPaths: { path: string; changefreq: string; priority: string; lastmod: string; localised?: boolean }[] = [
   {
     path: "",
     changefreq: "weekly",
     priority: "1.0",
     lastmod: lastModified("src/pages/index.astro", "src/components/Hero.astro", "src/components/SeoContent.astro", "src/data/faq.ts"),
+    localised: true,
   },
   {
     path: "/all-tools",
     changefreq: "weekly",
     priority: "0.9",
     lastmod: lastModified("src/pages/all-tools.astro", "src/data/tools.ts"),
+    localised: true,
   },
   { path: "/blog", changefreq: "weekly", priority: "0.7", lastmod: lastModified("src/pages/blog/index.astro") },
   { path: "/about", changefreq: "monthly", priority: "0.5", lastmod: lastModified("src/pages/about.astro") },
@@ -69,39 +76,38 @@ const toolsLastmod = lastModified(
   "src/data/tools.ts",
   "src/data/toolContent.ts"
 );
-const ptLastmod = lastModified(
-  "src/pages/pt/tools/[slug].astro",
-  "src/pages/pt/index.astro",
-  "src/data/toolContentPt.ts",
-  "src/data/i18n.ts"
+const localizedLastmod = lastModified(
+  "src/pages/[lang]/tools/[slug].astro",
+  "src/pages/[lang]/index.astro",
+  "src/data/i18n.ts",
+  "src/data/i18n-strings.ts",
+  "src/data/i18n-home.ts",
+  "src/data/tool-content"
 );
-
-const ptSlugs = new Set<string>(PT_TOOL_SLUGS);
 
 export const GET: APIRoute = async ({ site }) => {
   const base = (site?.toString() ?? "https://www.convertbrio.com/").replace(/\/$/, "");
-  const xdefault = (enPath: string) => ({ hreflang: "x-default", href: `${base}${enPath || "/"}` });
-  const enAlt = (enPath: string) => ({ hreflang: "en", href: `${base}${enPath || "/"}` });
-  const ptAlt = (enPath: string) => ({ hreflang: "pt-BR", href: `${base}/pt${enPath}` });
+
+  // Full hreflang alternate set for a page that exists in every locale.
+  const altSet = (enPath: string) => [
+    ...LOCALES.map((l) => ({ hreflang: HREFLANG[l], href: `${base}${localePath(enPath, l)}` })),
+    { hreflang: "x-default", href: `${base}${localePath(enPath, DEFAULT_LOCALE)}` },
+  ];
 
   const posts = await getCollection("blog", ({ data }) => !data.draft);
 
+  const localizedSlugSet = new Set<string>(LOCALIZED_TOOL_SLUGS);
+
   const urls: SitemapUrl[] = [
-    ...staticPaths.map(({ path, changefreq, priority, lastmod }) => {
-      const localised = path === "" || path === "/all-tools";
-      return {
-        loc: `${base}${path}`,
-        changefreq,
-        priority,
-        lastmod,
-        alternates: localised ? [enAlt(path), ptAlt(path), xdefault(path)] : undefined,
-      };
-    }),
+    // English canonical pages.
+    ...staticPaths.map(({ path, changefreq, priority, lastmod, localised }) => ({
+      loc: `${base}${path || "/"}`,
+      changefreq,
+      priority,
+      lastmod,
+      alternates: localised ? altSet(path) : undefined,
+    })),
     ...tools
-      // External tools (e.g. internet-speed-test) are a redirect, not a 200
-      // page. Coming-soon tools are listed only when they have a
-      // `comingSoonGuide` — those render as indexable how-to pages; the
-      // bare "Coming soon" stubs stay noindex and out of the sitemap.
       .filter(
         (tool) =>
           tool.kind !== "external" &&
@@ -114,40 +120,40 @@ export const GET: APIRoute = async ({ site }) => {
           changefreq: "weekly",
           priority: "0.8",
           lastmod: toolsLastmod,
-          alternates: ptSlugs.has(tool.slug) ? [enAlt(enPath), ptAlt(enPath), xdefault(enPath)] : undefined,
+          alternates: localizedSlugSet.has(tool.slug) ? altSet(enPath) : undefined,
         };
       }),
-    // Portuguese pages.
-    {
-      loc: `${base}/pt`,
-      changefreq: "weekly",
-      priority: "0.9",
-      lastmod: ptLastmod,
-      alternates: [enAlt(""), ptAlt(""), xdefault("")],
-    },
-    {
-      loc: `${base}/pt/all-tools`,
-      changefreq: "weekly",
-      priority: "0.7",
-      lastmod: ptLastmod,
-      alternates: [enAlt("/all-tools"), ptAlt("/all-tools"), xdefault("/all-tools")],
-    },
-    ...PT_TOOL_SLUGS.map((slug) => {
-      const enPath = `/tools/${slug}`;
-      return {
-        loc: `${base}/pt${enPath}`,
-        changefreq: "weekly",
-        priority: "0.8",
-        lastmod: ptLastmod,
-        alternates: [enAlt(enPath), ptAlt(enPath), xdefault(enPath)],
-      };
-    }),
     ...posts.map((post) => ({
       loc: `${base}/blog/${post.id}`,
       changefreq: "monthly",
       priority: "0.6",
       lastmod: (post.data.updatedDate ?? post.data.pubDate).toISOString().slice(0, 10),
     })),
+
+    // Localised pages: home, all-tools, and each localised tool per locale.
+    ...NON_DEFAULT_LOCALES.flatMap((lang) => [
+      {
+        loc: `${base}/${lang}`,
+        changefreq: "weekly",
+        priority: "0.9",
+        lastmod: localizedLastmod,
+        alternates: altSet(""),
+      },
+      {
+        loc: `${base}/${lang}/all-tools`,
+        changefreq: "weekly",
+        priority: "0.7",
+        lastmod: localizedLastmod,
+        alternates: altSet("/all-tools"),
+      },
+      ...LOCALIZED_TOOL_SLUGS.map((slug) => ({
+        loc: `${base}/${lang}/tools/${slug}`,
+        changefreq: "weekly",
+        priority: "0.8",
+        lastmod: localizedLastmod,
+        alternates: altSet(`/tools/${slug}`),
+      })),
+    ]),
   ];
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
@@ -163,7 +169,5 @@ ${urls
 </urlset>
 `;
 
-  return new Response(body, {
-    headers: { "Content-Type": "application/xml" },
-  });
+  return new Response(body, { headers: { "Content-Type": "application/xml" } });
 };

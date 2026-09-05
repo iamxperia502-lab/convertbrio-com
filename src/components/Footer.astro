@@ -1,7 +1,5 @@
 ---
-import { ui, localePath, PT_TOOL_SLUGS, type Locale } from "../data/i18n";
-import { toolI18nPt } from "../data/i18n";
-import { getTool } from "../data/tools";
+import { ui, localePath, LOCALIZED_TOOL_SLUGS, toolMetaByLocale, type Locale } from "../data/i18n";
 
 interface Props {
   lang?: Locale;
@@ -9,15 +7,14 @@ interface Props {
 const { lang = "en" } = Astro.props;
 const t = ui[lang].footer;
 
-// In Portuguese, link tool names to their /pt/ page and use the translated
-// name; anything without a PT page stays English and links to the English URL.
-const ptSlugs = new Set<string>(PT_TOOL_SLUGS);
+// In a localised footer, link tool names to their /<lang>/ page and use the
+// translated name; anything without a localised page links to the English URL.
+const localizedSlugs = new Set<string>(LOCALIZED_TOOL_SLUGS);
 function toolLink(slug: string, enLabel: string) {
-  if (lang === "pt" && ptSlugs.has(slug)) {
-    return { label: toolI18nPt[slug]?.name ?? enLabel, href: `/pt/tools/${slug}` };
+  if (lang !== "en" && localizedSlugs.has(slug)) {
+    return { label: toolMetaByLocale[lang]?.[slug]?.name ?? enLabel, href: `/${lang}/tools/${slug}` };
   }
-  const t = getTool(slug);
-  return { label: lang === "pt" ? (t?.name ?? enLabel) : enLabel, href: `/tools/${slug}` };
+  return { label: enLabel, href: `/tools/${slug}` };
 }
 
 const columns = [
@@ -25,7 +22,7 @@ const columns = [
     heading: t.convert,
     links: [
       toolLink("image-converter", "Image Converter"),
-      lang === "pt" ? toolLink("jpg-to-pdf", "JPG to PDF") : { label: "HEIC to JPG", href: "/tools/heic-to-jpg" },
+      lang === "en" ? { label: "HEIC to JPG", href: "/tools/heic-to-jpg" } : toolLink("jpg-to-pdf", "JPG to PDF"),
       toolLink("word-to-pdf", "Word to PDF"),
       toolLink("pdf-to-word", "PDF to Word"),
     ],

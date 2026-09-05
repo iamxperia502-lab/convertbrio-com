@@ -6,6 +6,7 @@ import PageIntro from "../components/PageIntro.astro";
 import Icon from "../components/Icon.astro";
 import { categories, toolsByCategory, isComingSoon, tools } from "../data/tools";
 import type { CategoryId } from "../data/tools";
+import { alternatesFor } from "../data/i18n";
 
 // Coming-soon tools aren't live yet, so they're hidden from this listing
 // entirely rather than shown as unclickable placeholders — nothing to
@@ -24,7 +25,7 @@ const externalTools = tools.filter((tool) => tool.kind === "external");
   title="All Tools"
   description="Browse every ConvertBrio tool for converting, compressing, and enhancing images, PDFs, and documents."
   lang="en"
-  alternates={{ en: "/all-tools", pt: "/pt/all-tools" }}
+  alternates={alternatesFor("/all-tools")}
 >
   <PageIntro
     eyebrow="Tool library"

@@ -7,8 +7,8 @@ import FaqSection from "./FaqSection.astro";
 import CompressImageBenchmark from "./CompressImageBenchmark.astro";
 import { getTool, isComingSoon } from "../data/tools";
 import { toolContent } from "../data/toolContent";
-import { toolContentPt } from "../data/toolContentPt";
-import { ui, localePath, toolI18nPt, PT_TOOL_SLUGS, type Locale } from "../data/i18n";
+import { toolContentByLocale } from "../data/tool-content";
+import { ui, localePath, toolMetaByLocale, LOCALIZED_TOOL_SLUGS, NON_DEFAULT_LOCALES, type Locale } from "../data/i18n";
 
 interface Props {
   slug: string;
@@ -16,7 +16,7 @@ interface Props {
 }
 
 const { slug, lang = "en" } = Astro.props;
-const isPt = lang === "pt";
+const isDefault = lang === "en";
 const t = ui[lang].tool;
 const tf = t.form;
 
@@ -26,13 +26,13 @@ if (tool.kind === "external") {
   return Astro.redirect(tool.externalUrl, 302);
 }
 
-// Display strings (name/description/SEO) get a Portuguese override where one
+// Display strings (name/description/SEO) get a localised override where one
 // exists; behaviour fields (kind/operation/accept/…) always come from `tool`.
-const i18n = isPt ? toolI18nPt[slug] : undefined;
-const name = i18n?.name ?? tool.name;
-const description = i18n?.description ?? tool.description;
-const seoTitle = i18n?.seoTitle ?? tool.seoTitle;
-const seoDescription = i18n?.seoDescription ?? tool.seoDescription ?? description;
+const meta = isDefault ? undefined : toolMetaByLocale[lang]?.[slug];
+const name = meta?.name ?? tool.name;
+const description = meta?.description ?? tool.description;
+const seoTitle = meta?.seoTitle ?? tool.seoTitle;
+const seoDescription = meta?.seoDescription ?? tool.seoDescription ?? description;
 
 const endpoint =
   tool.kind === "image" ? "/api/convert/image" :
@@ -41,19 +41,25 @@ const endpoint =
   tool.kind === "ai" ? "/api/convert/ai" :
   null;
 
-const rawContent = isPt ? toolContentPt[slug] : toolContent[slug];
-const isGuide = isComingSoon(tool) && !!(isPt ? undefined : toolContent[slug]?.comingSoonGuide);
+const rawContent = isDefault ? toolContent[slug] : toolContentByLocale[lang]?.[slug];
+const isGuide = isComingSoon(tool) && !!(isDefault ? toolContent[slug]?.comingSoonGuide : undefined);
 const content = !isComingSoon(tool) || isGuide ? rawContent : undefined;
 
 const base = Astro.site?.toString().replace(/\/$/, "") ?? "https://www.convertbrio.com";
 const pfx = (path: string) => localePath(path, lang);
 
-const hasPt = (PT_TOOL_SLUGS as readonly string[]).includes(slug);
-const alternates = hasPt
-  ? { en: `/tools/${slug}`, pt: `/pt/tools/${slug}` }
+const isLocalized = (LOCALIZED_TOOL_SLUGS as readonly string[]).includes(slug);
+const alternates = isLocalized
+  ? {
+      en: `/tools/${slug}`,
+      ...Object.fromEntries(NON_DEFAULT_LOCALES.map((l) => [l, `/${l}/tools/${slug}`])),
+    }
   : undefined;
 
-const homeLabel = isPt ? "Início" : "Home";
+const HOME_LABEL: Record<Locale, string> = {
+  en: "Home", pt: "Início", es: "Inicio", fr: "Accueil", de: "Startseite", it: "Home", id: "Beranda",
+};
+const homeLabel = HOME_LABEL[lang];
 const faqSchema = content && {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -69,9 +75,7 @@ const howToSchema =
     ? {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        name: isPt
-          ? `Como usar ${name.toLowerCase()} no ConvertBrio`
-          : `How to ${name.toLowerCase()} with ConvertBrio`,
+        name: `${t.howToHeading} — ${name} · ConvertBrio`,
         step: content.howTo.map((item, index) => ({
           "@type": "HowToStep",
           position: index + 1,

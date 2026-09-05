@@ -1,0 +1,74 @@
+---
+export const prerender = true;
+
+import Layout from "../../layouts/Layout.astro";
+import PageIntro from "../../components/PageIntro.astro";
+import Icon from "../../components/Icon.astro";
+import { NON_DEFAULT_LOCALES, alternatesFor, toolMetaByLocale, ui, type Locale } from "../../data/i18n";
+import { homepageByLocale } from "../../data/i18n-home";
+
+export function getStaticPaths() {
+  return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+const meta = toolMetaByLocale[lang]!;
+const c = homepageByLocale[lang as Exclude<Locale, "en">];
+const nav = ui[lang].nav;
+
+const groups: { id: string; title: string; slugs: string[] }[] = [
+  { id: "pdf", title: c.categories.find((x) => x.id === "pdf")!.title, slugs: ["compress-pdf", "merge-pdf", "split-pdf", "pdf-to-word", "pdf-to-jpg", "ocr-pdf"] },
+  { id: "image", title: c.categories.find((x) => x.id === "image")!.title, slugs: ["compress-image", "image-converter", "jpg-to-pdf"] },
+  { id: "document", title: c.categories.find((x) => x.id === "document")!.title, slugs: ["word-to-pdf", "compress-word", "compress-powerpoint"] },
+];
+
+const iconFor: Record<string, string> = {
+  "compress-pdf": "shrink", "merge-pdf": "merge", "split-pdf": "merge", "pdf-to-word": "pdf", "pdf-to-jpg": "pdf", "ocr-pdf": "ocr",
+  "compress-image": "shrink", "image-converter": "image", "jpg-to-pdf": "image",
+  "word-to-pdf": "word", "compress-word": "shrink", "compress-powerpoint": "shrink",
+};
+
+const card =
+  "flex items-start gap-3 rounded-xl border border-hairline bg-canvas-soft p-4 transition-transform duration-150 hover:-translate-y-0.5";
+---
+
+<Layout
+  title={nav.allTools}
+  seoTitle={`${nav.allTools} · ConvertBrio`}
+  description={c.description}
+  canonical={`/${lang}/all-tools`}
+  lang={lang}
+  alternates={alternatesFor("/all-tools")}
+>
+  <PageIntro eyebrow={nav.allTools} title={nav.allTools} description={c.popularSub} />
+
+  <section class="bg-canvas">
+    <div class="container-page flex flex-col gap-14 py-16 sm:py-20">
+      {
+        groups.map((group) => (
+          <div id={group.id}>
+            <h2 class="text-xl font-semibold text-ink">{group.title}</h2>
+            <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {group.slugs.map((slug) => (
+                <a href={`/${lang}/tools/${slug}`} class={card}>
+                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-canvas-soft-2 text-ink">
+                    <Icon name={iconFor[slug] as any} class="h-4 w-4" />
+                  </span>
+                  <span class="flex flex-col gap-0.5">
+                    <span class="font-medium text-ink">{meta[slug].name}</span>
+                    <span class="text-sm leading-relaxed text-body">{meta[slug].description}</span>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      <p class="text-sm text-body">
+        {c.extraCatalogueNote}{" "}
+        <a href="/all-tools" class="font-medium text-brand-600 underline underline-offset-2">/all-tools</a>
+      </p>
+    </div>
+  </section>
+</Layout>

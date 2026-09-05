@@ -1,7 +1,7 @@
 ---
 import { categories } from "../data/tools";
 import ThemeToggle from "./ThemeToggle.astro";
-import { ui, localePath, type Locale } from "../data/i18n";
+import { ui, localePath, LOCALES, LOCALE_LABELS, LOCALE_SHORT, HREFLANG, type Locale } from "../data/i18n";
 
 interface Props {
   lang?: Locale;
@@ -31,11 +31,16 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 const user = Astro.locals.user;
 
-// Language switcher target: the same page in the other language when the
-// page provides an `alternates` map, otherwise the other language's home.
-const otherLang: Locale = lang === "en" ? "pt" : "en";
-const switchHref = alternates?.[otherLang] ?? localePath("/", otherLang);
-const switchLabel = lang === "en" ? "PT" : "EN";
+// Language switcher: link to the same page in each locale when the page
+// provides an `alternates` map, otherwise that locale's home.
+const languageOptions = LOCALES.map((l) => ({
+  code: l,
+  label: LOCALE_LABELS[l],
+  short: LOCALE_SHORT[l],
+  hreflang: HREFLANG[l],
+  href: alternates?.[l] ?? localePath("/", l),
+  current: l === lang,
+}));
 const homeHref = localePath("/", lang);
 ---
 
@@ -68,14 +73,36 @@ const homeHref = localePath("/", lang);
     </nav>
 
     <div class="hidden shrink-0 items-center gap-2 lg:flex">
-      <a
-        href={switchHref}
-        hreflang={otherLang === "en" ? "en" : "pt-BR"}
-        class="rounded-full border border-hairline px-2.5 py-1.5 text-xs font-medium text-body transition-colors hover:bg-canvas-soft-2 hover:text-ink"
-        aria-label={t.languageLabel}
-      >
-        {switchLabel}
-      </a>
+      <details class="group relative">
+        <summary
+          class="flex cursor-pointer list-none items-center gap-1 rounded-full border border-hairline px-2.5 py-1.5 text-xs font-medium text-body transition-colors hover:bg-canvas-soft-2 hover:text-ink"
+          aria-label={t.languageLabel}
+        >
+          {LOCALE_SHORT[lang]}
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" class="transition-transform group-open:rotate-180">
+            <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </summary>
+        <ul class="absolute right-0 z-50 mt-2 w-44 rounded-xl border border-hairline bg-canvas p-1.5 shadow-card">
+          {
+            languageOptions.map((opt) => (
+              <li>
+                <a
+                  href={opt.href}
+                  hreflang={opt.hreflang}
+                  class:list={[
+                    "block rounded-lg px-3 py-2 text-sm transition-colors hover:bg-canvas-soft-2",
+                    opt.current ? "font-medium text-ink" : "text-body",
+                  ]}
+                  aria-current={opt.current ? "true" : undefined}
+                >
+                  {opt.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
       {
         user ? (
           <>
@@ -146,13 +173,25 @@ const homeHref = localePath("/", lang);
           </a>
         ))
       }
-      <a
-        href={switchHref}
-        hreflang={otherLang === "en" ? "en" : "pt-BR"}
-        class="rounded-md px-3 py-2.5 text-[15px] text-body transition-colors hover:bg-canvas-soft-2 hover:text-ink"
-      >
-        {lang === "en" ? "Português" : "English"}
-      </a>
+      <div class="mt-1 border-t border-hairline pt-2">
+        <p class="px-3 py-1 font-mono text-xs uppercase tracking-wide text-mute">{t.languageLabel}</p>
+        <div class="flex flex-wrap gap-1.5 px-3 py-1.5">
+          {
+            languageOptions.map((opt) => (
+              <a
+                href={opt.href}
+                hreflang={opt.hreflang}
+                class:list={[
+                  "rounded-full border px-2.5 py-1 text-xs transition-colors",
+                  opt.current ? "border-ink font-medium text-ink" : "border-hairline text-body hover:bg-canvas-soft-2",
+                ]}
+              >
+                {opt.short}
+              </a>
+            ))
+          }
+        </div>
+      </div>
       <div class="mt-2 flex flex-col gap-2 border-t border-hairline pt-4">
         {
           user ? (

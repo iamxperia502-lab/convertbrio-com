@@ -1,7 +1,6 @@
-import type { ToolContentEntry } from "./toolContent";
+import type { ToolContentEntry } from "../toolContent";
 
-// Portuguese (pt-BR) long-form content for the tools with the most Brazilian
-// search demand. Keep the slug set in sync with PT_TOOL_SLUGS in i18n.ts.
+// Portuguese (pt-BR) long-form tool content. Links point to the /pt/ tool pages.
 
 export const toolContentPt: Record<string, ToolContentEntry> = {
   "compress-pdf": {
