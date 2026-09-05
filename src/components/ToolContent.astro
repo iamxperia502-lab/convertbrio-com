@@ -32,6 +32,7 @@ interface Props {
   intro: string | string[];
   howTo?: HowToStep[];
   howToHeading?: string;
+  relatedHeading?: string;
   sections: ToolContentSection[];
   relatedTools?: RelatedTool[];
 }
@@ -41,6 +42,7 @@ const {
   intro,
   howTo = [],
   howToHeading = "How to use this tool",
+  relatedHeading = "Related Tools",
   sections,
   relatedTools = [],
 } = Astro.props;
@@ -135,7 +137,7 @@ const bodyParagraphs = (body: string | string[]) =>
       {
         relatedTools.length > 0 && (
           <>
-            <h3 class="mt-10 text-lg font-semibold text-ink">Related Tools</h3>
+            <h3 class="mt-10 text-lg font-semibold text-ink">{relatedHeading}</h3>
             <ul class="mt-3 flex flex-wrap gap-x-6 gap-y-2">
               {relatedTools.map((related) => (
                 <li>

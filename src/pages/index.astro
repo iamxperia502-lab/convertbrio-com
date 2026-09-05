@@ -65,7 +65,14 @@ const faqSchema = {
 };
 ---
 
-<Layout title="ConvertBrio" seoTitle={seoTitle} description={description} canonical="/">
+<Layout
+  title="ConvertBrio"
+  seoTitle={seoTitle}
+  description={description}
+  canonical="/"
+  lang="en"
+  alternates={{ en: "/", pt: "/pt" }}
+>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline />
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} is:inline />

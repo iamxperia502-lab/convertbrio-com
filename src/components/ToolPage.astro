@@ -1,0 +1,554 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "./PageIntro.astro";
+import Icon from "./Icon.astro";
+import ToolContent from "./ToolContent.astro";
+import FaqSection from "./FaqSection.astro";
+import CompressImageBenchmark from "./CompressImageBenchmark.astro";
+import { getTool, isComingSoon } from "../data/tools";
+import { toolContent } from "../data/toolContent";
+import { toolContentPt } from "../data/toolContentPt";
+import { ui, localePath, toolI18nPt, PT_TOOL_SLUGS, type Locale } from "../data/i18n";
+
+interface Props {
+  slug: string;
+  lang?: Locale;
+}
+
+const { slug, lang = "en" } = Astro.props;
+const isPt = lang === "pt";
+const t = ui[lang].tool;
+const tf = t.form;
+
+const tool = getTool(slug)!;
+// External tools never reach this component (dedicated redirect routes).
+if (tool.kind === "external") {
+  return Astro.redirect(tool.externalUrl, 302);
+}
+
+// Display strings (name/description/SEO) get a Portuguese override where one
+// exists; behaviour fields (kind/operation/accept/…) always come from `tool`.
+const i18n = isPt ? toolI18nPt[slug] : undefined;
+const name = i18n?.name ?? tool.name;
+const description = i18n?.description ?? tool.description;
+const seoTitle = i18n?.seoTitle ?? tool.seoTitle;
+const seoDescription = i18n?.seoDescription ?? tool.seoDescription ?? description;
+
+const endpoint =
+  tool.kind === "image" ? "/api/convert/image" :
+  tool.kind === "pdf" ? "/api/convert/pdf" :
+  tool.kind === "office" ? "/api/convert/office" :
+  tool.kind === "ai" ? "/api/convert/ai" :
+  null;
+
+const rawContent = isPt ? toolContentPt[slug] : toolContent[slug];
+const isGuide = isComingSoon(tool) && !!(isPt ? undefined : toolContent[slug]?.comingSoonGuide);
+const content = !isComingSoon(tool) || isGuide ? rawContent : undefined;
+
+const base = Astro.site?.toString().replace(/\/$/, "") ?? "https://www.convertbrio.com";
+const pfx = (path: string) => localePath(path, lang);
+
+const hasPt = (PT_TOOL_SLUGS as readonly string[]).includes(slug);
+const alternates = hasPt
+  ? { en: `/tools/${slug}`, pt: `/pt/tools/${slug}` }
+  : undefined;
+
+const homeLabel = isPt ? "Início" : "Home";
+const faqSchema = content && {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: content.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  })),
+};
+
+const howToSchema =
+  content && content.howTo && content.howTo.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: isPt
+          ? `Como usar ${name.toLowerCase()} no ConvertBrio`
+          : `How to ${name.toLowerCase()} with ConvertBrio`,
+        step: content.howTo.map((item, index) => ({
+          "@type": "HowToStep",
+          position: index + 1,
+          name: item.step,
+          text: item.detail ? `${item.step} ${item.detail}` : item.step,
+        })),
+      }
+    : null;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: homeLabel, item: `${base}${pfx("/")}` },
+    { "@type": "ListItem", position: 2, name: ui[lang].nav.allTools, item: `${base}${pfx("/all-tools")}` },
+    { "@type": "ListItem", position: 3, name, item: `${base}${pfx(`/tools/${slug}`)}` },
+  ],
+};
+
+const softwareApplicationSchema = isComingSoon(tool)
+  ? null
+  : {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name,
+      url: `${base}${pfx(`/tools/${slug}`)}`,
+      applicationCategory: "UtilitiesApplication",
+      operatingSystem: "Any (web-based)",
+      description,
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    };
+---
+
+<Layout
+  title={name}
+  seoTitle={seoTitle}
+  description={seoDescription}
+  noindex={isComingSoon(tool) && !isGuide}
+  follow
+  lang={lang}
+  alternates={alternates}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+    {softwareApplicationSchema && <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} is:inline />}
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />}
+    {howToSchema && <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} is:inline />}
+  </Fragment>
+
+  <PageIntro eyebrow={isGuide ? t.eyebrowGuide : t.eyebrowTool} title={name} description={description} />
+
+  <section class="bg-canvas">
+    <div class="container-page py-16 sm:py-20">
+      <div class="mx-auto max-w-2xl">
+        {
+          isGuide && content?.comingSoonGuide ? (
+            <div class="rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:p-8">
+              <span class="inline-flex items-center gap-2 rounded-full bg-canvas-soft-2 px-3 py-1 text-xs font-medium text-body">
+                <Icon name="clock" class="h-3.5 w-3.5" />
+                {t.oneClickInDev}
+              </span>
+              <h2 class="mt-4 text-lg font-semibold text-ink">{content.comingSoonGuide.title}</h2>
+              {(Array.isArray(content.comingSoonGuide.intro)
+                ? content.comingSoonGuide.intro
+                : [content.comingSoonGuide.intro]
+              ).map((paragraph) => (
+                <p class="mt-2 leading-relaxed text-body">{paragraph}</p>
+              ))}
+              <a
+                href={content.comingSoonGuide.cta.href}
+                class="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+              >
+                {content.comingSoonGuide.cta.label}
+                <Icon name="arrow" class="h-4 w-4" />
+              </a>
+            </div>
+          ) : isComingSoon(tool) ? (
+            <div class="flex flex-col items-center gap-4 rounded-2xl border border-dashed border-hairline-strong px-6 py-14 text-center">
+              <span class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink">
+                <Icon name="clock" class="h-6 w-6" />
+              </span>
+              <p class="text-lg font-medium text-ink">{t.comingSoon}</p>
+              <p class="max-w-sm text-sm text-body">{tool.comingSoonReason}</p>
+              <a href={pfx("/all-tools")} class="mt-2 text-sm text-brand-600 underline underline-offset-2 hover:text-brand-700">
+                {t.browseOtherTools}
+              </a>
+            </div>
+          ) : (
+            <form
+              id="tool-form"
+              data-endpoint={endpoint}
+              data-i18n-uploading={tf.uploading}
+              data-i18n-processing={tf.processing}
+              data-i18n-choose-first={tf.chooseFirst}
+              data-i18n-error={tf.genericError}
+              data-i18n-done={tf.doneTemplate}
+              data-i18n-download={tf.downloadTemplate}
+              data-i18n-files-selected={tf.filesSelectedTemplate}
+              class="flex flex-col gap-6 rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:p-8"
+            >
+              <input type="hidden" name="slug" value={tool.slug} />
+
+              <label
+                for="file-input"
+                id="dropzone"
+                class="group flex cursor-pointer flex-col items-center gap-3 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-12 text-center transition-colors duration-150 hover:border-brand-400 hover:bg-brand-50/40"
+              >
+                <div id="dropzone-idle" class="flex flex-col items-center gap-3">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600">
+                    <Icon name="cloud" class="h-5 w-5" />
+                  </span>
+                  <span class="text-sm font-medium text-ink">
+                    {tool.multiple ? tf.dropMultiple : tf.dropSingle}
+                  </span>
+                  <span class="text-xs text-mute">{tool.multiple ? tf.sizeLimitTotal : tf.sizeLimit}</span>
+                </div>
+
+                <div id="dropzone-uploading" class="hidden w-full max-w-[16rem] flex-col items-center gap-3">
+                  <span id="progress-percent" class="text-3xl font-semibold tabular-nums text-ink">0%</span>
+                  <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
+                    <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
+                  </div>
+                  <span id="progress-label" class="text-xs text-mute">{tf.uploading}</span>
+                </div>
+
+                <div id="dropzone-done" class="hidden flex-col items-center gap-2">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-full bg-success-soft text-success">
+                    <Icon name="check" class="h-5 w-5" />
+                  </span>
+                  <span id="done-filename" class="max-w-full truncate text-sm font-medium text-ink" />
+                  <span class="text-xs text-mute">{tf.replaceHint}</span>
+                </div>
+
+                <input id="file-input" name="file" type="file" accept={tool.accept} multiple={tool.multiple} required class="sr-only" />
+              </label>
+
+              {
+                tool.kind === "image" && tool.operation === "convert" && !tool.outputFormat && (
+                  <div class="flex flex-col gap-1.5">
+                    <label for="format" class="text-sm font-medium text-ink">{tf.convertTo}</label>
+                    <select id="format" name="format" class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400">
+                      <option value="jpeg">JPG</option>
+                      <option value="png">PNG</option>
+                      <option value="webp">WEBP</option>
+                      <option value="avif">AVIF</option>
+                      <option value="gif">GIF</option>
+                    </select>
+                  </div>
+                )
+              }
+
+              {
+                tool.kind === "image" && tool.operation === "compress" && (
+                  <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-1.5">
+                      <label for="targetKb" class="text-sm font-medium text-ink">{tf.targetSizeKb}</label>
+                      <input
+                        id="targetKb"
+                        name="targetKb"
+                        type="number"
+                        min="5"
+                        placeholder="100"
+                        class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400"
+                      />
+                      <span class="text-xs text-mute">{tf.targetSizeHint}</span>
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="quality" class="text-sm font-medium text-ink">{tf.quality}</label>
+                      <input id="quality" name="quality" type="range" min="20" max="95" value="60" class="accent-ink" />
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                tool.kind === "image" && tool.operation === "resize" && (
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1.5">
+                      <label for="width" class="text-sm font-medium text-ink">{tf.width}</label>
+                      <input id="width" name="width" type="number" min="1" class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="height" class="text-sm font-medium text-ink">{tf.height}</label>
+                      <input id="height" name="height" type="number" min="1" class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                tool.kind === "image" && tool.operation === "crop" && (
+                  <div class="grid grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-1.5">
+                      <label for="left" class="text-sm font-medium text-ink">{tf.left}</label>
+                      <input id="left" name="left" type="number" min="0" required class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="top" class="text-sm font-medium text-ink">{tf.top}</label>
+                      <input id="top" name="top" type="number" min="0" required class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="width" class="text-sm font-medium text-ink">{tf.width}</label>
+                      <input id="width" name="width" type="number" min="1" required class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                      <label for="height" class="text-sm font-medium text-ink">{tf.height}</label>
+                      <input id="height" name="height" type="number" min="1" required class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400" />
+                    </div>
+                  </div>
+                )
+              }
+
+              {
+                tool.operation === "rotate" && (
+                  <div class="flex flex-col gap-1.5">
+                    <label for="degrees" class="text-sm font-medium text-ink">{tf.rotate}</label>
+                    <select id="degrees" name="degrees" class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-brand-400">
+                      <option value="90">90°</option>
+                      <option value="180">180°</option>
+                      <option value="270">270°</option>
+                    </select>
+                  </div>
+                )
+              }
+
+              <div class="flex gap-3">
+                <button
+                  id="reset-btn"
+                  type="button"
+                  class="hidden items-center justify-center gap-2 rounded-full border border-hairline-strong bg-canvas px-6 py-3 text-sm font-medium text-ink transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {tf.reupload}
+                </button>
+
+                <button
+                  type="submit"
+                  class="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+                >
+                  {tf.convert}
+                </button>
+              </div>
+
+              <a
+                id="download-link"
+                href="#"
+                class="hidden items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+              >
+                <Icon name="download" class="h-4 w-4" />
+                <span id="download-link-label">{tf.downloadResult}</span>
+              </a>
+
+              <p id="tool-status" role="status" aria-live="polite" class="text-center text-sm text-body" />
+            </form>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  {tool.slug === "compress-image" && <CompressImageBenchmark />}
+
+  {
+    content && (
+      <>
+        <ToolContent
+          title={content.title}
+          intro={content.intro}
+          howTo={content.howTo}
+          howToHeading={t.howToHeading}
+          relatedHeading={t.relatedHeading}
+          sections={content.sections}
+          relatedTools={content.relatedTools}
+        />
+        <FaqSection items={content.faq} heading={`${name} — ${t.faqSuffix}`} description={content.faqDescription} id={`faq-${tool.slug}`} />
+      </>
+    )
+  }
+
+  {
+    !isComingSoon(tool) && (
+      <script>
+        import { submitConversion, createDownloadHandle } from "../lib/upload-client";
+
+        const form = document.getElementById("tool-form") as HTMLFormElement | null;
+        const dropzone = document.getElementById("dropzone");
+        const dropzoneIdle = document.getElementById("dropzone-idle");
+        const dropzoneUploading = document.getElementById("dropzone-uploading");
+        const dropzoneDone = document.getElementById("dropzone-done");
+        const doneFilename = document.getElementById("done-filename");
+        const fileInput = document.getElementById("file-input") as HTMLInputElement | null;
+        const status = document.getElementById("tool-status");
+        const progressPercent = document.getElementById("progress-percent");
+        const progressBar = document.getElementById("progress-bar");
+        const progressLabel = document.getElementById("progress-label");
+        const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+        const resetButton = document.getElementById("reset-btn") as HTMLButtonElement | null;
+        const downloadLink = document.getElementById("download-link") as HTMLAnchorElement | null;
+        const downloadLinkLabel = document.getElementById("download-link-label");
+        const downloadHandle = downloadLink ? createDownloadHandle(downloadLink) : null;
+
+        const d = form?.dataset ?? ({} as DOMStringMap);
+        const S = {
+          uploading: d.i18nUploading ?? "Uploading…",
+          processing: d.i18nProcessing ?? "Processing…",
+          chooseFirst: d.i18nChooseFirst ?? "Choose a file first.",
+          error: d.i18nError ?? "Something went wrong. Try again.",
+          done: d.i18nDone ?? "Done — {file} downloaded. If it didn't start, use the button below.",
+          download: d.i18nDownload ?? "Download {file}",
+          filesSelected: d.i18nFilesSelected ?? "{n} files selected",
+        };
+
+        const hideDownloadLink = () => {
+          downloadHandle?.revoke();
+          downloadLink?.classList.add("hidden");
+          downloadLink?.classList.remove("flex");
+        };
+
+        const setProgress = (percent: number) => {
+          if (progressBar) progressBar.style.width = `${percent}%`;
+          if (progressPercent) progressPercent.textContent = `${percent}%`;
+        };
+
+        // The upload phase has real byte-level progress from the browser, but
+        // the server does the actual conversion in one synchronous pass with
+        // no progress channel back to the client. So the upload gets a slice
+        // of the bar (0-UPLOAD_WEIGHT%), and once it finishes, a trickle
+        // animation eases the rest toward PROCESSING_CEILING - never claiming
+        // 100% before the response actually arrives.
+        const UPLOAD_WEIGHT = 35;
+        const PROCESSING_CEILING = 96;
+        let processingTimer: number | undefined;
+
+        const stopProcessingTrickle = () => {
+          if (processingTimer !== undefined) {
+            window.clearInterval(processingTimer);
+            processingTimer = undefined;
+          }
+          progressBar?.classList.remove("animate-pulse");
+        };
+
+        const startProcessingTrickle = (startPercent: number) => {
+          let current = startPercent;
+          if (progressLabel) progressLabel.textContent = S.processing;
+          progressBar?.classList.add("animate-pulse");
+          processingTimer = window.setInterval(() => {
+            current += (PROCESSING_CEILING - current) * 0.06;
+            const rounded = Math.min(PROCESSING_CEILING, Math.round(current));
+            setProgress(rounded);
+            if (status) status.textContent = `${S.processing} ${rounded}%`;
+          }, 200);
+        };
+
+        const showIdle = () => {
+          dropzoneUploading?.classList.add("hidden");
+          dropzoneUploading?.classList.remove("flex");
+          dropzoneDone?.classList.add("hidden");
+          dropzoneDone?.classList.remove("flex");
+          dropzoneIdle?.classList.remove("hidden");
+          resetButton?.classList.add("hidden");
+          resetButton?.classList.remove("inline-flex");
+          hideDownloadLink();
+        };
+
+        const showUploading = () => {
+          dropzoneIdle?.classList.add("hidden");
+          dropzoneDone?.classList.add("hidden");
+          dropzoneDone?.classList.remove("flex");
+          dropzoneUploading?.classList.remove("hidden");
+          dropzoneUploading?.classList.add("flex");
+          resetButton?.classList.add("hidden");
+          resetButton?.classList.remove("inline-flex");
+          hideDownloadLink();
+        };
+
+        const showDone = (label: string) => {
+          dropzoneIdle?.classList.add("hidden");
+          dropzoneUploading?.classList.add("hidden");
+          dropzoneUploading?.classList.remove("flex");
+          dropzoneDone?.classList.remove("hidden");
+          dropzoneDone?.classList.add("flex");
+          if (doneFilename) doneFilename.textContent = label;
+          resetButton?.classList.remove("hidden");
+          resetButton?.classList.add("inline-flex");
+        };
+
+        const resetForm = () => {
+          if (fileInput) fileInput.value = "";
+          if (status) status.textContent = "";
+          stopProcessingTrickle();
+          setProgress(0);
+          if (progressLabel) progressLabel.textContent = S.uploading;
+          showIdle();
+        };
+
+        resetButton?.addEventListener("click", resetForm);
+
+        const selectedFileLabel = (files: FileList) =>
+          files.length > 1 ? S.filesSelected.replace("{n}", String(files.length)) : files[0].name;
+
+        fileInput?.addEventListener("change", () => {
+          hideDownloadLink();
+          if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
+          else showIdle();
+        });
+
+        ["dragenter", "dragover"].forEach((eventName) => {
+          dropzone?.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            dropzone.classList.add("border-brand-400", "bg-brand-50/40");
+          });
+        });
+        ["dragleave", "drop"].forEach((eventName) => {
+          dropzone?.addEventListener(eventName, (event) => {
+            event.preventDefault();
+            dropzone.classList.remove("border-brand-400", "bg-brand-50/40");
+          });
+        });
+        dropzone?.addEventListener("drop", (event) => {
+          const dt = (event as DragEvent).dataTransfer;
+          if (dt?.files?.length && fileInput) {
+            fileInput.files = dt.files;
+            hideDownloadLink();
+            showDone(selectedFileLabel(dt.files));
+          }
+        });
+
+        form?.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const endpoint = form.dataset.endpoint;
+          if (!endpoint || !status) return;
+
+          if (!fileInput?.files?.length) {
+            status.textContent = S.chooseFirst;
+            return;
+          }
+
+          submitButton?.setAttribute("disabled", "true");
+          showUploading();
+          setProgress(0);
+          if (progressLabel) progressLabel.textContent = S.uploading;
+          status.textContent = `${S.uploading} 0%`;
+
+          try {
+            const { filename, blob } = await submitConversion({
+              endpoint,
+              formData: new FormData(form),
+              onProgress: (percent) => {
+                const weighted = Math.round((percent / 100) * UPLOAD_WEIGHT);
+                setProgress(weighted);
+                status.textContent = `${S.uploading} ${percent}%`;
+              },
+              onUploaded: () => {
+                startProcessingTrickle(UPLOAD_WEIGHT);
+              },
+            });
+
+            stopProcessingTrickle();
+            setProgress(100);
+            status.textContent = S.done.replace("{file}", filename);
+            if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
+            if (downloadHandle && downloadLink) {
+              downloadHandle.set(blob, filename);
+              if (downloadLinkLabel) downloadLinkLabel.textContent = S.download.replace("{file}", filename);
+              downloadLink.classList.remove("hidden");
+              downloadLink.classList.add("flex");
+              downloadLink.click();
+            }
+          } catch (err) {
+            status.textContent = err instanceof Error ? err.message : S.error;
+            if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
+            else showIdle();
+          } finally {
+            stopProcessingTrickle();
+            submitButton?.removeAttribute("disabled");
+          }
+        });
+      </script>
+    )
+  }
+</Layout>

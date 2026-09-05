@@ -1,32 +1,47 @@
 ---
 import { categories } from "../data/tools";
 import ThemeToggle from "./ThemeToggle.astro";
+import { ui, localePath, type Locale } from "../data/i18n";
+
+interface Props {
+  lang?: Locale;
+  alternates?: Partial<Record<Locale, string>>;
+}
+const { lang = "en", alternates } = Astro.props;
+const t = ui[lang].nav;
 
 const categoryLabels: Record<string, string> = {
-  convert: "Convert",
-  compress: "Compress",
-  pdf: "PDF Tools",
-  image: "Image Tools",
-  document: "Document Tools",
-  ai: "AI Tools",
+  convert: t.convert,
+  compress: t.compress,
+  pdf: t.pdf,
+  image: t.image,
+  document: t.document,
+  ai: t.ai,
 };
 
 const navLinks = [
   ...categories.map((cat) => ({
     label: categoryLabels[cat.id] ?? cat.name,
-    href: `/all-tools#${cat.id}`,
+    href: localePath(`/all-tools#${cat.id}`, lang),
   })),
-  { label: "All Tools", href: "/all-tools" },
-  { label: "Blog", href: "/blog" },
+  { label: t.allTools, href: localePath("/all-tools", lang) },
+  { label: t.blog, href: localePath("/blog", lang) },
 ];
 
 const currentPath = Astro.url.pathname;
 const user = Astro.locals.user;
+
+// Language switcher target: the same page in the other language when the
+// page provides an `alternates` map, otherwise the other language's home.
+const otherLang: Locale = lang === "en" ? "pt" : "en";
+const switchHref = alternates?.[otherLang] ?? localePath("/", otherLang);
+const switchLabel = lang === "en" ? "PT" : "EN";
+const homeHref = localePath("/", lang);
 ---
 
 <header class="sticky top-0 z-40 border-b border-hairline bg-canvas/90 backdrop-blur-sm">
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <a href="/" class="flex shrink-0 items-center gap-2 rounded-sm" aria-label="ConvertBrio home">
+    <a href={homeHref} class="flex shrink-0 items-center gap-2 rounded-sm" aria-label="ConvertBrio home">
       <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect width="26" height="26" rx="7" fill="#16171B" />
         <path d="M8 13.5L11.2 16.7L18 9.3" stroke="#EEF1FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -34,7 +49,7 @@ const user = Astro.locals.user;
       <span translate="no" class="text-[15px] font-semibold tracking-[-0.01em] text-ink">ConvertBrio</span>
     </a>
 
-    <nav aria-label="Primary" class="hidden min-w-0 flex-1 items-center justify-center lg:flex">
+    <nav aria-label={t.primaryLabel} class="hidden min-w-0 flex-1 items-center justify-center lg:flex">
       <ul class="flex items-center gap-1 text-sm text-body">
         {
           navLinks.map((link) => (
@@ -53,37 +68,45 @@ const user = Astro.locals.user;
     </nav>
 
     <div class="hidden shrink-0 items-center gap-2 lg:flex">
+      <a
+        href={switchHref}
+        hreflang={otherLang === "en" ? "en" : "pt-BR"}
+        class="rounded-full border border-hairline px-2.5 py-1.5 text-xs font-medium text-body transition-colors hover:bg-canvas-soft-2 hover:text-ink"
+        aria-label={t.languageLabel}
+      >
+        {switchLabel}
+      </a>
       {
         user ? (
           <>
             <a
-              href="/dashboard"
+              href={localePath("/dashboard", lang)}
               class="rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
             >
-              Dashboard
+              {t.dashboard}
             </a>
             <form method="post" action="/api/auth/sign-out">
               <button
                 type="submit"
                 class="rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
               >
-                Sign Out
+                {t.signOut}
               </button>
             </form>
           </>
         ) : (
           <>
             <a
-              href="/sign-in"
+              href={localePath("/sign-in", lang)}
               class="rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
             >
-              Sign In
+              {t.signIn}
             </a>
             <a
-              href="/all-tools"
+              href={localePath("/all-tools", lang)}
               class="rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
             >
-              Get Started
+              {t.getStarted}
             </a>
           </>
         )
@@ -112,7 +135,7 @@ const user = Astro.locals.user;
   </div>
 
   <div id="mobile-menu" class="hidden border-t border-hairline lg:hidden">
-    <nav aria-label="Mobile" class="container-page flex flex-col gap-1 py-4">
+    <nav aria-label={t.mobileLabel} class="container-page flex flex-col gap-1 py-4">
       {
         navLinks.map((link) => (
           <a
@@ -123,35 +146,42 @@ const user = Astro.locals.user;
           </a>
         ))
       }
+      <a
+        href={switchHref}
+        hreflang={otherLang === "en" ? "en" : "pt-BR"}
+        class="rounded-md px-3 py-2.5 text-[15px] text-body transition-colors hover:bg-canvas-soft-2 hover:text-ink"
+      >
+        {lang === "en" ? "Português" : "English"}
+      </a>
       <div class="mt-2 flex flex-col gap-2 border-t border-hairline pt-4">
         {
           user ? (
             <>
               <a
-                href="/dashboard"
+                href={localePath("/dashboard", lang)}
                 class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
               >
-                Dashboard
+                {t.dashboard}
               </a>
               <form method="post" action="/api/auth/sign-out">
                 <button type="submit" class="w-full rounded-full bg-ink px-4 py-2.5 text-center text-[15px] font-medium text-canvas">
-                  Sign Out
+                  {t.signOut}
                 </button>
               </form>
             </>
           ) : (
             <>
               <a
-                href="/sign-in"
+                href={localePath("/sign-in", lang)}
                 class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
               >
-                Sign In
+                {t.signIn}
               </a>
               <a
-                href="/all-tools"
+                href={localePath("/all-tools", lang)}
                 class="rounded-full bg-ink px-4 py-2.5 text-center text-[15px] font-medium text-canvas"
               >
-                Get Started
+                {t.getStarted}
               </a>
             </>
           )

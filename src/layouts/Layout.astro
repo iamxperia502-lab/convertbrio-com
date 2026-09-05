@@ -4,6 +4,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
+import { HTML_LANG, type Locale } from "../data/i18n";
+
 interface Props {
   title: string;
   description?: string;
@@ -20,6 +22,12 @@ interface Props {
   // canonical URL at all, like 404s (there's no "canonical" version of a
   // page that doesn't exist).
   noCanonical?: boolean;
+  // Content language of this page. Drives <html lang> and, together with
+  // `alternates`, the hreflang tags. English pages that have no localised
+  // counterpart just render as-is with no hreflang.
+  lang?: Locale;
+  // Root-relative paths to the same page in each language, for hreflang.
+  alternates?: Partial<Record<Locale, string>>;
 }
 
 const {
@@ -31,16 +39,26 @@ const {
   noindex = false,
   follow = true,
   noCanonical = false,
+  lang = "en",
+  alternates,
 } = Astro.props;
 
 const pageTitle = seoTitle ?? (title === "ConvertBrio" ? title : `${title} · ConvertBrio`);
 const canonicalUrl = new URL(canonical ?? Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(image, Astro.site);
 const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "nofollow"}`;
+
+const hreflangs = alternates
+  ? [
+      alternates.en && { hreflang: "en", href: new URL(alternates.en, Astro.site).toString() },
+      alternates.pt && { hreflang: "pt-BR", href: new URL(alternates.pt, Astro.site).toString() },
+      alternates.en && { hreflang: "x-default", href: new URL(alternates.en, Astro.site).toString() },
+    ].filter((entry): entry is { hreflang: string; href: string } => Boolean(entry))
+  : [];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={HTML_LANG[lang]}>
   <head>
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4630473399054348"
@@ -132,6 +150,7 @@ const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "
     <meta name="description" content={description} />
     <meta name="robots" content={robotsContent} />
     {!noCanonical && <link rel="canonical" href={canonicalUrl} />}
+    {hreflangs.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
     <meta name="theme-color" id="theme-color-meta" content="#ffffff" />
 
     <script is:inline>
@@ -181,11 +200,11 @@ const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "
     >
       Skip to content
     </a>
-    <Header />
+    <Header lang={lang} alternates={alternates} />
     <main id="main-content" class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
     <SpeedInsights />
   </body>
 </html>

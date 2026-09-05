@@ -1,0 +1,15 @@
+---
+import ToolPage from "../../../components/ToolPage.astro";
+import { PT_TOOL_SLUGS } from "../../../data/i18n";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return PT_TOOL_SLUGS.map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+if (!slug) return Astro.rewrite("/404");
+---
+
+<ToolPage slug={slug} lang="pt" />
