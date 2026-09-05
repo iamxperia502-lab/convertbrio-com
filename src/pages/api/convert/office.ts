@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
-import { wordToPdf, pdfToDocx, excelToPdf, powerpointToPdf, mergePdfBuffers } from "../../../lib/office-convert";
+import { wordToPdf, pdfToDocx, excelToPdf, powerpointToPdf, mergePdfBuffers, compressOfficeMedia } from "../../../lib/office-convert";
 import { renderPdfToImages } from "./pdf";
 import { resolveConversionForm } from "../../../lib/blob-input";
 
@@ -13,6 +13,7 @@ const MAX_BYTES = 100 * 1024 * 1024;
 const MAX_FILES = 25;
 
 const DOCX_MIME = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+const PPTX_MIME = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
 
 function baseName(filename: string) {
   const dot = filename.lastIndexOf(".");
@@ -111,6 +112,22 @@ export const POST: APIRoute = async ({ request, locals }) => {
         outputBuffer = await powerpointToPdf(Buffer.from(await file.arrayBuffer()));
         contentType = "application/pdf";
         filename = `${baseName(file.name)}.pdf`;
+        break;
+      }
+
+      case "compress-word":
+      case "compress-powerpoint": {
+        const kind = tool.operation === "compress-word" ? "docx" : "pptx";
+        if (detectOfficeKind(file) !== kind) {
+          throw new Error(
+            kind === "docx"
+              ? `"${file.name}" isn't a .docx file. Legacy .doc isn't supported — open it in Word and use File → Save As to convert it.`
+              : `"${file.name}" isn't a .pptx file. Legacy .ppt isn't supported — open it in PowerPoint and use File → Save As to convert it.`,
+          );
+        }
+        outputBuffer = await compressOfficeMedia(Buffer.from(await file.arrayBuffer()), kind);
+        contentType = kind === "docx" ? DOCX_MIME : PPTX_MIME;
+        filename = `${baseName(file.name)}-compressed.${kind}`;
         break;
       }
 

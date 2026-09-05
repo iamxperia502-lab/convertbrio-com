@@ -38,3 +38,4 @@ export { pdfToDocx } from "./pdf-to-docx";
 export { excelToPdf } from "./excel-to-pdf";
 export { powerpointToPdf } from "./pptx-to-pdf";
 export { mergePdfBuffers } from "./merge-pdf-buffers";
+export { compressOfficeMedia } from "./compress-office";

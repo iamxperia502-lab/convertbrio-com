@@ -1,13 +1,13 @@
 ---
 title: "How to Compress a PowerPoint That's Too Big to Email"
-description: "Why .pptx files balloon to 40 MB and three free ways to shrink one for email — inside PowerPoint, image by image, or by routing it through PDF."
+description: "Why .pptx files balloon to 40 MB and four free ways to shrink one for email — a one-click compressor, PowerPoint's own settings, or routing it through PDF."
 pubDate: 2026-09-05
 tags: ["powerpoint", "compression", "how-to"]
-relatedTools: ["powerpoint-to-pdf", "compress-pdf", "compress-image"]
+relatedTools: ["compress-powerpoint", "powerpoint-to-pdf", "compress-pdf"]
 draft: false
 ---
 
-You finish a deck, hit send, and the email bounces: "attachment exceeds the maximum size." A presentation that felt like a dozen slides is somehow 45 MB. Here's why, and three free ways to fix it depending on whether you still need to edit the file.
+You finish a deck, hit send, and the email bounces: "attachment exceeds the maximum size." A presentation that felt like a dozen slides is somehow 45 MB. Here's why, and four free ways to fix it depending on whether you still need to edit the file.
 
 ## Why PowerPoint files get so large
 
@@ -15,9 +15,13 @@ It's the images, almost every time. A modern phone shoots photos at 12 to 48 meg
 
 The catch is that PowerPoint keeps each image at its **original full resolution** even though the slide only ever displays it a few inches wide. A 6000-pixel photo shown at 400 pixels is storing roughly 200 times more data than the slide can show. Compressing a presentation is really about fixing that mismatch.
 
-## Option 1: Compress the images inside PowerPoint (keeps it editable)
+## Option 1: Use ConvertBrio's Compress PowerPoint tool (keeps it editable)
 
-Best when you still need to edit the deck.
+The fastest route. Upload the .pptx to [Compress PowerPoint](/tools/compress-powerpoint) and it re-encodes every embedded image at an efficient quality and resolution, then hands back a smaller `.pptx` with your slides, text, animations, and notes all intact. Free, no signup, no watermark. Image-heavy decks typically drop 40–70%.
+
+## Option 2: Compress the images inside PowerPoint
+
+Useful if you can't upload the file, or want manual control.
 
 1. Click any image, then open the **Picture Format** tab.
 2. Click **Compress Pictures**.
@@ -28,11 +32,11 @@ Best when you still need to edit the deck.
 
 This often halves a photo-heavy deck. If it's still large, one or two images are probably enormous — replace them with smaller versions (next option).
 
-## Option 2: Shrink images before you place them
+## Option 3: Shrink images before you place them
 
 If you're still building the deck, resize each photo *before* inserting it. Run every image through [Compress Image](/tools/compress-image), either to a target size or a lower quality, and insert the smaller version. A photo shown at half-slide width almost never needs to be more than about 1500 pixels wide.
 
-## Option 3: Convert to PDF and compress that (best for sending)
+## Option 4: Convert to PDF and compress that (smallest file)
 
 If the deck is finished and you're sending it out for review or to a client, this gives the smallest, most portable file:
 
@@ -45,11 +49,9 @@ The result opens on any device with no PowerPoint needed and can't be accidental
 
 | Situation | Best option |
 | --- | --- |
-| Still editing the deck | Compress Pictures inside PowerPoint |
-| Building it now | Shrink each image before inserting |
-| Sending a final version | Convert to PDF, then compress the PDF |
-| Recipient needs to edit it | Compress Pictures, then Save As |
+| Just need it smaller, still editable | [Compress PowerPoint](/tools/compress-powerpoint) |
+| Can't upload the file | Compress Pictures inside PowerPoint |
+| Building the deck now | Shrink each image before inserting |
+| Sending a final version, smallest file | Convert to PDF, then compress the PDF |
 
-## A note on the automatic route
-
-A one-click "upload a .pptx, get back a smaller editable .pptx" tool is on our roadmap. Until it ships, the three methods above are all free and cover every case — the PDF route in particular needs nothing installed and works entirely in the browser.
+For most people the first row is the answer: upload, download, done — no PowerPoint settings to hunt through, and the file stays editable.

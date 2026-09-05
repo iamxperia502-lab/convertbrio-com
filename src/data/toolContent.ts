@@ -2250,178 +2250,188 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "compress-word": {
-    title: "How to Compress a Word Document (Free)",
+    title: "Compress Word Document Online: Shrink a .docx for Email",
     intro: [
-      "A Word document that won't email is almost always carrying full-resolution images. A single phone photo pasted into a report can be 5 MB on its own; a few of them and a .docx that's mostly text is suddenly 30 MB.",
-      "A one-click Compress Word tool that keeps the file editable is still in development. In the meantime you can shrink a Word document right now, for free, either inside Word or by routing it through PDF with ConvertBrio's tools that already work.",
+      "A Word document that won't email is almost always carrying full-resolution images. A single phone photo pasted into a report can be 5 MB on its own; a few of them and a .docx that's mostly text is suddenly 30 MB. ConvertBrio's Compress Word tool opens the document, re-encodes the images inside it at an efficient quality and resolution, and returns a smaller .docx that's still fully editable.",
+      "It's free, runs in your browser with no signup, and adds no watermark. Text, headings, tables, styles, and layout are untouched — only the embedded photos and screenshots are re-encoded.",
     ],
-    comingSoonGuide: {
-      title: "Compress your Word document now",
-      intro: [
-        "If the document is finished and headed out for sharing or submission, convert it to PDF and compress that — Word to PDF, then Compress PDF, which re-encodes the embedded images.",
-        "If you need to keep editing in Word, use Word's own Compress Pictures option (steps below). Both routes are free and need nothing installed beyond Word itself for the second one.",
-      ],
-      cta: { label: "Start with Word to PDF", href: "/tools/word-to-pdf" },
-    },
     howTo: [
       {
-        step: "Decide: editable or final?",
-        detail:
-          "If the .docx must stay editable, use Word's Compress Pictures. If it's a finished document you're sending, the PDF route gives a smaller file.",
+        step: "Save the document as .docx",
+        detail: "In Word, File → Save As → Word Document (.docx). Legacy .doc isn't supported.",
       },
       {
-        step: "PDF route — convert then compress",
-        detail:
-          "Open Word to PDF, upload the .docx, download the PDF, then run it through Compress PDF.",
+        step: "Upload it",
+        detail: "Drag the .docx into the box or browse for it. One file per run, up to 100 MB.",
       },
       {
-        step: "Editable route — compress inside Word",
+        step: "Compress",
         detail:
-          "Select an image → Picture Format → Compress Pictures → untick \"Apply only to this picture\" → choose 150 ppi → tick \"Delete cropped areas of pictures\" → OK, then Save As.",
+          "ConvertBrio finds every embedded image, downsizes any that are larger than a page can display, and re-encodes them. Text and vector content are left alone.",
       },
       {
-        step: "Confirm the new size",
-        detail: "Check the file properties. Repeat with a lower ppi or the PDF route if it's still too large.",
+        step: "Download the smaller .docx",
+        detail: "Open it in Word to confirm it still looks right, then email or upload it.",
       },
     ],
     sections: [
       {
-        heading: "Why the file is so big",
-        body: "Word embeds every image at the resolution it was added — a 24-megapixel photo stays 24 megapixels even when the page shows it two inches wide. Text, by contrast, is tiny. So compressing a Word document is really about compressing (or downsizing) the pictures inside it; nothing else meaningfully moves the number.",
+        heading: "Why Word files get so big",
+        body: "Word embeds every image at the resolution it was added — a 24-megapixel photo stays 24 megapixels even when the page shows it two inches wide. Text, by contrast, is tiny. So compressing a Word document is really about re-encoding and downsizing the pictures inside it; nothing else meaningfully moves the number.",
       },
       {
-        heading: "Compressing images before you insert them",
-        body: "The cleanest habit is to shrink each photo before it goes into the document. Run it through Compress Image with a target size or a lower quality, then insert the smaller version. A screenshot or photo displayed at half-page width almost never needs to be more than about 1500 pixels wide.",
-      },
-      {
-        heading: "Other things that add weight",
-        body: [
-          "Tracked changes and old versions: accept or reject all changes and turn Track Changes off before saving a final copy.",
-          "Embedded fonts: File → Options → Save → untick \"Embed fonts in the file\" if you don't specifically need it.",
-          "Pasted content from the web or Excel: paste as picture or plain text rather than keeping the full source object.",
+        heading: "What the tool changes, and what it doesn't",
+        body: "",
+        list: [
+          "Re-encoded: embedded JPEG and PNG images, downscaled if larger than ~1800px on the long side",
+          "Untouched: all body text, headings, styles, lists, and tables",
+          "Untouched: page layout, headers and footers, footnotes, and fields",
+          "Untouched: EMF/WMF/SVG vector images and any format the tool doesn't recognise",
+          "The file stays a normal, editable .docx",
         ],
       },
       {
-        heading: "The automatic tool",
-        body: "A dedicated Compress Word tool — upload a .docx, get back a smaller editable .docx — is on ConvertBrio's roadmap. Until it's live, the routes above cover both the editable and the send-it-out cases for free.",
+        heading: "How much smaller will it get?",
+        body: "It depends on how image-heavy the document is. A report full of full-resolution photos and screenshots often drops 40–70%. A mostly-text document with a logo and a couple of small images won't change much. If it's still too large, see the next section.",
+      },
+      {
+        heading: "If it's still too large",
+        body: [
+          "For a finished document you're sending, Word to PDF followed by Compress PDF usually produces the smallest file, and it can't be accidentally edited.",
+          "A document that's large despite few images may be carrying tracked changes and revision history (accept or reject all changes and turn Track Changes off), embedded fonts (File → Options → Save → untick \"Embed fonts in the file\"), or content pasted as full Excel or web objects (paste as picture or plain text instead).",
+        ],
+      },
+      {
+        heading: "Privacy and limits",
+        body: "Your document is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the upload and the compressed copy are deleted within 24 hours. One .docx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
       { label: "Word to PDF", href: "/tools/word-to-pdf" },
       { label: "Compress PDF", href: "/tools/compress-pdf" },
+      { label: "Compress PowerPoint", href: "/tools/compress-powerpoint" },
       { label: "Compress Image", href: "/tools/compress-image" },
-      { label: "PDF to Word", href: "/tools/pdf-to-word" },
     ],
     faqDescription: "Common questions about reducing a Word document's file size.",
     faq: [
       {
         question: "How do I make a Word document smaller to email it?",
         answer:
-          "Fastest for a finished document: convert it to PDF with ConvertBrio's Word to PDF tool, then run the PDF through Compress PDF. To keep it editable, use Word's Picture Format → Compress Pictures at 150 ppi and Save As.",
+          "Upload the .docx to ConvertBrio's Compress Word tool. It re-encodes the embedded images and returns a smaller, still-editable document — free, no signup, no watermark. For the smallest file, convert to PDF and compress that instead.",
       },
       {
-        question: "Is there a free Compress Word tool on ConvertBrio?",
+        question: "Does the compressed file stay editable?",
         answer:
-          "A one-click tool that returns an editable .docx is in development. Today, the free options are the PDF route (Word to PDF → Compress PDF) or Word's built-in Compress Pictures.",
+          "Yes. The output is a normal .docx you can open and edit in Word, Google Docs, or LibreOffice. Only the embedded images are re-encoded.",
       },
       {
         question: "Will compressing change my text or formatting?",
         answer:
-          "No. Only the images are affected. Text, headings, tables, and layout are untouched by either the PDF route or Word's Compress Pictures.",
+          "No. Only the images are affected. Text, headings, tables, styles, and page layout are unchanged.",
       },
       {
         question: "My document is mostly text but still large — why?",
         answer:
-          "Check for tracked changes and revision history, embedded fonts, or content pasted as full Excel/web objects. Each can add several megabytes independent of images.",
+          "Check for tracked changes and revision history, embedded fonts, or content pasted as full Excel/web objects. Each can add several megabytes independent of images, and the image compressor won't touch those.",
       },
       {
         question: "Does this work with old .doc files?",
         answer:
-          "Save the .doc as .docx in Word first (File → Save As), then follow the steps.",
+          "Only the modern .docx format. Open the .doc in Word and save it as .docx (File → Save As), then compress.",
       },
     ],
   },
 
   "compress-powerpoint": {
-    title: "How to Compress a PowerPoint Presentation (Free)",
+    title: "Compress PowerPoint Online: Shrink a .pptx for Email",
     intro: [
-      "PowerPoint files balloon fast — a few phone photos, a couple of screenshots, an exported chart, and a .pptx is suddenly 40 MB and won't go through email. The size almost always comes from images stored at full camera resolution when a slide only shows them a few inches wide.",
-      "A one-click Compress PowerPoint tool that keeps the file editable is still in development. But you can get a presentation's size down right now, for free, using ConvertBrio tools that already work — and for sharing or submitting a deck, the result is usually better than an editable .pptx anyway.",
+      "PowerPoint files balloon fast — a few phone photos, a couple of screenshots, an exported chart, and a .pptx is suddenly 40 MB and won't go through email. ConvertBrio's Compress PowerPoint tool opens the presentation, re-encodes the images inside it at an efficient quality and resolution, and hands back a smaller .pptx that's still fully editable.",
+      "It's free, runs in your browser with no signup, and adds no watermark. Your slide text, layout, animations, charts, and speaker notes are untouched — only the embedded photos and screenshots are re-encoded.",
     ],
-    comingSoonGuide: {
-      title: "Compress your PowerPoint now, via PDF",
-      intro: [
-        "Convert the .pptx to PDF, then compress that PDF. ConvertBrio's PDF compressor re-encodes every embedded image at an efficient quality and downsizes oversized ones — which is exactly where a heavy deck's weight lives.",
-        "You get a small, universally-viewable file that opens on any device with no PowerPoint needed. The trade-off: the output is a PDF, not an editable presentation.",
-      ],
-      cta: { label: "Start with PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
-    },
     howTo: [
       {
-        step: "Convert the presentation to PDF",
-        detail:
-          "Open PowerPoint to PDF, upload your .pptx, and download the PDF. Each slide becomes one full page.",
+        step: "Save the presentation as .pptx",
+        detail: "In PowerPoint, File → Save As → PowerPoint Presentation (.pptx). Legacy .ppt isn't supported.",
       },
       {
-        step: "Compress the PDF",
-        detail:
-          "Upload that PDF to Compress PDF. It re-encodes the embedded images and strips unused metadata, usually cutting the size substantially for image-heavy decks.",
+        step: "Upload it",
+        detail: "Drag the .pptx into the box or browse for it. One file per run, up to 100 MB.",
       },
       {
-        step: "Check and share",
+        step: "Compress",
         detail:
-          "Open the compressed PDF to confirm the slides still look good, then email or upload it. Most decks drop well under a 20–25 MB mail limit.",
+          "ConvertBrio finds every embedded image, downsizes any that are larger than a slide can display, and re-encodes them. Text and vector content are left alone.",
+      },
+      {
+        step: "Download the smaller .pptx",
+        detail: "Open it in PowerPoint to confirm the slides still look right, then email or upload it.",
       },
     ],
     sections: [
       {
         heading: "Why PowerPoint files get so large",
-        body: "Modern phones shoot 12–48 megapixel photos — several megabytes each. Paste four of those across your slides and the deck carries ~20 MB of image data before a single word of text. PowerPoint keeps the full-resolution original even though the slide only ever displays a small version, so the fix is to re-encode those images at a size that matches how they're actually shown.",
+        body: "Modern phones shoot 12–48 megapixel photos — several megabytes each. Paste four of those across your slides and the deck carries ~20 MB of image data before a single word of text. PowerPoint keeps each image at the full resolution it was inserted at, even though the slide only ever shows a small version, so the fix is to re-encode those images at a size that matches how they're actually displayed.",
       },
       {
-        heading: "If you need the file to stay an editable .pptx",
-        body: [
-          "The PDF route is best for a finished deck you're sending out. If you must keep editing in PowerPoint, do the compression inside PowerPoint itself: select an image, open the Picture Format tab, click Compress Pictures, untick \"Apply only to this picture\", choose a lower resolution (150 ppi is plenty for on-screen), and also tick \"Delete cropped areas of pictures\". Then File → Save As and check the new size.",
-          "You can also shrink individual images before placing them: run each photo through Compress Image with a target size, then insert the smaller version.",
+        heading: "What the tool changes, and what it doesn't",
+        body: "",
+        list: [
+          "Re-encoded: embedded JPEG and PNG images, downscaled if larger than ~1800px on the long side",
+          "Untouched: all text, fonts, slide layout, animations, transitions, speaker notes",
+          "Untouched: charts, tables, SmartArt, and vector shapes",
+          "Untouched: EMF/WMF/SVG vector images and any format the tool doesn't recognise",
+          "The file stays a normal, editable .pptx — nothing is flattened",
         ],
       },
       {
-        heading: "What about the automatic tool?",
-        body: "A dedicated Compress PowerPoint tool — one that opens the .pptx, optimises the embedded media, and hands back an editable presentation at a smaller size — is on ConvertBrio's roadmap. Until it ships, the PDF route above is the reliable free option and needs no software installed.",
+        heading: "How much smaller will it get?",
+        body: "It depends entirely on how image-heavy the deck is. A presentation built around full-resolution photos and screenshots often drops 40–70%. A mostly-text deck with a logo and a couple of small images won't change much — there's little to remove. If the result isn't small enough, the sections below cover deeper options.",
+      },
+      {
+        heading: "For an even smaller file: convert to PDF",
+        body: "If the deck is finished and the recipient doesn't need to edit it, PowerPoint to PDF followed by Compress PDF usually produces the smallest file of all, and it opens on any device with no PowerPoint needed. The trade-off is that it's no longer an editable presentation.",
+      },
+      {
+        heading: "Doing it inside PowerPoint instead",
+        body: "PowerPoint has its own version of this: select an image → Picture Format → Compress Pictures → untick \"Apply only to this picture\" → choose 150 ppi → tick \"Delete cropped areas of pictures\" → OK, then File → Save As. Useful if you can't upload the file, though it's more clicks than this tool.",
+      },
+      {
+        heading: "Privacy and limits",
+        body: "Your presentation is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the upload and the compressed copy are deleted within 24 hours. One .pptx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
       { label: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
       { label: "Compress PDF", href: "/tools/compress-pdf" },
+      { label: "Compress Word", href: "/tools/compress-word" },
       { label: "Compress Image", href: "/tools/compress-image" },
-      { label: "Merge Documents", href: "/tools/merge-documents" },
     ],
     faqDescription: "Common questions about reducing a PowerPoint presentation's file size.",
     faq: [
       {
         question: "How do I compress a PowerPoint to email it?",
         answer:
-          "Convert the .pptx to PDF with ConvertBrio's PowerPoint to PDF tool, then run that PDF through Compress PDF. The re-encoded images make the file much smaller, and it opens on any device without PowerPoint. It's free, with no signup.",
+          "Upload the .pptx to ConvertBrio's Compress PowerPoint tool. It re-encodes the embedded images and returns a smaller, still-editable presentation — free, no signup, no watermark. For the smallest possible file, convert to PDF and compress that instead.",
       },
       {
-        question: "Can I compress a PowerPoint without converting it to PDF?",
+        question: "Does the compressed file stay editable?",
         answer:
-          "Yes, inside PowerPoint: select an image, go to Picture Format → Compress Pictures, untick \"Apply only to this picture\", pick 150 ppi, tick \"Delete cropped areas of pictures\", then Save As. This keeps the file editable.",
-      },
-      {
-        question: "Is there a free online Compress PowerPoint tool on ConvertBrio?",
-        answer:
-          "A one-click tool that keeps the file editable is in development. Today, the free route is PowerPoint to PDF followed by Compress PDF, which works entirely in your browser.",
+          "Yes. The output is a normal .pptx you can open and edit in PowerPoint. Only the embedded images are re-encoded; text, layout, animations, and notes are unchanged.",
       },
       {
         question: "Will compressing lower the quality of my slides?",
         answer:
-          "Text and vector shapes stay perfectly sharp. Photos are re-encoded with a small, usually invisible quality reduction — the difference only shows if you zoom in hard on an image.",
+          "Text and vector shapes stay perfectly sharp. Photos are re-encoded with a small, usually invisible quality reduction — the difference only shows if you zoom in hard on an image on a large screen.",
+      },
+      {
+        question: "My deck barely got smaller — why?",
+        answer:
+          "It's probably already lean — a mostly-text presentation has little image data to remove. The biggest reductions come from decks full of full-resolution photos and screenshots.",
       },
       {
         question: "Does this work with .ppt files?",
         answer:
-          "Convert legacy .ppt to .pptx first (open it in PowerPoint and use File → Save As), then follow the steps above.",
+          "Only the modern .pptx format. Open a legacy .ppt in PowerPoint and save it as .pptx (File → Save As), then compress.",
       },
     ],
   },

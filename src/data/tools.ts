@@ -31,7 +31,9 @@ export type OfficeOperation =
   | "word-to-png"
   | "excel-to-pdf"
   | "powerpoint-to-pdf"
-  | "merge-documents";
+  | "merge-documents"
+  | "compress-word"
+  | "compress-powerpoint";
 
 interface ToolBase {
   slug: string;
@@ -519,27 +521,27 @@ export const tools: Tool[] = [
     slug: "compress-word",
     name: "Compress Word",
     categories: ["compress"],
-    kind: "office-soon",
+    kind: "office",
+    operation: "compress-word",
     icon: "shrink",
-    description: "How to reduce a Word document's file size, free — in Word or via PDF.",
-    seoTitle: "Compress Word Document — How to Make a DOCX Smaller Free | ConvertBrio",
+    description: "Reduce a Word document's file size by re-encoding its embedded images.",
+    seoTitle: "Compress Word Document Online Free — Reduce DOCX Size | ConvertBrio",
     seoDescription:
-      "Free ways to shrink a large Word document for email: convert to PDF and compress it, or use Word's built-in Compress Pictures. Step-by-step, no signup.",
-    accept: ".doc,.docx",
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
+      "Compress a Word (.docx) document online, free. Re-encodes the embedded images to shrink the file for email, keeping text and formatting untouched. No signup, no watermark.",
+    accept: ".docx",
   },
   {
     slug: "compress-powerpoint",
     name: "Compress PowerPoint",
     categories: ["compress"],
-    kind: "office-soon",
+    kind: "office",
+    operation: "compress-powerpoint",
     icon: "shrink",
-    description: "How to reduce a PowerPoint presentation's file size, free.",
-    seoTitle: "Compress PowerPoint — How to Make a PPTX Smaller Free | ConvertBrio",
+    description: "Reduce a PowerPoint presentation's file size by re-encoding its embedded images.",
+    seoTitle: "Compress PowerPoint Online Free — Reduce PPTX Size | ConvertBrio",
     seoDescription:
-      "Free ways to compress a large PowerPoint for email: convert the .pptx to PDF and compress it, or use PowerPoint's Compress Pictures. Step-by-step, no signup.",
-    accept: ".ppt,.pptx",
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
+      "Compress a PowerPoint (.pptx) online, free. Re-encodes the embedded images to shrink the file for email, keeping the editable slides intact. No signup, no watermark.",
+    accept: ".pptx",
   },
   {
     slug: "merge-documents",
