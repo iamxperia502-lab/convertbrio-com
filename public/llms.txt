@@ -18,7 +18,6 @@
 
 - [About](https://www.convertbrio.com/about): What ConvertBrio is and who runs it.
 - [Trust & privacy](https://www.convertbrio.com/trust): Data handling, file retention, and security practices.
-- [Pricing](https://www.convertbrio.com/pricing): Free and paid plan details.
 - [Blog](https://www.convertbrio.com/blog): Articles on file formats and conversion.
 
 ## Optional

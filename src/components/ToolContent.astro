@@ -1,9 +1,25 @@
 ---
 import Icon from "./Icon.astro";
 
+export interface ToolContentTable {
+  caption?: string;
+  headers: string[];
+  rows: string[][];
+}
+
 export interface ToolContentSection {
   heading: string;
-  body: string;
+  /** One paragraph, or several. */
+  body: string | string[];
+  /** Optional bulleted list rendered after the body. */
+  list?: string[];
+  /** Optional comparison table rendered after the body and list. */
+  table?: ToolContentTable;
+}
+
+export interface HowToStep {
+  step: string;
+  detail?: string;
 }
 
 export interface RelatedTool {
@@ -13,14 +29,28 @@ export interface RelatedTool {
 
 interface Props {
   title: string;
-  intro: string;
+  intro: string | string[];
+  howTo?: HowToStep[];
+  howToHeading?: string;
   sections: ToolContentSection[];
   relatedTools?: RelatedTool[];
 }
 
-const { title, intro, sections, relatedTools = [] } = Astro.props;
+const {
+  title,
+  intro,
+  howTo = [],
+  howToHeading = "How to use this tool",
+  sections,
+  relatedTools = [],
+} = Astro.props;
 
-const link = "inline-flex items-center gap-1 font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700";
+const introParagraphs = Array.isArray(intro) ? intro : [intro];
+const link =
+  "inline-flex items-center gap-1 font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700";
+
+const bodyParagraphs = (body: string | string[]) =>
+  (Array.isArray(body) ? body : [body]).filter((paragraph) => paragraph.trim().length > 0);
 ---
 
 <section aria-labelledby="tool-content-heading" class="border-b border-hairline bg-canvas-soft">
@@ -29,13 +59,75 @@ const link = "inline-flex items-center gap-1 font-medium text-brand-600 underlin
       <h2 id="tool-content-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink sm:text-3xl">
         {title}
       </h2>
-      <p class="mt-4 leading-relaxed text-body">{intro}</p>
+      {introParagraphs.map((paragraph) => <p class="mt-4 leading-relaxed text-body">{paragraph}</p>)}
+
+      {
+        howTo.length > 0 && (
+          <>
+            <h3 class="mt-10 text-lg font-semibold text-ink">{howToHeading}</h3>
+            <ol class="mt-4 flex flex-col gap-4">
+              {howTo.map((item, index) => (
+                <li class="flex gap-4">
+                  <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-canvas-soft-2 text-sm font-semibold text-ink">
+                    {index + 1}
+                  </span>
+                  <div class="pt-0.5">
+                    <p class="font-medium text-ink">{item.step}</p>
+                    {item.detail && <p class="mt-1 text-sm leading-relaxed text-body">{item.detail}</p>}
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </>
+        )
+      }
 
       {
         sections.map((section) => (
           <>
             <h3 class="mt-10 text-lg font-semibold text-ink">{section.heading}</h3>
-            <p class="mt-3 leading-relaxed text-body">{section.body}</p>
+            {bodyParagraphs(section.body).map((paragraph) => (
+              <p class="mt-3 leading-relaxed text-body">{paragraph}</p>
+            ))}
+            {section.list && section.list.length > 0 && (
+              <ul class="mt-3 flex flex-col gap-2">
+                {section.list.map((entry) => (
+                  <li class="flex gap-2.5 leading-relaxed text-body">
+                    <Icon name="check" class="mt-1 h-4 w-4 shrink-0 text-brand-600" />
+                    <span>{entry}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {section.table && section.table.rows.length > 0 && (
+              <div class="mt-4 overflow-x-auto">
+                <table class="w-full min-w-[32rem] border-collapse text-left text-sm">
+                  {section.table.caption && (
+                    <caption class="mb-2 text-left text-xs text-mute">{section.table.caption}</caption>
+                  )}
+                  <thead>
+                    <tr class="border-b border-hairline-strong">
+                      {section.table.headers.map((header) => (
+                        <th scope="col" class="py-2.5 pr-4 font-semibold text-ink">
+                          {header}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {section.table.rows.map((row) => (
+                      <tr class="border-b border-hairline align-top">
+                        {row.map((cell, cellIndex) => (
+                          <td class={`py-2.5 pr-4 ${cellIndex === 0 ? "font-medium text-ink" : "text-body"}`}>
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </>
         ))
       }

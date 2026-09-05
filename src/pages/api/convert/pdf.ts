@@ -9,10 +9,9 @@ import { ensureDomMatrixPolyfill, standardFontDataUrl } from "../../../lib/pdfjs
 import { looksLikeHeic, decodeHeicFallback, sharpFromHeicFallback } from "../../../lib/heic-fallback";
 import { resolveConversionForm } from "../../../lib/blob-input";
 
-// Free-tier cap from pricing.astro. A global hard cap until M3 wires per-plan limits.
-// Uploads route through Vercel Blob (see resolveConversionForm in
-// lib/blob-input.ts), so this is a real processing-capacity limit, not a
-// request-body-size workaround.
+// Global 100 MB cap advertised across the site. Uploads route through Vercel
+// Blob (see resolveConversionForm in lib/blob-input.ts), so this is a real
+// processing-capacity limit, not a request-body-size workaround.
 const MAX_BYTES = 100 * 1024 * 1024;
 const MAX_FILES = 25;
 // OCR is per-page (render + tesseract recognize), not per-byte - measured
@@ -230,7 +229,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   }
   const totalBytes = files.reduce((sum, f) => sum + f.size, 0);
   if (totalBytes > MAX_BYTES) {
-    return new Response(JSON.stringify({ error: "Files exceed the 25 MB limit." }), { status: 413 });
+    return new Response(JSON.stringify({ error: "Files exceed the 100 MB limit." }), { status: 413 });
   }
 
   const tool = getTool(slug);

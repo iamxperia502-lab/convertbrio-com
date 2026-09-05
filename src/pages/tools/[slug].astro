@@ -57,6 +57,21 @@ const faqSchema = content && {
   })),
 };
 
+const howToSchema =
+  content && content.howTo && content.howTo.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: `How to ${tool.name.toLowerCase()} with ConvertBrio`,
+        step: content.howTo.map((item, index) => ({
+          "@type": "HowToStep",
+          position: index + 1,
+          name: item.step,
+          text: item.detail ? `${item.step} ${item.detail}` : item.step,
+        })),
+      }
+    : null;
+
 const base = Astro.site?.toString().replace(/\/$/, "") ?? "https://www.convertbrio.com";
 
 const breadcrumbSchema = {
@@ -98,6 +113,7 @@ const softwareApplicationSchema = isComingSoon(tool)
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
     {softwareApplicationSchema && <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} is:inline />}
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />}
+    {howToSchema && <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} is:inline />}
   </Fragment>
 
   <PageIntro eyebrow="Tool" title={tool.name} description={tool.description} />
@@ -289,7 +305,13 @@ const softwareApplicationSchema = isComingSoon(tool)
   {
     content && (
       <>
-        <ToolContent title={content.title} intro={content.intro} sections={content.sections} relatedTools={content.relatedTools} />
+        <ToolContent
+          title={content.title}
+          intro={content.intro}
+          howTo={content.howTo}
+          sections={content.sections}
+          relatedTools={content.relatedTools}
+        />
         <FaqSection items={content.faq} heading={`${tool.name} FAQ`} description={content.faqDescription} id={`faq-${tool.slug}`} />
       </>
     )

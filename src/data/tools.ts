@@ -277,6 +277,9 @@ export const tools: Tool[] = [
     operation: "resize",
     icon: "scale",
     description: "Resize an image to exact pixel dimensions.",
+    seoTitle: "Resize Image to Exact Pixel Dimensions Free Online | ConvertBrio",
+    seoDescription:
+      "Resize a JPG, PNG, WEBP, or HEIC image to exact width and height in pixels — for Instagram, a profile photo, a form, or a smaller file. Free, no signup, no watermark.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -321,6 +324,9 @@ export const tools: Tool[] = [
     operation: "split",
     icon: "merge",
     description: "Split a PDF into individual pages.",
+    seoTitle: "Split PDF Online Free — Separate PDF Pages | ConvertBrio",
+    seoDescription:
+      "Split a PDF into individual pages online, free. Extract a single page or break a document into separate files, downloaded as a ZIP. No signup, no watermark.",
     accept: PDF_ACCEPT,
   },
   {
@@ -331,9 +337,9 @@ export const tools: Tool[] = [
     operation: "compress",
     icon: "shrink",
     description: "Reduce PDF file size (best-effort — image re-encoding and metadata cleanup).",
-    seoTitle: "Compress PDF File Size Free Online | ConvertBrio",
+    seoTitle: "Compress PDF Online Free — Reduce PDF File Size | ConvertBrio",
     seoDescription:
-      "Reduce a PDF's file size by re-encoding embedded images and stripping unnecessary metadata. Free, no signup, results vary with how image-heavy the PDF is.",
+      "Compress a PDF online for free to reduce its file size for email or upload. Re-encodes embedded images and strips metadata, keeping text sharp. No signup, no watermark.",
     accept: PDF_ACCEPT,
   },
   {
@@ -374,6 +380,9 @@ export const tools: Tool[] = [
     operation: "pdf-to-jpg",
     icon: "pdf",
     description: "Export every PDF page as a JPG image.",
+    seoTitle: "PDF to JPG — Convert PDF Pages to Images Free | ConvertBrio",
+    seoDescription:
+      "Convert every page of a PDF to a JPG image online, free. One image per page, ready to share, post, or embed. No signup, no watermark.",
     accept: PDF_ACCEPT,
   },
   {
@@ -394,6 +403,9 @@ export const tools: Tool[] = [
     operation: "jpg-to-pdf",
     icon: "image",
     description: "Combine one or more images into a single PDF.",
+    seoTitle: "JPG to PDF — Combine Images Into One PDF Free | ConvertBrio",
+    seoDescription:
+      "Convert JPG and PNG images to a single PDF online, free. Combine multiple photos or scanned pages into one document, in order. No signup, no watermark.",
     accept: "image/jpeg,image/png",
     multiple: true,
   },
@@ -416,6 +428,9 @@ export const tools: Tool[] = [
     operation: "ocr",
     icon: "ocr",
     description: "Make scanned PDFs searchable with text recognition.",
+    seoTitle: "OCR PDF Free — Scanned Document to Editable Text & Word | ConvertBrio",
+    seoDescription:
+      "Run OCR on a scanned PDF to make it searchable and get the text into Word. Free online text recognition, no signup — then copy the text or convert to DOCX.",
     accept: PDF_ACCEPT,
   },
   {
@@ -492,6 +507,9 @@ export const tools: Tool[] = [
     operation: "powerpoint-to-pdf",
     icon: "word",
     description: "Convert PowerPoint presentations to PDF.",
+    seoTitle: "PowerPoint to PDF Free Online — Convert & Shrink PPTX | ConvertBrio",
+    seoDescription:
+      "Convert a PowerPoint (.pptx) to PDF online, free, one page per slide. Then compress the PDF to email a large deck. No signup, no watermark.",
     accept: ".ppt,.pptx",
   },
   {

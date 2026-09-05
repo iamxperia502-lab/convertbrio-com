@@ -14,8 +14,8 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Is ConvertBrio free to use?",
     answer:
-      "Yes. Every ConvertBrio tool — image conversion, PDF conversion, compression, document conversion, and more — is free to use, with no sign-up and no paid plan required.",
-    link: { href: "/pricing", label: "See pricing" },
+      "Yes. Every ConvertBrio tool — image conversion, PDF conversion, compression, document conversion, and more — is completely free to use, with no sign-up, no usage limits, and no paid plan. Files up to 100 MB per conversion are supported at no cost.",
+    link: { href: "/all-tools", label: "Browse all ConvertBrio tools" },
   },
   {
     question: "Can I convert files on my phone?",

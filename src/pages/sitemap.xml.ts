@@ -45,7 +45,6 @@ const staticPaths: { path: string; changefreq: string; priority: string; lastmod
     lastmod: lastModified("src/pages/all-tools.astro", "src/data/tools.ts"),
   },
   { path: "/blog", changefreq: "weekly", priority: "0.7", lastmod: lastModified("src/pages/blog/index.astro") },
-  { path: "/pricing", changefreq: "monthly", priority: "0.6", lastmod: lastModified("src/pages/pricing.astro") },
   { path: "/about", changefreq: "monthly", priority: "0.5", lastmod: lastModified("src/pages/about.astro") },
   { path: "/contact", changefreq: "monthly", priority: "0.5", lastmod: lastModified("src/pages/contact.astro") },
   { path: "/privacy", changefreq: "yearly", priority: "0.3", lastmod: lastModified("src/pages/privacy.astro") },
