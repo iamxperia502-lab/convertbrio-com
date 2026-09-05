@@ -1,40 +1,53 @@
 ---
-title: "How to Turn a Scanned PDF Into an Editable Word Document"
-description: "Scanned PDFs are just images of text, not real text. Here's how OCR converts them into an editable, searchable, copy-pasteable document."
+title: "How to Turn a Scanned Document Into an Editable Word File"
+description: "Scanned PDFs and photos of pages are just images, not real text. Here's how to get a scanned document into Word — from a scanner or a phone photo — using free OCR."
 pubDate: 2026-07-25
+updatedDate: 2026-09-05
 tags: ["pdf", "ocr", "how-to"]
 relatedTools: ["ocr-pdf", "pdf-to-word", "word-to-pdf"]
 draft: false
 ---
 
-Open a scanned PDF and try to select a word of text. Nothing happens — because as far as the computer is concerned, there is no text. A scanned document is a photograph of a page, not a document with characters in it. That's why you can't edit it, search it, or copy a sentence out of it directly. OCR is what bridges that gap.
+Open a scanned PDF and try to select a word of text. Nothing happens — because as far as the computer is concerned, there is no text. A scanned document is a photograph of a page, not a document with characters in it. That's why you can't edit it, search it, or copy a sentence out of it directly. OCR is what bridges that gap, and it's free.
+
+## Can I scan a document straight into Word?
+
+Not in one step. A scanner (or a phone scanning app) produces an **image** — usually a PDF, sometimes a JPG. Word can display that image but it can't turn it into editable text on its own. You need an OCR step in between: it reads the picture of the page and reconstructs the actual letters and words. After that, getting it into Word is straightforward.
 
 ## Why a scanned PDF behaves differently from a normal one
 
-A PDF created from a Word document, a webpage, or any other digital source stores actual text — letters, positions, fonts — as data. A PDF created by scanning a paper document (or photographing one) stores a picture of the page instead. It looks identical to a text-based PDF when you view it, but under the hood it's closer to a JPG than a document.
+A PDF created from a Word document, a webpage, or any digital source stores actual text — letters, positions, fonts — as data. A PDF created by scanning or photographing a page stores a picture instead. It looks identical when you view it, but under the hood it's closer to a JPG than a document.
 
-This is why:
+This is why, with a scan:
 
-- You can't select or highlight any text in it
+- You can't select or highlight any text
 - Ctrl+F / Cmd+F search finds nothing
 - Copy and paste doesn't work
 - Screen readers can't read it aloud
-- It can't be reflowed to fit a different screen size
+- It can't reflow to fit a different screen
 
-## What OCR actually does
+## The steps
 
-OCR (Optical Character Recognition) analyzes the image of each page, identifies the shapes that correspond to letters and words, and reconstructs them as real, selectable text — while keeping the page laid out the way it looked originally. Modern OCR is accurate on clean, well-scanned documents, though quality drops with blurry scans, handwriting, unusual fonts, or low-contrast originals like faded carbon copies.
+1. **Save the scan as a PDF.** A desktop scanner or a phone scanning app (Notes on iPhone, Google Drive on Android, or any dedicated scan app) will do this. Flat, straight, well-lit pages give the best results.
+2. **Run OCR on it.** An [OCR tool for PDFs](/tools/ocr-pdf) processes each page and adds a real text layer underneath the original image, so the document keeps its appearance but gains searchable, selectable text.
+3. **Get the text into Word.** For plain text, open the OCR'd PDF, select all, and paste into a blank Word document. To keep headings, paragraphs, and simple tables, run the OCR'd PDF through a [PDF to Word tool](/tools/pdf-to-word) instead, which rebuilds it as a `.docx`.
+4. **Proofread.** OCR accuracy depends on scan quality. Skim for misread characters — especially digits (0/O, 1/l, 5/S), unusual fonts, and anything handwritten — before relying on the document.
 
-Once OCR has run, the result behaves like any other digital document: searchable, selectable, copyable, and — critically — convertible into an editable format like Word.
+## From a phone photo instead of a scanner
 
-## The actual steps
+The process is the same, but the input quality matters more. If you're photographing a page:
 
-1. **Run OCR on the scanned PDF.** An [OCR tool for PDFs](/tools/ocr-pdf) processes each page and adds a real text layer underneath the original page image, so the document keeps its original appearance but gains searchable, selectable text.
-2. **Convert the result to Word.** Once the PDF has real text in it, converting it with a [PDF to Word tool](/tools/pdf-to-word) produces a `.docx` file you can actually edit — fix typos, reformat, or reuse the content — instead of just being able to read it.
-3. **Check the output before relying on it.** OCR accuracy depends heavily on scan quality. Skim the converted document for misread characters, especially with numbers, unusual fonts, or handwriting, before using it for anything important.
+- Fill the frame with the page and keep the camera parallel to it, so the page is a rectangle, not a trapezoid.
+- Use bright, even light with no shadow or glare across the text.
+- If you have several pages, combine the photos into one PDF first (an [Image to PDF tool](/tools/image-to-pdf) accepts multiple images), then OCR the whole thing at once.
 
-## When you don't need OCR
+## Plain text or formatted document?
 
-If a PDF already lets you select and search text, it's already text-based — running OCR on it is unnecessary and can occasionally make things worse by replacing a clean original text layer with an OCR-guessed one. A quick way to check: try selecting a word. If it highlights normally, skip straight to converting it with [PDF to Word](/tools/pdf-to-word) or [Word to PDF](/tools/word-to-pdf) for the reverse direction — no OCR step required.
+Decide what you actually need:
 
-OCR is only necessary when the PDF is fundamentally an image: scans, photographed documents, or PDFs exported from a scanner app on a phone.
+- **Just the words** — to reuse a few paragraphs, or retype something without retyping — OCR the PDF and copy the text straight out. Fast, and it works for any single-column page.
+- **A document that looks like the original** — headings, paragraph breaks, simple tables preserved — send the OCR'd PDF through [PDF to Word](/tools/pdf-to-word). Complex multi-column or heavily designed layouts won't map perfectly; that's inherent to turning a fixed page back into flowing text.
+
+## When you don't need OCR at all
+
+If a PDF already lets you select and search text, it's text-based — running OCR on it is unnecessary and can occasionally make things worse. Try selecting a word: if it highlights normally, skip straight to [PDF to Word](/tools/pdf-to-word). OCR is only for documents that are fundamentally images: scans, photographed pages, and PDFs exported from a phone scanner app.

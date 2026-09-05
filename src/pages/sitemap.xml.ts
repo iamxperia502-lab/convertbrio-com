@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { execFileSync } from "node:child_process";
 import { getCollection } from "astro:content";
 import { tools, isComingSoon } from "../data/tools";
+import { toolContent } from "../data/toolContent";
 
 export const prerender = true;
 
@@ -67,10 +68,15 @@ export const GET: APIRoute = async ({ site }) => {
       lastmod,
     })),
     ...tools
-      // Coming-soon tools have nothing to index yet, and external tools
-      // (e.g. internet-speed-test) are a redirect, not a 200 page - a
-      // sitemap should only list canonical, indexable, HTTP 200 URLs.
-      .filter((tool) => !isComingSoon(tool) && tool.kind !== "external")
+      // External tools (e.g. internet-speed-test) are a redirect, not a 200
+      // page. Coming-soon tools are listed only when they have a
+      // `comingSoonGuide` — those render as indexable how-to pages; the
+      // bare "Coming soon" stubs stay noindex and out of the sitemap.
+      .filter(
+        (tool) =>
+          tool.kind !== "external" &&
+          (!isComingSoon(tool) || Boolean(toolContent[tool.slug]?.comingSoonGuide))
+      )
       .map((tool) => ({
         loc: `${base}/tools/${tool.slug}`,
         changefreq: "weekly",

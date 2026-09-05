@@ -39,10 +39,15 @@ const endpoint =
   tool.kind === "ai" ? "/api/convert/ai" :
   null;
 
-// Coming-soon tools don't work yet, so they get no FAQ/SEO content or
-// SoftwareApplication schema below — publishing either would claim
-// functionality the tool doesn't have.
-const content = isComingSoon(tool) ? undefined : toolContent[tool.slug];
+// A coming-soon tool with a `comingSoonGuide` block is published as an
+// indexable how-to guide (the automatic tool isn't live, but the page
+// explains how to do the job with tools that already work). Coming-soon
+// tools without a guide stay noindex stubs. Either way, no
+// SoftwareApplication schema — that would claim functionality this URL
+// doesn't have yet.
+const rawContent = toolContent[tool.slug];
+const isGuide = isComingSoon(tool) && !!rawContent?.comingSoonGuide;
+const content = !isComingSoon(tool) || isGuide ? rawContent : undefined;
 
 const faqSchema = content && {
   "@context": "https://schema.org",
@@ -106,7 +111,7 @@ const softwareApplicationSchema = isComingSoon(tool)
   title={tool.name}
   seoTitle={tool.seoTitle}
   description={tool.seoDescription ?? tool.description}
-  noindex={isComingSoon(tool)}
+  noindex={isComingSoon(tool) && !isGuide}
   follow
 >
   <Fragment slot="head">
@@ -116,13 +121,34 @@ const softwareApplicationSchema = isComingSoon(tool)
     {howToSchema && <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} is:inline />}
   </Fragment>
 
-  <PageIntro eyebrow="Tool" title={tool.name} description={tool.description} />
+  <PageIntro eyebrow={isGuide ? "Guide" : "Tool"} title={tool.name} description={tool.description} />
 
   <section class="bg-canvas">
     <div class="container-page py-16 sm:py-20">
       <div class="mx-auto max-w-2xl">
         {
-          isComingSoon(tool) ? (
+          isGuide && content?.comingSoonGuide ? (
+            <div class="rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:p-8">
+              <span class="inline-flex items-center gap-2 rounded-full bg-canvas-soft-2 px-3 py-1 text-xs font-medium text-body">
+                <Icon name="clock" class="h-3.5 w-3.5" />
+                One-click tool in development
+              </span>
+              <h2 class="mt-4 text-lg font-semibold text-ink">{content.comingSoonGuide.title}</h2>
+              {(Array.isArray(content.comingSoonGuide.intro)
+                ? content.comingSoonGuide.intro
+                : [content.comingSoonGuide.intro]
+              ).map((paragraph) => (
+                <p class="mt-2 leading-relaxed text-body">{paragraph}</p>
+              ))}
+              <a
+                href={content.comingSoonGuide.cta.href}
+                class="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+              >
+                {content.comingSoonGuide.cta.label}
+                <Icon name="arrow" class="h-4 w-4" />
+              </a>
+            </div>
+          ) : isComingSoon(tool) ? (
             <div class="flex flex-col items-center gap-4 rounded-2xl border border-dashed border-hairline-strong px-6 py-14 text-center">
               <span class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink">
                 <Icon name="clock" class="h-6 w-6" />

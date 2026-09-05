@@ -26,11 +26,26 @@ export interface RelatedTool {
   href: string;
 }
 
+export interface ComingSoonGuide {
+  /** Heading for the callout shown in place of the upload form. */
+  title: string;
+  /** One or more sentences explaining the working alternative. */
+  intro: string | string[];
+  /** Primary action link to the tool that does the job today. */
+  cta: { label: string; href: string };
+}
+
 export interface ToolContentEntry {
   title: string;
   intro: string | string[];
   /** Optional numbered "how to use this tool" steps; also emitted as HowTo schema. */
   howTo?: HowToStep[];
+  /**
+   * For coming-soon tools only: a callout describing how to accomplish the
+   * task with tools that already work. Its presence makes the page render
+   * as an indexable guide rather than a bare "Coming soon" stub.
+   */
+  comingSoonGuide?: ComingSoonGuide;
   sections: ToolContentSection[];
   relatedTools?: RelatedTool[];
   faqDescription: string;
@@ -2070,43 +2085,85 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "pdf-to-excel": {
-    title: "PDF to Excel Converter: Coming Soon to ConvertBrio",
-    intro:
-      "Pulling tabular data out of a PDF and into an editable spreadsheet usually means manually retyping numbers — a slow, error-prone process. ConvertBrio is building a PDF to Excel tool that will detect tables inside a PDF and convert them directly into an editable spreadsheet.",
+    title: "How to Get a Table Out of a PDF and Into Excel (Free)",
+    intro: [
+      "Financial statements, bank exports, invoices, and reports arrive as PDFs, and the numbers inside them are locked — you can't sort, total, or chart a PDF. Getting that data into Excel or Google Sheets normally means retyping it cell by cell.",
+      "A one-click PDF to Excel tool that rebuilds table structure automatically is still in development, because doing it reliably across every PDF layout is genuinely hard. But there are free ways to move the data now, and which one works best depends on whether your PDF has real text or is a scan.",
+    ],
+    comingSoonGuide: {
+      title: "Move the data into a spreadsheet now",
+      intro: [
+        "If your PDF has selectable text (try highlighting a number with your cursor): open it, select the table, copy, and paste into Excel — then use Data → Text to Columns to split it into cells. For a cleaner structure, convert the PDF to Word first and copy the reconstructed table from there.",
+        "If your PDF is a scan: run it through OCR PDF to recognise the text, then copy it out. Expect to fix a few misread digits.",
+      ],
+      cta: { label: "Convert the PDF to Word first", href: "/tools/pdf-to-word" },
+    },
+    howTo: [
+      {
+        step: "Check whether the PDF has real text",
+        detail: "Try to highlight a number with your cursor. If you can, it has a text layer. If it's a flat image, it's a scan.",
+      },
+      {
+        step: "Text PDF: convert to Word, then copy the table",
+        detail:
+          "Run it through PDF to Word. Open the DOCX, select the table it rebuilt, and paste straight into Excel — Word tables paste into cells cleanly.",
+      },
+      {
+        step: "Scanned PDF: OCR it first",
+        detail:
+          "Run it through OCR PDF, open the result, copy the table text, paste into Excel, and use Data → Text to Columns to separate the values.",
+      },
+      {
+        step: "Clean up in the spreadsheet",
+        detail:
+          "Fix any merged or misaligned cells, check numbers that OCR may have misread (0/O, 1/l, 5/S), and set column formats.",
+      },
+    ],
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "PDF to Excel will scan your document for tabular data — rows and columns of numbers, invoice line items, financial statements — and reconstruct it as an .xlsx file you can open, filter, and recalculate directly in Excel or Google Sheets.",
+        heading: "Why PDF tables are hard to extract",
+        body: "A PDF doesn't store a table as rows and columns — it stores each number as text positioned at fixed coordinates on the page. A person sees a table; software sees scattered text fragments and has to guess where the cell boundaries are. Simple, ruled tables convert well; nested headers, merged cells, multi-line rows, and cells that wrap are where automated extraction breaks down.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "Reliably detecting and reconstructing table structure from a PDF is technically demanding, especially across the wide variety of layouts PDFs can contain. This is part of the same Excel/PowerPoint conversion pipeline ConvertBrio is currently developing, alongside Excel to PDF and PowerPoint to PDF.",
+        heading: "Getting the cleanest result",
+        body: [
+          "Prefer the PDF to Word route over a raw copy-paste — Word does a real attempt at rebuilding the grid, so the paste into Excel lands in proper cells far more often.",
+          "For a scanned PDF, scan quality is everything: a straight, high-contrast 300 DPI page OCRs with very few errors; a phone photo at an angle will need more correction.",
+          "If the PDF came from a website or a system that can also export CSV or Excel directly, use that export instead — it will always beat extracting from the PDF.",
+        ],
       },
       {
-        heading: "What's Available Right Now",
-        body: "In the meantime, ConvertBrio's PDF to Word tool can extract general text content from PDFs with a text layer, and PDF to JPG or PDF to PNG can export table pages as images for reference. Full spreadsheet reconstruction is coming with this tool's launch.",
+        heading: "The automatic tool",
+        body: "A dedicated PDF to Excel tool — upload a PDF, get back an .xlsx with the tables reconstructed — is on ConvertBrio's roadmap. Until it ships, the PDF to Word and OCR PDF routes above are the free way to get the data moving.",
       },
     ],
     relatedTools: [
       { label: "PDF to Word", href: "/tools/pdf-to-word" },
+      { label: "OCR PDF", href: "/tools/ocr-pdf" },
       { label: "PDF to JPG", href: "/tools/pdf-to-jpg" },
+      { label: "Excel to PDF", href: "/tools/excel-to-pdf" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming PDF to Excel tool.",
+    faqDescription: "Common questions about extracting PDF table data into Excel.",
     faq: [
       {
-        question: "Is PDF to Excel available yet?",
+        question: "How do I convert a PDF table to Excel for free?",
         answer:
-          "Not yet — this tool needs a dedicated table-detection pipeline that ConvertBrio is currently building as part of its Excel/PowerPoint conversion support.",
+          "If the PDF has selectable text, convert it to Word with ConvertBrio's PDF to Word tool, then copy the reconstructed table and paste it into Excel. If it's a scan, run OCR PDF first, then copy the text and split it with Text to Columns.",
       },
       {
-        question: "What kind of PDFs will this tool work best with?",
+        question: "Is there a one-click PDF to Excel tool on ConvertBrio?",
         answer:
-          "Once live, it will be aimed at PDFs containing tabular data, such as financial statements, invoices, and reports with rows and columns of numbers.",
+          "Not yet — automatic table reconstruction is in development. The PDF to Word and OCR PDF routes are the current free options for moving the data into a spreadsheet.",
       },
       {
-        question: "Can I extract text from a PDF today?",
+        question: "Why does my pasted table land all in one column?",
         answer:
-          "Yes — ConvertBrio's PDF to Word tool extracts general text content from PDFs that already contain a text layer, which works today while dedicated table extraction is being built.",
+          "You pasted plain text rather than a table structure. Select the column, then use Excel's Data → Text to Columns (delimited by space, comma, or tab) to split the values into cells. Converting via PDF to Word first usually avoids this entirely.",
+      },
+      {
+        question: "Can I extract a table from a scanned PDF?",
+        answer:
+          "Yes, but run it through OCR PDF first to turn the image into recognised text. Then copy it into Excel and double-check any digits the OCR may have misread.",
       },
     ],
   },
@@ -2193,86 +2250,178 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "compress-word": {
-    title: "Compress Word Document: Coming Soon to ConvertBrio",
-    intro:
-      "Word documents packed with high-resolution images or embedded media can balloon in file size, making them slow to email or upload. ConvertBrio is building a Compress Word tool that will shrink a DOCX file's size by optimizing its embedded content.",
+    title: "How to Compress a Word Document (Free)",
+    intro: [
+      "A Word document that won't email is almost always carrying full-resolution images. A single phone photo pasted into a report can be 5 MB on its own; a few of them and a .docx that's mostly text is suddenly 30 MB.",
+      "A one-click Compress Word tool that keeps the file editable is still in development. In the meantime you can shrink a Word document right now, for free, either inside Word or by routing it through PDF with ConvertBrio's tools that already work.",
+    ],
+    comingSoonGuide: {
+      title: "Compress your Word document now",
+      intro: [
+        "If the document is finished and headed out for sharing or submission, convert it to PDF and compress that — Word to PDF, then Compress PDF, which re-encodes the embedded images.",
+        "If you need to keep editing in Word, use Word's own Compress Pictures option (steps below). Both routes are free and need nothing installed beyond Word itself for the second one.",
+      ],
+      cta: { label: "Start with Word to PDF", href: "/tools/word-to-pdf" },
+    },
+    howTo: [
+      {
+        step: "Decide: editable or final?",
+        detail:
+          "If the .docx must stay editable, use Word's Compress Pictures. If it's a finished document you're sending, the PDF route gives a smaller file.",
+      },
+      {
+        step: "PDF route — convert then compress",
+        detail:
+          "Open Word to PDF, upload the .docx, download the PDF, then run it through Compress PDF.",
+      },
+      {
+        step: "Editable route — compress inside Word",
+        detail:
+          "Select an image → Picture Format → Compress Pictures → untick \"Apply only to this picture\" → choose 150 ppi → tick \"Delete cropped areas of pictures\" → OK, then Save As.",
+      },
+      {
+        step: "Confirm the new size",
+        detail: "Check the file properties. Repeat with a lower ppi or the PDF route if it's still too large.",
+      },
+    ],
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "Compress Word will re-encode images and other embedded media inside a .doc or .docx file to reduce overall file size, while leaving the document's text and formatting untouched.",
+        heading: "Why the file is so big",
+        body: "Word embeds every image at the resolution it was added — a 24-megapixel photo stays 24 megapixels even when the page shows it two inches wide. Text, by contrast, is tiny. So compressing a Word document is really about compressing (or downsizing) the pictures inside it; nothing else meaningfully moves the number.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "This feature is part of ConvertBrio's broader Excel/PowerPoint and Office-document tooling that's currently in development, since it shares infrastructure with the other document tools still being built.",
+        heading: "Compressing images before you insert them",
+        body: "The cleanest habit is to shrink each photo before it goes into the document. Run it through Compress Image with a target size or a lower quality, then insert the smaller version. A screenshot or photo displayed at half-page width almost never needs to be more than about 1500 pixels wide.",
       },
       {
-        heading: "What You Can Do Right Now",
-        body: "In the meantime, if your large Word document is destined for PDF, converting it with Word to PDF and then running the result through Compress PDF can meaningfully shrink the final file size today.",
+        heading: "Other things that add weight",
+        body: [
+          "Tracked changes and old versions: accept or reject all changes and turn Track Changes off before saving a final copy.",
+          "Embedded fonts: File → Options → Save → untick \"Embed fonts in the file\" if you don't specifically need it.",
+          "Pasted content from the web or Excel: paste as picture or plain text rather than keeping the full source object.",
+        ],
+      },
+      {
+        heading: "The automatic tool",
+        body: "A dedicated Compress Word tool — upload a .docx, get back a smaller editable .docx — is on ConvertBrio's roadmap. Until it's live, the routes above cover both the editable and the send-it-out cases for free.",
       },
     ],
     relatedTools: [
       { label: "Word to PDF", href: "/tools/word-to-pdf" },
       { label: "Compress PDF", href: "/tools/compress-pdf" },
       { label: "Compress Image", href: "/tools/compress-image" },
+      { label: "PDF to Word", href: "/tools/pdf-to-word" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming Compress Word tool.",
+    faqDescription: "Common questions about reducing a Word document's file size.",
     faq: [
       {
-        question: "Is Compress Word available yet?",
+        question: "How do I make a Word document smaller to email it?",
         answer:
-          "Not yet — it's part of the Office-document tooling ConvertBrio is currently building, alongside Excel and PowerPoint conversion.",
+          "Fastest for a finished document: convert it to PDF with ConvertBrio's Word to PDF tool, then run the PDF through Compress PDF. To keep it editable, use Word's Picture Format → Compress Pictures at 150 ppi and Save As.",
       },
       {
-        question: "What will this tool do once it launches?",
+        question: "Is there a free Compress Word tool on ConvertBrio?",
         answer:
-          "It will reduce the file size of a Word document by optimizing embedded images and media, while keeping the text and formatting unchanged.",
+          "A one-click tool that returns an editable .docx is in development. Today, the free options are the PDF route (Word to PDF → Compress PDF) or Word's built-in Compress Pictures.",
       },
       {
-        question: "How can I shrink a large Word document today?",
+        question: "Will compressing change my text or formatting?",
         answer:
-          "Convert it to PDF with Word to PDF, then compress the resulting file with Compress PDF — a practical workaround while Compress Word is being built.",
+          "No. Only the images are affected. Text, headings, tables, and layout are untouched by either the PDF route or Word's Compress Pictures.",
+      },
+      {
+        question: "My document is mostly text but still large — why?",
+        answer:
+          "Check for tracked changes and revision history, embedded fonts, or content pasted as full Excel/web objects. Each can add several megabytes independent of images.",
+      },
+      {
+        question: "Does this work with old .doc files?",
+        answer:
+          "Save the .doc as .docx in Word first (File → Save As), then follow the steps.",
       },
     ],
   },
 
   "compress-powerpoint": {
-    title: "Compress PowerPoint: Coming Soon to ConvertBrio",
-    intro:
-      "Presentations full of high-resolution images, embedded video thumbnails, or large graphics can quickly become too large to email. ConvertBrio is building a Compress PowerPoint tool that will reduce a presentation's file size without altering its slide content.",
+    title: "How to Compress a PowerPoint Presentation (Free)",
+    intro: [
+      "PowerPoint files balloon fast — a few phone photos, a couple of screenshots, an exported chart, and a .pptx is suddenly 40 MB and won't go through email. The size almost always comes from images stored at full camera resolution when a slide only shows them a few inches wide.",
+      "A one-click Compress PowerPoint tool that keeps the file editable is still in development. But you can get a presentation's size down right now, for free, using ConvertBrio tools that already work — and for sharing or submitting a deck, the result is usually better than an editable .pptx anyway.",
+    ],
+    comingSoonGuide: {
+      title: "Compress your PowerPoint now, via PDF",
+      intro: [
+        "Convert the .pptx to PDF, then compress that PDF. ConvertBrio's PDF compressor re-encodes every embedded image at an efficient quality and downsizes oversized ones — which is exactly where a heavy deck's weight lives.",
+        "You get a small, universally-viewable file that opens on any device with no PowerPoint needed. The trade-off: the output is a PDF, not an editable presentation.",
+      ],
+      cta: { label: "Start with PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
+    },
+    howTo: [
+      {
+        step: "Convert the presentation to PDF",
+        detail:
+          "Open PowerPoint to PDF, upload your .pptx, and download the PDF. Each slide becomes one full page.",
+      },
+      {
+        step: "Compress the PDF",
+        detail:
+          "Upload that PDF to Compress PDF. It re-encodes the embedded images and strips unused metadata, usually cutting the size substantially for image-heavy decks.",
+      },
+      {
+        step: "Check and share",
+        detail:
+          "Open the compressed PDF to confirm the slides still look good, then email or upload it. Most decks drop well under a 20–25 MB mail limit.",
+      },
+    ],
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "Compress PowerPoint will optimize the images and embedded media inside a .ppt or .pptx file to shrink overall file size, while keeping slide layout, text, and design intact.",
+        heading: "Why PowerPoint files get so large",
+        body: "Modern phones shoot 12–48 megapixel photos — several megabytes each. Paste four of those across your slides and the deck carries ~20 MB of image data before a single word of text. PowerPoint keeps the full-resolution original even though the slide only ever displays a small version, so the fix is to re-encode those images at a size that matches how they're actually shown.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "Like Excel and PowerPoint conversion, this feature depends on presentation-file tooling that ConvertBrio is currently developing as part of its broader Office-document support.",
+        heading: "If you need the file to stay an editable .pptx",
+        body: [
+          "The PDF route is best for a finished deck you're sending out. If you must keep editing in PowerPoint, do the compression inside PowerPoint itself: select an image, open the Picture Format tab, click Compress Pictures, untick \"Apply only to this picture\", choose a lower resolution (150 ppi is plenty for on-screen), and also tick \"Delete cropped areas of pictures\". Then File → Save As and check the new size.",
+          "You can also shrink individual images before placing them: run each photo through Compress Image with a target size, then insert the smaller version.",
+        ],
       },
       {
-        heading: "What You Can Do Right Now",
-        body: "Until this tool launches, converting your presentation to PDF (once PowerPoint to PDF is available) and compressing the resulting file with Compress PDF will offer a similar reduction in shareable file size.",
+        heading: "What about the automatic tool?",
+        body: "A dedicated Compress PowerPoint tool — one that opens the .pptx, optimises the embedded media, and hands back an editable presentation at a smaller size — is on ConvertBrio's roadmap. Until it ships, the PDF route above is the reliable free option and needs no software installed.",
       },
     ],
     relatedTools: [
+      { label: "PowerPoint to PDF", href: "/tools/powerpoint-to-pdf" },
       { label: "Compress PDF", href: "/tools/compress-pdf" },
       { label: "Compress Image", href: "/tools/compress-image" },
+      { label: "Merge Documents", href: "/tools/merge-documents" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming Compress PowerPoint tool.",
+    faqDescription: "Common questions about reducing a PowerPoint presentation's file size.",
     faq: [
       {
-        question: "Is Compress PowerPoint available yet?",
+        question: "How do I compress a PowerPoint to email it?",
         answer:
-          "Not yet — it's part of the Excel/PowerPoint tooling ConvertBrio is currently building.",
+          "Convert the .pptx to PDF with ConvertBrio's PowerPoint to PDF tool, then run that PDF through Compress PDF. The re-encoded images make the file much smaller, and it opens on any device without PowerPoint. It's free, with no signup.",
       },
       {
-        question: "What will this tool do once it's live?",
+        question: "Can I compress a PowerPoint without converting it to PDF?",
         answer:
-          "It will reduce a PowerPoint presentation's file size by optimizing embedded images and media, without changing the slide design or content.",
+          "Yes, inside PowerPoint: select an image, go to Picture Format → Compress Pictures, untick \"Apply only to this picture\", pick 150 ppi, tick \"Delete cropped areas of pictures\", then Save As. This keeps the file editable.",
       },
       {
-        question: "Is there a way to shrink a presentation today?",
+        question: "Is there a free online Compress PowerPoint tool on ConvertBrio?",
         answer:
-          "Once PowerPoint to PDF is available, converting to PDF and compressing the result with Compress PDF will offer a similar reduction in file size in the meantime.",
+          "A one-click tool that keeps the file editable is in development. Today, the free route is PowerPoint to PDF followed by Compress PDF, which works entirely in your browser.",
+      },
+      {
+        question: "Will compressing lower the quality of my slides?",
+        answer:
+          "Text and vector shapes stay perfectly sharp. Photos are re-encoded with a small, usually invisible quality reduction — the difference only shows if you zoom in hard on an image.",
+      },
+      {
+        question: "Does this work with .ppt files?",
+        answer:
+          "Convert legacy .ppt to .pptx first (open it in PowerPoint and use File → Save As), then follow the steps above.",
       },
     ],
   },
@@ -2618,86 +2767,169 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "ai-object-remover": {
-    title: "AI Object Remover: Coming Soon to ConvertBrio",
-    intro:
-      "Removing an unwanted object from a photo — a stray passerby, a power line, a distracting item in the background — normally requires careful manual editing. ConvertBrio is building an AI object remover that will erase unwanted elements automatically and fill in the space naturally.",
+    title: "How to Remove an Unwanted Object From a Photo (Free Options)",
+    intro: [
+      "A stray passerby in a holiday photo, a power line across a skyline, a bin in the corner of a listing shot — one distracting object can spoil an otherwise good picture. Erasing it cleanly means removing the object and rebuilding whatever was behind it so there's no visible patch.",
+      "A one-click AI object remover with a brush tool is on ConvertBrio's roadmap and needs an inpainting model that isn't on the free tier yet. Until it's live, there are a few free ways to deal with an unwanted object depending on where it sits in the frame.",
+    ],
+    comingSoonGuide: {
+      title: "Remove an object now",
+      intro: [
+        "If the object is near an edge, the fastest fix is to crop it out of frame entirely — no reconstruction needed, and the result is genuinely clean.",
+        "If it's a distracting background rather than a specific object, and you only need the subject, the AI background remover cuts the subject out so you can place it on a new, clean background.",
+      ],
+      cta: { label: "Crop the object out of frame", href: "/tools/crop-image" },
+    },
+    howTo: [
+      {
+        step: "Look at where the object is",
+        detail: "Near an edge or corner → crop. In the middle of the shot, or overlapping the subject → you'll need a dedicated editor for now.",
+      },
+      {
+        step: "Edge object: crop it out",
+        detail:
+          "Open Crop Image, enter a region that excludes the object, and download. Check the new aspect ratio still works for where you'll use the photo.",
+      },
+      {
+        step: "Distracting background: cut out the subject",
+        detail:
+          "Run the photo through Remove Background to get the subject on transparency, then place it on a plain colour or a cleaner background in any editor.",
+      },
+      {
+        step: "Object over the subject: use a desktop tool for now",
+        detail:
+          "A content-aware fill / healing brush in a photo editor is the reliable option until ConvertBrio's AI object remover ships.",
+      },
+    ],
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "AI Object Remover will let you mark an unwanted object in a photo, and an AI model will remove it while intelligently reconstructing the background behind it, avoiding the obvious patchwork look manual editing can leave behind.",
+        heading: "Why removing a mid-frame object is hard",
+        body: "Cropping just discards pixels — easy and lossless. Removing an object from the middle of a photo means inventing what was behind it: the right continuation of a wall, a lawn, a sky, a crowd. Doing that convincingly needs a model trained to inpaint plausible detail that matches the surrounding texture, lighting, and perspective. Simple, uniform backgrounds (blank wall, clear sky) are easy; busy or structured scenes are where results get patchy.",
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "This capability requires an external AI model provider that ConvertBrio is currently connecting, as part of the same AI toolset that includes background removal, upscaling, and photo restoration.",
+        heading: "What ConvertBrio's tool will do",
+        body: "The planned AI Object Remover will let you paint over the unwanted object and have a model remove it and fill the gap, aiming for a result with no visible seam. It's part of the same AI toolset as background removal and upscaling and is gated on model availability on the free tier.",
       },
       {
-        heading: "What You Can Do Right Now",
-        body: "While this tool is being built, ConvertBrio's Crop Image tool can remove unwanted elements near the edge of a photo by cutting them out of frame entirely, which works for some but not all situations.",
+        heading: "Privacy",
+        body: "The tools that work today — Crop Image and Remove Background — process on ConvertBrio's own servers with no human review, and delete both the upload and the result within 24 hours.",
       },
     ],
     relatedTools: [
       { label: "Crop Image", href: "/tools/crop-image" },
       { label: "Remove Background", href: "/tools/remove-background" },
+      { label: "AI Image Enhancer", href: "/tools/ai-image-enhancer" },
+      { label: "Resize Image", href: "/tools/resize-image" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming AI object remover.",
+    faqDescription: "Common questions about removing unwanted objects from a photo.",
     faq: [
       {
-        question: "Is the AI object remover available yet?",
+        question: "Can I remove an object from a photo free on ConvertBrio?",
         answer:
-          "Not yet — it needs an external AI model provider that ConvertBrio is currently connecting as part of its broader AI toolset.",
+          "If the object is near an edge, yes — the Crop Image tool removes it by cutting it out of frame. A brush-based AI object remover for mid-frame objects is in development and depends on an inpainting model not yet on the free tier.",
       },
       {
-        question: "Will it work for any object in a photo?",
+        question: "How do I remove a person from the background of a photo?",
         answer:
-          "Results depend on the complexity of the surrounding background — simpler backgrounds are typically easier for an AI model to reconstruct convincingly than busy or highly detailed ones.",
+          "If they're near the edge, crop them out. If you only need your subject, run the photo through Remove Background and place the subject on a clean backdrop. For a person standing mid-scene, use a desktop editor's content-aware fill for now.",
       },
       {
-        question: "Is there a workaround until this tool launches?",
+        question: "When will the AI object remover launch?",
         answer:
-          "If the unwanted object is near the edge of the photo, ConvertBrio's Crop Image tool can cut it out of frame entirely as a partial workaround.",
+          "It's on the roadmap, gated on an inpainting model becoming available on ConvertBrio's free tier. No firm date yet.",
+      },
+      {
+        question: "Does cropping reduce my photo's quality?",
+        answer:
+          "No — cropping keeps every remaining pixel exactly as it was. It only changes the framing and the overall dimensions.",
       },
     ],
   },
 
   "ai-photo-restoration": {
-    title: "AI Photo Restoration: Coming Soon to ConvertBrio",
-    intro:
-      "Old, damaged, or faded photographs often carry scratches, discoloration, and lost detail that ordinary editing can't fully repair. ConvertBrio is building an AI photo restoration tool that will use machine learning to repair and revive old photos automatically.",
+    title: "How to Restore an Old or Damaged Photo (Free Options)",
+    intro: [
+      "Old family photos fade, yellow, pick up scratches and creases, and lose sharpness. Full restoration means repairing physical damage, correcting colour, and recovering detail — and the hardest part, repairing scratches and missing patches, needs a model trained specifically for it.",
+      "A one-click AI Photo Restoration tool is on ConvertBrio's roadmap and depends on a restoration model that isn't on the free tier yet. But several steps that make a real difference to an old scan are available now, for free.",
+    ],
+    comingSoonGuide: {
+      title: "Improve an old photo now",
+      intro: [
+        "Scan or photograph the print as sharply as you can, then run it through AI Image Enhancer to rebalance faded contrast and colour, and AI Upscaler to bring back size and sharpness lost to age and low-resolution scanning.",
+        "This won't repair scratches or torn areas — that's what the dedicated restoration tool will add — but it noticeably revives most faded, soft, undamaged photos.",
+      ],
+      cta: { label: "Start with AI Image Enhancer", href: "/tools/ai-image-enhancer" },
+    },
+    howTo: [
+      {
+        step: "Get the best possible scan",
+        detail:
+          "Use a flatbed scanner at 600 DPI if you can, or photograph the print flat in bright, even, indirect light with no glare. Everything downstream depends on this.",
+      },
+      {
+        step: "Rebalance tone and colour",
+        detail:
+          "Run the scan through AI Image Enhancer. It stretches faded contrast back to the full range and lifts washed-out colour automatically.",
+      },
+      {
+        step: "Recover size and sharpness",
+        detail:
+          "Run the result through AI Upscaler (about 4×) to rebuild resolution lost to a small print or a low-res scan, so it holds up when printed or viewed large.",
+      },
+      {
+        step: "For scratches and tears",
+        detail:
+          "Use a desktop editor's healing/clone tools for now, or wait for ConvertBrio's dedicated AI Photo Restoration tool.",
+      },
+    ],
     sections: [
       {
-        heading: "What This Tool Will Do",
-        body: "AI Photo Restoration will analyze a damaged or faded photo and repair scratches, discoloration, and lost detail using a model trained specifically for photo restoration, giving old family photos and archival images a second life without manual retouching.",
+        heading: "What each problem needs",
+        body: "",
+        list: [
+          "Fading and low contrast — fixed well today by AI Image Enhancer",
+          "Yellow or colour-shifted tone — improved by AI Image Enhancer's auto colour balance",
+          "Softness / small size — improved by AI Upscaler",
+          "Scratches, creases, torn corners, missing areas — needs the dedicated restoration model (in development) or manual retouching",
+          "Black-and-white photo you want colourised — needs a colourisation model (not yet on ConvertBrio)",
+        ],
       },
       {
-        heading: "Why It's Not Live Yet",
-        body: "This tool requires an external AI model provider capable of running restoration reliably, which ConvertBrio is currently connecting as part of its broader AI toolset alongside upscaling, enhancement, and background removal.",
+        heading: "Why scratch repair is the hard part",
+        body: "Correcting colour and contrast is maths applied evenly across the image. Repairing a scratch means recognising that a white line isn't part of the photo, then reconstructing the face, fabric, or background it runs across — different content in every case. That's a trained inpainting task, which is exactly the capability ConvertBrio's AI Photo Restoration tool will add.",
       },
       {
-        heading: "What You Can Do Right Now",
-        body: "In the meantime, ConvertBrio's Image Converter and Compress Image tools can help prepare scanned photos for storage or sharing, even though automated restoration isn't available yet.",
+        heading: "Privacy",
+        body: "AI Image Enhancer and AI Upscaler run on ConvertBrio's own servers with no human review, and delete both the upload and the result within 24 hours. Family photos never go to a third-party service.",
       },
     ],
     relatedTools: [
       { label: "AI Image Enhancer", href: "/tools/ai-image-enhancer" },
       { label: "AI Upscaler", href: "/tools/ai-upscaler" },
       { label: "Image Converter", href: "/tools/image-converter" },
+      { label: "Crop Image", href: "/tools/crop-image" },
     ],
-    faqDescription: "Common questions about ConvertBrio's upcoming AI photo restoration tool.",
+    faqDescription: "Common questions about restoring old and damaged photos.",
     faq: [
       {
-        question: "Is AI photo restoration available yet?",
+        question: "Can I restore an old photo free on ConvertBrio?",
         answer:
-          "Not yet — it needs an external AI model provider that ConvertBrio is currently connecting, as part of its broader AI toolset in development.",
+          "You can meaningfully improve one now: AI Image Enhancer fixes fading and colour, and AI Upscaler restores sharpness and size. A dedicated tool for repairing scratches and tears is in development.",
       },
       {
-        question: "What kind of damage will it be able to fix?",
+        question: "Will this remove scratches and creases?",
         answer:
-          "Once live, it's intended to address common issues in old photographs, including scratches, discoloration, fading, and general loss of detail.",
+          "Not yet — the current tools handle fading, colour, softness, and size. Physical damage repair needs the AI Photo Restoration model that's still being added.",
       },
       {
-        question: "Can I prepare scanned photos today while I wait?",
+        question: "How should I scan an old print for the best result?",
         answer:
-          "Yes — ConvertBrio's Image Converter and Compress Image tools can help you get scanned photos into a usable format and size now, ahead of automated restoration launching.",
+          "A flatbed scanner at 600 DPI is ideal. If you're using a phone, shoot the print flat in bright, even, indirect light with no glare or shadow across it. Scan quality sets the ceiling for everything after.",
+      },
+      {
+        question: "Can it colourise a black-and-white photo?",
+        answer:
+          "Not currently — colourisation needs a separate model that isn't on ConvertBrio yet. The enhancer and upscaler work on black-and-white photos to improve contrast and sharpness.",
       },
     ],
   },
