@@ -46,12 +46,9 @@ const homeHref = localePath("/", lang);
 
 <header class="sticky top-0 z-40 border-b border-hairline bg-canvas/90 backdrop-blur-sm">
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <a href={homeHref} class="flex shrink-0 items-center gap-2 rounded-sm" aria-label="ConvertBrio home">
-      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="26" height="26" rx="7" fill="#16171B" />
-        <path d="M8 13.5L11.2 16.7L18 9.3" stroke="#EEF1FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-      <span translate="no" class="text-[15px] font-semibold tracking-[-0.01em] text-ink">ConvertBrio</span>
+    <a href={homeHref} class="flex shrink-0 items-center rounded-sm" aria-label="ConvertBrio home">
+      <img src="/logo.png" alt="ConvertBrio" width="1600" height="364" class="h-10 w-auto dark:hidden" />
+      <img src="/logo-dark.png" alt="ConvertBrio" width="1600" height="364" class="hidden h-10 w-auto dark:block" />
     </a>
 
     <nav aria-label={t.primaryLabel} class="hidden min-w-0 flex-1 items-center justify-center lg:flex">
