@@ -75,7 +75,7 @@ const homeHref = localePath("/", lang);
         href="https://convertbrio.info"
         target="_blank"
         rel="noopener"
-        class="inline-flex items-center gap-1 rounded-full border border-hairline px-2.5 py-1.5 text-xs font-medium text-body transition-colors hover:bg-canvas-soft-2 hover:text-ink"
+        class="inline-flex items-center gap-1 rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
       >
         My Work
         <Icon name="arrow" class="h-3 w-3 -rotate-45" />
@@ -111,7 +111,7 @@ const homeHref = localePath("/", lang);
         </ul>
       </details>
       {
-        user ? (
+        user && (
           <>
             <a
               href={localePath("/dashboard", lang)}
@@ -122,26 +122,11 @@ const homeHref = localePath("/", lang);
             <form method="post" action="/api/auth/sign-out">
               <button
                 type="submit"
-                class="rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
+                class="rounded-full border border-hairline px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
               >
                 {t.signOut}
               </button>
             </form>
-          </>
-        ) : (
-          <>
-            <a
-              href={localePath("/sign-in", lang)}
-              class="rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
-            >
-              {t.signIn}
-            </a>
-            <a
-              href={localePath("/all-tools", lang)}
-              class="rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
-            >
-              {t.getStarted}
-            </a>
           </>
         )
       }
@@ -184,10 +169,10 @@ const homeHref = localePath("/", lang);
         href="https://convertbrio.info"
         target="_blank"
         rel="noopener"
-        class="inline-flex items-center gap-1.5 rounded-md px-3 py-2.5 text-[15px] text-body transition-colors hover:bg-canvas-soft-2 hover:text-ink"
+        class="inline-flex items-center justify-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-[15px] font-medium text-canvas transition-opacity hover:opacity-85"
       >
         My Work
-        <Icon name="arrow" class="h-3.5 w-3.5 -rotate-45 text-mute" />
+        <Icon name="arrow" class="h-3.5 w-3.5 -rotate-45" />
       </a>
       <div class="mt-1 border-t border-hairline pt-2">
         <p class="px-3 py-1 font-mono text-xs uppercase tracking-wide text-mute">{t.languageLabel}</p>
@@ -208,40 +193,23 @@ const homeHref = localePath("/", lang);
           }
         </div>
       </div>
-      <div class="mt-2 flex flex-col gap-2 border-t border-hairline pt-4">
-        {
-          user ? (
-            <>
-              <a
-                href={localePath("/dashboard", lang)}
-                class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
-              >
-                {t.dashboard}
-              </a>
-              <form method="post" action="/api/auth/sign-out">
-                <button type="submit" class="w-full rounded-full bg-ink px-4 py-2.5 text-center text-[15px] font-medium text-canvas">
-                  {t.signOut}
-                </button>
-              </form>
-            </>
-          ) : (
-            <>
-              <a
-                href={localePath("/sign-in", lang)}
-                class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
-              >
-                {t.signIn}
-              </a>
-              <a
-                href={localePath("/all-tools", lang)}
-                class="rounded-full bg-ink px-4 py-2.5 text-center text-[15px] font-medium text-canvas"
-              >
-                {t.getStarted}
-              </a>
-            </>
-          )
-        }
-      </div>
+      {
+        user && (
+          <div class="mt-2 flex flex-col gap-2 border-t border-hairline pt-4">
+            <a
+              href={localePath("/dashboard", lang)}
+              class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
+            >
+              {t.dashboard}
+            </a>
+            <form method="post" action="/api/auth/sign-out">
+              <button type="submit" class="w-full rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink">
+                {t.signOut}
+              </button>
+            </form>
+          </div>
+        )
+      }
     </nav>
   </div>
 </header>
