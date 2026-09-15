@@ -181,10 +181,10 @@ const softwareApplicationSchema = isComingSoon(tool)
               <label
                 for="file-input"
                 id="dropzone"
-                class="group flex cursor-pointer flex-col items-center gap-3 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-12 text-center transition-colors duration-150 hover:border-brand-400 hover:bg-brand-50/40"
+                class="group flex cursor-pointer flex-col items-center gap-3 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-12 text-center transition-colors duration-150 hover:border-lime-deep hover:bg-lime/10"
               >
                 <div id="dropzone-idle" class="flex flex-col items-center gap-3">
-                  <span class="flex h-12 w-12 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600">
+                  <span class="flex h-12 w-12 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-lime group-hover:text-ink">
                     <Icon name="cloud" class="h-5 w-5" />
                   </span>
                   <span class="text-sm font-medium text-ink">
@@ -196,7 +196,7 @@ const softwareApplicationSchema = isComingSoon(tool)
                 <div id="dropzone-uploading" class="hidden w-full max-w-[16rem] flex-col items-center gap-3">
                   <span id="progress-percent" class="text-3xl font-semibold tabular-nums text-ink">0%</span>
                   <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
-                    <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
+                    <div id="progress-bar" class="h-full w-0 rounded-full bg-lime-deep transition-[width] duration-150 ease-out" />
                   </div>
                   <span id="progress-label" class="text-xs text-mute">{tf.uploading}</span>
                 </div>
@@ -244,7 +244,7 @@ const softwareApplicationSchema = isComingSoon(tool)
                     </div>
                     <div class="flex flex-col gap-1.5">
                       <label for="quality" class="text-sm font-medium text-ink">{tf.quality}</label>
-                      <input id="quality" name="quality" type="range" min="20" max="95" value="60" class="accent-ink" />
+                      <input id="quality" name="quality" type="range" min="20" max="95" value="60" class="accent-lime-deep" />
                     </div>
                   </div>
                 )
@@ -484,13 +484,13 @@ const softwareApplicationSchema = isComingSoon(tool)
         ["dragenter", "dragover"].forEach((eventName) => {
           dropzone?.addEventListener(eventName, (event) => {
             event.preventDefault();
-            dropzone.classList.add("border-brand-400", "bg-brand-50/40");
+            dropzone.classList.add("border-lime-deep", "bg-lime/10");
           });
         });
         ["dragleave", "drop"].forEach((eventName) => {
           dropzone?.addEventListener(eventName, (event) => {
             event.preventDefault();
-            dropzone.classList.remove("border-brand-400", "bg-brand-50/40");
+            dropzone.classList.remove("border-lime-deep", "bg-lime/10");
           });
         });
         dropzone?.addEventListener("drop", (event) => {

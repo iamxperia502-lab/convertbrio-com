@@ -14,11 +14,11 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
     <label
       for="file-input"
       id="dropzone"
-      class="group flex cursor-pointer flex-col items-center gap-4 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-10 text-center transition-colors duration-150 hover:border-brand-400 hover:bg-brand-500/10 sm:py-12"
+      class="group flex cursor-pointer flex-col items-center gap-4 rounded-xl border-2 border-dashed border-hairline-strong px-6 py-10 text-center transition-colors duration-150 hover:border-lime-deep hover:bg-lime/10 sm:py-12"
     >
       <div id="dropzone-idle" class="flex flex-col items-center gap-4">
         <span
-          class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-brand-100 group-hover:text-brand-600"
+          class="flex h-14 w-14 items-center justify-center rounded-full bg-canvas-soft-2 text-ink transition-colors group-hover:bg-lime group-hover:text-ink"
         >
           <Icon name="cloud" class="h-6 w-6" />
         </span>
@@ -38,7 +38,7 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
       <div id="dropzone-uploading" class="hidden w-full max-w-xs flex-col items-center gap-4">
         <span id="progress-percent" class="text-4xl font-semibold tabular-nums text-ink">0%</span>
         <div class="h-2 w-full overflow-hidden rounded-full bg-canvas-soft-2">
-          <div id="progress-bar" class="h-full w-0 rounded-full bg-ink transition-[width] duration-150 ease-out" />
+          <div id="progress-bar" class="h-full w-0 rounded-full bg-lime-deep transition-[width] duration-150 ease-out" />
         </div>
         <span class="text-sm text-mute">Uploading…</span>
       </div>

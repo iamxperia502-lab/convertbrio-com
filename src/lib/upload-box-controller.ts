@@ -133,14 +133,14 @@ export function initUploadBox() {
   ["dragenter", "dragover"].forEach((eventName) => {
     dropzone?.addEventListener(eventName, (event) => {
       event.preventDefault();
-      dropzone.classList.add("border-brand-400", "bg-brand-500/10");
+      dropzone.classList.add("border-lime-deep", "bg-lime/10");
     });
   });
 
   ["dragleave", "drop"].forEach((eventName) => {
     dropzone?.addEventListener(eventName, (event) => {
       event.preventDefault();
-      dropzone.classList.remove("border-brand-400", "bg-brand-500/10");
+      dropzone.classList.remove("border-lime-deep", "bg-lime/10");
     });
   });
 
