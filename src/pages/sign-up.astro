@@ -51,7 +51,7 @@ const supabaseConfigured = Astro.locals.supabase !== null;
                 autocomplete="email"
                 required
                 disabled={!supabaseConfigured}
-                class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink placeholder:text-mute focus:border-brand-400 disabled:opacity-50"
+                class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink placeholder:text-mute focus:border-focus disabled:opacity-50"
               />
             </div>
 
@@ -65,7 +65,7 @@ const supabaseConfigured = Astro.locals.supabase !== null;
                 minlength="8"
                 required
                 disabled={!supabaseConfigured}
-                class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink placeholder:text-mute focus:border-brand-400 disabled:opacity-50"
+                class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink placeholder:text-mute focus:border-focus disabled:opacity-50"
               />
               <p class="text-xs text-mute">At least 8 characters.</p>
             </div>

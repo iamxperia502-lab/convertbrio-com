@@ -40,30 +40,59 @@
 }
 
 @theme {
-  /* Brand accent — restrained electric indigo, used sparingly against the monochrome system */
-  --color-brand-50: #eef1ff;
-  --color-brand-100: #dee3ff;
-  --color-brand-200: #b8c2ff;
-  --color-brand-300: #8d9aff;
-  --color-brand-400: #6272ff;
-  --color-brand-500: #3d54f5;
-  --color-brand-600: #2c3fd6;
-  --color-brand-700: #2331ab;
-  --color-brand-800: #1c2786;
-  --color-brand-900: #171f66;
+  /* Brand accent — Gold, from the ConvertBrio brand kit's "editorial accent"
+     role. Used for links and non-focus interactive states; #8a6531 (600) is
+     the exact brand hex and sits at 4.63:1 on Cream, so it doubles as body
+     text. Dark-mode override below swaps this ramp to Lime, since Gold on
+     Plum Deep drops to ~2.4:1 and fails. */
+  --color-brand-50: #fbf5ea;
+  --color-brand-100: #f3e4c4;
+  --color-brand-200: #e6cb94;
+  --color-brand-300: #d4ad68;
+  --color-brand-400: #b08239;
+  --color-brand-500: #9c7132;
+  --color-brand-600: #8a6531;
+  --color-brand-700: #6e4f27;
+  --color-brand-800: #543c1e;
+  --color-brand-900: #3b2a15;
 
-  /* Neutral ink/canvas scale — matches DESIGN.md's captured token values */
-  --color-ink: #171717;
-  --color-body: #4d4d4d;
-  /* #767676 is the commonly-cited minimum gray for 4.5:1 on white; #666666
-     gives ~5.75:1 for a comfortable margin (PageSpeed Insights flagged the
-     previous #888888, ~2.9:1, as failing WCAG AA contrast). */
-  --color-mute: #666666;
-  --color-canvas: #ffffff;
-  --color-canvas-soft: #fafafa;
-  --color-canvas-soft-2: #f5f5f5;
-  --color-hairline: #ebebeb;
-  --color-hairline-strong: #a1a1a1;
+  /* Focus Blue — the brand kit reserves this hex for exactly one purpose
+     ("digital focus state only"), so it's kept separate from the brand-*
+     ramp and used only on :focus / :focus-visible states, never for links
+     or hover. */
+  --color-focus: #2f6df6;
+
+  /* Signature accent — used sparingly for decorative energy (blur glows),
+     never as text: Lime fails text contrast on Cream (~1.5:1). */
+  --color-lime: #c7f23a;
+  --color-lime-deep: #a9d419;
+
+  /* Premium dark surfaces — sourced for dark mode below; also available as
+     utilities (bg-plum, bg-plum-deep) for premium/dark-surface accents in
+     light mode. */
+  --color-plum: #523e68;
+  --color-plum-deep: #3d2d50;
+
+  /* Remaining brand-kit palette, imported as utilities for future use
+     (service-category surfaces, editorial details) — not yet wired into
+     any component. */
+  --color-gold-line: #b68646;
+  --color-mint: #dce9dd;
+  --color-lavender: #e6def1;
+  --color-blush: #e7c7ba;
+  --color-sand: #eedfc5;
+
+  /* Neutral ink/canvas scale — ConvertBrio brand kit (Cream/Ink family) */
+  --color-ink: #191913;
+  --color-body: #45453e;
+  /* Ink Muted on Cream is 5.13:1 — clears 4.5:1 AA for normal text with room
+     to spare. */
+  --color-mute: #67655d;
+  --color-canvas: #f4f0e7;
+  --color-canvas-soft: #fbfaf6;
+  --color-canvas-soft-2: #ded6c8;
+  --color-hairline: #e3dcce;
+  --color-hairline-strong: #948968;
 
   /* Semantic */
   --color-success: #16794e;
@@ -100,14 +129,33 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 .dark {
-  --color-ink: #f2f2f2;
-  --color-body: #b0b0b0;
-  --color-mute: #808080;
-  --color-canvas: #0a0a0a;
-  --color-canvas-soft: #141414;
-  --color-canvas-soft-2: #1e1e1e;
-  --color-hairline: #262626;
-  --color-hairline-strong: #454545;
+  /* Plum family — the brand kit's own "premium dark accent" surfaces */
+  --color-ink: #fbfaf6;
+  --color-body: #e6def1;
+  /* B3A4C4 on Plum Deep clears 4.5:1 AA */
+  --color-mute: #b3a4c4;
+  --color-canvas: #3d2d50;
+  --color-canvas-soft: #4a3861;
+  --color-canvas-soft-2: #573f70;
+  --color-hairline: #55406c;
+  --color-hairline-strong: #7c6693;
+
+  /* Gold reads too dark on Plum Deep (~2.4:1) — Lime takes over as the
+     dark-mode accent instead, which is >9:1 here and matches the brand
+     kit's cover treatment (plum ground, lime accent). */
+  --color-brand-50: #232917;
+  --color-brand-100: #323a1e;
+  --color-brand-200: #465321;
+  --color-brand-300: #6b7d1f;
+  --color-brand-400: #c7f23a;
+  --color-brand-500: #c7f23a;
+  --color-brand-600: #c7f23a;
+  --color-brand-700: #a9d419;
+  --color-brand-800: #b8e02a;
+  --color-brand-900: #d4f766;
+
+  /* Focus Blue needs to lighten on this dark ground to clear 3:1 */
+  --color-focus: #6e9bff;
 
   --color-success: #3ddb96;
   --color-success-soft: #10291e;
@@ -150,7 +198,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-brand-500);
+    outline: 2px solid var(--color-focus);
     outline-offset: 2px;
     border-radius: 2px;
   }

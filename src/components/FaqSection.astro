@@ -33,7 +33,7 @@ const link = "inline-flex w-fit items-center gap-1.5 text-sm font-medium text-br
         {
           items.map((item, index) => (
             <details class="group rounded-xl border border-hairline bg-canvas-soft p-5 open:pb-5" name={`${id}-accordion`}>
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-medium text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-medium text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2">
                 <span id={`${id}-q-${index}`}>{item.question}</span>
                 <Icon
                   name="chevronDown"
