@@ -107,7 +107,7 @@ export const tools: Tool[] = [
     operation: "convert",
     icon: "image",
     description: "Convert images between JPG, PNG, WEBP, AVIF, HEIC, and GIF.",
-    seoTitle: "Free Online Image Converter — JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
+    seoTitle: "Free Online Image Converter: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
     seoDescription:
       "Convert images between JPG, PNG, WEBP, AVIF, HEIC, and GIF in your browser. Free, no signup, files deleted automatically after conversion.",
     accept: IMAGE_ACCEPT,
@@ -121,9 +121,9 @@ export const tools: Tool[] = [
     outputFormat: "jpeg",
     icon: "heic",
     description: "Convert iPhone HEIC photos to universally-supported JPG.",
-    seoTitle: "Convert HEIC to JPG Free — No Signup | ConvertBrio",
+    seoTitle: "Convert HEIC to JPG Free: No Signup | ConvertBrio",
     seoDescription:
-      "Convert iPhone HEIC or HEIF photos to JPG online, free and without an account. Fast, private conversion that works in any browser — no app to install.",
+      "Convert iPhone HEIC or HEIF photos to JPG online, free and without an account. Fast, private conversion that works in any browser: no app to install.",
     accept: "image/heic,image/heif",
   },
   {
@@ -268,7 +268,7 @@ export const tools: Tool[] = [
     description: "Shrink image file size while keeping quality intact.",
     seoTitle: "Compress Image to an Exact File Size (KB) | ConvertBrio",
     seoDescription:
-      "Compress a JPG, PNG, WEBP, HEIC, or AVIF to an exact KB target — like 100 KB for a visa, job portal, or government form — or use the quality slider. Free, no signup, unlimited use.",
+      "Compress a JPG, PNG, WEBP, HEIC, or AVIF to an exact KB target, like 100 KB for a visa, job portal, or government form, or use the quality slider. Free, no signup, unlimited use.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -281,7 +281,7 @@ export const tools: Tool[] = [
     description: "Resize an image to exact pixel dimensions.",
     seoTitle: "Resize Image to Exact Pixel Dimensions Free Online | ConvertBrio",
     seoDescription:
-      "Resize a JPG, PNG, WEBP, or HEIC image to exact width and height in pixels — for Instagram, a profile photo, a form, or a smaller file. Free, no signup, no watermark.",
+      "Resize a JPG, PNG, WEBP, or HEIC image to exact width and height in pixels: for Instagram, a profile photo, a form, or a smaller file. Free, no signup, no watermark.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -312,7 +312,7 @@ export const tools: Tool[] = [
     operation: "merge",
     icon: "merge",
     description: "Combine multiple PDFs into a single document.",
-    seoTitle: "Merge PDF Files Free Online — No Signup | ConvertBrio",
+    seoTitle: "Merge PDF Files Free Online: No Signup | ConvertBrio",
     seoDescription:
       "Combine multiple PDFs into one document, in any order, free and without creating an account. Files are encrypted and deleted automatically after merging.",
     accept: PDF_ACCEPT,
@@ -326,7 +326,7 @@ export const tools: Tool[] = [
     operation: "split",
     icon: "merge",
     description: "Split a PDF into individual pages.",
-    seoTitle: "Split PDF Online Free — Separate PDF Pages | ConvertBrio",
+    seoTitle: "Split PDF Online Free: Separate PDF Pages | ConvertBrio",
     seoDescription:
       "Split a PDF into individual pages online, free. Extract a single page or break a document into separate files, downloaded as a ZIP. No signup, no watermark.",
     accept: PDF_ACCEPT,
@@ -338,8 +338,8 @@ export const tools: Tool[] = [
     kind: "pdf",
     operation: "compress",
     icon: "shrink",
-    description: "Reduce PDF file size (best-effort — image re-encoding and metadata cleanup).",
-    seoTitle: "Compress PDF Online Free — Reduce PDF File Size | ConvertBrio",
+    description: "Reduce PDF file size (best-effort: image re-encoding and metadata cleanup).",
+    seoTitle: "Compress PDF Online Free: Reduce PDF File Size | ConvertBrio",
     seoDescription:
       "Compress a PDF online for free to reduce its file size for email or upload. Re-encodes embedded images and strips metadata, keeping text sharp. No signup, no watermark.",
     accept: PDF_ACCEPT,
@@ -382,7 +382,7 @@ export const tools: Tool[] = [
     operation: "pdf-to-jpg",
     icon: "pdf",
     description: "Export every PDF page as a JPG image.",
-    seoTitle: "PDF to JPG — Convert PDF Pages to Images Free | ConvertBrio",
+    seoTitle: "PDF to JPG: Convert PDF Pages to Images Free | ConvertBrio",
     seoDescription:
       "Convert every page of a PDF to a JPG image online, free. One image per page, ready to share, post, or embed. No signup, no watermark.",
     accept: PDF_ACCEPT,
@@ -405,7 +405,7 @@ export const tools: Tool[] = [
     operation: "jpg-to-pdf",
     icon: "image",
     description: "Combine one or more images into a single PDF.",
-    seoTitle: "JPG to PDF — Combine Images Into One PDF Free | ConvertBrio",
+    seoTitle: "JPG to PDF: Combine Images Into One PDF Free | ConvertBrio",
     seoDescription:
       "Convert JPG and PNG images to a single PDF online, free. Combine multiple photos or scanned pages into one document, in order. No signup, no watermark.",
     accept: "image/jpeg,image/png",
@@ -430,9 +430,9 @@ export const tools: Tool[] = [
     operation: "ocr",
     icon: "ocr",
     description: "Make scanned PDFs searchable with text recognition.",
-    seoTitle: "OCR PDF Free — Scanned Document to Editable Text & Word | ConvertBrio",
+    seoTitle: "OCR PDF Free: Scanned Document to Editable Text & Word | ConvertBrio",
     seoDescription:
-      "Run OCR on a scanned PDF to make it searchable and get the text into Word. Free online text recognition, no signup — then copy the text or convert to DOCX.",
+      "Run OCR on a scanned PDF to make it searchable and get the text into Word. Free online text recognition, no signup, then copy the text or convert to DOCX.",
     accept: PDF_ACCEPT,
   },
   {
@@ -443,7 +443,7 @@ export const tools: Tool[] = [
     operation: "word-to-pdf",
     icon: "word",
     description: "Convert Word (.docx) documents to PDF.",
-    seoTitle: "Convert Word to PDF Free Online — No Signup | ConvertBrio",
+    seoTitle: "Convert Word to PDF Free Online: No Signup | ConvertBrio",
     seoDescription:
       "Convert a Word (.docx) document to a print-ready PDF that preserves your formatting. Free, no account required, files deleted automatically after conversion.",
     accept: DOCX_ACCEPT,
@@ -458,7 +458,7 @@ export const tools: Tool[] = [
     description: "Convert a PDF into an editable Word document, preserving paragraphs, bold/italic, headings, simple tables, and images (complex multi-column layouts may not match exactly).",
     seoTitle: "Convert PDF to Word (Editable DOCX) Free | ConvertBrio",
     seoDescription:
-      "Turn a PDF into an editable Word document — paragraphs, headings, bold/italic, simple tables, and images preserved. Free, no signup, complex multi-column layouts may not match exactly.",
+      "Turn a PDF into an editable Word document: paragraphs, headings, bold/italic, simple tables, and images preserved. Free, no signup, complex multi-column layouts may not match exactly.",
     accept: PDF_ACCEPT,
   },
   {
@@ -498,11 +498,11 @@ export const tools: Tool[] = [
     kind: "office-soon",
     icon: "pdf",
     description: "How to get a table out of a PDF and into an Excel spreadsheet, free.",
-    seoTitle: "PDF to Excel — How to Get a PDF Table Into a Spreadsheet Free | ConvertBrio",
+    seoTitle: "PDF to Excel: How to Get a PDF Table Into a Spreadsheet Free | ConvertBrio",
     seoDescription:
       "Free ways to move a table from a PDF into Excel: convert the PDF to Word and copy the table, or OCR a scanned PDF first. Step-by-step, no signup.",
     accept: PDF_ACCEPT,
-    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet — only Word ↔ PDF/JPG/PNG conversion is currently supported.",
+    comingSoonReason: "Excel/PowerPoint conversion isn't wired up yet: only Word ↔ PDF/JPG/PNG conversion is currently supported.",
   },
   {
     slug: "powerpoint-to-pdf",
@@ -512,7 +512,7 @@ export const tools: Tool[] = [
     operation: "powerpoint-to-pdf",
     icon: "word",
     description: "Convert PowerPoint presentations to PDF.",
-    seoTitle: "PowerPoint to PDF Free Online — Convert & Shrink PPTX | ConvertBrio",
+    seoTitle: "PowerPoint to PDF Free Online: Convert & Shrink PPTX | ConvertBrio",
     seoDescription:
       "Convert a PowerPoint (.pptx) to PDF online, free, one page per slide. Then compress the PDF to email a large deck. No signup, no watermark.",
     accept: ".ppt,.pptx",
@@ -525,7 +525,7 @@ export const tools: Tool[] = [
     operation: "compress-word",
     icon: "shrink",
     description: "Reduce a Word document's file size by re-encoding its embedded images.",
-    seoTitle: "Compress Word Document Online Free — Reduce DOCX Size | ConvertBrio",
+    seoTitle: "Compress Word Document Online Free: Reduce DOCX Size | ConvertBrio",
     seoDescription:
       "Compress a Word (.docx) document online, free. Re-encodes the embedded images to shrink the file for email, keeping text and formatting untouched. No signup, no watermark.",
     accept: ".docx",
@@ -538,7 +538,7 @@ export const tools: Tool[] = [
     operation: "compress-powerpoint",
     icon: "shrink",
     description: "Reduce a PowerPoint presentation's file size by re-encoding its embedded images.",
-    seoTitle: "Compress PowerPoint Online Free — Reduce PPTX Size | ConvertBrio",
+    seoTitle: "Compress PowerPoint Online Free: Reduce PPTX Size | ConvertBrio",
     seoDescription:
       "Compress a PowerPoint (.pptx) online, free. Re-encodes the embedded images to shrink the file for email, keeping the editable slides intact. No signup, no watermark.",
     accept: ".pptx",
@@ -563,7 +563,7 @@ export const tools: Tool[] = [
     outputFormat: "png",
     icon: "sparkle",
     description: "Automatically remove the background from a photo.",
-    seoTitle: "Remove Background from Image Free — AI, No Signup | ConvertBrio",
+    seoTitle: "Remove Background from Image Free: AI, No Signup | ConvertBrio",
     seoDescription:
       "Automatically remove a photo's background with AI and download a transparent PNG. Free, no account, no manual masking required.",
     accept: IMAGE_ACCEPT,
@@ -597,7 +597,7 @@ export const tools: Tool[] = [
     operation: "upscale",
     icon: "sparkle",
     description: "Increase image resolution with AI upscaling.",
-    seoTitle: "AI Image Upscaler Free Online — No Signup | ConvertBrio",
+    seoTitle: "AI Image Upscaler Free Online: No Signup | ConvertBrio",
     seoDescription:
       "Increase an image's resolution with AI upscaling, free and without an account. Sharpen low-resolution photos before printing or resizing.",
     accept: IMAGE_ACCEPT,
@@ -608,12 +608,12 @@ export const tools: Tool[] = [
     categories: ["ai"],
     kind: "ai-soon",
     icon: "sparkle",
-    description: "How to remove an unwanted object from a photo — free options that work today.",
-    seoTitle: "Remove an Unwanted Object From a Photo — Free Options | ConvertBrio",
+    description: "How to remove an unwanted object from a photo: free options that work today.",
+    seoTitle: "Remove an Unwanted Object From a Photo: Free Options | ConvertBrio",
     seoDescription:
       "Free ways to remove an object from a photo: crop it out of frame, or cut out the subject with the AI background remover. A one-click brush tool is in development.",
     accept: IMAGE_ACCEPT,
-    comingSoonReason: "Needs a mask-drawing tool plus an inpainting model that isn't on the free tier — coming once that's in place.",
+    comingSoonReason: "Needs a mask-drawing tool plus an inpainting model that isn't on the free tier: coming once that's in place.",
   },
   {
     slug: "ai-photo-restoration",
@@ -621,8 +621,8 @@ export const tools: Tool[] = [
     categories: ["ai"],
     kind: "ai-soon",
     icon: "sparkle",
-    description: "How to restore an old or damaged photo — free steps that help today.",
-    seoTitle: "Restore an Old or Damaged Photo — Free Steps | ConvertBrio",
+    description: "How to restore an old or damaged photo: free steps that help today.",
+    seoTitle: "Restore an Old or Damaged Photo: Free Steps | ConvertBrio",
     seoDescription:
       "Free ways to revive an old photo now: rebalance fading with AI Image Enhancer and recover sharpness with AI Upscaler. Scratch repair is in development.",
     accept: IMAGE_ACCEPT,

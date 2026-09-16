@@ -6,8 +6,8 @@ export const toolContentId: Record<string, ToolContentEntry> = {
   "compress-pdf": {
     title: "Kompres PDF online: perkecil ukuran untuk email dan portal",
     intro: [
-      "PDF besar — apalagi yang penuh halaman hasil scan atau foto resolusi tinggi — melewati batas lampiran email, lambat diunggah, dan ditolak portal yang membatasi ukuran file. Kompresor PDF ConvertBrio mengodekan ulang gambar yang tertanam di dokumen dengan kualitas dan resolusi yang lebih efisien serta menghapus metadata yang tidak perlu, sehingga halaman yang sama kembali dalam file yang lebih kecil.",
-      "Gratis, berjalan di browser tanpa daftar dan tanpa watermark. Kompresi bersifat tanpa kehilangan untuk teks dan grafik vektor — keduanya tetap tajam — dan hanya memengaruhi foto serta scan yang tertanam, di mana penurunan kualitas kecil yang hampir selalu tak terlihat menghasilkan penurunan ukuran yang besar.",
+      "PDF besar, apalagi yang penuh halaman hasil scan atau foto resolusi tinggi, melewati batas lampiran email, lambat diunggah, dan ditolak portal yang membatasi ukuran file. Kompresor PDF ConvertBrio mengodekan ulang gambar yang tertanam di dokumen dengan kualitas dan resolusi yang lebih efisien serta menghapus metadata yang tidak perlu, sehingga halaman yang sama kembali dalam file yang lebih kecil.",
+      "Gratis, berjalan di browser tanpa daftar dan tanpa watermark. Kompresi bersifat tanpa kehilangan untuk teks dan grafik vektor, keduanya tetap tajam, dan hanya memengaruhi foto serta scan yang tertanam, di mana penurunan kualitas kecil yang hampir selalu tak terlihat menghasilkan penurunan ukuran yang besar.",
     ],
     howTo: [
       { step: "Unggah PDF", detail: "Seret file ke kotak atau klik untuk menjelajah. Satu PDF per proses, hingga 100 MB." },
@@ -36,11 +36,11 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         table: {
           headers: ["Jenis PDF", "Hasil umum"],
           rows: [
-            ["Dokumen hasil scan (foto tiap halaman)", "Penurunan besar — sering 40–70% lebih kecil"],
+            ["Dokumen hasil scan (foto tiap halaman)", "Penurunan besar: sering 40–70% lebih kecil"],
             ["Laporan dengan foto atau tangkapan layar", "Penurunan sedang, tergantung jumlah gambar"],
             ["Presentasi yang diekspor ke PDF", "Penurunan sedang jika slide berisi foto"],
-            ["PDF hanya teks (kontrak, ebook, faktur)", "Sedikit perubahan — sudah ringkas"],
-            ["PDF dengan gambar PNG atau CMYK", "Terbatas — jenis gambar itu dilewati agar warna tidak berubah"],
+            ["PDF hanya teks (kontrak, ebook, faktur)", "Sedikit perubahan: sudah ringkas"],
+            ["PDF dengan gambar PNG atau CMYK", "Terbatas: jenis gambar itu dilewati agar warna tidak berubah"],
           ],
         },
       },
@@ -52,12 +52,12 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         heading: "Membuat PDF di bawah ukuran tertentu (100 KB, 500 KB, 2 MB)",
         body: [
           "Alat ini melakukan satu lintasan kompresi yang efisien, bukan beberapa percobaan hingga angka pasti; jadi tidak menjamin nilai kilobyte yang presisi. Tapi beberapa hal membantu saat batasnya ketat:",
-          "Jika PDF Anda dokumen hasil scan, biasanya turun banyak dalam satu lintasan — coba dulu. Jika masih lewat, pisah menjadi lebih sedikit halaman dengan alat Pisah PDF dan kompres tiap bagian, atau ekspor hanya halaman yang dibutuhkan. Jika bebannya berasal dari satu atau dua foto besar, mengompres gambar-gambar itu secara terpisah dengan Kompres Gambar (yang punya target ukuran pasti) sebelum menyusun ulang PDF memberi kontrol terbaik.",
+          "Jika PDF Anda dokumen hasil scan, biasanya turun banyak dalam satu lintasan, coba dulu. Jika masih lewat, pisah menjadi lebih sedikit halaman dengan alat Pisah PDF dan kompres tiap bagian, atau ekspor hanya halaman yang dibutuhkan. Jika bebannya berasal dari satu atau dua foto besar, mengompres gambar-gambar itu secara terpisah dengan Kompres Gambar (yang punya target ukuran pasti) sebelum menyusun ulang PDF memberi kontrol terbaik.",
         ],
       },
       {
         heading: "Kompres atau pisah",
-        body: "Kompresi mengurangi bobot tiap halaman. Pemisahan mengurangi jumlah halaman. Jika PDF 30 MB Anda berisi 300 halaman teks, kompresi tidak banyak membantu — memisahnya menjadi beberapa bagian dengan Pisah PDF adalah jawabannya. Jika berisi 10 halaman hasil scan masing-masing 3 MB, kompresi adalah alat yang tepat. Keduanya saling melengkapi.",
+        body: "Kompresi mengurangi bobot tiap halaman. Pemisahan mengurangi jumlah halaman. Jika PDF 30 MB Anda berisi 300 halaman teks, kompresi tidak banyak membantu: memisahnya menjadi beberapa bagian dengan Pisah PDF adalah jawabannya. Jika berisi 10 halaman hasil scan masing-masing 3 MB, kompresi adalah alat yang tepat. Keduanya saling melengkapi.",
       },
       {
         heading: "Privasi dan batasan",
@@ -75,12 +75,12 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         question: "Bagaimana cara kompres PDF online gratis?",
         answer:
-          "Unggah dokumen ke alat Kompres PDF ConvertBrio dan klik Kompres. Ia mengodekan ulang gambar tertanam dan menghapus metadata yang tidak perlu untuk memperkecil file, yang terunduh otomatis — tanpa akun, tanpa watermark, tanpa email.",
+          "Unggah dokumen ke alat Kompres PDF ConvertBrio dan klik Kompres. Ia mengodekan ulang gambar tertanam dan menghapus metadata yang tidak perlu untuk memperkecil file, yang terunduh otomatis: tanpa akun, tanpa watermark, tanpa email.",
       },
       {
         question: "Bisakah mengompres PDF tanpa kehilangan kualitas?",
         answer:
-          "Teks dan konten vektor tidak pernah menurun — tetap tajam sempurna. Hanya foto dan scan yang dikodekan ulang, dengan penurunan kualitas kecil yang biasanya tak terlihat pada ukuran tampilan normal.",
+          "Teks dan konten vektor tidak pernah menurun: tetap tajam sempurna. Hanya foto dan scan yang dikodekan ulang, dengan penurunan kualitas kecil yang biasanya tak terlihat pada ukuran tampilan normal.",
       },
       {
         question: "Bagaimana membuat PDF lebih kecil untuk dikirim lewat email?",
@@ -90,12 +90,12 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         question: "Bisakah kompres PDF ke tepat 100 KB atau 300 KB?",
         answer:
-          "Alat ini tidak menargetkan ukuran pasti — ia melakukan satu lintasan efisien. Untuk batas ketat, kompres dulu PDF hasil scan di sini, kurangi jumlah halaman dengan Pisah PDF bila perlu, atau kompres gambar tertanam terbesar secara terpisah dengan Kompres Gambar, yang menerima target KB pasti.",
+          "Alat ini tidak menargetkan ukuran pasti: ia melakukan satu lintasan efisien. Untuk batas ketat, kompres dulu PDF hasil scan di sini, kurangi jumlah halaman dengan Pisah PDF bila perlu, atau kompres gambar tertanam terbesar secara terpisah dengan Kompres Gambar, yang menerima target KB pasti.",
       },
       {
         question: "Kenapa PDF saya nyaris tidak mengecil?",
         answer:
-          "Kemungkinan sudah ringkas — PDF yang hampir seluruhnya teks sangat sedikit yang bisa dihapus. File dengan scan resolusi tinggi atau foto tertanam mengalami penurunan terbesar.",
+          "Kemungkinan sudah ringkas: PDF yang hampir seluruhnya teks sangat sedikit yang bisa dihapus. File dengan scan resolusi tinggi atau foto tertanam mengalami penurunan terbesar.",
       },
       {
         question: "Apakah kompresi mengubah tata letak atau teks?",
@@ -121,7 +121,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         step: "Kompres",
         detail:
-          "ConvertBrio mengodekan ulang gambar dan, dalam mode target, menyesuaikan kualitas — lalu dimensi jika kualitas belum cukup — sampai file muat di bawah batas Anda.",
+          "ConvertBrio mengodekan ulang gambar dan, dalam mode target, menyesuaikan kualitas, lalu dimensi jika kualitas belum cukup, sampai file muat di bawah batas Anda.",
       },
       { step: "Unduh hasilnya", detail: "File terkompresi terunduh otomatis. Periksa apakah dapat diterima; jika terlalu buram, naikkan targetnya dan ulangi." },
     ],
@@ -129,18 +129,18 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         heading: "Cara kerja kompresi gambar",
         body: [
-          "JPG, WEBP, dan AVIF adalah format lossy: mereka memperkecil file dengan membuang data gambar yang paling kecil kemungkinannya dirindukan mata manusia — gradasi warna halus, tekstur halus di area ramai, detail frekuensi tinggi. Menurunkan kualitas menyuruh encoder membuang lebih banyak, menghasilkan file lebih kecil dengan pelunakan dan artefak yang makin terlihat.",
-          "PNG bersifat lossless dan mengompres dengan cara berbeda — ia hanya bisa mengemas piksel yang sama secara lebih efisien, jadi foto yang disimpan sebagai PNG nyaris tidak menyusut. Jika Anda mengunggah PNG ke kompresor dan ingin penurunan nyata, mengubahnya lebih dulu ke JPG atau WEBP (dengan Konverter Gambar) jauh lebih berpengaruh daripada kompresi PNG mana pun.",
+          "JPG, WEBP, dan AVIF adalah format lossy: mereka memperkecil file dengan membuang data gambar yang paling kecil kemungkinannya dirindukan mata manusia: gradasi warna halus, tekstur halus di area ramai, detail frekuensi tinggi. Menurunkan kualitas menyuruh encoder membuang lebih banyak, menghasilkan file lebih kecil dengan pelunakan dan artefak yang makin terlihat.",
+          "PNG bersifat lossless dan mengompres dengan cara berbeda: ia hanya bisa mengemas piksel yang sama secara lebih efisien, jadi foto yang disimpan sebagai PNG nyaris tidak menyusut. Jika Anda mengunggah PNG ke kompresor dan ingin penurunan nyata, mengubahnya lebih dulu ke JPG atau WEBP (dengan Konverter Gambar) jauh lebih berpengaruh daripada kompresi PNG mana pun.",
         ],
       },
       {
         heading: "Memperkecil gambar ke ukuran pasti (seperti 100 KB)",
         body: "Ketik batas Anda di kolom target ukuran dan ConvertBrio bekerja mundur: ia menurunkan kualitas JPG/WEBP bertahap, memeriksa ulang ukuran setelah tiap langkah, dan hanya mengurangi dimensi jika kualitas terendah yang wajar pun masih melebihi. Hasilnya adalah versi terbesar dan tertajam dari gambar Anda yang masih muat di bawah batas.",
         list: [
-          "Foto visa atau paspor — sering 100 KB, atau rentang 10 KB hingga 240 KB",
-          "Portal pemerintah dan pajak — umumnya 100 KB atau 200 KB per scan",
-          "Situs seleksi dan lamaran — sering 50 KB hingga 500 KB untuk foto atau sertifikat",
-          "Avatar forum dan marketplace — umumnya sekitar 1–2 MB",
+          "Foto visa atau paspor: sering 100 KB, atau rentang 10 KB hingga 240 KB",
+          "Portal pemerintah dan pajak: umumnya 100 KB atau 200 KB per scan",
+          "Situs seleksi dan lamaran: sering 50 KB hingga 500 KB untuk foto atau sertifikat",
+          "Avatar forum dan marketplace: umumnya sekitar 1–2 MB",
         ],
       },
       {
@@ -149,7 +149,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Kompres atau ubah ukuran",
-        body: "Kompresi menjaga dimensi piksel yang sama dan mengurangi biaya tiap piksel. Pengubahan ukuran mengurangi jumlah piksel itu sendiri. Untuk foto yang besar baik dimensi maupun bobotnya, mengubah ukuran ke dimensi yang benar-benar dibutuhkan — lalu mengompres — menghasilkan file jauh lebih kecil dengan kehilangan yang lebih sedikit terlihat.",
+        body: "Kompresi menjaga dimensi piksel yang sama dan mengurangi biaya tiap piksel. Pengubahan ukuran mengurangi jumlah piksel itu sendiri. Untuk foto yang besar baik dimensi maupun bobotnya, mengubah ukuran ke dimensi yang benar-benar dibutuhkan, lalu mengompres, menghasilkan file jauh lebih kecil dengan kehilangan yang lebih sedikit terlihat.",
       },
       {
         heading: "Privasi dan batasan",
@@ -166,7 +166,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         question: "Bagaimana memperkecil gambar di bawah 100 KB?",
         answer:
-          "Unggah gambar ke kompresor ConvertBrio dan tetapkan target ukuran ke 100 KB. Alat menurunkan kualitas — dan dimensi bila perlu — sampai file muat di batas itu, ideal untuk formulir dan unggahan dokumen dengan batas ketat.",
+          "Unggah gambar ke kompresor ConvertBrio dan tetapkan target ukuran ke 100 KB. Alat menurunkan kualitas, dan dimensi bila perlu, sampai file muat di batas itu, ideal untuk formulir dan unggahan dokumen dengan batas ketat.",
       },
       {
         question: "Apakah mengompres membuat gambar jadi lebih buruk?",
@@ -174,14 +174,14 @@ export const toolContentId: Record<string, ToolContentEntry> = {
           "Pada kompresi sedang, kebanyakan orang tidak melihat perbedaan. Kehilangan kualitas baru terlihat pada pengaturan agresif; sebaiknya periksa hasilnya daripada mengompres ke ukuran sekecil mungkin secara default.",
       },
       {
-        question: "PNG saya nyaris tidak mengecil — kenapa?",
+        question: "PNG saya nyaris tidak mengecil, kenapa?",
         answer:
           "PNG bersifat lossless, jadi sedikit ruang untuk mengompres foto yang tersimpan di dalamnya. Ubah dulu PNG ke JPG atau WEBP dengan Konverter Gambar; itu saja sering memangkas ukuran 70% atau lebih.",
       },
       {
         question: "Apakah kompresor menjaga dimensi gambar?",
         answer:
-          "Ya, kecuali Anda memakai mode target ukuran dan file masih belum muat setelah pengurangan kualitas maksimum — dalam hal itu ia juga memperkecil dimensi sebagai langkah terakhir.",
+          "Ya, kecuali Anda memakai mode target ukuran dan file masih belum muat setelah pengurangan kualitas maksimum: dalam hal itu ia juga memperkecil dimensi sebagai langkah terakhir.",
       },
       {
         question: "Bisakah mengompres beberapa gambar sekaligus?",
@@ -201,7 +201,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       { step: "Unggah dua PDF atau lebih", detail: "Seret semuanya sekaligus, atau pilih beberapa di penjelajah file. Tiap file bisa hingga 100 MB." },
       {
         step: "Susun urutannya",
-        detail: "Dokumen gabungan mengikuti urutan daftar file; susun sesuai bacaan PDF akhir — halaman sampul dulu, lampiran terakhir.",
+        detail: "Dokumen gabungan mengikuti urutan daftar file; susun sesuai bacaan PDF akhir: halaman sampul dulu, lampiran terakhir.",
       },
       { step: "Gabung dan unduh", detail: "Klik Konversi. ConvertBrio menambahkan halaman tiap file secara berurutan dan PDF gabungan terunduh otomatis." },
     ],
@@ -227,7 +227,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "File dienkripsi saat diunggah, digabungkan otomatis tanpa tinjauan manusia, dan semuanya — sumber dan hasil — dihapus dalam 24 jam. Beberapa file per penggabungan, masing-masing hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
+        body: "File dienkripsi saat diunggah, digabungkan otomatis tanpa tinjauan manusia, dan semuanya, sumber dan hasil, dihapus dalam 24 jam. Beberapa file per penggabungan, masing-masing hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
     relatedTools: [
@@ -240,7 +240,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         question: "Bagaimana menggabungkan file PDF online gratis?",
         answer:
-          "Buka alat Gabung PDF ConvertBrio, unggah dua PDF atau lebih, susun dalam urutan yang Anda mau, dan unduh file gabungan — tanpa akun, tanpa memasang software, tanpa watermark.",
+          "Buka alat Gabung PDF ConvertBrio, unggah dua PDF atau lebih, susun dalam urutan yang Anda mau, dan unduh file gabungan: tanpa akun, tanpa memasang software, tanpa watermark.",
       },
       {
         question: "Bisakah saya mengatur urutan halaman di PDF gabungan?",
@@ -318,7 +318,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
   "pdf-to-word": {
     title: "Konversi PDF ke Word: ubah PDF menjadi dokumen yang bisa diedit",
     intro: [
-      "Perlu mengedit teks PDF tapi tidak punya file sumbernya? Konverter PDF ke Word ConvertBrio menyusun ulang PDF Anda sebagai DOCX yang bisa diedit — paragraf, tebal dan miring, judul, tabel sederhana, dan gambar termasuk — yang terbuka di Microsoft Word, Google Docs, atau LibreOffice.",
+      "Perlu mengedit teks PDF tapi tidak punya file sumbernya? Konverter PDF ke Word ConvertBrio menyusun ulang PDF Anda sebagai DOCX yang bisa diedit, paragraf, tebal dan miring, judul, tabel sederhana, dan gambar termasuk, yang terbuka di Microsoft Word, Google Docs, atau LibreOffice.",
       "Gratis, tanpa daftar dan tanpa watermark. Dokumen sederhana terkonversi rapi; makin kompleks tampilan halaman aslinya, makin banyak yang Anda rapikan setelahnya.",
     ],
     howTo: [
@@ -328,7 +328,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
           "Buka dan coba pilih satu kalimat dengan kursor. Jika bisa, lanjut ke langkah 2. Jika teksnya gambar hasil scan, jalankan dulu lewat OCR PDF.",
       },
       { step: "Unggah PDF", detail: "Seret ke kotak atau jelajahi. Satu file per proses, hingga 100 MB." },
-      { step: "Konversi ke DOCX", detail: "ConvertBrio menyusun ulang konten sebagai dokumen Word — teks, judul, tabel dasar, dan gambar — dan terunduh otomatis." },
+      { step: "Konversi ke DOCX", detail: "ConvertBrio menyusun ulang konten sebagai dokumen Word, teks, judul, tabel dasar, dan gambar, dan terunduh otomatis." },
       { step: "Buka dan edit di Word", detail: "DOCX terbuka di Word, Google Docs, atau editor kompatibel mana pun. Tinjau tata letak dan sesuaikan yang belum ditempatkan sempurna oleh konversi." },
     ],
     sections: [
@@ -342,14 +342,14 @@ export const toolContentId: Record<string, ToolContentEntry> = {
             ["Judul dan daftar dasar", "Dipertahankan di sebagian besar dokumen"],
             ["Tabel sederhana", "Dipertahankan; garis dan spasi mungkin perlu disesuaikan"],
             ["Gambar sebaris dan selebar halaman", "Dipertahankan dan ditempatkan di alur"],
-            ["Tata letak banyak kolom", "Diratakan jadi satu kolom — siapkan untuk menata ulang"],
+            ["Tata letak banyak kolom", "Diratakan jadi satu kolom: siapkan untuk menata ulang"],
             ["Header, footer, nomor halaman", "Bisa masuk ke isi atau hilang"],
           ],
         },
       },
       {
         heading: "Mengonversi dokumen hasil scan ke Word",
-        body: "Jika PDF Anda hasil scan — foto tiap halaman, bukan teks asli — konverter ini tidak punya teks untuk diambil dan akan menghasilkan dokumen kosong atau hanya gambar. Jalankan scan lewat alat OCR PDF dulu: ia mengenali teks tercetak dan menambahkan lapisan teks. Lalu konversi PDF ber-OCR itu di sini untuk mendapat DOCX yang bisa diedit.",
+        body: "Jika PDF Anda hasil scan, foto tiap halaman, bukan teks asli, konverter ini tidak punya teks untuk diambil dan akan menghasilkan dokumen kosong atau hanya gambar. Jalankan scan lewat alat OCR PDF dulu: ia mengenali teks tercetak dan menambahkan lapisan teks. Lalu konversi PDF ber-OCR itu di sini untuk mendapat DOCX yang bisa diedit.",
       },
       {
         heading: "Privasi dan batasan",
@@ -367,7 +367,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         question: "Bagaimana mengonversi PDF menjadi dokumen Word yang bisa diedit?",
         answer:
-          "Unggah PDF Anda ke alat PDF ke Word ConvertBrio, dan ia menyusun ulang konten — teks, judul, tabel sederhana, dan gambar — menjadi DOCX yang Anda buka dan edit di Microsoft Word atau Google Docs.",
+          "Unggah PDF Anda ke alat PDF ke Word ConvertBrio, dan ia menyusun ulang konten, teks, judul, tabel sederhana, dan gambar, menjadi DOCX yang Anda buka dan edit di Microsoft Word atau Google Docs.",
       },
       {
         question: "Bagaimana mengonversi dokumen hasil scan ke Word?",
@@ -394,7 +394,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
   "word-to-pdf": {
     title: "Konversi Word ke PDF: kunci format untuk dibagikan",
     intro: [
-      "Dokumen Word bisa tampil berbeda tergantung font, versi Word, atau sistem tempat dibuka — masalah nyata saat CV, kontrak, atau laporan harus tampil sama bagi setiap penerimanya. Konverter Word ke PDF ConvertBrio mengubah DOCX Anda menjadi PDF siap cetak yang tampil sama di mana pun dan tidak bisa diedit tanpa sengaja.",
+      "Dokumen Word bisa tampil berbeda tergantung font, versi Word, atau sistem tempat dibuka: masalah nyata saat CV, kontrak, atau laporan harus tampil sama bagi setiap penerimanya. Konverter Word ke PDF ConvertBrio mengubah DOCX Anda menjadi PDF siap cetak yang tampil sama di mana pun dan tidak bisa diedit tanpa sengaja.",
       "Gratis, berjalan di browser, tidak butuh Microsoft Word terpasang, dan tanpa watermark.",
     ],
     howTo: [
@@ -405,11 +405,11 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Kenapa konversi ke PDF sebelum mengirim",
-        body: "PDF adalah standar untuk dokumen final karena tampil sama di setiap perangkat, tanpa bergantung penerima punya Word atau font yang tepat. Sebaliknya, file Word bisa mengalirkan ulang paragraf, menggeser pemenggalan halaman, atau mengganti font di mesin orang lain — persis yang tidak Anda inginkan saat perekrut membuka CV Anda.",
+        body: "PDF adalah standar untuk dokumen final karena tampil sama di setiap perangkat, tanpa bergantung penerima punya Word atau font yang tepat. Sebaliknya, file Word bisa mengalirkan ulang paragraf, menggeser pemenggalan halaman, atau mengganti font di mesin orang lain: persis yang tidak Anda inginkan saat perekrut membuka CV Anda.",
       },
       {
         heading: "Cara format ditangani",
-        body: "Teks, font, judul, daftar, tabel, gambar sebaris, dan ukuran halaman dipertahankan. Fitur yang sangat khas Word — header dan footer kustom, catatan kaki, pelacakan perubahan — bisa tampil sedikit berbeda karena dokumen ditata ulang, bukan oleh Word sendiri.",
+        body: "Teks, font, judul, daftar, tabel, gambar sebaris, dan ukuran halaman dipertahankan. Fitur yang sangat khas Word, header dan footer kustom, catatan kaki, pelacakan perubahan, bisa tampil sedikit berbeda karena dokumen ditata ulang, bukan oleh Word sendiri.",
       },
       {
         heading: "Privasi dan batasan",
@@ -426,7 +426,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         question: "Bagaimana mengonversi dokumen Word ke PDF gratis?",
         answer:
-          "Unggah .docx Anda ke alat Word ke PDF ConvertBrio dan ia membuat PDF berformat siap unduh — tanpa memasang Microsoft Word, tanpa akun, tanpa watermark.",
+          "Unggah .docx Anda ke alat Word ke PDF ConvertBrio dan ia membuat PDF berformat siap unduh: tanpa memasang Microsoft Word, tanpa akun, tanpa watermark.",
       },
       {
         question: "Apakah format saya tetap sama setelah konversi?",
@@ -449,7 +449,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
   "pdf-to-jpg": {
     title: "Konversi PDF ke JPG: ekspor tiap halaman sebagai gambar",
     intro: [
-      "Kadang Anda butuh halaman PDF sebagai gambar — untuk dimasukkan ke slide, diunggah ke media sosial, dilampirkan di tempat yang tidak menerima PDF, atau mengambil grafik dari laporan panjang. Konverter PDF ke JPG ConvertBrio merender tiap halaman file Anda sebagai JPG terpisah.",
+      "Kadang Anda butuh halaman PDF sebagai gambar: untuk dimasukkan ke slide, diunggah ke media sosial, dilampirkan di tempat yang tidak menerima PDF, atau mengambil grafik dari laporan panjang. Konverter PDF ke JPG ConvertBrio merender tiap halaman file Anda sebagai JPG terpisah.",
       "Gratis, tanpa daftar dan tanpa watermark. PDF satu halaman mengembalikan satu JPG; PDF banyak halaman mengembalikan sekumpulan gambar, satu per halaman.",
     ],
     howTo: [
@@ -470,7 +470,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "JPG atau PNG?",
-        body: "Pilih JPG untuk halaman fotografis dan ukuran file terkecil — standar yang tepat untuk dibagikan. Pilih PDF ke PNG saat halaman sebagian besar teks, tabel, atau garis dan Anda ingin sangat tajam, atau saat Anda butuh latar transparan.",
+        body: "Pilih JPG untuk halaman fotografis dan ukuran file terkecil: standar yang tepat untuk dibagikan. Pilih PDF ke PNG saat halaman sebagian besar teks, tabel, atau garis dan Anda ingin sangat tajam, atau saat Anda butuh latar transparan.",
       },
       {
         heading: "Privasi dan batasan",
@@ -506,7 +506,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     title: "Konversi JPG ke PDF: satukan gambar menjadi satu dokumen",
     intro: [
       "Entah untuk mengirim halaman hasil scan, membuat portofolio sederhana, atau mengubah tumpukan kuitansi menjadi satu file, alat JPG ke PDF ConvertBrio menggabungkan satu atau beberapa gambar menjadi satu PDF, dalam urutan yang Anda pilih, dengan satu gambar per halaman.",
-      "Ini cara standar mengubah foto kertas menjadi sesuatu yang bisa dikirim. Sebagian besar portal ingin PDF, bukan folder JPG — ini menyelesaikannya dalam satu langkah, gratis dan tanpa watermark.",
+      "Ini cara standar mengubah foto kertas menjadi sesuatu yang bisa dikirim. Sebagian besar portal ingin PDF, bukan folder JPG: ini menyelesaikannya dalam satu langkah, gratis dan tanpa watermark.",
     ],
     howTo: [
       { step: "Foto atau kumpulkan gambar", detail: "Untuk halaman dokumen, foto dari depan dengan cahaya baik agar teks terbaca. JPG dan PNG diterima." },
@@ -552,7 +552,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
           "Unggah foto ke JPG ke PDF dan ia menjadi PDF satu halaman yang bisa Anda kirim, cetak, atau bagikan. Unggah beberapa foto untuk mengubah dokumen banyak halaman menjadi satu PDF.",
       },
       {
-        question: "PDF saya terlalu besar untuk dikirim — apa yang harus dilakukan?",
+        question: "PDF saya terlalu besar untuk dikirim, apa yang harus dilakukan?",
         answer:
           "Foto ponsel beresolusi tinggi, jadi PDF bisa besar. Jalankan lewat Kompres PDF, yang mengodekan ulang gambar tertanam dan biasanya memangkas ukuran cukup banyak.",
       },
@@ -573,7 +573,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Memilih format keluaran yang tepat",
-        body: "Tidak ada format gambar terbaik — pilihan yang tepat tergantung ke mana file itu pergi.",
+        body: "Tidak ada format gambar terbaik: pilihan yang tepat tergantung ke mana file itu pergi.",
         table: {
           headers: ["Anda perlu…", "Konversi ke", "Alasan"],
           rows: [
@@ -627,18 +627,18 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     title: "OCR PDF: buat dokumen hasil scan bisa dicari dan diedit",
     intro: [
       "Halaman hasil scan atau foto dokumen hanyalah gambar bagi komputer: Anda tidak bisa mencari, menyalin teks, atau memindahkan dokumen hasil scan ke Word tanpa mengetik ulang tiap baris. Pengenalan karakter optik (OCR) menyelesaikannya: ia membaca teks di dalam gambar dan mengubahnya menjadi karakter sungguhan yang bisa dipilih.",
-      "Ini alat yang orang cari saat mencari cara mengubah dokumen hasil scan menjadi teks yang bisa diedit. Scan atau foto halaman, simpan sebagai PDF, jalankan di sini dan salin teksnya — atau kirim PDF yang bisa dicari ke alat PDF ke Word.",
+      "Ini alat yang orang cari saat mencari cara mengubah dokumen hasil scan menjadi teks yang bisa diedit. Scan atau foto halaman, simpan sebagai PDF, jalankan di sini dan salin teksnya, atau kirim PDF yang bisa dicari ke alat PDF ke Word.",
     ],
     howTo: [
       { step: "Scan atau foto dokumen sebagai PDF", detail: "Pakai pemindai atau aplikasi scan ponsel (yang menyimpan langsung sebagai PDF). Halaman lurus, rata, dan cukup cahaya memberi pengenalan terbaik." },
       { step: "Unggah PDF ke OCR PDF", detail: "Satu file per proses, hingga 100 MB. Dokumen banyak halaman berfungsi: tiap halaman diproses." },
       { step: "Jalankan pengenalan", detail: "ConvertBrio membaca tiap halaman dan menyusun lapisan teks di belakang gambar asli. Dokumen lebih besar butuh waktu lebih lama karena tiap halaman diproses satu per satu." },
-      { step: "Pindahkan teks ke Word", detail: "Buka PDF yang dikembalikan, pilih semua (Ctrl/Cmd+A) dan tempel di Word — atau kirim PDF yang bisa dicari ke PDF ke Word untuk DOCX yang mempertahankan format dasar." },
+      { step: "Pindahkan teks ke Word", detail: "Buka PDF yang dikembalikan, pilih semua (Ctrl/Cmd+A) dan tempel di Word, atau kirim PDF yang bisa dicari ke PDF ke Word untuk DOCX yang mempertahankan format dasar." },
     ],
     sections: [
       {
         heading: "Apa yang dikembalikan OCR PDF",
-        body: "PDF yang identik dengan yang Anda unggah — gambar halaman sama, tata letak sama — tapi dengan lapisan teks di belakang gambar. Artinya Anda bisa mencari dengan Ctrl+F, menyorot dan menyalin bagian teks, serta memilih seluruh dokumen untuk memindahkan teks ke tempat yang bisa diedit. Tampilan halaman tidak berubah.",
+        body: "PDF yang identik dengan yang Anda unggah, gambar halaman sama, tata letak sama, tapi dengan lapisan teks di belakang gambar. Artinya Anda bisa mencari dengan Ctrl+F, menyorot dan menyalin bagian teks, serta memilih seluruh dokumen untuk memindahkan teks ke tempat yang bisa diedit. Tampilan halaman tidak berubah.",
       },
       {
         heading: "Memindahkan dokumen hasil scan ke Word",
@@ -684,7 +684,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         answer: "Tidak dengan andal. OCR dibuat untuk teks cetak dan ketik. Catatan tulisan tangan paling banter dikenali sebagian.",
       },
       {
-        question: "PDF saya sudah punya teks yang bisa dipilih — apakah masih butuh OCR?",
+        question: "PDF saya sudah punya teks yang bisa dipilih, apakah masih butuh OCR?",
         answer:
           "Tidak. Jika Anda sudah bisa menyorot teks dengan kursor, PDF punya lapisan teks asli dan Anda bisa langsung ke PDF ke Word.",
       },
@@ -695,7 +695,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     title: "Kompres PowerPoint online: perkecil .pptx untuk email",
     intro: [
       "File PowerPoint membesar dengan cepat: beberapa foto ponsel, dua tangkapan layar, satu grafik yang diekspor, dan .pptx melewati 40 MB dan tidak bisa lewat email. Alat Kompres PowerPoint ConvertBrio membuka presentasi, mengodekan ulang gambar di dalamnya dengan kualitas dan resolusi efisien, dan mengembalikan .pptx lebih kecil yang tetap sepenuhnya bisa diedit.",
-      "Gratis, berjalan di browser tanpa daftar dan tanpa watermark. Teks slide, tata letak, animasi, grafik, dan catatan tetap utuh — hanya foto dan tangkapan layar tertanam yang dikodekan ulang.",
+      "Gratis, berjalan di browser tanpa daftar dan tanpa watermark. Teks slide, tata letak, animasi, grafik, dan catatan tetap utuh: hanya foto dan tangkapan layar tertanam yang dikodekan ulang.",
     ],
     howTo: [
       { step: "Simpan presentasi sebagai .pptx", detail: "Di PowerPoint, File → Save As → PowerPoint Presentation (.pptx). Format .ppt lama tidak diterima." },
@@ -715,7 +715,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
           "Dikodekan ulang: gambar JPEG dan PNG tertanam, diperkecil jika lebih dari ~1800px pada sisi panjang",
           "Utuh: semua teks, font, tata letak slide, animasi, transisi, dan catatan",
           "Utuh: grafik, tabel, SmartArt, dan bentuk vektor",
-          "File tetap .pptx normal dan bisa diedit — tidak ada yang diratakan",
+          "File tetap .pptx normal dan bisa diedit: tidak ada yang diratakan",
         ],
       },
       {
@@ -741,7 +741,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         question: "Bagaimana kompres PowerPoint untuk email?",
         answer:
-          "Unggah .pptx ke alat Kompres PowerPoint ConvertBrio. Ia mengodekan ulang gambar tertanam dan mengembalikan presentasi lebih kecil yang tetap bisa diedit — gratis, tanpa daftar, tanpa watermark.",
+          "Unggah .pptx ke alat Kompres PowerPoint ConvertBrio. Ia mengodekan ulang gambar tertanam dan mengembalikan presentasi lebih kecil yang tetap bisa diedit: gratis, tanpa daftar, tanpa watermark.",
       },
       {
         question: "Apakah file terkompresi tetap bisa diedit?",
@@ -754,9 +754,9 @@ export const toolContentId: Record<string, ToolContentEntry> = {
           "Teks dan bentuk vektor tetap tajam sempurna. Foto dikodekan ulang dengan penurunan kualitas kecil, hampir selalu tak terlihat; perbedaannya hanya tampak saat memperbesar gambar secara kuat di layar besar.",
       },
       {
-        question: "Presentasi saya nyaris tidak mengecil — kenapa?",
+        question: "Presentasi saya nyaris tidak mengecil, kenapa?",
         answer:
-          "Kemungkinan sudah ramping — presentasi yang hampir seluruhnya teks punya sedikit data gambar untuk dihapus.",
+          "Kemungkinan sudah ramping: presentasi yang hampir seluruhnya teks punya sedikit data gambar untuk dihapus.",
       },
       {
         question: "Apakah berfungsi dengan file .ppt?",
@@ -770,7 +770,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     title: "Kompres dokumen Word online: perkecil .docx untuk email",
     intro: [
       "Dokumen Word yang tidak bisa lewat email hampir selalu membawa gambar resolusi penuh. Satu foto ponsel yang ditempel di laporan bisa 5 MB sendiri; beberapa dan .docx yang hampir seluruhnya teks melewati 30 MB. Alat Kompres Dokumen Word ConvertBrio membuka dokumen, mengodekan ulang gambar di dalamnya dengan kualitas dan resolusi efisien, dan mengembalikan .docx lebih kecil yang tetap sepenuhnya bisa diedit.",
-      "Gratis, berjalan di browser tanpa daftar dan tanpa watermark. Teks, judul, tabel, gaya, dan tata letak tetap utuh — hanya foto dan tangkapan layar tertanam yang dikodekan ulang.",
+      "Gratis, berjalan di browser tanpa daftar dan tanpa watermark. Teks, judul, tabel, gaya, dan tata letak tetap utuh: hanya foto dan tangkapan layar tertanam yang dikodekan ulang.",
     ],
     howTo: [
       { step: "Simpan dokumen sebagai .docx", detail: "Di Word, File → Save As → Word Document (.docx). Format .doc lama tidak diterima." },
@@ -815,7 +815,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       {
         question: "Bagaimana membuat dokumen Word lebih kecil untuk email?",
         answer:
-          "Unggah .docx ke alat Kompres Dokumen Word ConvertBrio. Ia mengodekan ulang gambar tertanam dan mengembalikan dokumen lebih kecil yang tetap bisa diedit — gratis, tanpa daftar, tanpa watermark. Untuk file terkecil, konversi ke PDF dan kompres PDF itu.",
+          "Unggah .docx ke alat Kompres Dokumen Word ConvertBrio. Ia mengodekan ulang gambar tertanam dan mengembalikan dokumen lebih kecil yang tetap bisa diedit: gratis, tanpa daftar, tanpa watermark. Untuk file terkecil, konversi ke PDF dan kompres PDF itu.",
       },
       {
         question: "Apakah file terkompresi tetap bisa diedit?",
@@ -827,7 +827,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         answer: "Tidak. Hanya gambar yang terpengaruh. Teks, judul, tabel, gaya, dan tata letak halaman tidak berubah.",
       },
       {
-        question: "Dokumen saya hampir seluruhnya teks tapi masih besar — kenapa?",
+        question: "Dokumen saya hampir seluruhnya teks tapi masih besar, kenapa?",
         answer:
           "Periksa pelacakan perubahan dan riwayat revisi, font tertanam, atau konten yang ditempel sebagai objek Excel/web lengkap. Masing-masing bisa menambah beberapa megabyte terlepas dari gambar.",
       },

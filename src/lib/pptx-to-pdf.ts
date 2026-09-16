@@ -179,7 +179,7 @@ export async function powerpointToPdf(pptxBuffer: Buffer): Promise<Buffer> {
   try {
     zip = await JSZip.loadAsync(pptxBuffer);
   } catch {
-    throw new Error("Legacy .ppt files aren't supported yet — please save as .pptx and try again.");
+    throw new Error("Legacy .ppt files aren't supported yet: please save as .pptx and try again.");
   }
 
   const presentationEntry = zip.file("ppt/presentation.xml");

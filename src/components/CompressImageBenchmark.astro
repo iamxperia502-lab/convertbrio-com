@@ -13,10 +13,10 @@ const sizeResults = [
 
 const formatMatrix = [
   { input: "JPEG", output: "JPEG", note: "" },
-  { input: "PNG", output: "PNG", note: "Uses palette quantization to hit small targets — see limitations below" },
+  { input: "PNG", output: "PNG", note: "Uses palette quantization to hit small targets: see limitations below" },
   { input: "WEBP", output: "WEBP", note: "" },
   { input: "AVIF", output: "AVIF", note: "" },
-  { input: "GIF", output: "GIF", note: "Only the first frame is kept — animation isn't preserved" },
+  { input: "GIF", output: "GIF", note: "Only the first frame is kept: animation isn't preserved" },
   { input: "HEIC / HEIF", output: "JPEG", note: "HEIC/HEIF aren't supported output formats, so iPhone photos convert to JPEG" },
 ] as const;
 ---
@@ -29,18 +29,18 @@ const formatMatrix = [
       </h2>
       <p class="mt-4 leading-relaxed text-body">
         Every number on this page came from actually uploading a file to ConvertBrio's live compressor
-        and measuring what came back — the same endpoint your browser calls when you use the tool above.
+        and measuring what came back, the same endpoint your browser calls when you use the tool above.
         Nothing here is simulated.
       </p>
 
       <div class="mt-6 rounded-xl border border-hairline bg-canvas-soft p-5 text-sm leading-relaxed text-body">
         <p class="font-medium text-ink">Methodology</p>
         <p class="mt-2">
-          The test file is a 2000 × 1500, 814.8 KB synthetic JPEG we generated ourselves — a soft
+          The test file is a 2000 × 1500, 814.8 KB synthetic JPEG we generated ourselves: a soft
           gradient portrait composition with photographic-grain noise layered on top, built to compress
           like a real phone photo without using anyone's actual photo (for privacy) or a downloaded stock
           image (for licensing). We ran it through <code class="rounded bg-canvas-soft-2 px-1 py-0.5 font-mono text-xs">/api/convert/image</code>
-          with each target size below and recorded the exact response. Tested in Chrome on macOS —
+          with each target size below and recorded the exact response. Tested in Chrome on macOS:
           conversion runs entirely on ConvertBrio's servers, so the result is identical regardless of
           which browser or device sends the request.
         </p>
@@ -110,13 +110,13 @@ const formatMatrix = [
       <p class="mt-3 text-sm text-mute">
         The 200–50 KB targets were all hit on quality reduction alone, at full original resolution. The
         20 KB target needed one downscale step (2000px → 1700px wide, −15%) because quality reduction
-        alone couldn't fit that far below the original — visible detail loss starts to show at this
+        alone couldn't fit that far below the original: visible detail loss starts to show at this
         level; see limitations below.
       </p>
 
       <h3 class="mt-10 text-lg font-semibold text-ink">Format matters: JPEG vs. PNG at the same target</h3>
       <p class="mt-3 leading-relaxed text-body">
-        We ran the identical test image through the same 100 KB target twice — once saved as JPEG, once
+        We ran the identical test image through the same 100 KB target twice: once saved as JPEG, once
         as a lossless PNG re-encode of the same pixels (6.35 MB original). JPEG hit the target at full
         2000×1500 resolution. PNG needed to drop to 887×665 (44% of the original width) and fall back to
         256-color palette quantization, which introduces visible dithering speckle. If your source format
@@ -139,7 +139,7 @@ const formatMatrix = [
                 <tr class={i < formatMatrix.length - 1 ? "border-b border-hairline" : ""}>
                   <td class="px-4 py-3 text-ink">{row.input}</td>
                   <td class="px-4 py-3 text-body">{row.output}</td>
-                  <td class="px-4 py-3 text-mute">{row.note || "—"}</td>
+                  <td class="px-4 py-3 text-mute">{row.note || "N/A"}</td>
                 </tr>
               ))
             }
@@ -151,7 +151,7 @@ const formatMatrix = [
       <p class="mt-3 leading-relaxed text-body">
         Processing runs server-side using <a href="https://sharp.pixelplumbing.com/" class="font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700" rel="nofollow">sharp</a>
         (built on libvips). When you set a target size, ConvertBrio binary-searches JPEG/WEBP/AVIF quality
-        between 10% and 95% — re-encoding and measuring the actual output at each step — until it finds
+        between 10% and 95%, re-encoding and measuring the actual output at each step, until it finds
         the highest quality that still fits your target, typically in 6–7 attempts. PNG targets add
         palette quantization to that same search, since plain PNG quality settings barely change file
         size on their own. If the target still can't be hit at the 10% quality floor, the tool falls back
@@ -163,7 +163,7 @@ const formatMatrix = [
       <ul class="mt-3 flex flex-col gap-3 text-body">
         <li class="flex gap-2.5">
           <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>
-          <span>Very aggressive targets relative to the source (well under the 20 KB case tested above) can require dropping dimensions to a fraction of the original before the file fits — there's a real quality floor, not just a size floor.</span>
+          <span>Very aggressive targets relative to the source (well under the 20 KB case tested above) can require dropping dimensions to a fraction of the original before the file fits: there's a real quality floor, not just a size floor.</span>
         </li>
         <li class="flex gap-2.5">
           <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>
@@ -171,11 +171,11 @@ const formatMatrix = [
         </li>
         <li class="flex gap-2.5">
           <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>
-          <span>Animated GIFs are compressed as a single still frame — we tested this directly with a 3-frame GIF and confirmed the output keeps only the first frame.</span>
+          <span>Animated GIFs are compressed as a single still frame: we tested this directly with a 3-frame GIF and confirmed the output keeps only the first frame.</span>
         </li>
         <li class="flex gap-2.5">
           <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>
-          <span>HEIC/HEIF photos (the default format on recent iPhones) always come back as JPEG, since HEIC isn't a supported output format — expect a different file extension than what you uploaded.</span>
+          <span>HEIC/HEIF photos (the default format on recent iPhones) always come back as JPEG, since HEIC isn't a supported output format: expect a different file extension than what you uploaded.</span>
         </li>
         <li class="flex gap-2.5">
           <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>

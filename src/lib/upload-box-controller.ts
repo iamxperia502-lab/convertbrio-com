@@ -98,7 +98,7 @@ export function initUploadBox() {
     const kind = detectKind(file);
 
     if (kind === "unsupported") {
-      status.textContent = `We don't support quick-converting "${file.name}" here yet — browse All Tools for the right converter.`;
+      status.textContent = `We don't support quick-converting "${file.name}" here yet: browse All Tools for the right converter.`;
       options.classList.add("hidden");
       options.classList.remove("flex");
       showIdle();
@@ -182,7 +182,7 @@ export function initUploadBox() {
         },
       });
 
-      status.textContent = `Done — ${filename} downloaded. If it didn't start, use the button below.`;
+      status.textContent = `Done: ${filename} downloaded. If it didn't start, use the button below.`;
       if (downloadHandle && downloadLink) {
         downloadHandle.set(blob, filename);
         if (downloadLinkLabel) downloadLinkLabel.textContent = `Download ${filename}`;

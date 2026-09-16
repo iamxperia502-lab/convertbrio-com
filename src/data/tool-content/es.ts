@@ -7,8 +7,8 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
   "compress-pdf": {
     title: "Comprimir PDF online: reduce el tamaño para correo y portales",
     intro: [
-      "Los PDF grandes —sobre todo los llenos de páginas escaneadas o fotos de alta resolución— no pasan el límite de adjuntos del correo, tardan en subir y los rechazan los portales que limitan el tamaño del archivo. El compresor de PDF de ConvertBrio recodifica las imágenes incrustadas en el documento con una calidad y resolución más eficientes y elimina los metadatos innecesarios, para que las mismas páginas vuelvan en un archivo más pequeño.",
-      "Es gratis, funciona en el navegador sin registro y no añade marca de agua. La compresión es sin pérdidas para el texto y los gráficos vectoriales —siguen nítidos— y solo afecta a las fotos y los escaneos, donde una reducción de calidad pequeña y casi siempre invisible se traduce en una gran caída de tamaño.",
+      "Los PDF grandes, sobre todo los llenos de páginas escaneadas o fotos de alta resolución, no pasan el límite de adjuntos del correo, tardan en subir y los rechazan los portales que limitan el tamaño del archivo. El compresor de PDF de ConvertBrio recodifica las imágenes incrustadas en el documento con una calidad y resolución más eficientes y elimina los metadatos innecesarios, para que las mismas páginas vuelvan en un archivo más pequeño.",
+      "Es gratis, funciona en el navegador sin registro y no añade marca de agua. La compresión es sin pérdidas para el texto y los gráficos vectoriales, siguen nítidos, y solo afecta a las fotos y los escaneos, donde una reducción de calidad pequeña y casi siempre invisible se traduce en una gran caída de tamaño.",
     ],
     howTo: [
       { step: "Sube el PDF", detail: "Arrastra el archivo a la caja o haz clic para examinar. Un PDF por vez, hasta 100 MB." },
@@ -37,11 +37,11 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
         table: {
           headers: ["Tipo de PDF", "Resultado típico"],
           rows: [
-            ["Documento escaneado (fotos de las páginas)", "Gran reducción — a menudo un 40–70% más pequeño"],
+            ["Documento escaneado (fotos de las páginas)", "Gran reducción: a menudo un 40–70% más pequeño"],
             ["Informe con fotos o capturas de pantalla", "Reducción moderada, varía con la cantidad de imágenes"],
             ["Presentación exportada a PDF", "Reducción moderada si las diapositivas llevan fotos"],
-            ["PDF solo de texto (contrato, ebook, factura)", "Poco cambio — ya es compacto"],
-            ["PDF con imágenes en PNG o CMYK", "Limitada — esos tipos se omiten para no alterar los colores"],
+            ["PDF solo de texto (contrato, ebook, factura)", "Poco cambio: ya es compacto"],
+            ["PDF con imágenes en PNG o CMYK", "Limitada: esos tipos se omiten para no alterar los colores"],
           ],
         },
       },
@@ -122,7 +122,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
       {
         step: "Comprime",
         detail:
-          "ConvertBrio recodifica la imagen y, en modo objetivo, ajusta la calidad —y luego las dimensiones si la calidad no basta— hasta que el archivo quepa por debajo de tu límite.",
+          "ConvertBrio recodifica la imagen y, en modo objetivo, ajusta la calidad, y luego las dimensiones si la calidad no basta, hasta que el archivo quepa por debajo de tu límite.",
       },
       { step: "Descarga el resultado", detail: "El archivo comprimido se descarga automáticamente. Comprueba que sea aceptable; si quedó muy borroso, sube el objetivo y repite." },
     ],
@@ -130,7 +130,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
       {
         heading: "Cómo funciona la compresión de imágenes",
         body: [
-          "JPG, WEBP y AVIF son formatos con pérdidas: reducen el archivo descartando datos de imagen que el ojo humano es menos probable que eche de menos —degradados de color sutiles, textura fina en zonas cargadas, detalle de alta frecuencia—. Bajar la calidad hace que el codificador descarte más, generando un archivo más pequeño con un suavizado y artefactos cada vez más visibles.",
+          "JPG, WEBP y AVIF son formatos con pérdidas: reducen el archivo descartando datos de imagen que el ojo humano es menos probable que eche de menos: degradados de color sutiles, textura fina en zonas cargadas, detalle de alta frecuencia. Bajar la calidad hace que el codificador descarte más, generando un archivo más pequeño con un suavizado y artefactos cada vez más visibles.",
           "PNG es sin pérdidas y comprime de otra forma: solo puede empaquetar los píxeles exactos de manera más eficiente, así que una foto guardada en PNG apenas se reduce. Si subes un PNG al compresor y quieres una reducción de verdad, convertirlo a JPG o WEBP antes (con el Conversor de Imágenes) hace mucho más que cualquier compresión de PNG.",
         ],
       },
@@ -138,10 +138,10 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
         heading: "Reducir una imagen a un tamaño exacto (como 100 KB)",
         body: "Escribe tu límite en el campo de tamaño objetivo y ConvertBrio trabaja hacia atrás: baja la calidad del JPG/WEBP por pasos, comprobando el tamaño tras cada uno, y solo reduce las dimensiones si la menor calidad razonable aún se pasa. El resultado es la versión más grande y nítida de tu imagen que todavía cabe por debajo del tope.",
         list: [
-          "Foto de visado o pasaporte — a menudo 100 KB, o un rango de 10 KB a 240 KB",
-          "Portales del gobierno y de Hacienda — habitualmente 100 KB o 200 KB por escaneo",
-          "Webs de oposiciones y solicitudes — con frecuencia de 50 KB a 500 KB para foto o certificado",
-          "Avatares de foros y marketplaces — en general cerca de 1–2 MB",
+          "Foto de visado o pasaporte: a menudo 100 KB, o un rango de 10 KB a 240 KB",
+          "Portales del gobierno y de Hacienda: habitualmente 100 KB o 200 KB por escaneo",
+          "Webs de oposiciones y solicitudes: con frecuencia de 50 KB a 500 KB para foto o certificado",
+          "Avatares de foros y marketplaces: en general cerca de 1–2 MB",
         ],
       },
       {
@@ -150,7 +150,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Comprimir o redimensionar",
-        body: "La compresión mantiene las mismas dimensiones en píxeles y reduce cuánto cuesta cada píxel. El redimensionado reduce la propia cantidad de píxeles. Para una foto que es grande en dimensiones y en peso, redimensionar al tamaño que realmente necesitas —y luego comprimir— genera un archivo mucho más pequeño con menos pérdida visible.",
+        body: "La compresión mantiene las mismas dimensiones en píxeles y reduce cuánto cuesta cada píxel. El redimensionado reduce la propia cantidad de píxeles. Para una foto que es grande en dimensiones y en peso, redimensionar al tamaño que realmente necesitas, y luego comprimir, genera un archivo mucho más pequeño con menos pérdida visible.",
       },
       {
         heading: "Privacidad y límites",
@@ -167,7 +167,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
       {
         question: "¿Cómo reducir una imagen a menos de 100 KB?",
         answer:
-          "Sube la imagen al compresor de ConvertBrio y fija el tamaño objetivo en 100 KB. La herramienta baja la calidad —y las dimensiones si hace falta— hasta que el archivo quepa en ese límite, ideal para formularios y subidas de documentos con tope estricto.",
+          "Sube la imagen al compresor de ConvertBrio y fija el tamaño objetivo en 100 KB. La herramienta baja la calidad, y las dimensiones si hace falta, hasta que el archivo quepa en ese límite, ideal para formularios y subidas de documentos con tope estricto.",
       },
       {
         question: "¿Comprimir va a dejar la imagen peor?",
@@ -228,7 +228,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacidad y límites",
-        body: "Los archivos se cifran al subir, se combinan automáticamente sin revisión humana, y todos —orígenes y resultado— se eliminan en un plazo de 24 horas. Varios archivos por unión, hasta 100 MB cada uno, gratis, sin cuenta, sin marca de agua.",
+        body: "Los archivos se cifran al subir, se combinan automáticamente sin revisión humana, y todos, orígenes y resultado, se eliminan en un plazo de 24 horas. Varios archivos por unión, hasta 100 MB cada uno, gratis, sin cuenta, sin marca de agua.",
       },
     ],
     relatedTools: [
@@ -319,7 +319,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
   "pdf-to-word": {
     title: "Convertir PDF a Word: transforma un PDF en un documento editable",
     intro: [
-      "¿Necesitas editar el texto de un PDF pero no tienes el archivo de origen? El conversor de PDF a Word de ConvertBrio reconstruye tu PDF como un DOCX editable —párrafos, negrita y cursiva, títulos, tablas simples e imágenes incluidos— que se abre en Microsoft Word, Google Docs o LibreOffice.",
+      "¿Necesitas editar el texto de un PDF pero no tienes el archivo de origen? El conversor de PDF a Word de ConvertBrio reconstruye tu PDF como un DOCX editable, párrafos, negrita y cursiva, títulos, tablas simples e imágenes incluidos, que se abre en Microsoft Word, Google Docs o LibreOffice.",
       "Es gratis, no pide registro y no añade marca de agua. Los documentos sencillos se convierten bien; cuanto más compleja visualmente sea la página original, más ajustes harás después.",
     ],
     howTo: [
@@ -329,7 +329,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
           "Ábrelo e intenta seleccionar una frase con el cursor. Si puedes, pasa al paso 2. Si el texto es una imagen escaneada, pásalo primero por OCR de PDF.",
       },
       { step: "Sube el PDF", detail: "Arrástralo a la caja o examina. Un archivo por vez, hasta 100 MB." },
-      { step: "Convierte a DOCX", detail: "ConvertBrio reconstruye el contenido como un documento Word —texto, títulos, tablas básicas e imágenes— y se descarga automáticamente." },
+      { step: "Convierte a DOCX", detail: "ConvertBrio reconstruye el contenido como un documento Word, texto, títulos, tablas básicas e imágenes, y se descarga automáticamente." },
       { step: "Abre y edita en Word", detail: "El DOCX se abre en Word, Google Docs o cualquier editor compatible. Revisa el diseño y ajusta lo que la conversión no haya colocado a la perfección." },
     ],
     sections: [
@@ -343,14 +343,14 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
             ["Títulos y listas básicas", "Se conservan en la mayoría de documentos"],
             ["Tablas simples", "Se conservan; bordes y espaciado pueden necesitar ajuste"],
             ["Imágenes en línea y a ancho completo", "Se conservan y se colocan en el flujo"],
-            ["Diseños de varias columnas", "Se aplanan a una columna — cuenta con rehacer el diseño"],
+            ["Diseños de varias columnas", "Se aplanan a una columna: cuenta con rehacer el diseño"],
             ["Encabezados, pies, números de página", "Pueden pasar al cuerpo o desaparecer"],
           ],
         },
       },
       {
         heading: "Convertir un documento escaneado a Word",
-        body: "Si tu PDF es un escaneo —una foto de cada página en vez de texto real— este conversor no tiene texto que extraer y generará un documento vacío o solo con imágenes. Pasa el escaneo primero por la herramienta OCR de PDF: reconoce el texto impreso y añade una capa de texto. Luego convierte ese PDF con OCR aquí para obtener un DOCX editable.",
+        body: "Si tu PDF es un escaneo, una foto de cada página en vez de texto real, este conversor no tiene texto que extraer y generará un documento vacío o solo con imágenes. Pasa el escaneo primero por la herramienta OCR de PDF: reconoce el texto impreso y añade una capa de texto. Luego convierte ese PDF con OCR aquí para obtener un DOCX editable.",
       },
       {
         heading: "Privacidad y límites",
@@ -368,7 +368,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
       {
         question: "¿Cómo convertir un PDF en un documento Word editable?",
         answer:
-          "Sube tu PDF a la herramienta PDF a Word de ConvertBrio, y reconstruye el contenido —texto, títulos, tablas simples e imágenes— en un DOCX que abres y editas en Microsoft Word o Google Docs.",
+          "Sube tu PDF a la herramienta PDF a Word de ConvertBrio, y reconstruye el contenido, texto, títulos, tablas simples e imágenes, en un DOCX que abres y editas en Microsoft Word o Google Docs.",
       },
       {
         question: "¿Cómo convertir un documento escaneado a Word?",
@@ -410,7 +410,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Cómo se trata el formato",
-        body: "Texto, fuentes, títulos, listas, tablas, imágenes en línea y tamaño de página se conservan. Funciones muy específicas de Word —encabezados y pies personalizados, notas al pie, control de cambios— pueden verse algo distintas porque el documento se maqueta de nuevo, no con el propio Word.",
+        body: "Texto, fuentes, títulos, listas, tablas, imágenes en línea y tamaño de página se conservan. Funciones muy específicas de Word, encabezados y pies personalizados, notas al pie, control de cambios, pueden verse algo distintas porque el documento se maqueta de nuevo, no con el propio Word.",
       },
       {
         heading: "Privacidad y límites",
@@ -639,7 +639,7 @@ export const toolContentEs: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Qué te devuelve el OCR de PDF",
-        body: "Un PDF idéntico al que subiste —mismas imágenes de página, mismo diseño— pero con una capa de texto detrás de la imagen. Eso significa que puedes buscar con Ctrl+F, marcar y copiar pasajes, y seleccionar el documento entero para llevar el texto a un sitio editable. El aspecto de la página no cambia.",
+        body: "Un PDF idéntico al que subiste, mismas imágenes de página, mismo diseño, pero con una capa de texto detrás de la imagen. Eso significa que puedes buscar con Ctrl+F, marcar y copiar pasajes, y seleccionar el documento entero para llevar el texto a un sitio editable. El aspecto de la página no cambia.",
       },
       {
         heading: "Llevar un documento escaneado a Word",

@@ -121,8 +121,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
         if (detectOfficeKind(file) !== kind) {
           throw new Error(
             kind === "docx"
-              ? `"${file.name}" isn't a .docx file. Legacy .doc isn't supported — open it in Word and use File → Save As to convert it.`
-              : `"${file.name}" isn't a .pptx file. Legacy .ppt isn't supported — open it in PowerPoint and use File → Save As to convert it.`,
+              ? `"${file.name}" isn't a .docx file. Legacy .doc isn't supported: open it in Word and use File → Save As to convert it.`
+              : `"${file.name}" isn't a .pptx file. Legacy .ppt isn't supported: open it in PowerPoint and use File → Save As to convert it.`,
           );
         }
         outputBuffer = await compressOfficeMedia(Buffer.from(await file.arrayBuffer()), kind);
@@ -141,7 +141,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
             case "xlsx": pdfBuffers.push(await excelToPdf(buf)); break;
             case "pptx": pdfBuffers.push(await powerpointToPdf(buf)); break;
             case "unsupported":
-              throw new Error(`"${f.name}" is a legacy .doc/.ppt/.xls file — please save it as .docx/.pptx/.xlsx and try again.`);
+              throw new Error(`"${f.name}" is a legacy .doc/.ppt/.xls file: please save it as .docx/.pptx/.xlsx and try again.`);
           }
         }
         outputBuffer = await mergePdfBuffers(pdfBuffers);

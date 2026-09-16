@@ -6,8 +6,8 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
   "compress-pdf": {
     title: "Compresser un PDF en ligne : réduire la taille pour l'e-mail et les portails",
     intro: [
-      "Les PDF volumineux — surtout ceux remplis de pages scannées ou de photos haute résolution — dépassent la limite des pièces jointes, sont lents à envoyer et sont refusés par les portails qui limitent la taille des fichiers. Le compresseur de PDF de ConvertBrio réencode les images intégrées au document avec une qualité et une résolution plus efficaces et supprime les métadonnées inutiles, pour que les mêmes pages reviennent dans un fichier plus petit.",
-      "C'est gratuit, ça fonctionne dans le navigateur sans inscription et sans filigrane. La compression est sans perte pour le texte et les graphiques vectoriels — ils restent nets — et n'affecte que les photos et les scans, où une baisse de qualité minime et presque toujours invisible se traduit par une forte réduction de taille.",
+      "Les PDF volumineux, surtout ceux remplis de pages scannées ou de photos haute résolution, dépassent la limite des pièces jointes, sont lents à envoyer et sont refusés par les portails qui limitent la taille des fichiers. Le compresseur de PDF de ConvertBrio réencode les images intégrées au document avec une qualité et une résolution plus efficaces et supprime les métadonnées inutiles, pour que les mêmes pages reviennent dans un fichier plus petit.",
+      "C'est gratuit, ça fonctionne dans le navigateur sans inscription et sans filigrane. La compression est sans perte pour le texte et les graphiques vectoriels, ils restent nets, et n'affecte que les photos et les scans, où une baisse de qualité minime et presque toujours invisible se traduit par une forte réduction de taille.",
     ],
     howTo: [
       { step: "Envoyez le PDF", detail: "Glissez le fichier dans la zone ou cliquez pour parcourir. Un PDF à la fois, jusqu'à 100 Mo." },
@@ -36,11 +36,11 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         table: {
           headers: ["Type de PDF", "Résultat typique"],
           rows: [
-            ["Document scanné (photos des pages)", "Forte réduction — souvent 40 à 70 % plus petit"],
+            ["Document scanné (photos des pages)", "Forte réduction : souvent 40 à 70 % plus petit"],
             ["Rapport avec photos ou captures d'écran", "Réduction modérée, variable selon le nombre d'images"],
             ["Présentation exportée en PDF", "Réduction modérée si les diapositives contiennent des photos"],
-            ["PDF uniquement texte (contrat, ebook, facture)", "Peu de changement — déjà compact"],
-            ["PDF avec des images en PNG ou CMJN", "Limitée — ces types sont ignorés pour ne pas altérer les couleurs"],
+            ["PDF uniquement texte (contrat, ebook, facture)", "Peu de changement : déjà compact"],
+            ["PDF avec des images en PNG ou CMJN", "Limitée : ces types sont ignorés pour ne pas altérer les couleurs"],
           ],
         },
       },
@@ -75,7 +75,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       {
         question: "Comment compresser un PDF en ligne gratuitement ?",
         answer:
-          "Envoyez le document à l'outil Compresser un PDF de ConvertBrio et cliquez sur Compresser. Il réencode les images intégrées et supprime les métadonnées inutiles pour réduire le fichier, qui se télécharge automatiquement — sans compte, sans filigrane, sans e-mail.",
+          "Envoyez le document à l'outil Compresser un PDF de ConvertBrio et cliquez sur Compresser. Il réencode les images intégrées et supprime les métadonnées inutiles pour réduire le fichier, qui se télécharge automatiquement : sans compte, sans filigrane, sans e-mail.",
       },
       {
         question: "Peut-on compresser un PDF sans perte de qualité ?",
@@ -121,7 +121,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       {
         step: "Compressez",
         detail:
-          "ConvertBrio réencode l'image et, en mode cible, ajuste la qualité — puis les dimensions si la qualité ne suffit pas — jusqu'à ce que le fichier passe sous votre limite.",
+          "ConvertBrio réencode l'image et, en mode cible, ajuste la qualité, puis les dimensions si la qualité ne suffit pas, jusqu'à ce que le fichier passe sous votre limite.",
       },
       { step: "Téléchargez le résultat", detail: "Le fichier compressé se télécharge automatiquement. Vérifiez qu'il est acceptable ; s'il est trop flou, augmentez la cible et recommencez." },
     ],
@@ -129,7 +129,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       {
         heading: "Comment fonctionne la compression d'images",
         body: [
-          "JPG, WEBP et AVIF sont des formats avec perte : ils réduisent le fichier en supprimant des données d'image que l'œil humain est le moins susceptible de remarquer — dégradés de couleur subtils, texture fine dans les zones chargées, détail haute fréquence. Baisser la qualité demande à l'encodeur d'en supprimer davantage, ce qui donne un fichier plus petit avec un adoucissement et des artefacts de plus en plus visibles.",
+          "JPG, WEBP et AVIF sont des formats avec perte : ils réduisent le fichier en supprimant des données d'image que l'œil humain est le moins susceptible de remarquer: dégradés de couleur subtils, texture fine dans les zones chargées, détail haute fréquence. Baisser la qualité demande à l'encodeur d'en supprimer davantage, ce qui donne un fichier plus petit avec un adoucissement et des artefacts de plus en plus visibles.",
           "Le PNG est sans perte et se comprime différemment : il ne peut que ranger les pixels exacts plus efficacement, une photo enregistrée en PNG ne rétrécit donc presque pas. Si vous envoyez un PNG au compresseur et voulez une vraie réduction, le convertir d'abord en JPG ou WEBP (avec le Convertisseur d'Images) fait bien plus que n'importe quelle compression PNG.",
         ],
       },
@@ -137,10 +137,10 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         heading: "Réduire une image à une taille exacte (comme 100 Ko)",
         body: "Saisissez votre limite dans le champ de taille cible et ConvertBrio travaille à rebours : il baisse la qualité du JPG/WEBP par paliers, en revérifiant la taille après chacun, et ne réduit les dimensions que si la plus basse qualité raisonnable dépasse encore. Le résultat est la version la plus grande et la plus nette de votre image qui tient encore sous le plafond.",
         list: [
-          "Photo de visa ou de passeport — souvent 100 Ko, ou une plage de 10 Ko à 240 Ko",
-          "Portails administratifs et fiscaux — généralement 100 Ko ou 200 Ko par scan",
-          "Sites de concours et de candidatures — souvent de 50 Ko à 500 Ko pour une photo ou un certificat",
-          "Avatars de forums et de marketplaces — en général autour de 1 à 2 Mo",
+          "Photo de visa ou de passeport : souvent 100 Ko, ou une plage de 10 Ko à 240 Ko",
+          "Portails administratifs et fiscaux : généralement 100 Ko ou 200 Ko par scan",
+          "Sites de concours et de candidatures : souvent de 50 Ko à 500 Ko pour une photo ou un certificat",
+          "Avatars de forums et de marketplaces : en général autour de 1 à 2 Mo",
         ],
       },
       {
@@ -149,7 +149,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Compresser ou redimensionner",
-        body: "La compression garde les mêmes dimensions en pixels et réduit le coût de chaque pixel. Le redimensionnement réduit le nombre de pixels lui-même. Pour une photo à la fois grande en dimensions et en poids, redimensionner à la taille réellement nécessaire — puis compresser — donne un fichier bien plus petit avec moins de perte visible.",
+        body: "La compression garde les mêmes dimensions en pixels et réduit le coût de chaque pixel. Le redimensionnement réduit le nombre de pixels lui-même. Pour une photo à la fois grande en dimensions et en poids, redimensionner à la taille réellement nécessaire, puis compresser, donne un fichier bien plus petit avec moins de perte visible.",
       },
       {
         heading: "Confidentialité et limites",
@@ -166,7 +166,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       {
         question: "Comment réduire une image à moins de 100 Ko ?",
         answer:
-          "Envoyez l'image au compresseur de ConvertBrio et fixez la taille cible à 100 Ko. L'outil baisse la qualité — et les dimensions si besoin — jusqu'à ce que le fichier tienne dans cette limite, idéal pour les formulaires et envois de documents à plafond strict.",
+          "Envoyez l'image au compresseur de ConvertBrio et fixez la taille cible à 100 Ko. L'outil baisse la qualité, et les dimensions si besoin, jusqu'à ce que le fichier tienne dans cette limite, idéal pour les formulaires et envois de documents à plafond strict.",
       },
       {
         question: "Compresser va-t-il rendre mon image moins bonne ?",
@@ -201,7 +201,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       { step: "Envoyez deux PDF ou plus", detail: "Glissez-les tous ensemble ou sélectionnez-en plusieurs dans l'explorateur. Chaque fichier peut faire jusqu'à 100 Mo." },
       {
         step: "Mettez-les dans l'ordre",
-        detail: "Le document combiné suit l'ordre de la liste des fichiers ; organisez-les comme le PDF final doit se lire — page de garde en premier, annexes en dernier.",
+        detail : "Le document combiné suit l'ordre de la liste des fichiers ; organisez-les comme le PDF final doit se lire: page de garde en premier, annexes en dernier.",
       },
       { step: "Fusionnez et téléchargez", detail: "Cliquez sur Convertir. ConvertBrio ajoute les pages de chaque fichier à la suite et le PDF combiné se télécharge automatiquement." },
     ],
@@ -227,7 +227,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Confidentialité et limites",
-        body: "Les fichiers sont chiffrés à l'envoi, fusionnés automatiquement sans intervention humaine, et tous — sources et résultat — sont supprimés sous 24 heures. Plusieurs fichiers par fusion, jusqu'à 100 Mo chacun, gratuit, sans compte, sans filigrane.",
+        body: "Les fichiers sont chiffrés à l'envoi, fusionnés automatiquement sans intervention humaine, et tous, sources et résultat, sont supprimés sous 24 heures. Plusieurs fichiers par fusion, jusqu'à 100 Mo chacun, gratuit, sans compte, sans filigrane.",
       },
     ],
     relatedTools: [
@@ -240,7 +240,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       {
         question: "Comment fusionner des fichiers PDF en ligne gratuitement ?",
         answer:
-          "Ouvrez l'outil Fusionner des PDF de ConvertBrio, envoyez deux PDF ou plus, organisez-les dans l'ordre souhaité et téléchargez le fichier combiné — sans compte, sans installer de logiciel, sans filigrane.",
+          "Ouvrez l'outil Fusionner des PDF de ConvertBrio, envoyez deux PDF ou plus, organisez-les dans l'ordre souhaité et téléchargez le fichier combiné : sans compte, sans installer de logiciel, sans filigrane.",
       },
       {
         question: "Puis-je contrôler l'ordre des pages dans le PDF combiné ?",
@@ -318,7 +318,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
   "pdf-to-word": {
     title: "Convertir un PDF en Word : transformer un PDF en document modifiable",
     intro: [
-      "Besoin de modifier le texte d'un PDF sans avoir le fichier source ? Le convertisseur PDF en Word de ConvertBrio reconstruit votre PDF en un DOCX modifiable — paragraphes, gras et italique, titres, tableaux simples et images inclus — qui s'ouvre dans Microsoft Word, Google Docs ou LibreOffice.",
+      "Besoin de modifier le texte d'un PDF sans avoir le fichier source ? Le convertisseur PDF en Word de ConvertBrio reconstruit votre PDF en un DOCX modifiable, paragraphes, gras et italique, titres, tableaux simples et images inclus, qui s'ouvre dans Microsoft Word, Google Docs ou LibreOffice.",
       "C'est gratuit, sans inscription et sans filigrane. Les documents simples se convertissent bien ; plus la page d'origine est visuellement complexe, plus vous ajusterez ensuite.",
     ],
     howTo: [
@@ -328,7 +328,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
           "Ouvrez-le et essayez de sélectionner une phrase avec le curseur. Si vous y arrivez, passez à l'étape 2. Si le texte est une image scannée, passez-le d'abord par OCR de PDF.",
       },
       { step: "Envoyez le PDF", detail: "Glissez-le dans la zone ou parcourez. Un fichier à la fois, jusqu'à 100 Mo." },
-      { step: "Convertissez en DOCX", detail: "ConvertBrio reconstruit le contenu en document Word — texte, titres, tableaux de base et images — et il se télécharge automatiquement." },
+      { step: "Convertissez en DOCX", detail: "ConvertBrio reconstruit le contenu en document Word, texte, titres, tableaux de base et images, et il se télécharge automatiquement." },
       { step: "Ouvrez et modifiez dans Word", detail: "Le DOCX s'ouvre dans Word, Google Docs ou tout éditeur compatible. Vérifiez la mise en page et ajustez ce que la conversion n'a pas placé parfaitement." },
     ],
     sections: [
@@ -342,14 +342,14 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
             ["Titres et listes de base", "Conservés dans la plupart des documents"],
             ["Tableaux simples", "Conservés ; bordures et espacement peuvent demander un ajustement"],
             ["Images en ligne et pleine largeur", "Conservées et placées dans le flux"],
-            ["Mises en page multicolonnes", "Aplaties en une colonne — prévoyez de refaire la mise en page"],
+            ["Mises en page multicolonnes", "Aplaties en une colonne : prévoyez de refaire la mise en page"],
             ["En-têtes, pieds de page, numéros de page", "Peuvent passer dans le corps ou disparaître"],
           ],
         },
       },
       {
         heading: "Convertir un document scanné en Word",
-        body: "Si votre PDF est un scan — une photo de chaque page plutôt que du vrai texte — ce convertisseur n'a aucun texte à extraire et produira un document vide ou uniquement composé d'images. Passez d'abord le scan par l'outil OCR de PDF : il reconnaît le texte imprimé et ajoute une couche de texte. Convertissez ensuite ce PDF OCR ici pour obtenir un DOCX modifiable.",
+        body: "Si votre PDF est un scan, une photo de chaque page plutôt que du vrai texte, ce convertisseur n'a aucun texte à extraire et produira un document vide ou uniquement composé d'images. Passez d'abord le scan par l'outil OCR de PDF : il reconnaît le texte imprimé et ajoute une couche de texte. Convertissez ensuite ce PDF OCR ici pour obtenir un DOCX modifiable.",
       },
       {
         heading: "Confidentialité et limites",
@@ -367,7 +367,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       {
         question: "Comment convertir un PDF en document Word modifiable ?",
         answer:
-          "Envoyez votre PDF à l'outil PDF en Word de ConvertBrio, et il reconstruit le contenu — texte, titres, tableaux simples et images — en un DOCX que vous ouvrez et modifiez dans Microsoft Word ou Google Docs.",
+          "Envoyez votre PDF à l'outil PDF en Word de ConvertBrio, et il reconstruit le contenu, texte, titres, tableaux simples et images, en un DOCX que vous ouvrez et modifiez dans Microsoft Word ou Google Docs.",
       },
       {
         question: "Comment convertir un document scanné en Word ?",
@@ -394,7 +394,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
   "word-to-pdf": {
     title: "Convertir Word en PDF : figer la mise en forme pour le partage",
     intro: [
-      "Un document Word peut s'afficher différemment selon les polices, la version de Word ou le système sur lequel il est ouvert — un vrai problème quand un CV, un contrat ou un rapport doit être identique pour tous ceux qui le reçoivent. Le convertisseur Word en PDF de ConvertBrio transforme votre DOCX en un PDF prêt à imprimer qui s'affiche partout à l'identique et ne peut pas être modifié par accident.",
+      "Un document Word peut s'afficher différemment selon les polices, la version de Word ou le système sur lequel il est ouvert : un vrai problème quand un CV, un contrat ou un rapport doit être identique pour tous ceux qui le reçoivent. Le convertisseur Word en PDF de ConvertBrio transforme votre DOCX en un PDF prêt à imprimer qui s'affiche partout à l'identique et ne peut pas être modifié par accident.",
       "C'est gratuit, ça fonctionne dans le navigateur, sans Microsoft Word installé et sans filigrane.",
     ],
     howTo: [
@@ -405,11 +405,11 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Pourquoi convertir en PDF avant d'envoyer",
-        body: "Le PDF est le standard des documents finalisés parce qu'il s'affiche à l'identique sur tous les appareils, sans dépendre de Word ni des bonnes polices chez le destinataire. Un fichier Word, lui, peut réorganiser les paragraphes, décaler les sauts de page ou substituer des polices sur une autre machine — exactement ce qu'on ne veut pas quand un recruteur ouvre votre CV.",
+        body: "Le PDF est le standard des documents finalisés parce qu'il s'affiche à l'identique sur tous les appareils, sans dépendre de Word ni des bonnes polices chez le destinataire. Un fichier Word, lui, peut réorganiser les paragraphes, décaler les sauts de page ou substituer des polices sur une autre machine, exactement ce qu'on ne veut pas quand un recruteur ouvre votre CV.",
       },
       {
         heading: "Comment la mise en forme est traitée",
-        body: "Texte, polices, titres, listes, tableaux, images en ligne et format de page sont conservés. Les fonctions très spécifiques à Word — en-têtes et pieds de page personnalisés, notes de bas de page, suivi des modifications — peuvent s'afficher un peu différemment car le document est remis en page, et non par Word lui-même.",
+        body: "Texte, polices, titres, listes, tableaux, images en ligne et format de page sont conservés. Les fonctions très spécifiques à Word, en-têtes et pieds de page personnalisés, notes de bas de page, suivi des modifications, peuvent s'afficher un peu différemment car le document est remis en page, et non par Word lui-même.",
       },
       {
         heading: "Confidentialité et limites",
@@ -426,7 +426,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       {
         question: "Comment convertir un document Word en PDF gratuitement ?",
         answer:
-          "Envoyez votre .docx à l'outil Word en PDF de ConvertBrio et il génère un PDF mis en forme prêt à télécharger — sans installer Microsoft Word, sans compte, sans filigrane.",
+          "Envoyez votre .docx à l'outil Word en PDF de ConvertBrio et il génère un PDF mis en forme prêt à télécharger : sans installer Microsoft Word, sans compte, sans filigrane.",
       },
       {
         question: "Ma mise en forme restera-t-elle identique après conversion ?",
@@ -638,7 +638,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Ce que l'OCR de PDF vous renvoie",
-        body: "Un PDF identique à celui que vous avez envoyé — mêmes images de page, même mise en page — mais avec une couche de texte derrière l'image. Vous pouvez donc rechercher avec Ctrl+F, surligner et copier des passages, et sélectionner le document entier pour déplacer le texte vers un endroit modifiable. L'aspect de la page ne change pas.",
+        body: "Un PDF identique à celui que vous avez envoyé, mêmes images de page, même mise en page, mais avec une couche de texte derrière l'image. Vous pouvez donc rechercher avec Ctrl+F, surligner et copier des passages, et sélectionner le document entier pour déplacer le texte vers un endroit modifiable. L'aspect de la page ne change pas.",
       },
       {
         heading: "Récupérer un document scanné dans Word",
@@ -695,7 +695,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
     title: "Compresser un PowerPoint en ligne : réduire un .pptx pour l'e-mail",
     intro: [
       "Les fichiers PowerPoint grossissent vite : quelques photos de téléphone, deux captures d'écran, un graphique exporté, et un .pptx dépasse 40 Mo et ne passe plus par e-mail. L'outil Compresser un PowerPoint de ConvertBrio ouvre la présentation, réencode les images qu'elle contient avec une qualité et une résolution efficaces, et renvoie un .pptx plus petit qui reste entièrement modifiable.",
-      "C'est gratuit, ça fonctionne dans le navigateur sans inscription et sans filigrane. Le texte des diapositives, la mise en page, les animations, les graphiques et les notes restent intacts — seules les photos et captures intégrées sont réencodées.",
+      "C'est gratuit, ça fonctionne dans le navigateur sans inscription et sans filigrane. Le texte des diapositives, la mise en page, les animations, les graphiques et les notes restent intacts : seules les photos et captures intégrées sont réencodées.",
     ],
     howTo: [
       { step: "Enregistrez la présentation en .pptx", detail: "Dans PowerPoint, Fichier → Enregistrer sous → Présentation PowerPoint (.pptx). Le format .ppt ancien n'est pas accepté." },
@@ -715,7 +715,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
           "Réencodé : images JPEG et PNG intégrées, redimensionnées si elles dépassent ~1800 px sur le côté long",
           "Intact : tout le texte, les polices, la mise en page des diapositives, les animations, les transitions et les notes",
           "Intact : graphiques, tableaux, SmartArt et formes vectorielles",
-          "Le fichier reste un .pptx normal et modifiable — rien n'est aplati",
+          "Le fichier reste un .pptx normal et modifiable : rien n'est aplati",
         ],
       },
       {
@@ -741,7 +741,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       {
         question: "Comment compresser un PowerPoint pour l'envoyer par e-mail ?",
         answer:
-          "Envoyez le .pptx à l'outil Compresser un PowerPoint de ConvertBrio. Il réencode les images intégrées et renvoie une présentation plus petite et toujours modifiable — gratuit, sans inscription, sans filigrane.",
+          "Envoyez le .pptx à l'outil Compresser un PowerPoint de ConvertBrio. Il réencode les images intégrées et renvoie une présentation plus petite et toujours modifiable : gratuit, sans inscription, sans filigrane.",
       },
       {
         question: "Le fichier compressé reste-t-il modifiable ?",
@@ -770,7 +770,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
     title: "Compresser un document Word en ligne : réduire un .docx pour l'e-mail",
     intro: [
       "Un document Word qui ne passe pas par e-mail transporte presque toujours des images en pleine résolution. Une seule photo de téléphone collée dans un rapport peut peser 5 Mo à elle seule ; quelques-unes et un .docx quasi entièrement textuel dépasse 30 Mo. L'outil Compresser un Document Word de ConvertBrio ouvre le document, réencode les images qu'il contient avec une qualité et une résolution efficaces, et renvoie un .docx plus petit qui reste entièrement modifiable.",
-      "C'est gratuit, ça fonctionne dans le navigateur sans inscription et sans filigrane. Texte, titres, tableaux, styles et mise en page restent intacts — seules les photos et captures intégrées sont réencodées.",
+      "C'est gratuit, ça fonctionne dans le navigateur sans inscription et sans filigrane. Texte, titres, tableaux, styles et mise en page restent intacts : seules les photos et captures intégrées sont réencodées.",
     ],
     howTo: [
       { step: "Enregistrez le document en .docx", detail: "Dans Word, Fichier → Enregistrer sous → Document Word (.docx). Le format .doc ancien n'est pas accepté." },
@@ -815,7 +815,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       {
         question: "Comment rendre un document Word plus léger pour l'envoyer par e-mail ?",
         answer:
-          "Envoyez le .docx à l'outil Compresser un Document Word de ConvertBrio. Il réencode les images intégrées et renvoie un document plus petit et toujours modifiable — gratuit, sans inscription, sans filigrane. Pour le plus petit fichier, convertissez en PDF et compressez ce PDF.",
+          "Envoyez le .docx à l'outil Compresser un Document Word de ConvertBrio. Il réencode les images intégrées et renvoie un document plus petit et toujours modifiable : gratuit, sans inscription, sans filigrane. Pour le plus petit fichier, convertissez en PDF et compressez ce PDF.",
       },
       {
         question: "Le fichier compressé reste-t-il modifiable ?",

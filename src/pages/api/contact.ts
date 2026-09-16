@@ -42,5 +42,5 @@ export const POST: APIRoute = async ({ request, redirect }) => {
     return redirect(`/contact?error=${encodeURIComponent("Couldn't send your message. Try again in a moment.")}`);
   }
 
-  return redirect(`/contact?notice=${encodeURIComponent("Message sent — we'll get back to you soon.")}`);
+  return redirect(`/contact?notice=${encodeURIComponent("Message sent: we'll get back to you soon.")}`);
 };

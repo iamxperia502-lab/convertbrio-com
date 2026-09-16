@@ -90,7 +90,7 @@ export async function resolveConversionForm(request: Request): Promise<FormData>
     (body.files ?? []).map(async (fileRef) => {
       const result = await get(fileRef.pathname, { access: "private", token: blobToken });
       if (!result || result.statusCode !== 200 || !result.stream) {
-        throw new Error("Upload expired — please try again.");
+        throw new Error("Upload expired: please try again.");
       }
       const bytes = await new Response(result.stream).arrayBuffer();
 

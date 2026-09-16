@@ -43,11 +43,11 @@ const link = (href: string, text: string) =>
 
 export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
   pt: {
-    seoTitle: "ConvertBrio — Conversor e Compressor de Arquivos Online Grátis",
+    seoTitle: "ConvertBrio: Conversor e Compressor de Arquivos Online Grátis",
     description:
-      "Converta, comprima e edite imagens, PDFs e documentos online — grátis, privado, sem cadastro. Inclui um compressor de imagem que atinge um tamanho exato em KB.",
+      "Converta, comprima e edite imagens, PDFs e documentos online, grátis, privado, sem cadastro. Inclui um compressor de imagem que atinge um tamanho exato em KB.",
     badge: "Grátis, privado, sem cadastro",
-    heroTitle: "Converta, comprima e edite seus arquivos — direto no navegador.",
+    heroTitle: "Converta, comprima e edite seus arquivos, direto no navegador.",
     heroIntro:
       "Imagens, PDFs e documentos, sem instalar nada. Precisa de uma foto num tamanho exato em KB para um formulário ou portal? Nosso compressor atinge o KB alvo sem tentativa e erro.",
     ctaPrimary: "Comprimir PDF",
@@ -90,7 +90,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaSub: "Sem conta para começar, e todas as ferramentas são grátis.",
     blurbs: {
       "compress-pdf": "Reduza o tamanho de um PDF para e-mail ou envio em portais.",
-      "compress-image": "Chegue a um tamanho exato em KB — 100 KB para vistos e concursos.",
+      "compress-image": "Chegue a um tamanho exato em KB: 100 KB para vistos e concursos.",
       "merge-pdf": "Combine vários PDFs em um só documento, na ordem que quiser.",
       "pdf-to-word": "Transforme um PDF em um DOCX editável.",
       "word-to-pdf": "Converta um documento Word em um PDF que abre em qualquer lugar.",
@@ -102,11 +102,11 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
   },
 
   es: {
-    seoTitle: "ConvertBrio — Conversor y Compresor de Archivos Online Gratis",
+    seoTitle: "ConvertBrio: Conversor y Compresor de Archivos Online Gratis",
     description:
-      "Convierte, comprime y edita imágenes, PDF y documentos online — gratis, privado, sin registro. Incluye un compresor de imagen que llega a un tamaño exacto en KB.",
+      "Convierte, comprime y edita imágenes, PDF y documentos online, gratis, privado, sin registro. Incluye un compresor de imagen que llega a un tamaño exacto en KB.",
     badge: "Gratis, privado, sin registro",
-    heroTitle: "Convierte, comprime y edita tus archivos — directamente en el navegador.",
+    heroTitle: "Convierte, comprime y edita tus archivos, directamente en el navegador.",
     heroIntro:
       "Imágenes, PDF y documentos, sin instalar nada. ¿Necesitas una foto en un tamaño exacto en KB para un formulario o portal? Nuestro compresor llega al KB objetivo sin prueba y error.",
     ctaPrimary: "Comprimir PDF",
@@ -149,7 +149,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaSub: "Sin cuenta para empezar, y todas las herramientas son gratis.",
     blurbs: {
       "compress-pdf": "Reduce el tamaño de un PDF para correo o portales.",
-      "compress-image": "Llega a un tamaño exacto en KB — 100 KB para visados y oposiciones.",
+      "compress-image": "Llega a un tamaño exacto en KB: 100 KB para visados y oposiciones.",
       "merge-pdf": "Combina varios PDF en un solo documento, en el orden que quieras.",
       "pdf-to-word": "Convierte un PDF en un DOCX editable.",
       "word-to-pdf": "Convierte un documento Word en un PDF que se abre en cualquier lugar.",
@@ -161,11 +161,11 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
   },
 
   fr: {
-    seoTitle: "ConvertBrio — Convertisseur et Compresseur de Fichiers en Ligne Gratuit",
+    seoTitle: "ConvertBrio: Convertisseur et Compresseur de Fichiers en Ligne Gratuit",
     description:
-      "Convertissez, compressez et modifiez des images, des PDF et des documents en ligne — gratuit, privé, sans inscription. Inclut un compresseur d'images qui atteint une taille exacte en Ko.",
+      "Convertissez, compressez et modifiez des images, des PDF et des documents en ligne, gratuit, privé, sans inscription. Inclut un compresseur d'images qui atteint une taille exacte en Ko.",
     badge: "Gratuit, privé, sans inscription",
-    heroTitle: "Convertissez, compressez et modifiez vos fichiers — directement dans le navigateur.",
+    heroTitle: "Convertissez, compressez et modifiez vos fichiers, directement dans le navigateur.",
     heroIntro:
       "Images, PDF et documents, sans rien installer. Besoin d'une photo à une taille exacte en Ko pour un formulaire ou un portail ? Notre compresseur atteint la cible en Ko sans essais successifs.",
     ctaPrimary: "Compresser un PDF",
@@ -208,7 +208,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaSub: "Aucun compte pour commencer, et tous les outils sont gratuits.",
     blurbs: {
       "compress-pdf": "Réduisez la taille d'un PDF pour l'e-mail ou les portails.",
-      "compress-image": "Atteignez une taille exacte en Ko — 100 Ko pour les visas et concours.",
+      "compress-image": "Atteignez une taille exacte en Ko: 100 Ko pour les visas et concours.",
       "merge-pdf": "Combinez plusieurs PDF en un seul document, dans l'ordre voulu.",
       "pdf-to-word": "Transformez un PDF en un DOCX modifiable.",
       "word-to-pdf": "Convertissez un document Word en un PDF qui s'ouvre partout.",
@@ -220,11 +220,11 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
   },
 
   de: {
-    seoTitle: "ConvertBrio — Kostenloser Online-Datei-Konverter und -Kompressor",
+    seoTitle: "ConvertBrio: Kostenloser Online-Datei-Konverter und -Kompressor",
     description:
-      "Konvertiere, komprimiere und bearbeite Bilder, PDFs und Dokumente online — kostenlos, privat, ohne Anmeldung. Inklusive Bildkompressor, der eine exakte Größe in KB trifft.",
+      "Konvertiere, komprimiere und bearbeite Bilder, PDFs und Dokumente online, kostenlos, privat, ohne Anmeldung. Inklusive Bildkompressor, der eine exakte Größe in KB trifft.",
     badge: "Kostenlos, privat, ohne Anmeldung",
-    heroTitle: "Konvertiere, komprimiere und bearbeite deine Dateien — direkt im Browser.",
+    heroTitle: "Konvertiere, komprimiere und bearbeite deine Dateien, direkt im Browser.",
     heroIntro:
       "Bilder, PDFs und Dokumente, ohne Installation. Brauchst du ein Foto in einer exakten Größe in KB für ein Formular oder Portal? Unser Kompressor trifft das KB-Ziel ohne Ausprobieren.",
     ctaPrimary: "PDF komprimieren",
@@ -267,7 +267,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaSub: "Kein Konto für den Start nötig, und alle Tools sind kostenlos.",
     blurbs: {
       "compress-pdf": "Reduziere die Größe einer PDF für E-Mail oder Portale.",
-      "compress-image": "Triff eine exakte Größe in KB — 100 KB für Visa und Bewerbungen.",
+      "compress-image": "Triff eine exakte Größe in KB: 100 KB für Visa und Bewerbungen.",
       "merge-pdf": "Verbinde mehrere PDFs in gewünschter Reihenfolge zu einem Dokument.",
       "pdf-to-word": "Mach aus einer PDF ein bearbeitbares DOCX.",
       "word-to-pdf": "Wandle ein Word-Dokument in ein PDF um, das überall aufgeht.",
@@ -279,11 +279,11 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
   },
 
   it: {
-    seoTitle: "ConvertBrio — Convertitore e Compressore di File Online Gratis",
+    seoTitle: "ConvertBrio: Convertitore e Compressore di File Online Gratis",
     description:
-      "Converti, comprimi e modifica immagini, PDF e documenti online — gratis, privato, senza registrazione. Include un compressore di immagini che raggiunge una dimensione esatta in KB.",
+      "Converti, comprimi e modifica immagini, PDF e documenti online, gratis, privato, senza registrazione. Include un compressore di immagini che raggiunge una dimensione esatta in KB.",
     badge: "Gratis, privato, senza registrazione",
-    heroTitle: "Converti, comprimi e modifica i tuoi file — direttamente nel browser.",
+    heroTitle: "Converti, comprimi e modifica i tuoi file, direttamente nel browser.",
     heroIntro:
       "Immagini, PDF e documenti, senza installare nulla. Ti serve una foto a una dimensione esatta in KB per un modulo o un portale? Il nostro compressore raggiunge il KB target senza tentativi.",
     ctaPrimary: "Comprimere PDF",
@@ -326,7 +326,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaSub: "Nessun account per iniziare, e tutti gli strumenti sono gratis.",
     blurbs: {
       "compress-pdf": "Riduci le dimensioni di un PDF per e-mail o portali.",
-      "compress-image": "Raggiungi una dimensione esatta in KB — 100 KB per visti e concorsi.",
+      "compress-image": "Raggiungi una dimensione esatta in KB: 100 KB per visti e concorsi.",
       "merge-pdf": "Combina più PDF in un unico documento, nell'ordine che vuoi.",
       "pdf-to-word": "Trasforma un PDF in un DOCX modificabile.",
       "word-to-pdf": "Converti un documento Word in un PDF che si apre ovunque.",
@@ -338,11 +338,11 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
   },
 
   id: {
-    seoTitle: "ConvertBrio — Konverter dan Kompresor File Online Gratis",
+    seoTitle: "ConvertBrio: Konverter dan Kompresor File Online Gratis",
     description:
-      "Konversi, kompres, dan edit gambar, PDF, dan dokumen online — gratis, privat, tanpa daftar. Termasuk kompresor gambar yang mencapai ukuran KB yang tepat.",
+      "Konversi, kompres, dan edit gambar, PDF, dan dokumen online, gratis, privat, tanpa daftar. Termasuk kompresor gambar yang mencapai ukuran KB yang tepat.",
     badge: "Gratis, privat, tanpa daftar",
-    heroTitle: "Konversi, kompres, dan edit file Anda — langsung di browser.",
+    heroTitle: "Konversi, kompres, dan edit file Anda, langsung di browser.",
     heroIntro:
       "Gambar, PDF, dan dokumen, tanpa memasang apa pun. Butuh foto pada ukuran KB yang tepat untuk formulir atau portal? Kompresor kami mencapai target KB tanpa coba-coba.",
     ctaPrimary: "Kompres PDF",
@@ -385,7 +385,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaSub: "Tanpa akun untuk mulai, dan semua alat gratis.",
     blurbs: {
       "compress-pdf": "Perkecil ukuran PDF untuk email atau portal.",
-      "compress-image": "Capai ukuran KB yang tepat — 100 KB untuk visa dan seleksi.",
+      "compress-image": "Capai ukuran KB yang tepat: 100 KB untuk visa dan seleksi.",
       "merge-pdf": "Gabungkan beberapa PDF menjadi satu dokumen, sesuai urutan Anda.",
       "pdf-to-word": "Ubah PDF menjadi DOCX yang bisa diedit.",
       "word-to-pdf": "Ubah dokumen Word menjadi PDF yang terbuka di mana saja.",

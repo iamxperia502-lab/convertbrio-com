@@ -56,8 +56,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "image-converter": {
     title: "Image Converter: Convert Between Any Image Format Online",
     intro: [
-      "ConvertBrio's image converter moves a photo, graphic, or screenshot between JPG, PNG, WEBP, AVIF, HEIC, and GIF in a single step, right inside your browser. There's nothing to install and no account to create — upload a file, choose the format you need, and download the result in seconds. It's the tool to reach for whenever an image won't open where you need it to, or whenever a project calls for a different format than the one you were handed.",
-      "The most common reason people convert an image is compatibility: an iPhone HEIC photo that a Windows PC won't preview, a WEBP saved from a website that a design app rejects, or an AVIF that an older email client can't display. The second reason is optimization — swapping a heavy PNG photo for a JPG or WEBP that loads faster on a web page. This converter handles both, and it keeps the original resolution and color intact so the only thing that changes is the container.",
+      "ConvertBrio's image converter moves a photo, graphic, or screenshot between JPG, PNG, WEBP, AVIF, HEIC, and GIF in a single step, right inside your browser. There's nothing to install and no account to create: upload a file, choose the format you need, and download the result in seconds. It's the tool to reach for whenever an image won't open where you need it to, or whenever a project calls for a different format than the one you were handed.",
+      "The most common reason people convert an image is compatibility: an iPhone HEIC photo that a Windows PC won't preview, a WEBP saved from a website that a design app rejects, or an AVIF that an older email client can't display. The second reason is optimization: swapping a heavy PNG photo for a JPG or WEBP that loads faster on a web page. This converter handles both, and it keeps the original resolution and color intact so the only thing that changes is the container.",
     ],
     howTo: [
       {
@@ -73,7 +73,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         step: "Convert and download",
         detail:
-          "Click Convert. ConvertBrio decodes the original and re-encodes it in the format you picked, then the file downloads automatically — usually within a few seconds.",
+          "Click Convert. ConvertBrio decodes the original and re-encodes it in the format you picked, then the file downloads automatically, usually within a few seconds.",
       },
     ],
     sections: [
@@ -81,17 +81,17 @@ export const toolContent: Record<string, ToolContentEntry> = {
         heading: "Supported formats",
         body: "ConvertBrio reads JPG, PNG, WEBP, AVIF, HEIC, and GIF files and can export to JPG, PNG, WEBP, AVIF, or GIF. That covers the everyday formats used in photography and web design, the newer high-efficiency formats used by modern cameras and browsers, and Apple's default photo format, so you're not stuck when a file arrives in something your software doesn't recognize.",
         list: [
-          "JPG (JPEG) — universal support, small files, no transparency; best for photographs",
-          "PNG — lossless, supports transparency; best for logos, icons, screenshots, and line art",
-          "WEBP — Google's web format, roughly 25–35% smaller than JPG at matching quality, supports transparency and animation",
-          "AVIF — AV1-based, often 50% smaller than JPG; the most efficient widely-supported format today",
-          "HEIC (HEIF) — Apple's default camera format; excellent compression but limited support outside Apple devices",
-          "GIF — 256-colour palette, supports simple animation; largely superseded by WEBP for everything except legacy use",
+          "JPG (JPEG): universal support, small files, no transparency; best for photographs",
+          "PNG: lossless, supports transparency; best for logos, icons, screenshots, and line art",
+          "WEBP: Google's web format, roughly 25–35% smaller than JPG at matching quality, supports transparency and animation",
+          "AVIF: AV1-based, often 50% smaller than JPG; the most efficient widely-supported format today",
+          "HEIC (HEIF): Apple's default camera format; excellent compression but limited support outside Apple devices",
+          "GIF: 256-colour palette, supports simple animation; largely superseded by WEBP for everything except legacy use",
         ],
       },
       {
         heading: "Choosing the right output format",
-        body: "There's no single best image format — the right choice depends on where the file is going. The table below covers the decision for the most common situations.",
+        body: "There's no single best image format: the right choice depends on where the file is going. The table below covers the decision for the most common situations.",
         table: {
           caption: "Which format to convert to, by use case",
           headers: ["You need to…", "Convert to", "Why"],
@@ -108,7 +108,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         heading: "How the conversion works",
         body: [
-          "ConvertBrio decodes your original file into raw pixels on its servers, then re-encodes those pixels using the target format's compression. Resolution, aspect ratio, and colour are carried across unchanged — the converter never resizes or recompresses beyond what the destination format requires.",
+          "ConvertBrio decodes your original file into raw pixels on its servers, then re-encodes those pixels using the target format's compression. Resolution, aspect ratio, and colour are carried across unchanged: the converter never resizes or recompresses beyond what the destination format requires.",
           "Converting between two lossless formats (for example PNG to a lossless WEBP) preserves every pixel. Converting to a lossy format (JPG, or lossy WEBP/AVIF) applies compression once, at a sensible default quality where the difference is not visible at normal viewing size. If you need direct control over that trade-off, use the Compress Image tool instead, which exposes a quality slider and a target-file-size mode.",
         ],
       },
@@ -118,7 +118,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and file limits",
-        body: "Every upload is encrypted in transit over HTTPS and processed automatically — no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within 24 hours, whether or not you download the result. Files up to 100 MB are supported, free, with no account and no watermark.",
+        body: "Every upload is encrypted in transit over HTTPS and processed automatically: no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within 24 hours, whether or not you download the result. Files up to 100 MB are supported, free, with no account and no watermark.",
       },
     ],
     relatedTools: [
@@ -165,7 +165,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "heic-to-jpg": {
     title: "HEIC to JPG Converter: Open iPhone Photos Anywhere",
     intro: [
-      "iPhones and iPads save photos as HEIC by default — a format that compresses beautifully but refuses to open in a lot of everyday software, from older Windows PCs to certain upload forms and photo editors. ConvertBrio's HEIC to JPG converter fixes that instantly: upload the photo, and it comes back as a standard JPG that opens in any browser, app, or device without a plugin or codec pack.",
+      "iPhones and iPads save photos as HEIC by default: a format that compresses beautifully but refuses to open in a lot of everyday software, from older Windows PCs to certain upload forms and photo editors. ConvertBrio's HEIC to JPG converter fixes that instantly: upload the photo, and it comes back as a standard JPG that opens in any browser, app, or device without a plugin or codec pack.",
       "You don't need to change any settings on your phone or install anything. The conversion runs on ConvertBrio's servers, keeps the photo at its original resolution, and preserves the orientation so portrait photos don't come out sideways. The result is a plain JPG you can email, upload to a government or job portal, drop into a document, or open in any photo editor.",
     ],
     howTo: [
@@ -212,7 +212,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Does converting lose quality?",
-        body: "There is one round of re-compression, because HEIC and JPG use different maths — but at ConvertBrio's default JPG quality the difference is not visible at normal viewing size or in a print. The photo's resolution (megapixel count) is unchanged. If you plan to edit the photo heavily afterward, convert to PNG with the Image Converter instead to avoid stacking a second lossy pass later.",
+        body: "There is one round of re-compression, because HEIC and JPG use different maths, but at ConvertBrio's default JPG quality the difference is not visible at normal viewing size or in a print. The photo's resolution (megapixel count) is unchanged. If you plan to edit the photo heavily afterward, convert to PNG with the Image Converter instead to avoid stacking a second lossy pass later.",
       },
       {
         heading: "Converting several iPhone photos",
@@ -249,7 +249,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I convert HEIC to PNG instead of JPG?",
         answer:
-          "Yes — use the general Image Converter tool and choose PNG as the output format if you need a lossless file, or if you plan to edit the image repeatedly and want to avoid a second lossy compression pass.",
+          "Yes, use the general Image Converter tool and choose PNG as the output format if you need a lossless file, or if you plan to edit the image repeatedly and want to avoid a second lossy compression pass.",
       },
       {
         question: "How do I stop my iPhone from taking HEIC photos?",
@@ -271,15 +271,15 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "When to Convert JPG to PNG",
-        body: "Convert to PNG whenever you need an alpha (transparency) channel — for example, cutting a logo out of its background — or whenever you're about to edit an image repeatedly and want to avoid the generation loss that comes from re-saving JPGs. PNG is also the safer choice for screenshots, diagrams, and anything with sharp text or hard edges, since JPG's compression can introduce blur and artifacts around fine detail.",
+        body: "Convert to PNG whenever you need an alpha (transparency) channel, for example, cutting a logo out of its background, or whenever you're about to edit an image repeatedly and want to avoid the generation loss that comes from re-saving JPGs. PNG is also the safer choice for screenshots, diagrams, and anything with sharp text or hard edges, since JPG's compression can introduce blur and artifacts around fine detail.",
       },
       {
         heading: "How the Conversion Works",
-        body: "Upload your JPG and ConvertBrio decodes it and re-encodes it as a PNG, preserving every pixel exactly. Because JPG doesn't store transparency to begin with, the output PNG will have an opaque background unless you remove it separately — the conversion itself is about format and quality, not automatic background removal.",
+        body: "Upload your JPG and ConvertBrio decodes it and re-encodes it as a PNG, preserving every pixel exactly. Because JPG doesn't store transparency to begin with, the output PNG will have an opaque background unless you remove it separately: the conversion itself is about format and quality, not automatic background removal.",
       },
       {
         heading: "File Size to Expect",
-        body: "PNG files are typically larger than the JPG they came from, since PNG doesn't discard data the way JPG's lossy compression does. For photos with a lot of detail or texture, expect the PNG to be several times the size of the original JPG — that's the normal trade-off for lossless quality.",
+        body: "PNG files are typically larger than the JPG they came from, since PNG doesn't discard data the way JPG's lossy compression does. For photos with a lot of detail or texture, expect the PNG to be several times the size of the original JPG: that's the normal trade-off for lossless quality.",
       },
     ],
     relatedTools: [
@@ -297,12 +297,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Why is my PNG so much bigger than the original JPG?",
         answer:
-          "PNG uses lossless compression, which preserves every pixel instead of discarding detail the way JPG does. That accuracy comes at the cost of a larger file — it's expected, not a sign of a problem.",
+          "PNG uses lossless compression, which preserves every pixel instead of discarding detail the way JPG does. That accuracy comes at the cost of a larger file: it's expected, not a sign of a problem.",
       },
       {
         question: "Is PNG better than JPG?",
         answer:
-          "Neither is universally better — PNG is best for graphics, logos, and anything needing transparency or lossless detail, while JPG is better for photos where small file size matters more than pixel-perfect accuracy.",
+          "Neither is universally better: PNG is best for graphics, logos, and anything needing transparency or lossless detail, while JPG is better for photos where small file size matters more than pixel-perfect accuracy.",
       },
     ],
   },
@@ -314,7 +314,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why Convert to WEBP",
-        body: "If page load speed matters — for SEO, mobile users, or just a snappier site — WEBP is one of the easiest wins available. It supports the same quality range as JPG while producing noticeably smaller files, and modern browsers (Chrome, Firefox, Safari, Edge) all render it natively, so there's no compatibility trade-off for most audiences today.",
+        body: "If page load speed matters, for SEO, mobile users, or just a snappier site, WEBP is one of the easiest wins available. It supports the same quality range as JPG while producing noticeably smaller files, and modern browsers (Chrome, Firefox, Safari, Edge) all render it natively, so there's no compatibility trade-off for most audiences today.",
       },
       {
         heading: "How the Conversion Works",
@@ -322,7 +322,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "When JPG Might Still Be the Better Choice",
-        body: "If your image needs to work in software or contexts that don't support WEBP — some older email clients, certain design tools, or print workflows — keep a JPG version on hand as well. For general web use, though, WEBP is the more efficient default.",
+        body: "If your image needs to work in software or contexts that don't support WEBP, some older email clients, certain design tools, or print workflows, keep a JPG version on hand as well. For general web use, though, WEBP is the more efficient default.",
       },
     ],
     relatedTools: [
@@ -340,7 +340,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Do all browsers support WEBP?",
         answer:
-          "Yes — every major modern browser, including Chrome, Firefox, Safari, and Edge, renders WEBP natively. It's safe to use for general web publishing today.",
+          "Yes, every major modern browser, including Chrome, Firefox, Safari, and Edge, renders WEBP natively. It's safe to use for general web publishing today.",
       },
       {
         question: "Will my image look different after converting to WEBP?",
@@ -396,7 +396,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "png-to-jpg": {
     title: "PNG to JPG Converter: Shrink Images for Web and Email",
     intro:
-      "PNG files preserve every pixel, which is great for graphics but often overkill for photos — resulting in files far larger than they need to be. ConvertBrio's PNG to JPG converter compresses your image into a smaller, more shareable JPG, ideal for email attachments, web pages, and anywhere upload size limits matter.",
+      "PNG files preserve every pixel, which is great for graphics but often overkill for photos: resulting in files far larger than they need to be. ConvertBrio's PNG to JPG converter compresses your image into a smaller, more shareable JPG, ideal for email attachments, web pages, and anywhere upload size limits matter.",
     sections: [
       {
         heading: "When to Convert PNG to JPG",
@@ -408,7 +408,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "What You'll Lose (and What You Won't)",
-        body: "Converting to JPG discards transparency and applies lossy compression, so it's not the right choice for logos or graphics that need a transparent background. For ordinary photos, the compression is barely noticeable, and the file size reduction is usually substantial — often 50-80% smaller than the original PNG.",
+        body: "Converting to JPG discards transparency and applies lossy compression, so it's not the right choice for logos or graphics that need a transparent background. For ordinary photos, the compression is barely noticeable, and the file size reduction is usually substantial, often 50-80% smaller than the original PNG.",
       },
     ],
     relatedTools: [
@@ -469,7 +469,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is WEBP always smaller than PNG?",
         answer:
-          "Usually, yes — even in lossless mode, WEBP's compression is generally more efficient than PNG's, so most images shrink noticeably after conversion.",
+          "Usually, yes, even in lossless mode, WEBP's compression is generally more efficient than PNG's, so most images shrink noticeably after conversion.",
       },
       {
         question: "Can I convert the WEBP back to PNG later?",
@@ -486,7 +486,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why Choose AVIF Over PNG",
-        body: "PNG's lossless compression keeps files larger than necessary for many use cases. AVIF, built on modern video-codec compression technology, can shrink the same image dramatically — sometimes by 80% or more — while keeping transparency and visual quality intact, which is a major win for site performance.",
+        body: "PNG's lossless compression keeps files larger than necessary for many use cases. AVIF, built on modern video-codec compression technology, can shrink the same image dramatically, sometimes by 80% or more, while keeping transparency and visual quality intact, which is a major win for site performance.",
       },
       {
         heading: "How the Conversion Works",
@@ -525,7 +525,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "webp-to-jpg": {
     title: "WEBP to JPG Converter: Open WEBP Images Anywhere",
     intro:
-      "WEBP images downloaded from websites don't always open cleanly in older photo viewers, some design tools, or apps that expect a standard format. ConvertBrio's WEBP to JPG converter turns any WEBP file into a JPG that opens everywhere — no compatibility guesswork required.",
+      "WEBP images downloaded from websites don't always open cleanly in older photo viewers, some design tools, or apps that expect a standard format. ConvertBrio's WEBP to JPG converter turns any WEBP file into a JPG that opens everywhere: no compatibility guesswork required.",
     sections: [
       {
         heading: "Why WEBP Files Sometimes Won't Open",
@@ -555,7 +555,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Will I lose transparency converting WEBP to JPG?",
         answer:
-          "Yes — JPG doesn't support transparency, so any transparent areas in the original WEBP will appear as a solid color in the converted file. Use WEBP to PNG instead if you need to keep transparency.",
+          "Yes, JPG doesn't support transparency, so any transparent areas in the original WEBP will appear as a solid color in the converted file. Use WEBP to PNG instead if you need to keep transparency.",
       },
       {
         question: "Is the converted JPG safe to share or upload?",
@@ -568,19 +568,19 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "webp-to-png": {
     title: "WEBP to PNG Converter: Preserve Transparency and Quality",
     intro:
-      "When a WEBP image has a transparent background — a logo, icon, or exported graphic — converting it to JPG isn't an option. ConvertBrio's WEBP to PNG converter preserves that transparency and produces a lossless file that works in design tools, older software, and anywhere PNG is the expected format.",
+      "When a WEBP image has a transparent background, a logo, icon, or exported graphic, converting it to JPG isn't an option. ConvertBrio's WEBP to PNG converter preserves that transparency and produces a lossless file that works in design tools, older software, and anywhere PNG is the expected format.",
     sections: [
       {
         heading: "When to Choose PNG Over JPG",
-        body: "If your WEBP file has any transparent or semi-transparent pixels, converting to PNG is the right call — it's the only common format among the two that keeps an alpha channel intact. PNG is also the safer choice when you plan to edit the image further, since it won't introduce compression artifacts.",
+        body: "If your WEBP file has any transparent or semi-transparent pixels, converting to PNG is the right call: it's the only common format among the two that keeps an alpha channel intact. PNG is also the safer choice when you plan to edit the image further, since it won't introduce compression artifacts.",
       },
       {
         heading: "How the Conversion Works",
-        body: "Upload the WEBP file and ConvertBrio converts it to a lossless PNG, keeping transparency and resolution exactly as they were. This works whether the WEBP was lossy or lossless to begin with — the output PNG always preserves full detail from the decoded image.",
+        body: "Upload the WEBP file and ConvertBrio converts it to a lossless PNG, keeping transparency and resolution exactly as they were. This works whether the WEBP was lossy or lossless to begin with: the output PNG always preserves full detail from the decoded image.",
       },
       {
         heading: "File Size Considerations",
-        body: "PNG files are generally larger than WEBP, since WEBP's compression is more efficient. For graphics and icons the difference is usually small; for large photos the PNG can be noticeably bigger — a reasonable trade-off when transparency or lossless quality is the priority.",
+        body: "PNG files are generally larger than WEBP, since WEBP's compression is more efficient. For graphics and icons the difference is usually small; for large photos the PNG can be noticeably bigger, a reasonable trade-off when transparency or lossless quality is the priority.",
       },
     ],
     relatedTools: [
@@ -603,7 +603,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Will the image quality change?",
         answer:
-          "No — PNG is a lossless format, so converting from WEBP to PNG doesn't discard any additional detail beyond what the original WEBP file already contained.",
+          "No, PNG is a lossless format, so converting from WEBP to PNG doesn't discard any additional detail beyond what the original WEBP file already contained.",
       },
     ],
   },
@@ -615,7 +615,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why Re-Encode WEBP as AVIF",
-        body: "If you're already using WEBP for web performance, AVIF is worth testing as the next step — it typically compresses better on the same source image, particularly for photos and complex graphics. The difference is most noticeable on larger, detail-heavy images.",
+        body: "If you're already using WEBP for web performance, AVIF is worth testing as the next step: it typically compresses better on the same source image, particularly for photos and complex graphics. The difference is most noticeable on larger, detail-heavy images.",
       },
       {
         heading: "How the Conversion Works",
@@ -640,7 +640,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is it worth converting WEBP to AVIF?",
         answer:
-          "If your goal is the smallest possible file size and your platform supports AVIF, yes — AVIF often compresses better than WEBP on the same image, especially for photos.",
+          "If your goal is the smallest possible file size and your platform supports AVIF, yes, AVIF often compresses better than WEBP on the same image, especially for photos.",
       },
       {
         question: "Does the conversion keep transparency?",
@@ -650,7 +650,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I convert back to WEBP if I need to?",
         answer:
-          "Yes — use ConvertBrio's image converter to go from AVIF back to WEBP or any other supported format at any time.",
+          "Yes, use ConvertBrio's image converter to go from AVIF back to WEBP or any other supported format at any time.",
       },
     ],
   },
@@ -662,7 +662,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why Convert AVIF to JPG",
-        body: "If an AVIF file won't open in your photo viewer, editing software, or a website's upload form, JPG is the safest fallback — it's supported virtually everywhere, from decades-old software to the newest devices. This is the most common reason people convert away from AVIF.",
+        body: "If an AVIF file won't open in your photo viewer, editing software, or a website's upload form, JPG is the safest fallback: it's supported virtually everywhere, from decades-old software to the newest devices. This is the most common reason people convert away from AVIF.",
       },
       {
         heading: "How the Conversion Works",
@@ -693,7 +693,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I convert AVIF to PNG instead?",
         answer:
-          "Yes — use the AVIF to PNG converter if you need a lossless file or need to preserve transparency, which JPG can't hold.",
+          "Yes, use the AVIF to PNG converter if you need a lossless file or need to preserve transparency, which JPG can't hold.",
       },
     ],
   },
@@ -713,7 +713,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Expected File Size",
-        body: "Because PNG doesn't compress as aggressively as AVIF, the converted file will typically be noticeably larger than the source — often several times the size. That trade-off is expected and comes with the benefit of lossless, widely-compatible output.",
+        body: "Because PNG doesn't compress as aggressively as AVIF, the converted file will typically be noticeably larger than the source, often several times the size. That trade-off is expected and comes with the benefit of lossless, widely-compatible output.",
       },
       {
         heading: "Limits and Privacy",
@@ -740,7 +740,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is PNG a good format for editing images further?",
         answer:
-          "Yes — because PNG doesn't apply lossy compression, it's a safer intermediate format than JPG or AVIF when you plan to open a file in an editor and re-save it multiple times.",
+          "Yes, because PNG doesn't apply lossy compression, it's a safer intermediate format than JPG or AVIF when you plan to open a file in an editor and re-save it multiple times.",
       },
     ],
   },
@@ -752,7 +752,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why Convert AVIF to WEBP",
-        body: "If a platform, plugin, or piece of software rejects AVIF uploads but accepts WEBP, converting is the quickest fix — you keep most of AVIF's efficiency benefit while gaining wider compatibility. This is common when working with older content management systems or third-party integrations.",
+        body: "If a platform, plugin, or piece of software rejects AVIF uploads but accepts WEBP, converting is the quickest fix: you keep most of AVIF's efficiency benefit while gaining wider compatibility. This is common when working with older content management systems or third-party integrations.",
       },
       {
         heading: "How the Conversion Works",
@@ -782,7 +782,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Will the file size increase after converting?",
         answer:
-          "Slightly, in most cases — WEBP's compression is a bit less efficient than AVIF's, so expect a modest size increase rather than a dramatic one.",
+          "Slightly, in most cases, WEBP's compression is a bit less efficient than AVIF's, so expect a modest size increase rather than a dramatic one.",
       },
       {
         question: "Does transparency carry over from AVIF to WEBP?",
@@ -811,7 +811,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         step: "Compress",
         detail:
-          "ConvertBrio re-encodes the image, and in target mode it adjusts quality — then dimensions if quality alone isn't enough — until the file fits under your limit.",
+          "ConvertBrio re-encodes the image, and in target mode it adjusts quality, then dimensions if quality alone isn't enough, until the file fits under your limit.",
       },
       {
         step: "Download the result",
@@ -822,18 +822,18 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         heading: "How image compression works",
         body: [
-          "JPG, WEBP, and AVIF are lossy formats: they shrink a file by discarding image data the human eye is least likely to miss — subtle colour gradients, fine texture in busy areas, high-frequency detail. Lowering the quality setting tells the encoder to discard more, which produces a smaller file with progressively more visible softening and blocky artifacts.",
-          "PNG is lossless and compresses differently — it can only pack the exact pixels more efficiently, so a photo saved as PNG barely shrinks. If you upload a PNG photo to the compressor and want a real size reduction, converting it to JPG or WEBP first (with the Image Converter) will do far more than any PNG compression can.",
+          "JPG, WEBP, and AVIF are lossy formats: they shrink a file by discarding image data the human eye is least likely to miss: subtle colour gradients, fine texture in busy areas, high-frequency detail. Lowering the quality setting tells the encoder to discard more, which produces a smaller file with progressively more visible softening and blocky artifacts.",
+          "PNG is lossless and compresses differently: it can only pack the exact pixels more efficiently, so a photo saved as PNG barely shrinks. If you upload a PNG photo to the compressor and want a real size reduction, converting it to JPG or WEBP first (with the Image Converter) will do far more than any PNG compression can.",
         ],
       },
       {
         heading: "Reducing an image to an exact size (like 100 KB)",
-        body: "Enter your limit in the target-size field and ConvertBrio works backward to it: it lowers JPG/WEBP quality in steps, re-checking the encoded size after each, and only if the smallest reasonable quality still overshoots does it reduce the pixel dimensions as well. The result is the largest, sharpest version of your image that still fits under the ceiling — which is exactly what an upload form is asking for.",
+        body: "Enter your limit in the target-size field and ConvertBrio works backward to it: it lowers JPG/WEBP quality in steps, re-checking the encoded size after each, and only if the smallest reasonable quality still overshoots does it reduce the pixel dimensions as well. The result is the largest, sharpest version of your image that still fits under the ceiling, which is exactly what an upload form is asking for.",
         list: [
-          "Passport / visa photo uploads — often 100 KB or a 10 KB–240 KB range",
-          "Government and tax portals — commonly 100 KB or 200 KB per document scan",
-          "Job application sites — frequently 50 KB–500 KB for a CV photo or certificate",
-          "Forum and marketplace avatars — often capped near 1–2 MB",
+          "Passport / visa photo uploads: often 100 KB or a 10 KB–240 KB range",
+          "Government and tax portals: commonly 100 KB or 200 KB per document scan",
+          "Job application sites: frequently 50 KB–500 KB for a CV photo or certificate",
+          "Forum and marketplace avatars: often capped near 1–2 MB",
         ],
       },
       {
@@ -842,7 +842,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Compressing vs resizing",
-        body: "Compression keeps the same pixel dimensions and reduces how much data each pixel costs. Resizing reduces the pixel count itself. For a photo that's both physically huge (6000 px wide) and heavy, resizing to the dimensions you actually need — then compressing — gets you a much smaller file than compression alone, with less visible quality loss. Use the Resize Image tool for that first step.",
+        body: "Compression keeps the same pixel dimensions and reduces how much data each pixel costs. Resizing reduces the pixel count itself. For a photo that's both physically huge (6000 px wide) and heavy, resizing to the dimensions you actually need, then compressing, gets you a much smaller file than compression alone, with less visible quality loss. Use the Resize Image tool for that first step.",
       },
       {
         heading: "Privacy and limits",
@@ -860,7 +860,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I reduce an image to under 100 KB?",
         answer:
-          "Upload the image to ConvertBrio's compressor and set the target size to 100 KB. The tool lowers quality — and dimensions if needed — until the file fits that limit, which is ideal for forms and ID uploads with strict size caps.",
+          "Upload the image to ConvertBrio's compressor and set the target size to 100 KB. The tool lowers quality, and dimensions if needed, until the file fits that limit, which is ideal for forms and ID uploads with strict size caps.",
       },
       {
         question: "Will compressing my image make it look worse?",
@@ -868,14 +868,14 @@ export const toolContent: Record<string, ToolContentEntry> = {
           "At moderate compression, most people can't tell the difference. Quality loss becomes noticeable only at aggressive settings, so it's worth checking the result rather than compressing to the smallest possible size by default. If a strict target forces heavy compression, resizing the image smaller first will help it look better at the same file size.",
       },
       {
-        question: "My PNG barely got smaller — why?",
+        question: "My PNG barely got smaller, why?",
         answer:
           "PNG is lossless, so there's little room to compress a photograph stored in it. Convert the PNG to JPG or WEBP with the Image Converter first; that alone often cuts the size by 70% or more.",
       },
       {
         question: "Does the compressor keep the image's dimensions?",
         answer:
-          "Yes, unless you use target-size mode and the file still won't fit after maximum quality reduction — in that case it also scales the dimensions down as a last resort to meet your limit.",
+          "Yes, unless you use target-size mode and the file still won't fit after maximum quality reduction, in that case it also scales the dimensions down as a last resort to meet your limit.",
       },
       {
         question: "Can I compress multiple images at once?",
@@ -893,8 +893,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "resize-image": {
     title: "Image Resizer: Fit Exact Pixel Dimensions Online",
     intro: [
-      "Whether a website demands a specific banner size, a form requires an exact photo dimension, or you just need to shrink an oversized phone photo, ConvertBrio's resize tool lets you set an exact width and height in pixels and get a correctly-sized file back in seconds — no design software required.",
-      "Resizing changes how many pixels the image is made of. Making an image smaller (downscaling) is clean and lossless-looking, and it cuts the file size significantly. Making an image larger (upscaling) with a plain resize spreads existing pixels over more area and looks soft — if that's what you need, the AI Upscaler reconstructs detail instead and gives a far better result.",
+      "Whether a website demands a specific banner size, a form requires an exact photo dimension, or you just need to shrink an oversized phone photo, ConvertBrio's resize tool lets you set an exact width and height in pixels and get a correctly-sized file back in seconds: no design software required.",
+      "Resizing changes how many pixels the image is made of. Making an image smaller (downscaling) is clean and lossless-looking, and it cuts the file size significantly. Making an image larger (upscaling) with a plain resize spreads existing pixels over more area and looks soft, if that's what you need, the AI Upscaler reconstructs detail instead and gives a far better result.",
     ],
     howTo: [
       {
@@ -929,7 +929,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Resizing without distorting the image",
-        body: "If the width and height you enter don't match the original's proportions, the image stretches or squashes. To keep it looking right, work out one dimension from the other using the original ratio — for a 4000 × 3000 photo (a 4:3 ratio) that you want 1200 wide, the height should be 900. If you need a different shape entirely (a square from a rectangle, say), crop the image to that shape first with the Crop Image tool, then resize.",
+        body: "If the width and height you enter don't match the original's proportions, the image stretches or squashes. To keep it looking right, work out one dimension from the other using the original ratio: for a 4000 × 3000 photo (a 4:3 ratio) that you want 1200 wide, the height should be 900. If you need a different shape entirely (a square from a rectangle, say), crop the image to that shape first with the Crop Image tool, then resize.",
       },
       {
         heading: "Resizing to reduce file size",
@@ -961,12 +961,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Does resizing reduce file size too?",
         answer:
-          "Yes — fewer pixels means less data to store, so downscaling usually shrinks the file substantially. For the smallest possible result, follow the resize with the Compress Image tool.",
+          "Yes, fewer pixels means less data to store, so downscaling usually shrinks the file substantially. For the smallest possible result, follow the resize with the Compress Image tool.",
       },
       {
         question: "Can I make a small image bigger without it looking blurry?",
         answer:
-          "Not with a plain resize — enlarging spreads existing pixels and softens the image. Use the AI Upscaler instead, which reconstructs detail with a trained model and produces a much sharper enlargement.",
+          "Not with a plain resize: enlarging spreads existing pixels and softens the image. Use the AI Upscaler instead, which reconstructs detail with a trained model and produces a much sharper enlargement.",
       },
       {
         question: "Will the file format change when I resize?",
@@ -979,7 +979,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "crop-image": {
     title: "Image Cropper: Cut an Image Down to the Region You Need",
     intro:
-      "Sometimes you don't need to shrink an entire image — you need to remove everything outside a specific area, whether that's cutting out a subject, removing unwanted background, or matching a platform's required aspect ratio. ConvertBrio's crop tool lets you specify an exact region by pixel coordinates and get back just that section.",
+      "Sometimes you don't need to shrink an entire image: you need to remove everything outside a specific area, whether that's cutting out a subject, removing unwanted background, or matching a platform's required aspect ratio. ConvertBrio's crop tool lets you specify an exact region by pixel coordinates and get back just that section.",
     sections: [
       {
         heading: "How to Crop an Image",
@@ -1030,11 +1030,11 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Why Photos End Up Rotated Incorrectly",
-        body: "This usually happens when a camera or scanner doesn't embed the correct orientation metadata, or when that metadata gets stripped during upload or transfer. The image data itself is unaffected — it just displays in the wrong direction until it's rotated.",
+        body: "This usually happens when a camera or scanner doesn't embed the correct orientation metadata, or when that metadata gets stripped during upload or transfer. The image data itself is unaffected: it just displays in the wrong direction until it's rotated.",
       },
       {
         heading: "Rotating Scanned Documents",
-        body: "Scanned pages fed into a scanner sideways or upside down are one of the most common cases for this tool. Rotating the image before further processing — such as converting it to PDF or running OCR — makes sure the final document reads correctly.",
+        body: "Scanned pages fed into a scanner sideways or upside down are one of the most common cases for this tool. Rotating the image before further processing, such as converting it to PDF or running OCR, makes sure the final document reads correctly.",
       },
     ],
     relatedTools: [
@@ -1052,12 +1052,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Why is my photo upside down or sideways in the first place?",
         answer:
-          "This is typically caused by missing or incorrect orientation metadata from the camera or scanner that captured it — the image content is fine, it just needs to be rotated to display properly.",
+          "This is typically caused by missing or incorrect orientation metadata from the camera or scanner that captured it: the image content is fine, it just needs to be rotated to display properly.",
       },
       {
         question: "Can I rotate a scanned document image before converting it to PDF?",
         answer:
-          "Yes — rotate the image first with this tool, then use JPG to PDF to combine it into a correctly-oriented PDF document.",
+          "Yes, rotate the image first with this tool, then use JPG to PDF to combine it into a correctly-oriented PDF document.",
       },
     ],
   },
@@ -1065,7 +1065,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "merge-pdf": {
     title: "Merge PDF Online: Combine Multiple PDFs Into One File",
     intro: [
-      "Joining scanned pages, invoices, reports, or chapters into a single document usually means opening desktop software or paying for a subscription. ConvertBrio's merge tool does it from your browser with no install — upload multiple PDFs, put them in the order you want, and download one combined file in seconds.",
+      "Joining scanned pages, invoices, reports, or chapters into a single document usually means opening desktop software or paying for a subscription. ConvertBrio's merge tool does it from your browser with no install: upload multiple PDFs, put them in the order you want, and download one combined file in seconds.",
       "Every page from every file is kept exactly as it is: no re-compression, no quality loss, no watermark. The only change is that separate files become one.",
     ],
     howTo: [
@@ -1076,7 +1076,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         step: "Put them in order",
         detail:
-          "The merged document follows the order the files are listed in, so arrange them the way you want the final PDF to read — cover page first, appendices last.",
+          "The merged document follows the order the files are listed in, so arrange them the way you want the final PDF to read: cover page first, appendices last.",
       },
       {
         step: "Merge and download",
@@ -1098,7 +1098,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Getting the page order right",
-        body: "The merged file's sequence is set entirely by the order of the files you upload, so arrange the list before converting rather than after. If one of your source PDFs has its own pages in the wrong order, fix that first: split it into single pages with Split PDF, then merge everything — including those loose pages — in the sequence you need.",
+        body: "The merged file's sequence is set entirely by the order of the files you upload, so arrange the list before converting rather than after. If one of your source PDFs has its own pages in the wrong order, fix that first: split it into single pages with Split PDF, then merge everything, including those loose pages, in the sequence you need.",
       },
       {
         heading: "After merging",
@@ -1106,7 +1106,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Files are encrypted in transit, merged automatically on ConvertBrio's servers with no human review, and every file — sources and the merged output — is deleted within 24 hours. Multiple files per merge, each up to 100 MB, free, no account, no watermark.",
+        body: "Files are encrypted in transit, merged automatically on ConvertBrio's servers with no human review, and every file, sources and the merged output, is deleted within 24 hours. Multiple files per merge, each up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -1120,12 +1120,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I merge PDF files online for free?",
         answer:
-          "Open ConvertBrio's Merge PDF tool, upload two or more PDFs, arrange them in the order you want, and download the combined file — no account, no software install, no watermark.",
+          "Open ConvertBrio's Merge PDF tool, upload two or more PDFs, arrange them in the order you want, and download the combined file: no account, no software install, no watermark.",
       },
       {
         question: "Can I control the order of pages in the merged PDF?",
         answer:
-          "Yes — the files merge in the order they're listed, with each file's pages appearing in sequence. Arrange the files before converting.",
+          "Yes, the files merge in the order they're listed, with each file's pages appearing in sequence. Arrange the files before converting.",
       },
       {
         question: "Does merging reduce the quality of my PDFs?",
@@ -1182,7 +1182,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I extract just one page from a PDF?",
         answer:
-          "Yes — splitting breaks the document into individual pages inside a ZIP file, so you can pull out the specific page you need and discard or ignore the rest.",
+          "Yes, splitting breaks the document into individual pages inside a ZIP file, so you can pull out the specific page you need and discard or ignore the rest.",
       },
       {
         question: "Can I put the split pages back together afterward?",
@@ -1195,8 +1195,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "compress-pdf": {
     title: "Compress PDF Online: Reduce PDF File Size for Email and Upload",
     intro: [
-      "Large PDFs — especially ones full of scanned pages or high-resolution photos — bounce off email attachment limits, stall on slow uploads, and get rejected by portals that cap document size. ConvertBrio's PDF compressor re-encodes the images embedded in your document at a more efficient quality and resolution, and strips metadata the file doesn't need, so the same pages come back in a smaller file.",
-      "It's free, runs in your browser with no signup, and doesn't add a watermark. The compression is lossless for text and vector graphics — those stay perfectly sharp — and lossy only for embedded photos and scans, where a small, usually invisible quality reduction buys a large drop in file size.",
+      "Large PDFs, especially ones full of scanned pages or high-resolution photos, bounce off email attachment limits, stall on slow uploads, and get rejected by portals that cap document size. ConvertBrio's PDF compressor re-encodes the images embedded in your document at a more efficient quality and resolution, and strips metadata the file doesn't need, so the same pages come back in a smaller file.",
+      "It's free, runs in your browser with no signup, and doesn't add a watermark. The compression is lossless for text and vector graphics, those stay perfectly sharp, and lossy only for embedded photos and scans, where a small, usually invisible quality reduction buys a large drop in file size.",
     ],
     howTo: [
       {
@@ -1211,14 +1211,14 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         step: "Download and check the size",
         detail:
-          "The compressed PDF downloads automatically. Open it to confirm the pages still look acceptable — if it's not small enough, see the tips below on scanned documents and splitting.",
+          "The compressed PDF downloads automatically. Open it to confirm the pages still look acceptable, if it's not small enough, see the tips below on scanned documents and splitting.",
       },
     ],
     sections: [
       {
         heading: "How PDF compression works",
         body: [
-          "A PDF's size is almost always dominated by one thing: embedded raster images. Text, fonts, and vector drawings are tiny by comparison. So ConvertBrio's compressor focuses where the weight is — it locates the photographic images inside the file, re-encodes them with more efficient JPEG settings, and scales down any image whose resolution is far higher than a screen or printer could use.",
+          "A PDF's size is almost always dominated by one thing: embedded raster images. Text, fonts, and vector drawings are tiny by comparison. So ConvertBrio's compressor focuses where the weight is: it locates the photographic images inside the file, re-encodes them with more efficient JPEG settings, and scales down any image whose resolution is far higher than a screen or printer could use.",
           "Everything that isn't a photo is left untouched: paragraph text stays selectable and razor-sharp, vector logos and charts keep their crisp edges, and the page layout doesn't move. Document metadata that serves no functional purpose is dropped to reclaim a little more space.",
         ],
       },
@@ -1228,28 +1228,28 @@ export const toolContent: Record<string, ToolContentEntry> = {
         table: {
           headers: ["PDF type", "Typical result"],
           rows: [
-            ["Scanned document (photos of pages)", "Large reduction — often 40–70% smaller"],
+            ["Scanned document (photos of pages)", "Large reduction: often 40–70% smaller"],
             ["Report with embedded photos or screenshots", "Moderate reduction, varies with image count"],
             ["Slide deck exported to PDF", "Moderate reduction if slides carry photos"],
-            ["Text-only PDF (contract, ebook, invoice)", "Little change — it's already compact"],
-            ["PDF whose images are PNG or CMYK", "Limited — those image types are skipped to avoid colour damage"],
+            ["Text-only PDF (contract, ebook, invoice)", "Little change: it's already compact"],
+            ["PDF whose images are PNG or CMYK", "Limited: those image types are skipped to avoid colour damage"],
           ],
         },
       },
       {
         heading: "Compressing a PDF without losing quality",
-        body: "For any PDF that's mostly text, compression is effectively lossless — you lose nothing visible. For scanned or image-heavy PDFs, the images are re-encoded, so there's a real but small quality trade-off. In practice a scanned page compressed with this tool still reads cleanly on screen and prints fine; the difference only shows if you zoom in hard on a photograph. If a document absolutely must keep original image fidelity, compress it and compare the result before deciding.",
+        body: "For any PDF that's mostly text, compression is effectively lossless: you lose nothing visible. For scanned or image-heavy PDFs, the images are re-encoded, so there's a real but small quality trade-off. In practice a scanned page compressed with this tool still reads cleanly on screen and prints fine; the difference only shows if you zoom in hard on a photograph. If a document absolutely must keep original image fidelity, compress it and compare the result before deciding.",
       },
       {
         heading: "Getting a PDF under a specific size (100 KB, 500 KB, 2 MB)",
         body: [
           "This tool applies one efficient compression pass rather than iterating to an exact target, so it won't guarantee a precise kilobyte figure. But a few things move the needle when you have a hard limit:",
-          "If your PDF is a scanned document, it will usually drop dramatically in one pass — try it first. If it's still over, split it into fewer pages with the Split PDF tool and compress each part, or export the pages you actually need. If the bloat comes from one or two enormous photos, compressing those images separately with Compress Image (which does have an exact-size target) before rebuilding the PDF gives you the tightest control.",
+          "If your PDF is a scanned document, it will usually drop dramatically in one pass, try it first. If it's still over, split it into fewer pages with the Split PDF tool and compress each part, or export the pages you actually need. If the bloat comes from one or two enormous photos, compressing those images separately with Compress Image (which does have an exact-size target) before rebuilding the PDF gives you the tightest control.",
         ],
       },
       {
         heading: "Compress vs split",
-        body: "Compression reduces the weight of each page. Splitting reduces the number of pages. If your 30 MB PDF is 300 text pages, compression won't help much — Split PDF into sections is the answer. If it's 10 scanned pages at 3 MB each, compression is exactly the right tool. They're complementary, and for a stubborn file it's normal to use both.",
+        body: "Compression reduces the weight of each page. Splitting reduces the number of pages. If your 30 MB PDF is 300 text pages, compression won't help much: Split PDF into sections is the answer. If it's 10 scanned pages at 3 MB each, compression is exactly the right tool. They're complementary, and for a stubborn file it's normal to use both.",
       },
       {
         heading: "Privacy and limits",
@@ -1267,12 +1267,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I compress a PDF online for free?",
         answer:
-          "Upload your document to ConvertBrio's Compress PDF tool and click Compress. It re-encodes embedded images and removes unnecessary metadata to shrink the file, which downloads automatically — no account, no watermark, no email required.",
+          "Upload your document to ConvertBrio's Compress PDF tool and click Compress. It re-encodes embedded images and removes unnecessary metadata to shrink the file, which downloads automatically: no account, no watermark, no email required.",
       },
       {
         question: "Can I compress a PDF without losing quality?",
         answer:
-          "Text and vector content is never degraded — it stays perfectly sharp. Only embedded photos and scans are re-encoded, with a small quality reduction that is usually invisible at normal viewing size. Text-heavy PDFs compress with no visible loss at all.",
+          "Text and vector content is never degraded: it stays perfectly sharp. Only embedded photos and scans are re-encoded, with a small quality reduction that is usually invisible at normal viewing size. Text-heavy PDFs compress with no visible loss at all.",
       },
       {
         question: "How do I make a PDF smaller to email it?",
@@ -1282,12 +1282,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I compress a PDF to exactly 100 KB or 300 KB?",
         answer:
-          "This tool doesn't target an exact size — it applies one efficient pass. For strict limits, compress a scanned PDF here first, then reduce page count with Split PDF if needed, or compress the largest embedded images separately with Compress Image, which does support an exact KB target.",
+          "This tool doesn't target an exact size: it applies one efficient pass. For strict limits, compress a scanned PDF here first, then reduce page count with Split PDF if needed, or compress the largest embedded images separately with Compress Image, which does support an exact KB target.",
       },
       {
         question: "Why didn't my PDF get much smaller?",
         answer:
-          "It's probably already compact — a PDF that's mostly text has very little to remove. Files with high-resolution scans or embedded photos see the biggest reductions. PDFs whose images use PNG or CMYK colour are also skipped, to avoid altering colours.",
+          "It's probably already compact: a PDF that's mostly text has very little to remove. Files with high-resolution scans or embedded photos see the biggest reductions. PDFs whose images use PNG or CMYK colour are also skipped, to avoid altering colours.",
       },
       {
         question: "Does compressing change the page layout or text?",
@@ -1304,7 +1304,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "How to Rotate a PDF",
-        body: "Upload your PDF, choose a rotation angle — 90, 180, or 270 degrees — and ConvertBrio applies it to every page in the document. The result downloads as a corrected PDF with the same content, just properly oriented.",
+        body: "Upload your PDF, choose a rotation angle, 90, 180, or 270 degrees, and ConvertBrio applies it to every page in the document. The result downloads as a corrected PDF with the same content, just properly oriented.",
       },
       {
         heading: "Why This Happens With Scanned Documents",
@@ -1351,7 +1351,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Owner Passwords vs. Open Passwords",
-        body: "This tool removes owner-password restrictions — the kind that lock down what you can do with a file you can already open. It does not attempt to bypass an open (user) password that prevents the PDF from being viewed at all; that requires the actual password from whoever created the file.",
+        body: "This tool removes owner-password restrictions: the kind that lock down what you can do with a file you can already open. It does not attempt to bypass an open (user) password that prevents the PDF from being viewed at all; that requires the actual password from whoever created the file.",
       },
       {
         heading: "When to Use This Tool",
@@ -1368,7 +1368,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "What's the difference between unlocking and decrypting a PDF?",
         answer:
-          "Unlocking removes owner-level restrictions on printing, copying, or editing from a file you can already open. It doesn't bypass a password required just to view the document — that requires the actual password.",
+          "Unlocking removes owner-level restrictions on printing, copying, or editing from a file you can already open. It doesn't bypass a password required just to view the document: that requires the actual password.",
       },
       {
         question: "Is it legal to unlock a PDF?",
@@ -1378,7 +1378,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Will unlocking change the content of my PDF?",
         answer:
-          "No — the tool only removes the permission restrictions. The text, images, and layout of the document remain exactly the same.",
+          "No, the tool only removes the permission restrictions. The text, images, and layout of the document remain exactly the same.",
       },
     ],
   },
@@ -1402,7 +1402,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Numbering Style and Limits",
-        body: "Numbers are stamped bottom-center on every page in a plain sans-serif style, starting at 1 — there's currently no option to change position, starting number, or format like \"Page X of Y\". Uploads are capped at 100 MB and the file is deleted from ConvertBrio's servers within 24 hours of processing.",
+        body: "Numbers are stamped bottom-center on every page in a plain sans-serif style, starting at 1: there's currently no option to change position, starting number, or format like \"Page X of Y\". Uploads are capped at 100 MB and the file is deleted from ConvertBrio's servers within 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -1420,7 +1420,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I change the position or starting number?",
         answer:
-          "Not currently — numbers are always placed bottom-center, starting at 1. If you need a different position, starting number, or a \"Page X of Y\" format, use PDF-editing software for full control.",
+          "Not currently, numbers are always placed bottom-center, starting at 1. If you need a different position, starting number, or a \"Page X of Y\" format, use PDF-editing software for full control.",
       },
       {
         question: "Does this tool renumber pages that already have numbers?",
@@ -1433,7 +1433,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "pdf-to-jpg": {
     title: "PDF to JPG Converter: Export Every Page as an Image",
     intro: [
-      "Sometimes you need a PDF page as an image rather than a document — to drop a slide into a deck, post a page to social media, attach it where PDFs aren't accepted, or pull one chart out of a long report. ConvertBrio's PDF to JPG converter renders every page of your file as a separate JPG.",
+      "Sometimes you need a PDF page as an image rather than a document: to drop a slide into a deck, post a page to social media, attach it where PDFs aren't accepted, or pull one chart out of a long report. ConvertBrio's PDF to JPG converter renders every page of your file as a separate JPG.",
       "It's free, needs no signup, and adds no watermark. A one-page PDF returns a single JPG; a multi-page PDF returns a set of images, one per page, bundled for download.",
     ],
     howTo: [
@@ -1464,7 +1464,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "JPG or PNG?",
-        body: "Choose JPG for photographic pages and for the smallest file size — it's the right default for sharing and posting. Choose PDF to PNG instead when the page is mostly text, tables, or line art and you need it razor-sharp, or when you need a transparent background. PNG is lossless, so it avoids the slight softening JPG compression can add around small text.",
+        body: "Choose JPG for photographic pages and for the smallest file size: it's the right default for sharing and posting. Choose PDF to PNG instead when the page is mostly text, tables, or line art and you need it razor-sharp, or when you need a transparent background. PNG is lossless, so it avoids the slight softening JPG compression can add around small text.",
       },
       {
         heading: "Turning the images back into a PDF",
@@ -1486,7 +1486,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Does PDF to JPG convert every page?",
         answer:
-          "Yes — every page of your PDF is rendered as a separate JPG, so a multi-page document produces one image per page.",
+          "Yes, every page of your PDF is rendered as a separate JPG, so a multi-page document produces one image per page.",
       },
       {
         question: "Should I use JPG or PNG for a PDF page with text?",
@@ -1501,7 +1501,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I convert the images back into a PDF later?",
         answer:
-          "Yes — use ConvertBrio's JPG to PDF tool to recombine images into a single PDF whenever you need to.",
+          "Yes, use ConvertBrio's JPG to PDF tool to recombine images into a single PDF whenever you need to.",
       },
       {
         question: "Will scanned pages come out readable?",
@@ -1514,7 +1514,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "pdf-to-png": {
     title: "PDF to PNG Converter: Export Pages With Lossless Detail",
     intro:
-      "When you need a PDF page as an image without losing any sharpness — for diagrams, screenshots, or text-heavy pages — PNG is the better export format than JPG. ConvertBrio's PDF to PNG converter turns every page into a lossless image file.",
+      "When you need a PDF page as an image without losing any sharpness, for diagrams, screenshots, or text-heavy pages, PNG is the better export format than JPG. ConvertBrio's PDF to PNG converter turns every page into a lossless image file.",
     sections: [
       {
         heading: "How to Convert PDF to PNG",
@@ -1526,7 +1526,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "File Size Considerations",
-        body: "PNG exports are generally larger than the equivalent JPG, especially for pages with a lot of visual detail. If file size matters more than pixel-perfect sharpness — for example, sharing casually or posting online — PDF to JPG may be the more practical choice.",
+        body: "PNG exports are generally larger than the equivalent JPG, especially for pages with a lot of visual detail. If file size matters more than pixel-perfect sharpness, for example, sharing casually or posting online, PDF to JPG may be the more practical choice.",
       },
     ],
     relatedTools: [
@@ -1544,7 +1544,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Does PDF to PNG convert multi-page documents?",
         answer:
-          "Yes — every page in the PDF is rendered as its own PNG image, so a multi-page document produces one image per page.",
+          "Yes, every page in the PDF is rendered as its own PNG image, so a multi-page document produces one image per page.",
       },
       {
         question: "Will the PNG files be larger than JPG exports?",
@@ -1558,7 +1558,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     title: "JPG to PDF Converter: Combine Images Into One Document",
     intro: [
       "Whether you're submitting scanned pages, building a simple portfolio, or turning a stack of receipts into one shareable file, ConvertBrio's JPG to PDF tool combines one or more images into a single PDF, in the order you choose, with one image per page.",
-      "It's the standard way to turn phone photos of paper documents into something you can actually submit. Most application portals want a PDF, not a folder of JPGs — this bridges that gap in one step, free and with no watermark.",
+      "It's the standard way to turn phone photos of paper documents into something you can actually submit. Most application portals want a PDF, not a folder of JPGs: this bridges that gap in one step, free and with no watermark.",
     ],
     howTo: [
       {
@@ -1592,11 +1592,11 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Getting a clean document from phone photos",
-        body: "For readable results, fill the frame with the page, keep the camera parallel to it to avoid a trapezoid shape, and use even lighting with no harsh shadow across the text. If a photo is rotated, fix it with the Rotate Image tool before converting. If the resulting PDF is too large for an upload limit — common with high-megapixel phone cameras — run it through Compress PDF afterward.",
+        body: "For readable results, fill the frame with the page, keep the camera parallel to it to avoid a trapezoid shape, and use even lighting with no harsh shadow across the text. If a photo is rotated, fix it with the Rotate Image tool before converting. If the resulting PDF is too large for an upload limit, common with high-megapixel phone cameras, run it through Compress PDF afterward.",
       },
       {
         heading: "JPG to PDF vs Image to PDF vs Merge PDF",
-        body: "JPG to PDF accepts JPG and PNG. If your images are HEIC (iPhone), WEBP, AVIF, or GIF, use Image to PDF instead — it takes all of those directly. If what you're combining is already PDFs rather than images, use Merge PDF.",
+        body: "JPG to PDF accepts JPG and PNG. If your images are HEIC (iPhone), WEBP, AVIF, or GIF, use Image to PDF instead: it takes all of those directly. If what you're combining is already PDFs rather than images, use Merge PDF.",
       },
       {
         heading: "Privacy and limits",
@@ -1614,7 +1614,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I combine multiple images into one PDF?",
         answer:
-          "Yes — upload as many JPG or PNG images as you need in a single pass, and ConvertBrio combines them into one PDF with each image on its own page, in the order you arrange them.",
+          "Yes, upload as many JPG or PNG images as you need in a single pass, and ConvertBrio combines them into one PDF with each image on its own page, in the order you arrange them.",
       },
       {
         question: "How do I convert a photo of a document to PDF?",
@@ -1627,7 +1627,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
           "JPG and PNG. For HEIC, WEBP, AVIF, or GIF images, use Image to PDF, which accepts those formats directly.",
       },
       {
-        question: "My PDF is too big to upload — what do I do?",
+        question: "My PDF is too big to upload, what do I do?",
         answer:
           "Phone photos are high-resolution, so the PDF can be large. Run it through Compress PDF, which re-encodes the embedded images and usually cuts the size substantially.",
       },
@@ -1642,7 +1642,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "image-to-pdf": {
     title: "Image to PDF Converter: Combine Photos Into One Document",
     intro:
-      "Whether you're submitting scanned pages, building a photo portfolio, or turning receipts into one shareable file, ConvertBrio's Image to PDF tool combines one or more images — JPG, PNG, WEBP, HEIC, AVIF, or GIF — into a single PDF document, in the order you choose.",
+      "Whether you're submitting scanned pages, building a photo portfolio, or turning receipts into one shareable file, ConvertBrio's Image to PDF tool combines one or more images, JPG, PNG, WEBP, HEIC, AVIF, or GIF, into a single PDF document, in the order you choose.",
     sections: [
       {
         heading: "How to Convert Images to PDF",
@@ -1668,12 +1668,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I combine multiple images into one PDF?",
         answer:
-          "Yes — upload as many images as you need in a single pass, and ConvertBrio combines them into one PDF with each image placed on its own page in the order you arrange them.",
+          "Yes, upload as many images as you need in a single pass, and ConvertBrio combines them into one PDF with each image placed on its own page in the order you arrange them.",
       },
       {
         question: "Does this work with iPhone HEIC photos?",
         answer:
-          "Yes — Image to PDF accepts HEIC and HEIF photos directly, along with JPG, PNG, WEBP, AVIF, and GIF, so you don't need to convert your iPhone photos first.",
+          "Yes, Image to PDF accepts HEIC and HEIF photos directly, along with JPG, PNG, WEBP, AVIF, and GIF, so you don't need to convert your iPhone photos first.",
       },
       {
         question: "What image formats does this tool accept?",
@@ -1686,8 +1686,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "ocr-pdf": {
     title: "OCR PDF: Make a Scanned Document Searchable and Editable",
     intro: [
-      "A scanned page or a photo of a document is just an image to a computer — you can't search it, copy text from it, or get a scanned document into Word without retyping every line. Optical character recognition (OCR) fixes that: it reads the text inside the image and turns it into real, selectable characters. ConvertBrio's OCR PDF tool runs recognition on every page you upload and hands back a searchable PDF, with the recognised text ready to copy straight into Word, Google Docs, or an email.",
-      "This is the tool people mean when they search for how to scan a document into Word, or how to convert a scanned document to editable text. Scan or photograph the pages, save them as a PDF, run them through here, then copy the text out — or pass the searchable PDF to the PDF to Word tool for a formatted DOCX.",
+      "A scanned page or a photo of a document is just an image to a computer: you can't search it, copy text from it, or get a scanned document into Word without retyping every line. Optical character recognition (OCR) fixes that: it reads the text inside the image and turns it into real, selectable characters. ConvertBrio's OCR PDF tool runs recognition on every page you upload and hands back a searchable PDF, with the recognised text ready to copy straight into Word, Google Docs, or an email.",
+      "This is the tool people mean when they search for how to scan a document into Word, or how to convert a scanned document to editable text. Scan or photograph the pages, save them as a PDF, run them through here, then copy the text out, or pass the searchable PDF to the PDF to Word tool for a formatted DOCX.",
     ],
     howTo: [
       {
@@ -1697,7 +1697,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         step: "Upload the PDF to OCR PDF",
-        detail: "One file per run, up to 100 MB. Multi-page documents are fine — every page is processed.",
+        detail: "One file per run, up to 100 MB. Multi-page documents are fine: every page is processed.",
       },
       {
         step: "Run the recognition",
@@ -1707,25 +1707,25 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         step: "Get your text into Word",
         detail:
-          "Open the returned PDF, select all (Ctrl/Cmd+A), and paste into Word — or send the searchable PDF through PDF to Word for a DOCX that keeps basic formatting.",
+          "Open the returned PDF, select all (Ctrl/Cmd+A), and paste into Word, or send the searchable PDF through PDF to Word for a DOCX that keeps basic formatting.",
       },
     ],
     sections: [
       {
         heading: "What OCR PDF gives you back",
-        body: "A PDF that looks identical to the one you uploaded — same page images, same layout — but with a text layer added behind the image. That means you can search it with Ctrl+F, highlight and copy passages, and select the whole document to move its text somewhere editable. Nothing about the page's appearance changes.",
+        body: "A PDF that looks identical to the one you uploaded, same page images, same layout, but with a text layer added behind the image. That means you can search it with Ctrl+F, highlight and copy passages, and select the whole document to move its text somewhere editable. Nothing about the page's appearance changes.",
       },
       {
         heading: "Getting a scanned document into Word",
         body: [
           "There are two routes, depending on how much formatting you need to keep.",
           "For plain text, OCR the PDF here, then open it and copy the text directly into a blank Word document. Fast, and works for letters, notes, and single-column pages.",
-          "For a document that should keep its headings, paragraphs, and simple tables, run the OCR'd PDF through the PDF to Word tool afterward. It rebuilds the recognised content as an editable DOCX. Complex multi-column or heavily designed layouts won't map perfectly — that's a limitation of turning any fixed page back into flowing text.",
+          "For a document that should keep its headings, paragraphs, and simple tables, run the OCR'd PDF through the PDF to Word tool afterward. It rebuilds the recognised content as an editable DOCX. Complex multi-column or heavily designed layouts won't map perfectly: that's a limitation of turning any fixed page back into flowing text.",
         ],
       },
       {
         heading: "Why this matters",
-        body: "Individuals and businesses accumulate archives that are technically digital but functionally dead — folders of scanned PDFs nobody can search. Running them through OCR turns that pile into something you can actually query, and makes years-old paperwork usable again without re-keying it by hand.",
+        body: "Individuals and businesses accumulate archives that are technically digital but functionally dead: folders of scanned PDFs nobody can search. Running them through OCR turns that pile into something you can actually query, and makes years-old paperwork usable again without re-keying it by hand.",
       },
       {
         heading: "Getting the best accuracy",
@@ -1752,7 +1752,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I scan a document into editable text for free?",
         answer:
-          "Yes. OCR PDF is free with no account. It recognises the text on each scanned page so you can select, copy, and reuse it — which is the core of turning a scan into editable text.",
+          "Yes. OCR PDF is free with no account. It recognises the text on each scanned page so you can select, copy, and reuse it, which is the core of turning a scan into editable text.",
       },
       {
         question: "Does OCR change how my document looks?",
@@ -1765,7 +1765,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
           "Not reliably. OCR is built for printed and typed text. Handwritten notes may be partially recognised at best.",
       },
       {
-        question: "My PDF already has selectable text — do I still need OCR?",
+        question: "My PDF already has selectable text, do I still need OCR?",
         answer:
           "No. If you can already highlight the text with your cursor, the PDF has a real text layer and you can go straight to PDF to Word, or copy the text out directly.",
       },
@@ -1780,7 +1780,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "word-to-pdf": {
     title: "Word to PDF Converter: Lock In Your Formatting for Sharing",
     intro: [
-      "A Word document can look different depending on the fonts, the Word version, or the operating system it's opened with — a real problem when a CV, contract, or report needs to look exactly the same for everyone who receives it. ConvertBrio's Word to PDF converter turns your DOCX into a print-ready PDF that displays identically everywhere and can't be accidentally edited.",
+      "A Word document can look different depending on the fonts, the Word version, or the operating system it's opened with: a real problem when a CV, contract, or report needs to look exactly the same for everyone who receives it. ConvertBrio's Word to PDF converter turns your DOCX into a print-ready PDF that displays identically everywhere and can't be accidentally edited.",
       "It's free, runs in the browser, needs no Microsoft Word installation, and adds no watermark. Upload the file, and the PDF comes back with your layout, fonts, headings, tables, and images intact.",
     ],
     howTo: [
@@ -1801,7 +1801,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why convert to PDF before sending",
-        body: "PDF is the standard for finished documents because a PDF looks the same on every device, with no dependency on the recipient having Word or the right fonts installed. A Word file, by contrast, can reflow paragraphs, shift page breaks, or substitute fonts on someone else's machine — which is exactly what you don't want when a hiring manager opens your CV or a client reads your proposal. Converting locks the layout before it leaves your hands.",
+        body: "PDF is the standard for finished documents because a PDF looks the same on every device, with no dependency on the recipient having Word or the right fonts installed. A Word file, by contrast, can reflow paragraphs, shift page breaks, or substitute fonts on someone else's machine, which is exactly what you don't want when a hiring manager opens your CV or a client reads your proposal. Converting locks the layout before it leaves your hands.",
       },
       {
         heading: "What people use it for",
@@ -1816,7 +1816,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "How formatting is handled",
-        body: "Text, fonts, headings, lists, tables, inline images, and page size are preserved. Very Word-specific features — custom headers and footers, footnotes, tracked changes, comments, and unusual page setups — may render slightly differently because the document is laid out fresh rather than by Word itself. For a standard business or academic document, the PDF matches what you see in Word.",
+        body: "Text, fonts, headings, lists, tables, inline images, and page size are preserved. Very Word-specific features, custom headers and footers, footnotes, tracked changes, comments, and unusual page setups, may render slightly differently because the document is laid out fresh rather than by Word itself. For a standard business or academic document, the PDF matches what you see in Word.",
       },
       {
         heading: "Privacy and limits",
@@ -1834,12 +1834,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I convert a Word document to PDF for free?",
         answer:
-          "Upload your .docx to ConvertBrio's Word to PDF tool and it generates a formatted PDF ready to download — no Microsoft Word installation, no account, no watermark.",
+          "Upload your .docx to ConvertBrio's Word to PDF tool and it generates a formatted PDF ready to download: no Microsoft Word installation, no account, no watermark.",
       },
       {
         question: "Will my formatting stay the same after converting?",
         answer:
-          "Yes for standard documents — layout, fonts, headings, tables, and images are preserved, and unlike a Word file the PDF displays identically on any device. Very Word-specific features like footnotes or custom headers may shift slightly.",
+          "Yes for standard documents, layout, fonts, headings, tables, and images are preserved, and unlike a Word file the PDF displays identically on any device. Very Word-specific features like footnotes or custom headers may shift slightly.",
       },
       {
         question: "Does it support .doc files?",
@@ -1849,7 +1849,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I convert the PDF back to Word later?",
         answer:
-          "Yes — use ConvertBrio's PDF to Word tool. Note that round-tripping a fixed-layout PDF back to editable text is approximate for complex layouts.",
+          "Yes, use ConvertBrio's PDF to Word tool. Note that round-tripping a fixed-layout PDF back to editable text is approximate for complex layouts.",
       },
       {
         question: "Why convert instead of just sending the Word file?",
@@ -1862,8 +1862,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "pdf-to-word": {
     title: "PDF to Word Converter: Turn a PDF Into an Editable Document",
     intro: [
-      "Need to edit a PDF's text but don't have the original source file? ConvertBrio's PDF to Word converter rebuilds your PDF as an editable DOCX — paragraphs, bold and italic, headings, simple tables, and images included — that opens in Microsoft Word, Google Docs, or LibreOffice, so you can make changes without retyping the whole document.",
-      "It's free, needs no signup, and adds no watermark. Straightforward documents convert cleanly; the more visually complex the original page, the more you'll tidy up afterward — that's inherent to turning a fixed layout back into flowing, editable text.",
+      "Need to edit a PDF's text but don't have the original source file? ConvertBrio's PDF to Word converter rebuilds your PDF as an editable DOCX, paragraphs, bold and italic, headings, simple tables, and images included, that opens in Microsoft Word, Google Docs, or LibreOffice, so you can make changes without retyping the whole document.",
+      "It's free, needs no signup, and adds no watermark. Straightforward documents convert cleanly; the more visually complex the original page, the more you'll tidy up afterward: that's inherent to turning a fixed layout back into flowing, editable text.",
     ],
     howTo: [
       {
@@ -1878,7 +1878,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         step: "Convert to DOCX",
         detail:
-          "ConvertBrio rebuilds the content as a Word document — text, headings, basic tables, and images — and it downloads automatically.",
+          "ConvertBrio rebuilds the content as a Word document, text, headings, basic tables, and images, and it downloads automatically.",
       },
       {
         step: "Open and edit in Word",
@@ -1896,7 +1896,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
             ["Headings and basic lists", "Preserved in most documents"],
             ["Simple tables", "Preserved; borders and spacing may need adjusting"],
             ["Inline and full-width images", "Preserved and placed in the flow"],
-            ["Multi-column layouts", "Flattened to a single column — expect to re-lay-out"],
+            ["Multi-column layouts", "Flattened to a single column: expect to re-lay-out"],
             ["Headers, footers, page numbers", "May move into the body or drop"],
             ["Complex nested tables, forms, heavy design", "Approximate at best"],
           ],
@@ -1904,11 +1904,11 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Converting a scanned document to Word",
-        body: "If your PDF is a scan — a photo of each page rather than real text — this converter has no text to extract and will produce an empty or image-only document. Run the scan through ConvertBrio's OCR PDF tool first: it recognises the printed text and adds a text layer. Then convert that OCR'd PDF here to get an editable DOCX. This two-step route is how you turn a paper document into a Word file you can actually edit.",
+        body: "If your PDF is a scan, a photo of each page rather than real text, this converter has no text to extract and will produce an empty or image-only document. Run the scan through ConvertBrio's OCR PDF tool first: it recognises the printed text and adds a text layer. Then convert that OCR'd PDF here to get an editable DOCX. This two-step route is how you turn a paper document into a Word file you can actually edit.",
       },
       {
         heading: "When this tool is the right fit",
-        body: "PDF to Word is best when you need to change text in a document whose original source you've lost — revising an old contract or template, updating a report someone else wrote, or lifting several paragraphs out of a PDF into a new document. If you only need to fill in a PDF form or add a signature, a PDF annotator is a better fit; if you just need the page as a picture, use PDF to JPG.",
+        body: "PDF to Word is best when you need to change text in a document whose original source you've lost: revising an old contract or template, updating a report someone else wrote, or lifting several paragraphs out of a PDF into a new document. If you only need to fill in a PDF form or add a signature, a PDF annotator is a better fit; if you just need the page as a picture, use PDF to JPG.",
       },
       {
         heading: "Privacy and limits",
@@ -1926,7 +1926,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I convert a PDF to an editable Word document?",
         answer:
-          "Upload your PDF to ConvertBrio's PDF to Word tool, and it rebuilds the content — text, headings, simple tables, and images — into a DOCX file you can open and edit in Microsoft Word or Google Docs.",
+          "Upload your PDF to ConvertBrio's PDF to Word tool, and it rebuilds the content, text, headings, simple tables, and images, into a DOCX file you can open and edit in Microsoft Word or Google Docs.",
       },
       {
         question: "How do I convert a scanned document to Word?",
@@ -1941,7 +1941,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is the converted file a real .docx?",
         answer:
-          "Yes — a standard Word .docx that opens in Microsoft Word, Google Docs, LibreOffice, and Pages.",
+          "Yes, a standard Word .docx that opens in Microsoft Word, Google Docs, LibreOffice, and Pages.",
       },
       {
         question: "Do you add a watermark?",
@@ -1954,7 +1954,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "word-to-jpg": {
     title: "Word to JPG Converter: Export Document Pages as Images",
     intro:
-      "Sometimes you need a Word document's page as an image rather than an editable file — for a preview thumbnail, a social post, or embedding in a tool that doesn't handle documents. ConvertBrio's Word to JPG converter exports every page of your DOCX file as a JPG image.",
+      "Sometimes you need a Word document's page as an image rather than an editable file: for a preview thumbnail, a social post, or embedding in a tool that doesn't handle documents. ConvertBrio's Word to JPG converter exports every page of your DOCX file as a JPG image.",
     sections: [
       {
         heading: "How to Convert Word to JPG",
@@ -1966,7 +1966,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "PNG for Sharper Text",
-        body: "If the page you're exporting has small text or fine detail you want to keep perfectly crisp, use Word to PNG instead — PNG's lossless format avoids the slight softening that JPG's compression can introduce around text edges.",
+        body: "If the page you're exporting has small text or fine detail you want to keep perfectly crisp, use Word to PNG instead: PNG's lossless format avoids the slight softening that JPG's compression can introduce around text edges.",
       },
     ],
     relatedTools: [
@@ -1984,7 +1984,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Does this work for multi-page documents?",
         answer:
-          "Yes — every page in the document is exported as its own JPG image, so a multi-page file produces a full set of images.",
+          "Yes, every page in the document is exported as its own JPG image, so a multi-page file produces a full set of images.",
       },
       {
         question: "Should I use JPG or PNG for a document with small text?",
@@ -1997,7 +1997,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "word-to-png": {
     title: "Word to PNG Converter: Export Pages With Lossless Clarity",
     intro:
-      "When a Word document page needs to become an image without losing any sharpness — for detailed diagrams, tables, or small print — PNG is the better export format than JPG. ConvertBrio's Word to PNG converter renders every page of your DOCX file as a lossless PNG image.",
+      "When a Word document page needs to become an image without losing any sharpness, for detailed diagrams, tables, or small print, PNG is the better export format than JPG. ConvertBrio's Word to PNG converter renders every page of your DOCX file as a lossless PNG image.",
     sections: [
       {
         heading: "How to Convert Word to PNG",
@@ -2009,7 +2009,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "When JPG Might Be Better",
-        body: "If file size matters more than pixel-perfect sharpness — for quick sharing or casual previews — Word to JPG produces a smaller file with only a minor difference in visual quality for most documents.",
+        body: "If file size matters more than pixel-perfect sharpness, for quick sharing or casual previews, Word to JPG produces a smaller file with only a minor difference in visual quality for most documents.",
       },
       {
         heading: "Layout, Downloads, and Limits",
@@ -2031,7 +2031,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Does Word to PNG support multi-page documents?",
         answer:
-          "Yes — each page in your DOCX file is rendered as a separate PNG image. A single-page document downloads directly as a PNG; multiple pages download together as a ZIP file.",
+          "Yes, each page in your DOCX file is rendered as a separate PNG image. A single-page document downloads directly as a PNG; multiple pages download together as a ZIP file.",
       },
       {
         question: "Will my document's exact formatting be preserved?",
@@ -2044,7 +2044,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "excel-to-pdf": {
     title: "Excel to PDF Converter: Lock In Your Spreadsheet Layout for Sharing",
     intro:
-      "A spreadsheet can look different depending on the column widths, fonts, or software version it's opened with — which is a problem when you need a financial report, invoice, or data table to look exactly the same everywhere. ConvertBrio's Excel to PDF converter turns your spreadsheet into a fixed, print-ready PDF that displays identically no matter what device or software opens it.",
+      "A spreadsheet can look different depending on the column widths, fonts, or software version it's opened with, which is a problem when you need a financial report, invoice, or data table to look exactly the same everywhere. ConvertBrio's Excel to PDF converter turns your spreadsheet into a fixed, print-ready PDF that displays identically no matter what device or software opens it.",
     sections: [
       {
         heading: "How to Convert Excel to PDF",
@@ -2052,7 +2052,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Why Convert to PDF Before Sharing",
-        body: "PDF is the standard format for finished documents because it displays identically across every device and operating system — unlike a spreadsheet, which can reflow or look different depending on what's installed. Converting locks in your layout before a report, invoice, or data table goes out the door, and means the recipient doesn't need Excel installed to view it.",
+        body: "PDF is the standard format for finished documents because it displays identically across every device and operating system, unlike a spreadsheet, which can reflow or look different depending on what's installed. Converting locks in your layout before a report, invoice, or data table goes out the door, and means the recipient doesn't need Excel installed to view it.",
       },
       {
         heading: "Common Use Cases",
@@ -2087,13 +2087,13 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "pdf-to-excel": {
     title: "How to Get a Table Out of a PDF and Into Excel (Free)",
     intro: [
-      "Financial statements, bank exports, invoices, and reports arrive as PDFs, and the numbers inside them are locked — you can't sort, total, or chart a PDF. Getting that data into Excel or Google Sheets normally means retyping it cell by cell.",
+      "Financial statements, bank exports, invoices, and reports arrive as PDFs, and the numbers inside them are locked: you can't sort, total, or chart a PDF. Getting that data into Excel or Google Sheets normally means retyping it cell by cell.",
       "A one-click PDF to Excel tool that rebuilds table structure automatically is still in development, because doing it reliably across every PDF layout is genuinely hard. But there are free ways to move the data now, and which one works best depends on whether your PDF has real text or is a scan.",
     ],
     comingSoonGuide: {
       title: "Move the data into a spreadsheet now",
       intro: [
-        "If your PDF has selectable text (try highlighting a number with your cursor): open it, select the table, copy, and paste into Excel — then use Data → Text to Columns to split it into cells. For a cleaner structure, convert the PDF to Word first and copy the reconstructed table from there.",
+        "If your PDF has selectable text (try highlighting a number with your cursor): open it, select the table, copy, and paste into Excel, then use Data → Text to Columns to split it into cells. For a cleaner structure, convert the PDF to Word first and copy the reconstructed table from there.",
         "If your PDF is a scan: run it through OCR PDF to recognise the text, then copy it out. Expect to fix a few misread digits.",
       ],
       cta: { label: "Convert the PDF to Word first", href: "/tools/pdf-to-word" },
@@ -2106,7 +2106,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         step: "Text PDF: convert to Word, then copy the table",
         detail:
-          "Run it through PDF to Word. Open the DOCX, select the table it rebuilt, and paste straight into Excel — Word tables paste into cells cleanly.",
+          "Run it through PDF to Word. Open the DOCX, select the table it rebuilt, and paste straight into Excel: Word tables paste into cells cleanly.",
       },
       {
         step: "Scanned PDF: OCR it first",
@@ -2122,19 +2122,19 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why PDF tables are hard to extract",
-        body: "A PDF doesn't store a table as rows and columns — it stores each number as text positioned at fixed coordinates on the page. A person sees a table; software sees scattered text fragments and has to guess where the cell boundaries are. Simple, ruled tables convert well; nested headers, merged cells, multi-line rows, and cells that wrap are where automated extraction breaks down.",
+        body: "A PDF doesn't store a table as rows and columns: it stores each number as text positioned at fixed coordinates on the page. A person sees a table; software sees scattered text fragments and has to guess where the cell boundaries are. Simple, ruled tables convert well; nested headers, merged cells, multi-line rows, and cells that wrap are where automated extraction breaks down.",
       },
       {
         heading: "Getting the cleanest result",
         body: [
-          "Prefer the PDF to Word route over a raw copy-paste — Word does a real attempt at rebuilding the grid, so the paste into Excel lands in proper cells far more often.",
+          "Prefer the PDF to Word route over a raw copy-paste: Word does a real attempt at rebuilding the grid, so the paste into Excel lands in proper cells far more often.",
           "For a scanned PDF, scan quality is everything: a straight, high-contrast 300 DPI page OCRs with very few errors; a phone photo at an angle will need more correction.",
-          "If the PDF came from a website or a system that can also export CSV or Excel directly, use that export instead — it will always beat extracting from the PDF.",
+          "If the PDF came from a website or a system that can also export CSV or Excel directly, use that export instead: it will always beat extracting from the PDF.",
         ],
       },
       {
         heading: "The automatic tool",
-        body: "A dedicated PDF to Excel tool — upload a PDF, get back an .xlsx with the tables reconstructed — is on ConvertBrio's roadmap. Until it ships, the PDF to Word and OCR PDF routes above are the free way to get the data moving.",
+        body: "A dedicated PDF to Excel tool, upload a PDF, get back an .xlsx with the tables reconstructed, is on ConvertBrio's roadmap. Until it ships, the PDF to Word and OCR PDF routes above are the free way to get the data moving.",
       },
     ],
     relatedTools: [
@@ -2153,7 +2153,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a one-click PDF to Excel tool on ConvertBrio?",
         answer:
-          "Not yet — automatic table reconstruction is in development. The PDF to Word and OCR PDF routes are the current free options for moving the data into a spreadsheet.",
+          "Not yet, automatic table reconstruction is in development. The PDF to Word and OCR PDF routes are the current free options for moving the data into a spreadsheet.",
       },
       {
         question: "Why does my pasted table land all in one column?",
@@ -2171,8 +2171,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "powerpoint-to-pdf": {
     title: "PowerPoint to PDF Converter: Share Slides Without PowerPoint",
     intro: [
-      "Sharing a deck with someone who doesn't have PowerPoint, locking in a final version before review, or shrinking a huge presentation so it will actually email — all of these usually start with converting the .pptx to PDF. ConvertBrio's PowerPoint to PDF converter does it in the browser, free, with one page per slide and no watermark.",
-      "A PDF opens on any device, can't be accidentally edited, and — for image-heavy decks — is often far smaller than the original .pptx once you also run it through Compress PDF.",
+      "Sharing a deck with someone who doesn't have PowerPoint, locking in a final version before review, or shrinking a huge presentation so it will actually email, all of these usually start with converting the .pptx to PDF. ConvertBrio's PowerPoint to PDF converter does it in the browser, free, with one page per slide and no watermark.",
+      "A PDF opens on any device, can't be accidentally edited, and, for image-heavy decks, is often far smaller than the original .pptx once you also run it through Compress PDF.",
     ],
     howTo: [
       {
@@ -2195,13 +2195,13 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why convert to PDF before sharing",
-        body: "A .pptx needs PowerPoint or a compatible viewer, and can render differently depending on which fonts the recipient has installed — bullet points shift, text overflows its box, a custom font falls back to something generic. A PDF is fixed: what you send is exactly what they see, on a phone, a Mac, or a locked-down work laptop with no Office.",
+        body: "A .pptx needs PowerPoint or a compatible viewer, and can render differently depending on which fonts the recipient has installed: bullet points shift, text overflows its box, a custom font falls back to something generic. A PDF is fixed: what you send is exactly what they see, on a phone, a Mac, or a locked-down work laptop with no Office.",
       },
       {
         heading: "Making a PowerPoint smaller",
         body: [
           "A dedicated Compress PowerPoint tool that keeps the file editable is still in development. In the meantime, the most reliable way to get a presentation's size down for email is this two-step route:",
-          "Convert the .pptx to PDF here, then run the PDF through Compress PDF. That re-encodes every embedded photo and screenshot at an efficient quality and downsizes oversized images — which is where nearly all of a heavy deck's weight lives. The result is a shareable, universally-viewable file, usually a fraction of the original size. The trade-off is that the output is a PDF, not an editable deck.",
+          "Convert the .pptx to PDF here, then run the PDF through Compress PDF. That re-encodes every embedded photo and screenshot at an efficient quality and downsizes oversized images, which is where nearly all of a heavy deck's weight lives. The result is a shareable, universally-viewable file, usually a fraction of the original size. The trade-off is that the output is a PDF, not an editable deck.",
         ],
       },
       {
@@ -2224,7 +2224,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I convert a PowerPoint file to PDF for free?",
         answer:
-          "Upload your .pptx to ConvertBrio's PowerPoint to PDF tool and it generates a PDF with one page per slide, ready to download — no PowerPoint installation, no account, no watermark.",
+          "Upload your .pptx to ConvertBrio's PowerPoint to PDF tool and it generates a PDF with one page per slide, ready to download: no PowerPoint installation, no account, no watermark.",
       },
       {
         question: "How do I compress a PowerPoint to email it?",
@@ -2234,7 +2234,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Will animations or transitions carry over?",
         answer:
-          "No — a PDF is static, so animations and transitions are dropped. Text, images, charts, and slide layout are preserved as they appear on each slide.",
+          "No, a PDF is static, so animations and transitions are dropped. Text, images, charts, and slide layout are preserved as they appear on each slide.",
       },
       {
         question: "Does this work with legacy .ppt files?",
@@ -2244,7 +2244,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I put one PDF page per two slides, or handout layout?",
         answer:
-          "Not currently — the converter renders one full slide per page. For handout-style layouts, export from PowerPoint directly.",
+          "Not currently, the converter renders one full slide per page. For handout-style layouts, export from PowerPoint directly.",
       },
     ],
   },
@@ -2253,7 +2253,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     title: "Compress Word Document Online: Shrink a .docx for Email",
     intro: [
       "A Word document that won't email is almost always carrying full-resolution images. A single phone photo pasted into a report can be 5 MB on its own; a few of them and a .docx that's mostly text is suddenly 30 MB. ConvertBrio's Compress Word tool opens the document, re-encodes the images inside it at an efficient quality and resolution, and returns a smaller .docx that's still fully editable.",
-      "It's free, runs in your browser with no signup, and adds no watermark. Text, headings, tables, styles, and layout are untouched — only the embedded photos and screenshots are re-encoded.",
+      "It's free, runs in your browser with no signup, and adds no watermark. Text, headings, tables, styles, and layout are untouched: only the embedded photos and screenshots are re-encoded.",
     ],
     howTo: [
       {
@@ -2277,7 +2277,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why Word files get so big",
-        body: "Word embeds every image at the resolution it was added — a 24-megapixel photo stays 24 megapixels even when the page shows it two inches wide. Text, by contrast, is tiny. So compressing a Word document is really about re-encoding and downsizing the pictures inside it; nothing else meaningfully moves the number.",
+        body: "Word embeds every image at the resolution it was added: a 24-megapixel photo stays 24 megapixels even when the page shows it two inches wide. Text, by contrast, is tiny. So compressing a Word document is really about re-encoding and downsizing the pictures inside it; nothing else meaningfully moves the number.",
       },
       {
         heading: "What the tool changes, and what it doesn't",
@@ -2317,7 +2317,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I make a Word document smaller to email it?",
         answer:
-          "Upload the .docx to ConvertBrio's Compress Word tool. It re-encodes the embedded images and returns a smaller, still-editable document — free, no signup, no watermark. For the smallest file, convert to PDF and compress that instead.",
+          "Upload the .docx to ConvertBrio's Compress Word tool. It re-encodes the embedded images and returns a smaller, still-editable document: free, no signup, no watermark. For the smallest file, convert to PDF and compress that instead.",
       },
       {
         question: "Does the compressed file stay editable?",
@@ -2330,7 +2330,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
           "No. Only the images are affected. Text, headings, tables, styles, and page layout are unchanged.",
       },
       {
-        question: "My document is mostly text but still large — why?",
+        question: "My document is mostly text but still large, why?",
         answer:
           "Check for tracked changes and revision history, embedded fonts, or content pasted as full Excel/web objects. Each can add several megabytes independent of images, and the image compressor won't touch those.",
       },
@@ -2345,8 +2345,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "compress-powerpoint": {
     title: "Compress PowerPoint Online: Shrink a .pptx for Email",
     intro: [
-      "PowerPoint files balloon fast — a few phone photos, a couple of screenshots, an exported chart, and a .pptx is suddenly 40 MB and won't go through email. ConvertBrio's Compress PowerPoint tool opens the presentation, re-encodes the images inside it at an efficient quality and resolution, and hands back a smaller .pptx that's still fully editable.",
-      "It's free, runs in your browser with no signup, and adds no watermark. Your slide text, layout, animations, charts, and speaker notes are untouched — only the embedded photos and screenshots are re-encoded.",
+      "PowerPoint files balloon fast: a few phone photos, a couple of screenshots, an exported chart, and a .pptx is suddenly 40 MB and won't go through email. ConvertBrio's Compress PowerPoint tool opens the presentation, re-encodes the images inside it at an efficient quality and resolution, and hands back a smaller .pptx that's still fully editable.",
+      "It's free, runs in your browser with no signup, and adds no watermark. Your slide text, layout, animations, charts, and speaker notes are untouched: only the embedded photos and screenshots are re-encoded.",
     ],
     howTo: [
       {
@@ -2370,7 +2370,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why PowerPoint files get so large",
-        body: "Modern phones shoot 12–48 megapixel photos — several megabytes each. Paste four of those across your slides and the deck carries ~20 MB of image data before a single word of text. PowerPoint keeps each image at the full resolution it was inserted at, even though the slide only ever shows a small version, so the fix is to re-encode those images at a size that matches how they're actually displayed.",
+        body: "Modern phones shoot 12–48 megapixel photos: several megabytes each. Paste four of those across your slides and the deck carries ~20 MB of image data before a single word of text. PowerPoint keeps each image at the full resolution it was inserted at, even though the slide only ever shows a small version, so the fix is to re-encode those images at a size that matches how they're actually displayed.",
       },
       {
         heading: "What the tool changes, and what it doesn't",
@@ -2380,12 +2380,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
           "Untouched: all text, fonts, slide layout, animations, transitions, speaker notes",
           "Untouched: charts, tables, SmartArt, and vector shapes",
           "Untouched: EMF/WMF/SVG vector images and any format the tool doesn't recognise",
-          "The file stays a normal, editable .pptx — nothing is flattened",
+          "The file stays a normal, editable .pptx: nothing is flattened",
         ],
       },
       {
         heading: "How much smaller will it get?",
-        body: "It depends entirely on how image-heavy the deck is. A presentation built around full-resolution photos and screenshots often drops 40–70%. A mostly-text deck with a logo and a couple of small images won't change much — there's little to remove. If the result isn't small enough, the sections below cover deeper options.",
+        body: "It depends entirely on how image-heavy the deck is. A presentation built around full-resolution photos and screenshots often drops 40–70%. A mostly-text deck with a logo and a couple of small images won't change much: there's little to remove. If the result isn't small enough, the sections below cover deeper options.",
       },
       {
         heading: "For an even smaller file: convert to PDF",
@@ -2411,7 +2411,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I compress a PowerPoint to email it?",
         answer:
-          "Upload the .pptx to ConvertBrio's Compress PowerPoint tool. It re-encodes the embedded images and returns a smaller, still-editable presentation — free, no signup, no watermark. For the smallest possible file, convert to PDF and compress that instead.",
+          "Upload the .pptx to ConvertBrio's Compress PowerPoint tool. It re-encodes the embedded images and returns a smaller, still-editable presentation: free, no signup, no watermark. For the smallest possible file, convert to PDF and compress that instead.",
       },
       {
         question: "Does the compressed file stay editable?",
@@ -2421,12 +2421,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Will compressing lower the quality of my slides?",
         answer:
-          "Text and vector shapes stay perfectly sharp. Photos are re-encoded with a small, usually invisible quality reduction — the difference only shows if you zoom in hard on an image on a large screen.",
+          "Text and vector shapes stay perfectly sharp. Photos are re-encoded with a small, usually invisible quality reduction: the difference only shows if you zoom in hard on an image on a large screen.",
       },
       {
-        question: "My deck barely got smaller — why?",
+        question: "My deck barely got smaller, why?",
         answer:
-          "It's probably already lean — a mostly-text presentation has little image data to remove. The biggest reductions come from decks full of full-resolution photos and screenshots.",
+          "It's probably already lean: a mostly-text presentation has little image data to remove. The biggest reductions come from decks full of full-resolution photos and screenshots.",
       },
       {
         question: "Does this work with .ppt files?",
@@ -2443,7 +2443,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "How to Merge Documents",
-        body: "Upload multiple files — any mix of Word, Excel, PowerPoint, and PDF — and ConvertBrio converts each one to PDF and combines them into a single ordered document. The merged PDF downloads automatically, ready to email, print, or archive.",
+        body: "Upload multiple files, any mix of Word, Excel, PowerPoint, and PDF, and ConvertBrio converts each one to PDF and combines them into a single ordered document. The merged PDF downloads automatically, ready to email, print, or archive.",
       },
       {
         heading: "Why Merge Into One PDF",
@@ -2451,11 +2451,11 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Keeping Document Order",
-        body: "Files are combined in the order you upload them, so arrange your selection before uploading if the final document needs a specific sequence — for example, a cover page, then a report, then supporting spreadsheet data.",
+        body: "Files are combined in the order you upload them, so arrange your selection before uploading if the final document needs a specific sequence: for example, a cover page, then a report, then supporting spreadsheet data.",
       },
       {
         heading: "Limits and Privacy",
-        body: "You can combine up to 25 files with a combined size of 100 MB in one pass. Each file is converted and processed on ConvertBrio's servers, not in your browser, and every file — originals and the merged output — is deleted within 24 hours of processing.",
+        body: "You can combine up to 25 files with a combined size of 100 MB in one pass. Each file is converted and processed on ConvertBrio's servers, not in your browser, and every file, originals and the merged output, is deleted within 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -2468,7 +2468,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "What file types can I combine?",
         answer:
-          "Any mix of Word (.docx), Excel (.xlsx, .xls), PowerPoint (.pptx), and PDF files in the same upload — each non-PDF file is converted to PDF first, then all of them are merged together.",
+          "Any mix of Word (.docx), Excel (.xlsx, .xls), PowerPoint (.pptx), and PDF files in the same upload: each non-PDF file is converted to PDF first, then all of them are merged together.",
       },
       {
         question: "What order do my files merge in?",
@@ -2478,7 +2478,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Does this work with legacy .doc/.ppt/.xls files?",
         answer:
-          "Legacy .doc and .ppt formats aren't supported — save those files as .docx or .pptx first. Legacy .xls spreadsheets do work, since ConvertBrio's Excel conversion reads that format natively.",
+          "Legacy .doc and .ppt formats aren't supported: save those files as .docx or .pptx first. Legacy .xls spreadsheets do work, since ConvertBrio's Excel conversion reads that format natively.",
       },
     ],
   },
@@ -2486,7 +2486,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "remove-background": {
     title: "AI Background Remover: Automatic Transparent Cutouts",
     intro: [
-      "Cutting a subject out of its background usually means design software and careful manual masking around every strand of hair. ConvertBrio's AI background remover does it automatically — upload a photo, and get the subject back on a transparent background in seconds, as a PNG ready to drop onto any new backdrop.",
+      "Cutting a subject out of its background usually means design software and careful manual masking around every strand of hair. ConvertBrio's AI background remover does it automatically: upload a photo, and get the subject back on a transparent background in seconds, as a PNG ready to drop onto any new backdrop.",
       "It's free, needs no account, and adds no watermark. The model runs on ConvertBrio's own servers, so your photo isn't sent to a third-party service.",
     ],
     howTo: [
@@ -2496,7 +2496,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         step: "Let the model process it",
-        detail: "The AI detects the main subject — a person, product, or object — and erases everything else.",
+        detail: "The AI detects the main subject, a person, product, or object, and erases everything else.",
       },
       {
         step: "Download the transparent PNG",
@@ -2512,16 +2512,16 @@ export const toolContent: Record<string, ToolContentEntry> = {
           "Drop a headshot into a team page, ID card, or slide",
           "Make a sticker, logo, or graphic with no boxy background",
           "Composite a subject into a different scene",
-          "Create a passport-style photo — though the Passport Photo Maker does the sizing and white background for you in one step",
+          "Create a passport-style photo, though the Passport Photo Maker does the sizing and white background for you in one step",
         ],
       },
       {
         heading: "Getting the cleanest edges",
-        body: "Results are best when the subject stands out clearly from what's behind it — good lighting, a plain-ish background, and reasonable contrast at the edges. The model can struggle with fine flyaway hair, transparent or glassy objects, low-contrast boundaries (a grey coat against a grey wall), and photos with several overlapping people. If an edge comes out rough, a cleaner source photo usually fixes it; for small touch-ups, crop the result with the Crop Image tool.",
+        body: "Results are best when the subject stands out clearly from what's behind it: good lighting, a plain-ish background, and reasonable contrast at the edges. The model can struggle with fine flyaway hair, transparent or glassy objects, low-contrast boundaries (a grey coat against a grey wall), and photos with several overlapping people. If an edge comes out rough, a cleaner source photo usually fixes it; for small touch-ups, crop the result with the Crop Image tool.",
       },
       {
         heading: "Privacy",
-        body: "The background-removal model is self-hosted and open-source — your photo is never sent to an external API or seen by a person. Uploads are capped at 100 MB, and both the original and the cutout are deleted within 24 hours whether or not you download.",
+        body: "The background-removal model is self-hosted and open-source: your photo is never sent to an external API or seen by a person. Uploads are capped at 100 MB, and both the original and the cutout are deleted within 24 hours whether or not you download.",
       },
     ],
     relatedTools: [
@@ -2535,12 +2535,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is the background remover free?",
         answer:
-          "Yes — no account, no watermark, and no limit on the number of photos. Uploads can be up to 100 MB.",
+          "Yes, no account, no watermark, and no limit on the number of photos. Uploads can be up to 100 MB.",
       },
       {
         question: "What output format will I get?",
         answer:
-          "A PNG with a transparent background — the standard lossless format for images without a solid backdrop. Open it in any editor to place it on a new background.",
+          "A PNG with a transparent background: the standard lossless format for images without a solid backdrop. Open it in any editor to place it on a new background.",
       },
       {
         question: "Will it work on any type of photo?",
@@ -2563,8 +2563,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "passport-photo-maker": {
     title: "Passport Photo Maker: Free Online Passport Size Photo Tool",
     intro: [
-      "A compliant passport photo needs a plain white background, the subject centred and correctly sized, and the right physical dimensions — normally a trip to a pharmacy or photo studio. ConvertBrio's passport photo maker does all three automatically: upload a selfie or any clear headshot, and get back a print-ready 2×2 inch photo with a clean white background in seconds.",
-      "It's free, with no account and no watermark, and every step — face detection and background removal — runs on ConvertBrio's own servers, so your photo is never sent to an outside service.",
+      "A compliant passport photo needs a plain white background, the subject centred and correctly sized, and the right physical dimensions: normally a trip to a pharmacy or photo studio. ConvertBrio's passport photo maker does all three automatically: upload a selfie or any clear headshot, and get back a print-ready 2×2 inch photo with a clean white background in seconds.",
+      "It's free, with no account and no watermark, and every step, face detection and background removal, runs on ConvertBrio's own servers, so your photo is never sent to an outside service.",
     ],
     howTo: [
       {
@@ -2584,17 +2584,17 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         step: "Download and print at 2×2 inch",
         detail:
-          "You get a 1200×1200 pixel image at 600 DPI — the 2×2 inch size used for US and Indian passport and visa photos.",
+          "You get a 1200×1200 pixel image at 600 DPI: the 2×2 inch size used for US and Indian passport and visa photos.",
       },
     ],
     sections: [
       {
         heading: "How It Works",
-        body: "Upload a photo, and ConvertBrio detects your face, crops and centers it to standard passport proportions, removes the original background, and replaces it with solid white — then outputs a 2x2 inch photo at 600 DPI (1200x1200 pixels), the size used for both US and Indian passport and visa photos. There's nothing to position or adjust manually.",
+        body: "Upload a photo, and ConvertBrio detects your face, crops and centers it to standard passport proportions, removes the original background, and replaces it with solid white, then outputs a 2x2 inch photo at 600 DPI (1200x1200 pixels), the size used for both US and Indian passport and visa photos. There's nothing to position or adjust manually.",
       },
       {
         heading: "Passport photo sizes by country",
-        body: "The tool outputs the 2×2 inch (51×51 mm) format. That's the exact requirement for some countries and a usable starting point you can trim for others — always check your government's current spec before submitting.",
+        body: "The tool outputs the 2×2 inch (51×51 mm) format. That's the exact requirement for some countries and a usable starting point you can trim for others, always check your government's current spec before submitting.",
         table: {
           headers: ["Country", "Required size", "2×2 in output fits?"],
           rows: [
@@ -2609,15 +2609,15 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Getting the Best Result",
-        body: "Use a well-lit, front-facing photo with your whole head and shoulders visible and some space around them — a phone selfie against a plain wall works well. Avoid photos where the head is cropped tight at the edges, since the tool needs room above the head and around the shoulders to compute a correctly-proportioned crop. One person per photo; group photos or heavily cropped close-ups won't process correctly.",
+        body: "Use a well-lit, front-facing photo with your whole head and shoulders visible and some space around them: a phone selfie against a plain wall works well. Avoid photos where the head is cropped tight at the edges, since the tool needs room above the head and around the shoulders to compute a correctly-proportioned crop. One person per photo; group photos or heavily cropped close-ups won't process correctly.",
       },
       {
         heading: "What This Tool Doesn't Guarantee",
-        body: "This produces a professional-looking, correctly-sized and centered photo with a genuine white background — not a certified compliance check. It doesn't verify lighting evenness, expression, glasses glare, or the other criteria an official ICAO or government photo review checks by hand. For a passport application with strict acceptance requirements, treat this as a strong starting point and confirm against your country's current photo requirements before submitting.",
+        body: "This produces a professional-looking, correctly-sized and centered photo with a genuine white background: not a certified compliance check. It doesn't verify lighting evenness, expression, glasses glare, or the other criteria an official ICAO or government photo review checks by hand. For a passport application with strict acceptance requirements, treat this as a strong starting point and confirm against your country's current photo requirements before submitting.",
       },
       {
         heading: "Privacy",
-        body: "Face detection and background removal both run on ConvertBrio's own servers using self-hosted, open-source models — your photo is never sent to a third-party API or reviewed by a person. Uploaded and generated files are automatically deleted within 24 hours.",
+        body: "Face detection and background removal both run on ConvertBrio's own servers using self-hosted, open-source models: your photo is never sent to a third-party API or reviewed by a person. Uploaded and generated files are automatically deleted within 24 hours.",
       },
     ],
     relatedTools: [
@@ -2630,7 +2630,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "What size photo does this produce?",
         answer:
-          "A 2x2 inch (1200x1200 pixel) photo at 600 DPI — the standard size for both US and Indian passport and visa photos.",
+          "A 2x2 inch (1200x1200 pixel) photo at 600 DPI: the standard size for both US and Indian passport and visa photos.",
       },
       {
         question: "Is this free?",
@@ -2662,15 +2662,15 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "What This Tool Does",
-        body: "Image Enhancer applies a fixed, automatic set of adjustments to your photo — stretching contrast to use the full tonal range, lifting saturation and brightness slightly, and sharpening detail — producing a consistently improved result without you tuning individual settings.",
+        body: "Image Enhancer applies a fixed, automatic set of adjustments to your photo, stretching contrast to use the full tonal range, lifting saturation and brightness slightly, and sharpening detail, producing a consistently improved result without you tuning individual settings.",
       },
       {
         heading: "How It Works",
-        body: "Upload an image and ConvertBrio runs it through an automatic image-processing pipeline (contrast normalization, color, and sharpening) directly on our servers — a deterministic algorithm rather than a generative AI model, which is why results are consistent and processing is fast.",
+        body: "Upload an image and ConvertBrio runs it through an automatic image-processing pipeline (contrast normalization, color, and sharpening) directly on our servers: a deterministic algorithm rather than a generative AI model, which is why results are consistent and processing is fast.",
       },
       {
         heading: "What It Won't Fix",
-        body: "This is an enhancement pass, not a resolution-increasing or restoration tool — it won't sharply recover detail from a very low-resolution image, fix motion blur or out-of-focus shots, or reconstruct missing detail. For increasing resolution with a trained super-resolution model, use AI Upscaler instead.",
+        body: "This is an enhancement pass, not a resolution-increasing or restoration tool: it won't sharply recover detail from a very low-resolution image, fix motion blur or out-of-focus shots, or reconstruct missing detail. For increasing resolution with a trained super-resolution model, use AI Upscaler instead.",
       },
     ],
     relatedTools: [
@@ -2682,7 +2682,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "What kind of improvements does it make?",
         answer:
-          "It automatically stretches contrast, lifts color and brightness slightly, and sharpens detail — a fixed, consistent adjustment pass rather than manual per-photo editing.",
+          "It automatically stretches contrast, lifts color and brightness slightly, and sharpens detail: a fixed, consistent adjustment pass rather than manual per-photo editing.",
       },
       {
         question: "How is this different from AI Upscaler?",
@@ -2700,7 +2700,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "ai-upscaler": {
     title: "AI Image Upscaler: Increase Resolution Without the Blur",
     intro: [
-      "Enlarging a small or low-resolution image with an ordinary resize just spreads the existing pixels over more area, leaving it soft and blocky. ConvertBrio's AI upscaler uses a trained super-resolution model to increase resolution roughly 4×, reconstructing plausible detail — edges, texture, fine structure — instead of stretching what's there.",
+      "Enlarging a small or low-resolution image with an ordinary resize just spreads the existing pixels over more area, leaving it soft and blocky. ConvertBrio's AI upscaler uses a trained super-resolution model to increase resolution roughly 4×, reconstructing plausible detail, edges, texture, fine structure, instead of stretching what's there.",
     ],
     howTo: [
       {
@@ -2720,7 +2720,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Upscaling vs resizing",
-        body: "The Resize Image tool changes pixel dimensions with standard interpolation — perfect for making an image smaller, but it can't add detail that isn't in the file, so enlarging looks blurry. AI upscaling is the opposite approach: the model has learned what real photo detail looks like and paints in a convincing high-resolution version. Use resize to shrink, use the upscaler to enlarge.",
+        body: "The Resize Image tool changes pixel dimensions with standard interpolation: perfect for making an image smaller, but it can't add detail that isn't in the file, so enlarging looks blurry. AI upscaling is the opposite approach: the model has learned what real photo detail looks like and paints in a convincing high-resolution version. Use resize to shrink, use the upscaler to enlarge.",
       },
       {
         heading: "When it helps most",
@@ -2734,11 +2734,11 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "What to expect",
-        body: "Results are strongest on natural photographs — people, places, objects. The model can struggle with dense text, sharp line art, screenshots, and heavily stylised graphics, sometimes inventing texture that wasn't there. Very high-resolution source images are downscaled before upscaling to keep processing reasonable, so feeding in an already-large photo won't gain much. It's a reconstruction, not a recovery of the true original detail.",
+        body: "Results are strongest on natural photographs: people, places, objects. The model can struggle with dense text, sharp line art, screenshots, and heavily stylised graphics, sometimes inventing texture that wasn't there. Very high-resolution source images are downscaled before upscaling to keep processing reasonable, so feeding in an already-large photo won't gain much. It's a reconstruction, not a recovery of the true original detail.",
       },
       {
         heading: "Privacy and limits",
-        body: "The model runs on ConvertBrio's own servers — no third-party AI service. Uploads are capped at 100 MB, and both the source and the upscaled result are deleted within 24 hours.",
+        body: "The model runs on ConvertBrio's own servers: no third-party AI service. Uploads are capped at 100 MB, and both the source and the upscaled result are deleted within 24 hours.",
       },
     ],
     relatedTools: [
@@ -2761,7 +2761,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Will it work on text or screenshots?",
         answer:
-          "It's tuned for photographs. Dense text, line art, and screenshots can come out with invented or smeared detail — a plain resize is often safer for those.",
+          "It's tuned for photographs. Dense text, line art, and screenshots can come out with invented or smeared detail: a plain resize is often safer for those.",
       },
       {
         question: "Is there a file size limit?",
@@ -2779,13 +2779,13 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "ai-object-remover": {
     title: "How to Remove an Unwanted Object From a Photo (Free Options)",
     intro: [
-      "A stray passerby in a holiday photo, a power line across a skyline, a bin in the corner of a listing shot — one distracting object can spoil an otherwise good picture. Erasing it cleanly means removing the object and rebuilding whatever was behind it so there's no visible patch.",
+      "A stray passerby in a holiday photo, a power line across a skyline, a bin in the corner of a listing shot: one distracting object can spoil an otherwise good picture. Erasing it cleanly means removing the object and rebuilding whatever was behind it so there's no visible patch.",
       "A one-click AI object remover with a brush tool is on ConvertBrio's roadmap and needs an inpainting model that isn't on the free tier yet. Until it's live, there are a few free ways to deal with an unwanted object depending on where it sits in the frame.",
     ],
     comingSoonGuide: {
       title: "Remove an object now",
       intro: [
-        "If the object is near an edge, the fastest fix is to crop it out of frame entirely — no reconstruction needed, and the result is genuinely clean.",
+        "If the object is near an edge, the fastest fix is to crop it out of frame entirely: no reconstruction needed, and the result is genuinely clean.",
         "If it's a distracting background rather than a specific object, and you only need the subject, the AI background remover cuts the subject out so you can place it on a new, clean background.",
       ],
       cta: { label: "Crop the object out of frame", href: "/tools/crop-image" },
@@ -2814,7 +2814,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     sections: [
       {
         heading: "Why removing a mid-frame object is hard",
-        body: "Cropping just discards pixels — easy and lossless. Removing an object from the middle of a photo means inventing what was behind it: the right continuation of a wall, a lawn, a sky, a crowd. Doing that convincingly needs a model trained to inpaint plausible detail that matches the surrounding texture, lighting, and perspective. Simple, uniform backgrounds (blank wall, clear sky) are easy; busy or structured scenes are where results get patchy.",
+        body: "Cropping just discards pixels: easy and lossless. Removing an object from the middle of a photo means inventing what was behind it: the right continuation of a wall, a lawn, a sky, a crowd. Doing that convincingly needs a model trained to inpaint plausible detail that matches the surrounding texture, lighting, and perspective. Simple, uniform backgrounds (blank wall, clear sky) are easy; busy or structured scenes are where results get patchy.",
       },
       {
         heading: "What ConvertBrio's tool will do",
@@ -2822,7 +2822,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "The tools that work today — Crop Image and Remove Background — process on ConvertBrio's own servers with no human review, and delete both the upload and the result within 24 hours.",
+        body: "The tools that work today, Crop Image and Remove Background, process on ConvertBrio's own servers with no human review, and delete both the upload and the result within 24 hours.",
       },
     ],
     relatedTools: [
@@ -2836,7 +2836,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can I remove an object from a photo free on ConvertBrio?",
         answer:
-          "If the object is near an edge, yes — the Crop Image tool removes it by cutting it out of frame. A brush-based AI object remover for mid-frame objects is in development and depends on an inpainting model not yet on the free tier.",
+          "If the object is near an edge, yes, the Crop Image tool removes it by cutting it out of frame. A brush-based AI object remover for mid-frame objects is in development and depends on an inpainting model not yet on the free tier.",
       },
       {
         question: "How do I remove a person from the background of a photo?",
@@ -2851,7 +2851,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Does cropping reduce my photo's quality?",
         answer:
-          "No — cropping keeps every remaining pixel exactly as it was. It only changes the framing and the overall dimensions.",
+          "No, cropping keeps every remaining pixel exactly as it was. It only changes the framing and the overall dimensions.",
       },
     ],
   },
@@ -2859,14 +2859,14 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "ai-photo-restoration": {
     title: "How to Restore an Old or Damaged Photo (Free Options)",
     intro: [
-      "Old family photos fade, yellow, pick up scratches and creases, and lose sharpness. Full restoration means repairing physical damage, correcting colour, and recovering detail — and the hardest part, repairing scratches and missing patches, needs a model trained specifically for it.",
+      "Old family photos fade, yellow, pick up scratches and creases, and lose sharpness. Full restoration means repairing physical damage, correcting colour, and recovering detail, and the hardest part, repairing scratches and missing patches, needs a model trained specifically for it.",
       "A one-click AI Photo Restoration tool is on ConvertBrio's roadmap and depends on a restoration model that isn't on the free tier yet. But several steps that make a real difference to an old scan are available now, for free.",
     ],
     comingSoonGuide: {
       title: "Improve an old photo now",
       intro: [
         "Scan or photograph the print as sharply as you can, then run it through AI Image Enhancer to rebalance faded contrast and colour, and AI Upscaler to bring back size and sharpness lost to age and low-resolution scanning.",
-        "This won't repair scratches or torn areas — that's what the dedicated restoration tool will add — but it noticeably revives most faded, soft, undamaged photos.",
+        "This won't repair scratches or torn areas, that's what the dedicated restoration tool will add, but it noticeably revives most faded, soft, undamaged photos.",
       ],
       cta: { label: "Start with AI Image Enhancer", href: "/tools/ai-image-enhancer" },
     },
@@ -2897,16 +2897,16 @@ export const toolContent: Record<string, ToolContentEntry> = {
         heading: "What each problem needs",
         body: "",
         list: [
-          "Fading and low contrast — fixed well today by AI Image Enhancer",
-          "Yellow or colour-shifted tone — improved by AI Image Enhancer's auto colour balance",
-          "Softness / small size — improved by AI Upscaler",
-          "Scratches, creases, torn corners, missing areas — needs the dedicated restoration model (in development) or manual retouching",
-          "Black-and-white photo you want colourised — needs a colourisation model (not yet on ConvertBrio)",
+          "Fading and low contrast: fixed well today by AI Image Enhancer",
+          "Yellow or colour-shifted tone: improved by AI Image Enhancer's auto colour balance",
+          "Softness / small size: improved by AI Upscaler",
+          "Scratches, creases, torn corners, missing areas: needs the dedicated restoration model (in development) or manual retouching",
+          "Black-and-white photo you want colourised: needs a colourisation model (not yet on ConvertBrio)",
         ],
       },
       {
         heading: "Why scratch repair is the hard part",
-        body: "Correcting colour and contrast is maths applied evenly across the image. Repairing a scratch means recognising that a white line isn't part of the photo, then reconstructing the face, fabric, or background it runs across — different content in every case. That's a trained inpainting task, which is exactly the capability ConvertBrio's AI Photo Restoration tool will add.",
+        body: "Correcting colour and contrast is maths applied evenly across the image. Repairing a scratch means recognising that a white line isn't part of the photo, then reconstructing the face, fabric, or background it runs across: different content in every case. That's a trained inpainting task, which is exactly the capability ConvertBrio's AI Photo Restoration tool will add.",
       },
       {
         heading: "Privacy",
@@ -2929,7 +2929,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Will this remove scratches and creases?",
         answer:
-          "Not yet — the current tools handle fading, colour, softness, and size. Physical damage repair needs the AI Photo Restoration model that's still being added.",
+          "Not yet, the current tools handle fading, colour, softness, and size. Physical damage repair needs the AI Photo Restoration model that's still being added.",
       },
       {
         question: "How should I scan an old print for the best result?",
@@ -2939,7 +2939,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Can it colourise a black-and-white photo?",
         answer:
-          "Not currently — colourisation needs a separate model that isn't on ConvertBrio yet. The enhancer and upscaler work on black-and-white photos to improve contrast and sharpness.",
+          "Not currently, colourisation needs a separate model that isn't on ConvertBrio yet. The enhancer and upscaler work on black-and-white photos to improve contrast and sharpness.",
       },
     ],
   },

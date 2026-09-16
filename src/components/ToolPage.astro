@@ -75,7 +75,7 @@ const howToSchema =
     ? {
         "@context": "https://schema.org",
         "@type": "HowTo",
-        name: `${t.howToHeading} — ${name} · ConvertBrio`,
+        name: `${t.howToHeading}: ${name} · ConvertBrio`,
         step: content.howTo.map((item, index) => ({
           "@type": "HowToStep",
           position: index + 1,
@@ -349,7 +349,7 @@ const softwareApplicationSchema = isComingSoon(tool)
           sections={content.sections}
           relatedTools={content.relatedTools}
         />
-        <FaqSection items={content.faq} heading={`${name} — ${t.faqSuffix}`} description={content.faqDescription} id={`faq-${tool.slug}`} />
+        <FaqSection items={content.faq} heading={`${name}: ${t.faqSuffix}`} description={content.faqDescription} id={`faq-${tool.slug}`} />
       </>
     )
   }
@@ -382,7 +382,7 @@ const softwareApplicationSchema = isComingSoon(tool)
           processing: d.i18nProcessing ?? "Processing…",
           chooseFirst: d.i18nChooseFirst ?? "Choose a file first.",
           error: d.i18nError ?? "Something went wrong. Try again.",
-          done: d.i18nDone ?? "Done — {file} downloaded. If it didn't start, use the button below.",
+          done: d.i18nDone ?? "Done: {file} downloaded. If it didn't start, use the button below.",
           download: d.i18nDownload ?? "Download {file}",
           filesSelected: d.i18nFilesSelected ?? "{n} files selected",
         };

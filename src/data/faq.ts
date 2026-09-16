@@ -14,7 +14,7 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Is ConvertBrio free to use?",
     answer:
-      "Yes. Every ConvertBrio tool — image conversion, PDF conversion, compression, document conversion, and more — is completely free to use, with no sign-up, no usage limits, and no paid plan. Files up to 100 MB per conversion are supported at no cost.",
+      "Yes. Every ConvertBrio tool, image conversion, PDF conversion, compression, document conversion, and more, is completely free to use, with no sign-up, no usage limits, and no paid plan. Files up to 100 MB per conversion are supported at no cost.",
     link: { href: "/all-tools", label: "Browse all ConvertBrio tools" },
   },
   {
@@ -25,13 +25,13 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Can I convert multiple images at once?",
     answer:
-      "Yes, on tools built for it. Image to PDF, Merge PDF, and Merge Documents accept several files in a single upload today, letting you combine multiple images or documents in one pass — free, no account required. Most single-format conversion tools currently process one file at a time.",
+      "Yes, on tools built for it. Image to PDF, Merge PDF, and Merge Documents accept several files in a single upload today, letting you combine multiple images or documents in one pass, free, no account required. Most single-format conversion tools currently process one file at a time.",
     link: { href: "/tools/jpg-to-pdf", label: "Combine images into a PDF" },
   },
   {
     question: "Are uploaded files secure?",
     answer:
-      "Every file you upload to ConvertBrio travels over an encrypted (HTTPS) connection and is stored encrypted at rest. Conversion is fully automated — no one manually opens or reviews your file as part of processing — and each conversion runs in its own isolated server process.",
+      "Every file you upload to ConvertBrio travels over an encrypted (HTTPS) connection and is stored encrypted at rest. Conversion is fully automated: no one manually opens or reviews your file as part of processing, and each conversion runs in its own isolated server process.",
   },
   {
     question: "When are uploaded files deleted?",
@@ -41,7 +41,7 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Which file formats does ConvertBrio support?",
     answer:
-      "ConvertBrio supports common image formats — JPG, PNG, WEBP, AVIF, HEIC, and GIF — along with PDF and Word (DOCX) documents. Supported operations include format conversion, compression, resizing, cropping, rotating, merging, splitting, and unlocking PDFs. Visit the tools page for the complete, up-to-date list of formats.",
+      "ConvertBrio supports common image formats: JPG, PNG, WEBP, AVIF, HEIC, and GIF, along with PDF and Word (DOCX) documents. Supported operations include format conversion, compression, resizing, cropping, rotating, merging, splitting, and unlocking PDFs. Visit the tools page for the complete, up-to-date list of formats.",
     link: { href: "/all-tools", label: "View all supported tools" },
   },
 ];

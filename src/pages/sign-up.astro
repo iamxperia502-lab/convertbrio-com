@@ -12,7 +12,7 @@ const supabaseConfigured = Astro.locals.supabase !== null;
 ---
 
 <Layout title="Sign Up" description="Create a free ConvertBrio account.">
-  <PageIntro eyebrow="Account" title="Create your account" description="Free to use — every tool, no paid plan required." />
+  <PageIntro eyebrow="Account" title="Create your account" description="Free to use: every tool, no paid plan required." />
 
   <section class="bg-canvas">
     <div class="container-page py-16 sm:py-20">
@@ -20,7 +20,7 @@ const supabaseConfigured = Astro.locals.supabase !== null;
         {
           !supabaseConfigured && (
             <p class="mb-6 rounded-lg border border-warning-soft bg-warning-soft px-4 py-3 text-sm text-warning">
-              Accounts aren't set up yet — this environment has no Supabase project configured.
+              Accounts aren't set up yet: this environment has no Supabase project configured.
             </p>
           )
         }
