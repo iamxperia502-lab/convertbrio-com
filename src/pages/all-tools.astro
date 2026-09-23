@@ -7,6 +7,7 @@ import Icon from "../components/Icon.astro";
 import { categories, toolsByCategory, isComingSoon, tools } from "../data/tools";
 import type { CategoryId } from "../data/tools";
 import { alternatesFor } from "../data/i18n";
+import { HUB_BY_CATEGORY } from "../data/hubs";
 
 // Coming-soon tools aren't live yet, so they're hidden from this listing
 // entirely rather than shown as unclickable placeholders — nothing to
@@ -68,7 +69,17 @@ const externalTools = tools.filter((tool) => tool.kind === "external");
                   <h2 id={`${cat.id}-heading`} class="text-xl font-semibold tracking-[-0.01em] text-ink">
                     {cat.name}
                   </h2>
-                  <p class="text-sm text-body">{cat.desc}</p>
+                  <p class="text-sm text-body">
+                    {cat.desc}
+                    {HUB_BY_CATEGORY[cat.id] && (
+                      <>
+                        {" "}
+                        <a href={HUB_BY_CATEGORY[cat.id]} class="text-brand-600 underline underline-offset-2 hover:text-brand-700">
+                          Category guide
+                        </a>
+                      </>
+                    )}
+                  </p>
                 </div>
               </div>
 

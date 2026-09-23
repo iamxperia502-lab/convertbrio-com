@@ -1,6 +1,7 @@
 ---
 title: "PNG vs WEBP vs AVIF: Which Image Format Should You Actually Use?"
-description: "A practical comparison of PNG, WEBP, and AVIF covering file size, quality, transparency, and browser support, so you can pick the right format for your use case."
+seoTitle: "PNG vs WEBP vs AVIF: Which Image Format to Use"
+description: "A practical comparison of PNG, WEBP, and AVIF: file size, quality, transparency, and browser support, so you can pick the right format."
 pubDate: 2026-07-18
 tags: ["images", "comparison", "web-performance"]
 relatedTools: ["jpg-to-png", "jpg-to-webp", "jpg-to-avif", "compress-image"]

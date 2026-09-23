@@ -1,0 +1,236 @@
+---
+// Visual page organizer for the PDF Page Organizer tool. Thumbnails are
+// rendered in the browser with pdf.js; only the chosen page order and
+// rotations travel to the server (as the hidden "pages" field).
+const btn =
+  "inline-flex h-9 min-w-9 items-center justify-center rounded-full border border-hairline-strong bg-canvas px-2 text-xs font-medium text-ink transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-40";
+---
+
+<div id="organizer" class="hidden flex-col gap-3" data-btn-class={btn}>
+  <p class="text-sm text-body">
+    Use the buttons under each page to move, rotate, or remove it. You can also drag pages to reorder them. Removed pages stay visible and can be restored until you convert.
+  </p>
+  <ol id="organizer-grid" class="grid grid-cols-2 gap-3 sm:grid-cols-3"></ol>
+  <input type="hidden" name="pages" id="organizer-pages" value="[]" />
+  <div id="organizer-confirm" role="alertdialog" aria-labelledby="organizer-confirm-text" class="hidden flex-col gap-3 rounded-xl border border-hairline-strong bg-canvas p-4">
+    <p id="organizer-confirm-text" class="text-sm font-medium text-ink"></p>
+    <div class="flex gap-3">
+      <button type="button" id="organizer-confirm-no" class={btn}>Go back</button>
+      <button type="button" id="organizer-confirm-yes" class="inline-flex h-9 items-center justify-center rounded-full bg-ink px-4 text-xs font-medium text-canvas transition-opacity hover:opacity-90">
+        Remove pages and create PDF
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  import * as pdfjsLib from "pdfjs-dist";
+  import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
+
+  pdfjsLib.GlobalWorkerOptions.workerSrc = workerUrl;
+
+  interface PageState {
+    index: number;
+    rot: number;
+    deleted: boolean;
+    thumb: HTMLCanvasElement | null;
+  }
+
+  const form = document.getElementById("tool-form") as HTMLFormElement | null;
+  const fileInput = document.getElementById("file-input") as HTMLInputElement | null;
+  const root = document.getElementById("organizer");
+  const grid = document.getElementById("organizer-grid");
+  const pagesField = document.getElementById("organizer-pages") as HTMLInputElement | null;
+  const confirmBox = document.getElementById("organizer-confirm");
+  const confirmText = document.getElementById("organizer-confirm-text");
+  const status = document.getElementById("tool-status");
+  const btnClass = root?.dataset.btnClass ?? "";
+
+  let pages: PageState[] = [];
+  let loadToken = 0;
+  let confirmed = false;
+  let dragFrom = -1;
+
+  const kept = () => pages.filter((p) => !p.deleted);
+
+  const sync = () => {
+    if (pagesField) pagesField.value = JSON.stringify(kept().map((p) => ({ i: p.index, r: p.rot })));
+    confirmed = false;
+    confirmBox?.classList.add("hidden");
+    confirmBox?.classList.remove("flex");
+  };
+
+  const button = (label: string, text: string, onClick: () => void, disabled = false) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = btnClass;
+    b.textContent = text;
+    b.setAttribute("aria-label", label);
+    b.disabled = disabled;
+    b.addEventListener("click", onClick);
+    return b;
+  };
+
+  const render = (focus?: { pos: number; action: string }) => {
+    if (!grid) return;
+    grid.textContent = "";
+    pages.forEach((page, pos) => {
+      const n = pos + 1;
+      const li = document.createElement("li");
+      li.draggable = true;
+      li.dataset.pos = String(pos);
+      li.className = `flex flex-col items-center gap-2 rounded-xl border border-hairline bg-canvas p-2 ${page.deleted ? "opacity-40" : ""}`;
+
+      const frame = document.createElement("div");
+      frame.className = "flex h-40 w-full items-center justify-center overflow-hidden";
+      if (page.thumb) {
+        const c = page.thumb;
+        c.style.transform = `rotate(${page.rot}deg)`;
+        c.style.maxWidth = page.rot % 180 ? "9.5rem" : "100%";
+        c.style.maxHeight = page.rot % 180 ? "9.5rem" : "100%";
+        c.className = "border border-hairline";
+        c.setAttribute("role", "img");
+        c.setAttribute("aria-label", `Preview of original page ${page.index + 1}`);
+        frame.appendChild(c);
+      } else {
+        frame.textContent = "…";
+      }
+      li.appendChild(frame);
+
+      const caption = document.createElement("span");
+      caption.className = "text-xs text-mute";
+      caption.textContent = `Page ${n}${page.index + 1 !== n ? ` (was ${page.index + 1})` : ""}${page.deleted ? ", removed" : ""}`;
+      li.appendChild(caption);
+
+      const row = document.createElement("div");
+      row.className = "flex flex-wrap justify-center gap-1";
+      const move = (from: number, to: number, action: string) => {
+        const [item] = pages.splice(from, 1);
+        pages.splice(to, 0, item);
+        sync();
+        render({ pos: to, action });
+      };
+      row.appendChild(button(`Move page ${n} earlier`, "←", () => move(pos, pos - 1, "earlier"), pos === 0));
+      row.appendChild(button(`Move page ${n} later`, "→", () => move(pos, pos + 1, "later"), pos === pages.length - 1));
+      row.appendChild(button(`Rotate page ${n} clockwise`, "↻", () => {
+        page.rot = (page.rot + 90) % 360;
+        sync();
+        render({ pos, action: "rotate" });
+      }));
+      row.appendChild(button(page.deleted ? `Restore page ${n}` : `Remove page ${n}`, page.deleted ? "Restore" : "✕", () => {
+        page.deleted = !page.deleted;
+        sync();
+        render({ pos, action: "delete" });
+      }));
+      row.querySelectorAll("button").forEach((b, i) => b.setAttribute("data-action", ["earlier", "later", "rotate", "delete"][i]));
+      li.appendChild(row);
+
+      li.addEventListener("dragstart", () => {
+        dragFrom = pos;
+      });
+      li.addEventListener("dragover", (e) => e.preventDefault());
+      li.addEventListener("drop", (e) => {
+        e.preventDefault();
+        if (dragFrom < 0 || dragFrom === pos) return;
+        move(dragFrom, pos, "earlier");
+        dragFrom = -1;
+      });
+      grid.appendChild(li);
+    });
+    if (focus) {
+      grid.querySelector<HTMLElement>(`li[data-pos="${focus.pos}"] button[data-action="${focus.action}"]:not(:disabled)`)?.focus();
+    }
+  };
+
+  const hide = () => {
+    loadToken++;
+    pages = [];
+    if (grid) grid.textContent = "";
+    if (pagesField) pagesField.value = "[]";
+    root?.classList.add("hidden");
+    root?.classList.remove("flex");
+  };
+
+  const load = async (file: File) => {
+    const token = ++loadToken;
+    root?.classList.remove("hidden");
+    root?.classList.add("flex");
+    if (grid) grid.textContent = "";
+    pages = [];
+    try {
+      const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
+      if (token !== loadToken) return;
+      pages = Array.from({ length: pdf.numPages }, (_, index) => ({ index, rot: 0, deleted: false, thumb: null }));
+      sync();
+      render();
+      for (let i = 0; i < pdf.numPages; i++) {
+        const page = await pdf.getPage(i + 1);
+        if (token !== loadToken) return;
+        const base = page.getViewport({ scale: 1 });
+        const viewport = page.getViewport({ scale: 220 / Math.max(base.width, base.height) });
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.ceil(viewport.width);
+        canvas.height = Math.ceil(viewport.height);
+        await page.render({ canvas, viewport }).promise;
+        const state = pages.find((p) => p.index === i);
+        if (state) state.thumb = canvas;
+        // Re-render progressively so thumbnails appear as they finish.
+        if (i % 4 === 3 || i === pdf.numPages - 1) render();
+      }
+    } catch (err) {
+      if (token !== loadToken) return;
+      hide();
+      const name = err instanceof Error ? err.name : "";
+      if (status) {
+        status.textContent =
+          name === "PasswordException"
+            ? "This PDF is password-protected. Remove the password first, then organize its pages."
+            : "We couldn't read this PDF. Check that it isn't corrupt and try again.";
+      }
+    }
+  };
+
+  fileInput?.addEventListener("change", () => {
+    const file = fileInput.files?.[0];
+    if (file && file.type === "application/pdf") load(file);
+    else hide();
+  });
+  document.getElementById("reset-btn")?.addEventListener("click", hide);
+  // Drops set input.files without firing "change".
+  document.getElementById("dropzone")?.addEventListener("drop", () =>
+    setTimeout(() => {
+      const file = fileInput?.files?.[0];
+      if (file && file.type === "application/pdf") load(file);
+    }, 0),
+  );
+
+  // Runs before the tool's own submit handler (this component precedes it in
+  // the page): blocks the submit until the visitor confirms page removal.
+  form?.addEventListener("submit", (event) => {
+    if (kept().length === 0 && pages.length > 0) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (status) status.textContent = "Keep at least one page.";
+      return;
+    }
+    const removed = pages.length - kept().length;
+    if (removed > 0 && !confirmed) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (confirmText) confirmText.textContent = `${removed} ${removed === 1 ? "page" : "pages"} will be removed from the new PDF. Your original file isn't changed.`;
+      confirmBox?.classList.remove("hidden");
+      confirmBox?.classList.add("flex");
+      document.getElementById("organizer-confirm-yes")?.focus();
+      return;
+    }
+    confirmed = false;
+  });
+  document.getElementById("organizer-confirm-yes")?.addEventListener("click", () => {
+    confirmed = true;
+    form?.requestSubmit();
+  });
+  document.getElementById("organizer-confirm-no")?.addEventListener("click", () => {
+    confirmBox?.classList.add("hidden");
+    confirmBox?.classList.remove("flex");
+  });
+</script>

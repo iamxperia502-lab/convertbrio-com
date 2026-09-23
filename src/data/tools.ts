@@ -11,7 +11,16 @@ export const categories: { id: CategoryId; name: string; icon: keyof typeof icon
   { id: "ai", name: "AI Tools", icon: "sparkle", desc: "Enhance and restore images with AI models." },
 ];
 
-export type ImageOperation = "convert" | "compress" | "resize" | "crop" | "rotate" | "remove-background" | "passport-photo";
+export type ImageOperation =
+  | "convert"
+  | "compress"
+  | "resize"
+  | "crop"
+  | "rotate"
+  | "remove-background"
+  | "passport-photo"
+  | "photo-resize"
+  | "batch-compress";
 export type PdfOperation =
   | "merge"
   | "split"
@@ -22,6 +31,8 @@ export type PdfOperation =
   | "jpg-to-pdf"
   | "image-to-pdf"
   | "compress"
+  | "compress-target"
+  | "organize"
   | "unlock"
   | "ocr";
 export type OfficeOperation =
@@ -68,11 +79,22 @@ export interface OfficeTool extends ToolBase {
   operation: OfficeOperation;
 }
 
+export type OcrOperation = "image-to-text" | "scan-to-word";
+
 export type AiOperation = "upscale" | "enhance";
 
 export interface AiTool extends ToolBase {
   kind: "ai";
   operation: AiOperation;
+}
+
+export interface OcrTool extends ToolBase {
+  kind: "ocr";
+  operation: OcrOperation;
+}
+
+export interface MetadataTool extends ToolBase {
+  kind: "metadata";
 }
 
 export interface ComingSoonTool extends ToolBase {
@@ -91,12 +113,14 @@ export interface ExternalTool extends ToolBase {
   externalUrl: string;
 }
 
-export type Tool = ImageTool | PdfTool | OfficeTool | AiTool | ComingSoonTool | ExternalTool;
+export type Tool = ImageTool | PdfTool | OfficeTool | AiTool | OcrTool | MetadataTool | ComingSoonTool | ExternalTool;
 
 const IMAGE_ACCEPT = "image/jpeg,image/png,image/webp,image/heic,image/heif,image/avif,image/gif";
 const PDF_ACCEPT = "application/pdf";
 const OFFICE_ACCEPT = ".doc,.docx,.xls,.xlsx,.ppt,.pptx,application/pdf";
 const DOCX_ACCEPT = ".docx";
+const SCAN_ACCEPT = `${IMAGE_ACCEPT},${PDF_ACCEPT}`;
+const METADATA_ACCEPT = "image/jpeg,image/png,image/webp,image/avif,image/tiff,application/pdf,.docx,.xlsx,.pptx";
 
 export const tools: Tool[] = [
   {
@@ -135,6 +159,8 @@ export const tools: Tool[] = [
     outputFormat: "png",
     icon: "image",
     description: "Convert JPG images to PNG.",
+    seoDescription:
+      "Convert JPG images to PNG to get a lossless file that supports transparency for editing. Free, no signup, no watermark.",
     accept: "image/jpeg",
   },
   {
@@ -146,6 +172,8 @@ export const tools: Tool[] = [
     outputFormat: "webp",
     icon: "image",
     description: "Convert JPG images to WEBP.",
+    seoDescription:
+      "Convert JPG images to WEBP for faster-loading web pages and smaller files. Free, no signup, no watermark on the result.",
     accept: "image/jpeg",
   },
   {
@@ -157,6 +185,8 @@ export const tools: Tool[] = [
     outputFormat: "avif",
     icon: "image",
     description: "Convert JPG images to AVIF.",
+    seoDescription:
+      "Convert JPG photos to AVIF for much smaller files on the web with similar visual quality. Free, no signup, no watermark.",
     accept: "image/jpeg",
   },
   {
@@ -168,6 +198,8 @@ export const tools: Tool[] = [
     outputFormat: "jpeg",
     icon: "image",
     description: "Convert PNG images to JPG.",
+    seoDescription:
+      "Convert PNG images to JPG for smaller files that upload and email easily. Free, no signup, no watermark on the result.",
     accept: "image/png",
   },
   {
@@ -179,6 +211,8 @@ export const tools: Tool[] = [
     outputFormat: "webp",
     icon: "image",
     description: "Convert PNG images to WEBP.",
+    seoDescription:
+      "Convert PNG images to WEBP to shrink file size and keep transparency for the web. Free, no signup, no watermark.",
     accept: "image/png",
   },
   {
@@ -190,6 +224,8 @@ export const tools: Tool[] = [
     outputFormat: "avif",
     icon: "image",
     description: "Convert PNG images to AVIF.",
+    seoDescription:
+      "Convert PNG images to AVIF for far smaller files on the web while keeping transparency. Free, no signup, no watermark.",
     accept: "image/png",
   },
   {
@@ -201,6 +237,8 @@ export const tools: Tool[] = [
     outputFormat: "jpeg",
     icon: "image",
     description: "Convert WEBP images to JPG.",
+    seoDescription:
+      "Convert WEBP images to JPG so they open in any photo viewer, editor, or document. Free, no signup, no watermark.",
     accept: "image/webp",
   },
   {
@@ -212,6 +250,8 @@ export const tools: Tool[] = [
     outputFormat: "png",
     icon: "image",
     description: "Convert WEBP images to PNG.",
+    seoDescription:
+      "Convert WEBP images to lossless PNG for editing and compatibility, keeping transparency. Free, no signup, no watermark.",
     accept: "image/webp",
   },
   {
@@ -223,6 +263,8 @@ export const tools: Tool[] = [
     outputFormat: "avif",
     icon: "image",
     description: "Convert WEBP images to AVIF.",
+    seoDescription:
+      "Convert WEBP images to AVIF for even smaller files with similar visual quality. Free, no signup, no watermark.",
     accept: "image/webp",
   },
   {
@@ -234,6 +276,8 @@ export const tools: Tool[] = [
     outputFormat: "jpeg",
     icon: "image",
     description: "Convert AVIF images to JPG.",
+    seoDescription:
+      "Convert AVIF images to JPG so they open in any photo viewer, editor, or email client. Free, no signup, and no watermark on the result.",
     accept: "image/avif",
   },
   {
@@ -245,6 +289,8 @@ export const tools: Tool[] = [
     outputFormat: "png",
     icon: "image",
     description: "Convert AVIF images to PNG.",
+    seoDescription:
+      "Convert AVIF images to lossless PNG for apps that can't read AVIF, keeping every pixel and any transparency. Free, no signup.",
     accept: "image/avif",
   },
   {
@@ -256,6 +302,8 @@ export const tools: Tool[] = [
     outputFormat: "webp",
     icon: "image",
     description: "Convert AVIF images to WEBP.",
+    seoDescription:
+      "Convert AVIF images to WEBP for wider browser and app support at a similar small file size. Free, no signup, no watermark.",
     accept: "image/avif",
   },
   {
@@ -268,7 +316,7 @@ export const tools: Tool[] = [
     description: "Shrink image file size while keeping quality intact.",
     seoTitle: "Compress Image to an Exact File Size (KB) | ConvertBrio",
     seoDescription:
-      "Compress a JPG, PNG, WEBP, HEIC, or AVIF to an exact KB target, like 100 KB for a visa, job portal, or government form, or use the quality slider. Free, no signup, unlimited use.",
+      "Compress a JPG, PNG, WEBP, HEIC, or AVIF to an exact KB target, like 100 KB for a visa or government form, or use a quality slider. Free, no signup.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -281,7 +329,7 @@ export const tools: Tool[] = [
     description: "Resize an image to exact pixel dimensions.",
     seoTitle: "Resize Image to Exact Pixel Dimensions Free Online | ConvertBrio",
     seoDescription:
-      "Resize a JPG, PNG, WEBP, or HEIC image to exact width and height in pixels: for Instagram, a profile photo, a form, or a smaller file. Free, no signup, no watermark.",
+      "Resize a JPG, PNG, WEBP, or HEIC image to exact width and height in pixels for Instagram, a profile photo, or a form. Free, no signup, no watermark.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -292,6 +340,8 @@ export const tools: Tool[] = [
     operation: "crop",
     icon: "image",
     description: "Crop an image to a specific region.",
+    seoDescription:
+      "Crop an image to an exact region by entering the left, top, width, and height in pixels. Free, no signup, no watermark.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -302,6 +352,8 @@ export const tools: Tool[] = [
     operation: "rotate",
     icon: "image",
     description: "Rotate an image by 90, 180, or 270 degrees.",
+    seoDescription:
+      "Rotate an image by 90, 180, or 270 degrees and download it in its original format. Free, no signup, no watermark.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -341,7 +393,7 @@ export const tools: Tool[] = [
     description: "Reduce PDF file size (best-effort: image re-encoding and metadata cleanup).",
     seoTitle: "Compress PDF Online Free: Reduce PDF File Size | ConvertBrio",
     seoDescription:
-      "Compress a PDF online for free to reduce its file size for email or upload. Re-encodes embedded images and strips metadata, keeping text sharp. No signup, no watermark.",
+      "Compress a PDF online for free to shrink it for email or upload. Re-encodes embedded images and strips metadata, keeping text sharp. No signup or watermark.",
     accept: PDF_ACCEPT,
   },
   {
@@ -352,6 +404,8 @@ export const tools: Tool[] = [
     operation: "rotate",
     icon: "pdf",
     description: "Rotate every page of a PDF by 90, 180, or 270 degrees.",
+    seoDescription:
+      "Rotate every page of a PDF by 90, 180, or 270 degrees to fix a sideways scan. Free, no signup, and files are deleted automatically.",
     accept: PDF_ACCEPT,
   },
   {
@@ -362,6 +416,8 @@ export const tools: Tool[] = [
     operation: "unlock",
     icon: "lock",
     description: "Remove owner-password restrictions from a PDF you have the right to edit.",
+    seoDescription:
+      "Remove owner-password restrictions such as no printing or copying from a PDF you have the right to edit. Free, no signup.",
     accept: PDF_ACCEPT,
   },
   {
@@ -372,6 +428,8 @@ export const tools: Tool[] = [
     operation: "add-page-numbers",
     icon: "pdf",
     description: "Stamp sequential page numbers onto every page of a PDF.",
+    seoDescription:
+      "Add sequential page numbers to every page of a PDF, centered at the bottom. Free, no signup, no watermark; files are deleted automatically.",
     accept: PDF_ACCEPT,
   },
   {
@@ -395,6 +453,8 @@ export const tools: Tool[] = [
     operation: "pdf-to-png",
     icon: "pdf",
     description: "Export every PDF page as a PNG image.",
+    seoDescription:
+      "Export every page of a PDF as a sharp PNG image, or a ZIP of images for multi-page files. Free, no signup, no watermark.",
     accept: PDF_ACCEPT,
   },
   {
@@ -419,6 +479,8 @@ export const tools: Tool[] = [
     operation: "image-to-pdf",
     icon: "image",
     description: "Combine JPG, PNG, WEBP, HEIC, AVIF, or GIF images into a single PDF.",
+    seoDescription:
+      "Combine JPG, PNG, WEBP, HEIC, AVIF, or GIF images into a single PDF, one image per page, in the order you choose. Free, no signup.",
     accept: IMAGE_ACCEPT,
     multiple: true,
   },
@@ -458,7 +520,7 @@ export const tools: Tool[] = [
     description: "Convert a PDF into an editable Word document, preserving paragraphs, bold/italic, headings, simple tables, and images (complex multi-column layouts may not match exactly).",
     seoTitle: "Convert PDF to Word (Editable DOCX) Free | ConvertBrio",
     seoDescription:
-      "Turn a PDF into an editable Word document: paragraphs, headings, bold/italic, simple tables, and images preserved. Free, no signup, complex multi-column layouts may not match exactly.",
+      "Turn a PDF into an editable Word document with paragraphs, headings, bold and italic, simple tables, and images. Free, no signup; complex layouts may differ.",
     accept: PDF_ACCEPT,
   },
   {
@@ -469,6 +531,8 @@ export const tools: Tool[] = [
     operation: "word-to-jpg",
     icon: "word",
     description: "Export a Word (.docx) document's pages as JPG images.",
+    seoDescription:
+      "Export each page of a Word (.docx) document as a JPG image, one image per page. Free, no signup, files deleted automatically.",
     accept: DOCX_ACCEPT,
   },
   {
@@ -479,6 +543,8 @@ export const tools: Tool[] = [
     operation: "word-to-png",
     icon: "word",
     description: "Export a Word (.docx) document's pages as PNG images.",
+    seoDescription:
+      "Export each page of a Word (.docx) document as a PNG image, one image per page. Free, no signup, files deleted automatically.",
     accept: DOCX_ACCEPT,
   },
   {
@@ -489,6 +555,8 @@ export const tools: Tool[] = [
     operation: "excel-to-pdf",
     icon: "word",
     description: "Convert Excel spreadsheets to PDF.",
+    seoDescription:
+      "Convert an Excel spreadsheet to a print-ready PDF that keeps your sheets and formatting. Free, no signup, and files are deleted automatically.",
     accept: ".xls,.xlsx",
   },
   {
@@ -527,7 +595,7 @@ export const tools: Tool[] = [
     description: "Reduce a Word document's file size by re-encoding its embedded images.",
     seoTitle: "Compress Word Document Online Free: Reduce DOCX Size | ConvertBrio",
     seoDescription:
-      "Compress a Word (.docx) document online, free. Re-encodes the embedded images to shrink the file for email, keeping text and formatting untouched. No signup, no watermark.",
+      "Compress a Word (.docx) document online, free. Re-encodes embedded images to shrink the file for email, keeping text and formatting. No signup or watermark.",
     accept: ".docx",
   },
   {
@@ -540,7 +608,7 @@ export const tools: Tool[] = [
     description: "Reduce a PowerPoint presentation's file size by re-encoding its embedded images.",
     seoTitle: "Compress PowerPoint Online Free: Reduce PPTX Size | ConvertBrio",
     seoDescription:
-      "Compress a PowerPoint (.pptx) online, free. Re-encodes the embedded images to shrink the file for email, keeping the editable slides intact. No signup, no watermark.",
+      "Compress a PowerPoint (.pptx) online, free. Re-encodes embedded images to shrink the file for email while keeping slides editable. No signup or watermark.",
     accept: ".pptx",
   },
   {
@@ -551,6 +619,8 @@ export const tools: Tool[] = [
     operation: "merge-documents",
     icon: "merge",
     description: "Combine Word, Excel, and PowerPoint files into one PDF.",
+    seoDescription:
+      "Combine Word, Excel, and PowerPoint files into one PDF in a single step, in the order you upload them. Free, no signup.",
     accept: OFFICE_ACCEPT,
     multiple: true,
   },
@@ -587,6 +657,8 @@ export const tools: Tool[] = [
     operation: "enhance",
     icon: "sparkle",
     description: "Automatically balance color and sharpen a photo in one click.",
+    seoDescription:
+      "Balance color and sharpen a dull photo automatically with AI, in one click. Free, no signup, and no watermark on the result.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -611,7 +683,7 @@ export const tools: Tool[] = [
     description: "How to remove an unwanted object from a photo: free options that work today.",
     seoTitle: "Remove an Unwanted Object From a Photo: Free Options | ConvertBrio",
     seoDescription:
-      "Free ways to remove an object from a photo: crop it out of frame, or cut out the subject with the AI background remover. A one-click brush tool is in development.",
+      "Free ways to remove an object from a photo: crop it out of frame, or cut out the subject with the AI background remover. A brush tool is in development.",
     accept: IMAGE_ACCEPT,
     comingSoonReason: "Needs a mask-drawing tool plus an inpainting model that isn't on the free tier: coming once that's in place.",
   },
@@ -627,6 +699,98 @@ export const tools: Tool[] = [
       "Free ways to revive an old photo now: rebalance fading with AI Image Enhancer and recover sharpness with AI Upscaler. Scratch repair is in development.",
     accept: IMAGE_ACCEPT,
     comingSoonReason: "Scratch and damage repair needs a diffusion model that isn't available on the free tier yet.",
+  },
+  {
+    slug: "compress-pdf-to-size",
+    name: "Compress PDF to Exact Size",
+    categories: ["compress", "pdf"],
+    kind: "pdf",
+    operation: "compress-target",
+    icon: "shrink",
+    description: "Shrink a PDF to fit under a maximum size in KB or MB, with the achieved size shown.",
+    seoTitle: "Compress PDF to a Specific Size (KB or MB) | ConvertBrio",
+    seoDescription:
+      "Set a maximum size in KB or MB and ConvertBrio compresses your PDF step by step until it fits, then shows the size reached. Free, no signup.",
+    accept: PDF_ACCEPT,
+  },
+  {
+    slug: "photo-signature-resizer",
+    name: "Photo & Signature Resizer",
+    categories: ["image"],
+    kind: "image",
+    operation: "photo-resize",
+    outputFormat: "jpeg",
+    icon: "scale",
+    description: "Resize a photo or signature to exact pixel dimensions and a maximum file size for forms and portals.",
+    seoTitle: "Photo & Signature Resizer: Exact Pixels and KB Limit | ConvertBrio",
+    seoDescription:
+      "Resize a photo or signature to the exact pixels and maximum KB an application form asks for. Crop or pad to the right shape. Free, no signup, no watermark.",
+    accept: IMAGE_ACCEPT,
+  },
+  {
+    slug: "batch-image-compressor",
+    name: "Batch Image Compressor",
+    categories: ["compress", "image"],
+    kind: "image",
+    operation: "batch-compress",
+    icon: "shrink",
+    description: "Compress many images to the same target size at once, with a ZIP and individual downloads.",
+    seoTitle: "Batch Compress Images to a Target Size in KB | ConvertBrio",
+    seoDescription:
+      "Compress many photos to one target size in KB at once. Each file is processed on its own, with per-file results, single downloads, and a ZIP.",
+    accept: IMAGE_ACCEPT,
+    multiple: true,
+  },
+  {
+    slug: "image-to-text",
+    name: "Image to Text",
+    categories: ["document"],
+    kind: "ocr",
+    operation: "image-to-text",
+    icon: "ocr",
+    description: "Extract selectable text from a photo or screenshot with OCR.",
+    seoTitle: "Image to Text Converter (OCR): Copy Text From a Photo | ConvertBrio",
+    seoDescription:
+      "Extract text from a JPG, PNG, or screenshot with OCR. Copy the text or download a .txt file. Free, no signup, with notes on handwriting and low-res scans.",
+    accept: IMAGE_ACCEPT,
+  },
+  {
+    slug: "scan-to-word",
+    name: "Scan to Word",
+    categories: ["document"],
+    kind: "ocr",
+    operation: "scan-to-word",
+    icon: "word",
+    description: "Turn a scanned page or PDF into an editable Word (DOCX) document with OCR.",
+    seoTitle: "Scan to Word: Convert a Scanned Page to Editable DOCX | ConvertBrio",
+    seoDescription:
+      "Convert a scanned document, photo of a page, or scanned PDF into an editable Word file with OCR. Free, no signup. Best on clean scans of printed text.",
+    accept: SCAN_ACCEPT,
+  },
+  {
+    slug: "pdf-page-organizer",
+    name: "PDF Page Organizer",
+    categories: ["pdf"],
+    kind: "pdf",
+    operation: "organize",
+    icon: "merge",
+    description: "See every page as a thumbnail, then reorder, rotate, or delete pages.",
+    seoTitle: "Reorder, Rotate & Delete PDF Pages Visually | ConvertBrio",
+    seoDescription:
+      "Preview each PDF page as a thumbnail, then move, rotate, or delete pages and save the result. Works with buttons as well as drag and drop. Free, no signup.",
+    accept: PDF_ACCEPT,
+  },
+  {
+    slug: "metadata-remover",
+    name: "Metadata Remover",
+    categories: ["image", "pdf", "document"],
+    kind: "metadata",
+    icon: "lock",
+    description: "Strip hidden metadata such as GPS location, camera details, and author names from images, PDFs, and Office files.",
+    seoTitle: "Remove Metadata from Photos, PDFs & Office Files | ConvertBrio",
+    seoDescription:
+      "Remove EXIF location, camera data, and author names from JPG, PNG, PDF, DOCX, XLSX, and PPTX files without changing the format. Free, no signup.",
+    accept: METADATA_ACCEPT,
   },
   {
     slug: "internet-speed-test",

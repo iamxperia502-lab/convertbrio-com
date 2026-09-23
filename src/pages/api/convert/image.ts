@@ -8,6 +8,7 @@ import { detectFaces } from "../../../lib/face-detection";
 import { computeCropBox, PASSPORT_PHOTO_PX, PASSPORT_PHOTO_DPI } from "../../../lib/passport-photo";
 import { looksLikeHeic, decodeHeicFallback, sharpFromHeicFallback } from "../../../lib/heic-fallback";
 import { resolveConversionForm } from "../../../lib/blob-input";
+import JSZip from "jszip";
 
 // Face detection runs on a downscaled copy for speed; detected coordinates
 // are then scaled back up to the full-resolution image for the actual crop,
@@ -91,6 +92,45 @@ async function findCompressSettings(
   return { quality: MIN_COMPRESS_QUALITY, width };
 }
 
+// Opens any supported upload as an upright sharp pipeline, falling back to the
+// HEIC decoder where libvips can't read the file (see lib/heic-fallback.ts).
+async function openUprightImage(inputBuffer: Buffer): Promise<{ image: Sharp; format: string }> {
+  try {
+    const image = sharp(inputBuffer, { failOn: "none" }).rotate();
+    const metadata = await sharp(inputBuffer).metadata();
+    await image.clone().resize(8, 8).raw().toBuffer();
+    return { image, format: metadata.format ?? "jpeg" };
+  } catch (err) {
+    if (!looksLikeHeic(inputBuffer)) throw err;
+    return { image: sharpFromHeicFallback(await decodeHeicFallback(inputBuffer)), format: "heif" };
+  }
+}
+
+function formatKb(bytes: number): string {
+  return `${(bytes / 1024).toFixed(1)} KB`;
+}
+
+// Highest JPEG quality that keeps the file at or under maxBytes while leaving
+// the pixel dimensions untouched (a form that demands 200x230 px must get
+// exactly that). Returns the smallest attempt when nothing fits.
+async function encodeJpegUnder(base: Sharp, maxBytes: number): Promise<{ buffer: Buffer; met: boolean }> {
+  let low = MIN_COMPRESS_QUALITY;
+  let high = MAX_COMPRESS_QUALITY;
+  let best: Buffer | null = null;
+  while (low <= high) {
+    const quality = Math.floor((low + high) / 2);
+    const buffer = await base.clone().jpeg({ quality, mozjpeg: true }).toBuffer();
+    if (buffer.length <= maxBytes) {
+      best = buffer;
+      low = quality + 1;
+    } else {
+      high = quality - 1;
+    }
+  }
+  if (best) return { buffer: best, met: true };
+  return { buffer: await base.clone().jpeg({ quality: MIN_COMPRESS_QUALITY, mozjpeg: true }).toBuffer(), met: false };
+}
+
 export const POST: APIRoute = async ({ request, locals }) => {
   let form: FormData;
   try {
@@ -115,6 +155,113 @@ export const POST: APIRoute = async ({ request, locals }) => {
   }
 
   const jobId = await recordConversionAttempt(slug, locals.user?.id ?? null);
+
+  if (tool.operation === "photo-resize") {
+    try {
+      const width = Math.round(Number(form.get("width")));
+      const height = Math.round(Number(form.get("height")));
+      const maxKb = form.get("maxKb") ? Number(form.get("maxKb")) : 0;
+      if (!Number.isFinite(width) || !Number.isFinite(height) || width < 10 || height < 10 || width > 8000 || height > 8000) {
+        throw new Error("Enter a width and height between 10 and 8000 pixels.");
+      }
+      if (!Number.isFinite(maxKb) || maxKb < 0) throw new Error("Enter a valid maximum size in KB, or leave it blank.");
+      const fit = String(form.get("fit") ?? "crop") === "pad" ? "pad" : "crop";
+
+      const { image } = await openUprightImage(Buffer.from(await file.arrayBuffer()));
+      const resized = image.resize(
+        fit === "pad"
+          ? { width, height, fit: "contain", background: "#ffffff" }
+          : { width, height, fit: "cover", position: "attention" },
+      ).flatten({ background: "#ffffff" });
+
+      let outputBuffer: Buffer;
+      let met = true;
+      if (maxKb > 0) {
+        ({ buffer: outputBuffer, met } = await encodeJpegUnder(resized, Math.round(maxKb * 1024)));
+      } else {
+        outputBuffer = await resized.jpeg({ quality: 90, mozjpeg: true }).toBuffer();
+      }
+
+      const filename = `${baseName(file.name)}-${width}x${height}.jpg`;
+      await finalizeConversionJob(jobId, outputBuffer, "image/jpeg");
+      const note = met
+        ? `Resized to exactly ${width} × ${height} px, ${formatKb(outputBuffer.length)}${maxKb > 0 ? `, within your ${maxKb} KB limit` : ""}.`
+        : `Resized to ${width} × ${height} px, but the smallest file we could make at this size is ${formatKb(outputBuffer.length)}, above your ${maxKb} KB limit. Try smaller dimensions or a higher limit.`;
+      return new Response(new Uint8Array(outputBuffer), {
+        status: 200,
+        headers: {
+          "Content-Type": "image/jpeg",
+          "Content-Disposition": contentDisposition(filename),
+          "X-Target-Met": String(met),
+          "X-Achieved-Bytes": String(outputBuffer.length),
+          "X-Result-Note": encodeURIComponent(note),
+        },
+      });
+    } catch (err) {
+      await failConversionJob(jobId);
+      const message = err instanceof Error ? err.message : "Couldn't resize this image.";
+      return new Response(JSON.stringify({ error: message }), { status: 422 });
+    }
+  }
+
+  if (tool.operation === "batch-compress") {
+    try {
+      const files = form.getAll("file").filter((f): f is File => f instanceof File);
+      if (files.length > 50) throw new Error("Provide at most 50 images per batch.");
+      if (files.reduce((n, f) => n + f.size, 0) > MAX_BYTES) throw new Error("Files exceed the 100 MB limit.");
+      const targetKb = Number(form.get("targetKb") ?? 0);
+      if (!Number.isFinite(targetKb) || targetKb < 5) throw new Error("Enter a target size of at least 5 KB.");
+      const targetBytes = Math.round(targetKb * 1024);
+
+      const zip = new JSZip();
+      const report: { input: string; output?: string; ok: boolean; bytes?: number; targetMet?: boolean; error?: string }[] = [];
+      const usedNames = new Set<string>();
+
+      // Each file is independent: one bad file never stops the others.
+      for (const item of files) {
+        try {
+          const { image, format } = await openUprightImage(Buffer.from(await item.arrayBuffer()));
+          const outFormat: WritableFormat = isWritableFormat(format) ? (format as WritableFormat) : "jpeg";
+          const { quality, width } = await findCompressSettings(image, outFormat, targetBytes);
+          let pipeline = image;
+          if (width) pipeline = pipeline.resize({ width, withoutEnlargement: true });
+          const options = outFormat === "png" ? { quality, palette: true } : { quality };
+          const out = await pipeline.toFormat(outFormat, options).toBuffer();
+
+          const ext = outFormat === "jpeg" ? "jpg" : outFormat;
+          let name = `${baseName(item.name)}-compressed.${ext}`;
+          for (let n = 2; usedNames.has(name); n++) name = `${baseName(item.name)}-compressed-${n}.${ext}`;
+          usedNames.add(name);
+          zip.file(name, out);
+          report.push({ input: item.name, output: name, ok: true, bytes: out.length, targetMet: out.length <= targetBytes });
+        } catch (err) {
+          report.push({ input: item.name, ok: false, error: err instanceof Error ? err.message : "Could not process this file." });
+        }
+      }
+
+      const succeeded = report.filter((r) => r.ok);
+      if (succeeded.length === 0) throw new Error("None of the files could be compressed. Check that they are valid images.");
+      zip.file("report.json", JSON.stringify(report, null, 2));
+      const outputBuffer = await zip.generateAsync({ type: "nodebuffer" });
+
+      await finalizeConversionJob(jobId, outputBuffer, "application/zip");
+      const met = succeeded.filter((r) => r.targetMet).length;
+      const failed = report.length - succeeded.length;
+      const note = `${met} of ${report.length} files fit under ${targetKb} KB.${succeeded.length - met ? ` ${succeeded.length - met} could not be brought under the target without extreme quality loss.` : ""}${failed ? ` ${failed} could not be processed.` : ""}`;
+      return new Response(new Uint8Array(outputBuffer), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/zip",
+          "Content-Disposition": contentDisposition("compressed-images.zip"),
+          "X-Result-Note": encodeURIComponent(note),
+        },
+      });
+    } catch (err) {
+      await failConversionJob(jobId);
+      const message = err instanceof Error ? err.message : "Batch compression failed.";
+      return new Response(JSON.stringify({ error: message }), { status: 422 });
+    }
+  }
 
   if (tool.operation === "remove-background") {
     try {

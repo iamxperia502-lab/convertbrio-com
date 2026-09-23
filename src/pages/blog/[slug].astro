@@ -4,6 +4,7 @@ import CtaSection from "../../components/CtaSection.astro";
 import Icon from "../../components/Icon.astro";
 import { getCollection, render } from "astro:content";
 import { getTool } from "../../data/tools";
+import { hubForTool } from "../../data/hubs";
 
 export const prerender = true;
 
@@ -51,9 +52,10 @@ const articleSchema = {
 };
 
 const relatedTools = post.data.relatedTools.map((slug) => getTool(slug)).filter((tool) => tool !== undefined);
+const hub = relatedTools[0] ? hubForTool(relatedTools[0]) : undefined;
 ---
 
-<Layout title={post.data.title} description={post.data.description} canonical={`/blog/${post.id}`}>
+<Layout title={post.data.title} seoTitle={post.data.seoTitle} description={post.data.description} canonical={`/blog/${post.id}`}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} is:inline />
@@ -103,6 +105,14 @@ const relatedTools = post.data.relatedTools.map((slug) => getTool(slug)).filter(
                   </li>
                 ))}
               </ul>
+              {hub && (
+                <p class="mt-4 text-sm text-body">
+                  Browse all{" "}
+                  <a href={hub.path} class="text-brand-600 underline underline-offset-2 hover:text-brand-700">
+                    {hub.name.toLowerCase()}
+                  </a>
+                </p>
+              )}
             </div>
           )
         }

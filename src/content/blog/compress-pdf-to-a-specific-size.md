@@ -3,7 +3,7 @@ title: "How to Compress a PDF to a Specific Size (100 KB, 500 KB, 2 MB)"
 description: "Portals and forms often cap a PDF at an exact size. Here's how to get a document under 100 KB, 500 KB, 1 MB, or 2 MB without deleting pages you need."
 pubDate: 2026-09-05
 tags: ["pdf", "compression", "how-to"]
-relatedTools: ["compress-pdf", "split-pdf", "compress-image"]
+relatedTools: ["compress-pdf-to-size", "compress-pdf", "split-pdf", "compress-image"]
 draft: false
 ---
 
@@ -30,7 +30,7 @@ Open the PDF and try to highlight a sentence with your cursor. If the text selec
 A 100 KB cap on a multi-page scan is aggressive. Combine these:
 
 - **Reduce the page count.** If the form only needs pages 2 and 5, don't upload all ten. [Split the PDF](/tools/split-pdf) and keep just what's required: fewer pages is the biggest lever there is.
-- **Compress the images before rebuilding.** If one or two enormous photos are the problem, pull them out, run each through [Compress Image](/tools/compress-image) with an exact KB target, and reassemble. Compress Image lets you name a size and hits it; the PDF compressor applies one efficient pass rather than targeting a number.
+- **Compress the images before rebuilding.** If one or two enormous photos are the problem, pull them out, run each through [Compress Image](/tools/compress-image) with an exact KB target, and reassemble. Compress Image lets you name a size and hits it; the standard PDF compressor applies one efficient pass rather than targeting a number. For a PDF you can also use [Compress PDF to Exact Size](/tools/compress-pdf-to-size), which works toward the limit you enter and tells you the size it reached.
 - **Scan smarter next time.** If you control the scan, scan in greyscale (not colour) at 200 DPI rather than 600. A greyscale 200 DPI scan of a text document is a fraction of the size and still perfectly legible.
 
 ## Common size limits and what usually clears them

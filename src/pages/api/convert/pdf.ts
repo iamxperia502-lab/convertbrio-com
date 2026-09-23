@@ -134,7 +134,13 @@ function singleFilterName(filter: unknown): string | null {
 // stencil /Mask are skipped since they need color-managed handling this
 // tool doesn't attempt - those objects are left untouched rather than risk
 // producing a corrupted-looking PDF.
-async function compressEmbeddedImages(doc: PDFDocument): Promise<void> {
+interface ImageCompressOptions {
+  maxDimension: number;
+  quality: number;
+}
+const DEFAULT_IMAGE_OPTIONS: ImageCompressOptions = { maxDimension: IMAGE_MAX_DIMENSION, quality: IMAGE_JPEG_QUALITY };
+
+async function compressEmbeddedImages(doc: PDFDocument, options: ImageCompressOptions = DEFAULT_IMAGE_OPTIONS): Promise<void> {
   const context = doc.context;
 
   for (const [ref, obj] of context.enumerateIndirectObjects()) {
@@ -171,16 +177,16 @@ async function compressEmbeddedImages(doc: PDFDocument): Promise<void> {
 
       const longestSide = Math.max(meta.width, meta.height);
       let pipeline = input;
-      if (longestSide > IMAGE_MAX_DIMENSION) {
+      if (longestSide > options.maxDimension) {
         pipeline = pipeline.resize({
-          width: meta.width >= meta.height ? IMAGE_MAX_DIMENSION : undefined,
-          height: meta.height > meta.width ? IMAGE_MAX_DIMENSION : undefined,
+          width: meta.width >= meta.height ? options.maxDimension : undefined,
+          height: meta.height > meta.width ? options.maxDimension : undefined,
           withoutEnlargement: true,
         });
       }
       output = await pipeline
         .jpeg({
-          quality: IMAGE_JPEG_QUALITY,
+          quality: options.quality,
           mozjpeg: true,
           chromaSubsampling: csName === "/DeviceGray" ? "4:4:4" : "4:2:0",
         })
@@ -208,6 +214,36 @@ async function compressEmbeddedImages(doc: PDFDocument): Promise<void> {
 
     context.assign(ref, PDFRawStream.of(newDict, new Uint8Array(output)));
   }
+}
+
+// Progressively harsher image settings, tried in order until the PDF fits.
+// Each rung re-encodes from the untouched original, never from the previous
+// rung's output, so quality loss doesn't compound.
+const TARGET_LADDER: ImageCompressOptions[] = [
+  { maxDimension: 2000, quality: 64 },
+  { maxDimension: 1600, quality: 55 },
+  { maxDimension: 1400, quality: 45 },
+  { maxDimension: 1200, quality: 38 },
+  { maxDimension: 1000, quality: 30 },
+  { maxDimension: 800, quality: 25 },
+  { maxDimension: 640, quality: 20 },
+  { maxDimension: 500, quality: 15 },
+];
+
+async function saveCompressed(sourceBytes: ArrayBuffer, options: ImageCompressOptions): Promise<Buffer> {
+  const doc = await PDFDocument.load(sourceBytes);
+  await compressEmbeddedImages(doc, options);
+  doc.setTitle("");
+  doc.setAuthor("");
+  doc.setSubject("");
+  doc.setKeywords([]);
+  doc.setProducer("");
+  doc.setCreator("");
+  return Buffer.from(await doc.save({ useObjectStreams: true }));
+}
+
+function formatSize(bytes: number): string {
+  return bytes >= 1024 * 1024 ? `${(bytes / (1024 * 1024)).toFixed(2)} MB` : `${(bytes / 1024).toFixed(1)} KB`;
 }
 
 export const POST: APIRoute = async ({ request, locals }) => {
@@ -243,6 +279,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     let outputBuffer: Buffer;
     let contentType: string;
     let filename: string;
+    const extraHeaders: Record<string, string> = {};
 
     switch (tool.operation) {
       case "merge": {
@@ -316,6 +353,71 @@ export const POST: APIRoute = async ({ request, locals }) => {
         outputBuffer = Buffer.from(await src.save({ useObjectStreams: true }));
         contentType = "application/pdf";
         filename = `${baseName(files[0].name)}-compressed.pdf`;
+        break;
+      }
+
+      case "compress-target": {
+        const value = Number(form.get("targetValue") ?? 0);
+        const unit = String(form.get("targetUnit") ?? "kb").toLowerCase();
+        if (!Number.isFinite(value) || value <= 0) {
+          throw new Error("Enter a maximum size greater than zero.");
+        }
+        const targetBytes = Math.round(value * (unit === "mb" ? 1024 * 1024 : 1024));
+        const sourceBytes = await files[0].arrayBuffer();
+
+        // Iterative, measured compression: try each rung, keep the smallest
+        // result, and stop as soon as one fits. Never assumes a single pass
+        // lands on the target.
+        let best: Buffer | null = null;
+        for (const rung of TARGET_LADDER) {
+          const candidate = await saveCompressed(sourceBytes, rung);
+          if (!best || candidate.length < best.length) best = candidate;
+          if (candidate.length <= targetBytes) break;
+        }
+        // If the original is already smaller than anything we produced, it
+        // is the honest best result.
+        if (best && sourceBytes.byteLength < best.length) best = Buffer.from(sourceBytes);
+        outputBuffer = best!;
+        contentType = "application/pdf";
+        filename = `${baseName(files[0].name)}-compressed.pdf`;
+        const met = outputBuffer.length <= targetBytes;
+        extraHeaders["X-Target-Met"] = String(met);
+        extraHeaders["X-Achieved-Bytes"] = String(outputBuffer.length);
+        extraHeaders["X-Result-Note"] = encodeURIComponent(
+          met
+            ? `Compressed from ${formatSize(sourceBytes.byteLength)} to ${formatSize(outputBuffer.length)}, under your ${formatSize(targetBytes)} limit.`
+            : `We could not reach ${formatSize(targetBytes)} without unacceptable quality loss. The smallest result is ${formatSize(outputBuffer.length)} (original ${formatSize(sourceBytes.byteLength)}). Try a larger limit, or split the PDF into parts. Vector-only or text-only PDFs shrink very little.`,
+        );
+        break;
+      }
+
+      case "organize": {
+        let plan: { i: number; r: number }[];
+        try {
+          plan = JSON.parse(String(form.get("pages") ?? "[]"));
+        } catch {
+          throw new Error("The page order could not be read. Reload the page and try again.");
+        }
+        const src = await PDFDocument.load(await files[0].arrayBuffer());
+        const count = src.getPageCount();
+        const valid =
+          Array.isArray(plan) &&
+          plan.length > 0 &&
+          plan.length <= count &&
+          plan.every((p) => Number.isInteger(p?.i) && p.i >= 0 && p.i < count && Number.isInteger(p?.r) && p.r % 90 === 0);
+        if (!valid || new Set(plan.map((p) => p.i)).size !== plan.length) {
+          throw new Error("Keep at least one page, and use each page at most once.");
+        }
+        const out = await PDFDocument.create();
+        const copied = await out.copyPages(src, plan.map((p) => p.i));
+        copied.forEach((page, idx) => {
+          const delta = ((plan[idx].r % 360) + 360) % 360;
+          if (delta) page.setRotation(degrees((page.getRotation().angle + delta) % 360));
+          out.addPage(page);
+        });
+        outputBuffer = Buffer.from(await out.save());
+        contentType = "application/pdf";
+        filename = `${baseName(files[0].name)}-organized.pdf`;
         break;
       }
 
@@ -463,6 +565,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       headers: {
         "Content-Type": contentType,
         "Content-Disposition": contentDisposition(filename),
+        ...extraHeaders,
       },
     });
   } catch (err) {

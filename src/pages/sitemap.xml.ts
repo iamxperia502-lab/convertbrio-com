@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { execFileSync } from "node:child_process";
 import { getCollection } from "astro:content";
 import { tools, isComingSoon } from "../data/tools";
+import { hubs } from "../data/hubs";
 import { toolContent } from "../data/toolContent";
 import {
   LOCALIZED_TOOL_SLUGS,
@@ -62,6 +63,12 @@ const staticPaths: { path: string; changefreq: string; priority: string; lastmod
     lastmod: lastModified("src/pages/all-tools.astro", "src/data/tools.ts"),
     localised: true,
   },
+  ...hubs.map((hub) => ({
+    path: hub.path,
+    changefreq: "weekly",
+    priority: "0.8",
+    lastmod: lastModified("src/data/hubs.ts", "src/data/tools.ts", "src/components/HubPage.astro"),
+  })),
   { path: "/blog", changefreq: "weekly", priority: "0.7", lastmod: lastModified("src/pages/blog/index.astro") },
   { path: "/about", changefreq: "monthly", priority: "0.5", lastmod: lastModified("src/pages/about.astro") },
   { path: "/contact", changefreq: "monthly", priority: "0.5", lastmod: lastModified("src/pages/contact.astro") },

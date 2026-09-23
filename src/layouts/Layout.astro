@@ -4,7 +4,8 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
-import { HTML_LANG, HREFLANG, LOCALES, DEFAULT_LOCALE, type Locale } from "../data/i18n";
+import { withBrand } from "../lib/title-fit";
+import { ui, HTML_LANG, HREFLANG, LOCALES, DEFAULT_LOCALE, type Locale } from "../data/i18n";
 
 interface Props {
   title: string;
@@ -43,7 +44,17 @@ const {
   alternates,
 } = Astro.props;
 
-const pageTitle = seoTitle ?? (title === "ConvertBrio" ? title : `${title} · ConvertBrio`);
+// Titles written with a trailing brand keep it only while the whole title
+// still fits in a search result; otherwise the core query is kept and the
+// brand dropped.
+const brandMatch = seoTitle?.match(/^(.*?)\s*([|·])\s*ConvertBrio$/);
+const pageTitle = seoTitle
+  ? brandMatch
+    ? withBrand(brandMatch[1], "ConvertBrio", brandMatch[2])
+    : seoTitle
+  : title === "ConvertBrio"
+    ? title
+    : withBrand(title, "ConvertBrio");
 const canonicalUrl = new URL(canonical ?? Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(image, Astro.site);
 const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "nofollow"}`;
@@ -66,7 +77,7 @@ const hreflangs = alternates
 <html lang={HTML_LANG[lang]}>
   <head>
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4630473399054348"
+    <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4630473399054348"
      crossorigin="anonymous"></script>
 
     <!-- Google Consent Mode v2: granted by default everywhere, denied by
@@ -124,7 +135,7 @@ const hreflangs = alternates
     </script>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VL3MYT4NBN"></script>
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-VL3MYT4NBN"></script>
     <script is:inline>
       gtag('js', new Date());
       gtag('config', 'G-VL3MYT4NBN');
@@ -203,7 +214,7 @@ const hreflangs = alternates
       href="#main-content"
       class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-canvas"
     >
-      Skip to content
+      {ui[lang].nav.skipToContent}
     </a>
     <Header lang={lang} alternates={alternates} />
     <main id="main-content" class="flex-1">

@@ -1,5 +1,6 @@
 ---
-import { ui, localePath, LOCALIZED_TOOL_SLUGS, toolMetaByLocale, type Locale } from "../data/i18n";
+import { HUB_BY_CATEGORY } from "../data/hubs";
+import { ui, localePath, routePath, LOCALIZED_TOOL_SLUGS, toolMetaByLocale, type Locale } from "../data/i18n";
 
 interface Props {
   lang?: Locale;
@@ -38,26 +39,26 @@ const columns = [
   {
     heading: t.tools,
     links: [
-      { label: ui[lang].nav.pdf, href: localePath("/all-tools#pdf", lang) },
-      { label: ui[lang].nav.image, href: localePath("/all-tools#image", lang) },
-      { label: ui[lang].nav.document, href: localePath("/all-tools#document", lang) },
+      { label: ui[lang].nav.pdf, href: routePath(HUB_BY_CATEGORY.pdf, lang) },
+      { label: ui[lang].nav.image, href: routePath(HUB_BY_CATEGORY.image, lang) },
+      { label: ui[lang].nav.document, href: routePath(HUB_BY_CATEGORY.document, lang) },
       { label: ui[lang].nav.allTools, href: localePath("/all-tools", lang) },
     ],
   },
   {
     heading: t.company,
     links: [
-      { label: t.about, href: localePath("/about", lang) },
-      { label: t.blog, href: localePath("/blog", lang) },
-      { label: t.contact, href: localePath("/contact", lang) },
+      { label: t.about, href: routePath("/about", lang) },
+      { label: t.blog, href: routePath("/blog", lang) },
+      { label: t.contact, href: routePath("/contact", lang) },
     ],
   },
   {
     heading: t.legal,
     links: [
-      { label: t.privacy, href: localePath("/privacy", lang) },
-      { label: t.terms, href: localePath("/terms", lang) },
-      { label: t.trust, href: localePath("/trust", lang) },
+      { label: t.privacy, href: routePath("/privacy", lang) },
+      { label: t.terms, href: routePath("/terms", lang) },
+      { label: t.trust, href: routePath("/trust", lang) },
     ],
   },
 ];
@@ -69,7 +70,7 @@ const year = new Date().getFullYear();
   <div class="container-page py-16">
     <div class="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
       <div class="col-span-2 sm:col-span-3 lg:col-span-1">
-        <a href={localePath("/", lang)} class="inline-flex items-center" aria-label="ConvertBrio home">
+        <a href={localePath("/", lang)} class="inline-flex items-center" aria-label={ui[lang].nav.homeAria}>
           <img src="/logo.png" alt="ConvertBrio" width="1600" height="364" class="h-10 w-auto dark:hidden" />
           <img src="/logo-dark.png" alt="ConvertBrio" width="1600" height="364" class="hidden h-10 w-auto dark:block" />
         </a>
@@ -104,7 +105,7 @@ const year = new Date().getFullYear();
           rel="noopener"
           class="text-sm text-mute underline underline-offset-2 transition-colors hover:text-ink"
         >
-          Check out my other work ↗
+          {ui[lang].nav.otherWork} ↗
         </a>
       </div>
       <div class="flex items-center gap-4">

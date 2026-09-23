@@ -59,7 +59,7 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
     "image-converter": {
       name: "Conversor de Imagem",
       description: "Converta imagens entre JPG, PNG, WEBP, AVIF, HEIC e GIF.",
-      seoTitle: "Conversor de Imagem Online Grátis: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
+      seoTitle: "Conversor de imagem grátis: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
       seoDescription: "Converta imagens entre JPG, PNG, WEBP, AVIF, HEIC e GIF no navegador. Grátis, sem cadastro, os arquivos são apagados automaticamente após a conversão.",
     },
     "ocr-pdf": {
@@ -77,7 +77,7 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
     "compress-word": {
       name: "Comprimir Word",
       description: "Reduza o tamanho de um documento Word re-codificando as imagens embutidas.",
-      seoTitle: "Comprimir Documento Word Online Grátis: Reduzir Tamanho de DOCX | ConvertBrio",
+      seoTitle: "Comprimir Word grátis: reduzir o tamanho de um DOCX | ConvertBrio",
       seoDescription: "Comprima um documento Word (.docx) online, de graça. Re-codifica as imagens embutidas para reduzir o arquivo para e-mail, mantendo o texto intacto.",
     },
   },
@@ -134,7 +134,7 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
     "image-converter": {
       name: "Conversor de Imágenes",
       description: "Convierte imágenes entre JPG, PNG, WEBP, AVIF, HEIC y GIF.",
-      seoTitle: "Conversor de Imágenes Online Gratis: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
+      seoTitle: "Conversor de imágenes gratis: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
       seoDescription: "Convierte imágenes entre JPG, PNG, WEBP, AVIF, HEIC y GIF en el navegador. Gratis, sin registro, los archivos se eliminan automáticamente tras la conversión.",
     },
     "ocr-pdf": {
@@ -147,12 +147,12 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
       name: "Comprimir PowerPoint",
       description: "Reduce el tamaño de una presentación de PowerPoint recodificando las imágenes de las diapositivas.",
       seoTitle: "Comprimir PowerPoint Online Gratis: Reducir Tamaño de PPTX | ConvertBrio",
-      seoDescription: "Comprime una presentación de PowerPoint (.pptx) online, gratis. Recodifica las imágenes para reducir el archivo para correo, manteniendo las diapositivas editables.",
+      seoDescription: "Comprime una presentación de PowerPoint (.pptx) online, gratis. Recodifica las imágenes para enviarla por correo y mantiene las diapositivas editables.",
     },
     "compress-word": {
       name: "Comprimir Word",
       description: "Reduce el tamaño de un documento Word recodificando las imágenes incrustadas.",
-      seoTitle: "Comprimir Documento Word Online Gratis: Reducir Tamaño de DOCX | ConvertBrio",
+      seoTitle: "Comprimir Word gratis: reducir el tamaño de un DOCX | ConvertBrio",
       seoDescription: "Comprime un documento Word (.docx) online, gratis. Recodifica las imágenes incrustadas para reducir el archivo para correo, manteniendo el texto intacto.",
     },
   },
@@ -162,7 +162,7 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
       name: "Compresser un PDF",
       description: "Réduisez la taille d'un PDF en réencodant les images et en supprimant les métadonnées.",
       seoTitle: "Compresser un PDF en Ligne Gratuit: Réduire la Taille d'un PDF | ConvertBrio",
-      seoDescription: "Compressez un PDF en ligne gratuitement pour réduire la taille du fichier et l'envoyer par e-mail ou sur un portail. Sans inscription, sans filigrane, sans installation.",
+      seoDescription: "Compressez un PDF en ligne gratuitement pour réduire sa taille et l'envoyer par e-mail ou sur un portail. Sans inscription, sans filigrane.",
     },
     "compress-image": {
       name: "Compresser une Image",
@@ -174,13 +174,13 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
       name: "Fusionner des PDF",
       description: "Combinez plusieurs fichiers PDF en un seul document, dans l'ordre de votre choix.",
       seoTitle: "Fusionner des PDF en Ligne Gratuit: Combiner des Fichiers PDF | ConvertBrio",
-      seoDescription: "Fusionnez plusieurs PDF en un seul document, dans l'ordre que vous choisissez. Gratuit, sans inscription, sans filigrane. Les fichiers sont supprimés automatiquement.",
+      seoDescription: "Fusionnez plusieurs PDF en un seul document, dans l'ordre de votre choix. Gratuit, sans inscription et sans filigrane.",
     },
     "split-pdf": {
       name: "Diviser un PDF",
       description: "Séparez un PDF en pages individuelles pour extraire ou réorganiser.",
       seoTitle: "Diviser un PDF en Ligne Gratuit: Séparer les Pages d'un PDF | ConvertBrio",
-      seoDescription: "Divisez un PDF en pages individuelles en ligne, gratuitement. Extrayez une page ou séparez le document en plusieurs fichiers, téléchargés dans un ZIP. Sans inscription.",
+      seoDescription: "Divisez un PDF en pages individuelles en ligne, gratuitement. Extrayez une page ou séparez le document en plusieurs fichiers dans un ZIP. Sans inscription.",
     },
     "pdf-to-word": {
       name: "PDF en Word",
@@ -204,13 +204,13 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
       name: "JPG en PDF",
       description: "Combinez une ou plusieurs images en un seul PDF, dans l'ordre de votre choix.",
       seoTitle: "JPG en PDF: Réunir des Images en un Seul PDF Gratuit | ConvertBrio",
-      seoDescription: "Convertissez des images JPG et PNG en un seul PDF en ligne, gratuitement. Réunissez plusieurs photos ou pages scannées en un document, dans l'ordre. Sans inscription.",
+      seoDescription: "Convertissez des images JPG et PNG en un seul PDF en ligne, gratuitement. Réunissez plusieurs photos ou pages scannées dans l'ordre. Sans inscription.",
     },
     "image-converter": {
       name: "Convertisseur d'Images",
       description: "Convertissez des images entre JPG, PNG, WEBP, AVIF, HEIC et GIF.",
-      seoTitle: "Convertisseur d'Images en Ligne Gratuit: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
-      seoDescription: "Convertissez des images entre JPG, PNG, WEBP, AVIF, HEIC et GIF dans le navigateur. Gratuit, sans inscription, les fichiers sont supprimés automatiquement après conversion.",
+      seoTitle: "Convertisseur d'images gratuit : JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
+      seoDescription: "Convertissez des images entre JPG, PNG, WEBP, AVIF, HEIC et GIF dans le navigateur. Gratuit, sans inscription, fichiers supprimés automatiquement.",
     },
     "ocr-pdf": {
       name: "OCR de PDF",
@@ -221,13 +221,13 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
     "compress-powerpoint": {
       name: "Compresser un PowerPoint",
       description: "Réduisez la taille d'une présentation PowerPoint en réencodant les images des diapositives.",
-      seoTitle: "Compresser un PowerPoint en Ligne Gratuit: Réduire la Taille d'un PPTX | ConvertBrio",
-      seoDescription: "Compressez une présentation PowerPoint (.pptx) en ligne, gratuitement. Réencode les images pour réduire le fichier pour l'e-mail, en gardant les diapositives modifiables.",
+      seoTitle: "Compresser un PowerPoint gratuit : réduire la taille d'un PPTX | ConvertBrio",
+      seoDescription: "Compressez une présentation PowerPoint (.pptx) en ligne, gratuitement. Les images sont réencodées pour l'e-mail et les diapositives restent modifiables.",
     },
     "compress-word": {
       name: "Compresser un Document Word",
       description: "Réduisez la taille d'un document Word en réencodant les images intégrées.",
-      seoTitle: "Compresser un Document Word en Ligne Gratuit: Réduire la Taille d'un DOCX | ConvertBrio",
+      seoTitle: "Compresser un Word gratuit : réduire la taille d'un DOCX | ConvertBrio",
       seoDescription: "Compressez un document Word (.docx) en ligne, gratuitement. Réencode les images intégrées pour réduire le fichier pour l'e-mail, en gardant le texte intact.",
     },
   },
@@ -248,8 +248,8 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
     "merge-pdf": {
       name: "PDF zusammenfügen",
       description: "Füge mehrere PDF-Dateien in der gewünschten Reihenfolge zu einem Dokument zusammen.",
-      seoTitle: "PDF zusammenfügen Online Kostenlos: PDF-Dateien zusammenführen | ConvertBrio",
-      seoDescription: "Füge mehrere PDFs in der von dir gewählten Reihenfolge zu einem Dokument zusammen. Kostenlos, ohne Anmeldung, ohne Wasserzeichen. Dateien werden automatisch gelöscht.",
+      seoTitle: "PDF zusammenfügen: PDF-Dateien kostenlos zusammenführen | ConvertBrio",
+      seoDescription: "Füge mehrere PDFs in der von dir gewählten Reihenfolge zu einem Dokument zusammen. Kostenlos, ohne Anmeldung und ohne Wasserzeichen.",
     },
     "split-pdf": {
       name: "PDF teilen",
@@ -261,7 +261,7 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
       name: "PDF in Word",
       description: "Wandle ein PDF in ein bearbeitbares Word-Dokument (DOCX) um und behalte die Grundformatierung.",
       seoTitle: "PDF in Word umwandeln (bearbeitbares DOCX) Kostenlos | ConvertBrio",
-      seoDescription: "Verwandle ein PDF in ein bearbeitbares Word-Dokument: Absätze, Überschriften, Fettdruck, einfache Tabellen und Bilder bleiben erhalten. Kostenlos, ohne Anmeldung.",
+      seoDescription: "Verwandle ein PDF in ein bearbeitbares Word-Dokument: Absätze, Überschriften, Fettdruck, einfache Tabellen und Bilder bleiben erhalten. Kostenlos.",
     },
     "word-to-pdf": {
       name: "Word in PDF",
@@ -279,13 +279,13 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
       name: "JPG in PDF",
       description: "Füge ein oder mehrere Bilder in der gewünschten Reihenfolge zu einem PDF zusammen.",
       seoTitle: "JPG in PDF: Bilder zu einem PDF zusammenfügen Kostenlos | ConvertBrio",
-      seoDescription: "Wandle JPG- und PNG-Bilder online kostenlos in ein einziges PDF um. Füge mehrere Fotos oder gescannte Seiten in Reihenfolge zu einem Dokument zusammen. Ohne Anmeldung.",
+      seoDescription: "Wandle JPG- und PNG-Bilder online kostenlos in ein einziges PDF um. Füge mehrere Fotos oder gescannte Seiten in der richtigen Reihenfolge zusammen.",
     },
     "image-converter": {
       name: "Bildkonverter",
       description: "Konvertiere Bilder zwischen JPG, PNG, WEBP, AVIF, HEIC und GIF.",
       seoTitle: "Bildkonverter Online Kostenlos: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
-      seoDescription: "Konvertiere Bilder zwischen JPG, PNG, WEBP, AVIF, HEIC und GIF im Browser. Kostenlos, ohne Anmeldung, Dateien werden nach der Konvertierung automatisch gelöscht.",
+      seoDescription: "Konvertiere Bilder zwischen JPG, PNG, WEBP, AVIF, HEIC und GIF im Browser. Kostenlos, ohne Anmeldung, Dateien werden automatisch gelöscht.",
     },
     "ocr-pdf": {
       name: "OCR für PDF",
@@ -296,14 +296,14 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
     "compress-powerpoint": {
       name: "PowerPoint komprimieren",
       description: "Reduziere die Größe einer PowerPoint-Präsentation, indem die Folienbilder neu kodiert werden.",
-      seoTitle: "PowerPoint komprimieren Online Kostenlos: PPTX-Größe reduzieren | ConvertBrio",
-      seoDescription: "Komprimiere eine PowerPoint-Präsentation (.pptx) online kostenlos. Bilder werden neu kodiert, um die Datei für E-Mail zu verkleinern, die Folien bleiben bearbeitbar.",
+      seoTitle: "PowerPoint komprimieren: PPTX-Größe kostenlos reduzieren | ConvertBrio",
+      seoDescription: "Komprimiere eine PowerPoint-Präsentation (.pptx) online kostenlos. Bilder werden neu kodiert, damit die Datei per E-Mail passt; Folien bleiben bearbeitbar.",
     },
     "compress-word": {
       name: "Word-Dokument komprimieren",
       description: "Reduziere die Größe eines Word-Dokuments, indem die eingebetteten Bilder neu kodiert werden.",
-      seoTitle: "Word-Dokument komprimieren Online Kostenlos: DOCX-Größe reduzieren | ConvertBrio",
-      seoDescription: "Komprimiere ein Word-Dokument (.docx) online kostenlos. Eingebettete Bilder werden neu kodiert, um die Datei für E-Mail zu verkleinern, der Text bleibt unverändert.",
+      seoTitle: "Word komprimieren: DOCX-Größe kostenlos reduzieren | ConvertBrio",
+      seoDescription: "Komprimiere ein Word-Dokument (.docx) online kostenlos. Eingebettete Bilder werden neu kodiert, damit die Datei per E-Mail passt; der Text bleibt unverändert.",
     },
   },
 
@@ -312,13 +312,13 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
       name: "Comprimere PDF",
       description: "Riduci le dimensioni di un PDF ricodificando le immagini e rimuovendo i metadati.",
       seoTitle: "Comprimere PDF Online Gratis: Ridurre le Dimensioni di un PDF | ConvertBrio",
-      seoDescription: "Comprimi un PDF online gratis per ridurre le dimensioni del file e inviarlo via e-mail o su un portale. Senza registrazione, senza filigrana, senza installare nulla.",
+      seoDescription: "Comprimi un PDF online gratis per ridurne il peso e inviarlo via e-mail o su un portale. Senza registrazione, senza filigrana.",
     },
     "compress-image": {
       name: "Comprimere Immagine",
       description: "Riduci un'immagine a una dimensione esatta in KB: come 100 KB per un modulo o un visto.",
       seoTitle: "Comprimere Immagine a una Dimensione Esatta (KB) | ConvertBrio",
-      seoDescription: "Comprimi un'immagine JPG, PNG, WEBP o HEIC a un limite esatto in KB: 100 KB per visti, concorsi e portali della pubblica amministrazione. Gratis, senza registrazione.",
+      seoDescription: "Comprimi un'immagine JPG, PNG, WEBP o HEIC a un limite esatto in KB, come 100 KB per visti, concorsi e portali della PA. Gratis, senza registrazione.",
     },
     "merge-pdf": {
       name: "Unire PDF",
@@ -359,7 +359,7 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
     "image-converter": {
       name: "Convertitore di Immagini",
       description: "Converti immagini tra JPG, PNG, WEBP, AVIF, HEIC e GIF.",
-      seoTitle: "Convertitore di Immagini Online Gratis: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
+      seoTitle: "Convertitore di immagini gratis: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
       seoDescription: "Converti immagini tra JPG, PNG, WEBP, AVIF, HEIC e GIF nel browser. Gratis, senza registrazione, i file vengono eliminati automaticamente dopo la conversione.",
     },
     "ocr-pdf": {
@@ -371,13 +371,13 @@ export const toolMetaByLocale: Partial<Record<Locale, Record<string, ToolMeta>>>
     "compress-powerpoint": {
       name: "Comprimere PowerPoint",
       description: "Riduci le dimensioni di una presentazione PowerPoint ricodificando le immagini delle diapositive.",
-      seoTitle: "Comprimere PowerPoint Online Gratis: Ridurre le Dimensioni di un PPTX | ConvertBrio",
+      seoTitle: "Comprimere PowerPoint gratis: ridurre le dimensioni di un PPTX | ConvertBrio",
       seoDescription: "Comprimi una presentazione PowerPoint (.pptx) online, gratis. Ricodifica le immagini per ridurre il file per l'e-mail, mantenendo le diapositive modificabili.",
     },
     "compress-word": {
       name: "Comprimere Documento Word",
       description: "Riduci le dimensioni di un documento Word ricodificando le immagini incorporate.",
-      seoTitle: "Comprimere Documento Word Online Gratis: Ridurre le Dimensioni di un DOCX | ConvertBrio",
+      seoTitle: "Comprimere Word gratis: ridurre le dimensioni di un DOCX | ConvertBrio",
       seoDescription: "Comprimi un documento Word (.docx) online, gratis. Ricodifica le immagini incorporate per ridurre il file per l'e-mail, mantenendo il testo intatto.",
     },
   },

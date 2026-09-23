@@ -1,0 +1,10 @@
+---
+import HubPage from "../components/HubPage.astro";
+import { hubs } from "../data/hubs";
+
+export const prerender = true;
+
+const hub = hubs.find((h) => h.id === "ai")!;
+---
+
+<HubPage hub={hub} />

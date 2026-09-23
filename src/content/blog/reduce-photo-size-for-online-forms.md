@@ -1,9 +1,9 @@
 ---
 title: "How to Reduce a Photo's File Size for an Online Form"
-description: "Visa, passport, exam, and job portals cap uploads at an exact size like 100 KB. Here's how to get a photo under the limit while keeping it clear enough to be accepted."
+description: "Visa, exam, and job portals cap photo uploads at sizes like 100 KB. Here's how to get a photo under the limit while keeping it clear enough to be accepted."
 pubDate: 2026-09-05
 tags: ["images", "compression", "how-to"]
-relatedTools: ["compress-image", "resize-image", "passport-photo-maker"]
+relatedTools: ["photo-signature-resizer", "compress-image", "resize-image", "passport-photo-maker"]
 draft: false
 ---
 

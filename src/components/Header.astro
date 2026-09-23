@@ -1,8 +1,9 @@
 ---
 import { categories } from "../data/tools";
+import { HUB_BY_CATEGORY } from "../data/hubs";
 import Icon from "./Icon.astro";
 import ThemeToggle from "./ThemeToggle.astro";
-import { ui, localePath, LOCALES, LOCALE_LABELS, LOCALE_SHORT, HREFLANG, type Locale } from "../data/i18n";
+import { ui, localePath, routePath, LOCALES, LOCALE_LABELS, LOCALE_SHORT, HREFLANG, type Locale } from "../data/i18n";
 
 interface Props {
   lang?: Locale;
@@ -23,10 +24,10 @@ const categoryLabels: Record<string, string> = {
 const navLinks = [
   ...categories.map((cat) => ({
     label: categoryLabels[cat.id] ?? cat.name,
-    href: localePath(`/all-tools#${cat.id}`, lang),
+    href: HUB_BY_CATEGORY[cat.id] ? routePath(HUB_BY_CATEGORY[cat.id], lang) : localePath(`/all-tools#${cat.id}`, lang),
   })),
   { label: t.allTools, href: localePath("/all-tools", lang) },
-  { label: t.blog, href: localePath("/blog", lang) },
+  { label: t.blog, href: routePath("/blog", lang) },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -47,7 +48,7 @@ const homeHref = localePath("/", lang);
 
 <header class="sticky top-0 z-40 border-b border-hairline bg-canvas/90 backdrop-blur-sm">
   <div class="container-page flex h-16 items-center justify-between gap-4">
-    <a href={homeHref} class="flex shrink-0 items-center rounded-sm" aria-label="ConvertBrio home">
+    <a href={homeHref} class="flex shrink-0 items-center rounded-sm" aria-label={t.homeAria}>
       <img src="/logo.png" alt="ConvertBrio" width="1600" height="364" class="h-10 w-auto dark:hidden" />
       <img src="/logo-dark.png" alt="ConvertBrio" width="1600" height="364" class="hidden h-10 w-auto dark:block" />
     </a>
@@ -77,7 +78,7 @@ const homeHref = localePath("/", lang);
         rel="noopener"
         class="inline-flex items-center gap-1 rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
       >
-        My Work
+        {t.myWork}
         <Icon name="arrow" class="h-3 w-3 -rotate-45" />
       </a>
       <details class="group relative">
@@ -114,7 +115,7 @@ const homeHref = localePath("/", lang);
         user && (
           <>
             <a
-              href={localePath("/dashboard", lang)}
+              href={routePath("/dashboard", lang)}
               class="rounded-full px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-canvas-soft-2"
             >
               {t.dashboard}
@@ -132,7 +133,7 @@ const homeHref = localePath("/", lang);
       }
     </div>
 
-    <ThemeToggle class="shrink-0" />
+    <ThemeToggle class="shrink-0" labelDark={t.themeDark} labelLight={t.themeLight} />
 
     <button
       id="menu-toggle"
@@ -140,9 +141,9 @@ const homeHref = localePath("/", lang);
       class="inline-flex items-center justify-center rounded-md p-2 text-ink lg:hidden"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      aria-label="Open menu"
-      data-label-open="Open menu"
-      data-label-close="Close menu"
+      aria-label={t.openMenu}
+      data-label-open={t.openMenu}
+      data-label-close={t.closeMenu}
     >
       <svg id="icon-open" width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
         <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
@@ -171,7 +172,7 @@ const homeHref = localePath("/", lang);
         rel="noopener"
         class="inline-flex items-center justify-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-[15px] font-medium text-canvas transition-opacity hover:opacity-85"
       >
-        My Work
+        {t.myWork}
         <Icon name="arrow" class="h-3.5 w-3.5 -rotate-45" />
       </a>
       <div class="mt-1 border-t border-hairline pt-2">
@@ -197,7 +198,7 @@ const homeHref = localePath("/", lang);
         user && (
           <div class="mt-2 flex flex-col gap-2 border-t border-hairline pt-4">
             <a
-              href={localePath("/dashboard", lang)}
+              href={routePath("/dashboard", lang)}
               class="rounded-full border border-hairline px-4 py-2.5 text-center text-[15px] font-medium text-ink"
             >
               {t.dashboard}

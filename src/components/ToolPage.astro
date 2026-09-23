@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "./PageIntro.astro";
+import { hubForTool } from "../data/hubs";
+import ToolFeedback from "./ToolFeedback.astro";
+import ToolExtras from "./ToolExtras.astro";
+import PdfOrganizer from "./PdfOrganizer.astro";
 import Icon from "./Icon.astro";
 import ToolContent from "./ToolContent.astro";
 import FaqSection from "./FaqSection.astro";
@@ -39,7 +43,17 @@ const endpoint =
   tool.kind === "pdf" ? "/api/convert/pdf" :
   tool.kind === "office" ? "/api/convert/office" :
   tool.kind === "ai" ? "/api/convert/ai" :
+  tool.kind === "ocr" ? "/api/convert/ocr" :
+  tool.kind === "metadata" ? "/api/convert/metadata" :
   null;
+
+// Non-personal descriptors read by the form script for analytics events.
+const analyticsCategory = tool.categories[0] ?? "convert";
+const analyticsOutput =
+  (tool.kind === "image" && tool.outputFormat) ||
+  (("operation" in tool && tool.operation.match(/-to-([a-z]+)$/)?.[1]) || "");
+
+const hub = isDefault ? hubForTool(tool) : undefined;
 
 const rawContent = isDefault ? toolContent[slug] : toolContentByLocale[lang]?.[slug];
 const isGuide = isComingSoon(tool) && !!(isDefault ? toolContent[slug]?.comingSoonGuide : undefined);
@@ -174,6 +188,19 @@ const softwareApplicationSchema = isComingSoon(tool)
               data-i18n-done={tf.doneTemplate}
               data-i18n-download={tf.downloadTemplate}
               data-i18n-files-selected={tf.filesSelectedTemplate}
+              data-i18n-error-network={tf.errorNetwork}
+              data-i18n-error-upload={tf.errorUpload}
+              data-i18n-error-too-large={tf.errorTooLarge}
+              data-i18n-error-unsupported={tf.errorUnsupported}
+              data-i18n-error-conversion={tf.errorConversion}
+              data-i18n-error-download={tf.errorDownload}
+              data-i18n-feedback-thanks={tf.feedbackThanks}
+              data-tool-slug={tool.slug}
+              data-tool-category={analyticsCategory}
+              data-tool-output={analyticsOutput}
+              data-tool-mode={tool.kind}
+              data-tool-op={"operation" in tool ? tool.operation : ""}
+              data-accept={tool.accept ?? ""}
               class="flex flex-col gap-6 rounded-2xl border border-hairline bg-canvas-soft p-6 shadow-card sm:p-8"
             >
               <input type="hidden" name="slug" value={tool.slug} />
@@ -289,7 +316,7 @@ const softwareApplicationSchema = isComingSoon(tool)
               }
 
               {
-                tool.operation === "rotate" && (
+                "operation" in tool && tool.operation === "rotate" && (
                   <div class="flex flex-col gap-1.5">
                     <label for="degrees" class="text-sm font-medium text-ink">{tf.rotate}</label>
                     <select id="degrees" name="degrees" class="h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-focus">
@@ -300,6 +327,9 @@ const softwareApplicationSchema = isComingSoon(tool)
                   </div>
                 )
               }
+
+              <ToolExtras slug={tool.slug} />
+              {tool.slug === "pdf-page-organizer" && <PdfOrganizer />}
 
               <div class="flex gap-3">
                 <button
@@ -318,6 +348,18 @@ const softwareApplicationSchema = isComingSoon(tool)
                 </button>
               </div>
 
+              <div id="result-list" class="hidden flex-col gap-2 rounded-xl border border-hairline bg-canvas p-4 text-sm" aria-live="polite"></div>
+              <div id="text-result" class="hidden flex-col gap-2">
+                <textarea id="text-result-area" readonly rows="8" class="w-full rounded-lg border border-hairline bg-canvas p-3.5 text-sm text-ink focus:border-focus"></textarea>
+                <button
+                  id="text-copy-btn"
+                  type="button"
+                  class="inline-flex items-center justify-center rounded-full border border-hairline-strong bg-canvas px-5 py-2 text-sm font-medium text-ink transition-opacity hover:opacity-90"
+                >
+                  Copy text
+                </button>
+              </div>
+
               <a
                 id="download-link"
                 href="#"
@@ -327,15 +369,35 @@ const softwareApplicationSchema = isComingSoon(tool)
                 <span id="download-link-label">{tf.downloadResult}</span>
               </a>
 
+              <ToolFeedback
+                question={tf.feedbackQuestion}
+                yes={tf.feedbackYes}
+                no={tf.feedbackNo}
+                reasonLabel={tf.feedbackReasonLabel}
+                reasons={tf.feedbackReasons}
+              />
+
               <p id="tool-status" role="status" aria-live="polite" class="text-center text-sm text-body" />
             </form>
+          )
+        }
+        {
+          hub && (
+            <p class="mt-6 text-center text-sm text-body">
+              <a href={hub.path} class="text-brand-600 underline underline-offset-2 hover:text-brand-700">
+                More {hub.name.toLowerCase()}
+              </a>
+            </p>
           )
         }
       </div>
     </div>
   </section>
 
-  {tool.slug === "compress-image" && <CompressImageBenchmark />}
+  {/* The benchmark is long-form English-only evidence; it is omitted from
+      localised pages until a reviewed translation exists, rather than showing
+      an untranslated section inside a translated page. */}
+  {tool.slug === "compress-image" && isDefault && <CompressImageBenchmark />}
 
   {
     content && (
@@ -358,6 +420,10 @@ const softwareApplicationSchema = isComingSoon(tool)
     !isComingSoon(tool) && (
       <script>
         import { submitConversion, createDownloadHandle } from "../lib/upload-client";
+        import { track, sizeBand, formatOf, toolContextFrom } from "../lib/analytics";
+        import { ConversionError, toConversionError, messageFor } from "../lib/conversion-errors";
+        import { matchesAccept } from "../lib/file-validation";
+        import { initToolFeedback } from "../lib/tool-feedback";
 
         const form = document.getElementById("tool-form") as HTMLFormElement | null;
         const dropzone = document.getElementById("dropzone");
@@ -386,11 +452,115 @@ const softwareApplicationSchema = isComingSoon(tool)
           download: d.i18nDownload ?? "Download {file}",
           filesSelected: d.i18nFilesSelected ?? "{n} files selected",
         };
+        const errorMessages = {
+          network: d.i18nErrorNetwork ?? S.error,
+          upload: d.i18nErrorUpload ?? S.error,
+          tooLarge: d.i18nErrorTooLarge ?? S.error,
+          unsupported: d.i18nErrorUnsupported ?? S.error,
+          conversion: d.i18nErrorConversion ?? S.error,
+          generic: S.error,
+        };
+
+        const toolCtx = toolContextFrom(form);
+        const accept = d.accept ?? "";
+        const feedback = initToolFeedback(toolCtx, d.i18nFeedbackThanks ?? "Thanks for the feedback.");
+
+        const selectionParams = (files: File[]) => ({
+          ...toolCtx,
+          input_format: [...new Set(files.map(formatOf))].join(","),
+          file_count: files.length,
+          size_band: sizeBand(files.reduce((n, f) => n + f.size, 0)),
+        });
+
+        const resultList = document.getElementById("result-list");
+        const textResult = document.getElementById("text-result");
+        const textArea = document.getElementById("text-result-area") as HTMLTextAreaElement | null;
+        const copyButton = document.getElementById("text-copy-btn");
+        const extraHandles: { revoke: () => void }[] = [];
+
+        const clearExtraResults = () => {
+          extraHandles.splice(0).forEach((h) => h.revoke());
+          if (resultList) {
+            resultList.textContent = "";
+            resultList.classList.add("hidden");
+            resultList.classList.remove("flex");
+          }
+          textResult?.classList.add("hidden");
+          textResult?.classList.remove("flex");
+          if (textArea) textArea.value = "";
+        };
+
+        // Text results (OCR) are shown as selectable text; ZIP results from
+        // the batch compressor also get one download link per file.
+        const showExtraResults = async (blob: Blob) => {
+          try {
+            if (blob.type.startsWith("text/plain") && textArea && textResult) {
+              textArea.value = await blob.text();
+              textResult.classList.remove("hidden");
+              textResult.classList.add("flex");
+            } else if (d.toolOp === "batch-compress" && resultList) {
+              const { default: JSZip } = await import("jszip");
+              const zip = await JSZip.loadAsync(blob);
+              const report = JSON.parse((await zip.file("report.json")?.async("string")) ?? "[]") as {
+                input: string;
+                output?: string;
+                ok: boolean;
+                bytes?: number;
+                targetMet?: boolean;
+                error?: string;
+              }[];
+              for (const row of report) {
+                const line = document.createElement("div");
+                line.className = "flex flex-wrap items-center justify-between gap-2";
+                const label = document.createElement("span");
+                label.className = "min-w-0 truncate text-body";
+                if (!row.ok || !row.output) {
+                  label.textContent = `${row.input}: could not be processed${row.error ? ` (${row.error})` : ""}`;
+                  line.appendChild(label);
+                } else {
+                  const kb = ((row.bytes ?? 0) / 1024).toFixed(1);
+                  label.textContent = `${row.input}: ${kb} KB${row.targetMet ? "" : " (above target)"}`;
+                  const entry = zip.file(row.output);
+                  line.appendChild(label);
+                  if (entry) {
+                    const data = await entry.async("blob");
+                    const a = document.createElement("a");
+                    const handle = createDownloadHandle(a);
+                    handle.set(data, row.output);
+                    a.textContent = "Download";
+                    a.className = "font-medium text-brand-600 underline underline-offset-2";
+                    a.addEventListener("click", (e) => {
+                      if (e.isTrusted) track("download_completed", toolCtx);
+                    });
+                    extraHandles.push(handle);
+                    line.appendChild(a);
+                  }
+                }
+                resultList.appendChild(line);
+              }
+              resultList.classList.remove("hidden");
+              resultList.classList.add("flex");
+            }
+          } catch {
+            // The main download link still works if the extras can't render.
+          }
+        };
+
+        copyButton?.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(textArea?.value ?? "");
+            if (status) status.textContent = "Text copied.";
+          } catch {
+            textArea?.select();
+          }
+        });
 
         const hideDownloadLink = () => {
+          clearExtraResults();
           downloadHandle?.revoke();
           downloadLink?.classList.add("hidden");
           downloadLink?.classList.remove("flex");
+          feedback.hide();
         };
 
         const setProgress = (percent: number) => {
@@ -475,10 +645,37 @@ const softwareApplicationSchema = isComingSoon(tool)
         const selectedFileLabel = (files: FileList) =>
           files.length > 1 ? S.filesSelected.replace("{n}", String(files.length)) : files[0].name;
 
-        fileInput?.addEventListener("change", () => {
+        // Validates a picked/dropped selection. An invalid one is rejected with
+        // a specific message and the form is left usable.
+        const acceptSelection = (files: FileList): boolean => {
+          const list = [...files];
+          if (accept && list.some((f) => !matchesAccept(f, accept))) {
+            if (fileInput) fileInput.value = "";
+            if (status) status.textContent = errorMessages.unsupported;
+            showIdle();
+            track("conversion_failed", { ...selectionParams(list), error_category: "unsupported_format" });
+            return false;
+          }
+          if (list.reduce((n, f) => n + f.size, 0) > 100 * 1024 * 1024) {
+            if (fileInput) fileInput.value = "";
+            if (status) status.textContent = errorMessages.tooLarge;
+            showIdle();
+            track("conversion_failed", { ...selectionParams(list), error_category: "file_too_large" });
+            return false;
+          }
+          if (status) status.textContent = "";
           hideDownloadLink();
-          if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
-          else showIdle();
+          showDone(selectedFileLabel(files));
+          track("file_selected", selectionParams(list));
+          return true;
+        };
+
+        fileInput?.addEventListener("change", () => {
+          if (fileInput.files?.length) acceptSelection(fileInput.files);
+          else {
+            hideDownloadLink();
+            showIdle();
+          }
         });
 
         ["dragenter", "dragover"].forEach((eventName) => {
@@ -497,29 +694,42 @@ const softwareApplicationSchema = isComingSoon(tool)
           const dt = (event as DragEvent).dataTransfer;
           if (dt?.files?.length && fileInput) {
             fileInput.files = dt.files;
-            hideDownloadLink();
-            showDone(selectedFileLabel(dt.files));
+            acceptSelection(dt.files);
           }
+        });
+
+        // Only a genuine user activation of the persistent link counts: the
+        // automatic programmatic click below can't prove a file was saved.
+        downloadLink?.addEventListener("click", (event) => {
+          if (!event.isTrusted) return;
+          track("download_completed", toolCtx);
         });
 
         form?.addEventListener("submit", async (event) => {
           event.preventDefault();
           const endpoint = form.dataset.endpoint;
           if (!endpoint || !status) return;
+          // A conversion is already running; the button is disabled, but
+          // Enter-key submits must not start a second one.
+          if (submitButton?.disabled) return;
 
           if (!fileInput?.files?.length) {
             status.textContent = S.chooseFirst;
             return;
           }
 
+          const files = [...fileInput.files];
+          const params = selectionParams(files);
+
           submitButton?.setAttribute("disabled", "true");
           showUploading();
           setProgress(0);
           if (progressLabel) progressLabel.textContent = S.uploading;
           status.textContent = `${S.uploading} 0%`;
+          track("conversion_started", params);
 
           try {
-            const { filename, blob } = await submitConversion({
+            const { filename, blob, note, targetMet } = await submitConversion({
               endpoint,
               formData: new FormData(form),
               onProgress: (percent) => {
@@ -534,17 +744,29 @@ const softwareApplicationSchema = isComingSoon(tool)
 
             stopProcessingTrickle();
             setProgress(100);
-            status.textContent = S.done.replace("{file}", filename);
+            // A server note (achieved size, per-file results, ...) replaces the
+            // generic message; a missed size target is never reported as done.
+            status.textContent = note ?? S.done.replace("{file}", filename);
             if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
+            track("conversion_completed", params);
+            await showExtraResults(blob);
             if (downloadHandle && downloadLink) {
               downloadHandle.set(blob, filename);
               if (downloadLinkLabel) downloadLinkLabel.textContent = S.download.replace("{file}", filename);
               downloadLink.classList.remove("hidden");
               downloadLink.classList.add("flex");
-              downloadLink.click();
+              try {
+                if (targetMet !== false) downloadLink.click();
+              } catch {
+                status.textContent = d.i18nErrorDownload ?? S.error;
+              }
             }
+            feedback.show();
           } catch (err) {
-            status.textContent = err instanceof Error ? err.message : S.error;
+            const failure = err instanceof ConversionError ? err : toConversionError(err, "unknown");
+            status.textContent = messageFor(failure, errorMessages);
+            track("conversion_failed", { ...params, error_category: failure.category });
+            // Restore a usable form (file still selected) without a reload.
             if (fileInput.files?.length) showDone(selectedFileLabel(fileInput.files));
             else showIdle();
           } finally {

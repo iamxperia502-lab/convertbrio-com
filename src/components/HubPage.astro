@@ -1,0 +1,155 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import PageIntro from "./PageIntro.astro";
+import Icon from "./Icon.astro";
+import { hubs, hubToolsFor, type Hub } from "../data/hubs";
+import { getTool } from "../data/tools";
+
+interface Props {
+  hub: Hub;
+}
+const { hub } = Astro.props;
+
+const base = Astro.site?.toString().replace(/\/$/, "") ?? "https://www.convertbrio.com";
+const hubTools = hubToolsFor(hub);
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).filter((p) => hub.articles.includes(p.id));
+const otherHubs = hubs.filter((h) => h.path !== hub.path);
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
+    { "@type": "ListItem", position: 2, name: hub.name, item: `${base}${hub.path}` },
+  ],
+};
+
+const link = "font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700";
+---
+
+<Layout title={hub.name} seoTitle={hub.seoTitle} description={hub.description} canonical={hub.path}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
+  </Fragment>
+
+  <PageIntro eyebrow={hub.name} title={hub.h1} description={hub.description} />
+
+  <section class="border-b border-hairline bg-canvas">
+    <div class="container-page py-14 sm:py-16">
+      <div class="mx-auto max-w-3xl space-y-4 leading-relaxed text-body">
+        {hub.intro.map((p) => <p>{p}</p>)}
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="hub-tools-heading" class="border-b border-hairline bg-canvas">
+    <div class="container-page py-14 sm:py-16">
+      <h2 id="hub-tools-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">All {hub.name.toLowerCase()}</h2>
+      <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          hubTools.map((tool) => (
+            <li>
+              <a
+                href={`/tools/${tool.slug}`}
+                class="flex h-full items-start gap-3 rounded-lg border border-hairline bg-canvas-soft px-4 py-3.5 transition-colors hover:border-hairline-strong hover:bg-canvas-soft-2"
+              >
+                <Icon name={tool.icon} class="mt-0.5 h-4 w-4 shrink-0 text-mute" />
+                <span class="flex flex-col gap-0.5">
+                  <span class="text-sm font-medium text-ink">{tool.name}</span>
+                  <span class="text-xs leading-relaxed text-mute">{tool.description}</span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="hub-chooser-heading" class="border-b border-hairline bg-canvas">
+    <div class="container-page py-14 sm:py-16">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="hub-chooser-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">{hub.chooser.heading}</h2>
+        <p class="mt-4 leading-relaxed text-body">{hub.chooser.body}</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="hub-workflows-heading" class="border-b border-hairline bg-canvas">
+    <div class="container-page py-14 sm:py-16">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="hub-workflows-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">Recommended workflows</h2>
+        <div class="mt-6 space-y-8">
+          {
+            hub.workflows.map((flow) => (
+              <div>
+                <h3 class="text-lg font-semibold text-ink">{flow.title}</h3>
+                <ol class="mt-3 list-decimal space-y-2 pl-5 leading-relaxed text-body">
+                  {flow.steps.map((step) => {
+                    const tool = step.slug ? getTool(step.slug) : undefined;
+                    return (
+                      <li>
+                        {step.text}
+                        {tool && (
+                          <>
+                            {" "}
+                            <a href={`/tools/${tool.slug}`} class={link}>{tool.name}</a>
+                          </>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    posts.length > 0 && (
+      <section aria-labelledby="hub-guides-heading" class="border-b border-hairline bg-canvas">
+        <div class="container-page py-14 sm:py-16">
+          <div class="mx-auto max-w-3xl">
+            <h2 id="hub-guides-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">Guides</h2>
+            <ul class="mt-6 space-y-4">
+              {posts.map((post) => (
+                <li>
+                  <a href={`/blog/${post.id}`} class={link}>{post.data.title}</a>
+                  <p class="mt-1 text-sm text-body">{post.data.description}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <section aria-labelledby="hub-more-heading" class="bg-canvas">
+    <div class="container-page py-14 sm:py-16">
+      <div class="mx-auto max-w-3xl">
+        <h2 id="hub-more-heading" class="text-xl font-semibold text-ink">Other tool categories</h2>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {
+            otherHubs.map((h) => (
+              <li>
+                <a href={h.path} class="inline-flex rounded-full border border-hairline px-3 py-1.5 text-sm text-body transition-colors hover:border-hairline-strong hover:text-ink">
+                  {h.name}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a href="/all-tools" class="inline-flex rounded-full border border-hairline px-3 py-1.5 text-sm text-body transition-colors hover:border-hairline-strong hover:text-ink">
+              All tools
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

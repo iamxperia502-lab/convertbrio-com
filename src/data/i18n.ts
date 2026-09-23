@@ -86,6 +86,22 @@ export function localePath(path: string, lang: Locale): string {
   return `/${lang}${path}`;
 }
 
+/**
+ * Routes that exist only in English. Localised headers and footers must link
+ * to these unprefixed until translated versions are published.
+ */
+const ENGLISH_ONLY_ROUTES = ["/about", "/blog", "/contact", "/privacy", "/terms", "/trust", "/dashboard", "/pdf-tools", "/image-tools", "/document-tools", "/compression-tools", "/ocr-tools", "/ai-tools"];
+
+/**
+ * Like localePath(), but leaves English-only routes (and their sub-paths)
+ * unprefixed so localised pages never link to a non-existent /<lang>/... URL.
+ */
+export function routePath(path: string, lang: Locale): string {
+  const base = path.split(/[#?]/)[0];
+  if (ENGLISH_ONLY_ROUTES.some((r) => base === r || base.startsWith(`${r}/`))) return path;
+  return localePath(path, lang);
+}
+
 /** Strip a known locale prefix from a path, returning the English path. */
 export function toDefaultPath(path: string): string {
   const match = path.match(/^\/([a-z]{2})(?=\/|$)/);

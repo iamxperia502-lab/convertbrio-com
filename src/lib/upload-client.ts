@@ -1,4 +1,5 @@
 import { upload } from "@vercel/blob/client";
+import { ConversionError, categoryForStatus, isNetworkFailure, toConversionError } from "./conversion-errors";
 
 export interface SubmitConversionOptions {
   endpoint: string;
@@ -10,6 +11,10 @@ export interface SubmitConversionOptions {
 export interface SubmitConversionResult {
   filename: string;
   blob: Blob;
+  /** Plain-language summary from the server (e.g. the achieved size). */
+  note?: string;
+  /** False when a size target could not be met. Undefined when not applicable. */
+  targetMet?: boolean;
 }
 
 const BLOB_HANDLE_UPLOAD_URL = "/api/blob-upload";
@@ -70,39 +75,80 @@ export async function submitConversion({ endpoint, formData, onProgress, onUploa
   }
 
   if (files.length === 0) {
-    throw new Error("Choose a file first.");
+    throw new ConversionError("validation", "Choose a file first.");
   }
+
+  const oversized = files.some((f) => f.size > MAX_UPLOAD_BYTES) || files.reduce((n, f) => n + f.size, 0) > MAX_UPLOAD_BYTES;
+  if (oversized) throw new ConversionError("file_too_large");
 
   let blobFiles: BlobFileRef[];
   try {
-    blobFiles = await uploadFilesToBlob(files, onProgress);
+    try {
+      blobFiles = await uploadFilesToBlob(files, onProgress);
+    } catch (err) {
+      // One quiet retry for transient network drops; a blocked request will
+      // fail the same way twice and fall through to the recovery message.
+      if (!isNetworkFailure(err)) throw err;
+      blobFiles = await uploadFilesToBlob(files, onProgress);
+    }
   } catch (err) {
-    throw new Error(err instanceof Error ? err.message : "Upload failed. Try again.");
+    const converted = toConversionError(err, "blob_upload");
+    if (converted.category === "blob_upload" && /client token|handleUploadUrl|token/i.test(converted.detail ?? "")) {
+      throw new ConversionError("upload_token");
+    }
+    // The SDK's own messages are not user-facing copy; the caller maps the
+    // category to a localised explanation.
+    throw new ConversionError(converted.category);
   }
 
   onUploaded();
 
-  const response = await fetch(endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ fields, files: blobFiles }),
-  });
+  let response: Response;
+  try {
+    response = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fields, files: blobFiles }),
+    });
+  } catch (err) {
+    throw toConversionError(err, "conversion_api");
+  }
 
   if (!response.ok) {
-    let message = "Conversion failed.";
+    let message: string | undefined;
     try {
       const data = await response.json();
-      message = data.error ?? message;
+      if (typeof data.error === "string") message = data.error;
     } catch {
-      // Response wasn't JSON — fall back to the default message.
+      // Response wasn't JSON: the caller falls back to a generic explanation.
     }
-    throw new Error(message);
+    throw new ConversionError(categoryForStatus(response.status), message);
   }
 
   const disposition = response.headers.get("Content-Disposition") ?? "";
   const match = disposition.match(/filename="([^"]+)"/);
-  const blob = await response.blob();
-  return { filename: match?.[1] ?? "converted", blob };
+  let blob: Blob;
+  try {
+    blob = await response.blob();
+  } catch (err) {
+    throw toConversionError(err, "conversion_api");
+  }
+  let note: string | undefined;
+  const rawNote = response.headers.get("X-Result-Note");
+  if (rawNote) {
+    try {
+      note = decodeURIComponent(rawNote);
+    } catch {
+      note = undefined;
+    }
+  }
+  const targetHeader = response.headers.get("X-Target-Met");
+  return {
+    filename: match?.[1] ?? "converted",
+    blob,
+    note,
+    targetMet: targetHeader === null ? undefined : targetHeader === "true",
+  };
 }
 
 /**

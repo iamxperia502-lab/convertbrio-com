@@ -1,6 +1,7 @@
 ---
 title: "PDF Password Restrictions Explained: Open Passwords vs. Permission Passwords"
-description: "PDFs actually have two different kinds of password protection that do very different things. Understanding the difference explains what you can and can't unlock."
+seoTitle: "PDF Passwords Explained: Open vs. Permission Passwords"
+description: "PDFs have two different kinds of password protection that do very different things. Knowing the difference explains what you can and can't unlock."
 pubDate: 2026-08-15
 tags: ["pdf", "explainer"]
 relatedTools: ["unlock-pdf"]

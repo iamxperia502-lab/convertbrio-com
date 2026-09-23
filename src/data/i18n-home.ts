@@ -167,9 +167,9 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
   },
 
   fr: {
-    seoTitle: "ConvertBrio: Convertisseur et Compresseur de Fichiers en Ligne Gratuit",
+    seoTitle: "ConvertBrio : convertisseur et compresseur de fichiers gratuit",
     description:
-      "Convertissez, compressez et modifiez des images, des PDF et des documents en ligne, gratuit, privé, sans inscription. Inclut un compresseur d'images qui atteint une taille exacte en Ko.",
+      "Convertissez, compressez et modifiez images, PDF et documents en ligne : gratuit, privé, sans inscription, avec un compresseur d'images à taille exacte en Ko.",
     allToolsDescription:
       "Parcourez tous les outils ConvertBrio pour convertir, compresser et améliorer des images, des PDF et des documents.",
     badge: "Gratuit, privé, sans inscription",
@@ -230,7 +230,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
   de: {
     seoTitle: "ConvertBrio: Kostenloser Online-Datei-Konverter und -Kompressor",
     description:
-      "Konvertiere, komprimiere und bearbeite Bilder, PDFs und Dokumente online, kostenlos, privat, ohne Anmeldung. Inklusive Bildkompressor, der eine exakte Größe in KB trifft.",
+      "Konvertiere, komprimiere und bearbeite Bilder, PDFs und Dokumente online: kostenlos, privat, ohne Anmeldung, mit Bildkompressor für exakte KB-Ziele.",
     allToolsDescription:
       "Entdecke alle ConvertBrio-Tools zum Konvertieren, Komprimieren und Verbessern von Bildern, PDFs und Dokumenten.",
     badge: "Kostenlos, privat, ohne Anmeldung",
@@ -291,7 +291,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
   it: {
     seoTitle: "ConvertBrio: Convertitore e Compressore di File Online Gratis",
     description:
-      "Converti, comprimi e modifica immagini, PDF e documenti online, gratis, privato, senza registrazione. Include un compressore di immagini che raggiunge una dimensione esatta in KB.",
+      "Converti, comprimi e modifica immagini, PDF e documenti online: gratis, privato, senza registrazione, con compressore di immagini a dimensione esatta in KB.",
     allToolsDescription:
       "Scopri tutti gli strumenti di ConvertBrio per convertire, comprimere e migliorare immagini, PDF e documenti.",
     badge: "Gratis, privato, senza registrazione",

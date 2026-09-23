@@ -4,7 +4,7 @@ export const prerender = true;
 import Layout from "../../layouts/Layout.astro";
 import Icon from "../../components/Icon.astro";
 import FaqSection from "../../components/FaqSection.astro";
-import { NON_DEFAULT_LOCALES, alternatesFor, toolMetaByLocale, ui, type Locale } from "../../data/i18n";
+import { NON_DEFAULT_LOCALES, alternatesFor, toolMetaByLocale, type Locale } from "../../data/i18n";
 import { homepageByLocale, HOME_POPULAR_SLUGS } from "../../data/i18n-home";
 
 export function getStaticPaths() {
@@ -14,7 +14,6 @@ export function getStaticPaths() {
 const lang = Astro.params.lang as Locale;
 const c = homepageByLocale[lang as Exclude<Locale, "en">];
 const meta = toolMetaByLocale[lang]!;
-const nav = ui[lang].nav;
 const url = `https://www.convertbrio.com/${lang}`;
 
 const iconFor: Record<string, string> = {

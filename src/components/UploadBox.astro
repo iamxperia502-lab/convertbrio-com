@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro";
+import ToolFeedback from "./ToolFeedback.astro";
 
 const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TIFF"];
 ---
@@ -96,6 +97,14 @@ const formats = ["JPG", "PNG", "WEBP", "HEIC", "PDF", "DOCX", "PPTX", "GIF", "TI
         <Icon name="download" class="h-4 w-4" />
         <span id="quick-download-link-label">Download result</span>
       </a>
+
+      <ToolFeedback
+        question="Did this result work for you?"
+        yes="Yes"
+        no="No"
+        reasonLabel="What went wrong?"
+        reasons={{ quality: "Quality", formatting: "Formatting", size: "File size", download: "Download", other: "Other" }}
+      />
     </div>
 
     <div class="flex flex-wrap items-center justify-center gap-2 px-4 py-5">

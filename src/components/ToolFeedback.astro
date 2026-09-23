@@ -1,0 +1,33 @@
+---
+interface Props {
+  question: string;
+  yes: string;
+  no: string;
+  reasonLabel: string;
+  reasons: { quality: string; formatting: string; size: string; download: string; other: string };
+}
+const { question, yes, no, reasonLabel, reasons } = Astro.props;
+const reasonKeys = ["quality", "formatting", "size", "download", "other"] as const;
+const choice =
+  "inline-flex items-center justify-center rounded-full border border-hairline-strong bg-canvas px-6 py-2.5 text-sm font-medium text-ink transition-opacity hover:opacity-90";
+---
+
+<div id="tool-feedback" class="hidden flex-col items-center gap-3 border-t border-hairline pt-5 text-center">
+  <p class="text-sm font-medium text-ink">{question}</p>
+  <div id="feedback-choices" class="flex gap-3">
+    <button type="button" data-feedback="yes" class={choice}>{yes}</button>
+    <button type="button" data-feedback="no" class={choice}>{no}</button>
+  </div>
+  <div id="feedback-reasons" class="hidden flex-col items-center gap-2">
+    <p class="text-sm text-body">{reasonLabel}</p>
+    <div class="flex flex-wrap justify-center gap-2">
+      {
+        reasonKeys.map((reason) => (
+          <button type="button" data-reason={reason} class={choice.replace("px-6 py-2.5", "px-4 py-2")}>
+            {reasons[reason]}
+          </button>
+        ))
+      }
+    </div>
+  </div>
+</div>

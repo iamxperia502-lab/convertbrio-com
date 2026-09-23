@@ -1,0 +1,180 @@
+---
+// Option fields for the tools that need more than a file: exact-size PDF
+// compression, photo/signature resizing, batch compression, OCR language and
+// the metadata categories list. Uses the same field styling as ToolPage.
+interface Props {
+  slug: string;
+}
+const { slug } = Astro.props;
+
+const input = "h-11 rounded-lg border border-hairline bg-canvas px-3.5 text-sm text-ink focus:border-focus";
+const label = "text-sm font-medium text-ink";
+const hint = "text-xs text-mute";
+
+const presets = [
+  { id: "passport", label: "Passport photo, 35 × 45 mm at 300 DPI (413 × 531 px)", w: 413, h: 531 },
+  { id: "us-passport", label: "US passport / visa, 2 × 2 in at 300 DPI (600 × 600 px)", w: 600, h: 600 },
+  { id: "photo-3x4", label: "Photo, 3:4 (450 × 600 px)", w: 450, h: 600 },
+  { id: "signature", label: "Signature, 3:1 (300 × 100 px)", w: 300, h: 100 },
+];
+const ratios = [
+  { id: "", label: "Free (set both sizes)" },
+  { id: "1:1", label: "1:1 (square)" },
+  { id: "3:4", label: "3:4 (portrait)" },
+  { id: "4:3", label: "4:3 (landscape)" },
+  { id: "7:9", label: "7:9 (35 × 45 mm passport)" },
+  { id: "3:1", label: "3:1 (signature strip)" },
+  { id: "16:9", label: "16:9 (widescreen)" },
+];
+const languages = [
+  ["eng", "English"],
+  ["por", "Portuguese"],
+  ["spa", "Spanish"],
+  ["fra", "French"],
+  ["deu", "German"],
+  ["ita", "Italian"],
+  ["ind", "Indonesian"],
+];
+---
+
+{
+  slug === "compress-pdf-to-size" && (
+    <div class="flex flex-col gap-1.5">
+      <label for="targetValue" class={label}>Maximum size</label>
+      <div class="flex gap-3">
+        <input id="targetValue" name="targetValue" type="number" min="1" step="any" required placeholder="500" class={`${input} min-w-0 flex-1`} />
+        <select id="targetUnit" name="targetUnit" aria-label="Unit" class={input}>
+          <option value="kb">KB</option>
+          <option value="mb">MB</option>
+        </select>
+      </div>
+      <span class={hint}>
+        We compress in steps and check the real size after each one. If the limit is too small to reach without ruining the pages, we tell you the smallest size we got.
+      </span>
+    </div>
+  )
+}
+
+{
+  slug === "photo-signature-resizer" && (
+    <div class="flex flex-col gap-4" id="photo-options" data-presets={JSON.stringify(presets)}>
+      <div class="flex flex-col gap-1.5">
+        <label for="preset" class={label}>Preset</label>
+        <select id="preset" class={input}>
+          <option value="">Custom size</option>
+          {presets.map((p) => <option value={p.id}>{p.label}</option>)}
+        </select>
+        <span class={hint}>Presets are pixel sizes only. Check your form's exact requirement and use Custom if it differs.</span>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label for="ratio" class={label}>Aspect ratio</label>
+        <select id="ratio" class={input}>
+          {ratios.map((r) => <option value={r.id}>{r.label}</option>)}
+        </select>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="flex flex-col gap-1.5">
+          <label for="width" class={label}>Width (px)</label>
+          <input id="width" name="width" type="number" min="10" max="8000" required class={input} />
+        </div>
+        <div class="flex flex-col gap-1.5">
+          <label for="height" class={label}>Height (px)</label>
+          <input id="height" name="height" type="number" min="10" max="8000" required class={input} />
+        </div>
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label for="maxKb" class={label}>Maximum file size (KB, optional)</label>
+        <input id="maxKb" name="maxKb" type="number" min="1" step="any" placeholder="50" class={input} />
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label for="fit" class={label}>If the photo has a different shape</label>
+        <select id="fit" name="fit" class={input}>
+          <option value="crop">Crop to fill the size</option>
+          <option value="pad">Fit inside with white margins</option>
+        </select>
+      </div>
+    </div>
+  )
+}
+
+{
+  slug === "batch-image-compressor" && (
+    <div class="flex flex-col gap-1.5">
+      <label for="targetKb" class={label}>Target size for each image (KB)</label>
+      <input id="targetKb" name="targetKb" type="number" min="5" step="any" required placeholder="100" class={input} />
+      <span class={hint}>
+        Every image is compressed on its own to this size. Quality drops first, and dimensions shrink only if needed. Files that can't reach the target are flagged.
+      </span>
+    </div>
+  )
+}
+
+{
+  (slug === "image-to-text" || slug === "scan-to-word") && (
+    <div class="flex flex-col gap-1.5">
+      <label for="lang" class={label}>Language of the text</label>
+      <select id="lang" name="lang" class={input}>
+        {languages.map(([code, name]) => <option value={code}>{name}</option>)}
+      </select>
+      <span class={hint}>
+        Works best on sharp, high-resolution printed text. Handwriting, low-resolution scans, tables, and multi-column layouts are often recognized poorly. Always proofread the result.
+      </span>
+    </div>
+  )
+}
+
+{
+  slug === "metadata-remover" && (
+    <div class="rounded-xl border border-hairline bg-canvas p-4 text-sm leading-relaxed text-body">
+      <p class={label}>What gets removed</p>
+      <ul class="mt-2 list-disc pl-5">
+        <li>Photos (JPG, PNG, WEBP, AVIF, TIFF): EXIF camera and date details, GPS location, XMP and IPTC data.</li>
+        <li>PDF: title, author, subject, keywords, creator, producer, dates, and XMP metadata.</li>
+        <li>Word, Excel, PowerPoint: author, last modified by, title, company, dates, and application details.</li>
+      </ul>
+      <p class="mt-2 text-xs text-mute">
+        The file format never changes. Some structural data needed to keep a file valid stays, and visible content such as text, comments, or a signature drawn on a page is not altered.
+      </p>
+    </div>
+  )
+}
+
+<script>
+  // Photo & signature resizer: presets fill the size fields, and a chosen
+  // aspect ratio keeps height and width in step while either is edited.
+  const box = document.getElementById("photo-options");
+  if (box) {
+    const presets = JSON.parse(box.dataset.presets ?? "[]") as { id: string; w: number; h: number }[];
+    const preset = document.getElementById("preset") as HTMLSelectElement;
+    const ratio = document.getElementById("ratio") as HTMLSelectElement;
+    const width = document.getElementById("width") as HTMLInputElement;
+    const height = document.getElementById("height") as HTMLInputElement;
+
+    const parts = () => ratio.value.split(":").map(Number) as [number, number];
+
+    preset.addEventListener("change", () => {
+      const p = presets.find((x) => x.id === preset.value);
+      if (!p) return;
+      width.value = String(p.w);
+      height.value = String(p.h);
+      ratio.value = "";
+    });
+    width.addEventListener("input", () => {
+      if (preset.value) preset.value = "";
+      if (!ratio.value || !width.value) return;
+      const [a, b] = parts();
+      height.value = String(Math.round((Number(width.value) * b) / a));
+    });
+    height.addEventListener("input", () => {
+      if (preset.value) preset.value = "";
+      if (!ratio.value || !height.value) return;
+      const [a, b] = parts();
+      width.value = String(Math.round((Number(height.value) * a) / b));
+    });
+    ratio.addEventListener("change", () => {
+      if (!ratio.value || !width.value) return;
+      const [a, b] = parts();
+      height.value = String(Math.round((Number(width.value) * b) / a));
+    });
+  }
+</script>

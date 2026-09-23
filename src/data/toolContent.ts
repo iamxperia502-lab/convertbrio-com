@@ -1,4 +1,5 @@
 import type { FaqItem } from "./faq";
+import { newToolContent } from "./toolContentNew";
 
 export interface ToolContentTable {
   caption?: string;
@@ -2943,4 +2944,6 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
     ],
   },
+
+  ...newToolContent,
 };

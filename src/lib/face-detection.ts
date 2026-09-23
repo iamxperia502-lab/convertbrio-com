@@ -40,7 +40,7 @@ export async function detectFaces(rgba: Buffer, width: number, height: number): 
   // Emscripten-generated bindings actually used here (FaceDetectorYN,
   // FS_createDataFile, FS_unlink) - verified against the real runtime API,
   // not guessed.
-  const cv: any = await cvModule.default;
+  const cv: any = await (cvModule.default as unknown as PromiseLike<any>);
 
   // Each call uses a unique virtual-FS path: the WASM module instance is
   // reused across warm invocations of the same serverless instance (Node

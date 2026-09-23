@@ -1,4 +1,18 @@
 import { submitConversion, createDownloadHandle } from "./upload-client";
+import { track, sizeBand, formatOf, type ToolContext } from "./analytics";
+import { ConversionError, toConversionError, messageFor } from "./conversion-errors";
+import { initToolFeedback } from "./tool-feedback";
+
+const ERROR_MESSAGES = {
+  network:
+    "We couldn't reach the upload service. Check your connection, turn off any content blocker or tracking protection for this site, and try again.",
+  upload:
+    "The upload didn't finish. Please try again; if it keeps failing, try another browser or disable content blockers for this site.",
+  tooLarge: "This file is larger than the 100 MB limit. Choose a smaller file.",
+  unsupported: "This file type isn't supported here. Check the accepted formats or browse All Tools.",
+  conversion: "We couldn't convert this file. Please try again, or try a different file.",
+  generic: "Something went wrong. Try again.",
+};
 
 // Split out of UploadBox.astro and loaded lazily (see the bootstrap script
 // in that component) so this — and the upload-client module it pulls in —
@@ -23,8 +37,26 @@ export function initUploadBox() {
   const downloadLink = document.getElementById("quick-download-link") as HTMLAnchorElement | null;
   const downloadLinkLabel = document.getElementById("quick-download-link-label");
   const downloadHandle = downloadLink ? createDownloadHandle(downloadLink) : null;
+  const formatSelect = document.getElementById("quick-format") as HTMLSelectElement | null;
+
+  // Homepage quick uploader: tool context depends on the detected file kind.
+  const toolContext = (kind: "image" | "pdf"): ToolContext =>
+    kind === "image"
+      ? { tool_slug: "image-converter", tool_category: "convert", output_format: formatSelect?.value, processing_mode: "image" }
+      : { tool_slug: "pdf-to-jpg", tool_category: "pdf", output_format: "jpg", processing_mode: "pdf" };
+  const feedback = initToolFeedback(() => {
+    const file = input?.files?.[0];
+    return toolContext(file && detectKind(file) === "pdf" ? "pdf" : "image");
+  }, "Thanks for the feedback.");
+  const fileParams = (file: File, kind: "image" | "pdf") => ({
+    ...toolContext(kind),
+    input_format: formatOf(file),
+    file_count: 1,
+    size_band: sizeBand(file.size),
+  });
 
   const hideDownloadLink = () => {
+    feedback.hide();
     downloadHandle?.revoke();
     downloadLink?.classList.add("hidden");
     downloadLink?.classList.remove("flex");
@@ -99,6 +131,7 @@ export function initUploadBox() {
 
     if (kind === "unsupported") {
       status.textContent = `We don't support quick-converting "${file.name}" here yet: browse All Tools for the right converter.`;
+      track("conversion_failed", { ...toolContext("image"), input_format: formatOf(file), file_count: 1, size_band: sizeBand(file.size), error_category: "unsupported_format" });
       options.classList.add("hidden");
       options.classList.remove("flex");
       showIdle();
@@ -120,7 +153,15 @@ export function initUploadBox() {
       formatField.classList.add("hidden");
       formatField.classList.remove("flex");
     }
+    track("file_selected", fileParams(file, kind));
   };
+
+  downloadLink?.addEventListener("click", (event) => {
+    if (!event.isTrusted) return;
+    const file = input?.files?.[0];
+    const kind = file ? detectKind(file) : "unsupported";
+    if (kind !== "unsupported") track("download_completed", toolContext(kind));
+  });
 
   input?.addEventListener("change", () => handleFile(input.files?.[0]));
 
@@ -167,6 +208,7 @@ export function initUploadBox() {
     showUploading();
     setProgress(0);
     status.textContent = "Uploading… 0%";
+    track("conversion_started", fileParams(file, kind));
 
     try {
       const { filename, blob } = await submitConversion({
@@ -183,6 +225,7 @@ export function initUploadBox() {
       });
 
       status.textContent = `Done: ${filename} downloaded. If it didn't start, use the button below.`;
+      track("conversion_completed", fileParams(file, kind));
       if (downloadHandle && downloadLink) {
         downloadHandle.set(blob, filename);
         if (downloadLinkLabel) downloadLinkLabel.textContent = `Download ${filename}`;
@@ -190,8 +233,11 @@ export function initUploadBox() {
         downloadLink.classList.add("flex");
         downloadLink.click();
       }
+      feedback.show();
     } catch (err) {
-      status.textContent = err instanceof Error ? err.message : "Something went wrong. Try again.";
+      const failure = err instanceof ConversionError ? err : toConversionError(err, "unknown");
+      status.textContent = messageFor(failure, ERROR_MESSAGES);
+      track("conversion_failed", { ...fileParams(file, kind), error_category: failure.category });
       showDone(file.name);
     } finally {
       convertButton?.removeAttribute("disabled");
