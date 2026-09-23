@@ -158,24 +158,38 @@ const btn =
     if (grid) grid.textContent = "";
     pages = [];
     try {
+      const dbg = (...a: unknown[]) => console.info("[organizer]", ...a);
+      dbg("opening");
       const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
+      dbg("opened", pdf.numPages);
       if (token !== loadToken) return;
       pages = Array.from({ length: pdf.numPages }, (_, index) => ({ index, rot: 0, deleted: false, thumb: null }));
       sync();
       render();
       for (let i = 0; i < pdf.numPages; i++) {
-        const page = await pdf.getPage(i + 1);
+        try {
+          // A page that never renders must not leave the grid stuck on "…".
+          await Promise.race([
+            (async () => {
+              const page = await pdf.getPage(i + 1);
+              dbg("page", i + 1);
+              const base = page.getViewport({ scale: 1 });
+              const viewport = page.getViewport({ scale: 220 / Math.max(base.width, base.height) });
+              const canvas = document.createElement("canvas");
+              canvas.width = Math.ceil(viewport.width);
+              canvas.height = Math.ceil(viewport.height);
+              await page.render({ canvas, viewport }).promise;
+              dbg("rendered", i + 1);
+              const state = pages.find((p) => p.index === i);
+              if (state) state.thumb = canvas;
+            })(),
+            new Promise((_, reject) => setTimeout(() => reject(new Error("preview timed out")), 20000)),
+          ]);
+        } catch (err) {
+          console.warn("[organizer] preview failed for page", i + 1, err);
+        }
         if (token !== loadToken) return;
-        const base = page.getViewport({ scale: 1 });
-        const viewport = page.getViewport({ scale: 220 / Math.max(base.width, base.height) });
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.ceil(viewport.width);
-        canvas.height = Math.ceil(viewport.height);
-        await page.render({ canvas, viewport }).promise;
-        const state = pages.find((p) => p.index === i);
-        if (state) state.thumb = canvas;
-        // Re-render progressively so thumbnails appear as they finish.
-        if (i % 4 === 3 || i === pdf.numPages - 1) render();
+        render();
       }
     } catch (err) {
       if (token !== loadToken) return;
