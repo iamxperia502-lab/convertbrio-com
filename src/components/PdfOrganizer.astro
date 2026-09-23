@@ -160,7 +160,17 @@ const btn =
     try {
       const dbg = (...a: unknown[]) => console.info("[organizer]", ...a);
       dbg("opening");
-      const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(await file.arrayBuffer()) }).promise;
+      const pdf = await pdfjsLib.getDocument({
+        data: new Uint8Array(await file.arrayBuffer()),
+        // Font, colour-map and image-decoder resources are self-hosted (copied
+        // from pdfjs-dist into public/pdfjs). Without them, pages that use
+        // non-embedded fonts or JPX/JBIG2 images can hang rendering in production.
+        standardFontDataUrl: "/pdfjs/standard_fonts/",
+        cMapUrl: "/pdfjs/cmaps/",
+        cMapPacked: true,
+        wasmUrl: "/pdfjs/wasm/",
+        iccUrl: "/pdfjs/iccs/",
+      }).promise;
       dbg("opened", pdf.numPages);
       if (token !== loadToken) return;
       pages = Array.from({ length: pdf.numPages }, (_, index) => ({ index, rot: 0, deleted: false, thumb: null }));
