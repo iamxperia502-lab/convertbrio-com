@@ -4,7 +4,7 @@ export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 
-const updated = "August 25, 2026";
+const updated = "September 23, 2026";
 ---
 
 <Layout title="Privacy Policy" description="How ConvertBrio collects, uses, and protects your data and files.">
@@ -42,15 +42,18 @@ const updated = "August 25, 2026";
 
         <h2>3. Files you upload</h2>
         <p>
-          Files you upload are transmitted over an encrypted (HTTPS/TLS) connection, stored
-          encrypted at rest via our storage provider (Supabase) while processing, and processed
-          automatically to perform the conversion, compression, or enhancement you requested. We
-          do not manually review, share, or use the contents of your files for any purpose other
-          than delivering the result you requested, including for AI tools such as the image
-          enhancer, upscaler, and background remover, where uploaded files are used only to
-          produce your output and are never used to train or improve any model. Uploaded and
-          converted files are automatically deleted from our servers within 24 hours of
-          processing, whether or not you download the result, via a daily automated cleanup job.
+          Files you upload are transmitted over an encrypted (HTTPS/TLS) connection. Your original
+          file is sent directly to a private Vercel Blob store, read from there once to perform
+          the conversion, compression, or enhancement you requested, and then deleted immediately
+          afterward on a best-effort basis. The converted result is separately written to
+          temporary storage (Supabase) so it stays available for you to download. We do not
+          manually review, share, or use the contents of your files for any purpose other than
+          delivering the result you requested, including for AI tools such as the image enhancer,
+          upscaler, and background remover, where uploaded files are used only to produce your
+          output and are never used to train or improve any model. The temporary copy of your
+          converted result is deleted from our servers within 24 hours of processing via a daily
+          automated cleanup job, whether or not you download it; this scheduled deletion does not
+          depend on the original file's earlier best-effort deletion having succeeded.
         </p>
 
         <h2>4. How we use information</h2>
@@ -88,8 +91,8 @@ const updated = "August 25, 2026";
         <h2>6. Third-party services we use</h2>
         <p>ConvertBrio relies on the following service providers, each of which only receives the information necessary to perform its function:</p>
         <ul>
-          <li><strong>Vercel</strong>: hosts the site and runs file conversions on its servers (conversions do not happen locally in your browser).</li>
-          <li><strong>Supabase</strong>: stores accounts and temporarily stores uploaded/converted files until automatic deletion.</li>
+          <li><strong>Vercel</strong>: hosts the site, runs file conversions on its servers (conversions do not happen locally in your browser), and briefly holds your original uploaded file in a private Vercel Blob store until it's read for conversion and deleted.</li>
+          <li><strong>Supabase</strong>: stores accounts and temporarily stores the converted output of your file until automatic deletion.</li>
           <li><strong>Google Analytics &amp; Google Tag Manager</strong>: aggregate usage analytics, subject to your cookie consent choice.</li>
           <li><strong>Microsoft Clarity</strong>: aggregate usage analytics and session insights, subject to your cookie consent choice.</li>
           <li><strong>Google AdSense</strong>: advertising, once enabled on the site, subject to your cookie consent choice.</li>
@@ -131,11 +134,13 @@ const updated = "August 25, 2026";
 
         <h2>10. Data retention</h2>
         <p>
-          Uploaded and converted files are deleted within 24 hours of processing. Account
-          information is retained for as long as your account is active, plus a limited period
-          afterward to comply with legal or security obligations. Security and usage logs are
-          retained only for as long as needed for the purposes described above, after which they
-          are deleted or anonymized.
+          Your original uploaded file is deleted immediately after conversion on a best-effort
+          basis. The converted output is deleted within 24 hours of processing via a daily
+          automated cleanup job, which runs on that schedule regardless of whether you download
+          the result. Account information is retained for as long as your account is active, plus
+          a limited period afterward to comply with legal or security obligations. Security and
+          usage logs are retained only for as long as needed for the purposes described above,
+          after which they are deleted or anonymized.
         </p>
 
         <h2>11. Children’s privacy</h2>

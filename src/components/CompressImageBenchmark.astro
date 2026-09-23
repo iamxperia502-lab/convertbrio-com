@@ -5,10 +5,10 @@
 // marketing copy. See the methodology note below for exactly how.
 
 const sizeResults = [
-  { target: "200 KB", achieved: "199.7 KB", bytes: "204,495 bytes", dims: "2000 × 1500 (unchanged)", ratio: "4.1×", downscaled: false, file: "/benchmarks/compress-image-200kb.jpg" },
-  { target: "100 KB", achieved: "99.2 KB", bytes: "101,640 bytes", dims: "2000 × 1500 (unchanged)", ratio: "8.2×", downscaled: false, file: "/benchmarks/compress-image-100kb.jpg" },
-  { target: "50 KB", achieved: "48.1 KB", bytes: "49,314 bytes", dims: "2000 × 1500 (unchanged)", ratio: "16.9×", downscaled: false, file: "/benchmarks/compress-image-50kb.jpg" },
-  { target: "20 KB", achieved: "14.9 KB", bytes: "15,357 bytes", dims: "1700 × 1275 (−15% width)", ratio: "54.3×", downscaled: true, file: "/benchmarks/compress-image-20kb.jpg" },
+  { target: "200 KB", achieved: "199.7 KB", bytes: "204,495 bytes", dims: "2000 × 1500 (unchanged)", ratio: "4.1×", downscaled: false, file: "/benchmarks/compress-image-200kb.jpg", width: 2000, height: 1500 },
+  { target: "100 KB", achieved: "99.2 KB", bytes: "101,640 bytes", dims: "2000 × 1500 (unchanged)", ratio: "8.2×", downscaled: false, file: "/benchmarks/compress-image-100kb.jpg", width: 2000, height: 1500 },
+  { target: "50 KB", achieved: "48.1 KB", bytes: "49,314 bytes", dims: "2000 × 1500 (unchanged)", ratio: "16.9×", downscaled: false, file: "/benchmarks/compress-image-50kb.jpg", width: 2000, height: 1500 },
+  { target: "20 KB", achieved: "14.9 KB", bytes: "15,357 bytes", dims: "1700 × 1275 (−15% width)", ratio: "54.3×", downscaled: true, file: "/benchmarks/compress-image-20kb.jpg", width: 1700, height: 1275 },
 ] as const;
 
 const formatMatrix = [
@@ -53,6 +53,8 @@ const formatMatrix = [
             src="/benchmarks/compress-image-original.jpg"
             alt="Original test image before compression, 814.8 KB"
             class="aspect-[4/3] w-full rounded-lg border border-hairline object-cover"
+            width="2000"
+            height="1500"
             loading="lazy"
           />
           <figcaption class="text-xs text-mute">
@@ -67,6 +69,8 @@ const formatMatrix = [
                 src={r.file}
                 alt={`Compressed to a ${r.target} target, achieved ${r.achieved}`}
                 class="aspect-[4/3] w-full rounded-lg border border-hairline object-cover"
+                width={r.width}
+                height={r.height}
                 loading="lazy"
               />
               <figcaption class="text-xs text-mute">

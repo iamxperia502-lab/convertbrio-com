@@ -13,7 +13,7 @@ const next = Astro.url.searchParams.get("next") ?? "/dashboard";
 const supabaseConfigured = Astro.locals.supabase !== null;
 ---
 
-<Layout title="Sign In" description="Sign in to your ConvertBrio account.">
+<Layout title="Sign In" description="Sign in to your ConvertBrio account." noindex>
   <PageIntro eyebrow="Account" title="Sign in" description="Welcome back. Sign in to access your dashboard and conversion history." />
 
   <section class="bg-canvas">

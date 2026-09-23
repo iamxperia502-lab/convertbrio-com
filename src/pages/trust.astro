@@ -4,7 +4,7 @@ export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import PageIntro from "../components/PageIntro.astro";
 
-const updated = "August 25, 2026";
+const updated = "September 23, 2026";
 ---
 
 <Layout
@@ -28,10 +28,16 @@ const updated = "August 25, 2026";
           rest while processing. Every conversion runs as an automated process: no one manually
           opens, reviews, or reads the contents of your file at any point, including for AI tools
           like the image enhancer, upscaler, and background remover, where uploads are used only
-          to produce your output and never to train or improve any model. Uploaded and converted
-          files are automatically deleted within 24 hours of processing via a daily cleanup job,
-          whether or not you download the result: this isn't a manual or best-effort process, it
-          runs on a schedule regardless of what happens on our end.
+          to produce your output and never to train or improve any model.
+        </p>
+        <p>
+          Your original upload goes to a private Vercel Blob store and is read from there once, to
+          perform the conversion, then deleted immediately afterward on a best-effort basis. The
+          converted result is separately held in temporary storage so you can download it, and
+          that copy is deleted by a scheduled daily cleanup job within 24 hours of processing,
+          whether or not you download it: that scheduled step isn't best-effort, it runs on a
+          fixed schedule independent of whether the original's earlier best-effort deletion
+          succeeded.
         </p>
 
         <h2>Reporting abuse or misuse</h2>

@@ -3,6 +3,8 @@ import type { Locale } from "./i18n";
 export interface HomeContent {
   seoTitle: string;
   description: string;
+  /** Meta description for the localized /all-tools page — distinct from the homepage `description` above. */
+  allToolsDescription: string;
   badge: string;
   heroTitle: string;
   heroIntro: string;
@@ -46,6 +48,8 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     seoTitle: "ConvertBrio: Conversor e Compressor de Arquivos Online Grátis",
     description:
       "Converta, comprima e edite imagens, PDFs e documentos online, grátis, privado, sem cadastro. Inclui um compressor de imagem que atinge um tamanho exato em KB.",
+    allToolsDescription:
+      "Veja todas as ferramentas do ConvertBrio para converter, comprimir e melhorar imagens, PDFs e documentos.",
     badge: "Grátis, privado, sem cadastro",
     heroTitle: "Converta, comprima e edite seus arquivos, direto no navegador.",
     heroIntro:
@@ -105,6 +109,8 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     seoTitle: "ConvertBrio: Conversor y Compresor de Archivos Online Gratis",
     description:
       "Convierte, comprime y edita imágenes, PDF y documentos online, gratis, privado, sin registro. Incluye un compresor de imagen que llega a un tamaño exacto en KB.",
+    allToolsDescription:
+      "Explora todas las herramientas de ConvertBrio para convertir, comprimir y mejorar imágenes, PDF y documentos.",
     badge: "Gratis, privado, sin registro",
     heroTitle: "Convierte, comprime y edita tus archivos, directamente en el navegador.",
     heroIntro:
@@ -164,6 +170,8 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     seoTitle: "ConvertBrio: Convertisseur et Compresseur de Fichiers en Ligne Gratuit",
     description:
       "Convertissez, compressez et modifiez des images, des PDF et des documents en ligne, gratuit, privé, sans inscription. Inclut un compresseur d'images qui atteint une taille exacte en Ko.",
+    allToolsDescription:
+      "Parcourez tous les outils ConvertBrio pour convertir, compresser et améliorer des images, des PDF et des documents.",
     badge: "Gratuit, privé, sans inscription",
     heroTitle: "Convertissez, compressez et modifiez vos fichiers, directement dans le navigateur.",
     heroIntro:
@@ -223,6 +231,8 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     seoTitle: "ConvertBrio: Kostenloser Online-Datei-Konverter und -Kompressor",
     description:
       "Konvertiere, komprimiere und bearbeite Bilder, PDFs und Dokumente online, kostenlos, privat, ohne Anmeldung. Inklusive Bildkompressor, der eine exakte Größe in KB trifft.",
+    allToolsDescription:
+      "Entdecke alle ConvertBrio-Tools zum Konvertieren, Komprimieren und Verbessern von Bildern, PDFs und Dokumenten.",
     badge: "Kostenlos, privat, ohne Anmeldung",
     heroTitle: "Konvertiere, komprimiere und bearbeite deine Dateien, direkt im Browser.",
     heroIntro:
@@ -282,6 +292,8 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     seoTitle: "ConvertBrio: Convertitore e Compressore di File Online Gratis",
     description:
       "Converti, comprimi e modifica immagini, PDF e documenti online, gratis, privato, senza registrazione. Include un compressore di immagini che raggiunge una dimensione esatta in KB.",
+    allToolsDescription:
+      "Scopri tutti gli strumenti di ConvertBrio per convertire, comprimere e migliorare immagini, PDF e documenti.",
     badge: "Gratis, privato, senza registrazione",
     heroTitle: "Converti, comprimi e modifica i tuoi file, direttamente nel browser.",
     heroIntro:
@@ -341,6 +353,8 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     seoTitle: "ConvertBrio: Konverter dan Kompresor File Online Gratis",
     description:
       "Konversi, kompres, dan edit gambar, PDF, dan dokumen online, gratis, privat, tanpa daftar. Termasuk kompresor gambar yang mencapai ukuran KB yang tepat.",
+    allToolsDescription:
+      "Jelajahi semua alat ConvertBrio untuk mengonversi, mengompres, dan meningkatkan kualitas gambar, PDF, dan dokumen.",
     badge: "Gratis, privat, tanpa daftar",
     heroTitle: "Konversi, kompres, dan edit file Anda, langsung di browser.",
     heroIntro:

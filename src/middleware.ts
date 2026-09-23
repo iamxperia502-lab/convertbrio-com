@@ -14,7 +14,7 @@ const RATE_LIMITS: { prefix: string; limit: number; windowMs: number }[] = [
 ];
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  const { request, cookies, locals, url } = context;
+  const { request, cookies, locals, url, isPrerendered } = context;
 
   const rateLimited = RATE_LIMITS.find((r) => url.pathname.startsWith(r.prefix));
   if (rateLimited) {
@@ -38,12 +38,18 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
   }
 
-  const supabaseConfigured = Boolean(
-    import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
-  );
-
   locals.supabase = null;
   locals.user = null;
+
+  // Prerendered pages run this middleware once at build time, not per
+  // visitor request - there's no real session cookie to read, so a
+  // Supabase auth lookup here is always anonymous and just wastes build
+  // time and API quota. Only on-demand routes (dashboard, sign-in/up,
+  // contact, tools/internet-speed-test, and every /api/* route) can see a
+  // real visitor's cookies, so only they need this check.
+  const supabaseConfigured =
+    !isPrerendered &&
+    Boolean(import.meta.env.PUBLIC_SUPABASE_URL && import.meta.env.PUBLIC_SUPABASE_ANON_KEY);
 
   if (supabaseConfigured) {
     const supabase = createSupabaseServerClient(request, cookies);

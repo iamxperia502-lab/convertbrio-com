@@ -10,7 +10,7 @@ import { CONVERSIONS_BUCKET } from "../../lib/conversion-jobs";
 // token when that env var is set.
 export const GET: APIRoute = async ({ request }) => {
   const cronSecret = import.meta.env.CRON_SECRET;
-  if (cronSecret && request.headers.get("authorization") !== `Bearer ${cronSecret}`) {
+  if (!cronSecret || request.headers.get("authorization") !== `Bearer ${cronSecret}`) {
     return new Response("Unauthorized", { status: 401 });
   }
 

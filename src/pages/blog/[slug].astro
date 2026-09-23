@@ -39,6 +39,10 @@ const articleSchema = {
   dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
   url: postUrl,
   mainEntityOfPage: postUrl,
+  author: {
+    "@type": "Person",
+    name: post.data.author,
+  },
   publisher: {
     "@type": "Organization",
     name: "ConvertBrio",
@@ -58,7 +62,15 @@ const relatedTools = post.data.relatedTools.map((slug) => getTool(slug)).filter(
   <div class="border-b border-hairline bg-canvas-soft">
     <div class="container-page flex flex-col items-start gap-3 py-14 sm:py-16">
       <p class="font-mono text-xs uppercase tracking-wide text-mute">
+        By <a href="/about" class="font-medium text-ink hover:underline">{post.data.author}</a>
+        {" · "}
         <time datetime={post.data.pubDate.toISOString()}>{dateFormatter.format(post.data.pubDate)}</time>
+        {post.data.updatedDate && (
+          <>
+            {" · Updated "}
+            <time datetime={post.data.updatedDate.toISOString()}>{dateFormatter.format(post.data.updatedDate)}</time>
+          </>
+        )}
       </p>
       <h1 class="max-w-3xl text-balance text-3xl font-semibold tracking-[-0.01em] text-ink sm:text-4xl">
         {post.data.title}
