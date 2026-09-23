@@ -394,10 +394,7 @@ const softwareApplicationSchema = isComingSoon(tool)
     </div>
   </section>
 
-  {/* The benchmark is long-form English-only evidence; it is omitted from
-      localised pages until a reviewed translation exists, rather than showing
-      an untranslated section inside a translated page. */}
-  {tool.slug === "compress-image" && isDefault && <CompressImageBenchmark />}
+  {tool.slug === "compress-image" && <CompressImageBenchmark lang={lang} />}
 
   {
     content && (

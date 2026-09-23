@@ -3,63 +3,69 @@
 // came from actually running a file through the live /api/convert/image
 // endpoint (the same code path a real user hits), not from estimates or
 // marketing copy. See the methodology note below for exactly how.
+// The measurements are identical in every language; only the text around
+// them is localised (data/benchmark-content.ts).
+import { benchmarkText } from "../data/benchmark-content";
+import type { Locale } from "../data/i18n";
+
+interface Props {
+  lang?: Locale;
+}
+const { lang = "en" } = Astro.props;
+const t = benchmarkText[lang];
+const fill = (template: string, values: Record<string, string>) =>
+  template.replace(/\{(\w+)\}/g, (_, key) => values[key] ?? "");
+// Measured values stay exactly as recorded; only the unit label is localised.
+const unit = (value: string) => value.replace(" KB", ` ${t.kb}`);
 
 const sizeResults = [
-  { target: "200 KB", achieved: "199.7 KB", bytes: "204,495 bytes", dims: "2000 × 1500 (unchanged)", ratio: "4.1×", downscaled: false, file: "/benchmarks/compress-image-200kb.jpg", width: 2000, height: 1500 },
-  { target: "100 KB", achieved: "99.2 KB", bytes: "101,640 bytes", dims: "2000 × 1500 (unchanged)", ratio: "8.2×", downscaled: false, file: "/benchmarks/compress-image-100kb.jpg", width: 2000, height: 1500 },
-  { target: "50 KB", achieved: "48.1 KB", bytes: "49,314 bytes", dims: "2000 × 1500 (unchanged)", ratio: "16.9×", downscaled: false, file: "/benchmarks/compress-image-50kb.jpg", width: 2000, height: 1500 },
-  { target: "20 KB", achieved: "14.9 KB", bytes: "15,357 bytes", dims: "1700 × 1275 (−15% width)", ratio: "54.3×", downscaled: true, file: "/benchmarks/compress-image-20kb.jpg", width: 1700, height: 1275 },
+  { target: "200 KB", achieved: "199.7 KB", bytes: "204,495", ratio: "4.1×", downscaled: false, file: "/benchmarks/compress-image-200kb.jpg", width: 2000, height: 1500 },
+  { target: "100 KB", achieved: "99.2 KB", bytes: "101,640", ratio: "8.2×", downscaled: false, file: "/benchmarks/compress-image-100kb.jpg", width: 2000, height: 1500 },
+  { target: "50 KB", achieved: "48.1 KB", bytes: "49,314", ratio: "16.9×", downscaled: false, file: "/benchmarks/compress-image-50kb.jpg", width: 2000, height: 1500 },
+  { target: "20 KB", achieved: "14.9 KB", bytes: "15,357", ratio: "54.3×", downscaled: true, file: "/benchmarks/compress-image-20kb.jpg", width: 1700, height: 1275 },
 ] as const;
 
 const formatMatrix = [
-  { input: "JPEG", output: "JPEG", note: "" },
-  { input: "PNG", output: "PNG", note: "Uses palette quantization to hit small targets: see limitations below" },
-  { input: "WEBP", output: "WEBP", note: "" },
-  { input: "AVIF", output: "AVIF", note: "" },
-  { input: "GIF", output: "GIF", note: "Only the first frame is kept: animation isn't preserved" },
-  { input: "HEIC / HEIF", output: "JPEG", note: "HEIC/HEIF aren't supported output formats, so iPhone photos convert to JPEG" },
+  { input: "JPEG", output: "JPEG" },
+  { input: "PNG", output: "PNG" },
+  { input: "WEBP", output: "WEBP" },
+  { input: "AVIF", output: "AVIF" },
+  { input: "GIF", output: "GIF" },
+  { input: "HEIC / HEIF", output: "JPEG" },
 ] as const;
+
+const linkClass = "font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700";
 ---
 
 <section aria-labelledby="benchmark-heading" class="border-b border-hairline bg-canvas">
   <div class="container-page py-16 sm:py-20">
     <div class="mx-auto max-w-3xl">
       <h2 id="benchmark-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink sm:text-3xl">
-        Real compression results, not estimates
+        {t.heading}
       </h2>
-      <p class="mt-4 leading-relaxed text-body">
-        Every number on this page came from actually uploading a file to ConvertBrio's live compressor
-        and measuring what came back, the same endpoint your browser calls when you use the tool above.
-        Nothing here is simulated.
-      </p>
+      <p class="mt-4 leading-relaxed text-body">{t.intro}</p>
 
       <div class="mt-6 rounded-xl border border-hairline bg-canvas-soft p-5 text-sm leading-relaxed text-body">
-        <p class="font-medium text-ink">Methodology</p>
+        <p class="font-medium text-ink">{t.methodologyLabel}</p>
         <p class="mt-2">
-          The test file is a 2000 × 1500, 814.8 KB synthetic JPEG we generated ourselves: a soft
-          gradient portrait composition with photographic-grain noise layered on top, built to compress
-          like a real phone photo without using anyone's actual photo (for privacy) or a downloaded stock
-          image (for licensing). We ran it through <code class="rounded bg-canvas-soft-2 px-1 py-0.5 font-mono text-xs">/api/convert/image</code>
-          with each target size below and recorded the exact response. Tested in Chrome on macOS:
-          conversion runs entirely on ConvertBrio's servers, so the result is identical regardless of
-          which browser or device sends the request.
+          {t.methodologyBefore}<code class="rounded bg-canvas-soft-2 px-1 py-0.5 font-mono text-xs">/api/convert/image</code>{t.methodologyAfter}
         </p>
       </div>
 
-      <h3 class="mt-10 text-lg font-semibold text-ink">Before / after at each target size</h3>
+      <h3 class="mt-10 text-lg font-semibold text-ink">{t.beforeAfterHeading}</h3>
       <div class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-5">
         <figure class="flex flex-col gap-2">
           <img
             src="/benchmarks/compress-image-original.jpg"
-            alt="Original test image before compression, 814.8 KB"
+            alt={t.originalAlt}
             class="aspect-[4/3] w-full rounded-lg border border-hairline object-cover"
             width="2000"
             height="1500"
             loading="lazy"
           />
           <figcaption class="text-xs text-mute">
-            <span class="block font-medium text-ink">Original</span>
-            814.8 KB · 2000×1500
+            <span class="block font-medium text-ink">{t.originalLabel}</span>
+            {unit("814.8 KB")} · 2000×1500
           </figcaption>
         </figure>
         {
@@ -67,74 +73,65 @@ const formatMatrix = [
             <figure class="flex flex-col gap-2">
               <img
                 src={r.file}
-                alt={`Compressed to a ${r.target} target, achieved ${r.achieved}`}
+                alt={fill(t.compressedAlt, { target: unit(r.target), achieved: unit(r.achieved) })}
                 class="aspect-[4/3] w-full rounded-lg border border-hairline object-cover"
                 width={r.width}
                 height={r.height}
                 loading="lazy"
               />
               <figcaption class="text-xs text-mute">
-                <span class="block font-medium text-ink">{r.target} target</span>
-                {r.achieved} achieved
+                <span class="block font-medium text-ink">{fill(t.targetLabel, { target: unit(r.target) })}</span>
+                {fill(t.achievedLabel, { achieved: unit(r.achieved) })}
               </figcaption>
             </figure>
           ))
         }
       </div>
 
-      <h3 class="mt-10 text-lg font-semibold text-ink">Measured results</h3>
+      <h3 class="mt-10 text-lg font-semibold text-ink">{t.resultsHeading}</h3>
       <div class="mt-4 overflow-x-auto rounded-xl border border-hairline">
         <table class="w-full min-w-[560px] border-collapse text-left text-sm">
           <thead>
             <tr class="border-b border-hairline bg-canvas-soft text-xs uppercase tracking-wide text-mute">
-              <th class="px-4 py-3 font-medium">Target</th>
-              <th class="px-4 py-3 font-medium">Achieved</th>
-              <th class="px-4 py-3 font-medium">Dimensions</th>
-              <th class="px-4 py-3 font-medium">Compression ratio</th>
-              <th class="px-4 py-3 font-medium">Hit target?</th>
+              <th class="px-4 py-3 font-medium">{t.thTarget}</th>
+              <th class="px-4 py-3 font-medium">{t.thAchieved}</th>
+              <th class="px-4 py-3 font-medium">{t.thDimensions}</th>
+              <th class="px-4 py-3 font-medium">{t.thRatio}</th>
+              <th class="px-4 py-3 font-medium">{t.thHit}</th>
             </tr>
           </thead>
           <tbody>
             {
               sizeResults.map((r, i) => (
                 <tr class={i < sizeResults.length - 1 ? "border-b border-hairline" : ""}>
-                  <td class="px-4 py-3 text-ink">{r.target}</td>
+                  <td class="px-4 py-3 text-ink">{unit(r.target)}</td>
                   <td class="px-4 py-3 text-body">
-                    {r.achieved} <span class="text-mute">({r.bytes})</span>
+                    {unit(r.achieved)} <span class="text-mute">({r.bytes} {t.bytes})</span>
                   </td>
-                  <td class="px-4 py-3 text-body">{r.dims}</td>
-                  <td class="px-4 py-3 text-body">{r.ratio} smaller</td>
-                  <td class="px-4 py-3 text-success">Yes</td>
+                  <td class="px-4 py-3 text-body">
+                    {r.width} × {r.height} {r.downscaled ? t.widthReduced : t.unchanged}
+                  </td>
+                  <td class="px-4 py-3 text-body">{fill(t.smaller, { ratio: r.ratio })}</td>
+                  <td class="px-4 py-3 text-success">{t.yes}</td>
                 </tr>
               ))
             }
           </tbody>
         </table>
       </div>
-      <p class="mt-3 text-sm text-mute">
-        The 200–50 KB targets were all hit on quality reduction alone, at full original resolution. The
-        20 KB target needed one downscale step (2000px → 1700px wide, −15%) because quality reduction
-        alone couldn't fit that far below the original: visible detail loss starts to show at this
-        level; see limitations below.
-      </p>
+      <p class="mt-3 text-sm text-mute">{t.resultsNote}</p>
 
-      <h3 class="mt-10 text-lg font-semibold text-ink">Format matters: JPEG vs. PNG at the same target</h3>
-      <p class="mt-3 leading-relaxed text-body">
-        We ran the identical test image through the same 100 KB target twice: once saved as JPEG, once
-        as a lossless PNG re-encode of the same pixels (6.35 MB original). JPEG hit the target at full
-        2000×1500 resolution. PNG needed to drop to 887×665 (44% of the original width) and fall back to
-        256-color palette quantization, which introduces visible dithering speckle. If your source format
-        is flexible, JPEG or WEBP will preserve more detail at the same target size than PNG.
-      </p>
+      <h3 class="mt-10 text-lg font-semibold text-ink">{t.formatHeading}</h3>
+      <p class="mt-3 leading-relaxed text-body">{t.formatBody}</p>
 
-      <h3 class="mt-10 text-lg font-semibold text-ink">Supported format matrix</h3>
+      <h3 class="mt-10 text-lg font-semibold text-ink">{t.matrixHeading}</h3>
       <div class="mt-4 overflow-x-auto rounded-xl border border-hairline">
         <table class="w-full min-w-[480px] border-collapse text-left text-sm">
           <thead>
             <tr class="border-b border-hairline bg-canvas-soft text-xs uppercase tracking-wide text-mute">
-              <th class="px-4 py-3 font-medium">Input format</th>
-              <th class="px-4 py-3 font-medium">Output format</th>
-              <th class="px-4 py-3 font-medium">Notes</th>
+              <th class="px-4 py-3 font-medium">{t.thInput}</th>
+              <th class="px-4 py-3 font-medium">{t.thOutput}</th>
+              <th class="px-4 py-3 font-medium">{t.thNotes}</th>
             </tr>
           </thead>
           <tbody>
@@ -143,7 +140,7 @@ const formatMatrix = [
                 <tr class={i < formatMatrix.length - 1 ? "border-b border-hairline" : ""}>
                   <td class="px-4 py-3 text-ink">{row.input}</td>
                   <td class="px-4 py-3 text-body">{row.output}</td>
-                  <td class="px-4 py-3 text-mute">{row.note || "N/A"}</td>
+                  <td class="px-4 py-3 text-mute">{t.matrixNotes[i] || t.na}</td>
                 </tr>
               ))
             }
@@ -151,40 +148,21 @@ const formatMatrix = [
         </table>
       </div>
 
-      <h3 class="mt-10 text-lg font-semibold text-ink">How target-size compression actually works</h3>
+      <h3 class="mt-10 text-lg font-semibold text-ink">{t.howHeading}</h3>
       <p class="mt-3 leading-relaxed text-body">
-        Processing runs server-side using <a href="https://sharp.pixelplumbing.com/" class="font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700" rel="nofollow">sharp</a>
-        (built on libvips). When you set a target size, ConvertBrio binary-searches JPEG/WEBP/AVIF quality
-        between 10% and 95%, re-encoding and measuring the actual output at each step, until it finds
-        the highest quality that still fits your target, typically in 6–7 attempts. PNG targets add
-        palette quantization to that same search, since plain PNG quality settings barely change file
-        size on their own. If the target still can't be hit at the 10% quality floor, the tool falls back
-        to shrinking the image's dimensions by 15% at a time (up to 6 steps) and retries, rather than
-        pushing quality below a usable threshold.
+        {t.howBefore}<a href="https://sharp.pixelplumbing.com/" class={linkClass} rel="nofollow">sharp</a>{t.howAfter}
       </p>
 
-      <h3 class="mt-10 text-lg font-semibold text-ink">Limitations and edge cases</h3>
+      <h3 class="mt-10 text-lg font-semibold text-ink">{t.limitsHeading}</h3>
       <ul class="mt-3 flex flex-col gap-3 text-body">
-        <li class="flex gap-2.5">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>
-          <span>Very aggressive targets relative to the source (well under the 20 KB case tested above) can require dropping dimensions to a fraction of the original before the file fits: there's a real quality floor, not just a size floor.</span>
-        </li>
-        <li class="flex gap-2.5">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>
-          <span>PNG compresses far less efficiently than JPEG/WEBP for photographic content (see the format comparison above) because it relies on palette quantization rather than true lossy encoding.</span>
-        </li>
-        <li class="flex gap-2.5">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>
-          <span>Animated GIFs are compressed as a single still frame: we tested this directly with a 3-frame GIF and confirmed the output keeps only the first frame.</span>
-        </li>
-        <li class="flex gap-2.5">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>
-          <span>HEIC/HEIF photos (the default format on recent iPhones) always come back as JPEG, since HEIC isn't a supported output format: expect a different file extension than what you uploaded.</span>
-        </li>
-        <li class="flex gap-2.5">
-          <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute"></span>
-          <span>Uploads are capped at 100 MB on the free tier.</span>
-        </li>
+        {
+          t.limits.map((item) => (
+            <li class="flex gap-2.5">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-mute" />
+              <span>{item}</span>
+            </li>
+          ))
+        }
       </ul>
     </div>
   </div>
