@@ -1,6 +1,7 @@
 ---
 import { HUB_BY_CATEGORY } from "../data/hubs";
 import { ui, localePath, routePath, LOCALIZED_TOOL_SLUGS, toolMetaByLocale, type Locale } from "../data/i18n";
+import SocialLinks from "./SocialLinks.astro";
 
 interface Props {
   lang?: Locale;
@@ -75,6 +76,7 @@ const year = new Date().getFullYear();
           <img src="/logo-dark.png" alt="ConvertBrio" width="1600" height="364" class="hidden h-10 w-auto dark:block" />
         </a>
         <p class="mt-3 max-w-[22ch] text-sm leading-relaxed text-mute">{t.tagline}</p>
+        <SocialLinks class="mt-4" />
       </div>
 
       {
