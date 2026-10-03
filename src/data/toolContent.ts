@@ -794,9 +794,9 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "compress-image": {
-    title: "Image Compressor: Shrink File Size Without Losing Quality",
+    title: "Image Compressor: Shrink Images to a Size Limit, With Quality Tradeoffs Explained",
     intro: [
-      "Whether you're hitting an upload limit, speeding up a website, or just tired of photos eating up storage, ConvertBrio's image compressor reduces file size while keeping images visually sharp. You control the outcome directly: set a quality level, or give the tool an exact target size in kilobytes and let it hit that ceiling for you.",
+      "Whether you're hitting an upload limit, speeding up a website, or just tired of photos eating up storage, ConvertBrio's image compressor reduces file size at a quality cost you can see and control. Set a quality level, or give the tool a maximum size in kilobytes (1 KB = 1,024 bytes) and it searches for the best quality that lands at or below that ceiling.",
       "That target-size mode is the reason most people land here. Visa portals, job sites, university applications, and government forms routinely cap a photo or document scan at 100 KB, 200 KB, or 50 KB, and rejecting a 4 MB phone photo with no guidance on how to shrink it. Instead of exporting at guessed quality levels until one happens to fit, you type the limit once and download a file that's under it.",
     ],
     howTo: [
@@ -828,8 +828,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
         ],
       },
       {
-        heading: "Reducing an image to an exact size (like 100 KB)",
-        body: "Enter your limit in the target-size field and ConvertBrio works backward to it: it lowers JPG/WEBP quality in steps, re-checking the encoded size after each, and only if the smallest reasonable quality still overshoots does it reduce the pixel dimensions as well. The result is the largest, sharpest version of your image that still fits under the ceiling, which is exactly what an upload form is asking for.",
+        heading: "Reducing an image to a size limit (like 100 KB)",
+        body: "Enter your limit in the target-size field and ConvertBrio works backward to it: it searches for a quality setting (a binary search, re-checking the encoded size each time), and only if the smallest reasonable quality still overshoots does it reduce the pixel dimensions as well. The result is the best-looking version it found that fits at or under the ceiling, so a 100 KB limit may produce, say, a 99 KB file rather than exactly 100 KB. If even the lowest quality doesn't fit, you'll see the smallest size it reached.",
         list: [
           "Passport / visa photo uploads: often 100 KB or a 10 KB–240 KB range",
           "Government and tax portals: commonly 100 KB or 200 KB per document scan",
@@ -1238,7 +1238,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
         },
       },
       {
-        heading: "Compressing a PDF without losing quality",
+        heading: "How much quality a compressed PDF loses",
         body: "For any PDF that's mostly text, compression is effectively lossless: you lose nothing visible. For scanned or image-heavy PDFs, the images are re-encoded, so there's a real but small quality trade-off. In practice a scanned page compressed with this tool still reads cleanly on screen and prints fine; the difference only shows if you zoom in hard on a photograph. If a document absolutely must keep original image fidelity, compress it and compare the result before deciding.",
       },
       {
@@ -1271,9 +1271,9 @@ export const toolContent: Record<string, ToolContentEntry> = {
           "Upload your document to ConvertBrio's Compress PDF tool and click Compress. It re-encodes embedded images and removes unnecessary metadata to shrink the file, which downloads automatically: no account, no watermark, no email required.",
       },
       {
-        question: "Can I compress a PDF without losing quality?",
+        question: "Does compressing a PDF reduce quality?",
         answer:
-          "Text and vector content is never degraded: it stays perfectly sharp. Only embedded photos and scans are re-encoded, with a small quality reduction that is usually invisible at normal viewing size. Text-heavy PDFs compress with no visible loss at all.",
+          "Text and vector content is never degraded: it stays perfectly sharp. Only embedded photos and scans are re-encoded, with a small quality reduction that is usually invisible at normal viewing size. Text-heavy PDFs have little to shrink, so expect only a small size reduction.",
       },
       {
         question: "How do I make a PDF smaller to email it?",

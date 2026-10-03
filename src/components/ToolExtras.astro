@@ -83,7 +83,7 @@ const languages = [
         </div>
       </div>
       <div class="flex flex-col gap-1.5">
-        <label for="maxKb" class={label}>Maximum file size (KB, optional)</label>
+        <label for="maxKb" class={label}>Maximum file size (KB, optional; 1 KB = 1,024 bytes)</label>
         <input id="maxKb" name="maxKb" type="number" min="1" step="any" placeholder="50" class={input} />
       </div>
       <div class="flex flex-col gap-1.5">
@@ -100,7 +100,7 @@ const languages = [
 {
   slug === "batch-image-compressor" && (
     <div class="flex flex-col gap-1.5">
-      <label for="targetKb" class={label}>Target size for each image (KB)</label>
+      <label for="targetKb" class={label}>Target size for each image (KB; 1 KB = 1,024 bytes)</label>
       <input id="targetKb" name="targetKb" type="number" min="5" step="any" required placeholder="100" class={input} />
       <span class={hint}>
         Every image is compressed on its own to this size. Quality drops first, and dimensions shrink only if needed. Files that can't reach the target are flagged.

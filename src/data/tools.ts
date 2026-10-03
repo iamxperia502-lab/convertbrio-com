@@ -313,10 +313,10 @@ export const tools: Tool[] = [
     kind: "image",
     operation: "compress",
     icon: "shrink",
-    description: "Shrink image file size while keeping quality intact.",
-    seoTitle: "Compress Image to an Exact File Size (KB) | ConvertBrio",
+    description: "Shrink image file size to a target limit, with the quality tradeoff shown.",
+    seoTitle: "Compress Image to a Target File Size (KB) | ConvertBrio",
     seoDescription:
-      "Compress a JPG, PNG, WEBP, HEIC, or AVIF to an exact KB target, like 100 KB for a visa or government form, or use a quality slider. Free, no signup.",
+      "Compress a JPG, PNG, WEBP, HEIC, or AVIF to at or under a KB limit, like 100 KB for a visa or government form, or use a quality slider. Free, no signup.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -702,7 +702,7 @@ export const tools: Tool[] = [
   },
   {
     slug: "compress-pdf-to-size",
-    name: "Compress PDF to Exact Size",
+    name: "Compress PDF to a Size Limit",
     categories: ["compress", "pdf"],
     kind: "pdf",
     operation: "compress-target",

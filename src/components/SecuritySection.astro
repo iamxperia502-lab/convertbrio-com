@@ -4,13 +4,13 @@ import Icon from "./Icon.astro";
 const points = [
   {
     icon: "lock",
-    title: "256-bit encryption",
-    desc: "Every file is encrypted in transit over TLS, and stored encrypted at rest by our storage provider.",
+    title: "Encrypted in transit",
+    desc: "Files travel over HTTPS/TLS. Our storage providers (Vercel Blob, Supabase) state they encrypt stored data at rest; see the Trust & Security page for details.",
   },
   {
     icon: "clock",
     title: "Automatic deletion",
-    desc: "Uploaded and converted files are permanently deleted from our servers within 24 hours.",
+    desc: "Your original upload is deleted right after it is read for conversion. Converted results are removed by a daily cleanup job, typically within about 24 hours.",
   },
   {
     icon: "eye",
@@ -35,7 +35,7 @@ const points = [
       </p>
       <p class="text-sm text-white/50">
         Every tool works the same way: your browser uploads the file, our servers do the actual
-        conversion, and both the original and the result are deleted within 24 hours.
+        conversion, and the original and the result are deleted automatically (see Trust & Security for exact timing).
       </p>
     </div>
 

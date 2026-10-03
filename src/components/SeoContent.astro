@@ -11,7 +11,7 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
         ConvertBrio: A Free Online Converter for Images, PDFs, and Documents
       </h2>
       <p class="mt-4 leading-relaxed text-body">
-        ConvertBrio is a free <strong class="font-medium text-ink">online file converter</strong> built for anyone who needs a file converted, compressed, or cleaned up without installing software or creating an account. Whether you're changing an image format, shrinking a PDF, or turning a Word document into a polished PDF, upload it from your browser and ConvertBrio's servers handle the conversion in seconds. As a secure file converter, every upload is encrypted in transit and deleted automatically once the job is done, so you can convert files online without worrying about where your data ends up.
+        ConvertBrio is a free <strong class="font-medium text-ink">online file converter</strong> built for anyone who needs a file converted, compressed, or cleaned up without installing software or creating an account. Whether you're changing an image format, shrinking a PDF, or turning a Word document into a polished PDF, upload it from your browser and ConvertBrio's servers handle the conversion, usually within seconds for typical files. As a secure file converter, every upload is encrypted in transit, originals are deleted right after they are read for conversion, and results are removed by a daily cleanup job. Files are processed on our servers, not locally in your browser; see the Trust & Security page for details.
       </p>
 
       <details class="group mt-8">
@@ -40,7 +40,7 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
 
         <h3 class="mt-10 text-lg font-semibold text-ink">Convert Image Formats Online</h3>
         <p class="mt-3 leading-relaxed text-body">
-          ConvertBrio's image converter online supports every common format, so you can move between them without losing quality.
+          ConvertBrio's image converter online supports every common format, and each page explains what changes when you switch formats: lossy formats such as JPG and lossy WEBP lose a little detail on every re-save, while PNG keeps pixels exactly but produces larger files.
         </p>
 
         <div class="mt-6 flex flex-col gap-5">
@@ -53,7 +53,7 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
           <div>
             <h4 class="text-base font-semibold text-ink">JPG to PNG and PNG to JPG</h4>
             <p class="mt-1.5 leading-relaxed text-body">
-              Need transparency? <a href="/tools/jpg-to-png" class={link}>JPG to PNG</a> adds an alpha channel for logos and graphics. Need a smaller file for the web or email? <a href="/tools/png-to-jpg" class={link}>PNG to JPG</a> compresses flat photos with no visible quality loss.
+              <a href="/tools/jpg-to-png" class={link}>JPG to PNG</a> wraps your JPG in a PNG container, which some editors and upload forms require. It does not add transparency or remove a background, and the file usually gets larger. If you need the background gone, use <a href="/tools/remove-background" class={link}>Remove Background</a> first. Need a smaller file for the web or email? <a href="/tools/png-to-jpg" class={link}>PNG to JPG</a> usually shrinks photos a lot, at the cost of some detail, and fills any transparent areas with white.
             </p>
           </div>
           <div>
@@ -75,7 +75,7 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
           <div>
             <h4 class="text-base font-semibold text-ink">Reduce an Image Under 100 KB</h4>
             <p class="mt-1.5 leading-relaxed text-body">
-              Job applications, government forms, and ID uploads often cap file size at 100 KB. The <a href="/tools/compress-image" class={link}>reduce image to 100 KB</a> tool lets you compress a photo down to that exact limit while keeping it clear enough to pass review.
+              Job applications, government forms, and ID uploads often cap file size at 100 KB. The <a href="/tools/compress-image" class={link}>reduce image to 100 KB</a> tool searches for the highest quality that fits at or below your limit (KB here means 1,024 bytes). If a photo can't reach the limit without heavy quality loss, you'll see the smallest size it reached instead.
             </p>
           </div>
           <div>
@@ -110,7 +110,7 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
 
         <h3 class="mt-10 text-lg font-semibold text-ink">AI Enhancement, Multi-File Tools, and File Privacy</h3>
         <p class="mt-3 leading-relaxed text-body">
-          ConvertBrio's AI tools, <a href="/tools/ai-image-enhancer" class={link}>image enhancer</a>, <a href="/tools/ai-upscaler" class={link}>upscaler</a>, and <a href="/tools/remove-background" class={link}>background remover</a>, sharpen, enlarge, and clean up photos automatically. For anyone combining multiple files at once, <a href="/tools/merge-pdf" class={link}>Merge PDF</a>, <a href="/tools/jpg-to-pdf" class={link}>JPG to PDF</a>, and <a href="/tools/merge-documents" class={link}>Merge Documents</a> already accept several files in a single upload, free. And across every tool, file privacy comes standard: uploads are encrypted, processing happens automatically with no human review, and files are deleted from our servers within 24 hours, so ConvertBrio stays a secure file converter you can rely on for sensitive documents.
+          ConvertBrio's AI tools, <a href="/tools/ai-image-enhancer" class={link}>image enhancer</a>, <a href="/tools/ai-upscaler" class={link}>upscaler</a>, and <a href="/tools/remove-background" class={link}>background remover</a>, sharpen, enlarge, and clean up photos automatically. For anyone combining multiple files at once, <a href="/tools/merge-pdf" class={link}>Merge PDF</a>, <a href="/tools/jpg-to-pdf" class={link}>JPG to PDF</a>, and <a href="/tools/merge-documents" class={link}>Merge Documents</a> already accept several files in a single upload, free. And across every tool, file privacy comes standard: uploads are encrypted, processing happens automatically with no human review, and files are deleted automatically (see Trust &amp; Security for timing). Because files are processed on our servers, avoid uploading documents you are not comfortable sending to a third-party service.
         </p>
         </div>
       </details>

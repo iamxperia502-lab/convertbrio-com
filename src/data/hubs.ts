@@ -72,7 +72,7 @@ export const hubs: Hub[] = [
     articles: ["compress-pdf-to-a-specific-size", "compress-pdf-without-losing-quality", "combine-photos-into-one-pdf", "add-page-numbers-to-pdf", "pdf-password-restrictions-explained"],
     chooser: {
       heading: "Which PDF tool should I use?",
-      body: "Use Merge PDF to join files and Split PDF to separate every page. If you need to keep only some pages, change their order, or fix a sideways page, the PDF Page Organizer lets you see each page first. For size limits, Compress PDF applies one standard level, while Compress PDF to Exact Size works toward a KB or MB target and reports the size it reached.",
+      body: "Use Merge PDF to join files and Split PDF to separate every page. If you need to keep only some pages, change their order, or fix a sideways page, the PDF Page Organizer lets you see each page first. For size limits, Compress PDF applies one standard level, while Compress PDF to a Size Limit works toward a KB or MB target and reports the size it reached.",
     },
   },
   {

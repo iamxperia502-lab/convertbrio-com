@@ -39,8 +39,9 @@ import { liveToolCount } from "../data/tools";
 
       <p class="max-w-xl text-balance text-base leading-relaxed text-body sm:text-lg">
         Images, PDFs, and documents: {liveToolCount} tools, no software to install. Need a
-        photo at an exact file size for a form or portal? Our compressor hits your target KB
-        exactly, no trial-and-error with a quality slider.
+        photo under a file-size limit for a form or portal? Enter your limit in KB and the
+        compressor searches for the best quality that fits at or below it, instead of you
+        guessing with a quality slider.
       </p>
 
       <div class="mt-2 flex flex-col gap-3 sm:flex-row">
@@ -48,7 +49,7 @@ import { liveToolCount } from "../data/tools";
           href="/tools/compress-image"
           class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-medium text-canvas shadow-card transition-transform duration-150 hover:-translate-y-0.5 hover:opacity-90"
         >
-          Compress to Exact Size
+          Compress to a Size Limit
           <Icon name="arrow" class="h-4 w-4" />
         </a>
         <a

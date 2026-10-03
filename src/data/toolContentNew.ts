@@ -269,7 +269,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       { label: "Merge PDF", href: "/tools/merge-pdf" },
       { label: "Split PDF", href: "/tools/split-pdf" },
       { label: "Rotate PDF", href: "/tools/rotate-pdf" },
-      { label: "Compress PDF to Exact Size", href: "/tools/compress-pdf-to-size" },
+      { label: "Compress PDF to a Size Limit", href: "/tools/compress-pdf-to-size" },
     ],
     faqDescription: "Common questions about reordering, rotating, and deleting PDF pages.",
     faq: [
