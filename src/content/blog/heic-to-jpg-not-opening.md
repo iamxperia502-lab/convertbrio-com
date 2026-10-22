@@ -2,7 +2,7 @@
 title: "HEIC Photos Won't Open on Windows or Android? Here's Why (and the Fix)"
 seoTitle: "HEIC Photos Won't Open on Windows or Android? The Fix"
 description: "Why iPhone photos show up as HEIC files that won't open outside of Apple devices, and three ways to convert them to JPG so they open anywhere."
-pubDate: 2026-07-14
+pubDate: 2026-07-29
 tags: ["images", "iphone", "how-to"]
 relatedTools: ["heic-to-jpg", "image-converter"]
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "How to Combine Multiple Photos Into One PDF File"
 description: "Turning several photos of receipts, documents, or pages into a single PDF, and why that's usually better than sending separate image files."
-pubDate: 2026-08-02
+pubDate: 2026-07-29
 tags: ["pdf", "images", "how-to"]
 relatedTools: ["jpg-to-pdf", "merge-pdf"]
 draft: false

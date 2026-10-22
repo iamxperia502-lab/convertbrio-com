@@ -31,12 +31,12 @@ export const homepageFaq: FaqItem[] = [
   {
     question: "Are uploaded files secure?",
     answer:
-      "Every file you upload to ConvertBrio travels over an encrypted (HTTPS) connection and is stored encrypted at rest. Conversion is fully automated: no one manually opens or reviews your file as part of processing, and each conversion runs in its own isolated server process.",
+      "Every file you upload to ConvertBrio travels over an encrypted (HTTPS) connection and is processed on servers we control. Conversion is fully automated: no one manually opens or reviews your file as part of processing, and each conversion runs in its own isolated server process.",
   },
   {
     question: "When are uploaded files deleted?",
     answer:
-      "ConvertBrio automatically deletes both your original upload and the converted output from our servers within 24 hours of processing. Files aren't kept, archived, or used for any purpose beyond completing your conversion, so nothing lingers on our servers after your download is ready.",
+      "ConvertBrio automatically deletes both your original upload and the converted output from our servers within about 24 hours of processing. Files aren't kept, archived, or used for any purpose beyond completing your conversion, so nothing lingers on our servers after your download is ready.",
   },
   {
     question: "Which file formats does ConvertBrio support?",

@@ -1,7 +1,7 @@
 ---
 title: "When to Remove a Photo's Background (and When Not To)"
 description: "Background removal is useful for product photos, headshots, and ID photos, but not every photo benefits from it. Here's how to tell the difference."
-pubDate: 2026-08-08
+pubDate: 2026-07-29
 tags: ["images", "how-to"]
 relatedTools: ["remove-background", "resize-image", "crop-image"]
 draft: false

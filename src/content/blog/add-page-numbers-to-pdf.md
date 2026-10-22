@@ -1,7 +1,7 @@
 ---
 title: "How to Add Page Numbers to a PDF (Reports, Theses, Contracts)"
 description: "Page numbers matter more in a PDF than most formatting details: here's when they're expected, and how to stamp them onto a document that doesn't have them."
-pubDate: 2026-08-12
+pubDate: 2026-07-29
 tags: ["pdf", "how-to"]
 relatedTools: ["add-page-numbers", "merge-pdf"]
 draft: false

@@ -1,7 +1,7 @@
 ---
 title: "Why Did My PDF to Word Conversion Lose Its Formatting?"
 description: "PDF to Word conversion works differently than most people expect. Here's what actually happens during the conversion, and how to get a usable result."
-pubDate: 2026-08-05
+pubDate: 2026-07-29
 tags: ["pdf", "document", "how-to"]
 relatedTools: ["pdf-to-word", "ocr-pdf"]
 draft: false

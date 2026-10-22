@@ -30,7 +30,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Files are encrypted in transit, processed automatically with no human review, and deleted within 24 hours. Password-protected PDFs can't be processed.",
+        body: "Files are encrypted in transit, processed automatically with no human review, and deleted within about 24 hours. Password-protected PDFs can't be processed.",
       },
     ],
     relatedTools: [
@@ -46,7 +46,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       { question: "Does the result end up exactly at my limit?", answer: "It ends up at or below the limit, usually somewhat under it, because settings change in steps rather than continuously." },
       { question: "Why did my PDF barely shrink?", answer: "PDFs made mostly of text and vector shapes are already compact. The biggest savings come from PDFs that contain photos or scanned pages." },
       { question: "Is there a quality difference from the regular Compress PDF tool?", answer: "Compress PDF applies one fixed level. This tool starts at the same level and only gets stronger if your limit requires it." },
-      { question: "Is my document kept?", answer: "No. Uploads and results are deleted within 24 hours and are never reviewed by a person." },
+      { question: "Is my document kept?", answer: "No. Uploads and results are deleted within about 24 hours and are never reviewed by a person." },
     ],
   },
 
@@ -137,7 +137,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       { question: "Can I download files one by one?", answer: "Yes. Every successful image has its own download link, and the ZIP is available too." },
       { question: "What happens if one file is corrupt?", answer: "It's reported as failed while the others are processed normally." },
       { question: "Does it change the format of my images?", answer: "No, except HEIC photos, which become JPG." },
-      { question: "Are my images stored?", answer: "Uploads and results are deleted within 24 hours and never reviewed by a person." },
+      { question: "Are my images stored?", answer: "Uploads and results are deleted within about 24 hours and never reviewed by a person." },
     ],
   },
 
@@ -168,7 +168,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "Images are encrypted in transit, processed automatically with no human review, and deleted within 24 hours. The recognized text is shown only to you.",
+        body: "Images are encrypted in transit, processed automatically with no human review, and deleted within about 24 hours. The recognized text is shown only to you.",
       },
     ],
     relatedTools: [
@@ -215,7 +215,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "Uploads are encrypted in transit, processed automatically with no human review, and deleted within 24 hours.",
+        body: "Uploads are encrypted in transit, processed automatically with no human review, and deleted within about 24 hours.",
       },
     ],
     relatedTools: [
@@ -309,7 +309,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "Files are encrypted in transit, processed automatically with no human review, and deleted within 24 hours.",
+        body: "Files are encrypted in transit, processed automatically with no human review, and deleted within about 24 hours.",
       },
     ],
     relatedTools: [

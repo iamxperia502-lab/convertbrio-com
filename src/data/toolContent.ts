@@ -119,7 +119,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and file limits",
-        body: "Every upload is encrypted in transit over HTTPS and processed automatically: no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within 24 hours, whether or not you download the result. Files up to 100 MB are supported, free, with no account and no watermark.",
+        body: "Every upload is encrypted in transit over HTTPS and processed automatically: no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within about 24 hours, whether or not you download the result. Files up to 100 MB are supported, free, with no account and no watermark.",
       },
     ],
     relatedTools: [
@@ -221,7 +221,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "The photo is encrypted in transit, decoded on ConvertBrio's servers with no human review, and both the original HEIC and the converted JPG are deleted within 24 hours. Nothing is kept, indexed, or used for any purpose beyond the conversion.",
+        body: "The photo is encrypted in transit, decoded on ConvertBrio's servers with no human review, and both the original HEIC and the converted JPG are deleted within about 24 hours. Nothing is kept, indexed, or used for any purpose beyond the conversion.",
       },
     ],
     relatedTools: [
@@ -628,7 +628,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
+        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within about 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -718,7 +718,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
+        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within about 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -765,7 +765,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within 24 hours of processing.",
+        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within about 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -847,7 +847,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Every upload is encrypted in transit and automatically deleted from ConvertBrio's servers within 24 hours, downloaded or not. This tool compresses one image per upload, up to 100 MB, free, with no account and no watermark.",
+        body: "Every upload is encrypted in transit and automatically deleted from ConvertBrio's servers within about 24 hours, downloaded or not. This tool compresses one image per upload, up to 100 MB, free, with no account and no watermark.",
       },
     ],
     relatedTools: [
@@ -938,7 +938,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Uploads are encrypted in transit, processed automatically with no human review, and deleted from ConvertBrio's servers within 24 hours. One image per upload, up to 100 MB, free, no account.",
+        body: "Uploads are encrypted in transit, processed automatically with no human review, and deleted from ConvertBrio's servers within about 24 hours. One image per upload, up to 100 MB, free, no account.",
       },
     ],
     relatedTools: [
@@ -1107,7 +1107,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Files are encrypted in transit, merged automatically on ConvertBrio's servers with no human review, and every file, sources and the merged output, is deleted within 24 hours. Multiple files per merge, each up to 100 MB, free, no account, no watermark.",
+        body: "Files are encrypted in transit, merged automatically on ConvertBrio's servers with no human review, and every file, sources and the merged output, is deleted within about 24 hours. Multiple files per merge, each up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -1165,7 +1165,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Download Format and Limits",
-        body: "Because splitting produces one file per page, the result downloads as a single ZIP archive containing every page as its own PDF, ready to extract. Uploads are capped at 100 MB, and both the original and the resulting pages are deleted from ConvertBrio's servers within 24 hours of processing.",
+        body: "Because splitting produces one file per page, the result downloads as a single ZIP archive containing every page as its own PDF, ready to extract. Uploads are capped at 100 MB, and both the original and the resulting pages are deleted from ConvertBrio's servers within about 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -1254,7 +1254,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your PDF is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the original and the compressed copy are deleted within 24 hours. One file per run, up to 100 MB, free, no account, no watermark.",
+        body: "Your PDF is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the original and the compressed copy are deleted within about 24 hours. One file per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -1403,7 +1403,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Numbering Style and Limits",
-        body: "Numbers are stamped bottom-center on every page in a plain sans-serif style, starting at 1: there's currently no option to change position, starting number, or format like \"Page X of Y\". Uploads are capped at 100 MB and the file is deleted from ConvertBrio's servers within 24 hours of processing.",
+        body: "Numbers are stamped bottom-center on every page in a plain sans-serif style, starting at 1: there's currently no option to change position, starting number, or format like \"Page X of Y\". Uploads are capped at 100 MB and the file is deleted from ConvertBrio's servers within about 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -1473,7 +1473,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your PDF is encrypted in transit, rendered automatically with no human review, and both the upload and the images are deleted within 24 hours. One file per run, up to 100 MB, free, no account.",
+        body: "Your PDF is encrypted in transit, rendered automatically with no human review, and both the upload and the images are deleted within about 24 hours. One file per run, up to 100 MB, free, no account.",
       },
     ],
     relatedTools: [
@@ -1601,7 +1601,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Images are encrypted in transit, combined automatically with no human review, and both the source images and the finished PDF are deleted within 24 hours. Multiple images per run, 100 MB combined, free, no account, no watermark.",
+        body: "Images are encrypted in transit, combined automatically with no human review, and both the source images and the finished PDF are deleted within about 24 hours. Multiple images per run, 100 MB combined, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -1734,7 +1734,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your document is encrypted in transit, processed automatically with no human review, and both the upload and the OCR'd result are deleted within 24 hours. One PDF per run, up to 100 MB, free, no account.",
+        body: "Your document is encrypted in transit, processed automatically with no human review, and both the upload and the OCR'd result are deleted within about 24 hours. One PDF per run, up to 100 MB, free, no account.",
       },
     ],
     relatedTools: [
@@ -1821,7 +1821,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your document is encrypted in transit, converted automatically with no human review, and both files are deleted within 24 hours. One .docx per run, up to 100 MB, free, no account, no watermark.",
+        body: "Your document is encrypted in transit, converted automatically with no human review, and both files are deleted within about 24 hours. One .docx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -1913,7 +1913,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "The PDF is encrypted in transit, converted automatically with no human review, and both files are deleted within 24 hours. One document per run, up to 100 MB, free, no account, no watermark.",
+        body: "The PDF is encrypted in transit, converted automatically with no human review, and both files are deleted within about 24 hours. One document per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -2014,7 +2014,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Layout, Downloads, and Limits",
-        body: "Your DOCX is first laid out on a standard A4 page, so complex Word-specific formatting like headers/footers, footnotes, or unusual page sizes may render slightly differently than in Word itself. A single-page document downloads as one PNG; multi-page documents download as a ZIP file containing one PNG per page. Uploads are capped at 100 MB and files are deleted from ConvertBrio's servers within 24 hours.",
+        body: "Your DOCX is first laid out on a standard A4 page, so complex Word-specific formatting like headers/footers, footnotes, or unusual page sizes may render slightly differently than in Word itself. A single-page document downloads as one PNG; multi-page documents download as a ZIP file containing one PNG per page. Uploads are capped at 100 MB and files are deleted from ConvertBrio's servers within about 24 hours.",
       },
     ],
     relatedTools: [
@@ -2211,7 +2211,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "The file is encrypted in transit, converted automatically with no human review, and both the upload and the PDF are deleted within 24 hours. One .pptx per run, up to 100 MB, free, no account, no watermark.",
+        body: "The file is encrypted in transit, converted automatically with no human review, and both the upload and the PDF are deleted within about 24 hours. One .pptx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -2304,7 +2304,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your document is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the upload and the compressed copy are deleted within 24 hours. One .docx per run, up to 100 MB, free, no account, no watermark.",
+        body: "Your document is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the upload and the compressed copy are deleted within about 24 hours. One .docx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -2398,7 +2398,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your presentation is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the upload and the compressed copy are deleted within 24 hours. One .pptx per run, up to 100 MB, free, no account, no watermark.",
+        body: "Your presentation is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the upload and the compressed copy are deleted within about 24 hours. One .pptx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -2456,7 +2456,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "You can combine up to 25 files with a combined size of 100 MB in one pass. Each file is converted and processed on ConvertBrio's servers, not in your browser, and every file, originals and the merged output, is deleted within 24 hours of processing.",
+        body: "You can combine up to 25 files with a combined size of 100 MB in one pass. Each file is converted and processed on ConvertBrio's servers, not in your browser, and every file, originals and the merged output, is deleted within about 24 hours of processing.",
       },
     ],
     relatedTools: [
@@ -2522,7 +2522,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "The background-removal model is self-hosted and open-source: your photo is never sent to an external API or seen by a person. Uploads are capped at 100 MB, and both the original and the cutout are deleted within 24 hours whether or not you download.",
+        body: "The background-removal model is self-hosted and open-source: your photo is never sent to an external API or seen by a person. Uploads are capped at 100 MB, and both the original and the cutout are deleted within about 24 hours whether or not you download.",
       },
     ],
     relatedTools: [
@@ -2556,7 +2556,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is my photo sent to another company's AI service?",
         answer:
-          "No. The model runs on ConvertBrio's own servers using open-source software, and your photo is deleted within 24 hours.",
+          "No. The model runs on ConvertBrio's own servers using open-source software, and your photo is deleted within about 24 hours.",
       },
     ],
   },
@@ -2618,7 +2618,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "Face detection and background removal both run on ConvertBrio's own servers using self-hosted, open-source models: your photo is never sent to a third-party API or reviewed by a person. Uploaded and generated files are automatically deleted within 24 hours.",
+        body: "Face detection and background removal both run on ConvertBrio's own servers using self-hosted, open-source models: your photo is never sent to a third-party API or reviewed by a person. Uploaded and generated files are automatically deleted within about 24 hours.",
       },
     ],
     relatedTools: [
@@ -2693,7 +2693,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a file size limit?",
         answer:
-          "Uploads are capped at 100 MB. The original and enhanced files are deleted from ConvertBrio's servers within 24 hours of processing.",
+          "Uploads are capped at 100 MB. The original and enhanced files are deleted from ConvertBrio's servers within about 24 hours of processing.",
       },
     ],
   },
@@ -2739,7 +2739,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "The model runs on ConvertBrio's own servers: no third-party AI service. Uploads are capped at 100 MB, and both the source and the upscaled result are deleted within 24 hours.",
+        body: "The model runs on ConvertBrio's own servers: no third-party AI service. Uploads are capped at 100 MB, and both the source and the upscaled result are deleted within about 24 hours.",
       },
     ],
     relatedTools: [
@@ -2767,7 +2767,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a file size limit?",
         answer:
-          "Uploads are capped at 100 MB. Files and results are deleted within 24 hours.",
+          "Uploads are capped at 100 MB. Files and results are deleted within about 24 hours.",
       },
       {
         question: "Why did processing take a little while?",
@@ -2823,7 +2823,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "The tools that work today, Crop Image and Remove Background, process on ConvertBrio's own servers with no human review, and delete both the upload and the result within 24 hours.",
+        body: "The tools that work today, Crop Image and Remove Background, process on ConvertBrio's own servers with no human review, and delete both the upload and the result within about 24 hours.",
       },
     ],
     relatedTools: [
@@ -2911,7 +2911,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "AI Image Enhancer and AI Upscaler run on ConvertBrio's own servers with no human review, and delete both the upload and the result within 24 hours. Family photos never go to a third-party service.",
+        body: "AI Image Enhancer and AI Upscaler run on ConvertBrio's own servers with no human review, and delete both the upload and the result within about 24 hours. Family photos never go to a third-party service.",
       },
     ],
     relatedTools: [

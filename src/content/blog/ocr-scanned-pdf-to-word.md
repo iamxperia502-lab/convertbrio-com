@@ -1,7 +1,7 @@
 ---
 title: "How to Turn a Scanned Document Into an Editable Word File"
 description: "Scanned PDFs and photos of pages are just images. Here's how to get a scanned document into Word from a scanner or a phone photo, using free OCR."
-pubDate: 2026-07-25
+pubDate: 2026-07-29
 updatedDate: 2026-09-05
 tags: ["pdf", "ocr", "how-to"]
 relatedTools: ["scan-to-word", "image-to-text", "ocr-pdf", "pdf-to-word", "word-to-pdf"]

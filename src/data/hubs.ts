@@ -40,7 +40,7 @@ export const hubs: Hub[] = [
     h1: "PDF tools: merge, split, organize, compress, and convert",
     seoTitle: "Free PDF Tools: Merge, Split, Organize & Compress | ConvertBrio",
     description:
-      "Merge, split, reorder, rotate, unlock, compress, and convert PDFs online. Free ConvertBrio PDF tools with no sign-up; files are deleted within 24 hours.",
+      "Merge, split, reorder, rotate, unlock, compress, and convert PDFs online. Free ConvertBrio PDF tools with no sign-up; files are deleted within about 24 hours.",
     intro: [
       "PDFs are meant to look the same everywhere, which also makes them awkward to change. These tools cover the jobs people actually run into: combining several files, pulling pages apart, putting pages in the right order, shrinking a file to fit an upload limit, and turning pages into images or images into pages.",
       "Every tool runs in your browser session on ConvertBrio's servers, works on files up to 100 MB, and needs no account. Pick the task below, or follow one of the workflows if your job takes more than one step.",
@@ -85,7 +85,7 @@ export const hubs: Hub[] = [
       "Convert HEIC, JPG, PNG, WEBP, and AVIF, resize to exact pixels, compress to a target KB, crop, rotate, and remove backgrounds. Free image tools with no sign-up.",
     intro: [
       "Most image problems come down to three things: the format isn't accepted, the pixel size is wrong, or the file is too big. The tools here solve each one directly, whether you're preparing a profile photo, filling in an application form, or publishing pictures on a website.",
-      "Conversions keep your original resolution, and compression tools work toward a size you choose. Nothing is watermarked, and uploads are deleted within 24 hours.",
+      "Conversions keep your original resolution, and compression tools work toward a size you choose. Nothing is watermarked, and uploads are deleted within about 24 hours.",
     ],
     include: (t) => live(t) && t.categories.includes("image"),
     workflows: [
@@ -127,7 +127,7 @@ export const hubs: Hub[] = [
       "Convert Word, Excel, and PowerPoint to and from PDF, compress Office files, extract text from scans, and strip hidden metadata. Free document tools, no sign-up.",
     intro: [
       "Documents move between people who use different software. These tools translate between Word, Excel, PowerPoint, and PDF, shrink Office files that are too big to email, pull text out of scans, and remove the author details that files carry without you noticing.",
-      "Each tool states what it keeps and what it can't, for example that converting a PDF back to Word can't perfectly rebuild complex layouts. Uploads are encrypted and deleted within 24 hours.",
+      "Each tool states what it keeps and what it can't, for example that converting a PDF back to Word can't perfectly rebuild complex layouts. Uploads are encrypted and deleted within about 24 hours.",
     ],
     include: (t) => live(t) && t.categories.includes("document"),
     workflows: [
@@ -163,7 +163,7 @@ export const hubs: Hub[] = [
     h1: "Compression tools: reduce PDF, image, and Office file size",
     seoTitle: "Free File Compression Tools: PDF, Image & Office | ConvertBrio",
     description:
-      "Shrink PDFs, photos, Word files, and PowerPoints to fit an email or upload limit, including exact KB and MB targets. Free, with no sign-up.",
+      "Shrink PDFs, photos, Word files, and PowerPoints to fit an email or upload limit, including KB and MB size targets. Free, with no sign-up.",
     intro: [
       "Upload forms, email systems, and websites all set size limits, and the right way to shrink a file depends on what's inside it. Photos compress by lowering quality or dimensions, PDFs shrink mostly by re-encoding the images they contain, and Office files hold embedded media that can be reduced separately.",
       "Where a tool works toward a target, it measures the real result and tells you the size it reached, including when the target can't be met without ruining the file.",

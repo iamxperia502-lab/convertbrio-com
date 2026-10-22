@@ -1,7 +1,7 @@
 ---
 title: "How to Compress a PDF Without Losing Quality"
 description: "Why PDFs get bloated, what actually shrinks them, and how to reduce file size without making text blurry or images unreadable."
-pubDate: 2026-07-22
+pubDate: 2026-07-29
 tags: ["pdf", "how-to"]
 relatedTools: ["compress-pdf", "merge-pdf", "split-pdf"]
 draft: false

@@ -118,7 +118,7 @@ export const GET: APIRoute = async ({ site }) => {
       .filter(
         (tool) =>
           tool.kind !== "external" &&
-          (!isComingSoon(tool) || Boolean(toolContent[tool.slug]?.comingSoonGuide))
+          !isComingSoon(tool)
       )
       .map((tool) => {
         const enPath = `/tools/${tool.slug}`;
