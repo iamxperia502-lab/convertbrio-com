@@ -354,16 +354,22 @@ const softwareApplicationSchema = isComingSoon(tool)
               </div>
 
               <div id="result-list" class="hidden flex-col gap-2 rounded-xl border border-hairline bg-canvas p-4 text-sm" aria-live="polite"></div>
-              <div id="text-result" class="hidden flex-col gap-2">
-                <textarea id="text-result-area" readonly rows="8" class="w-full rounded-lg border border-hairline bg-canvas p-3.5 text-sm text-ink focus:border-focus"></textarea>
-                <button
-                  id="text-copy-btn"
-                  type="button"
-                  class="inline-flex items-center justify-center rounded-full border border-hairline-strong bg-canvas px-5 py-2 text-sm font-medium text-ink transition-opacity hover:opacity-90"
-                >
-                  {tf.copyText}
-                </button>
-              </div>
+              {
+                // Only Image to Text returns plain text; every other tool returns a file,
+                // so the text box and Copy button are not rendered for them at all.
+                tool.kind === "ocr" && tool.operation === "image-to-text" && (
+                <div id="text-result" class="hidden flex-col gap-2">
+                  <textarea id="text-result-area" readonly rows="8" class="w-full rounded-lg border border-hairline bg-canvas p-3.5 text-sm text-ink focus:border-focus"></textarea>
+                  <button
+                    id="text-copy-btn"
+                    type="button"
+                    class="inline-flex items-center justify-center rounded-full border border-hairline-strong bg-canvas px-5 py-2 text-sm font-medium text-ink transition-opacity hover:opacity-90"
+                  >
+                    {tf.copyText}
+                  </button>
+                </div>
+                )
+              }
 
               <a
                 id="download-link"
