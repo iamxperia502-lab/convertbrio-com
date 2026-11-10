@@ -2,43 +2,171 @@
 export const prerender = true;
 
 import Layout from "../layouts/Layout.astro";
-import { alternatesFor } from "../data/i18n";
 import PageIntro from "../components/PageIntro.astro";
 import Icon from "../components/Icon.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import { alternatesFor } from "../data/i18n";
 import { liveToolCount } from "../data/tools";
 
+// ─────────────────────────────────────────────────────────────────────────
+// CONTENT ONLY SUBHAM CAN SUPPLY. Fill these in; each section below appears
+// on the live page only once its value is set, so no placeholder text ever
+// shows to visitors. In `astro dev` a banner lists what is still missing.
+// ─────────────────────────────────────────────────────────────────────────
+
+// TODO: photo — put a square image (at least 400×400 px) in /public/about/
+// and set the path here, e.g. "/about/subham-sharma.jpg".
+const founderPhoto: string | null = null;
+
+// TODO: 2–3 sentences about your developer background. One string per
+// paragraph. Do not include a city or country of residence.
+const founderBio: string[] = [];
+
+// TODO: registration details, e.g. [{ label: "Business name", value: "…" },
+// { label: "Registration number", value: "…" }]. Only list what is true and
+// what you are happy to publish.
+const businessDetails: { label: string; value: string }[] = [];
+
+// TODO: personal LinkedIn URL, e.g. "https://www.linkedin.com/in/…".
+const personalLinkedIn: string | null = null;
+
+// ─────────────────────────────────────────────────────────────────────────
+
+const base = Astro.site?.toString().replace(/\/$/, "") ?? "https://www.convertbrio.com";
+const founderName = "Subham Sharma";
+
 const values = [
-  {
-    icon: "shrink",
-    title: "Fast by default",
-    desc: "Every tool is built to process files in seconds, not minutes, no matter the queue.",
-  },
-  {
-    icon: "shield",
-    title: "Private by design",
-    desc: "Files are encrypted and automatically deleted. We never sell or review your data.",
-  },
-  {
-    icon: "sparkle",
-    title: "Genuinely useful AI",
-    desc: "AI tools that solve real problems, enhancement, restoration, and cleanup, not gimmicks.",
-  },
+  { icon: "shrink", title: "Fast by default", desc: "Every tool is built to process files in seconds, not minutes, no matter the queue." },
+  { icon: "shield", title: "Private by design", desc: "Files are encrypted in transit and deleted automatically. We never sell or review your data." },
+  { icon: "sparkle", title: "Genuinely useful AI", desc: "AI tools that solve real problems, enhancement, restoration, and cleanup, not gimmicks." },
 ] as const;
 
+const companyProfiles = [
+  "https://www.linkedin.com/company/convertbrio/",
+  "https://www.instagram.com/convertbrio/",
+  "https://www.facebook.com/61594943638956",
+  "https://www.threads.com/@convertbrio",
+];
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${base}/#organization`,
+      name: "ConvertBrio",
+      url: base,
+      logo: `${base}/web-app-manifest-512x512.png`,
+      email: "hello@convertbrio.com",
+      founder: { "@id": `${base}/about#founder` },
+      sameAs: companyProfiles,
+    },
+    {
+      "@type": "Person",
+      "@id": `${base}/about#founder`,
+      name: founderName,
+      url: `${base}/about`,
+      jobTitle: "Founder and developer",
+      worksFor: { "@id": `${base}/#organization` },
+      ...(founderPhoto ? { image: `${base}${founderPhoto}` } : {}),
+      ...(personalLinkedIn ? { sameAs: [personalLinkedIn] } : {}),
+    },
+    {
+      "@type": "AboutPage",
+      "@id": `${base}/about`,
+      url: `${base}/about`,
+      name: "About ConvertBrio",
+      about: { "@id": `${base}/#organization` },
+    },
+  ],
+};
+
+const missing = [
+  !founderPhoto && "founder photo",
+  founderBio.length === 0 && "founder background (2–3 sentences)",
+  businessDetails.length === 0 && "business registration details",
+  !personalLinkedIn && "personal LinkedIn URL",
+].filter(Boolean) as string[];
+
+const link = "font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700";
 ---
 
 <Layout
   alternates={alternatesFor("/about")}
   title="About"
-  description="ConvertBrio builds fast, private, and simple file conversion tools for images, PDFs, and documents."
+  description="ConvertBrio is a free online file converter built and run by Subham Sharma: fast, private tools for images, PDFs, and documents."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
+  </Fragment>
+
   <PageIntro
     eyebrow="About ConvertBrio"
     title="File tools that get out of your way"
     description="ConvertBrio started with a simple idea: converting a file shouldn't require installing software, creating an account, or waiting in a queue."
   />
 
-  <section aria-label="Our values" class="bg-canvas">
+  {
+    import.meta.env.DEV && missing.length > 0 && (
+      <div class="border-b border-hairline bg-canvas-soft">
+        <div class="container-page py-4 text-sm text-body">
+          <strong class="text-ink">Dev only: still to fill in (src/pages/about.astro):</strong> {missing.join(", ")}.
+        </div>
+      </div>
+    )
+  }
+
+  <section aria-labelledby="founder-heading" class="border-b border-hairline bg-canvas">
+    <div class="container-page py-16 sm:py-20">
+      <div class="flex flex-col gap-8 sm:flex-row sm:items-start">
+        {
+          founderPhoto ? (
+            <img
+              src={founderPhoto}
+              alt={`Portrait of ${founderName}, founder of ConvertBrio`}
+              width="160"
+              height="160"
+              loading="lazy"
+              class="h-40 w-40 shrink-0 rounded-2xl object-cover"
+            />
+          ) : (
+            <div aria-hidden="true" class="flex h-40 w-40 shrink-0 items-center justify-center rounded-2xl bg-canvas-soft-2 text-4xl font-semibold text-ink">
+              SS
+            </div>
+          )
+        }
+        <div class="max-w-2xl">
+          <h2 id="founder-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">Who builds ConvertBrio</h2>
+          <p class="mt-1 text-sm text-mute">{founderName}, founder and developer</p>
+          <p class="mt-4 leading-relaxed text-body">
+            ConvertBrio is independently built and run by {founderName}. There is no large team behind it: the same person who writes the
+            code reads the messages that come in through the <a href="/contact" class={link}>contact page</a>.
+          </p>
+          {founderBio.map((paragraph) => <p class="mt-4 leading-relaxed text-body">{paragraph}</p>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="why-heading" class="border-b border-hairline bg-canvas">
+    <div class="container-page flex flex-col gap-4 py-16 sm:py-20">
+      <h2 id="why-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">Why ConvertBrio exists</h2>
+      <p class="max-w-2xl leading-relaxed text-body">
+        Plenty of everyday paperwork now happens in a web form, and those forms are strict: a photo under a set number of KB, a signature
+        of an exact size, a PDF that must stay below a limit. A phone camera or a scanner produces files many times larger than that,
+        and the usual fixes mean installing software, signing up, or accepting a watermark on the result.
+      </p>
+      <p class="max-w-2xl leading-relaxed text-body">
+        ConvertBrio was built to remove that friction. The <a href="/tools/compress-image" class={link}>Compress Image</a>,
+        <a href="/tools/compress-pdf-to-size" class={link}>Compress PDF to a Size Limit</a>, and
+        <a href="/tools/photo-signature-resizer" class={link}>Photo &amp; Signature Resizer</a> tools aim for the limit you enter and tell
+        you honestly when a file can't reach it. Around those sit the other jobs people run into: converting formats, merging and splitting
+        PDFs, and cleaning up photos.
+      </p>
+    </div>
+  </section>
+
+  <section aria-label="Our values" class="border-b border-hairline bg-canvas">
     <div class="container-page py-16 sm:py-20">
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {
@@ -47,7 +175,7 @@ const values = [
               <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink">
                 <Icon name={value.icon} class="h-5 w-5" />
               </span>
-              <h2 class="text-base font-semibold text-ink">{value.title}</h2>
+              <h3 class="text-base font-semibold text-ink">{value.title}</h3>
               <p class="text-sm leading-relaxed text-body">{value.desc}</p>
             </div>
           ))
@@ -56,19 +184,58 @@ const values = [
     </div>
   </section>
 
-  <section aria-label="Our approach" class="bg-canvas">
+  <section aria-labelledby="how-heading" class="border-b border-hairline bg-canvas">
     <div class="container-page flex flex-col gap-4 py-16 sm:py-20">
-      <h2 class="text-2xl font-semibold tracking-[-0.01em] text-ink">Our approach</h2>
+      <h2 id="how-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">How it works and how your files are handled</h2>
       <p class="max-w-2xl leading-relaxed text-body">
-        We focus on the tools people actually use every day, image conversion, PDF editing,
-        document formatting, and compression, and make each one fast, accurate, and free to
-        use. {liveToolCount} tools are live today, with more shipping regularly. Where AI
-        genuinely improves a result, like enhancing a low-resolution photo, we use it. Where it
+        You upload a file in your browser, a tool converts it on the server, and you download the result. {liveToolCount} tools are live
+        today, with more added regularly. Where AI genuinely improves a result, like enhancing a low-resolution photo, we use it; where it
         wouldn't help, we leave it out.
       </p>
       <p class="max-w-2xl leading-relaxed text-body">
-        ConvertBrio is independently built and operated by Subham Sharma, based in India. If you
-        have feedback, a security concern, or a tool you’d like to see, <a href="/contact" class="font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700">reach out</a> or read how we handle your files in our <a href="/privacy" class="font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700">Privacy Policy</a>.
+        Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically
+        within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human
+        review. The details are in the <a href="/privacy" class={link}>Privacy Policy</a> and on the <a href="/trust" class={link}>Trust &amp; Security</a> page.
+      </p>
+    </div>
+  </section>
+
+  {
+    businessDetails.length > 0 && (
+      <section aria-labelledby="business-heading" class="border-b border-hairline bg-canvas">
+        <div class="container-page py-16 sm:py-20">
+          <h2 id="business-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">Business details</h2>
+          <dl class="mt-6 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-[auto_1fr]">
+            {businessDetails.map((row) => (
+              <>
+                <dt class="text-sm font-medium text-ink">{row.label}</dt>
+                <dd class="text-sm text-body">{row.value}</dd>
+              </>
+            ))}
+          </dl>
+        </div>
+      </section>
+    )
+  }
+
+  <section aria-labelledby="contact-heading" class="bg-canvas">
+    <div class="container-page flex flex-col gap-4 py-16 sm:py-20">
+      <h2 id="contact-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">Get in touch</h2>
+      <p class="max-w-2xl leading-relaxed text-body">
+        Feedback, a security concern, or a tool you'd like to see? Use the <a href="/contact" class={link}>contact form</a> or write to
+        <a href="mailto:hello@convertbrio.com" class={link}>hello@convertbrio.com</a>. You can also find ConvertBrio on LinkedIn,
+        Instagram, Facebook, and Threads:
+      </p>
+      <SocialLinks />
+      {
+        personalLinkedIn && (
+          <p class="max-w-2xl text-sm text-body">
+            {founderName} is also on <a href={personalLinkedIn} target="_blank" rel="noopener noreferrer" class={link}>LinkedIn</a>.
+          </p>
+        )
+      }
+      <p class="max-w-2xl text-sm text-mute">
+        {founderName} also takes on development work for clients at <a href="https://convertbrio.info" target="_blank" rel="noopener" class={link}>convertbrio.info</a>.
       </p>
     </div>
   </section>

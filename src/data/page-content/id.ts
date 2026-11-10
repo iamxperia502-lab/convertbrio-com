@@ -27,7 +27,7 @@ const about: AboutDoc = {
       heading: `Pendekatan kami`,
       paragraphs: [
         `Kami berfokus pada alat yang memang dipakai orang setiap hari, yaitu konversi gambar, pengeditan PDF, pemformatan dokumen, dan kompresi, lalu membuat masing-masing alat itu cepat, akurat, dan gratis dipakai. Saat ini {liveToolCount} alat sudah aktif, dan akan terus bertambah secara berkala. Di mana AI benar-benar memperbaiki hasil, misalnya untuk meningkatkan kualitas foto beresolusi rendah, kami memakainya. Di mana AI tidak membantu, kami tidak memaksakannya.`,
-        `ConvertBrio dibangun dan dijalankan secara mandiri oleh Subham Sharma, yang berbasis di India. Jika Anda punya masukan, kekhawatiran soal keamanan, atau alat yang ingin Anda lihat hadir, silakan <a href="/contact">hubungi kami</a> atau baca cara kami menangani file Anda di <a href="/privacy">Kebijakan Privasi</a> kami.`,
+        `ConvertBrio dibangun dan dijalankan secara mandiri oleh Subham Sharma. Jika Anda punya masukan, kekhawatiran soal keamanan, atau alat yang ingin Anda lihat hadir, silakan <a href="/contact">hubungi kami</a> atau baca cara kami menangani file Anda di <a href="/privacy">Kebijakan Privasi</a> kami.`,
       ],
     },
   ],

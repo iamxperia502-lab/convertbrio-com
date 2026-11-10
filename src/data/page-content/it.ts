@@ -29,7 +29,7 @@ const about: AboutDoc = {
       heading: "Il nostro approccio",
       paragraphs: [
         "Ci concentriamo sugli strumenti che le persone usano davvero ogni giorno, cioè conversione di immagini, modifica dei PDF, formattazione dei documenti e compressione, e li rendiamo veloci, precisi e gratuiti. Oggi gli strumenti attivi sono {liveToolCount}, e ne arrivano di nuovi con regolarità. Dove l’IA migliora davvero il risultato, come nel potenziamento di una foto a bassa risoluzione, la usiamo. Dove non servirebbe, la lasciamo da parte.",
-        "ConvertBrio è sviluppato e gestito in modo indipendente da Subham Sharma, che vive in India. Se hai un suggerimento, una segnalazione di sicurezza o uno strumento che vorresti vedere, <a href=\"/contact\" class=\"font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700\">scrivici</a> oppure leggi come trattiamo i tuoi file nella nostra <a href=\"/privacy\" class=\"font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700\">Informativa sulla privacy</a>.",
+        "ConvertBrio è sviluppato e gestito in modo indipendente da Subham Sharma. Se hai un suggerimento, una segnalazione di sicurezza o uno strumento che vorresti vedere, <a href=\"/contact\" class=\"font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700\">scrivici</a> oppure leggi come trattiamo i tuoi file nella nostra <a href=\"/privacy\" class=\"font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700\">Informativa sulla privacy</a>.",
       ],
     },
   ],
