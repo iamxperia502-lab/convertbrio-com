@@ -2,22 +2,29 @@
 // Visual page organizer for the PDF Page Organizer tool. Thumbnails are
 // rendered in the browser with pdf.js; only the chosen page order and
 // rotations travel to the server (as the hidden "pages" field).
+import { extrasByLocale } from "../data/tool-extras-i18n";
+import type { Locale } from "../data/i18n";
+interface Props {
+  lang?: Locale;
+}
+const { lang = "en" } = Astro.props;
+const o = extrasByLocale[lang].org;
 const btn =
   "inline-flex h-9 min-w-9 items-center justify-center rounded-full border border-hairline-strong bg-canvas px-2 text-xs font-medium text-ink transition-opacity hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:cursor-not-allowed disabled:opacity-40";
 ---
 
-<div id="organizer" class="hidden flex-col gap-3" data-btn-class={btn}>
+<div id="organizer" class="hidden flex-col gap-3" data-btn-class={btn} data-strings={JSON.stringify(o)}>
   <p class="text-sm text-body">
-    Use the buttons under each page to move, rotate, or remove it. You can also drag pages to reorder them. Removed pages stay visible and can be restored until you convert.
+    {o.intro}
   </p>
   <ol id="organizer-grid" class="grid grid-cols-2 gap-3 sm:grid-cols-3"></ol>
   <input type="hidden" name="pages" id="organizer-pages" value="[]" />
   <div id="organizer-confirm" role="alertdialog" aria-labelledby="organizer-confirm-text" class="hidden flex-col gap-3 rounded-xl border border-hairline-strong bg-canvas p-4">
     <p id="organizer-confirm-text" class="text-sm font-medium text-ink"></p>
     <div class="flex gap-3">
-      <button type="button" id="organizer-confirm-no" class={btn}>Go back</button>
+      <button type="button" id="organizer-confirm-no" class={btn}>{o.goBack}</button>
       <button type="button" id="organizer-confirm-yes" class="inline-flex h-9 items-center justify-center rounded-full bg-ink px-4 text-xs font-medium text-canvas transition-opacity hover:opacity-90">
-        Remove pages and create PDF
+        {o.confirmYes}
       </button>
     </div>
   </div>
@@ -45,6 +52,9 @@ const btn =
   const confirmText = document.getElementById("organizer-confirm-text");
   const status = document.getElementById("tool-status");
   const btnClass = root?.dataset.btnClass ?? "";
+  const T = JSON.parse(root?.dataset.strings ?? "{}") as Record<string, string>;
+  const fill = (tpl: string, vars: Record<string, string | number>) =>
+    tpl.replace(/\{(\w+)\}/g, (_m, k: string) => String(vars[k] ?? ""));
 
   let pages: PageState[] = [];
   let loadToken = 0;
@@ -90,7 +100,7 @@ const btn =
         c.style.maxHeight = page.rot % 180 ? "9.5rem" : "100%";
         c.className = "border border-hairline";
         c.setAttribute("role", "img");
-        c.setAttribute("aria-label", `Preview of original page ${page.index + 1}`);
+        c.setAttribute("aria-label", fill(T.preview, { n: page.index + 1 }));
         frame.appendChild(c);
       } else {
         frame.textContent = "…";
@@ -99,7 +109,7 @@ const btn =
 
       const caption = document.createElement("span");
       caption.className = "text-xs text-mute";
-      caption.textContent = `Page ${n}${page.index + 1 !== n ? ` (was ${page.index + 1})` : ""}${page.deleted ? ", removed" : ""}`;
+      caption.textContent = `${fill(T.caption, { n })}${page.index + 1 !== n ? fill(T.was, { o: page.index + 1 }) : ""}${page.deleted ? T.removed : ""}`;
       li.appendChild(caption);
 
       const row = document.createElement("div");
@@ -110,14 +120,14 @@ const btn =
         sync();
         render({ pos: to, action });
       };
-      row.appendChild(button(`Move page ${n} earlier`, "←", () => move(pos, pos - 1, "earlier"), pos === 0));
-      row.appendChild(button(`Move page ${n} later`, "→", () => move(pos, pos + 1, "later"), pos === pages.length - 1));
-      row.appendChild(button(`Rotate page ${n} clockwise`, "↻", () => {
+      row.appendChild(button(fill(T.moveEarlier, { n }), "←", () => move(pos, pos - 1, "earlier"), pos === 0));
+      row.appendChild(button(fill(T.moveLater, { n }), "→", () => move(pos, pos + 1, "later"), pos === pages.length - 1));
+      row.appendChild(button(fill(T.rotate, { n }), "↻", () => {
         page.rot = (page.rot + 90) % 360;
         sync();
         render({ pos, action: "rotate" });
       }));
-      row.appendChild(button(page.deleted ? `Restore page ${n}` : `Remove page ${n}`, page.deleted ? "Restore" : "✕", () => {
+      row.appendChild(button(page.deleted ? fill(T.restore, { n }) : fill(T.remove, { n }), page.deleted ? T.restoreShort : "✕", () => {
         page.deleted = !page.deleted;
         sync();
         render({ pos, action: "delete" });
@@ -208,8 +218,8 @@ const btn =
       if (status) {
         status.textContent =
           name === "PasswordException"
-            ? "This PDF is password-protected. Remove the password first, then organize its pages."
-            : "We couldn't read this PDF. Check that it isn't corrupt and try again.";
+            ? T.errPassword
+            : T.errRead;
       }
     }
   };
@@ -234,14 +244,14 @@ const btn =
     if (kept().length === 0 && pages.length > 0) {
       event.preventDefault();
       event.stopImmediatePropagation();
-      if (status) status.textContent = "Keep at least one page.";
+      if (status) status.textContent = T.keepOne;
       return;
     }
     const removed = pages.length - kept().length;
     if (removed > 0 && !confirmed) {
       event.preventDefault();
       event.stopImmediatePropagation();
-      if (confirmText) confirmText.textContent = `${removed} ${removed === 1 ? "page" : "pages"} will be removed from the new PDF. Your original file isn't changed.`;
+      if (confirmText) confirmText.textContent = fill(removed === 1 ? T.confirmOne : T.confirmMany, { n: removed });
       confirmBox?.classList.remove("hidden");
       confirmBox?.classList.add("flex");
       document.getElementById("organizer-confirm-yes")?.focus();

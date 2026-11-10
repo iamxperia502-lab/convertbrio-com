@@ -22,6 +22,13 @@ export interface ToolFormStrings {
   feedbackThanks: string;
   feedbackReasons: { quality: string; formatting: string; size: string; download: string; other: string };
   downloadResult: string;
+  copyText: string;
+  textCopied: string;
+  /** Short link label next to each file in a multi-file result. */
+  downloadShort: string;
+  /** `{file}` is replaced with the input filename. */
+  rowFailedTemplate: string;
+  aboveTarget: string;
   /** `{file}` is replaced with the filename. */
   doneTemplate: string;
   /** `{file}` is replaced with the filename. */
@@ -130,6 +137,7 @@ export const ui: Record<Locale, UIStrings> = {
         sizeLimit: "Up to 100 MB", sizeLimitTotal: "Up to 100 MB total",
         uploading: "Uploading…", processing: "Processing…", chooseFirst: "Choose a file first.",
         genericError: "Something went wrong. Try again.", downloadResult: "Download result",
+        copyText: "Copy text", textCopied: "Text copied.", downloadShort: "Download", rowFailedTemplate: "{file}: could not be processed", aboveTarget: "above target",
         errorNetwork: "We couldn't reach the upload service. Check your connection, turn off any content blocker or tracking protection for this site, and try again.",
         errorUpload: "The upload didn't finish. Please try again; if it keeps failing, try another browser or disable content blockers for this site.",
         errorTooLarge: "This file is larger than the 100 MB limit. Choose a smaller file.",
@@ -175,6 +183,7 @@ export const ui: Record<Locale, UIStrings> = {
         sizeLimit: "Até 100 MB", sizeLimitTotal: "Até 100 MB no total",
         uploading: "Enviando…", processing: "Processando…", chooseFirst: "Escolha um arquivo primeiro.",
         genericError: "Algo deu errado. Tente novamente.", downloadResult: "Baixar resultado",
+        copyText: "Copiar texto", textCopied: "Texto copiado.", downloadShort: "Baixar", rowFailedTemplate: "{file}: não foi possível processar", aboveTarget: "acima da meta",
         errorNetwork: "Não foi possível acessar o serviço de envio. Verifique sua conexão, desative bloqueadores de conteúdo ou proteção contra rastreamento neste site e tente novamente.",
         errorUpload: "O envio não foi concluído. Tente novamente; se continuar falhando, use outro navegador ou desative bloqueadores de conteúdo neste site.",
         errorTooLarge: "Este arquivo excede o limite de 100 MB. Escolha um arquivo menor.",
@@ -220,6 +229,7 @@ export const ui: Record<Locale, UIStrings> = {
         sizeLimit: "Hasta 100 MB", sizeLimitTotal: "Hasta 100 MB en total",
         uploading: "Subiendo…", processing: "Procesando…", chooseFirst: "Elige un archivo primero.",
         genericError: "Algo salió mal. Inténtalo de nuevo.", downloadResult: "Descargar resultado",
+        copyText: "Copiar texto", textCopied: "Texto copiado.", downloadShort: "Descargar", rowFailedTemplate: "{file}: no se pudo procesar", aboveTarget: "por encima del objetivo",
         errorNetwork: "No pudimos conectar con el servicio de subida. Revisa tu conexión, desactiva bloqueadores de contenido o la protección contra rastreo en este sitio e inténtalo de nuevo.",
         errorUpload: "La subida no se completó. Inténtalo de nuevo; si sigue fallando, prueba otro navegador o desactiva los bloqueadores de contenido en este sitio.",
         errorTooLarge: "Este archivo supera el límite de 100 MB. Elige un archivo más pequeño.",
@@ -265,6 +275,7 @@ export const ui: Record<Locale, UIStrings> = {
         sizeLimit: "Jusqu'à 100 Mo", sizeLimitTotal: "Jusqu'à 100 Mo au total",
         uploading: "Envoi…", processing: "Traitement…", chooseFirst: "Choisissez d'abord un fichier.",
         genericError: "Une erreur s'est produite. Réessayez.", downloadResult: "Télécharger le résultat",
+        copyText: "Copier le texte", textCopied: "Texte copié.", downloadShort: "Télécharger", rowFailedTemplate: "{file} : traitement impossible", aboveTarget: "au-dessus de la cible",
         errorNetwork: "Impossible de joindre le service d'envoi. Vérifiez votre connexion, désactivez les bloqueurs de contenu ou la protection contre le pistage pour ce site, puis réessayez.",
         errorUpload: "L'envoi n'a pas abouti. Réessayez ; si le problème persiste, essayez un autre navigateur ou désactivez les bloqueurs de contenu pour ce site.",
         errorTooLarge: "Ce fichier dépasse la limite de 100 Mo. Choisissez un fichier plus petit.",
@@ -310,6 +321,7 @@ export const ui: Record<Locale, UIStrings> = {
         sizeLimit: "Bis zu 100 MB", sizeLimitTotal: "Bis zu 100 MB insgesamt",
         uploading: "Wird hochgeladen…", processing: "Wird verarbeitet…", chooseFirst: "Wähle zuerst eine Datei.",
         genericError: "Etwas ist schiefgelaufen. Bitte erneut versuchen.", downloadResult: "Ergebnis herunterladen",
+        copyText: "Text kopieren", textCopied: "Text kopiert.", downloadShort: "Herunterladen", rowFailedTemplate: "{file}: konnte nicht verarbeitet werden", aboveTarget: "über dem Zielwert",
         errorNetwork: "Der Upload-Dienst war nicht erreichbar. Prüfe deine Verbindung, deaktiviere Inhaltsblocker oder Tracking-Schutz für diese Website und versuche es erneut.",
         errorUpload: "Der Upload wurde nicht abgeschlossen. Versuche es erneut; wenn es weiter fehlschlägt, nutze einen anderen Browser oder deaktiviere Inhaltsblocker für diese Website.",
         errorTooLarge: "Diese Datei überschreitet das Limit von 100 MB. Wähle eine kleinere Datei.",
@@ -355,6 +367,7 @@ export const ui: Record<Locale, UIStrings> = {
         sizeLimit: "Fino a 100 MB", sizeLimitTotal: "Fino a 100 MB in totale",
         uploading: "Caricamento…", processing: "Elaborazione…", chooseFirst: "Scegli prima un file.",
         genericError: "Qualcosa è andato storto. Riprova.", downloadResult: "Scarica il risultato",
+        copyText: "Copia testo", textCopied: "Testo copiato.", downloadShort: "Scarica", rowFailedTemplate: "{file}: impossibile elaborare", aboveTarget: "sopra l'obiettivo",
         errorNetwork: "Impossibile raggiungere il servizio di caricamento. Controlla la connessione, disattiva i blocchi dei contenuti o la protezione dal tracciamento per questo sito e riprova.",
         errorUpload: "Il caricamento non è stato completato. Riprova; se continua a fallire, usa un altro browser o disattiva i blocchi dei contenuti per questo sito.",
         errorTooLarge: "Questo file supera il limite di 100 MB. Scegli un file più piccolo.",
@@ -400,6 +413,7 @@ export const ui: Record<Locale, UIStrings> = {
         sizeLimit: "Hingga 100 MB", sizeLimitTotal: "Hingga 100 MB total",
         uploading: "Mengunggah…", processing: "Memproses…", chooseFirst: "Pilih file dulu.",
         genericError: "Terjadi kesalahan. Coba lagi.", downloadResult: "Unduh hasil",
+        copyText: "Salin teks", textCopied: "Teks disalin.", downloadShort: "Unduh", rowFailedTemplate: "{file}: tidak dapat diproses", aboveTarget: "di atas target",
         errorNetwork: "Layanan unggah tidak dapat dijangkau. Periksa koneksi Anda, nonaktifkan pemblokir konten atau perlindungan pelacakan untuk situs ini, lalu coba lagi.",
         errorUpload: "Unggahan tidak selesai. Coba lagi; jika terus gagal, gunakan browser lain atau nonaktifkan pemblokir konten untuk situs ini.",
         errorTooLarge: "File ini melebihi batas 100 MB. Pilih file yang lebih kecil.",

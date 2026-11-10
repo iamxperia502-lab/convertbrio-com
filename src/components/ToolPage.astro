@@ -195,6 +195,10 @@ const softwareApplicationSchema = isComingSoon(tool)
               data-i18n-error-conversion={tf.errorConversion}
               data-i18n-error-download={tf.errorDownload}
               data-i18n-feedback-thanks={tf.feedbackThanks}
+              data-i18n-text-copied={tf.textCopied}
+              data-i18n-download-short={tf.downloadShort}
+              data-i18n-row-failed={tf.rowFailedTemplate}
+              data-i18n-above-target={tf.aboveTarget}
               data-tool-slug={tool.slug}
               data-tool-category={analyticsCategory}
               data-tool-output={analyticsOutput}
@@ -328,8 +332,8 @@ const softwareApplicationSchema = isComingSoon(tool)
                 )
               }
 
-              <ToolExtras slug={tool.slug} />
-              {tool.slug === "pdf-page-organizer" && <PdfOrganizer />}
+              <ToolExtras slug={tool.slug} lang={lang} />
+              {tool.slug === "pdf-page-organizer" && <PdfOrganizer lang={lang} />}
 
               <div class="flex gap-3">
                 <button
@@ -356,7 +360,7 @@ const softwareApplicationSchema = isComingSoon(tool)
                   type="button"
                   class="inline-flex items-center justify-center rounded-full border border-hairline-strong bg-canvas px-5 py-2 text-sm font-medium text-ink transition-opacity hover:opacity-90"
                 >
-                  Copy text
+                  {tf.copyText}
                 </button>
               </div>
 
@@ -447,6 +451,10 @@ const softwareApplicationSchema = isComingSoon(tool)
           error: d.i18nError ?? "Something went wrong. Try again.",
           done: d.i18nDone ?? "Done: {file} downloaded. If it didn't start, use the button below.",
           download: d.i18nDownload ?? "Download {file}",
+          textCopied: d.i18nTextCopied ?? "Text copied.",
+          downloadShort: d.i18nDownloadShort ?? "Download",
+          rowFailed: d.i18nRowFailed ?? "{file}: could not be processed",
+          aboveTarget: d.i18nAboveTarget ?? "above target",
           filesSelected: d.i18nFilesSelected ?? "{n} files selected",
         };
         const errorMessages = {
@@ -512,11 +520,11 @@ const softwareApplicationSchema = isComingSoon(tool)
                 const label = document.createElement("span");
                 label.className = "min-w-0 truncate text-body";
                 if (!row.ok || !row.output) {
-                  label.textContent = `${row.input}: could not be processed${row.error ? ` (${row.error})` : ""}`;
+                  label.textContent = `${S.rowFailed.replace("{file}", row.input)}${row.error ? ` (${row.error})` : ""}`;
                   line.appendChild(label);
                 } else {
                   const kb = ((row.bytes ?? 0) / 1024).toFixed(1);
-                  label.textContent = `${row.input}: ${kb} KB${row.targetMet ? "" : " (above target)"}`;
+                  label.textContent = `${row.input}: ${kb} KB${row.targetMet ? "" : ` (${S.aboveTarget})`}`;
                   const entry = zip.file(row.output);
                   line.appendChild(label);
                   if (entry) {
@@ -524,7 +532,7 @@ const softwareApplicationSchema = isComingSoon(tool)
                     const a = document.createElement("a");
                     const handle = createDownloadHandle(a);
                     handle.set(data, row.output);
-                    a.textContent = "Download";
+                    a.textContent = S.downloadShort;
                     a.className = "font-medium text-brand-600 underline underline-offset-2";
                     a.addEventListener("click", (e) => {
                       if (e.isTrusted) track("download_completed", toolCtx);
@@ -546,7 +554,7 @@ const softwareApplicationSchema = isComingSoon(tool)
         copyButton?.addEventListener("click", async () => {
           try {
             await navigator.clipboard.writeText(textArea?.value ?? "");
-            if (status) status.textContent = "Text copied.";
+            if (status) status.textContent = S.textCopied;
           } catch {
             textArea?.select();
           }
