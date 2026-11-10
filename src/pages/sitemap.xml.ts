@@ -4,8 +4,11 @@ import { getCollection } from "astro:content";
 import { tools, isComingSoon } from "../data/tools";
 import { hubs } from "../data/hubs";
 import { toolContent } from "../data/toolContent";
+import { toolContentByLocale } from "../data/tool-content";
+import { pagesByLocale } from "../data/page-content";
 import {
   LOCALIZED_TOOL_SLUGS,
+  LOCALIZED_PAGES,
   NON_DEFAULT_LOCALES,
   LOCALES,
   DEFAULT_LOCALE,
@@ -89,7 +92,9 @@ const localizedLastmod = lastModified(
   "src/data/i18n.ts",
   "src/data/i18n-strings.ts",
   "src/data/i18n-home.ts",
-  "src/data/tool-content"
+  "src/data/tool-content",
+  "src/data/page-content",
+  "src/components/LocalizedStaticPage.astro"
 );
 
 export const GET: APIRoute = async ({ site }) => {
@@ -103,7 +108,14 @@ export const GET: APIRoute = async ({ site }) => {
 
   const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-  const localizedSlugSet = new Set<string>(LOCALIZED_TOOL_SLUGS);
+  // Only locales whose pages AND every tool page exist are listed, so the
+  // sitemap never advertises a URL that would 404 or a half-built hreflang set.
+  const readyLocales = NON_DEFAULT_LOCALES.filter(
+    (l) => pagesByLocale[l] && LOCALIZED_TOOL_SLUGS.every((slug) => toolContentByLocale[l]?.[slug])
+  );
+  const allReady = readyLocales.length === NON_DEFAULT_LOCALES.length;
+  const localizedPageSet = new Set<string>(LOCALIZED_PAGES);
+  const localizedSlugSet = new Set<string>(allReady ? LOCALIZED_TOOL_SLUGS : []);
 
   const urls: SitemapUrl[] = [
     // English canonical pages.
@@ -112,7 +124,7 @@ export const GET: APIRoute = async ({ site }) => {
       changefreq,
       priority,
       lastmod,
-      alternates: localised ? altSet(path) : undefined,
+      alternates: localised || (allReady && localizedPageSet.has(path)) ? altSet(path) : undefined,
     })),
     ...tools
       .filter(
@@ -138,7 +150,7 @@ export const GET: APIRoute = async ({ site }) => {
     })),
 
     // Localised pages: home, all-tools, and each localised tool per locale.
-    ...NON_DEFAULT_LOCALES.flatMap((lang) => [
+    ...readyLocales.flatMap((lang) => [
       {
         loc: `${base}/${lang}`,
         changefreq: "weekly",
@@ -153,6 +165,13 @@ export const GET: APIRoute = async ({ site }) => {
         lastmod: localizedLastmod,
         alternates: altSet("/all-tools"),
       },
+      ...LOCALIZED_PAGES.map((path) => ({
+        loc: `${base}/${lang}${path}`,
+        changefreq: "monthly",
+        priority: "0.5",
+        lastmod: localizedLastmod,
+        alternates: altSet(path),
+      })),
       ...LOCALIZED_TOOL_SLUGS.map((slug) => ({
         loc: `${base}/${lang}/tools/${slug}`,
         changefreq: "weekly",

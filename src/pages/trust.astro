@@ -2,12 +2,14 @@
 export const prerender = true;
 
 import Layout from "../layouts/Layout.astro";
+import { alternatesFor } from "../data/i18n";
 import PageIntro from "../components/PageIntro.astro";
 
 const updated = "September 23, 2026";
 ---
 
 <Layout
+  alternates={alternatesFor("/trust")}
   title="Trust & Security"
   description="How ConvertBrio handles your files, reports of abuse or security issues, and corrections to published guides."
 >

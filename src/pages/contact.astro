@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { alternatesFor } from "../data/i18n";
 import PageIntro from "../components/PageIntro.astro";
 import Icon from "../components/Icon.astro";
 
@@ -7,7 +8,8 @@ const error = Astro.url.searchParams.get("error");
 const notice = Astro.url.searchParams.get("notice");
 ---
 
-<Layout title="Contact" description="Get in touch with the ConvertBrio team for support, feedback, or partnership inquiries.">
+<Layout
+  alternates={alternatesFor("/contact")} title="Contact" description="Get in touch with the ConvertBrio team for support, feedback, or partnership inquiries.">
   <PageIntro
     eyebrow="Contact"
     title="Get in touch"

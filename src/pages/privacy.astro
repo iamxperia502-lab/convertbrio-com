@@ -2,12 +2,14 @@
 export const prerender = true;
 
 import Layout from "../layouts/Layout.astro";
+import { alternatesFor } from "../data/i18n";
 import PageIntro from "../components/PageIntro.astro";
 
 const updated = "September 23, 2026";
 ---
 
-<Layout title="Privacy Policy" description="How ConvertBrio collects, uses, and protects your data and files, including how long uploads are kept and when they are deleted.">
+<Layout
+  alternates={alternatesFor("/privacy")} title="Privacy Policy" description="How ConvertBrio collects, uses, and protects your data and files, including how long uploads are kept and when they are deleted.">
   <PageIntro eyebrow={`Last updated ${updated}`} title="Privacy Policy" />
 
   <section class="bg-canvas">

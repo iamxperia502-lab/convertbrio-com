@@ -1,0 +1,31 @@
+---
+export const prerender = true;
+
+import LocalizedStaticPage from "../../components/LocalizedStaticPage.astro";
+import HubPage from "../../components/HubPage.astro";
+import { NON_DEFAULT_LOCALES, type Locale } from "../../data/i18n";
+import { pagesByLocale } from "../../data/page-content";
+import { hubs } from "../../data/hubs";
+
+export function getStaticPaths() {
+  const STATIC = ["about", "privacy", "terms", "trust"];
+  return NON_DEFAULT_LOCALES.flatMap((lang) =>
+    pagesByLocale[lang]
+      ? [...STATIC, ...hubs.map((h) => h.path.slice(1))].map((page) => ({ params: { lang, page } }))
+      : []
+  );
+}
+
+const lang = Astro.params.lang as Locale;
+const page = Astro.params.page as string;
+const pages = pagesByLocale[lang]!;
+const hub = hubs.find((h) => h.path === `/${page}`);
+---
+
+{
+  hub ? (
+    <HubPage hub={hub} lang={lang} />
+  ) : (
+    <LocalizedStaticPage doc={pages[page as "about" | "privacy" | "terms" | "trust"]} lang={lang} enPath={`/${page}`} />
+  )
+}

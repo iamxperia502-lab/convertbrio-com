@@ -4,32 +4,27 @@ export const prerender = true;
 import Layout from "../../layouts/Layout.astro";
 import PageIntro from "../../components/PageIntro.astro";
 import Icon from "../../components/Icon.astro";
-import { NON_DEFAULT_LOCALES, alternatesFor, toolMetaByLocale, ui, type Locale } from "../../data/i18n";
+import { categories, toolsByCategory, isComingSoon, tools } from "../../data/tools";
+import type { CategoryId } from "../../data/tools";
+import { NON_DEFAULT_LOCALES, alternatesFor, routePath, toolMetaByLocale, ui, type Locale } from "../../data/i18n";
 import { homepageByLocale } from "../../data/i18n-home";
+import { pagesByLocale } from "../../data/page-content";
+import { HUB_BY_CATEGORY } from "../../data/hubs";
 
 export function getStaticPaths() {
-  return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang } }));
+  return NON_DEFAULT_LOCALES.filter((l) => pagesByLocale[l]).map((lang) => ({ params: { lang } }));
 }
 
 const lang = Astro.params.lang as Locale;
-const meta = toolMetaByLocale[lang]!;
-const c = homepageByLocale[lang as Exclude<Locale, "en">];
 const nav = ui[lang].nav;
+const hubUi = pagesByLocale[lang]!.hubUi;
+const c = homepageByLocale[lang as Exclude<Locale, "en">];
+const meta = toolMetaByLocale[lang] ?? {};
+const L = (path: string) => routePath(path, lang);
 
-const groups: { id: string; title: string; slugs: string[] }[] = [
-  { id: "pdf", title: c.categories.find((x) => x.id === "pdf")!.title, slugs: ["compress-pdf", "merge-pdf", "split-pdf", "pdf-to-word", "pdf-to-jpg", "ocr-pdf"] },
-  { id: "image", title: c.categories.find((x) => x.id === "image")!.title, slugs: ["compress-image", "image-converter", "jpg-to-pdf"] },
-  { id: "document", title: c.categories.find((x) => x.id === "document")!.title, slugs: ["word-to-pdf", "compress-word", "compress-powerpoint"] },
-];
-
-const iconFor: Record<string, string> = {
-  "compress-pdf": "shrink", "merge-pdf": "merge", "split-pdf": "merge", "pdf-to-word": "pdf", "pdf-to-jpg": "pdf", "ocr-pdf": "ocr",
-  "compress-image": "shrink", "image-converter": "image", "jpg-to-pdf": "image",
-  "word-to-pdf": "word", "compress-word": "shrink", "compress-powerpoint": "shrink",
-};
-
-const card =
-  "flex items-start gap-3 rounded-xl border border-hairline bg-canvas-soft p-4 transition-transform duration-150 hover:-translate-y-0.5";
+const catLabel: Record<string, string> = { convert: nav.convert, compress: nav.compress, pdf: nav.pdf, image: nav.image, document: nav.document, ai: nav.ai };
+const live = (id: CategoryId) => toolsByCategory(id).filter((t) => !isComingSoon(t));
+const externalTools = tools.filter((t) => t.kind === "external");
 ---
 
 <Layout
@@ -40,35 +35,87 @@ const card =
   lang={lang}
   alternates={alternatesFor("/all-tools")}
 >
-  <PageIntro eyebrow={nav.allTools} title={nav.allTools} description={c.popularSub} />
+  <PageIntro eyebrow={hubUi.toolLibrary} title={nav.allTools} description={hubUi.allToolsIntro} />
 
-  <section class="bg-canvas">
-    <div class="container-page flex flex-col gap-14 py-16 sm:py-20">
+  <nav aria-label={hubUi.categoriesLabel} class="border-b border-hairline bg-canvas">
+    <div class="container-page">
+      <ul class="flex flex-wrap gap-2 py-4">
+        {
+          categories.map((cat) => (
+            <li>
+              <a href={`#${cat.id}`} class="inline-flex items-center gap-1.5 rounded-full border border-hairline px-3 py-1.5 text-sm text-body transition-colors hover:border-hairline-strong hover:text-ink">
+                <Icon name={cat.icon} class="h-3.5 w-3.5" />
+                {catLabel[cat.id] ?? cat.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </nav>
+
+  <div class="bg-canvas">
+    <div class="container-page flex flex-col gap-14 py-16 sm:gap-16 sm:py-20">
       {
-        groups.map((group) => (
-          <div id={group.id}>
-            <h2 class="text-xl font-semibold text-ink">{group.title}</h2>
-            <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {group.slugs.map((slug) => (
-                <a href={`/${lang}/tools/${slug}`} class={card}>
-                  <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-canvas-soft-2 text-ink">
-                    <Icon name={iconFor[slug] as any} class="h-4 w-4" />
-                  </span>
-                  <span class="flex flex-col gap-0.5">
-                    <span class="font-medium text-ink">{meta[slug].name}</span>
-                    <span class="text-sm leading-relaxed text-body">{meta[slug].description}</span>
-                  </span>
-                </a>
-              ))}
+        categories.filter((cat) => live(cat.id).length > 0).map((cat) => (
+          <section id={cat.id} aria-labelledby={`${cat.id}-heading`} class="scroll-mt-24">
+            <div class="mb-6 flex items-start gap-3">
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink">
+                <Icon name={cat.icon} class="h-5 w-5" />
+              </span>
+              <div>
+                <h2 id={`${cat.id}-heading`} class="text-xl font-semibold tracking-[-0.01em] text-ink">{catLabel[cat.id] ?? cat.name}</h2>
+                <p class="text-sm text-body">
+                  {hubUi.categoryDescs[cat.id as keyof typeof hubUi.categoryDescs]}
+                  {HUB_BY_CATEGORY[cat.id] && (
+                    <>
+                      {" "}
+                      <a href={L(HUB_BY_CATEGORY[cat.id])} class="text-brand-600 underline underline-offset-2 hover:text-brand-700">{hubUi.categoryGuide}</a>
+                    </>
+                  )}
+                </p>
+              </div>
             </div>
-          </div>
+            <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {live(cat.id).map((tool) => (
+                <li>
+                  <a href={L(`/tools/${tool.slug}`)} class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas-soft px-4 py-3.5 transition-colors hover:border-hairline-strong hover:bg-canvas-soft-2">
+                    <Icon name={tool.icon} class="h-4 w-4 shrink-0 text-mute" />
+                    <span class="text-sm text-ink">{meta[tool.slug]?.name ?? tool.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
         ))
       }
 
-      <p class="text-sm text-body">
-        {c.extraCatalogueNote}{" "}
-        <a href="/all-tools" class="font-medium text-brand-600 underline underline-offset-2">/all-tools</a>
-      </p>
+      {
+        externalTools.length > 0 && (
+          <section id="more-tools" aria-labelledby="more-tools-heading" class="scroll-mt-24">
+            <div class="mb-6 flex items-start gap-3">
+              <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-canvas-soft-2 text-ink"><Icon name="globe" class="h-5 w-5" /></span>
+              <div>
+                <h2 id="more-tools-heading" class="text-xl font-semibold tracking-[-0.01em] text-ink">{hubUi.moreTools}</h2>
+                <p class="text-sm text-body">{hubUi.moreToolsDesc}</p>
+              </div>
+            </div>
+            <ul class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {externalTools.map((tool) => (
+                <li>
+                  <a href={`/tools/${tool.slug}`} target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas-soft px-4 py-3.5 transition-colors hover:border-hairline-strong hover:bg-canvas-soft-2">
+                    <Icon name={tool.icon} class="h-4 w-4 shrink-0 text-mute" />
+                    <span class="flex flex-col">
+                      <span class="text-sm text-ink">{tool.name}</span>
+                      <span class="text-xs text-mute">{tool.kind === "external" && new URL(tool.externalUrl).hostname} ↗</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
     </div>
-  </section>
+  </div>
 </Layout>

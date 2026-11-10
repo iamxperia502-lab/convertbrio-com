@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import PageIntro from "../../components/PageIntro.astro";
+import { alternatesFor } from "../../data/i18n";
 import { getCollection } from "astro:content";
 
 export const prerender = true;
@@ -16,6 +17,7 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", { year: "numeric", month:
   title="Blog"
   description="Practical guides on file formats, PDFs, images, and document conversion: how they work, what actually shrinks or breaks them, and how to fix common problems."
   canonical="/blog"
+  alternates={alternatesFor("/blog")}
 >
   <PageIntro
     eyebrow="Blog"

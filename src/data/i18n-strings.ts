@@ -423,4 +423,4 @@ export const ui: Record<Locale, UIStrings> = {
 
 // Per-locale tool name / description / SEO title & description. Behaviour
 // fields (kind, operation, accept, …) always come from data/tools.ts.
-export { toolMetaByLocale } from "./i18n-tool-meta";
+export { toolMetaByLocale } from "./i18n-tool-meta-merged";

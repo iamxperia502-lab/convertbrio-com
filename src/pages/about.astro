@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import Layout from "../layouts/Layout.astro";
+import { alternatesFor } from "../data/i18n";
 import PageIntro from "../components/PageIntro.astro";
 import Icon from "../components/Icon.astro";
 import { liveToolCount } from "../data/tools";
@@ -27,6 +28,7 @@ const values = [
 ---
 
 <Layout
+  alternates={alternatesFor("/about")}
   title="About"
   description="ConvertBrio builds fast, private, and simple file conversion tools for images, PDFs, and documents."
 >

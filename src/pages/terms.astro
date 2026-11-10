@@ -2,12 +2,14 @@
 export const prerender = true;
 
 import Layout from "../layouts/Layout.astro";
+import { alternatesFor } from "../data/i18n";
 import PageIntro from "../components/PageIntro.astro";
 
 const updated = "August 25, 2026";
 ---
 
-<Layout title="Terms of Service" description="The terms that govern your use of ConvertBrio's free file tools and services, including acceptable use, limits, and your responsibilities.">
+<Layout
+  alternates={alternatesFor("/terms")} title="Terms of Service" description="The terms that govern your use of ConvertBrio's free file tools and services, including acceptable use, limits, and your responsibilities.">
   <PageIntro eyebrow={`Last updated ${updated}`} title="Terms of Service" />
 
   <section class="bg-canvas">

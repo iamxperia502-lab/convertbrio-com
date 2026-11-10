@@ -1,3 +1,5 @@
+import { tools, isComingSoon } from "./tools";
+
 // Multi-language support. English is the default (unprefixed) locale; every
 // other locale lives under `/<code>/…` and is a partial localisation
 // focused on the PDF and compression tools, which is where nearly all of
@@ -59,23 +61,15 @@ export const LOCALE_SHORT: Record<Locale, string> = {
 };
 
 /**
- * Slugs that have a localised tool page in every non-default locale.
- * Keep in sync with the tool-content and tool-meta files.
+ * Every live (non-external, non-coming-soon) tool has a localised page in every
+ * non-default locale. Coming-soon guides stay English-only and noindex.
  */
-export const LOCALIZED_TOOL_SLUGS = [
-  "compress-pdf",
-  "compress-image",
-  "merge-pdf",
-  "split-pdf",
-  "pdf-to-word",
-  "word-to-pdf",
-  "pdf-to-jpg",
-  "jpg-to-pdf",
-  "image-converter",
-  "ocr-pdf",
-  "compress-powerpoint",
-  "compress-word",
-] as const;
+export const LOCALIZED_TOOL_SLUGS: readonly string[] = tools
+  .filter((tool) => tool.kind !== "external" && !isComingSoon(tool))
+  .map((tool) => tool.slug);
+
+/** Static pages that exist in every locale (besides home and all-tools). */
+export const LOCALIZED_PAGES = ["/about", "/contact", "/privacy", "/terms", "/trust", "/blog", "/pdf-tools", "/image-tools", "/document-tools", "/compression-tools", "/ocr-tools", "/ai-tools"] as const;
 
 const NON_DEFAULT_SET = new Set<string>(NON_DEFAULT_LOCALES);
 
@@ -87,19 +81,32 @@ export function localePath(path: string, lang: Locale): string {
 }
 
 /**
- * Routes that exist only in English. Localised headers and footers must link
- * to these unprefixed until translated versions are published.
+ * Routes that exist only in English: account pages and individual blog posts
+ * (the blog index and everything else is localised).
  */
-const ENGLISH_ONLY_ROUTES = ["/about", "/blog", "/contact", "/privacy", "/terms", "/trust", "/dashboard", "/pdf-tools", "/image-tools", "/document-tools", "/compression-tools", "/ocr-tools", "/ai-tools"];
+const ENGLISH_ONLY_ROUTES = ["/dashboard", "/sign-in", "/sign-up", "/blog/"];
 
 /**
- * Like localePath(), but leaves English-only routes (and their sub-paths)
- * unprefixed so localised pages never link to a non-existent /<lang>/... URL.
+ * Like localePath(), but leaves English-only routes unprefixed so localised
+ * pages never link to a non-existent /<lang>/... URL. Tool paths for slugs
+ * without a localised page (coming-soon guides) also stay English.
  */
 export function routePath(path: string, lang: Locale): string {
   const base = path.split(/[#?]/)[0];
-  if (ENGLISH_ONLY_ROUTES.some((r) => base === r || base.startsWith(`${r}/`))) return path;
+  if (lang === DEFAULT_LOCALE) return path || "/";
+  if (ENGLISH_ONLY_ROUTES.some((r) => base === r || base.startsWith(r.endsWith("/") ? r : `${r}/`))) return path;
+  const toolMatch = base.match(/^\/tools\/([^/]+)$/);
+  if (toolMatch && !LOCALIZED_TOOL_SLUGS.includes(toolMatch[1])) return path;
   return localePath(path, lang);
+}
+
+/**
+ * Rewrite root-relative href="/…" attributes inside an HTML string (written
+ * with English paths) to the given locale's URLs.
+ */
+export function localizeHtml(html: string, lang: Locale): string {
+  if (lang === DEFAULT_LOCALE) return html;
+  return html.replace(/href="(\/[^"]*)"/g, (_m, href: string) => `href="${routePath(href, lang)}"`);
 }
 
 /** Strip a known locale prefix from a path, returning the English path. */

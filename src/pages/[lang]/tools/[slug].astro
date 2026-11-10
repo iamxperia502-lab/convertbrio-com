@@ -1,12 +1,13 @@
 ---
 import ToolPage from "../../../components/ToolPage.astro";
 import { NON_DEFAULT_LOCALES, LOCALIZED_TOOL_SLUGS, type Locale } from "../../../data/i18n";
+import { toolContentByLocale } from "../../../data/tool-content";
 
 export const prerender = true;
 
 export function getStaticPaths() {
   return NON_DEFAULT_LOCALES.flatMap((lang) =>
-    LOCALIZED_TOOL_SLUGS.map((slug) => ({ params: { lang, slug } }))
+    LOCALIZED_TOOL_SLUGS.filter((slug) => toolContentByLocale[lang]?.[slug]).map((slug) => ({ params: { lang, slug } }))
   );
 }
 

@@ -5,30 +5,48 @@ import PageIntro from "./PageIntro.astro";
 import Icon from "./Icon.astro";
 import { hubs, hubToolsFor, type Hub } from "../data/hubs";
 import { getTool } from "../data/tools";
+import { alternatesFor, localePath, routePath, toolMetaByLocale, type Locale } from "../data/i18n";
+import { pagesByLocale } from "../data/page-content";
 
 interface Props {
   hub: Hub;
+  lang?: Locale;
 }
-const { hub } = Astro.props;
+const { hub: enHub, lang = "en" } = Astro.props;
+const isDefault = lang === "en";
+const localized = isDefault ? undefined : pagesByLocale[lang];
+const doc = localized?.hubs[enHub.id];
+const ui = localized?.hubUi;
+const hub = doc
+  ? { ...enHub, name: doc.name, h1: doc.h1, seoTitle: doc.seoTitle, description: doc.description, intro: doc.intro, chooser: doc.chooser }
+  : enHub;
+const workflows = enHub.workflows.map((flow, i) => ({
+  title: doc?.workflows[i]?.title ?? flow.title,
+  steps: flow.steps.map((step, j) => ({ ...step, text: doc?.workflows[i]?.steps[j] ?? step.text })),
+}));
+const toolName = (t: { slug: string; name: string }) => (isDefault ? t.name : toolMetaByLocale[lang]?.[t.slug]?.name ?? t.name);
+const toolDesc = (t: { slug: string; description: string }) => (isDefault ? t.description : toolMetaByLocale[lang]?.[t.slug]?.description ?? t.description);
+const L = (path: string) => routePath(path, lang);
 
 const base = Astro.site?.toString().replace(/\/$/, "") ?? "https://www.convertbrio.com";
-const hubTools = hubToolsFor(hub);
-const posts = (await getCollection("blog", ({ data }) => !data.draft)).filter((p) => hub.articles.includes(p.id));
-const otherHubs = hubs.filter((h) => h.path !== hub.path);
+const hubTools = hubToolsFor(enHub);
+// Guides are English-only, so localised hubs omit them rather than mixing languages.
+const posts = isDefault ? (await getCollection("blog", ({ data }) => !data.draft)).filter((p) => enHub.articles.includes(p.id)) : [];
+const otherHubs = hubs.filter((h) => h.path !== enHub.path).map((h) => ({ ...h, name: localized?.hubs[h.id]?.name ?? h.name }));
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
-    { "@type": "ListItem", position: 2, name: hub.name, item: `${base}${hub.path}` },
+    { "@type": "ListItem", position: 1, name: ui?.home ?? "Home", item: `${base}${localePath("/", lang)}` },
+    { "@type": "ListItem", position: 2, name: hub.name, item: `${base}${L(hub.path)}` },
   ],
 };
 
 const link = "font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700";
 ---
 
-<Layout title={hub.name} seoTitle={hub.seoTitle} description={hub.description} canonical={hub.path}>
+<Layout title={hub.name} seoTitle={hub.seoTitle} description={hub.description} canonical={L(hub.path)} lang={lang} alternates={alternatesFor(hub.path)}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
   </Fragment>
@@ -45,19 +63,19 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
 
   <section aria-labelledby="hub-tools-heading" class="border-b border-hairline bg-canvas">
     <div class="container-page py-14 sm:py-16">
-      <h2 id="hub-tools-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">All {hub.name.toLowerCase()}</h2>
+      <h2 id="hub-tools-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">{ui ? ui.allTemplate.replace("{name}", hub.name) : `All ${hub.name.toLowerCase()}`}</h2>
       <ul class="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {
           hubTools.map((tool) => (
             <li>
               <a
-                href={`/tools/${tool.slug}`}
+                href={L(`/tools/${tool.slug}`)}
                 class="flex h-full items-start gap-3 rounded-lg border border-hairline bg-canvas-soft px-4 py-3.5 transition-colors hover:border-hairline-strong hover:bg-canvas-soft-2"
               >
                 <Icon name={tool.icon} class="mt-0.5 h-4 w-4 shrink-0 text-mute" />
                 <span class="flex flex-col gap-0.5">
-                  <span class="text-sm font-medium text-ink">{tool.name}</span>
-                  <span class="text-xs leading-relaxed text-mute">{tool.description}</span>
+                  <span class="text-sm font-medium text-ink">{toolName(tool)}</span>
+                  <span class="text-xs leading-relaxed text-mute">{toolDesc(tool)}</span>
                 </span>
               </a>
             </li>
@@ -79,10 +97,10 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
   <section aria-labelledby="hub-workflows-heading" class="border-b border-hairline bg-canvas">
     <div class="container-page py-14 sm:py-16">
       <div class="mx-auto max-w-3xl">
-        <h2 id="hub-workflows-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">Recommended workflows</h2>
+        <h2 id="hub-workflows-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">{ui?.workflows ?? "Recommended workflows"}</h2>
         <div class="mt-6 space-y-8">
           {
-            hub.workflows.map((flow) => (
+            workflows.map((flow) => (
               <div>
                 <h3 class="text-lg font-semibold text-ink">{flow.title}</h3>
                 <ol class="mt-3 list-decimal space-y-2 pl-5 leading-relaxed text-body">
@@ -94,7 +112,7 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
                         {tool && (
                           <>
                             {" "}
-                            <a href={`/tools/${tool.slug}`} class={link}>{tool.name}</a>
+                            <a href={L(`/tools/${tool.slug}`)} class={link}>{toolName(tool)}</a>
                           </>
                         )}
                       </li>
@@ -114,7 +132,7 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
       <section aria-labelledby="hub-guides-heading" class="border-b border-hairline bg-canvas">
         <div class="container-page py-14 sm:py-16">
           <div class="mx-auto max-w-3xl">
-            <h2 id="hub-guides-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">Guides</h2>
+            <h2 id="hub-guides-heading" class="text-2xl font-semibold tracking-[-0.01em] text-ink">{ui?.guides ?? "Guides"}</h2>
             <ul class="mt-6 space-y-4">
               {posts.map((post) => (
                 <li>
@@ -132,20 +150,20 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
   <section aria-labelledby="hub-more-heading" class="bg-canvas">
     <div class="container-page py-14 sm:py-16">
       <div class="mx-auto max-w-3xl">
-        <h2 id="hub-more-heading" class="text-xl font-semibold text-ink">Other tool categories</h2>
+        <h2 id="hub-more-heading" class="text-xl font-semibold text-ink">{ui?.otherCategories ?? "Other tool categories"}</h2>
         <ul class="mt-4 flex flex-wrap gap-2">
           {
             otherHubs.map((h) => (
               <li>
-                <a href={h.path} class="inline-flex rounded-full border border-hairline px-3 py-1.5 text-sm text-body transition-colors hover:border-hairline-strong hover:text-ink">
+                <a href={L(h.path)} class="inline-flex rounded-full border border-hairline px-3 py-1.5 text-sm text-body transition-colors hover:border-hairline-strong hover:text-ink">
                   {h.name}
                 </a>
               </li>
             ))
           }
           <li>
-            <a href="/all-tools" class="inline-flex rounded-full border border-hairline px-3 py-1.5 text-sm text-body transition-colors hover:border-hairline-strong hover:text-ink">
-              All tools
+            <a href={localePath("/all-tools", lang)} class="inline-flex rounded-full border border-hairline px-3 py-1.5 text-sm text-body transition-colors hover:border-hairline-strong hover:text-ink">
+              {ui?.allTools ?? "All tools"}
             </a>
           </li>
         </ul>
