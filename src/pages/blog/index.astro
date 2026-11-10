@@ -34,6 +34,12 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", { year: "numeric", month:
               <a href={`/blog/${post.id}`} class="group flex flex-col gap-2">
                 <p class="font-mono text-xs uppercase tracking-wide text-mute">
                   <time datetime={post.data.pubDate.toISOString()}>{dateFormatter.format(post.data.pubDate)}</time>
+                  {post.data.updatedDate && (
+                    <>
+                      {" · Updated "}
+                      <time datetime={post.data.updatedDate.toISOString()}>{dateFormatter.format(post.data.updatedDate)}</time>
+                    </>
+                  )}
                 </p>
                 <h2 class="text-xl font-semibold tracking-[-0.01em] text-ink group-hover:underline sm:text-2xl">
                   {post.data.title}

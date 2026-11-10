@@ -9,7 +9,10 @@ const blog = defineCollection({
     // Shorter title for search results when the page heading is too long.
     seoTitle: z.string().optional(),
     description: z.string(),
+    // Real publish date. Never backdate or fake it.
     pubDate: z.coerce.date(),
+    // Set only when the post is genuinely revised; shown as "Updated <date>"
+    // on the post and blog index and emitted as dateModified in the Article schema.
     updatedDate: z.coerce.date().optional(),
     author: z.string().default("Subham Sharma"),
     tags: z.array(z.string()).default([]),
