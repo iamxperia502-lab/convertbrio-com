@@ -40,10 +40,10 @@ export const hubs: Hub[] = [
     h1: "PDF tools: merge, split, organize, compress, and convert",
     seoTitle: "Free PDF Tools: Merge, Split, Organize & Compress | ConvertBrio",
     description:
-      "Merge, split, reorder, rotate, unlock, compress, and convert PDFs online. Free ConvertBrio PDF tools with no sign-up; files are deleted within about 24 hours.",
+      "Merge, split, reorder, rotate, unlock, compress, and convert PDFs online. Free ConvertBrio PDF tools with no sign-up; your original is deleted right after it is read and results within about 24 hours.",
     intro: [
       "PDFs are meant to look the same everywhere, which also makes them awkward to change. These tools cover the jobs people actually run into: combining several files, pulling pages apart, putting pages in the right order, shrinking a file to fit an upload limit, and turning pages into images or images into pages.",
-      "Every tool runs in your browser session on ConvertBrio's servers, works on files up to 100 MB, and needs no account. Pick the task below, or follow one of the workflows if your job takes more than one step.",
+      "Every tool runs on our hosting providers' servers (Vercel and Supabase), works on files up to 100 MB, and needs no account. Your original file is deleted right after it is read, and the result by a daily cleanup, typically within about 24 hours. Pick the task below, or follow one of the workflows if your job takes more than one step.",
     ],
     include: (t) => live(t) && t.categories.includes("pdf"),
     workflows: [
@@ -85,7 +85,7 @@ export const hubs: Hub[] = [
       "Convert HEIC, JPG, PNG, WEBP, and AVIF, resize to exact pixels, compress to a target KB, crop, rotate, and remove backgrounds. Free image tools with no sign-up.",
     intro: [
       "Most image problems come down to three things: the format isn't accepted, the pixel size is wrong, or the file is too big. The tools here solve each one directly, whether you're preparing a profile photo, filling in an application form, or publishing pictures on a website.",
-      "Conversions keep your original resolution, and compression tools work toward a size you choose. Nothing is watermarked, and uploads are deleted within about 24 hours.",
+      "Conversions keep your original resolution, and compression tools work toward a size you choose. Nothing is watermarked. Your original is deleted right after it is read, and the result by a daily cleanup, typically within about 24 hours.",
     ],
     include: (t) => live(t) && t.categories.includes("image"),
     workflows: [
@@ -127,7 +127,7 @@ export const hubs: Hub[] = [
       "Convert Word, Excel, and PowerPoint to and from PDF, compress Office files, extract text from scans, and strip hidden metadata. Free document tools, no sign-up.",
     intro: [
       "Documents move between people who use different software. These tools translate between Word, Excel, PowerPoint, and PDF, shrink Office files that are too big to email, pull text out of scans, and remove the author details that files carry without you noticing.",
-      "Each tool states what it keeps and what it can't, for example that converting a PDF back to Word can't perfectly rebuild complex layouts. Uploads are encrypted and deleted within about 24 hours.",
+      "Each tool states what it keeps and what it can't, for example that converting a PDF back to Word can't perfectly rebuild complex layouts. Uploads are encrypted in transit. Your original is deleted right after it is read, and the result by a daily cleanup, typically within about 24 hours.",
     ],
     include: (t) => live(t) && t.categories.includes("document"),
     workflows: [

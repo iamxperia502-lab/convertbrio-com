@@ -57,7 +57,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaPrimary: "Comprimir PDF",
     ctaSecondary: "Ver todas as ferramentas",
     popularHeading: "As ferramentas mais usadas",
-    popularSub: "Sem cadastro, sem marca d'água, arquivos apagados automaticamente em 24 horas.",
+    popularSub: "Sem cadastro, sem marca d'água, original apagado logo após a leitura e resultado em cerca de 24 horas.",
     popularPanelLabel: "Ferramentas populares",
     categoriesHeading: "Por categoria",
     categories: [
@@ -79,7 +79,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
       },
       {
         h3: "Documentos digitalizados e Word",
-        html: `Para levar um documento digitalizado para o Word, use ${link("/pt/tools/ocr-pdf", "OCR de PDF")} para reconhecer o texto e depois ${link("/pt/tools/pdf-to-word", "PDF para Word")} para obter um DOCX editável. A privacidade vem de fábrica: todo envio é criptografado e os arquivos são apagados em 24 horas.`,
+        html: `Para levar um documento digitalizado para o Word, use ${link("/pt/tools/ocr-pdf", "OCR de PDF")} para reconhecer o texto e depois ${link("/pt/tools/pdf-to-word", "PDF para Word")} para obter um DOCX editável. A privacidade vem de fábrica: todo envio é criptografado, o original é apagado logo após ser lido e o resultado em cerca de 24 horas.`,
       },
     ],
     faqHeading: "Perguntas frequentes",
@@ -87,7 +87,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     faq: [
       { question: "O ConvertBrio é grátis?", answer: "Sim. Todas as ferramentas são gratuitas, sem cadastro, sem limite de uso e sem marca d'água. Arquivos de até 100 MB por conversão são aceitos sem custo." },
       { question: "Como comprimir um PDF online de graça?", answer: "Abra a ferramenta Comprimir PDF, envie o documento e clique em Comprimir. Ela re-codifica as imagens embutidas e remove metadados desnecessários para reduzir o arquivo, que é baixado automaticamente." },
-      { question: "Meus arquivos estão seguros?", answer: "Todo arquivo enviado trafega por uma conexão criptografada e é processado automaticamente, sem revisão humana. O original e o resultado são apagados dos servidores em até 24 horas." },
+      { question: "Meus arquivos estão seguros?", answer: "Todo arquivo enviado trafega por uma conexão criptografada e é processado automaticamente, sem revisão humana. Seu arquivo original é apagado logo depois de ser lido para a conversão. O resultado convertido é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados nos servidores dos nossos provedores de hospedagem (Vercel e Supabase)." },
       { question: "Consigo usar no celular?", answer: "Sim. Abra o ConvertBrio no navegador do celular ou tablet e todas as ferramentas funcionam igual ao computador, sem aplicativo para instalar." },
     ],
     ctaHeading: "Pronto para converter seu primeiro arquivo?",
@@ -118,7 +118,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaPrimary: "Comprimir PDF",
     ctaSecondary: "Ver todas las herramientas",
     popularHeading: "Las herramientas más usadas",
-    popularSub: "Sin registro, sin marca de agua, los archivos se eliminan automáticamente en 24 horas.",
+    popularSub: "Sin registro, sin marca de agua, el original se elimina justo tras leerlo y el resultado en unas 24 horas.",
     popularPanelLabel: "Herramientas populares",
     categoriesHeading: "Por categoría",
     categories: [
@@ -140,7 +140,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
       },
       {
         h3: "Documentos escaneados y Word",
-        html: `Para llevar un documento escaneado a Word, usa ${link("/es/tools/ocr-pdf", "OCR de PDF")} para reconocer el texto y luego ${link("/es/tools/pdf-to-word", "PDF a Word")} para obtener un DOCX editable. La privacidad viene de serie: cada subida se cifra y los archivos se eliminan en 24 horas.`,
+        html: `Para llevar un documento escaneado a Word, usa ${link("/es/tools/ocr-pdf", "OCR de PDF")} para reconocer el texto y luego ${link("/es/tools/pdf-to-word", "PDF a Word")} para obtener un DOCX editable. La privacidad viene de serie: cada subida se cifra, el original se elimina justo tras leerlo y el resultado en unas 24 horas.`,
       },
     ],
     faqHeading: "Preguntas frecuentes",
@@ -148,7 +148,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     faq: [
       { question: "¿ConvertBrio es gratis?", answer: "Sí. Todas las herramientas son gratuitas, sin registro, sin límite de uso y sin marca de agua. Se aceptan archivos de hasta 100 MB por conversión, sin coste." },
       { question: "¿Cómo comprimir un PDF online gratis?", answer: "Abre la herramienta Comprimir PDF, sube el documento y haz clic en Comprimir. Recodifica las imágenes incrustadas y elimina metadatos innecesarios para reducir el archivo, que se descarga automáticamente." },
-      { question: "¿Mis archivos están seguros?", answer: "Cada archivo subido viaja por una conexión cifrada y se procesa automáticamente, sin revisión humana. El original y el resultado se eliminan de los servidores en un plazo de 24 horas." },
+      { question: "¿Mis archivos están seguros?", answer: "Cada archivo subido viaja por una conexión cifrada y se procesa automáticamente, sin revisión humana. Tu archivo original se elimina justo después de leerlo para la conversión. El resultado convertido se borra con una limpieza diaria, normalmente en unas 24 horas. Los archivos se procesan en los servidores de nuestros proveedores de alojamiento (Vercel y Supabase)." },
       { question: "¿Puedo usarlo en el móvil?", answer: "Sí. Abre ConvertBrio en el navegador del móvil o la tablet y todas las herramientas funcionan igual que en el ordenador, sin app que instalar." },
     ],
     ctaHeading: "¿Listo para convertir tu primer archivo?",
@@ -179,7 +179,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaPrimary: "Compresser un PDF",
     ctaSecondary: "Voir tous les outils",
     popularHeading: "Les outils les plus utilisés",
-    popularSub: "Sans inscription, sans filigrane, fichiers supprimés automatiquement sous 24 heures.",
+    popularSub: "Sans inscription, sans filigrane, original supprimé dès sa lecture, résultat sous 24 heures environ.",
     popularPanelLabel: "Outils populaires",
     categoriesHeading: "Par catégorie",
     categories: [
@@ -201,7 +201,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
       },
       {
         h3: "Documents scannés et Word",
-        html: `Pour récupérer un document scanné dans Word, utilisez ${link("/fr/tools/ocr-pdf", "OCR de PDF")} pour reconnaître le texte, puis ${link("/fr/tools/pdf-to-word", "PDF en Word")} pour obtenir un DOCX modifiable. La confidentialité est incluse : chaque envoi est chiffré et les fichiers sont supprimés sous 24 heures.`,
+        html: `Pour récupérer un document scanné dans Word, utilisez ${link("/fr/tools/ocr-pdf", "OCR de PDF")} pour reconnaître le texte, puis ${link("/fr/tools/pdf-to-word", "PDF en Word")} pour obtenir un DOCX modifiable. La confidentialité est incluse : chaque envoi est chiffré, l'original est supprimé dès sa lecture et le résultat sous 24 heures environ.`,
       },
     ],
     faqHeading: "Questions fréquentes",
@@ -209,7 +209,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     faq: [
       { question: "ConvertBrio est-il gratuit ?", answer: "Oui. Tous les outils sont gratuits, sans inscription, sans limite d'usage et sans filigrane. Les fichiers jusqu'à 100 Mo par conversion sont acceptés sans frais." },
       { question: "Comment compresser un PDF en ligne gratuitement ?", answer: "Ouvrez l'outil Compresser un PDF, envoyez le document et cliquez sur Compresser. Il réencode les images intégrées et supprime les métadonnées inutiles pour réduire le fichier, qui se télécharge automatiquement." },
-      { question: "Mes fichiers sont-ils sécurisés ?", answer: "Chaque fichier envoyé transite par une connexion chiffrée et est traité automatiquement, sans intervention humaine. L'original et le résultat sont supprimés des serveurs sous 24 heures." },
+      { question: "Mes fichiers sont-ils sécurisés ?", answer: "Chaque fichier envoyé transite par une connexion chiffrée et est traité automatiquement, sans intervention humaine. Votre fichier d'origine est supprimé dès qu'il a été lu pour la conversion. Le résultat converti est supprimé par un nettoyage quotidien, en général sous 24 heures environ. Les fichiers sont traités sur les serveurs de nos hébergeurs (Vercel et Supabase)." },
       { question: "Puis-je l'utiliser sur mobile ?", answer: "Oui. Ouvrez ConvertBrio dans le navigateur du téléphone ou de la tablette et tous les outils fonctionnent comme sur ordinateur, sans application à installer." },
     ],
     ctaHeading: "Prêt à convertir votre premier fichier ?",
@@ -240,7 +240,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaPrimary: "PDF komprimieren",
     ctaSecondary: "Alle Tools ansehen",
     popularHeading: "Die meistgenutzten Tools",
-    popularSub: "Ohne Anmeldung, ohne Wasserzeichen, Dateien werden innerhalb von 24 Stunden automatisch gelöscht.",
+    popularSub: "Ohne Anmeldung, ohne Wasserzeichen, Original wird nach dem Lesen gelöscht, das Ergebnis innerhalb von etwa 24 Stunden.",
     popularPanelLabel: "Beliebte Tools",
     categoriesHeading: "Nach Kategorie",
     categories: [
@@ -262,7 +262,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
       },
       {
         h3: "Gescannte Dokumente und Word",
-        html: `Um ein gescanntes Dokument in Word zu bringen, nutze ${link("/de/tools/ocr-pdf", "OCR für PDF")}, um den Text zu erkennen, und dann ${link("/de/tools/pdf-to-word", "PDF in Word")}, um ein bearbeitbares DOCX zu erhalten. Datenschutz ist inbegriffen: Jeder Upload wird verschlüsselt und die Dateien werden innerhalb von 24 Stunden gelöscht.`,
+        html: `Um ein gescanntes Dokument in Word zu bringen, nutze ${link("/de/tools/ocr-pdf", "OCR für PDF")}, um den Text zu erkennen, und dann ${link("/de/tools/pdf-to-word", "PDF in Word")}, um ein bearbeitbares DOCX zu erhalten. Datenschutz ist inbegriffen: Jeder Upload wird verschlüsselt, das Original wird nach dem Lesen gelöscht und das Ergebnis innerhalb von etwa 24 Stunden.`,
       },
     ],
     faqHeading: "Häufige Fragen",
@@ -270,7 +270,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     faq: [
       { question: "Ist ConvertBrio kostenlos?", answer: "Ja. Alle Tools sind kostenlos, ohne Anmeldung, ohne Nutzungslimit und ohne Wasserzeichen. Dateien bis zu 100 MB pro Umwandlung sind kostenlos möglich." },
       { question: "Wie komprimiere ich eine PDF online kostenlos?", answer: "Öffne das Tool PDF komprimieren, lade das Dokument hoch und klicke auf Komprimieren. Es kodiert die eingebetteten Bilder neu und entfernt unnötige Metadaten, um die Datei zu verkleinern, die automatisch heruntergeladen wird." },
-      { question: "Sind meine Dateien sicher?", answer: "Jede hochgeladene Datei läuft über eine verschlüsselte Verbindung und wird automatisch ohne menschliche Prüfung verarbeitet. Original und Ergebnis werden innerhalb von 24 Stunden von den Servern gelöscht." },
+      { question: "Sind meine Dateien sicher?", answer: "Jede hochgeladene Datei läuft über eine verschlüsselte Verbindung und wird automatisch ohne menschliche Prüfung verarbeitet. Ihre Originaldatei wird gelöscht, sobald sie für die Konvertierung gelesen wurde. Das konvertierte Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet." },
       { question: "Kann ich es auf dem Handy nutzen?", answer: "Ja. Öffne ConvertBrio im Browser von Handy oder Tablet, und alle Tools funktionieren wie am Computer, ohne App-Installation." },
     ],
     ctaHeading: "Bereit, deine erste Datei zu konvertieren?",
@@ -301,7 +301,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaPrimary: "Comprimere PDF",
     ctaSecondary: "Vedi tutti gli strumenti",
     popularHeading: "Gli strumenti più usati",
-    popularSub: "Senza registrazione, senza filigrana, file eliminati automaticamente entro 24 ore.",
+    popularSub: "Senza registrazione, senza filigrana, originale eliminato dopo la lettura, risultato entro circa 24 ore.",
     popularPanelLabel: "Strumenti popolari",
     categoriesHeading: "Per categoria",
     categories: [
@@ -323,7 +323,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
       },
       {
         h3: "Documenti scansionati e Word",
-        html: `Per portare un documento scansionato in Word, usa ${link("/it/tools/ocr-pdf", "OCR per PDF")} per riconoscere il testo e poi ${link("/it/tools/pdf-to-word", "PDF in Word")} per ottenere un DOCX modificabile. La privacy è inclusa: ogni caricamento viene cifrato e i file vengono eliminati entro 24 ore.`,
+        html: `Per portare un documento scansionato in Word, usa ${link("/it/tools/ocr-pdf", "OCR per PDF")} per riconoscere il testo e poi ${link("/it/tools/pdf-to-word", "PDF in Word")} per ottenere un DOCX modificabile. La privacy è inclusa: ogni caricamento viene cifrato, l'originale viene eliminato dopo la lettura e il risultato entro circa 24 ore.`,
       },
     ],
     faqHeading: "Domande frequenti",
@@ -331,7 +331,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     faq: [
       { question: "ConvertBrio è gratis?", answer: "Sì. Tutti gli strumenti sono gratuiti, senza registrazione, senza limiti d'uso e senza filigrana. Sono accettati file fino a 100 MB per conversione, senza costi." },
       { question: "Come comprimere un PDF online gratis?", answer: "Apri lo strumento Comprimere PDF, carica il documento e clicca su Comprimi. Ricodifica le immagini incorporate e rimuove i metadati inutili per ridurre il file, che si scarica automaticamente." },
-      { question: "I miei file sono al sicuro?", answer: "Ogni file caricato viaggia su una connessione cifrata e viene elaborato automaticamente, senza revisione umana. L'originale e il risultato vengono eliminati dai server entro 24 ore." },
+      { question: "I miei file sono al sicuro?", answer: "Ogni file caricato viaggia su una connessione cifrata e viene elaborato automaticamente, senza revisione umana. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati sui server dei nostri provider di hosting (Vercel e Supabase)." },
       { question: "Posso usarlo sul telefono?", answer: "Sì. Apri ConvertBrio nel browser del telefono o del tablet e tutti gli strumenti funzionano come sul computer, senza app da installare." },
     ],
     ctaHeading: "Pronto a convertire il tuo primo file?",
@@ -362,7 +362,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ctaPrimary: "Kompres PDF",
     ctaSecondary: "Lihat semua alat",
     popularHeading: "Alat yang paling sering dipakai",
-    popularSub: "Tanpa daftar, tanpa watermark, file dihapus otomatis dalam 24 jam.",
+    popularSub: "Tanpa daftar, tanpa watermark, file asli dihapus setelah dibaca, hasil dalam sekitar 24 jam.",
     popularPanelLabel: "Alat populer",
     categoriesHeading: "Berdasarkan kategori",
     categories: [
@@ -384,7 +384,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
       },
       {
         h3: "Dokumen hasil scan dan Word",
-        html: `Untuk memindahkan dokumen hasil scan ke Word, pakai ${link("/id/tools/ocr-pdf", "OCR PDF")} untuk mengenali teks lalu ${link("/id/tools/pdf-to-word", "PDF ke Word")} untuk mendapat DOCX yang bisa diedit. Privasi sudah termasuk: setiap unggahan dienkripsi dan file dihapus dalam 24 jam.`,
+        html: `Untuk memindahkan dokumen hasil scan ke Word, pakai ${link("/id/tools/ocr-pdf", "OCR PDF")} untuk mengenali teks lalu ${link("/id/tools/pdf-to-word", "PDF ke Word")} untuk mendapat DOCX yang bisa diedit. Privasi sudah termasuk: setiap unggahan dienkripsi, file asli dihapus setelah dibaca, dan hasilnya dalam sekitar 24 jam.`,
       },
     ],
     faqHeading: "Pertanyaan umum",
@@ -392,7 +392,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     faq: [
       { question: "Apakah ConvertBrio gratis?", answer: "Ya. Semua alat gratis, tanpa daftar, tanpa batas penggunaan, dan tanpa watermark. File hingga 100 MB per konversi diterima tanpa biaya." },
       { question: "Bagaimana cara kompres PDF online gratis?", answer: "Buka alat Kompres PDF, unggah dokumen, dan klik Kompres. Ia mengodekan ulang gambar tertanam dan menghapus metadata yang tidak perlu untuk memperkecil file, yang terunduh otomatis." },
-      { question: "Apakah file saya aman?", answer: "Setiap file yang diunggah melewati koneksi terenkripsi dan diproses otomatis, tanpa tinjauan manusia. File asli dan hasilnya dihapus dari server dalam 24 jam." },
+      { question: "Apakah file saya aman?", answer: "Setiap file yang diunggah melewati koneksi terenkripsi dan diproses otomatis, tanpa tinjauan manusia. File asli dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses di server penyedia hosting kami (Vercel dan Supabase)." },
       { question: "Bisakah dipakai di ponsel?", answer: "Ya. Buka ConvertBrio di browser ponsel atau tablet dan semua alat berfungsi sama seperti di komputer, tanpa aplikasi untuk dipasang." },
     ],
     ctaHeading: "Siap mengonversi file pertama Anda?",

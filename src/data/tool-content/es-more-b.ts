@@ -534,7 +534,7 @@ export const toolContentEsMoreB: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Cómo funciona",
-        body: "Sube una imagen y ConvertBrio la pasa por un proceso automático de tratamiento de imagen (normalización del contraste, color y nitidez) en nuestros servidores: un algoritmo determinista, no un modelo de IA generativa, y por eso los resultados son coherentes y el procesamiento es rápido.",
+        body: "Sube una imagen y ConvertBrio la pasa por un proceso automático de tratamiento de imagen (normalización del contraste, color y nitidez) en los servidores de nuestros proveedores de alojamiento: un algoritmo determinista, no un modelo de IA generativa, y por eso los resultados son coherentes y el procesamiento es rápido.",
       },
       {
         heading: "Lo que no puede arreglar",

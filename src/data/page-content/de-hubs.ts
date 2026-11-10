@@ -47,7 +47,7 @@ export const hubsDe: Record<"pdf" | "image" | "document" | "compress" | "ocr" | 
       "HEIC, JPG, PNG, WEBP und AVIF konvertieren, pixelgenau skalieren, auf eine Ziel-KB-Größe komprimieren, zuschneiden, drehen und Hintergründe entfernen. Ohne Anmeldung.",
     intro: [
       "Die meisten Bildprobleme laufen auf drei Dinge hinaus: Das Format wird nicht akzeptiert, die Pixelgröße stimmt nicht oder die Datei ist zu groß. Die Tools hier lösen jedes dieser Probleme direkt, ob Sie ein Profilfoto vorbereiten, ein Bewerbungsformular ausfüllen oder Bilder auf einer Website veröffentlichen.",
-      "Konvertierungen behalten die Originalauflösung bei, und die Komprimierungs-Tools arbeiten auf eine von Ihnen gewählte Größe hin. Nichts wird mit einem Wasserzeichen versehen, und hochgeladene Dateien werden innerhalb von etwa 24 Stunden gelöscht.",
+      "Konvertierungen behalten die Originalauflösung bei, und die Komprimierungs-Tools arbeiten auf eine von Ihnen gewählte Größe hin. Nichts wird mit einem Wasserzeichen versehen, und Ihre Originaldatei wird gelöscht, sobald sie gelesen wurde; das Ergebnis folgt durch eine tägliche Bereinigung, in der Regel innerhalb von etwa 24 Stunden.",
     ],
     workflows: [
       {
@@ -85,7 +85,7 @@ export const hubsDe: Record<"pdf" | "image" | "document" | "compress" | "ocr" | 
       "Word, Excel und PowerPoint in PDF und zurück umwandeln, Office-Dateien komprimieren, Text aus Scans auslesen und versteckte Metadaten entfernen. Ohne Anmeldung.",
     intro: [
       "Dokumente wandern zwischen Menschen, die unterschiedliche Software nutzen. Diese Tools übersetzen zwischen Word, Excel, PowerPoint und PDF, verkleinern Office-Dateien, die für eine E-Mail zu groß sind, lesen Text aus Scans aus und entfernen die Autorendaten, die Dateien unbemerkt mit sich tragen.",
-      "Jedes Tool nennt offen, was es erhält und was nicht – zum Beispiel, dass die Rückumwandlung eines PDFs in Word komplexe Layouts nicht perfekt nachbauen kann. Hochgeladene Dateien werden verschlüsselt übertragen und innerhalb von etwa 24 Stunden gelöscht.",
+      "Jedes Tool nennt offen, was es erhält und was nicht – zum Beispiel, dass die Rückumwandlung eines PDFs in Word komplexe Layouts nicht perfekt nachbauen kann. Hochgeladene Dateien werden verschlüsselt übertragen. Ihre Originaldatei wird gelöscht, sobald sie gelesen wurde; das Ergebnis folgt durch eine tägliche Bereinigung, in der Regel innerhalb von etwa 24 Stunden.",
     ],
     workflows: [
       {

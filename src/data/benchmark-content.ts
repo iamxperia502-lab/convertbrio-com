@@ -53,7 +53,7 @@ const en: BenchmarkText = {
   methodologyBefore:
     "The test file is a 2000 × 1500, 814.8 KB synthetic JPEG we generated ourselves: a soft gradient portrait composition with photographic-grain noise layered on top, built to compress like a real phone photo without using anyone's actual photo (for privacy) or a downloaded stock image (for licensing). We ran it through ",
   methodologyAfter:
-    " with each target size below and recorded the exact response. Tested in Chrome on macOS: conversion runs entirely on ConvertBrio's servers, so the result is identical regardless of which browser or device sends the request.",
+    " with each target size below and recorded the exact response. Tested in Chrome on macOS: conversion runs entirely on our hosting providers' servers, so the result is identical regardless of which browser or device sends the request.",
   beforeAfterHeading: "Before / after at each target size",
   originalLabel: "Original",
   originalAlt: "Original test image before compression, 814.8 KB",

@@ -133,7 +133,7 @@ export const tools: Tool[] = [
     description: "Convert images between JPG, PNG, WEBP, AVIF, HEIC, and GIF.",
     seoTitle: "Free Online Image Converter: JPG, PNG, WEBP, AVIF, HEIC | ConvertBrio",
     seoDescription:
-      "Convert images between JPG, PNG, WEBP, AVIF, HEIC, and GIF in your browser. Free, no signup, files deleted automatically after conversion.",
+      "Convert images between JPG, PNG, WEBP, AVIF, HEIC, and GIF in your browser. Free, no signup, files deleted automatically.",
     accept: IMAGE_ACCEPT,
   },
   {
@@ -507,7 +507,7 @@ export const tools: Tool[] = [
     description: "Convert Word (.docx) documents to PDF.",
     seoTitle: "Convert Word to PDF Free Online: No Signup | ConvertBrio",
     seoDescription:
-      "Convert a Word (.docx) document to a print-ready PDF that preserves your formatting. Free, no account required, files deleted automatically after conversion.",
+      "Convert a Word (.docx) document to a print-ready PDF that preserves your formatting. Free, no account required, files deleted automatically.",
     accept: DOCX_ACCEPT,
   },
   {
