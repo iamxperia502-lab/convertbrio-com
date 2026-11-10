@@ -1,7 +1,6 @@
 ---
 import { categories } from "../data/tools";
 import { HUB_BY_CATEGORY } from "../data/hubs";
-import Icon from "./Icon.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import { ui, localePath, routePath, LOCALES, LOCALE_LABELS, LOCALE_SHORT, HREFLANG, type Locale } from "../data/i18n";
 
@@ -72,15 +71,6 @@ const homeHref = localePath("/", lang);
     </nav>
 
     <div class="hidden shrink-0 items-center gap-2 lg:flex">
-      <a
-        href="https://convertbrio.info"
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-1 rounded-full bg-ink px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-85"
-      >
-        {t.myWork}
-        <Icon name="arrow" class="h-3 w-3 -rotate-45" />
-      </a>
       <details class="group relative">
         <summary
           class="flex cursor-pointer list-none items-center gap-1 rounded-full border border-hairline px-2.5 py-1.5 text-xs font-medium text-body transition-colors hover:bg-canvas-soft-2 hover:text-ink"
@@ -166,15 +156,6 @@ const homeHref = localePath("/", lang);
           </a>
         ))
       }
-      <a
-        href="https://convertbrio.info"
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center justify-center gap-1.5 rounded-full bg-ink px-4 py-2.5 text-[15px] font-medium text-canvas transition-opacity hover:opacity-85"
-      >
-        {t.myWork}
-        <Icon name="arrow" class="h-3.5 w-3.5 -rotate-45" />
-      </a>
       <div class="mt-1 border-t border-hairline pt-2">
         <p class="px-3 py-1 font-mono text-xs uppercase tracking-wide text-mute">{t.languageLabel}</p>
         <div class="flex flex-wrap gap-1.5 px-3 py-1.5">

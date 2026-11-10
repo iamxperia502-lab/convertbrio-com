@@ -66,13 +66,11 @@ export interface UIStrings {
     signOut: string;
     primaryLabel: string;
     skipToContent: string;
-    myWork: string;
     openMenu: string;
     closeMenu: string;
     themeDark: string;
     themeLight: string;
     homeAria: string;
-    otherWork: string;
     mobileLabel: string;
     languageLabel: string;
   };
@@ -119,8 +117,8 @@ export const ui: Record<Locale, UIStrings> = {
       document: "Document Tools", ai: "AI Tools", allTools: "All Tools", blog: "Blog",
       signIn: "Sign In", getStarted: "Get Started", dashboard: "Dashboard", signOut: "Sign Out",
       primaryLabel: "Primary", mobileLabel: "Mobile", languageLabel: "Language",
-      skipToContent: "Skip to content", myWork: "My Work", openMenu: "Open menu", closeMenu: "Close menu",
-      themeDark: "Switch to dark mode", themeLight: "Switch to light mode", homeAria: "ConvertBrio home", otherWork: "Check out my other work",
+      skipToContent: "Skip to content", openMenu: "Open menu", closeMenu: "Close menu",
+      themeDark: "Switch to dark mode", themeLight: "Switch to light mode", homeAria: "ConvertBrio home",
     },
     footer: {
       tagline: "Convert. Compress. Enhance.", convert: "Convert", compress: "Compress",
@@ -164,8 +162,8 @@ export const ui: Record<Locale, UIStrings> = {
       document: "Documento", ai: "IA", allTools: "Todas as ferramentas", blog: "Blog",
       signIn: "Entrar", getStarted: "Começar", dashboard: "Painel", signOut: "Sair",
       primaryLabel: "Principal", mobileLabel: "Móvel", languageLabel: "Idioma",
-      skipToContent: "Ir para o conteúdo", myWork: "Meu trabalho", openMenu: "Abrir menu", closeMenu: "Fechar menu",
-      themeDark: "Mudar para o modo escuro", themeLight: "Mudar para o modo claro", homeAria: "Página inicial do ConvertBrio", otherWork: "Conheça meus outros trabalhos",
+      skipToContent: "Ir para o conteúdo", openMenu: "Abrir menu", closeMenu: "Fechar menu",
+      themeDark: "Mudar para o modo escuro", themeLight: "Mudar para o modo claro", homeAria: "Página inicial do ConvertBrio",
     },
     footer: {
       tagline: "Converta. Comprima. Melhore.", convert: "Converter", compress: "Comprimir",
@@ -210,8 +208,8 @@ export const ui: Record<Locale, UIStrings> = {
       document: "Documento", ai: "IA", allTools: "Todas las herramientas", blog: "Blog",
       signIn: "Iniciar sesión", getStarted: "Empezar", dashboard: "Panel", signOut: "Cerrar sesión",
       primaryLabel: "Principal", mobileLabel: "Móvil", languageLabel: "Idioma",
-      skipToContent: "Saltar al contenido", myWork: "Mi trabajo", openMenu: "Abrir menú", closeMenu: "Cerrar menú",
-      themeDark: "Cambiar al modo oscuro", themeLight: "Cambiar al modo claro", homeAria: "Inicio de ConvertBrio", otherWork: "Descubre mis otros trabajos",
+      skipToContent: "Saltar al contenido", openMenu: "Abrir menú", closeMenu: "Cerrar menú",
+      themeDark: "Cambiar al modo oscuro", themeLight: "Cambiar al modo claro", homeAria: "Inicio de ConvertBrio",
     },
     footer: {
       tagline: "Convierte. Comprime. Mejora.", convert: "Convertir", compress: "Comprimir",
@@ -256,8 +254,8 @@ export const ui: Record<Locale, UIStrings> = {
       document: "Document", ai: "IA", allTools: "Tous les outils", blog: "Blog",
       signIn: "Se connecter", getStarted: "Commencer", dashboard: "Tableau de bord", signOut: "Se déconnecter",
       primaryLabel: "Principal", mobileLabel: "Mobile", languageLabel: "Langue",
-      skipToContent: "Aller au contenu", myWork: "Mon travail", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu",
-      themeDark: "Passer en mode sombre", themeLight: "Passer en mode clair", homeAria: "Accueil ConvertBrio", otherWork: "Découvrez mes autres projets",
+      skipToContent: "Aller au contenu", openMenu: "Ouvrir le menu", closeMenu: "Fermer le menu",
+      themeDark: "Passer en mode sombre", themeLight: "Passer en mode clair", homeAria: "Accueil ConvertBrio",
     },
     footer: {
       tagline: "Convertir. Compresser. Améliorer.", convert: "Convertir", compress: "Compresser",
@@ -302,8 +300,8 @@ export const ui: Record<Locale, UIStrings> = {
       document: "Dokument", ai: "KI", allTools: "Alle Tools", blog: "Blog",
       signIn: "Anmelden", getStarted: "Loslegen", dashboard: "Dashboard", signOut: "Abmelden",
       primaryLabel: "Hauptmenü", mobileLabel: "Mobil", languageLabel: "Sprache",
-      skipToContent: "Zum Inhalt springen", myWork: "Meine Arbeit", openMenu: "Menü öffnen", closeMenu: "Menü schließen",
-      themeDark: "Zum dunklen Modus wechseln", themeLight: "Zum hellen Modus wechseln", homeAria: "ConvertBrio Startseite", otherWork: "Meine anderen Projekte ansehen",
+      skipToContent: "Zum Inhalt springen", openMenu: "Menü öffnen", closeMenu: "Menü schließen",
+      themeDark: "Zum dunklen Modus wechseln", themeLight: "Zum hellen Modus wechseln", homeAria: "ConvertBrio Startseite",
     },
     footer: {
       tagline: "Konvertieren. Komprimieren. Verbessern.", convert: "Konvertieren", compress: "Komprimieren",
@@ -348,8 +346,8 @@ export const ui: Record<Locale, UIStrings> = {
       document: "Documento", ai: "IA", allTools: "Tutti gli strumenti", blog: "Blog",
       signIn: "Accedi", getStarted: "Inizia", dashboard: "Dashboard", signOut: "Esci",
       primaryLabel: "Principale", mobileLabel: "Mobile", languageLabel: "Lingua",
-      skipToContent: "Vai al contenuto", myWork: "Il mio lavoro", openMenu: "Apri il menu", closeMenu: "Chiudi il menu",
-      themeDark: "Passa alla modalità scura", themeLight: "Passa alla modalità chiara", homeAria: "Home di ConvertBrio", otherWork: "Scopri i miei altri lavori",
+      skipToContent: "Vai al contenuto", openMenu: "Apri il menu", closeMenu: "Chiudi il menu",
+      themeDark: "Passa alla modalità scura", themeLight: "Passa alla modalità chiara", homeAria: "Home di ConvertBrio",
     },
     footer: {
       tagline: "Converti. Comprimi. Migliora.", convert: "Converti", compress: "Comprimi",
@@ -394,8 +392,8 @@ export const ui: Record<Locale, UIStrings> = {
       document: "Dokumen", ai: "AI", allTools: "Semua alat", blog: "Blog",
       signIn: "Masuk", getStarted: "Mulai", dashboard: "Dasbor", signOut: "Keluar",
       primaryLabel: "Utama", mobileLabel: "Seluler", languageLabel: "Bahasa",
-      skipToContent: "Lompat ke konten", myWork: "Karya saya", openMenu: "Buka menu", closeMenu: "Tutup menu",
-      themeDark: "Beralih ke mode gelap", themeLight: "Beralih ke mode terang", homeAria: "Beranda ConvertBrio", otherWork: "Lihat karya saya yang lain",
+      skipToContent: "Lompat ke konten", openMenu: "Buka menu", closeMenu: "Tutup menu",
+      themeDark: "Beralih ke mode gelap", themeLight: "Beralih ke mode terang", homeAria: "Beranda ConvertBrio",
     },
     footer: {
       tagline: "Konversi. Kompres. Tingkatkan.", convert: "Konversi", compress: "Kompres",
