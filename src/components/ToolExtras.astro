@@ -94,6 +94,19 @@ const languages = (["eng", "por", "spa", "fra", "deu", "ita", "ind"] as const).m
 }
 
 {
+  slug === "passport-photo-maker" && (
+    <div class="flex flex-col gap-1.5">
+      <label for="photo-size" class={label}>{x.photoSize}</label>
+      <select id="photo-size" name="size" class={input}>
+        <option value="2x2in">{x.photoSize2x2}</option>
+        <option value="35x45mm">{x.photoSize35x45}</option>
+      </select>
+      <span class={hint}>{x.photoSizeHint}</span>
+    </div>
+  )
+}
+
+{
   slug === "batch-image-compressor" && (
     <div class="flex flex-col gap-1.5">
       <label for="targetKb" class={label}>{x.batchLabel}</label>

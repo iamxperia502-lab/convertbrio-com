@@ -397,7 +397,7 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
   "passport-photo-maker": {
     title: "Pembuat Pas Foto Paspor: alat foto ukuran paspor online gratis",
     intro: [
-      "Pas foto paspor yang sesuai ketentuan memerlukan latar putih polos, subjek di tengah dengan ukuran yang tepat, dan dimensi fisik yang benar, yang biasanya berarti pergi ke apotek atau studio foto. Pembuat pas foto paspor dari ConvertBrio mengerjakan ketiganya secara otomatis: unggah selfie atau pas foto yang jelas, dan dalam hitungan detik Anda mendapat foto 2×2 inci siap cetak dengan latar putih bersih.",
+      "Pas foto paspor yang sesuai ketentuan memerlukan latar putih polos, subjek di tengah dengan ukuran yang tepat, dan dimensi fisik yang benar, yang biasanya berarti pergi ke apotek atau studio foto. Pembuat pas foto paspor dari ConvertBrio mengerjakan ketiganya secara otomatis: unggah selfie atau pas foto yang jelas, dan dalam hitungan detik Anda mendapat foto siap cetak dengan latar putih bersih, dalam ukuran 2×2 inci atau 35×45 mm.",
       "Gratis, tanpa akun dan tanpa watermark. Setiap langkah, yaitu deteksi wajah dan penghapusan latar, memakai model open-source yang dijalankan sendiri, jadi foto Anda tidak dikirim ke layanan luar.",
     ],
     howTo: [
@@ -411,33 +411,34 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         detail: "Satu orang per foto, hingga 100 MB. Foto kelompok dan close-up yang terpotong terlalu rapat tidak akan diproses.",
       },
       {
-        step: "Biarkan alat menyusun fotonya",
+        step: "Pilih ukuran foto",
         detail:
-          "ConvertBrio menemukan wajah Anda, memotong dan menempatkannya di tengah sesuai proporsi paspor, menghapus latar, lalu mengisinya dengan putih solid.",
+          "Pilih 2×2 inci (gaya AS) atau 35×45 mm (ukuran yang dipakai banyak negara lain). Periksa mana yang diminta formulir atau instansi Anda.",
       },
       {
-        step: "Unduh dan cetak dalam ukuran 2×2 inci",
+        step: "Biarkan alat menyusun fotonya",
         detail:
-          "Anda mendapat gambar 1200×1200 piksel pada 600 DPI: ukuran 2×2 inci yang dipakai untuk foto paspor dan visa AS dan India.",
+          "ConvertBrio menemukan wajah Anda, memotong dan menempatkannya di tengah sesuai proporsi paspor untuk ukuran yang Anda pilih, menghapus latar, lalu mengisinya dengan putih solid.",
+      },
+      {
+        step: "Unduh dan cetak",
+        detail:
+          "Ukuran 2×2 inci menghasilkan gambar 1200×1200 piksel pada 600 DPI; ukuran 35×45 mm menghasilkan gambar 413×531 piksel pada 300 DPI. Cetak dalam ukuran fisik yang sesuai.",
       },
     ],
     sections: [
       {
         heading: "Cara kerjanya",
-        body: "Unggah foto, dan ConvertBrio mendeteksi wajah Anda, memotong dan menempatkannya di tengah sesuai proporsi paspor standar, menghapus latar asli, menggantinya dengan putih solid, lalu menghasilkan foto 2x2 inci pada 600 DPI (1200x1200 piksel), ukuran yang dipakai untuk foto paspor dan visa AS maupun India. Tidak ada yang perlu Anda atur atau sesuaikan secara manual.",
+        body: "Unggah foto, dan ConvertBrio mendeteksi wajah Anda, memotong dan menempatkannya di tengah sesuai proporsi paspor standar, menghapus latar asli, menggantinya dengan putih solid, lalu menghasilkan ukuran yang Anda pilih: 2×2 inci pada 600 DPI (1200×1200 piksel) atau 35×45 mm pada 300 DPI (413×531 piksel). Posisi dan ukuran kepala diatur terpisah untuk tiap format, jadi foto 35×45 mm adalah potongan potret yang tepat, bukan persegi yang dipangkas. Tidak ada yang perlu Anda atur atau sesuaikan secara manual.",
       },
       {
-        heading: "Ukuran pas foto paspor menurut negara",
-        body: "Alat ini menghasilkan format 2×2 inci (51×51 mm). Itu persis sesuai persyaratan beberapa negara dan menjadi titik awal yang bisa dipangkas untuk negara lain; selalu periksa spesifikasi terbaru dari pemerintah Anda sebelum mengirim.",
+        heading: "Ukuran mana yang dipilih",
+        body: "Alat ini menawarkan dua ukuran. Aturan paspor dan visa berbeda menurut negara, bahkan menurut dokumen, jadi selalu periksa persyaratan terbaru dari instansi penerbit sebelum memilih atau mengirim.",
         table: {
-          headers: ["Negara", "Ukuran yang diwajibkan", "Apakah hasil 2×2 inci cocok?"],
+          headers: ["Ukuran", "Hasil", "Umumnya dipakai untuk"],
           rows: [
-            ["Amerika Serikat", "2 × 2 in (51 × 51 mm)", "Ya, langsung"],
-            ["India", "2 × 2 in (51 × 51 mm)", "Ya, langsung"],
-            ["Inggris Raya", "35 × 45 mm", "Potong dari hasil 2×2"],
-            ["Schengen / UE", "35 × 45 mm", "Potong dari hasil 2×2"],
-            ["Kanada", "50 × 70 mm", "Potong ulang; proporsinya berbeda"],
-            ["Australia", "35 × 45 mm", "Potong dari hasil 2×2"],
+            ["2 × 2 in (51 × 51 mm)", "1200 × 1200 px pada 600 DPI", "Paspor dan visa Amerika Serikat"],
+            ["35 × 45 mm", "413 × 531 px pada 300 DPI", "Paspor dan dokumen identitas Inggris Raya, Schengen/UE, dan banyak negara lain"],
           ],
         },
       },
@@ -462,7 +463,7 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
       {
         question: "Foto ukuran berapa yang dihasilkan alat ini?",
         answer:
-          "Foto 2x2 inci (1200x1200 piksel) pada 600 DPI: ukuran standar untuk foto paspor dan visa AS maupun India.",
+          "Anda bisa memilih dua ukuran: 2×2 inci (1200×1200 piksel pada 600 DPI) atau 35×45 mm (413×531 piksel pada 300 DPI). Periksa mana yang diminta formulir atau instansi Anda.",
       },
       {
         question: "Apakah ini gratis?",

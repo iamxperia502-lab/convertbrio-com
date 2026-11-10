@@ -47,4 +47,4 @@ A photo crushed hard enough to hit 20 KB can look rough. If the result is unusab
 
 ## For passport and visa photos specifically
 
-If you're preparing an actual passport or visa photo, white background, face centred and correctly sized, [Passport Photo Maker](/tools/passport-photo-maker) does the cropping, background, and sizing in one step and outputs a standard 2 × 2 inch photo. Run that through Compress Image afterwards if the portal also has a KB cap.
+If you're preparing an actual passport or visa photo, white background, face centred and correctly sized, [Passport Photo Maker](/tools/passport-photo-maker) does the cropping, background, and sizing in one step. You choose between a 2 × 2 inch photo (1200 × 1200 px, the US format) and a 35 × 45 mm photo (413 × 531 px, used for UK, Schengen and many other passports), so check which size your authority asks for first. Run the result through Compress Image afterwards if the portal also has a KB cap.

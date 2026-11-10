@@ -388,7 +388,7 @@ export const toolContentEsMoreB: Record<string, ToolContentEntry> = {
   "passport-photo-maker": {
     title: "Creador de Foto de Pasaporte: herramienta gratuita en línea para fotos tamaño pasaporte",
     intro: [
-      "Una foto de pasaporte válida necesita un fondo blanco liso, el sujeto centrado y con el tamaño correcto, y las dimensiones físicas adecuadas, algo que normalmente implica ir a una farmacia o a un estudio fotográfico. El creador de fotos de pasaporte de ConvertBrio hace las tres cosas automáticamente: sube un selfie o cualquier retrato nítido y en segundos recibes una foto de 2×2 pulgadas lista para imprimir, con un fondo blanco limpio.",
+      "Una foto de pasaporte válida necesita un fondo blanco liso, el sujeto centrado y con el tamaño correcto, y las dimensiones físicas adecuadas, algo que normalmente implica ir a una farmacia o a un estudio fotográfico. El creador de fotos de pasaporte de ConvertBrio hace las tres cosas automáticamente: sube un selfie o cualquier retrato nítido y en segundos recibes una foto lista para imprimir, con un fondo blanco limpio, en 2×2 pulgadas o en 35×45 mm.",
       "Es gratis, sin cuenta y sin marca de agua, y cada paso, la detección del rostro y la eliminación del fondo, se ejecuta de forma automática con modelos de código abierto, sin enviar tu foto a ningún servicio externo de IA.",
     ],
     howTo: [
@@ -402,33 +402,34 @@ export const toolContentEsMoreB: Record<string, ToolContentEntry> = {
         detail: "Una persona por foto, hasta 100 MB. Las fotos de grupo y los primeros planos muy recortados no se procesan.",
       },
       {
-        step: "Deja que la herramienta construya la foto",
+        step: "Elige el tamaño de la foto",
         detail:
-          "ConvertBrio encuentra tu rostro, lo recorta y lo centra con las proporciones de un pasaporte, elimina el fondo y lo rellena de blanco liso.",
+          "Elige 2×2 pulgadas (formato estadounidense) o 35×45 mm (el tamaño que usan muchos otros países). Comprueba cuál pide tu formulario o la autoridad correspondiente.",
       },
       {
-        step: "Descarga e imprime a 2×2 pulgadas",
+        step: "Deja que la herramienta construya la foto",
         detail:
-          "Obtienes una imagen de 1200×1200 píxeles a 600 DPI: el tamaño de 2×2 pulgadas que se usa en las fotos de pasaporte y visado de Estados Unidos y de la India.",
+          "ConvertBrio encuentra tu rostro, lo recorta y lo centra con las proporciones de un pasaporte para el tamaño elegido, elimina el fondo y lo rellena de blanco liso.",
+      },
+      {
+        step: "Descarga e imprime",
+        detail:
+          "2×2 pulgadas genera una imagen de 1200×1200 píxeles a 600 DPI; 35×45 mm, una de 413×531 píxeles a 300 DPI. Imprime en el tamaño físico correspondiente.",
       },
     ],
     sections: [
       {
         heading: "Cómo funciona",
-        body: "Sube una foto y ConvertBrio detecta tu rostro, lo recorta y lo centra con las proporciones estándar de un pasaporte, elimina el fondo original y lo sustituye por blanco liso. Después genera una foto de 2×2 pulgadas a 600 DPI (1200×1200 píxeles), el tamaño que se usa tanto en las fotos de pasaporte y visado de Estados Unidos como de la India. No hay nada que colocar ni ajustar a mano.",
+        body: "Sube una foto y ConvertBrio detecta tu rostro, lo recorta y lo centra con las proporciones estándar de un pasaporte, elimina el fondo original y lo sustituye por blanco liso. Después genera el tamaño que elegiste: 2×2 pulgadas a 600 DPI (1200×1200 píxeles) o 35×45 mm a 300 DPI (413×531 píxeles). La cabeza se dimensiona y se coloca por separado para cada formato, así que la foto de 35×45 mm es un auténtico recorte vertical y no un cuadrado recortado. No hay nada que colocar ni ajustar a mano.",
       },
       {
-        heading: "Tamaños de foto de pasaporte por país",
-        body: "La herramienta genera el formato de 2×2 pulgadas (51×51 mm). Es el requisito exacto de algunos países y un buen punto de partida que puedes recortar para otros; comprueba siempre las especificaciones vigentes de tu gobierno antes de presentar la foto.",
+        heading: "Qué tamaño elegir",
+        body: "La herramienta ofrece dos tamaños. Los requisitos de pasaportes y visados cambian según el país e incluso según el documento, así que comprueba siempre el requisito vigente de la autoridad emisora antes de elegir uno o presentar la foto.",
         table: {
-          headers: ["País", "Tamaño exigido", "¿Sirve la salida de 2×2 in?"],
+          headers: ["Tamaño", "Salida", "Uso habitual"],
           rows: [
-            ["Estados Unidos", "2 × 2 in (51 × 51 mm)", "Sí, directamente"],
-            ["India", "2 × 2 in (51 × 51 mm)", "Sí, directamente"],
-            ["Reino Unido", "35 × 45 mm", "Recorta a partir de la salida de 2×2"],
-            ["Schengen / UE", "35 × 45 mm", "Recorta a partir de la salida de 2×2"],
-            ["Canadá", "50 × 70 mm", "Vuelve a recortar; las proporciones son distintas"],
-            ["Australia", "35 × 45 mm", "Recorta a partir de la salida de 2×2"],
+            ["2 × 2 in (51 × 51 mm)", "1200 × 1200 px a 600 DPI", "Pasaportes y visados de Estados Unidos"],
+            ["35 × 45 mm", "413 × 531 px a 300 DPI", "Reino Unido, Schengen/UE y muchos otros pasaportes y documentos de identidad"],
           ],
         },
       },
@@ -450,7 +451,7 @@ export const toolContentEsMoreB: Record<string, ToolContentEntry> = {
       {
         question: "¿Qué tamaño de foto genera?",
         answer:
-          "Una foto de 2x2 pulgadas (1200x1200 píxeles) a 600 DPI: el tamaño estándar de las fotos de pasaporte y visado de Estados Unidos y de la India.",
+          "Puedes elegir entre dos tamaños: 2×2 pulgadas (1200×1200 píxeles a 600 DPI) o 35×45 mm (413×531 píxeles a 300 DPI). Comprueba cuál exige tu formulario o la autoridad correspondiente.",
       },
       {
         question: "¿Es gratis?",

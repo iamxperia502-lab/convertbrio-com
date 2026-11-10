@@ -5,7 +5,7 @@ import { getTool } from "../../../data/tools";
 import { recordConversionAttempt, finalizeConversionJob, failConversionJob } from "../../../lib/conversion-jobs";
 import { contentDisposition } from "../../../lib/content-disposition";
 import { detectFaces } from "../../../lib/face-detection";
-import { computeCropBox, PASSPORT_PHOTO_PX, PASSPORT_PHOTO_DPI } from "../../../lib/passport-photo";
+import { computeCropBox, parsePassportSize, PASSPORT_SPECS } from "../../../lib/passport-photo";
 import { looksLikeHeic, decodeHeicFallback, sharpFromHeicFallback } from "../../../lib/heic-fallback";
 import { resolveConversionForm } from "../../../lib/blob-input";
 import JSZip from "jszip";
@@ -294,6 +294,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
   if (tool.operation === "passport-photo") {
     try {
+      const spec = PASSPORT_SPECS[parsePassportSize(form.get("size"))];
       const inputBuffer = Buffer.from(await file.arrayBuffer());
       // uprightBuffer is a re-encoded buffer (not the original bytes) so
       // every sharp() call below can treat it uniformly, regardless of
@@ -346,7 +347,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         confidence: face.confidence,
       };
 
-      const cropBox = computeCropBox(faceFullRes, fullWidth, fullHeight);
+      const cropBox = computeCropBox(faceFullRes, fullWidth, fullHeight, spec);
       if (!cropBox) {
         throw new Error("Not enough space around the face in this photo. Try a photo taken further back, with more room above the head and around the shoulders.");
       }
@@ -356,7 +357,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
       // @imgly/background-removal-node's format detection, and lossless PNG
       // avoids compounding compression artifacts before the cutout step.
       const croppedBuffer = await sharp(uprightBuffer)
-        .extract({ left: cropBox.left, top: cropBox.top, width: cropBox.size, height: cropBox.size })
+        .extract({ left: cropBox.left, top: cropBox.top, width: cropBox.width, height: cropBox.height })
         .png()
         .toBuffer();
 
@@ -373,10 +374,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
       // with nothing left to inherit before density is set on it.
       const flattenedBuffer = await sharp(cutoutBuffer)
         .flatten({ background: "#ffffff" })
-        .resize(PASSPORT_PHOTO_PX, PASSPORT_PHOTO_PX)
+        .resize(spec.width, spec.height)
         .jpeg({ quality: 95 })
         .toBuffer();
-      const outputBuffer = await sharp(flattenedBuffer).withMetadata({ density: PASSPORT_PHOTO_DPI }).jpeg({ quality: 95 }).toBuffer();
+      const outputBuffer = await sharp(flattenedBuffer).withMetadata({ density: spec.dpi }).jpeg({ quality: 95 }).toBuffer();
 
       const filename = `${baseName(file.name)}-passport-photo.jpg`;
       await finalizeConversionJob(jobId, outputBuffer, "image/jpeg");

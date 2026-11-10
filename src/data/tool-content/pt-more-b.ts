@@ -365,7 +365,7 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
   "passport-photo-maker": {
     title: "Criador de Foto 3x4 e Passaporte: ferramenta online grátis para foto no tamanho de passaporte",
     intro: [
-      "Uma foto de passaporte aceita exige fundo branco liso, o rosto centralizado e no tamanho certo e as dimensões físicas corretas, o que normalmente significa ir a uma farmácia ou a um estúdio fotográfico. O criador de fotos de passaporte do ConvertBrio faz as três coisas automaticamente: envie uma selfie ou qualquer retrato nítido e receba em segundos uma foto de 2×2 polegadas pronta para imprimir, com fundo branco limpo.",
+      "Uma foto de passaporte aceita exige fundo branco liso, o rosto centralizado e no tamanho certo e as dimensões físicas corretas, o que normalmente significa ir a uma farmácia ou a um estúdio fotográfico. O criador de fotos de passaporte do ConvertBrio faz as três coisas automaticamente: envie uma selfie ou qualquer retrato nítido e receba em segundos uma foto pronta para imprimir, com fundo branco limpo, em 2×2 polegadas ou 35×45 mm.",
       "É grátis, sem conta e sem marca d'água. Seu arquivo original é apagado logo depois de lido para o processamento, e o resultado é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana.",
     ],
     howTo: [
@@ -375,31 +375,31 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
       },
       { step: "Envie a foto", detail: "Uma pessoa por foto, até 100 MB. Fotos em grupo e close-ups muito cortados não são processados." },
       {
-        step: "Deixe a ferramenta montar a foto",
-        detail: "O ConvertBrio encontra o seu rosto, corta e centraliza nas proporções de passaporte, remove o fundo e o preenche com branco sólido.",
+        step: "Escolha o tamanho da foto",
+        detail: "Escolha 2×2 polegadas (padrão dos EUA) ou 35×45 mm (o tamanho usado em muitos outros países). Confira qual dos dois o seu formulário ou órgão emissor pede.",
       },
       {
-        step: "Baixe e imprima em 2×2 polegadas",
-        detail: "Você recebe uma imagem de 1200×1200 pixels a 600 DPI: o tamanho de 2×2 polegadas usado em fotos de passaporte e visto dos EUA e da Índia.",
+        step: "Deixe a ferramenta montar a foto",
+        detail: "O ConvertBrio encontra o seu rosto, corta e centraliza nas proporções de passaporte do tamanho escolhido, remove o fundo e o preenche com branco sólido.",
+      },
+      {
+        step: "Baixe e imprima",
+        detail: "O formato 2×2 polegadas gera uma imagem de 1200×1200 pixels a 600 DPI; o de 35×45 mm gera uma de 413×531 pixels a 300 DPI. Imprima no tamanho físico correspondente.",
       },
     ],
     sections: [
       {
         heading: "Como funciona",
-        body: "Envie uma foto e o ConvertBrio detecta o seu rosto, corta e centraliza nas proporções padrão de passaporte, remove o fundo original e o substitui por branco sólido. Em seguida gera uma foto de 2x2 polegadas a 600 DPI (1200x1200 pixels), o tamanho usado em fotos de passaporte e visto dos EUA e da Índia. Não há nada para posicionar ou ajustar manualmente.",
+        body: "Envie uma foto e o ConvertBrio detecta o seu rosto, corta e centraliza nas proporções padrão de passaporte, remove o fundo original e o substitui por branco sólido. Em seguida gera o tamanho escolhido: 2×2 polegadas a 600 DPI (1200×1200 pixels) ou 35×45 mm a 300 DPI (413×531 pixels). A cabeça é dimensionada e posicionada separadamente para cada formato, então a foto de 35×45 mm é um corte de retrato de verdade, e não um quadrado aparado. Não há nada para posicionar ou ajustar manualmente.",
       },
       {
-        heading: "Tamanhos de foto de passaporte por país",
-        body: "A ferramenta gera o formato 2×2 polegadas (51×51 mm). Essa é a exigência exata de alguns países e um ponto de partida utilizável que você pode aparar para outros; confira sempre a especificação atual do seu governo antes de enviar.",
+        heading: "Qual tamanho escolher",
+        body: "A ferramenta oferece dois tamanhos. As regras de passaporte e visto variam conforme o país e até conforme o documento; confira sempre a exigência atual do órgão emissor antes de escolher ou enviar.",
         table: {
-          headers: ["País", "Tamanho exigido", "A saída 2×2 pol. serve?"],
+          headers: ["Tamanho", "Saída", "Uso mais comum"],
           rows: [
-            ["Estados Unidos", "2 × 2 pol. (51 × 51 mm)", "Sim, direto"],
-            ["Índia", "2 × 2 pol. (51 × 51 mm)", "Sim, direto"],
-            ["Reino Unido", "35 × 45 mm", "Corte a partir da saída 2×2"],
-            ["Schengen / UE", "35 × 45 mm", "Corte a partir da saída 2×2"],
-            ["Canadá", "50 × 70 mm", "Recorte de novo; proporções diferentes"],
-            ["Austrália", "35 × 45 mm", "Corte a partir da saída 2×2"],
+            ["2 × 2 pol. (51 × 51 mm)", "1200 × 1200 px a 600 DPI", "Passaportes e vistos dos Estados Unidos"],
+            ["35 × 45 mm", "413 × 531 px a 300 DPI", "Passaportes e documentos de identidade do Reino Unido, de Schengen/UE e de muitos outros países"],
           ],
         },
       },
@@ -420,7 +420,7 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
     faq: [
       {
         question: "Que tamanho de foto ele gera?",
-        answer: "Uma foto de 2x2 polegadas (1200x1200 pixels) a 600 DPI: o tamanho padrão das fotos de passaporte e visto dos EUA e da Índia.",
+        answer: "Você escolhe entre dois tamanhos: 2×2 polegadas (1200×1200 pixels a 600 DPI) ou 35×45 mm (413×531 pixels a 300 DPI). Confira qual deles o seu formulário ou órgão emissor exige.",
       },
       {
         question: "É grátis?",

@@ -388,7 +388,7 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
   "passport-photo-maker": {
     title: "Passfoto-Ersteller: kostenloses Passbild online im richtigen Format",
     intro: [
-      "Ein vorschriftsmäßiges Passfoto braucht einen schlichten weißen Hintergrund, ein zentriertes Motiv in der richtigen Größe und die passenden physischen Maße – normalerweise ein Gang zur Drogerie oder zum Fotostudio. Der Passfoto-Ersteller von ConvertBrio erledigt alle drei Punkte automatisch: Lade ein Selfie oder ein beliebiges klares Porträt hoch und erhalte in Sekunden ein druckfertiges Foto im Format 2×2 Zoll mit sauberem weißem Hintergrund.",
+      "Ein vorschriftsmäßiges Passfoto braucht einen schlichten weißen Hintergrund, ein zentriertes Motiv in der richtigen Größe und die passenden physischen Maße – normalerweise ein Gang zur Drogerie oder zum Fotostudio. Der Passfoto-Ersteller von ConvertBrio erledigt alle drei Punkte automatisch: Lade ein Selfie oder ein beliebiges klares Porträt hoch und erhalte in Sekunden ein druckfertiges Foto mit sauberem weißem Hintergrund, wahlweise in 2×2 Zoll oder 35×45 mm.",
       "Das Tool ist kostenlos, ohne Konto und ohne Wasserzeichen. Gesichtserkennung und Hintergrundentfernung laufen in der eigenen Verarbeitung von ConvertBrio, dein Foto wird also nicht an einen externen Dienst geschickt.",
     ],
     howTo: [
@@ -402,33 +402,34 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         detail: "Eine Person pro Foto, bis zu 100 MB. Gruppenfotos und sehr eng beschnittene Nahaufnahmen werden nicht verarbeitet.",
       },
       {
-        step: "Das Tool das Foto erstellen lassen",
+        step: "Fotogröße wählen",
         detail:
-          "ConvertBrio erkennt dein Gesicht, schneidet es passfototauglich zu und zentriert es, entfernt den Hintergrund und füllt ihn einfarbig weiß.",
+          "Wähle 2×2 Zoll (wie in den USA üblich) oder 35×45 mm (das Format, das viele andere Länder verwenden). Prüfe, welches dein Formular oder deine Behörde verlangt.",
       },
       {
-        step: "Herunterladen und in 2×2 Zoll drucken",
+        step: "Das Tool das Foto erstellen lassen",
         detail:
-          "Du erhältst ein Bild mit 1200×1200 Pixeln bei 600 DPI: das Format 2×2 Zoll, das für Pass- und Visumfotos in den USA und in Indien verwendet wird.",
+          "ConvertBrio erkennt dein Gesicht, schneidet es passend zur gewählten Größe passfototauglich zu und zentriert es, entfernt den Hintergrund und füllt ihn einfarbig weiß.",
+      },
+      {
+        step: "Herunterladen und drucken",
+        detail:
+          "2×2 Zoll ergibt ein Bild mit 1200×1200 Pixeln bei 600 DPI, 35×45 mm ein Bild mit 413×531 Pixeln bei 300 DPI. Drucke es in der passenden physischen Größe.",
       },
     ],
     sections: [
       {
         heading: "So funktioniert es",
-        body: "Lade ein Foto hoch, und ConvertBrio erkennt dein Gesicht, schneidet es auf übliche Passfoto-Proportionen zu und zentriert es, entfernt den ursprünglichen Hintergrund und ersetzt ihn durch reines Weiß. Ausgegeben wird ein Foto im Format 2×2 Zoll bei 600 DPI (1200×1200 Pixel), das für Pass- und Visumfotos in den USA und in Indien gilt. Du musst nichts von Hand positionieren oder anpassen.",
+        body: "Lade ein Foto hoch, und ConvertBrio erkennt dein Gesicht, schneidet es auf übliche Passfoto-Proportionen zu und zentriert es, entfernt den ursprünglichen Hintergrund und ersetzt ihn durch reines Weiß. Ausgegeben wird die gewählte Größe: 2×2 Zoll bei 600 DPI (1200×1200 Pixel) oder 35×45 mm bei 300 DPI (413×531 Pixel). Kopfgröße und Position werden für jedes Format separat berechnet, das 35×45-mm-Foto ist also ein echter Hochformat-Ausschnitt und kein zurechtgestutztes Quadrat. Du musst nichts von Hand positionieren oder anpassen.",
       },
       {
-        heading: "Passfoto-Größen nach Land",
-        body: "Das Tool gibt das Format 2×2 Zoll (51×51 mm) aus. Für manche Länder ist das genau die Vorgabe, für andere eine brauchbare Ausgangsbasis, die du zuschneiden kannst – prüfe immer die aktuelle Vorgabe deiner Behörde, bevor du etwas einreichst.",
+        heading: "Welche Größe die richtige ist",
+        body: "Das Tool bietet zwei Größen. Die Vorgaben für Pässe und Visa unterscheiden sich je nach Land und sogar je nach Dokument – prüfe daher immer die aktuelle Vorgabe der ausstellenden Behörde, bevor du eine Größe wählst oder etwas einreichst.",
         table: {
-          headers: ["Land", "Geforderte Größe", "Passt die 2×2-Zoll-Ausgabe?"],
+          headers: ["Größe", "Ausgabe", "Häufig verwendet für"],
           rows: [
-            ["USA", "2 × 2 Zoll (51 × 51 mm)", "Ja, direkt"],
-            ["Indien", "2 × 2 Zoll (51 × 51 mm)", "Ja, direkt"],
-            ["Vereinigtes Königreich", "35 × 45 mm", "Aus der 2×2-Ausgabe zuschneiden"],
-            ["Schengen / EU", "35 × 45 mm", "Aus der 2×2-Ausgabe zuschneiden"],
-            ["Kanada", "50 × 70 mm", "Neu zuschneiden; andere Proportionen"],
-            ["Australien", "35 × 45 mm", "Aus der 2×2-Ausgabe zuschneiden"],
+            ["2 × 2 Zoll (51 × 51 mm)", "1200 × 1200 px bei 600 DPI", "US-Pässe und -Visa"],
+            ["35 × 45 mm", "413 × 531 px bei 300 DPI", "Pässe und Ausweisdokumente im Vereinigten Königreich, im Schengen-/EU-Raum und in vielen anderen Ländern"],
           ],
         },
       },
@@ -450,7 +451,7 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
       {
         question: "Welche Fotogröße entsteht?",
         answer:
-          "Ein Foto mit 2×2 Zoll (1200×1200 Pixel) bei 600 DPI: die Standardgröße für Pass- und Visumfotos in den USA und in Indien.",
+          "Du hast die Wahl zwischen zwei Größen: 2×2 Zoll (1200×1200 Pixel bei 600 DPI) oder 35×45 mm (413×531 Pixel bei 300 DPI). Prüfe, welche dein Formular oder deine Behörde verlangt.",
       },
       {
         question: "Ist das kostenlos?",

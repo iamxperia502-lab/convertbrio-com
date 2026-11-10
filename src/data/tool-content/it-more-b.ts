@@ -388,7 +388,7 @@ export const toolContentItMoreB: Record<string, ToolContentEntry> = {
   "passport-photo-maker": {
     title: "Creatore di Foto Tessera: strumento online gratuito per foto formato passaporto",
     intro: [
-      "Una foto per documenti a norma richiede uno sfondo bianco uniforme, il soggetto centrato e di dimensioni corrette e le misure fisiche giuste: di solito serve passare da una farmacia o da uno studio fotografico. Il creatore di foto tessera di ConvertBrio fa tutte e tre le cose in automatico: carica un selfie o qualsiasi ritratto chiaro e in pochi secondi ottieni una foto da 2×2 pollici pronta da stampare, con uno sfondo bianco pulito.",
+      "Una foto per documenti a norma richiede uno sfondo bianco uniforme, il soggetto centrato e di dimensioni corrette e le misure fisiche giuste: di solito serve passare da una farmacia o da uno studio fotografico. Il creatore di foto tessera di ConvertBrio fa tutte e tre le cose in automatico: carica un selfie o qualsiasi ritratto chiaro e in pochi secondi ottieni una foto pronta da stampare, con uno sfondo bianco pulito, nel formato 2×2 pollici o 35×45 mm.",
       "È gratis, senza account e senza filigrana, e ogni passaggio, dal riconoscimento del volto alla rimozione dello sfondo, è automatico, senza revisione umana.",
     ],
     howTo: [
@@ -402,33 +402,34 @@ export const toolContentItMoreB: Record<string, ToolContentEntry> = {
         detail: "Una persona per foto, fino a 100 MB. Le foto di gruppo e i primi piani molto stretti non vengono elaborati.",
       },
       {
-        step: "Lascia che lo strumento costruisca la foto",
+        step: "Scegli il formato della foto",
         detail:
-          "ConvertBrio individua il volto, lo ritaglia e lo centra con le proporzioni da passaporto, rimuove lo sfondo e lo riempie di bianco pieno.",
+          "Seleziona 2×2 pollici (stile USA) oppure 35×45 mm (il formato usato da molti altri paesi). Controlla quale richiede il tuo modulo o la tua autorità.",
       },
       {
-        step: "Scarica e stampa a 2×2 pollici",
+        step: "Lascia che lo strumento costruisca la foto",
         detail:
-          "Ottieni un'immagine da 1200×1200 pixel a 600 DPI: le dimensioni di 2×2 pollici usate per le foto di passaporto e visto di Stati Uniti e India.",
+          "ConvertBrio individua il volto, lo ritaglia e lo centra con le proporzioni da passaporto per il formato scelto, rimuove lo sfondo e lo riempie di bianco pieno.",
+      },
+      {
+        step: "Scarica e stampa",
+        detail:
+          "Il formato 2×2 pollici dà un'immagine da 1200×1200 pixel a 600 DPI; il formato 35×45 mm dà un'immagine da 413×531 pixel a 300 DPI. Stampa alle dimensioni fisiche corrispondenti.",
       },
     ],
     sections: [
       {
         heading: "Come funziona",
-        body: "Carica una foto e ConvertBrio individua il volto, lo ritaglia e lo centra con le proporzioni standard da passaporto, rimuove lo sfondo originale e lo sostituisce con un bianco pieno, quindi produce una foto da 2×2 pollici a 600 DPI (1200×1200 pixel), il formato usato sia per le foto di passaporto e visto degli Stati Uniti sia per quelle dell'India. Non c'è nulla da posizionare o regolare a mano.",
+        body: "Carica una foto e ConvertBrio individua il volto, lo ritaglia e lo centra con le proporzioni standard da passaporto, rimuove lo sfondo originale e lo sostituisce con un bianco pieno, quindi produce il formato che hai scelto: 2×2 pollici a 600 DPI (1200×1200 pixel) oppure 35×45 mm a 300 DPI (413×531 pixel). La testa viene dimensionata e posizionata separatamente per ciascun formato, quindi la foto 35×45 mm è un vero ritaglio verticale e non un quadrato rifilato. Non c'è nulla da posizionare o regolare a mano.",
       },
       {
-        heading: "Formati delle foto tessera per paese",
-        body: "Lo strumento produce il formato 2×2 pollici (51×51 mm). È esattamente il requisito di alcuni paesi e un buon punto di partenza da rifilare per altri; controlla sempre le specifiche aggiornate del tuo governo prima dell'invio.",
+        heading: "Quale formato scegliere",
+        body: "Lo strumento offre due formati. Le regole per passaporti e visti cambiano da paese a paese e perfino da documento a documento, quindi controlla sempre il requisito aggiornato dell'autorità che rilascia il documento prima di scegliere o di inviare.",
         table: {
-          headers: ["Paese", "Formato richiesto", "Va bene l'output 2×2 in?"],
+          headers: ["Formato", "Output", "Usato comunemente per"],
           rows: [
-            ["Stati Uniti", "2 × 2 in (51 × 51 mm)", "Sì, direttamente"],
-            ["India", "2 × 2 in (51 × 51 mm)", "Sì, direttamente"],
-            ["Regno Unito", "35 × 45 mm", "Da ritagliare dall'output 2×2"],
-            ["Schengen / UE", "35 × 45 mm", "Da ritagliare dall'output 2×2"],
-            ["Canada", "50 × 70 mm", "Da ritagliare di nuovo; proporzioni diverse"],
-            ["Australia", "35 × 45 mm", "Da ritagliare dall'output 2×2"],
+            ["2 × 2 in (51 × 51 mm)", "1200 × 1200 px a 600 DPI", "Passaporti e visti degli Stati Uniti"],
+            ["35 × 45 mm", "413 × 531 px a 300 DPI", "Passaporti e documenti d'identità di Regno Unito, Schengen/UE e molti altri paesi"],
           ],
         },
       },
@@ -450,7 +451,7 @@ export const toolContentItMoreB: Record<string, ToolContentEntry> = {
       {
         question: "Che dimensioni ha la foto prodotta?",
         answer:
-          "Una foto da 2×2 pollici (1200×1200 pixel) a 600 DPI: il formato standard per le foto di passaporto e visto di Stati Uniti e India.",
+          "A tua scelta tra due formati: 2×2 pollici (1200×1200 pixel a 600 DPI) oppure 35×45 mm (413×531 pixel a 300 DPI). Controlla quale richiede il tuo modulo o la tua autorità.",
       },
       {
         question: "È gratuito?",

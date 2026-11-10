@@ -22,6 +22,10 @@ export interface ExtrasStrings {
   ocrLanguage: string;
   ocrHint: string;
   languageNames: { eng: string; por: string; spa: string; fra: string; deu: string; ita: string; ind: string };
+  photoSize: string;
+  photoSize2x2: string;
+  photoSize35x45: string;
+  photoSizeHint: string;
   metaTitle: string;
   metaPhotos: string;
   metaPdf: string;
@@ -79,6 +83,10 @@ const en: ExtrasStrings = {
   ocrLanguage: "Language of the text",
   ocrHint: "Works best on sharp, high-resolution printed text. Handwriting, low-resolution scans, tables, and multi-column layouts are often recognized poorly. Always proofread the result.",
   languageNames: { eng: "English", por: "Portuguese", spa: "Spanish", fra: "French", deu: "German", ita: "Italian", ind: "Indonesian" },
+  photoSize: "Photo size",
+  photoSize2x2: "2 × 2 in (51 × 51 mm), 1200 × 1200 px at 600 DPI",
+  photoSize35x45: "35 × 45 mm, 413 × 531 px at 300 DPI",
+  photoSizeHint: "Pick the size your form or authority asks for. Head size and position are a best-effort fit, not a compliance check, so confirm the exact requirement before you submit.",
   metaTitle: "What gets removed",
   metaPhotos: "Photos (JPG, PNG, WEBP, AVIF, TIFF): EXIF camera and date details, GPS location, XMP and IPTC data.",
   metaPdf: "PDF: title, author, subject, keywords, creator, producer, dates, and XMP metadata.",
@@ -132,6 +140,10 @@ const pt: ExtrasStrings = {
   ocrLanguage: "Idioma do texto",
   ocrHint: "Funciona melhor com texto impresso nítido e em alta resolução. Escrita à mão, digitalizações de baixa resolução, tabelas e layouts em várias colunas costumam ser reconhecidos mal. Sempre revise o resultado.",
   languageNames: { eng: "Inglês", por: "Português", spa: "Espanhol", fra: "Francês", deu: "Alemão", ita: "Italiano", ind: "Indonésio" },
+  photoSize: "Tamanho da foto",
+  photoSize2x2: "2 × 2 pol. (51 × 51 mm), 1200 × 1200 px a 600 DPI",
+  photoSize35x45: "35 × 45 mm, 413 × 531 px a 300 DPI",
+  photoSizeHint: "Escolha o tamanho exigido pelo seu formulário ou órgão. O tamanho e a posição da cabeça são um ajuste aproximado, não uma verificação de conformidade; confirme a exigência exata antes de enviar.",
   metaTitle: "O que é removido",
   metaPhotos: "Fotos (JPG, PNG, WEBP, AVIF, TIFF): dados EXIF da câmera e da data, localização GPS, dados XMP e IPTC.",
   metaPdf: "PDF: título, autor, assunto, palavras-chave, criador, produtor, datas e metadados XMP.",
@@ -185,6 +197,10 @@ const es: ExtrasStrings = {
   ocrLanguage: "Idioma del texto",
   ocrHint: "Funciona mejor con texto impreso nítido y de alta resolución. La escritura a mano, los escaneos de baja resolución, las tablas y los diseños de varias columnas suelen reconocerse mal. Revisa siempre el resultado.",
   languageNames: { eng: "Inglés", por: "Portugués", spa: "Español", fra: "Francés", deu: "Alemán", ita: "Italiano", ind: "Indonesio" },
+  photoSize: "Tamaño de la foto",
+  photoSize2x2: "2 × 2 pulg. (51 × 51 mm), 1200 × 1200 px a 600 DPI",
+  photoSize35x45: "35 × 45 mm, 413 × 531 px a 300 DPI",
+  photoSizeHint: "Elige el tamaño que pide tu formulario u organismo. El tamaño y la posición de la cabeza son un ajuste aproximado, no una comprobación de cumplimiento; confirma el requisito exacto antes de enviar.",
   metaTitle: "Qué se elimina",
   metaPhotos: "Fotos (JPG, PNG, WEBP, AVIF, TIFF): datos EXIF de la cámara y la fecha, ubicación GPS, datos XMP e IPTC.",
   metaPdf: "PDF: título, autor, asunto, palabras clave, creador, productor, fechas y metadatos XMP.",
@@ -238,6 +254,10 @@ const fr: ExtrasStrings = {
   ocrLanguage: "Langue du texte",
   ocrHint: "Fonctionne mieux sur du texte imprimé net et en haute résolution. L'écriture manuscrite, les numérisations basse résolution, les tableaux et les mises en page à plusieurs colonnes sont souvent mal reconnus. Relisez toujours le résultat.",
   languageNames: { eng: "Anglais", por: "Portugais", spa: "Espagnol", fra: "Français", deu: "Allemand", ita: "Italien", ind: "Indonésien" },
+  photoSize: "Taille de la photo",
+  photoSize2x2: "2 × 2 po (51 × 51 mm), 1200 × 1200 px à 600 DPI",
+  photoSize35x45: "35 × 45 mm, 413 × 531 px à 300 DPI",
+  photoSizeHint: "Choisissez la taille demandée par votre formulaire ou administration. La taille et la position de la tête sont un ajustement approximatif, pas une vérification de conformité ; confirmez l'exigence exacte avant d'envoyer.",
   metaTitle: "Ce qui est supprimé",
   metaPhotos: "Photos (JPG, PNG, WEBP, AVIF, TIFF) : données EXIF de l'appareil et de la date, position GPS, données XMP et IPTC.",
   metaPdf: "PDF : titre, auteur, sujet, mots-clés, créateur, producteur, dates et métadonnées XMP.",
@@ -291,6 +311,10 @@ const de: ExtrasStrings = {
   ocrLanguage: "Sprache des Textes",
   ocrHint: "Funktioniert am besten bei scharfem, hochauflösendem Drucktext. Handschrift, Scans mit niedriger Auflösung, Tabellen und mehrspaltige Layouts werden oft schlecht erkannt. Lies das Ergebnis immer gegen.",
   languageNames: { eng: "Englisch", por: "Portugiesisch", spa: "Spanisch", fra: "Französisch", deu: "Deutsch", ita: "Italienisch", ind: "Indonesisch" },
+  photoSize: "Fotogröße",
+  photoSize2x2: "2 × 2 Zoll (51 × 51 mm), 1200 × 1200 px bei 600 DPI",
+  photoSize35x45: "35 × 45 mm, 413 × 531 px bei 300 DPI",
+  photoSizeHint: "Wähle die Größe, die dein Formular oder deine Behörde verlangt. Kopfgröße und Position sind eine bestmögliche Annäherung, keine Konformitätsprüfung; prüfe die genauen Vorgaben, bevor du das Foto einreichst.",
   metaTitle: "Was entfernt wird",
   metaPhotos: "Fotos (JPG, PNG, WEBP, AVIF, TIFF): EXIF-Kamera- und Datumsangaben, GPS-Standort, XMP- und IPTC-Daten.",
   metaPdf: "PDF: Titel, Autor, Thema, Stichwörter, Ersteller, Produzent, Datumsangaben und XMP-Metadaten.",
@@ -344,6 +368,10 @@ const it: ExtrasStrings = {
   ocrLanguage: "Lingua del testo",
   ocrHint: "Funziona meglio con testo stampato nitido e ad alta risoluzione. La scrittura a mano, le scansioni a bassa risoluzione, le tabelle e i layout a più colonne vengono spesso riconosciuti male. Rileggi sempre il risultato.",
   languageNames: { eng: "Inglese", por: "Portoghese", spa: "Spagnolo", fra: "Francese", deu: "Tedesco", ita: "Italiano", ind: "Indonesiano" },
+  photoSize: "Dimensione della foto",
+  photoSize2x2: "2 × 2 pollici (51 × 51 mm), 1200 × 1200 px a 600 DPI",
+  photoSize35x45: "35 × 45 mm, 413 × 531 px a 300 DPI",
+  photoSizeHint: "Scegli la dimensione richiesta dal tuo modulo o ente. Dimensione e posizione della testa sono un adattamento approssimativo, non una verifica di conformità; conferma il requisito esatto prima dell'invio.",
   metaTitle: "Cosa viene rimosso",
   metaPhotos: "Foto (JPG, PNG, WEBP, AVIF, TIFF): dati EXIF della fotocamera e della data, posizione GPS, dati XMP e IPTC.",
   metaPdf: "PDF: titolo, autore, oggetto, parole chiave, creatore, produttore, date e metadati XMP.",
@@ -397,6 +425,10 @@ const id: ExtrasStrings = {
   ocrLanguage: "Bahasa teks",
   ocrHint: "Paling baik untuk teks cetak yang tajam dan beresolusi tinggi. Tulisan tangan, pindaian beresolusi rendah, tabel, dan tata letak multi-kolom sering dikenali dengan buruk. Selalu periksa kembali hasilnya.",
   languageNames: { eng: "Inggris", por: "Portugis", spa: "Spanyol", fra: "Prancis", deu: "Jerman", ita: "Italia", ind: "Indonesia" },
+  photoSize: "Ukuran foto",
+  photoSize2x2: "2 × 2 inci (51 × 51 mm), 1200 × 1200 px pada 600 DPI",
+  photoSize35x45: "35 × 45 mm, 413 × 531 px pada 300 DPI",
+  photoSizeHint: "Pilih ukuran yang diminta formulir atau instansi Anda. Ukuran dan posisi kepala hanyalah penyesuaian terbaik, bukan pemeriksaan kepatuhan; pastikan persyaratan persisnya sebelum mengirim.",
   metaTitle: "Yang dihapus",
   metaPhotos: "Foto (JPG, PNG, WEBP, AVIF, TIFF): detail kamera dan tanggal EXIF, lokasi GPS, data XMP dan IPTC.",
   metaPdf: "PDF: judul, penulis, subjek, kata kunci, pembuat, produser, tanggal, dan metadata XMP.",
