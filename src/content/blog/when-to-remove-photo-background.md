@@ -13,6 +13,8 @@ Background removal shows up as a step in a lot of image workflows, but it's easy
 
 **Product photos for a listing or store.** Marketplaces and e-commerce platforms often require or strongly prefer a plain white or transparent background so products look consistent across a catalog. A photo of an item on a cluttered desk or a busy background looks noticeably less professional next to competitors who've cleaned theirs up.
 
+<!-- TODO: screenshot of a product photo on a cluttered surface next to the cutout on a plain white background (the Remove Background tool's output). Save as src/assets/blog/when-to-remove-photo-background/product-cutout.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![A product photo before and after background removal](../../assets/blog/when-to-remove-photo-background/product-cutout.png) -->
+
 **Headshots and profile photos going onto a branded background.** If a photo needs to sit inside a template, a team page, a business card, a presentation slide, removing the background lets you place the subject onto whatever background the design actually needs, instead of being stuck with whatever was behind them when the photo was taken.
 
 **ID and badge photos with a required plain background.** Some ID systems, badges, and formal photo requirements specify a solid background color. If the original photo has a wall, window, or cluttered room behind the subject, background removal followed by a solid-color fill solves this without a reshoot.
@@ -30,5 +32,7 @@ Background removal shows up as a step in a lot of image workflows, but it's easy
 ## Getting a clean result
 
 A [background removal tool](/tools/remove-background) works best on photos with reasonable contrast between the subject and background, and clearly defined edges: hair, fur, and semi-transparent objects (glass, smoke) are the hardest cases for any automatic tool, human-guided or not.
+
+<!-- TODO: screenshot of a hard case: hair or fur edges at 200% zoom after removal, showing where automatic cutouts struggle. Be honest about the artefacts. Save as src/assets/blog/when-to-remove-photo-background/cutout-hair-edge.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![Hair edges at high zoom after background removal](../../assets/blog/when-to-remove-photo-background/cutout-hair-edge.png) -->
 
 After removing the background, you'll often want to [crop](/tools/crop-image) tight to the subject and [resize](/tools/resize-image) to whatever exact dimensions the destination requires, a product listing template, an ID photo spec, or a presentation slide, since the cutout on its own is rarely already the right size or framing for where it's going.

@@ -22,6 +22,8 @@ Most oversized PDFs aren't bloated because of the text: text is tiny to store. T
 
 A PDF compressor works by re-encoding the images inside the file at a lower bitrate or resolution, and cleaning up redundant embedded data, without touching the actual text layer. This is why compression can shrink a file by 60–90% with no visible difference on screen: it's throwing away image data that was more precise than anyone could see, not throwing away content.
 
+<!-- TODO: screenshot of the same region of one scanned page at 200% zoom, before and after compression, side by side with the file sizes in the caption. Pick a region with fine print so any quality loss is visible, and keep the comparison honest. Save as src/assets/blog/compress-pdf-without-losing-quality/compression-zoom-comparison.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![A zoomed region of a scanned page before and after compression](../../assets/blog/compress-pdf-without-losing-quality/compression-zoom-comparison.png) -->
+
 The quality tradeoff only becomes visible if you compress too aggressively: heavy compression on a PDF full of detailed photos or fine-print scans can introduce visible blur or artifacting, especially if you then zoom in or print at high resolution.
 
 ## How to compress without a visible quality hit
@@ -30,6 +32,8 @@ The quality tradeoff only becomes visible if you compress too aggressively: heav
 2. **Compress once, not repeatedly.** Recompressing an already-compressed PDF compounds quality loss for very little size benefit. If you need to make more changes, go back to the original file rather than re-compressing the compressed one.
 3. **Check if the size problem is really about page count, not compression.** If a document is huge because it has hundreds of pages, [splitting the PDF](/tools/split-pdf) into smaller sections you actually need to share is often more useful than compressing the whole thing.
 4. **Watch out for scanned documents specifically.** A scanned PDF is just a sequence of full-page images, so it benefits the most from compression, but also loses the most if you compress too hard, since there's no separate text layer to fall back on for readability.
+
+<!-- TODO: screenshot of the Compress PDF tool page with a PDF selected and the result/download state visible after processing. Save as src/assets/blog/compress-pdf-without-losing-quality/compress-pdf-tool.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The Compress PDF tool after a file has been processed](../../assets/blog/compress-pdf-without-losing-quality/compress-pdf-tool.png) -->
 
 ## When you shouldn't compress at all
 

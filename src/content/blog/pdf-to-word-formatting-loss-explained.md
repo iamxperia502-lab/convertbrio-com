@@ -15,6 +15,8 @@ A PDF is designed to describe exactly how a page should *look*: where every char
 
 This is why conversions tend to go well for straightforward documents, a letter, a report, a single-column page of body text, and badly for anything visually complex: multi-column layouts, PDFs built from design software, documents with lots of embedded images, tables with merged cells, or text wrapped tightly around graphics.
 
+<!-- TODO: screenshot of a simple single-column PDF page next to the converted .docx opened in Word, showing the layout carried over well. Use a document you created yourself. Save as src/assets/blog/pdf-to-word-formatting-loss-explained/simple-pdf-to-word.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![A single-column PDF page and its converted Word document](../../assets/blog/pdf-to-word-formatting-loss-explained/simple-pdf-to-word.png) -->
+
 ## What a text-focused PDF to Word conversion actually preserves
 
 A [PDF to Word converter](/tools/pdf-to-word) built around extracting text reliably will get you the words, in reading order, as an editable `.docx`: which is exactly what you need if your goal is to copy-edit a contract, reuse a report's content, or fix a typo in an otherwise text-heavy document. What it typically won't preserve well:
@@ -23,6 +25,8 @@ A [PDF to Word converter](/tools/pdf-to-word) built around extracting text relia
 - Precise image placement and wrapping
 - Complex tables, especially ones with merged or irregular cells
 - Custom fonts that aren't installed on your system (Word will substitute a similar font)
+
+<!-- TODO: screenshot of a two-column or image-heavy PDF page next to its Word result, showing what is lost (columns, image placement). Use a document you created yourself and describe honestly what changed. Save as src/assets/blog/pdf-to-word-formatting-loss-explained/complex-pdf-to-word.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![A two-column PDF page and the Word document produced from it](../../assets/blog/pdf-to-word-formatting-loss-explained/complex-pdf-to-word.png) -->
 
 ## Getting a usable result
 

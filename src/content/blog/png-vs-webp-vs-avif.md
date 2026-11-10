@@ -20,6 +20,8 @@ Every few years a "better" image format shows up promising smaller files without
 
 For photographic images, AVIF typically produces the smallest files, often 20–50% smaller than WEBP at visually similar quality, which itself is usually 25–35% smaller than an equivalent JPG. PNG is the odd one out here: because it's lossless, PNG files of photos are often *larger* than a JPG, WEBP, or AVIF of the same image, sometimes dramatically so. PNG only wins on size for flat-color graphics like logos or UI screenshots, where its lossless compression has less work to do.
 
+<!-- TODO: screenshot of a file manager listing the same photo exported as PNG, WEBP and AVIF with the Size column readable. State the source photo and export settings in the caption. Save as src/assets/blog/png-vs-webp-vs-avif/format-file-sizes.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The same photo saved as PNG, WEBP and AVIF with their file sizes](../../assets/blog/png-vs-webp-vs-avif/format-file-sizes.png) -->
+
 ## Quality and transparency
 
 All three formats support transparency (alpha channels), which rules out JPG for logos or overlays. Where they differ:
@@ -27,6 +29,8 @@ All three formats support transparency (alpha channels), which rules out JPG for
 - PNG is lossless: zero compression artifacts, at the cost of larger files.
 - WEBP supports both lossless and lossy modes, so you can choose per image.
 - AVIF also supports both modes and generally produces cleaner results than WEBP at very low bitrates, though the difference is subtle at normal quality settings.
+
+<!-- TODO: screenshot of a logo with a transparent background placed on a coloured background, shown for each of PNG, WEBP and AVIF, to prove transparency survives in all three. Save as src/assets/blog/png-vs-webp-vs-avif/transparency-demo.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![A transparent logo on a coloured background in three image formats](../../assets/blog/png-vs-webp-vs-avif/transparency-demo.png) -->
 
 ## Compatibility
 

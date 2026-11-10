@@ -19,11 +19,15 @@ A PDF's weight almost always comes from **embedded images**, not text. That sing
 
 Open the PDF and try to highlight a sentence with your cursor. If the text selects, there's a real text layer and it's staying sharp no matter what you do. If nothing selects, it's a scan: an image of each page.
 
+<!-- TODO: screenshot of two PDFs side by side in a viewer: a text PDF with a sentence highlighted, and a scanned PDF where dragging the cursor selects nothing. Label them Text PDF and Scanned PDF. Save as src/assets/blog/compress-pdf-to-a-specific-size/text-vs-scan-selection.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![Selecting text in a text PDF versus a scanned PDF where nothing can be selected](../../assets/blog/compress-pdf-to-a-specific-size/text-vs-scan-selection.png) -->
+
 ## The fastest route: compress, then check
 
 1. **Run the PDF through a [PDF compressor](/tools/compress-pdf).** It re-encodes the embedded images at an efficient quality and resolution and strips metadata the file doesn't need. Text and vector graphics are untouched.
 2. **Open the result and check the file size.** For a scanned document this single pass is often enough to clear a 500 KB or 1 MB limit outright.
 3. **If it's still over, keep reading**: the next steps stack on top.
+
+<!-- TODO: screenshot of a file manager (Finder or Explorer) listing one scanned PDF before and after Compress PDF, with the Size column clearly readable. Use a real scan and report the real numbers in the post text. Save as src/assets/blog/compress-pdf-to-a-specific-size/compress-pdf-sizes.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![File sizes of a scanned PDF before and after compression](../../assets/blog/compress-pdf-to-a-specific-size/compress-pdf-sizes.png) -->
 
 ## Getting under a very tight limit (100 KB or less)
 
@@ -32,6 +36,8 @@ A 100 KB cap on a multi-page scan is aggressive. Combine these:
 - **Reduce the page count.** If the form only needs pages 2 and 5, don't upload all ten. [Split the PDF](/tools/split-pdf) and keep just what's required: fewer pages is the biggest lever there is.
 - **Compress the images before rebuilding.** If one or two enormous photos are the problem, pull them out, run each through [Compress Image](/tools/compress-image) with an exact KB target, and reassemble. Compress Image lets you name a size and hits it; the standard PDF compressor applies one efficient pass rather than targeting a number. For a PDF you can also use [Compress PDF to Exact Size](/tools/compress-pdf-to-size), which works toward the limit you enter and tells you the size it reached.
 - **Scan smarter next time.** If you control the scan, scan in greyscale (not colour) at 200 DPI rather than 600. A greyscale 200 DPI scan of a text document is a fraction of the size and still perfectly legible.
+
+<!-- TODO: screenshot of the Compress Image tool with a target size (for example 100) typed into the KB field and the result line showing the size actually reached. Save as src/assets/blog/compress-pdf-to-a-specific-size/compress-image-target.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![Compress Image with a 100 KB target and the resulting file size](../../assets/blog/compress-pdf-to-a-specific-size/compress-image-target.png) -->
 
 ## Common size limits and what usually clears them
 

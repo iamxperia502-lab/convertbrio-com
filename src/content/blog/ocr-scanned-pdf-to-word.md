@@ -10,6 +10,8 @@ draft: false
 
 Open a scanned PDF and try to select a word of text. Nothing happens: because as far as the computer is concerned, there is no text. A scanned document is a photograph of a page, not a document with characters in it. That's why you can't edit it, search it, or copy a sentence out of it directly. OCR is what bridges that gap, and it's free.
 
+<!-- TODO: screenshot of a scanned PDF in a viewer where dragging the cursor over the text selects nothing, then the same file after OCR with text highlighted. Side by side, labelled. Save as src/assets/blog/ocr-scanned-pdf-to-word/scan-vs-ocr-selection.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![A scanned PDF with no selectable text next to the same file after OCR](../../assets/blog/ocr-scanned-pdf-to-word/scan-vs-ocr-selection.png) -->
+
 ## Can I scan a document straight into Word?
 
 Not in one step. A scanner (or a phone scanning app) produces an **image**: usually a PDF, sometimes a JPG. Word can display that image but it can't turn it into editable text on its own. You need an OCR step in between: it reads the picture of the page and reconstructs the actual letters and words. After that, getting it into Word is straightforward.
@@ -33,6 +35,8 @@ This is why, with a scan:
 3. **Get the text into Word.** For plain text, open the OCR'd PDF, select all, and paste into a blank Word document. To keep headings, paragraphs, and simple tables, run the OCR'd PDF through a [PDF to Word tool](/tools/pdf-to-word) instead, which rebuilds it as a `.docx`.
 4. **Proofread.** OCR accuracy depends on scan quality. Skim for misread characters, especially digits (0/O, 1/l, 5/S), unusual fonts, and anything handwritten, before relying on the document.
 
+<!-- TODO: screenshot of the OCR PDF tool with a scanned PDF chosen and the language setting visible. Save as src/assets/blog/ocr-scanned-pdf-to-word/ocr-pdf-tool.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The OCR PDF tool with a scanned document selected](../../assets/blog/ocr-scanned-pdf-to-word/ocr-pdf-tool.png) -->
+
 ## From a phone photo instead of a scanner
 
 The process is the same, but the input quality matters more. If you're photographing a page:
@@ -40,6 +44,8 @@ The process is the same, but the input quality matters more. If you're photograp
 - Fill the frame with the page and keep the camera parallel to it, so the page is a rectangle, not a trapezoid.
 - Use bright, even light with no shadow or glare across the text.
 - If you have several pages, combine the photos into one PDF first (an [Image to PDF tool](/tools/image-to-pdf) accepts multiple images), then OCR the whole thing at once.
+
+<!-- TODO: screenshot of two phone photos of the same printed page: one flat, parallel and evenly lit, one at an angle with shadow. Label them Good and Poor. Save as src/assets/blog/ocr-scanned-pdf-to-word/good-vs-poor-photo.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![A well-framed photo of a page compared with an angled, shadowed one](../../assets/blog/ocr-scanned-pdf-to-word/good-vs-poor-photo.png) -->
 
 ## Plain text or formatted document?
 

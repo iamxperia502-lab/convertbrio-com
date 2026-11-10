@@ -20,7 +20,11 @@ Page numbers are one of those details nobody notices when they're there and ever
 
 If a document doesn't have page numbers already, commonly the case for PDFs exported directly from a word processor without a header/footer set up, or for scanned documents, a dedicated [page numbering tool](/tools/add-page-numbers) stamps sequential numbers onto every page after the fact, without needing to go back into the original source file (which you may not still have, especially for scanned or received documents).
 
+<!-- TODO: screenshot of the Add Page Numbers tool page with a multi-page PDF already chosen (file name visible in the upload box), before clicking the button. Crop to the tool card. Save as src/assets/blog/add-page-numbers-to-pdf/add-page-numbers-tool.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The Add Page Numbers tool with a multi-page PDF selected](../../assets/blog/add-page-numbers-to-pdf/add-page-numbers-tool.png) -->
+
 This matters because re-adding numbering by editing the original file requires that file to still exist in an editable form. A PDF you received from someone else, or a scan of a paper document, has no "original" to go back to: stamping the numbers directly onto the PDF is the only practical option.
+
+<!-- TODO: screenshot of one page of a PDF shown twice, side by side: the bottom edge before (no number) and after (number stamped bottom-centre), both at 100% zoom, labelled Before and After. Save as src/assets/blog/add-page-numbers-to-pdf/before-after-page-number.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![Bottom of a PDF page before and after a page number is added](../../assets/blog/add-page-numbers-to-pdf/before-after-page-number.png) -->
 
 ## If you're combining documents first
 

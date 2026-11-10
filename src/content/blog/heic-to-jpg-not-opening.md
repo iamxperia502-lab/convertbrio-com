@@ -27,9 +27,15 @@ That last category is the one that catches people most often: you go to upload a
 
 **1. Convert the file before you upload it.** This is the most reliable option because it doesn't depend on the receiving app supporting HEIC at all. A [HEIC to JPG converter](/tools/heic-to-jpg) does this in your browser: drop the file in, get a standard JPG back, and it'll open anywhere. If you're converting more than a handful of photos, look for a tool that supports batch uploads so you're not repeating the process one file at a time.
 
+<!-- TODO: screenshot of the HEIC to JPG tool with a .HEIC file selected, and the downloaded .jpg shown beside it so the file-name change is visible. Save as src/assets/blog/heic-to-jpg-not-opening/heic-to-jpg-tool.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The HEIC to JPG tool converting an iPhone photo](../../assets/blog/heic-to-jpg-not-opening/heic-to-jpg-tool.png) -->
+
 **2. Change your iPhone's camera format.** If you're regularly sending photos to non-Apple devices, go to **Settings → Camera → Formats** and switch from "High Efficiency" to "Most Compatible." This makes your iPhone save new photos as JPG going forward: it won't retroactively convert photos you've already taken.
 
+<!-- TODO: screenshot of the iPhone Settings > Camera > Formats screen showing High Efficiency and Most Compatible, with Most Compatible selected. Save as src/assets/blog/heic-to-jpg-not-opening/iphone-camera-formats.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![iPhone camera format settings with Most Compatible selected](../../assets/blog/heic-to-jpg-not-opening/iphone-camera-formats.png) -->
+
 **3. Change the transfer format instead of the storage format.** Under **Settings → Photos**, the "Transfer to Mac or PC" option has an "Automatic" setting that converts HEIC to JPG at the moment of transfer, while keeping your on-device photo library in the smaller HEIC format. This is the best of both worlds if you only run into compatibility problems when moving photos to a computer.
+
+<!-- TODO: screenshot of the iPhone Settings > Photos screen scrolled to Transfer to Mac or PC with Automatic selected. Save as src/assets/blog/heic-to-jpg-not-opening/iphone-transfer-setting.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![iPhone Photos setting that converts HEIC to JPG when transferring to a computer](../../assets/blog/heic-to-jpg-not-opening/iphone-transfer-setting.png) -->
 
 ## Which option should you use?
 

@@ -14,7 +14,11 @@ draft: false
 
 **An open password (also called a user password)** encrypts the document itself. Without it, the PDF's content can't be read at all: no viewer, converter, or tool can display it, because the data is genuinely encrypted. This is the same category of protection as a password-protected zip file or an encrypted disk image: without the correct password, there's no legitimate way in.
 
+<!-- TODO: screenshot of the password prompt a viewer shows when opening a PDF protected with an open password. Use a test file you created, and do not show a real password. Save as src/assets/blog/pdf-password-restrictions-explained/pdf-open-password-prompt.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The password prompt shown when opening a PDF that needs an open password](../../assets/blog/pdf-password-restrictions-explained/pdf-open-password-prompt.png) -->
+
 **A permissions password (also called an owner password)** works differently. The document itself isn't encrypted for reading: anyone can open and view it. Instead, the PDF carries a set of flags saying what a *compliant viewer* should allow: printing, copying text, editing, adding comments, and so on. A well-behaved PDF reader checks these flags and grays out the restricted actions. The permissions password exists to change those flags, not to control whether the file can be opened.
+
+<!-- TODO: screenshot of a PDF viewer's Document Properties > Security (or Restrictions) panel for a test PDF that opens normally but lists printing or copying as not allowed. Use a PDF you created yourself. Save as src/assets/blog/pdf-password-restrictions-explained/pdf-security-tab.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The security tab of a PDF that opens but restricts copying and printing](../../assets/blog/pdf-password-restrictions-explained/pdf-security-tab.png) -->
 
 This second category is much more common than people expect. A lot of "locked" PDFs, ones that open fine but won't let you copy text, print, or edit, are locked in this second sense, not the first.
 

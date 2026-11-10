@@ -19,6 +19,8 @@ The catch is that PowerPoint keeps each image at its **original full resolution*
 
 The fastest route. Upload the .pptx to [Compress PowerPoint](/tools/compress-powerpoint) and it re-encodes every embedded image at an efficient quality and resolution, then hands back a smaller `.pptx` with your slides, text, animations, and notes all intact. Free, no signup, no watermark. Image-heavy decks typically drop 40–70%.
 
+<!-- TODO: screenshot of the Compress PowerPoint tool with a .pptx selected, plus the before and after file sizes (from a file manager) in one image. Save as src/assets/blog/compress-powerpoint-for-email/compress-powerpoint-tool.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The Compress PowerPoint tool and the file sizes before and after](../../assets/blog/compress-powerpoint-for-email/compress-powerpoint-tool.png) -->
+
 ## Option 2: Compress the images inside PowerPoint
 
 Useful if you can't upload the file, or want manual control.
@@ -29,6 +31,8 @@ Useful if you can't upload the file, or want manual control.
 4. Choose a resolution. **150 ppi ("Web")** is plenty for on-screen viewing; 220 ppi if it might be printed.
 5. Tick **"Delete cropped areas of pictures"**: cropped-out parts are still stored otherwise.
 6. Click OK, then **File → Save As** and check the new size.
+
+<!-- TODO: screenshot of PowerPoint's Compress Pictures dialog with 'Apply only to this picture' unticked, 150 ppi (Web) selected and 'Delete cropped areas of pictures' ticked. Note the PowerPoint version and operating system in the caption. Save as src/assets/blog/compress-powerpoint-for-email/powerpoint-compress-pictures.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The Compress Pictures dialog in PowerPoint with the recommended settings](../../assets/blog/compress-powerpoint-for-email/powerpoint-compress-pictures.png) -->
 
 This often halves a photo-heavy deck. If it's still large, one or two images are probably enormous: replace them with smaller versions (next option).
 

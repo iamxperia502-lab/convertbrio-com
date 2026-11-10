@@ -1,0 +1,8 @@
+---
+// Renders its slot with editorial `<!-- TODO: ... -->` markers removed, so
+// screenshot placeholders in blog posts never reach the published HTML.
+const html = await Astro.slots.render("default");
+const clean = html.replace(/<!--\s*TODO:[\s\S]*?-->/g, "");
+---
+
+<Fragment set:html={clean} />
