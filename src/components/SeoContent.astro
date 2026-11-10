@@ -11,7 +11,7 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
         ConvertBrio: A Free Online Converter for Images, PDFs, and Documents
       </h2>
       <p class="mt-4 leading-relaxed text-body">
-        ConvertBrio is a free <strong class="font-medium text-ink">online file converter</strong> built for anyone who needs a file converted, compressed, or cleaned up without installing software or creating an account. Whether you're changing an image format, shrinking a PDF, or turning a Word document into a polished PDF, upload it from your browser and our hosting providers' servers handle the conversion, usually within seconds for typical files. As a secure file converter, every upload is encrypted in transit, originals are deleted right after they are read for conversion, and results are removed by a daily cleanup job. Files are processed automatically on our hosting providers' servers (Vercel and Supabase), not locally in your browser, with no human review; see the Trust & Security page for details.
+        ConvertBrio is a free <strong class="font-medium text-ink">online file converter</strong> built for anyone who needs a file converted, compressed, or cleaned up without installing software or creating an account. Whether you're changing an image format, shrinking a PDF, or turning a Word document into a polished PDF, upload it from your browser and our hosting providers' servers handle the conversion, usually within seconds for typical files. Every upload is encrypted in transit, originals are deleted right after they are read for conversion, and results are removed by a daily cleanup job. Files are processed automatically on our hosting providers' servers (Vercel and Supabase), not locally in your browser, with no human review; see the Trust & Security page for details.
       </p>
 
       <details class="group mt-8">
@@ -30,17 +30,17 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
           </li>
           <li class="flex gap-4">
             <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-canvas-soft-2 text-xs font-semibold text-ink">2</span>
-            <p class="leading-relaxed text-body"><strong class="font-medium text-ink">Pick a format or setting.</strong> Select an output format with the <a href="/tools/image-converter" class={link}>image converter online</a>, a compression level with the <a href="/tools/compress-image" class={link}>online image compressor</a>, or an operation for any PDF or document converter online tool.</p>
+            <p class="leading-relaxed text-body"><strong class="font-medium text-ink">Pick a format or setting.</strong> Select an output format in the <a href="/tools/image-converter" class={link}>Image Converter</a>, a size target in <a href="/tools/compress-image" class={link}>Compress Image</a>, or the operation you want in any of the PDF and document tools.</p>
           </li>
           <li class="flex gap-4">
             <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-canvas-soft-2 text-xs font-semibold text-ink">3</span>
-            <p class="leading-relaxed text-body"><strong class="font-medium text-ink">Download your result.</strong> ConvertBrio processes the file instantly and hands you a download link: most conversions finish in a few seconds.</p>
+            <p class="leading-relaxed text-body"><strong class="font-medium text-ink">Download your result.</strong> ConvertBrio processes the file and hands you a download link: most conversions finish in a few seconds.</p>
           </li>
         </ol>
 
         <h3 class="mt-10 text-lg font-semibold text-ink">Convert Image Formats Online</h3>
         <p class="mt-3 leading-relaxed text-body">
-          ConvertBrio's image converter online supports every common format, and each page explains what changes when you switch formats: lossy formats such as JPG and lossy WEBP lose a little detail on every re-save, while PNG keeps pixels exactly but produces larger files.
+          The <a href="/tools/image-converter" class={link}>Image Converter</a> handles JPG, PNG, WEBP, AVIF, HEIC, and GIF, and each tool page explains what changes when you switch formats: lossy formats such as JPG and lossy WEBP lose a little detail on every re-save, while PNG keeps pixels exactly but produces larger files.
         </p>
 
         <div class="mt-6 flex flex-col gap-5">
@@ -65,7 +65,7 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
           <div>
             <h4 class="text-base font-semibold text-ink">HEIC Image Conversion</h4>
             <p class="mt-1.5 leading-relaxed text-body">
-              iPhone photos save as HEIC by default, which many apps and Windows PCs can't open. <a href="/tools/heic-to-jpg" class={link}>HEIC to JPG</a> converts them instantly, and the general <a href="/tools/image-converter" class={link}>image converter online</a> tool can also export HEIC files as PNG.
+              iPhone photos save as HEIC by default, which many apps and Windows PCs can't open. <a href="/tools/heic-to-jpg" class={link}>HEIC to JPG</a> converts them quickly, and the general <a href="/tools/image-converter" class={link}>Image Converter</a> can also export HEIC files as PNG.
             </p>
           </div>
         </div>
@@ -75,13 +75,13 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
           <div>
             <h4 class="text-base font-semibold text-ink">Reduce an Image Under 100 KB</h4>
             <p class="mt-1.5 leading-relaxed text-body">
-              Job applications, government forms, and ID uploads often cap file size at 100 KB. The <a href="/tools/compress-image" class={link}>reduce image to 100 KB</a> tool searches for the highest quality that fits at or below your limit (KB here means 1,024 bytes). If a photo can't reach the limit without heavy quality loss, you'll see the smallest size it reached instead.
+              Job applications, government forms, and ID uploads often cap file size at 100 KB. <a href="/tools/compress-image" class={link}>Compress Image</a> searches for the highest quality that fits at or below your limit (KB here means 1,024 bytes). If a photo can't reach the limit without heavy quality loss, you'll see the smallest size it reached instead.
             </p>
           </div>
           <div>
             <h4 class="text-base font-semibold text-ink">Image Compression and Resizing</h4>
             <p class="mt-1.5 leading-relaxed text-body">
-              Beyond hitting a specific target, ConvertBrio's image size reducer and <a href="/tools/resize-image" class={link}>resize</a> tools let you <a href="/tools/compress-image" class={link}>compress image online</a> for faster page loads, fit exact pixel dimensions, crop to a region, or rotate: all from the same batch image converter workflow.
+              Beyond hitting a specific target, <a href="/tools/compress-image" class={link}>Compress Image</a> makes photos smaller for faster page loads, <a href="/tools/resize-image" class={link}>Resize Image</a> fits exact pixel dimensions, and <a href="/tools/crop-image" class={link}>Crop Image</a> and <a href="/tools/rotate-image" class={link}>Rotate Image</a> handle the rest. Most of these take one image at a time; for a whole folder, the <a href="/tools/batch-image-compressor" class={link}>Batch Image Compressor</a> shrinks several images to the same target in one go.
             </p>
           </div>
         </div>
@@ -91,26 +91,26 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
           <div>
             <h4 class="text-base font-semibold text-ink">PDF Conversion</h4>
             <p class="mt-1.5 leading-relaxed text-body">
-              Turn scanned pages or exported documents into the format you actually need. <a href="/tools/pdf-to-jpg" class={link}>PDF to JPG</a> and <a href="/tools/jpg-to-pdf" class={link}>JPG to PDF</a> move content between images and PDFs, <a href="/tools/merge-pdf" class={link}>merge PDF online</a> combines multiple files into one document, <a href="/tools/split-pdf" class={link}>split PDF online</a> breaks a PDF into individual pages, and <a href="/tools/compress-pdf" class={link}>compress PDF online</a> shrinks file size for email attachments.
+              Turn scanned pages or exported documents into the format you actually need. <a href="/tools/pdf-to-jpg" class={link}>PDF to JPG</a> and <a href="/tools/jpg-to-pdf" class={link}>JPG to PDF</a> move content between images and PDFs, <a href="/tools/merge-pdf" class={link}>Merge PDF</a> combines multiple files into one document, <a href="/tools/split-pdf" class={link}>Split PDF</a> breaks a PDF into individual pages, and <a href="/tools/compress-pdf" class={link}>Compress PDF</a> shrinks file size for email attachments.
             </p>
           </div>
           <div>
             <h4 class="text-base font-semibold text-ink">Document Conversion</h4>
             <p class="mt-1.5 leading-relaxed text-body">
-              For editable text, <a href="/tools/pdf-to-word" class={link}>PDF to Word</a> turns a PDF into an editable DOCX, and <a href="/tools/word-to-pdf" class={link}>Word to PDF</a> locks a finished document into a shareable, print-ready format: both run as a document converter online with no desktop software required.
+              For editable text, <a href="/tools/pdf-to-word" class={link}>PDF to Word</a> turns a PDF into an editable DOCX, and <a href="/tools/word-to-pdf" class={link}>Word to PDF</a> locks a finished document into a shareable, print-ready format: both run in your browser with no desktop software to install.
             </p>
           </div>
           <div>
             <h4 class="text-base font-semibold text-ink">OCR and Image-to-Text</h4>
             <p class="mt-1.5 leading-relaxed text-body">
-              Scanned documents and photographed pages aren't searchable by default. <a href="/tools/ocr-pdf" class={link}>OCR PDF online</a> recognizes the text on each page so you can search, copy, and edit content that used to be locked inside an image: the same technology behind an image to text converter.
+              Scanned documents and photographed pages aren't searchable by default. <a href="/tools/ocr-pdf" class={link}>OCR PDF</a> recognizes the text on each page so you can search, copy, and edit content that used to be locked inside an image. For a single photo of a page, <a href="/tools/image-to-text" class={link}>Image to Text</a> does the same job.
             </p>
           </div>
         </div>
 
         <h3 class="mt-10 text-lg font-semibold text-ink">AI Enhancement, Multi-File Tools, and File Privacy</h3>
         <p class="mt-3 leading-relaxed text-body">
-          ConvertBrio's AI tools, <a href="/tools/ai-image-enhancer" class={link}>image enhancer</a>, <a href="/tools/ai-upscaler" class={link}>upscaler</a>, and <a href="/tools/remove-background" class={link}>background remover</a>, sharpen, enlarge, and clean up photos automatically. For anyone combining multiple files at once, <a href="/tools/merge-pdf" class={link}>Merge PDF</a>, <a href="/tools/jpg-to-pdf" class={link}>JPG to PDF</a>, and <a href="/tools/merge-documents" class={link}>Merge Documents</a> already accept several files in a single upload, free. And across every tool, file privacy comes standard: uploads are encrypted, processing happens automatically with no human review, and files are deleted automatically (see Trust &amp; Security for timing). Because files are processed on our servers, avoid uploading documents you are not comfortable sending to a third-party service.
+          ConvertBrio's AI tools, <a href="/tools/ai-image-enhancer" class={link}>image enhancer</a>, <a href="/tools/ai-upscaler" class={link}>upscaler</a>, and <a href="/tools/remove-background" class={link}>background remover</a>, sharpen, enlarge, and clean up photos automatically. Most tools work on one file at a time. The ones that accept several files in a single upload are <a href="/tools/merge-pdf" class={link}>Merge PDF</a>, <a href="/tools/jpg-to-pdf" class={link}>JPG to PDF</a>, <a href="/tools/merge-documents" class={link}>Merge Documents</a>, and the <a href="/tools/batch-image-compressor" class={link}>Batch Image Compressor</a>. And across every tool, file privacy comes standard: uploads are encrypted, processing happens automatically with no human review, and files are deleted automatically (see Trust &amp; Security for timing). Because files are processed on our hosting providers' servers, avoid uploading documents you are not comfortable sending to a third-party service.
         </p>
         </div>
       </details>
