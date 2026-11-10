@@ -64,12 +64,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         body: "Il tuo PDF viene cifrato durante il caricamento, elaborato automaticamente sui server di ConvertBrio senza revisione umana, e sia l'originale che la copia compressa vengono eliminati entro 24 ore. Un file per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
     ],
-    relatedTools: [
-      { label: "Dividere PDF", href: "/it/tools/split-pdf" },
-      { label: "Unire PDF", href: "/it/tools/merge-pdf" },
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
-      { label: "PDF in Word", href: "/it/tools/pdf-to-word" },
-    ],
     faqDescription: "Domande frequenti su come comprimere le dimensioni di un PDF online.",
     faq: [
       {
@@ -156,11 +150,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         body: "Ogni caricamento viene cifrato ed eliminato automaticamente dai server di ConvertBrio entro 24 ore, scaricato o meno. Questo strumento comprime un'immagine per volta, fino a 100 MB, gratis, senza account e senza filigrana.",
       },
     ],
-    relatedTools: [
-      { label: "Convertitore di Immagini", href: "/it/tools/image-converter" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
-      { label: "JPG in PDF", href: "/it/tools/jpg-to-pdf" },
-    ],
     faqDescription: "Domande frequenti su comprimere e ridurre le dimensioni delle immagini.",
     faq: [
       {
@@ -230,11 +219,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         body: "I file vengono cifrati al caricamento, uniti automaticamente senza revisione umana, e tutti, origini e risultato, vengono eliminati entro 24 ore. Più file per unione, fino a 100 MB ciascuno, gratis, senza account, senza filigrana.",
       },
     ],
-    relatedTools: [
-      { label: "Dividere PDF", href: "/it/tools/split-pdf" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
-      { label: "JPG in PDF", href: "/it/tools/jpg-to-pdf" },
-    ],
     faqDescription: "Domande frequenti sull'unione di più file PDF in uno solo.",
     faq: [
       {
@@ -289,11 +273,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         heading: "Privacy e limiti",
         body: "Il caricamento viene cifrato, elaborato automaticamente senza revisione umana, e sia l'originale che le pagine risultanti vengono eliminati dai server di ConvertBrio entro 24 ore. Limite di 100 MB per file.",
       },
-    ],
-    relatedTools: [
-      { label: "Unire PDF", href: "/it/tools/merge-pdf" },
-      { label: "PDF in JPG", href: "/it/tools/pdf-to-jpg" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
     ],
     faqDescription: "Domande frequenti sulla divisione di un PDF in pagine singole.",
     faq: [
@@ -356,12 +335,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         body: "Il PDF viene cifrato al caricamento, convertito automaticamente senza revisione umana, e i due file vengono eliminati entro 24 ore. Un documento per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
     ],
-    relatedTools: [
-      { label: "Word in PDF", href: "/it/tools/word-to-pdf" },
-      { label: "OCR per PDF", href: "/it/tools/ocr-pdf" },
-      { label: "PDF in JPG", href: "/it/tools/pdf-to-jpg" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
-    ],
     faqDescription: "Domande frequenti sulla conversione di file PDF in documenti Word modificabili.",
     faq: [
       {
@@ -415,11 +388,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         heading: "Privacy e limiti",
         body: "Il tuo documento viene cifrato al caricamento, convertito automaticamente senza revisione umana, e i due file vengono eliminati entro 24 ore. Un .docx per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF in Word", href: "/it/tools/pdf-to-word" },
-      { label: "Unire PDF", href: "/it/tools/merge-pdf" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
     ],
     faqDescription: "Domande frequenti sulla conversione di documenti Word in PDF.",
     faq: [
@@ -477,11 +445,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         body: "Il tuo PDF viene cifrato al caricamento, renderizzato automaticamente senza revisione umana, e sia il caricamento che le immagini vengono eliminati entro 24 ore. Un file per volta, fino a 100 MB, gratis, senza account.",
       },
     ],
-    relatedTools: [
-      { label: "JPG in PDF", href: "/it/tools/jpg-to-pdf" },
-      { label: "Dividere PDF", href: "/it/tools/split-pdf" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
-    ],
     faqDescription: "Domande frequenti sulla conversione di pagine di PDF in immagini JPG.",
     faq: [
       {
@@ -533,11 +496,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         heading: "Privacy e limiti",
         body: "Le immagini vengono cifrate al caricamento, combinate automaticamente senza revisione umana, e sia le origini che il PDF finale vengono eliminati entro 24 ore. Più immagini per volta, 100 MB combinati, gratis, senza account, senza filigrana.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF in JPG", href: "/it/tools/pdf-to-jpg" },
-      { label: "Unire PDF", href: "/it/tools/merge-pdf" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
     ],
     faqDescription: "Domande frequenti sulla conversione di immagini JPG in un PDF.",
     faq: [
@@ -593,11 +551,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         heading: "Privacy e limiti",
         body: "Ogni caricamento viene cifrato ed elaborato automaticamente senza revisione umana. Sia l'originale che l'immagine convertita vengono eliminati dai server di ConvertBrio entro 24 ore. File fino a 100 MB, gratis, senza account e senza filigrana.",
       },
-    ],
-    relatedTools: [
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
-      { label: "JPG in PDF", href: "/it/tools/jpg-to-pdf" },
-      { label: "PDF in JPG", href: "/it/tools/pdf-to-jpg" },
     ],
     faqDescription: "Domande frequenti sul convertitore di immagini di ConvertBrio.",
     faq: [
@@ -656,11 +609,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         heading: "Privacy e limiti",
         body: "Il tuo documento viene cifrato al caricamento, elaborato automaticamente senza revisione umana, e sia il caricamento che il risultato OCR vengono eliminati entro 24 ore. Un PDF per volta, fino a 100 MB, gratis, senza account.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF in Word", href: "/it/tools/pdf-to-word" },
-      { label: "PDF in JPG", href: "/it/tools/pdf-to-jpg" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
     ],
     faqDescription: "Domande frequenti sull'OCR di un PDF e sul portare il testo scansionato in Word.",
     faq: [
@@ -731,11 +679,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         body: "La tua presentazione viene cifrata al caricamento, elaborata automaticamente sui server di ConvertBrio senza revisione umana, e sia il caricamento che la copia compressa vengono eliminati entro 24 ore. Un .pptx per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
     ],
-    relatedTools: [
-      { label: "Comprimere Documento Word", href: "/it/tools/compress-word" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
-    ],
     faqDescription: "Domande frequenti sulla riduzione delle dimensioni di una presentazione PowerPoint.",
     faq: [
       {
@@ -804,11 +747,6 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
         heading: "Privacy e limiti",
         body: "Il tuo documento viene cifrato al caricamento, elaborato automaticamente sui server di ConvertBrio senza revisione umana, e sia il caricamento che la copia compressa vengono eliminati entro 24 ore. Un .docx per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
-    ],
-    relatedTools: [
-      { label: "Word in PDF", href: "/it/tools/word-to-pdf" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
-      { label: "Comprimere PowerPoint", href: "/it/tools/compress-powerpoint" },
     ],
     faqDescription: "Domande frequenti sulla riduzione delle dimensioni di un documento Word.",
     faq: [

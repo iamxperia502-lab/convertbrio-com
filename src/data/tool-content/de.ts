@@ -64,12 +64,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         body: "Deine PDF wird beim Upload verschlüsselt, auf den Servern von ConvertBrio automatisch ohne menschliche Prüfung verarbeitet, und sowohl das Original als auch die komprimierte Kopie werden innerhalb von 24 Stunden gelöscht. Eine Datei pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
-    relatedTools: [
-      { label: "PDF teilen", href: "/de/tools/split-pdf" },
-      { label: "PDF zusammenfügen", href: "/de/tools/merge-pdf" },
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
-      { label: "PDF in Word", href: "/de/tools/pdf-to-word" },
-    ],
     faqDescription: "Häufige Fragen zum Komprimieren der Größe einer PDF online.",
     faq: [
       {
@@ -156,11 +150,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         body: "Jeder Upload wird verschlüsselt und innerhalb von 24 Stunden automatisch von den Servern von ConvertBrio gelöscht, ob heruntergeladen oder nicht. Dieses Tool komprimiert ein Bild pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto und ohne Wasserzeichen.",
       },
     ],
-    relatedTools: [
-      { label: "Bildkonverter", href: "/de/tools/image-converter" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-      { label: "JPG in PDF", href: "/de/tools/jpg-to-pdf" },
-    ],
     faqDescription: "Häufige Fragen zum Komprimieren und Verkleinern der Bildgröße.",
     faq: [
       {
@@ -230,11 +219,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         body: "Die Dateien werden beim Upload verschlüsselt, automatisch ohne menschliche Prüfung zusammengefügt, und alle – Quellen und Ergebnis – innerhalb von 24 Stunden gelöscht. Mehrere Dateien pro Zusammenführung, je bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
-    relatedTools: [
-      { label: "PDF teilen", href: "/de/tools/split-pdf" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-      { label: "JPG in PDF", href: "/de/tools/jpg-to-pdf" },
-    ],
     faqDescription: "Häufige Fragen zum Zusammenfügen mehrerer PDF-Dateien zu einer.",
     faq: [
       {
@@ -289,11 +273,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         heading: "Datenschutz und Grenzen",
         body: "Der Upload wird verschlüsselt, automatisch ohne menschliche Prüfung verarbeitet, und sowohl das Original als auch die entstandenen Seiten werden innerhalb von 24 Stunden von den Servern von ConvertBrio gelöscht. Limit 100 MB pro Datei.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF zusammenfügen", href: "/de/tools/merge-pdf" },
-      { label: "PDF in JPG", href: "/de/tools/pdf-to-jpg" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
     ],
     faqDescription: "Häufige Fragen zum Teilen einer PDF in einzelne Seiten.",
     faq: [
@@ -356,12 +335,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         body: "Die PDF wird beim Upload verschlüsselt, automatisch ohne menschliche Prüfung umgewandelt, und beide Dateien werden innerhalb von 24 Stunden gelöscht. Ein Dokument pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
-    relatedTools: [
-      { label: "Word in PDF", href: "/de/tools/word-to-pdf" },
-      { label: "OCR für PDF", href: "/de/tools/ocr-pdf" },
-      { label: "PDF in JPG", href: "/de/tools/pdf-to-jpg" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-    ],
     faqDescription: "Häufige Fragen zum Umwandeln von PDF-Dateien in bearbeitbare Word-Dokumente.",
     faq: [
       {
@@ -415,11 +388,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         heading: "Datenschutz und Grenzen",
         body: "Dein Dokument wird beim Upload verschlüsselt, automatisch ohne menschliche Prüfung umgewandelt, und beide Dateien werden innerhalb von 24 Stunden gelöscht. Ein .docx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF in Word", href: "/de/tools/pdf-to-word" },
-      { label: "PDF zusammenfügen", href: "/de/tools/merge-pdf" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
     ],
     faqDescription: "Häufige Fragen zum Umwandeln von Word-Dokumenten in PDF.",
     faq: [
@@ -477,11 +445,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         body: "Deine PDF wird beim Upload verschlüsselt, automatisch ohne menschliche Prüfung gerendert, und Upload wie Bilder werden innerhalb von 24 Stunden gelöscht. Eine Datei pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto.",
       },
     ],
-    relatedTools: [
-      { label: "JPG in PDF", href: "/de/tools/jpg-to-pdf" },
-      { label: "PDF teilen", href: "/de/tools/split-pdf" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-    ],
     faqDescription: "Häufige Fragen zum Umwandeln von PDF-Seiten in JPG-Bilder.",
     faq: [
       {
@@ -533,11 +496,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         heading: "Datenschutz und Grenzen",
         body: "Die Bilder werden beim Upload verschlüsselt, automatisch ohne menschliche Prüfung verbunden, und Quellen wie fertige PDF werden innerhalb von 24 Stunden gelöscht. Mehrere Bilder pro Vorgang, 100 MB kombiniert, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF in JPG", href: "/de/tools/pdf-to-jpg" },
-      { label: "PDF zusammenfügen", href: "/de/tools/merge-pdf" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
     ],
     faqDescription: "Häufige Fragen zum Umwandeln von JPG-Bildern in eine PDF.",
     faq: [
@@ -593,11 +551,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         heading: "Datenschutz und Grenzen",
         body: "Jeder Upload wird verschlüsselt und automatisch ohne menschliche Prüfung verarbeitet. Original wie umgewandeltes Bild werden innerhalb von 24 Stunden von den Servern von ConvertBrio gelöscht. Dateien bis zu 100 MB, kostenlos, ohne Konto und ohne Wasserzeichen.",
       },
-    ],
-    relatedTools: [
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
-      { label: "JPG in PDF", href: "/de/tools/jpg-to-pdf" },
-      { label: "PDF in JPG", href: "/de/tools/pdf-to-jpg" },
     ],
     faqDescription: "Häufige Fragen zum Bildkonverter von ConvertBrio.",
     faq: [
@@ -656,11 +609,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         heading: "Datenschutz und Grenzen",
         body: "Dein Dokument wird beim Upload verschlüsselt, automatisch ohne menschliche Prüfung verarbeitet, und Upload wie OCR-Ergebnis werden innerhalb von 24 Stunden gelöscht. Eine PDF pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF in Word", href: "/de/tools/pdf-to-word" },
-      { label: "PDF in JPG", href: "/de/tools/pdf-to-jpg" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
     ],
     faqDescription: "Häufige Fragen zu OCR auf einer PDF und dem Übernehmen von gescanntem Text in Word.",
     faq: [
@@ -731,11 +679,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         body: "Deine Präsentation wird beim Upload verschlüsselt, auf den Servern von ConvertBrio automatisch ohne menschliche Prüfung verarbeitet, und Upload wie komprimierte Kopie werden innerhalb von 24 Stunden gelöscht. Ein .pptx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
-    relatedTools: [
-      { label: "Word-Dokument komprimieren", href: "/de/tools/compress-word" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
-    ],
     faqDescription: "Häufige Fragen zum Verkleinern der Größe einer PowerPoint-Präsentation.",
     faq: [
       {
@@ -804,11 +747,6 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
         heading: "Datenschutz und Grenzen",
         body: "Dein Dokument wird beim Upload verschlüsselt, auf den Servern von ConvertBrio automatisch ohne menschliche Prüfung verarbeitet, und Upload wie komprimierte Kopie werden innerhalb von 24 Stunden gelöscht. Ein .docx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
-    ],
-    relatedTools: [
-      { label: "Word in PDF", href: "/de/tools/word-to-pdf" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-      { label: "PowerPoint komprimieren", href: "/de/tools/compress-powerpoint" },
     ],
     faqDescription: "Häufige Fragen zum Verkleinern der Größe eines Word-Dokuments.",
     faq: [

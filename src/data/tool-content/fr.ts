@@ -64,12 +64,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         body: "Votre PDF est chiffré pendant l'envoi, traité automatiquement sur les serveurs de ConvertBrio sans intervention humaine, et l'original comme la copie compressée sont supprimés sous 24 heures. Un fichier à la fois, jusqu'à 100 Mo, gratuit, sans compte, sans filigrane.",
       },
     ],
-    relatedTools: [
-      { label: "Diviser un PDF", href: "/fr/tools/split-pdf" },
-      { label: "Fusionner des PDF", href: "/fr/tools/merge-pdf" },
-      { label: "Compresser une Image", href: "/fr/tools/compress-image" },
-      { label: "PDF en Word", href: "/fr/tools/pdf-to-word" },
-    ],
     faqDescription: "Questions fréquentes sur la compression de la taille d'un PDF en ligne.",
     faq: [
       {
@@ -156,11 +150,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         body: "Chaque envoi est chiffré et supprimé automatiquement des serveurs de ConvertBrio sous 24 heures, que vous le téléchargiez ou non. Cet outil compresse une image à la fois, jusqu'à 100 Mo, gratuit, sans compte et sans filigrane.",
       },
     ],
-    relatedTools: [
-      { label: "Convertisseur d'Images", href: "/fr/tools/image-converter" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
-      { label: "JPG en PDF", href: "/fr/tools/jpg-to-pdf" },
-    ],
     faqDescription: "Questions fréquentes sur la compression et la réduction de la taille des images.",
     faq: [
       {
@@ -230,11 +219,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         body: "Les fichiers sont chiffrés à l'envoi, fusionnés automatiquement sans intervention humaine, et tous, sources et résultat, sont supprimés sous 24 heures. Plusieurs fichiers par fusion, jusqu'à 100 Mo chacun, gratuit, sans compte, sans filigrane.",
       },
     ],
-    relatedTools: [
-      { label: "Diviser un PDF", href: "/fr/tools/split-pdf" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
-      { label: "JPG en PDF", href: "/fr/tools/jpg-to-pdf" },
-    ],
     faqDescription: "Questions fréquentes sur la fusion de plusieurs fichiers PDF en un seul.",
     faq: [
       {
@@ -289,11 +273,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         heading: "Confidentialité et limites",
         body: "L'envoi est chiffré, traité automatiquement sans intervention humaine, et l'original comme les pages résultantes sont supprimés des serveurs de ConvertBrio sous 24 heures. Limite de 100 Mo par fichier.",
       },
-    ],
-    relatedTools: [
-      { label: "Fusionner des PDF", href: "/fr/tools/merge-pdf" },
-      { label: "PDF en JPG", href: "/fr/tools/pdf-to-jpg" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
     ],
     faqDescription: "Questions fréquentes sur la division d'un PDF en pages individuelles.",
     faq: [
@@ -356,12 +335,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         body: "Le PDF est chiffré à l'envoi, converti automatiquement sans intervention humaine, et les deux fichiers sont supprimés sous 24 heures. Un document à la fois, jusqu'à 100 Mo, gratuit, sans compte, sans filigrane.",
       },
     ],
-    relatedTools: [
-      { label: "Word en PDF", href: "/fr/tools/word-to-pdf" },
-      { label: "OCR de PDF", href: "/fr/tools/ocr-pdf" },
-      { label: "PDF en JPG", href: "/fr/tools/pdf-to-jpg" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
-    ],
     faqDescription: "Questions fréquentes sur la conversion de fichiers PDF en documents Word modifiables.",
     faq: [
       {
@@ -415,11 +388,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         heading: "Confidentialité et limites",
         body: "Votre document est chiffré à l'envoi, converti automatiquement sans intervention humaine, et les deux fichiers sont supprimés sous 24 heures. Un .docx à la fois, jusqu'à 100 Mo, gratuit, sans compte, sans filigrane.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF en Word", href: "/fr/tools/pdf-to-word" },
-      { label: "Fusionner des PDF", href: "/fr/tools/merge-pdf" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
     ],
     faqDescription: "Questions fréquentes sur la conversion de documents Word en PDF.",
     faq: [
@@ -477,11 +445,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         body: "Votre PDF est chiffré à l'envoi, rendu automatiquement sans intervention humaine, et l'envoi comme les images sont supprimés sous 24 heures. Un fichier à la fois, jusqu'à 100 Mo, gratuit, sans compte.",
       },
     ],
-    relatedTools: [
-      { label: "JPG en PDF", href: "/fr/tools/jpg-to-pdf" },
-      { label: "Diviser un PDF", href: "/fr/tools/split-pdf" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
-    ],
     faqDescription: "Questions fréquentes sur la conversion de pages de PDF en images JPG.",
     faq: [
       {
@@ -533,11 +496,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         heading: "Confidentialité et limites",
         body: "Les images sont chiffrées à l'envoi, combinées automatiquement sans intervention humaine, et les sources comme le PDF final sont supprimés sous 24 heures. Plusieurs images à la fois, 100 Mo combinés, gratuit, sans compte, sans filigrane.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF en JPG", href: "/fr/tools/pdf-to-jpg" },
-      { label: "Fusionner des PDF", href: "/fr/tools/merge-pdf" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
     ],
     faqDescription: "Questions fréquentes sur la conversion d'images JPG en un PDF.",
     faq: [
@@ -593,11 +551,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         heading: "Confidentialité et limites",
         body: "Chaque envoi est chiffré et traité automatiquement sans intervention humaine. L'original comme l'image convertie sont supprimés des serveurs de ConvertBrio sous 24 heures. Fichiers jusqu'à 100 Mo, gratuit, sans compte et sans filigrane.",
       },
-    ],
-    relatedTools: [
-      { label: "Compresser une Image", href: "/fr/tools/compress-image" },
-      { label: "JPG en PDF", href: "/fr/tools/jpg-to-pdf" },
-      { label: "PDF en JPG", href: "/fr/tools/pdf-to-jpg" },
     ],
     faqDescription: "Questions fréquentes sur le convertisseur d'images de ConvertBrio.",
     faq: [
@@ -656,11 +609,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         heading: "Confidentialité et limites",
         body: "Votre document est chiffré à l'envoi, traité automatiquement sans intervention humaine, et l'envoi comme le résultat OCR sont supprimés sous 24 heures. Un PDF à la fois, jusqu'à 100 Mo, gratuit, sans compte.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF en Word", href: "/fr/tools/pdf-to-word" },
-      { label: "PDF en JPG", href: "/fr/tools/pdf-to-jpg" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
     ],
     faqDescription: "Questions fréquentes sur l'OCR d'un PDF et la récupération du texte scanné dans Word.",
     faq: [
@@ -731,11 +679,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         body: "Votre présentation est chiffrée à l'envoi, traitée automatiquement sur les serveurs de ConvertBrio sans intervention humaine, et l'envoi comme la copie compressée sont supprimés sous 24 heures. Un .pptx à la fois, jusqu'à 100 Mo, gratuit, sans compte, sans filigrane.",
       },
     ],
-    relatedTools: [
-      { label: "Compresser un Document Word", href: "/fr/tools/compress-word" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
-      { label: "Compresser une Image", href: "/fr/tools/compress-image" },
-    ],
     faqDescription: "Questions fréquentes sur la réduction de la taille d'une présentation PowerPoint.",
     faq: [
       {
@@ -804,11 +747,6 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
         heading: "Confidentialité et limites",
         body: "Votre document est chiffré à l'envoi, traité automatiquement sur les serveurs de ConvertBrio sans intervention humaine, et l'envoi comme la copie compressée sont supprimés sous 24 heures. Un .docx à la fois, jusqu'à 100 Mo, gratuit, sans compte, sans filigrane.",
       },
-    ],
-    relatedTools: [
-      { label: "Word en PDF", href: "/fr/tools/word-to-pdf" },
-      { label: "Compresser un PDF", href: "/fr/tools/compress-pdf" },
-      { label: "Compresser un PowerPoint", href: "/fr/tools/compress-powerpoint" },
     ],
     faqDescription: "Questions fréquentes sur la réduction de la taille d'un document Word.",
     faq: [

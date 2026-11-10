@@ -21,11 +21,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "PNG-Exporte sind in der Regel größer als vergleichbare JPGs, besonders bei Seiten mit vielen Bilddetails. Wenn die Dateigröße wichtiger ist als pixelgenaue Schärfe, etwa beim beiläufigen Teilen oder Posten im Netz, ist PDF in JPG vielleicht die praktischere Wahl.",
       },
     ],
-    relatedTools: [
-      { label: "PDF in JPG", href: "/de/tools/pdf-to-jpg" },
-      { label: "JPG in PDF", href: "/de/tools/jpg-to-pdf" },
-      { label: "OCR für PDF", href: "/de/tools/ocr-pdf" },
-    ],
     faqDescription: "Häufige Fragen zum Umwandeln von PDF-Seiten in PNG-Bilder.",
     faq: [
       {
@@ -64,12 +59,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "Du kannst mehrere Bilder in einem Durchgang hochladen – kostenlos und ohne Konto.",
       },
     ],
-    relatedTools: [
-      { label: "JPG in PDF", href: "/de/tools/jpg-to-pdf" },
-      { label: "PDF in JPG", href: "/de/tools/pdf-to-jpg" },
-      { label: "PDF zusammenfügen", href: "/de/tools/merge-pdf" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-    ],
     faqDescription: "Häufige Fragen zum Umwandeln von Bildern in PDF.",
     faq: [
       {
@@ -107,11 +96,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         heading: "PNG für schärferen Text",
         body: "Enthält die exportierte Seite kleine Schrift oder feine Details, die gestochen scharf bleiben sollen, nimm stattdessen Word in PNG: Das verlustfreie PNG-Format vermeidet die leichte Weichzeichnung, die die JPG-Komprimierung an Textkanten verursachen kann.",
       },
-    ],
-    relatedTools: [
-      { label: "Word in PNG", href: "/de/tools/word-to-png" },
-      { label: "Word in PDF", href: "/de/tools/word-to-pdf" },
-      { label: "PDF in JPG", href: "/de/tools/pdf-to-jpg" },
     ],
     faqDescription: "Häufige Fragen zum Umwandeln von Word-Dokumenten in JPG-Bilder.",
     faq: [
@@ -155,11 +139,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "Deine DOCX-Datei wird zunächst auf einer Standardseite im Format A4 gesetzt. Komplexe Word-spezifische Formatierungen wie Kopf- und Fußzeilen, Fußnoten oder ungewöhnliche Seitenformate werden daher möglicherweise etwas anders dargestellt als in Word selbst. Ein einseitiges Dokument wird als einzelnes PNG heruntergeladen, mehrseitige Dokumente als ZIP-Datei mit einem PNG pro Seite. Uploads sind auf 100 MB begrenzt. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet.",
       },
     ],
-    relatedTools: [
-      { label: "Word in JPG", href: "/de/tools/word-to-jpg" },
-      { label: "Word in PDF", href: "/de/tools/word-to-pdf" },
-      { label: "PDF in PNG", href: "/de/tools/pdf-to-png" },
-    ],
     faqDescription: "Häufige Fragen zum Umwandeln von Word-Dokumenten in PNG-Bilder.",
     faq: [
       {
@@ -197,11 +176,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         heading: "Typische Anwendungsfälle",
         body: "Das Tool wird häufig genutzt, um Finanzberichte und Rechnungen an Personen ohne Excel zu schicken, einen festen Stand einer Tabelle zu archivieren, bevor sie sich weiter ändert, und Datentabellen für Druck oder offizielle Verteilung vorzubereiten.",
       },
-    ],
-    relatedTools: [
-      { label: "Word in PDF", href: "/de/tools/word-to-pdf" },
-      { label: "PowerPoint in PDF", href: "/de/tools/powerpoint-to-pdf" },
-      { label: "PDF zusammenfügen", href: "/de/tools/merge-pdf" },
     ],
     faqDescription: "Häufige Fragen zum Umwandeln von Excel-Tabellen in PDF.",
     faq: [
@@ -268,12 +242,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "Die Datei wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Eine .pptx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
-    relatedTools: [
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-      { label: "Word in PDF", href: "/de/tools/word-to-pdf" },
-      { label: "Excel in PDF", href: "/de/tools/excel-to-pdf" },
-      { label: "PDF zusammenfügen", href: "/de/tools/merge-pdf" },
-    ],
     faqDescription: "Häufige Fragen zum Umwandeln von PowerPoint-Präsentationen in PDF.",
     faq: [
       {
@@ -325,11 +293,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         heading: "Limits und Datenschutz",
         body: "Du kannst in einem Durchgang bis zu 25 Dateien mit zusammen höchstens 100 MB kombinieren. Jede Datei wird auf dem Server umgewandelt und verarbeitet, nicht in deinem Browser. Deine Originaldateien werden gelöscht, sobald sie für die Umwandlung gelesen wurden. Das zusammengeführte Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet.",
       },
-    ],
-    relatedTools: [
-      { label: "Word in PDF", href: "/de/tools/word-to-pdf" },
-      { label: "Excel in PDF", href: "/de/tools/excel-to-pdf" },
-      { label: "PowerPoint in PDF", href: "/de/tools/powerpoint-to-pdf" },
     ],
     faqDescription: "Häufige Fragen zum Zusammenführen von Word-, Excel- und PowerPoint-Dateien zu einer PDF.",
     faq: [
@@ -391,12 +354,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         heading: "Datenschutz",
         body: "Das Modell zur Hintergrundentfernung ist quelloffen und läuft in der eigenen Verarbeitung von ConvertBrio: Dein Foto wird weder an eine externe API geschickt noch von einem Menschen angesehen. Uploads sind auf 100 MB begrenzt. Deine Originaldatei wird gelöscht, sobald sie für die Verarbeitung gelesen wurde. Der Freisteller wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet.",
       },
-    ],
-    relatedTools: [
-      { label: "Passfoto-Ersteller", href: "/de/tools/passport-photo-maker" },
-      { label: "Bild zuschneiden", href: "/de/tools/crop-image" },
-      { label: "Bildkonverter", href: "/de/tools/image-converter" },
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
     ],
     faqDescription: "Häufige Fragen zum KI-Hintergrundentferner von ConvertBrio.",
     faq: [
@@ -488,11 +445,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "Gesichtserkennung und Hintergrundentfernung nutzen quelloffene Modelle und laufen in der eigenen Verarbeitung von ConvertBrio: Dein Foto wird weder an eine API eines Drittanbieters geschickt noch von einem Menschen angesehen. Dein Originalfoto wird gelöscht, sobald es für die Verarbeitung gelesen wurde. Das erzeugte Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet.",
       },
     ],
-    relatedTools: [
-      { label: "Hintergrund entfernen", href: "/de/tools/remove-background" },
-      { label: "Bild zuschneiden", href: "/de/tools/crop-image" },
-      { label: "Bildgröße ändern", href: "/de/tools/resize-image" },
-    ],
     faqDescription: "Häufige Fragen zum Passfoto-Ersteller von ConvertBrio.",
     faq: [
       {
@@ -540,10 +492,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         heading: "Was er nicht beheben kann",
         body: "Das ist ein Verbesserungsdurchlauf, kein Werkzeug zur Auflösungserhöhung oder Restaurierung: Er holt aus einem sehr niedrig aufgelösten Bild keine Details zurück, behebt keine Bewegungsunschärfe oder verfehlten Schärfe und rekonstruiert keine fehlenden Details. Für eine höhere Auflösung mit einem trainierten Super-Resolution-Modell nimm stattdessen den KI-Hochskalierer.",
       },
-    ],
-    relatedTools: [
-      { label: "KI-Hochskalierer", href: "/de/tools/ai-upscaler" },
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
     ],
     faqDescription: "Häufige Fragen zum Bildverbesserer von ConvertBrio.",
     faq: [
@@ -609,11 +557,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "Das Modell läuft in der eigenen Verarbeitung von ConvertBrio, ohne KI-Dienst eines Drittanbieters. Uploads sind auf 100 MB begrenzt. Deine Originaldatei wird gelöscht, sobald sie für die Verarbeitung gelesen wurde. Das hochskalierte Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet.",
       },
     ],
-    relatedTools: [
-      { label: "Bildgröße ändern", href: "/de/tools/resize-image" },
-      { label: "KI-Bildverbesserer", href: "/de/tools/ai-image-enhancer" },
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
-    ],
     faqDescription: "Häufige Fragen zum KI-Bild-Hochskalierer von ConvertBrio.",
     faq: [
       {
@@ -674,12 +617,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "Dateien werden verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Komprimierung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Passwortgeschützte PDFs lassen sich nicht verarbeiten.",
       },
     ],
-    relatedTools: [
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-      { label: "PDF teilen", href: "/de/tools/split-pdf" },
-      { label: "PDF-Seitenorganisator", href: "/de/tools/pdf-page-organizer" },
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
-    ],
     faqDescription: "Häufige Fragen zum Komprimieren einer PDF auf eine maximale Größe in KB oder MB.",
     faq: [
       { question: "Wie komprimiere ich eine PDF auf unter 200 KB?", answer: "Lade die PDF hoch, gib 200 ein, wähle KB und starte die Komprimierung. Das Tool probiert stärkere Einstellungen aus, bis die Datei passt, oder nennt dir die kleinste erreichbare Größe, falls 200 KB für dieses Dokument unrealistisch sind." },
@@ -722,12 +659,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "Fotografiere oder scanne deine Unterschrift auf schlichtem weißem Papier bei gutem Licht, lade sie hoch und nutze die Unterschrift-Vorgabe 3:1 oder deine eigene Größe. Schwarze Tinte auf Weiß ergibt sehr kleine Dateien.",
       },
     ],
-    relatedTools: [
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
-      { label: "Bildgröße ändern", href: "/de/tools/resize-image" },
-      { label: "Passfoto-Ersteller", href: "/de/tools/passport-photo-maker" },
-      { label: "Bilder-Stapelkompression", href: "/de/tools/batch-image-compressor" },
-    ],
     faqDescription: "Häufige Fragen zum Anpassen eines Fotos oder einer Unterschrift für ein Online-Formular.",
     faq: [
       { question: "Wie bringe ich ein Foto auf 200 × 230 Pixel unter 20 KB?", answer: "Lade das Foto hoch, gib 200 als Breite, 230 als Höhe und 20 als maximale KB ein und starte die Anpassung. Die Ergebnismeldung bestätigt die exakte Größe." },
@@ -764,12 +695,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         heading: "Wann Stapel, wann einzeln",
         body: "Nutze für eine einzelne Datei das Tool Bild komprimieren. Nutze den Stapel, wenn viele Bilder dasselbe Limit teilen, etwa beim Hochladen eines Produktsatzes, einer Reihe von Dokumenten in ein Portal oder von Fotos für eine E-Mail.",
       },
-    ],
-    relatedTools: [
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
-      { label: "Foto & Unterschrift anpassen", href: "/de/tools/photo-signature-resizer" },
-      { label: "Bild in PDF", href: "/de/tools/image-to-pdf" },
-      { label: "Bildkonverter", href: "/de/tools/image-converter" },
     ],
     faqDescription: "Häufige Fragen zum Komprimieren mehrerer Bilder auf dieselbe Größe.",
     faq: [
@@ -811,12 +736,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         heading: "Datenschutz",
         body: "Bilder werden verschlüsselt übertragen. Dein Originalbild wird gelöscht, sobald es für die Erkennung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Der erkannte Text wird nur dir angezeigt.",
       },
-    ],
-    relatedTools: [
-      { label: "Scan in Word", href: "/de/tools/scan-to-word" },
-      { label: "OCR für PDF", href: "/de/tools/ocr-pdf" },
-      { label: "PDF in Word", href: "/de/tools/pdf-to-word" },
-      { label: "Bildkonverter", href: "/de/tools/image-converter" },
     ],
     faqDescription: "Häufige Fragen zum Auslesen von Text aus Bildern per OCR.",
     faq: [
@@ -906,13 +825,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "Uploads werden verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Erkennung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet.",
       },
     ],
-    relatedTools: [
-      { label: "Bild in Text", href: "/de/tools/image-to-text" },
-      { label: "OCR für PDF", href: "/de/tools/ocr-pdf" },
-      { label: "PDF in Word", href: "/de/tools/pdf-to-word" },
-      { label: "Bild in PDF", href: "/de/tools/image-to-pdf" },
-      { label: "PDF teilen", href: "/de/tools/split-pdf" },
-    ],
     faqDescription: "Häufige Fragen zum Umwandeln von Scans in bearbeitbare Word-Dokumente.",
     faq: [
       { question: "Wie wandle ich ein gescanntes Dokument in Word um?", answer: "Lade den Scan als Bild oder PDF hoch, wähle die Sprache und lade das vom Tool erstellte DOCX herunter. Gleiche es mit dem Original ab, da die OCR Zeichen falsch lesen kann." },
@@ -957,12 +869,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         body: "Dateien bis zu 100 MB. Passwortgeschützte PDFs lassen sich nicht öffnen. Sehr lange PDFs brauchen für die Vorschau länger, weil jedes Vorschaubild nacheinander gerendert wird.",
       },
     ],
-    relatedTools: [
-      { label: "PDF zusammenfügen", href: "/de/tools/merge-pdf" },
-      { label: "PDF teilen", href: "/de/tools/split-pdf" },
-      { label: "PDF drehen", href: "/de/tools/rotate-pdf" },
-      { label: "PDF auf Zielgröße komprimieren", href: "/de/tools/compress-pdf-to-size" },
-    ],
     faqDescription: "Häufige Fragen zum Umsortieren, Drehen und Löschen von PDF-Seiten.",
     faq: [
       { question: "Wie ändere ich die Seitenreihenfolge in einer PDF?", answer: "Lade sie hoch, ziehe die Vorschaubilder in eine neue Reihenfolge oder nutze die Schaltflächen für früher und später und erstelle dann die neue PDF." },
@@ -1003,12 +909,6 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
         heading: "Datenschutz",
         body: "Dateien werden verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Bereinigung gelesen wurde. Die bereinigte Kopie wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet.",
       },
-    ],
-    relatedTools: [
-      { label: "Bild komprimieren", href: "/de/tools/compress-image" },
-      { label: "PDF komprimieren", href: "/de/tools/compress-pdf" },
-      { label: "Bildkonverter", href: "/de/tools/image-converter" },
-      { label: "Word-Dokument komprimieren", href: "/de/tools/compress-word" },
     ],
     faqDescription: "Häufige Fragen zum Entfernen versteckter Metadaten aus Dateien.",
     faq: [

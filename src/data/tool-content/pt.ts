@@ -64,12 +64,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         body: "Seu PDF é criptografado durante o envio, processado automaticamente nos servidores do ConvertBrio sem revisão humana, e tanto o original quanto a cópia comprimida são apagados em até 24 horas. Um arquivo por vez, até 100 MB, grátis, sem conta, sem marca d'água.",
       },
     ],
-    relatedTools: [
-      { label: "Dividir PDF", href: "/pt/tools/split-pdf" },
-      { label: "Juntar PDF", href: "/pt/tools/merge-pdf" },
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
-      { label: "PDF para Word", href: "/pt/tools/pdf-to-word" },
-    ],
     faqDescription: "Perguntas comuns sobre como comprimir o tamanho de um PDF online.",
     faq: [
       {
@@ -156,11 +150,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         body: "Todo envio é criptografado e apagado automaticamente dos servidores do ConvertBrio em até 24 horas, baixado ou não. Esta ferramenta comprime uma imagem por vez, até 100 MB, grátis, sem conta e sem marca d'água.",
       },
     ],
-    relatedTools: [
-      { label: "Redimensionar Imagem", href: "/pt/tools/image-converter" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-      { label: "Conversor de Imagem", href: "/pt/tools/image-converter" },
-    ],
     faqDescription: "Perguntas comuns sobre comprimir e reduzir o tamanho de imagens.",
     faq: [
       {
@@ -230,11 +219,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         body: "Os arquivos são criptografados no envio, combinados automaticamente sem revisão humana, e todos, origens e resultado, são apagados em até 24 horas. Vários arquivos por junção, até 100 MB cada, grátis, sem conta, sem marca d'água.",
       },
     ],
-    relatedTools: [
-      { label: "Dividir PDF", href: "/pt/tools/split-pdf" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-      { label: "JPG para PDF", href: "/pt/tools/jpg-to-pdf" },
-    ],
     faqDescription: "Perguntas comuns sobre juntar vários arquivos PDF em um só.",
     faq: [
       {
@@ -289,11 +273,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         heading: "Privacidade e limites",
         body: "O envio é criptografado, processado automaticamente sem revisão humana, e tanto o original quanto as páginas resultantes são apagados dos servidores do ConvertBrio em até 24 horas. Limite de 100 MB por arquivo.",
       },
-    ],
-    relatedTools: [
-      { label: "Juntar PDF", href: "/pt/tools/merge-pdf" },
-      { label: "PDF para JPG", href: "/pt/tools/pdf-to-jpg" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
     ],
     faqDescription: "Perguntas comuns sobre dividir um PDF em páginas individuais.",
     faq: [
@@ -356,12 +335,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         body: "O PDF é criptografado no envio, convertido automaticamente sem revisão humana, e os dois arquivos são apagados em até 24 horas. Um documento por vez, até 100 MB, grátis, sem conta, sem marca d'água.",
       },
     ],
-    relatedTools: [
-      { label: "Word para PDF", href: "/pt/tools/word-to-pdf" },
-      { label: "OCR de PDF", href: "/pt/tools/ocr-pdf" },
-      { label: "PDF para JPG", href: "/pt/tools/pdf-to-jpg" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-    ],
     faqDescription: "Perguntas comuns sobre converter arquivos PDF em documentos Word editáveis.",
     faq: [
       {
@@ -415,11 +388,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         heading: "Privacidade e limites",
         body: "Seu documento é criptografado no envio, convertido automaticamente sem revisão humana, e os dois arquivos são apagados em até 24 horas. Um .docx por vez, até 100 MB, grátis, sem conta, sem marca d'água.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF para Word", href: "/pt/tools/pdf-to-word" },
-      { label: "Juntar PDF", href: "/pt/tools/merge-pdf" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
     ],
     faqDescription: "Perguntas comuns sobre converter documentos Word em PDF.",
     faq: [
@@ -477,11 +445,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         body: "Seu PDF é criptografado no envio, renderizado automaticamente sem revisão humana, e tanto o envio quanto as imagens são apagados em até 24 horas. Um arquivo por vez, até 100 MB, grátis, sem conta.",
       },
     ],
-    relatedTools: [
-      { label: "JPG para PDF", href: "/pt/tools/jpg-to-pdf" },
-      { label: "Dividir PDF", href: "/pt/tools/split-pdf" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-    ],
     faqDescription: "Perguntas comuns sobre converter páginas de PDF em imagens JPG.",
     faq: [
       {
@@ -533,11 +496,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         heading: "Privacidade e limites",
         body: "As imagens são criptografadas no envio, combinadas automaticamente sem revisão humana, e tanto as origens quanto o PDF final são apagados em até 24 horas. Várias imagens por vez, 100 MB combinados, grátis, sem conta, sem marca d'água.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF para JPG", href: "/pt/tools/pdf-to-jpg" },
-      { label: "Juntar PDF", href: "/pt/tools/merge-pdf" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
     ],
     faqDescription: "Perguntas comuns sobre converter imagens JPG em um PDF.",
     faq: [
@@ -593,11 +551,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         heading: "Privacidade e limites",
         body: "Todo envio é criptografado e processado automaticamente sem revisão humana. Tanto o original quanto a imagem convertida são apagados dos servidores do ConvertBrio em até 24 horas. Arquivos de até 100 MB, grátis, sem conta e sem marca d'água.",
       },
-    ],
-    relatedTools: [
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
-      { label: "JPG para PDF", href: "/pt/tools/jpg-to-pdf" },
-      { label: "PDF para JPG", href: "/pt/tools/pdf-to-jpg" },
     ],
     faqDescription: "Perguntas comuns sobre o conversor de imagem do ConvertBrio.",
     faq: [
@@ -656,11 +609,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         heading: "Privacidade e limites",
         body: "Seu documento é criptografado no envio, processado automaticamente sem revisão humana, e tanto o envio quanto o resultado com OCR são apagados em até 24 horas. Um PDF por vez, até 100 MB, grátis, sem conta.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF para Word", href: "/pt/tools/pdf-to-word" },
-      { label: "PDF para JPG", href: "/pt/tools/pdf-to-jpg" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
     ],
     faqDescription: "Perguntas comuns sobre rodar OCR em um PDF e levar o texto digitalizado para o Word.",
     faq: [
@@ -731,11 +679,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         body: "Sua apresentação é criptografada no envio, processada automaticamente nos servidores do ConvertBrio sem revisão humana, e tanto o envio quanto a cópia comprimida são apagados em até 24 horas. Um .pptx por vez, até 100 MB, grátis, sem conta, sem marca d'água.",
       },
     ],
-    relatedTools: [
-      { label: "Comprimir Word", href: "/pt/tools/compress-word" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
-    ],
     faqDescription: "Perguntas comuns sobre reduzir o tamanho de uma apresentação do PowerPoint.",
     faq: [
       {
@@ -804,11 +747,6 @@ export const toolContentPt: Record<string, ToolContentEntry> = {
         heading: "Privacidade e limites",
         body: "Seu documento é criptografado no envio, processado automaticamente nos servidores do ConvertBrio sem revisão humana, e tanto o envio quanto a cópia comprimida são apagados em até 24 horas. Um .docx por vez, até 100 MB, grátis, sem conta, sem marca d'água.",
       },
-    ],
-    relatedTools: [
-      { label: "Word para PDF", href: "/pt/tools/word-to-pdf" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-      { label: "Comprimir PowerPoint", href: "/pt/tools/compress-powerpoint" },
     ],
     faqDescription: "Perguntas comuns sobre reduzir o tamanho de um documento Word.",
     faq: [

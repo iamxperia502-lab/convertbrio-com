@@ -21,11 +21,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         body: "As exportações em PNG costumam ser maiores que as equivalentes em JPG, principalmente em páginas com muito detalhe visual. Se o tamanho do arquivo importa mais que a nitidez perfeita, por exemplo para compartilhar de forma informal ou publicar na internet, PDF para JPG pode ser a escolha mais prática.",
       },
     ],
-    relatedTools: [
-      { label: "PDF para JPG", href: "/pt/tools/pdf-to-jpg" },
-      { label: "JPG para PDF", href: "/pt/tools/jpg-to-pdf" },
-      { label: "OCR de PDF", href: "/pt/tools/ocr-pdf" },
-    ],
     faqDescription: "Dúvidas comuns sobre como converter páginas de PDF em imagens PNG.",
     faq: [
       {
@@ -63,12 +58,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         body: "Você pode enviar várias imagens de uma só vez, de graça e sem criar conta.",
       },
     ],
-    relatedTools: [
-      { label: "JPG para PDF", href: "/pt/tools/jpg-to-pdf" },
-      { label: "PDF para JPG", href: "/pt/tools/pdf-to-jpg" },
-      { label: "Juntar PDF", href: "/pt/tools/merge-pdf" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-    ],
     faqDescription: "Dúvidas comuns sobre como converter imagens em PDF.",
     faq: [
       {
@@ -105,11 +94,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         heading: "PNG para texto mais nítido",
         body: "Se a página exportada tem letras pequenas ou detalhes finos que você quer manter perfeitamente nítidos, use Word para PNG: o formato sem perdas do PNG evita o leve embaçamento que a compressão do JPG pode causar nas bordas do texto.",
       },
-    ],
-    relatedTools: [
-      { label: "Word para PNG", href: "/pt/tools/word-to-png" },
-      { label: "Word para PDF", href: "/pt/tools/word-to-pdf" },
-      { label: "PDF para JPG", href: "/pt/tools/pdf-to-jpg" },
     ],
     faqDescription: "Dúvidas comuns sobre como converter documentos do Word em imagens JPG.",
     faq: [
@@ -151,11 +135,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         body: "Seu DOCX é primeiro diagramado em uma página A4 padrão, então formatações complexas específicas do Word, como cabeçalhos e rodapés, notas de rodapé ou tamanhos de página incomuns, podem ficar um pouco diferentes do que no próprio Word. Um documento de uma página é baixado como um único PNG; documentos com várias páginas são baixados em um arquivo ZIP com um PNG por página. Os envios são limitados a 100 MB. Seu arquivo original é apagado logo depois de lido para a conversão. O resultado convertido é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana.",
       },
     ],
-    relatedTools: [
-      { label: "Word para JPG", href: "/pt/tools/word-to-jpg" },
-      { label: "Word para PDF", href: "/pt/tools/word-to-pdf" },
-      { label: "PDF para PNG", href: "/pt/tools/pdf-to-png" },
-    ],
     faqDescription: "Dúvidas comuns sobre como converter documentos do Word em imagens PNG.",
     faq: [
       {
@@ -193,11 +172,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         heading: "Casos de uso comuns",
         body: "A ferramenta costuma ser usada para compartilhar relatórios financeiros e faturas com quem não tem o Excel, arquivar uma versão fixa de uma planilha antes que ela mude de novo e preparar tabelas de dados para impressão ou distribuição oficial.",
       },
-    ],
-    relatedTools: [
-      { label: "Word para PDF", href: "/pt/tools/word-to-pdf" },
-      { label: "PowerPoint para PDF", href: "/pt/tools/powerpoint-to-pdf" },
-      { label: "Juntar PDF", href: "/pt/tools/merge-pdf" },
     ],
     faqDescription: "Dúvidas comuns sobre como converter planilhas do Excel em PDF.",
     faq: [
@@ -258,12 +232,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         body: "O arquivo é criptografado em trânsito. Seu arquivo original é apagado logo depois de lido para a conversão. O resultado convertido é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana. Um .pptx por vez, até 100 MB, grátis, sem conta e sem marca d'água.",
       },
     ],
-    relatedTools: [
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-      { label: "Word para PDF", href: "/pt/tools/word-to-pdf" },
-      { label: "Excel para PDF", href: "/pt/tools/excel-to-pdf" },
-      { label: "Juntar PDF", href: "/pt/tools/merge-pdf" },
-    ],
     faqDescription: "Dúvidas comuns sobre como converter apresentações do PowerPoint em PDF.",
     faq: [
       {
@@ -312,11 +280,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         heading: "Limites e privacidade",
         body: "Você pode combinar até 25 arquivos, com tamanho total de 100 MB, de uma só vez. Seus arquivos originais são apagados logo depois de lidos para a conversão. O PDF final é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), e não no seu navegador, sem revisão humana.",
       },
-    ],
-    relatedTools: [
-      { label: "Word para PDF", href: "/pt/tools/word-to-pdf" },
-      { label: "Excel para PDF", href: "/pt/tools/excel-to-pdf" },
-      { label: "PowerPoint para PDF", href: "/pt/tools/powerpoint-to-pdf" },
     ],
     faqDescription: "Dúvidas comuns sobre como juntar arquivos do Word, Excel e PowerPoint em um único PDF.",
     faq: [
@@ -371,12 +334,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         heading: "Privacidade",
         body: "O modelo de remoção de fundo é de código aberto e roda na nossa própria infraestrutura: sua foto não é enviada a nenhuma API externa e nenhuma pessoa a vê. Os envios são limitados a 100 MB. Seu arquivo original é apagado logo depois de lido para o processamento. O recorte é apagado por uma limpeza diária, normalmente em cerca de 24 horas, quer você o baixe ou não. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana.",
       },
-    ],
-    relatedTools: [
-      { label: "Criador de Foto 3x4 e Passaporte", href: "/pt/tools/passport-photo-maker" },
-      { label: "Recortar Imagem", href: "/pt/tools/crop-image" },
-      { label: "Conversor de Imagem", href: "/pt/tools/image-converter" },
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
     ],
     faqDescription: "Dúvidas comuns sobre o removedor de fundo com IA do ConvertBrio.",
     faq: [
@@ -459,11 +416,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         body: "A detecção de rosto e a remoção de fundo rodam com modelos de código aberto na nossa própria infraestrutura: sua foto não é enviada a nenhuma API de terceiros nem revisada por uma pessoa. Seu arquivo original é apagado logo depois de lido para o processamento. O resultado é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana.",
       },
     ],
-    relatedTools: [
-      { label: "Remover Fundo", href: "/pt/tools/remove-background" },
-      { label: "Recortar Imagem", href: "/pt/tools/crop-image" },
-      { label: "Redimensionar Imagem", href: "/pt/tools/resize-image" },
-    ],
     faqDescription: "Dúvidas comuns sobre o criador de fotos de passaporte do ConvertBrio.",
     faq: [
       {
@@ -507,10 +459,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         heading: "O que ele não resolve",
         body: "É uma passada de melhoria, e não uma ferramenta de aumento de resolução ou de restauração: não recupera com nitidez detalhes de uma imagem de resolução muito baixa, não corrige desfoque de movimento nem fotos fora de foco e não reconstrói detalhes que faltam. Para aumentar a resolução com um modelo treinado de super-resolução, use o Ampliador com IA.",
       },
-    ],
-    relatedTools: [
-      { label: "Ampliador com IA", href: "/pt/tools/ai-upscaler" },
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
     ],
     faqDescription: "Dúvidas comuns sobre o melhorador de imagem do ConvertBrio.",
     faq: [
@@ -568,11 +516,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         body: "O modelo roda na nossa própria infraestrutura, sem serviço de IA de terceiros. Os envios são limitados a 100 MB. Seu arquivo original é apagado logo depois de lido para o processamento. O resultado ampliado é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana.",
       },
     ],
-    relatedTools: [
-      { label: "Redimensionar Imagem", href: "/pt/tools/resize-image" },
-      { label: "Melhorar Imagem com IA", href: "/pt/tools/ai-image-enhancer" },
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
-    ],
     faqDescription: "Dúvidas comuns sobre o ampliador de imagem com IA do ConvertBrio.",
     faq: [
       {
@@ -628,12 +571,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         heading: "Privacidade e limites",
         body: "Os arquivos são criptografados em trânsito. Seu arquivo original é apagado logo depois de lido para a compressão. O resultado é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana. PDFs protegidos por senha não podem ser processados.",
       },
-    ],
-    relatedTools: [
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-      { label: "Dividir PDF", href: "/pt/tools/split-pdf" },
-      { label: "Organizador de Páginas de PDF", href: "/pt/tools/pdf-page-organizer" },
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
     ],
     faqDescription: "Dúvidas comuns sobre como comprimir um PDF para um tamanho máximo em KB ou MB.",
     faq: [
@@ -700,12 +637,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         body: "Fotografe ou digitalize a sua assinatura em papel branco liso e com boa luz, envie e use a predefinição de assinatura 3:1 ou o seu próprio tamanho. Tinta preta sobre branco gera arquivos muito pequenos.",
       },
     ],
-    relatedTools: [
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
-      { label: "Redimensionar Imagem", href: "/pt/tools/resize-image" },
-      { label: "Criador de Foto 3x4 e Passaporte", href: "/pt/tools/passport-photo-maker" },
-      { label: "Compressor de Imagens em Lote", href: "/pt/tools/batch-image-compressor" },
-    ],
     faqDescription: "Dúvidas comuns sobre como redimensionar uma foto ou assinatura para um formulário online.",
     faq: [
       {
@@ -760,12 +691,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         heading: "Quando usar o lote e quando usar o individual",
         body: "Use a ferramenta Comprimir Imagem para um único arquivo. Use o lote quando muitas imagens compartilham o mesmo limite, por exemplo ao enviar um conjunto de produtos, uma série de documentos a um portal ou fotos para um e-mail.",
       },
-    ],
-    relatedTools: [
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
-      { label: "Redimensionar Foto e Assinatura", href: "/pt/tools/photo-signature-resizer" },
-      { label: "Imagem para PDF", href: "/pt/tools/image-to-pdf" },
-      { label: "Conversor de Imagem", href: "/pt/tools/image-converter" },
     ],
     faqDescription: "Dúvidas comuns sobre como comprimir várias imagens para o mesmo tamanho.",
     faq: [
@@ -826,12 +751,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         heading: "Privacidade",
         body: "As imagens são criptografadas em trânsito. Seu arquivo original é apagado logo depois de lido para o reconhecimento. O resultado é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana. O texto reconhecido é mostrado só para você.",
       },
-    ],
-    relatedTools: [
-      { label: "Digitalização para Word", href: "/pt/tools/scan-to-word" },
-      { label: "OCR de PDF", href: "/pt/tools/ocr-pdf" },
-      { label: "PDF para Word", href: "/pt/tools/pdf-to-word" },
-      { label: "Conversor de Imagem", href: "/pt/tools/image-converter" },
     ],
     faqDescription: "Dúvidas comuns sobre como extrair texto de imagens com OCR.",
     faq: [
@@ -942,13 +861,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         body: "Os envios são criptografados em trânsito. Seu arquivo original é apagado logo depois de lido para o reconhecimento. O resultado convertido é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana.",
       },
     ],
-    relatedTools: [
-      { label: "Imagem para Texto", href: "/pt/tools/image-to-text" },
-      { label: "OCR de PDF", href: "/pt/tools/ocr-pdf" },
-      { label: "PDF para Word", href: "/pt/tools/pdf-to-word" },
-      { label: "Imagem para PDF", href: "/pt/tools/image-to-pdf" },
-      { label: "Dividir PDF", href: "/pt/tools/split-pdf" },
-    ],
     faqDescription: "Dúvidas comuns sobre como converter digitalizações em documentos do Word editáveis.",
     faq: [
       {
@@ -1024,12 +936,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         body: "Arquivos de até 100 MB. PDFs protegidos por senha não podem ser abertos. PDFs muito longos demoram mais para exibir a prévia, porque cada miniatura é renderizada em sequência.",
       },
     ],
-    relatedTools: [
-      { label: "Juntar PDF", href: "/pt/tools/merge-pdf" },
-      { label: "Dividir PDF", href: "/pt/tools/split-pdf" },
-      { label: "Girar PDF", href: "/pt/tools/rotate-pdf" },
-      { label: "Comprimir PDF para um Tamanho", href: "/pt/tools/compress-pdf-to-size" },
-    ],
     faqDescription: "Dúvidas comuns sobre como reordenar, girar e excluir páginas de PDF.",
     faq: [
       {
@@ -1088,12 +994,6 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
         heading: "Privacidade",
         body: "Os arquivos são criptografados em trânsito. Seu arquivo original é apagado logo depois de lido para a limpeza. O resultado é apagado por uma limpeza diária, normalmente em cerca de 24 horas. Os arquivos são processados automaticamente nos servidores dos nossos provedores de hospedagem (Vercel e Supabase), sem revisão humana.",
       },
-    ],
-    relatedTools: [
-      { label: "Comprimir Imagem", href: "/pt/tools/compress-image" },
-      { label: "Comprimir PDF", href: "/pt/tools/compress-pdf" },
-      { label: "Conversor de Imagem", href: "/pt/tools/image-converter" },
-      { label: "Comprimir Word", href: "/pt/tools/compress-word" },
     ],
     faqDescription: "Dúvidas comuns sobre como remover metadados ocultos de arquivos.",
     faq: [

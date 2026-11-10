@@ -21,11 +21,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         body: "Hasil ekspor PNG umumnya lebih besar daripada JPG yang setara, terutama untuk halaman dengan banyak detail visual. Jika ukuran file lebih penting daripada ketajaman sempurna, misalnya untuk berbagi santai atau diunggah ke internet, PDF ke JPG mungkin pilihan yang lebih praktis.",
       },
     ],
-    relatedTools: [
-      { label: "PDF ke JPG", href: "/id/tools/pdf-to-jpg" },
-      { label: "JPG ke PDF", href: "/id/tools/jpg-to-pdf" },
-      { label: "OCR PDF", href: "/id/tools/ocr-pdf" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengonversi halaman PDF menjadi gambar PNG.",
     faq: [
       {
@@ -64,12 +59,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         body: "Anda bisa mengunggah beberapa gambar dalam satu kali proses, gratis, tanpa perlu akun.",
       },
     ],
-    relatedTools: [
-      { label: "JPG ke PDF", href: "/id/tools/jpg-to-pdf" },
-      { label: "PDF ke JPG", href: "/id/tools/pdf-to-jpg" },
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengonversi gambar ke PDF.",
     faq: [
       {
@@ -107,11 +96,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         heading: "PNG untuk teks yang lebih tajam",
         body: "Jika halaman yang Anda ekspor berisi teks kecil atau detail halus yang ingin dijaga tetap tajam, pakai Word ke PNG: format PNG yang tanpa kehilangan kualitas menghindari efek sedikit melembut di tepi teks yang bisa muncul akibat kompresi JPG.",
       },
-    ],
-    relatedTools: [
-      { label: "Word ke PNG", href: "/id/tools/word-to-png" },
-      { label: "Word ke PDF", href: "/id/tools/word-to-pdf" },
-      { label: "PDF ke JPG", href: "/id/tools/pdf-to-jpg" },
     ],
     faqDescription: "Pertanyaan umum tentang mengonversi dokumen Word menjadi gambar JPG.",
     faq: [
@@ -158,11 +142,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         ],
       },
     ],
-    relatedTools: [
-      { label: "Word ke JPG", href: "/id/tools/word-to-jpg" },
-      { label: "Word ke PDF", href: "/id/tools/word-to-pdf" },
-      { label: "PDF ke PNG", href: "/id/tools/pdf-to-png" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengonversi dokumen Word menjadi gambar PNG.",
     faq: [
       {
@@ -200,11 +179,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         heading: "Kasus penggunaan umum",
         body: "Alat ini sering dipakai untuk membagikan laporan keuangan dan faktur kepada orang yang tidak punya Excel, mengarsipkan cuplikan tetap sebuah spreadsheet sebelum berubah lebih jauh, dan menyiapkan tabel data untuk dicetak atau didistribusikan secara resmi.",
       },
-    ],
-    relatedTools: [
-      { label: "Word ke PDF", href: "/id/tools/word-to-pdf" },
-      { label: "PowerPoint ke PDF", href: "/id/tools/powerpoint-to-pdf" },
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
     ],
     faqDescription: "Pertanyaan umum tentang mengonversi spreadsheet Excel ke PDF.",
     faq: [
@@ -271,12 +245,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Satu .pptx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
-    relatedTools: [
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-      { label: "Word ke PDF", href: "/id/tools/word-to-pdf" },
-      { label: "Excel ke PDF", href: "/id/tools/excel-to-pdf" },
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengonversi presentasi PowerPoint ke PDF.",
     faq: [
       {
@@ -331,11 +299,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
           "File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia.",
         ],
       },
-    ],
-    relatedTools: [
-      { label: "Word ke PDF", href: "/id/tools/word-to-pdf" },
-      { label: "Excel ke PDF", href: "/id/tools/excel-to-pdf" },
-      { label: "PowerPoint ke PDF", href: "/id/tools/powerpoint-to-pdf" },
     ],
     faqDescription: "Pertanyaan umum tentang menggabungkan file Word, Excel, dan PowerPoint menjadi satu PDF.",
     faq: [
@@ -400,12 +363,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
           "File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia.",
         ],
       },
-    ],
-    relatedTools: [
-      { label: "Pembuat Pas Foto Paspor", href: "/id/tools/passport-photo-maker" },
-      { label: "Potong Gambar", href: "/id/tools/crop-image" },
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
     ],
     faqDescription: "Pertanyaan umum tentang penghapus latar belakang AI dari ConvertBrio.",
     faq: [
@@ -500,11 +457,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         ],
       },
     ],
-    relatedTools: [
-      { label: "Hapus Latar Belakang", href: "/id/tools/remove-background" },
-      { label: "Potong Gambar", href: "/id/tools/crop-image" },
-      { label: "Ubah Ukuran Gambar", href: "/id/tools/resize-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang pembuat pas foto paspor dari ConvertBrio.",
     faq: [
       {
@@ -552,10 +504,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         heading: "Yang tidak bisa diperbaiki",
         body: "Ini adalah proses peningkatan, bukan alat penambah resolusi atau pemulihan: alat ini tidak akan memulihkan detail secara tajam dari gambar beresolusi sangat rendah, memperbaiki blur akibat gerakan atau foto yang tidak fokus, atau merekonstruksi detail yang hilang. Untuk menaikkan resolusi dengan model super-resolusi yang terlatih, pakai Pembesar Gambar AI.",
       },
-    ],
-    relatedTools: [
-      { label: "Pembesar Gambar AI", href: "/id/tools/ai-upscaler" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
     ],
     faqDescription: "Pertanyaan umum tentang peningkat gambar dari ConvertBrio.",
     faq: [
@@ -624,11 +572,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         ],
       },
     ],
-    relatedTools: [
-      { label: "Ubah Ukuran Gambar", href: "/id/tools/resize-image" },
-      { label: "Peningkat Gambar AI", href: "/id/tools/ai-image-enhancer" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang pembesar gambar AI dari ConvertBrio.",
     faq: [
       {
@@ -689,12 +632,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. PDF yang dilindungi kata sandi tidak dapat diproses.",
       },
     ],
-    relatedTools: [
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-      { label: "Pisah PDF", href: "/id/tools/split-pdf" },
-      { label: "Pengatur Halaman PDF", href: "/id/tools/pdf-page-organizer" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengompres PDF ke ukuran maksimum dalam KB atau MB.",
     faq: [
       { question: "Bagaimana cara mengompres PDF hingga di bawah 200 KB?", answer: "Unggah PDF, masukkan 200 dan pilih KB, lalu kompres. Alat mencoba pengaturan yang lebih kuat sampai file muat, atau memberi tahu ukuran terkecil yang bisa dicapai jika 200 KB tidak realistis untuk dokumen itu." },
@@ -737,12 +674,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         body: "Foto atau pindai tanda tangan Anda di atas kertas putih polos dengan cahaya yang baik, unggah, lalu pakai preset tanda tangan 3:1 atau ukuran Anda sendiri. Tinta hitam di atas putih menghasilkan file yang sangat kecil.",
       },
     ],
-    relatedTools: [
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-      { label: "Ubah Ukuran Gambar", href: "/id/tools/resize-image" },
-      { label: "Pembuat Pas Foto Paspor", href: "/id/tools/passport-photo-maker" },
-      { label: "Kompresor Gambar Massal", href: "/id/tools/batch-image-compressor" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengubah ukuran foto atau tanda tangan untuk formulir online.",
     faq: [
       { question: "Bagaimana cara mengubah ukuran foto menjadi 200 × 230 piksel di bawah 20 KB?", answer: "Unggah foto, masukkan 200 untuk lebar, 230 untuk tinggi, dan 20 untuk KB maksimum, lalu ubah ukuran. Pesan hasil mengonfirmasi ukuran yang tepat." },
@@ -779,12 +710,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         heading: "Kapan memakai massal dan kapan tunggal",
         body: "Pakai alat Kompres Gambar biasa untuk satu file. Pakai versi massal saat banyak gambar punya batas yang sama, misalnya mengunggah set produk, sekumpulan dokumen ke portal, atau foto untuk email.",
       },
-    ],
-    relatedTools: [
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-      { label: "Ubah Ukuran Foto & Tanda Tangan", href: "/id/tools/photo-signature-resizer" },
-      { label: "Gambar ke PDF", href: "/id/tools/image-to-pdf" },
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
     ],
     faqDescription: "Pertanyaan umum tentang mengompres beberapa gambar ke ukuran yang sama.",
     faq: [
@@ -826,12 +751,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         heading: "Privasi",
         body: "Gambar dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Teks yang dikenali hanya ditampilkan kepada Anda.",
       },
-    ],
-    relatedTools: [
-      { label: "Pindai ke Word", href: "/id/tools/scan-to-word" },
-      { label: "OCR PDF", href: "/id/tools/ocr-pdf" },
-      { label: "PDF ke Word", href: "/id/tools/pdf-to-word" },
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
     ],
     faqDescription: "Pertanyaan umum tentang mengekstrak teks dari gambar dengan OCR.",
     faq: [
@@ -921,13 +840,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         body: "Unggahan dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia.",
       },
     ],
-    relatedTools: [
-      { label: "Gambar ke Teks", href: "/id/tools/image-to-text" },
-      { label: "OCR PDF", href: "/id/tools/ocr-pdf" },
-      { label: "PDF ke Word", href: "/id/tools/pdf-to-word" },
-      { label: "Gambar ke PDF", href: "/id/tools/image-to-pdf" },
-      { label: "Pisah PDF", href: "/id/tools/split-pdf" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengonversi hasil scan menjadi dokumen Word yang bisa diedit.",
     faq: [
       { question: "Bagaimana cara mengonversi dokumen hasil scan ke Word?", answer: "Unggah hasil scan sebagai gambar atau PDF, pilih bahasa, lalu unduh DOCX yang dibuat alat ini. Periksa terhadap aslinya, karena OCR bisa salah membaca karakter." },
@@ -972,12 +884,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         body: "File hingga 100 MB. PDF yang dilindungi kata sandi tidak bisa dibuka. PDF yang sangat panjang memerlukan waktu lebih lama untuk dipratinjau karena tiap thumbnail dirender bergantian.",
       },
     ],
-    relatedTools: [
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-      { label: "Pisah PDF", href: "/id/tools/split-pdf" },
-      { label: "Putar PDF", href: "/id/tools/rotate-pdf" },
-      { label: "Kompres PDF ke Ukuran Tertentu", href: "/id/tools/compress-pdf-to-size" },
-    ],
     faqDescription: "Pertanyaan umum tentang menyusun ulang, memutar, dan menghapus halaman PDF.",
     faq: [
       { question: "Bagaimana cara menyusun ulang halaman di PDF?", answer: "Unggah PDF, lalu seret thumbnail ke urutan baru atau pakai tombol lebih awal dan lebih akhir, kemudian buat PDF barunya." },
@@ -1018,12 +924,6 @@ export const toolContentIdMoreB: Record<string, ToolContentEntry> = {
         heading: "Privasi",
         body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia.",
       },
-    ],
-    relatedTools: [
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
-      { label: "Kompres Word", href: "/id/tools/compress-word" },
     ],
     faqDescription: "Pertanyaan umum tentang menghapus metadata tersembunyi dari file.",
     faq: [

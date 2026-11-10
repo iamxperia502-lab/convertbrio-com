@@ -11,6 +11,7 @@ import FaqSection from "./FaqSection.astro";
 import CompressImageBenchmark from "./CompressImageBenchmark.astro";
 import { getTool, isComingSoon } from "../data/tools";
 import { toolContent } from "../data/toolContent";
+import { relatedToolsFor } from "../data/related-tools";
 import { toolContentByLocale } from "../data/tool-content";
 import { ui, localePath, toolMetaByLocale, LOCALIZED_TOOL_SLUGS, NON_DEFAULT_LOCALES, type Locale } from "../data/i18n";
 
@@ -410,7 +411,7 @@ const softwareApplicationSchema = isComingSoon(tool)
           howToHeading={t.howToHeading}
           relatedHeading={t.relatedHeading}
           sections={content.sections}
-          relatedTools={content.relatedTools}
+          relatedTools={relatedToolsFor(slug, lang)}
         />
         <FaqSection items={content.faq} heading={`${name}: ${t.faqSuffix}`} description={content.faqDescription} id={`faq-${tool.slug}`} />
       </>

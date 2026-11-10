@@ -64,12 +64,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "Foto Anda dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia.",
       },
     ],
-    relatedTools: [
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
-      { label: "Gambar ke PDF", href: "/id/tools/image-to-pdf" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-      { label: "Ubah Ukuran Gambar", href: "/id/tools/resize-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi foto HEIC iPhone ke JPG.",
     faq: [
       {
@@ -123,11 +117,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "File PNG biasanya lebih besar daripada JPG asalnya, karena PNG tidak membuang data seperti kompresi lossy pada JPG. Untuk foto dengan banyak detail atau tekstur, perkirakan PNG berukuran beberapa kali lipat dari JPG aslinya: itu timbal balik yang wajar untuk kualitas tanpa kehilangan data.",
       },
     ],
-    relatedTools: [
-      { label: "PNG ke JPG", href: "/id/tools/png-to-jpg" },
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
-      { label: "Potong Gambar", href: "/id/tools/crop-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar JPG ke PNG.",
     faq: [
       {
@@ -165,11 +154,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         heading: "Kapan JPG Masih Pilihan yang Lebih Baik",
         body: "Jika gambar Anda harus berfungsi di perangkat lunak atau konteks yang tidak mendukung WEBP, seperti beberapa klien email lama, alat desain tertentu, atau alur kerja cetak, simpan juga versi JPG-nya. Namun untuk penggunaan web secara umum, WEBP adalah pilihan bawaan yang lebih efisien.",
       },
-    ],
-    relatedTools: [
-      { label: "PNG ke WEBP", href: "/id/tools/png-to-webp" },
-      { label: "WEBP ke JPG", href: "/id/tools/webp-to-jpg" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
     ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar JPG ke WEBP.",
     faq: [
@@ -209,11 +193,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "Semua browser modern utama mendukung penampilan AVIF, tetapi beberapa perangkat lunak lama, penyunting gambar, dan platform sosial belum menerimanya untuk diunggah. Jika Anda memublikasikan ke situs web sendiri, AVIF umumnya aman; jika Anda mengunggah ke tempat yang kompatibilitasnya tidak diketahui, siapkan cadangan berupa JPG atau WEBP.",
       },
     ],
-    relatedTools: [
-      { label: "PNG ke AVIF", href: "/id/tools/png-to-avif" },
-      { label: "AVIF ke JPG", href: "/id/tools/avif-to-jpg" },
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar JPG ke AVIF.",
     faq: [
       {
@@ -251,11 +230,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         heading: "Apa yang Hilang (dan yang Tidak)",
         body: "Mengonversi ke JPG membuang transparansi dan menerapkan kompresi lossy, jadi ini bukan pilihan yang tepat untuk logo atau grafik yang membutuhkan latar transparan. Untuk foto biasa, kompresinya nyaris tidak terasa, dan pengurangan ukuran file biasanya besar, sering 50-80% lebih kecil daripada PNG aslinya.",
       },
-    ],
-    relatedTools: [
-      { label: "JPG ke PNG", href: "/id/tools/jpg-to-png" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-      { label: "Ubah Ukuran Gambar", href: "/id/tools/resize-image" },
     ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar PNG ke JPG.",
     faq: [
@@ -295,11 +269,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "WEBP didukung secara bawaan oleh semua browser modern utama, menjadikannya pilihan bawaan yang aman untuk gambar situs web, favicon, dan grafik antarmuka. Jika Anda membutuhkan file untuk cetak, perangkat lunak lama, atau platform yang dukungan WEBP-nya belum jelas, simpan PNG aslinya sebagai cadangan.",
       },
     ],
-    relatedTools: [
-      { label: "JPG ke WEBP", href: "/id/tools/jpg-to-webp" },
-      { label: "WEBP ke PNG", href: "/id/tools/webp-to-png" },
-      { label: "PNG ke AVIF", href: "/id/tools/png-to-avif" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar PNG ke WEBP.",
     faq: [
       {
@@ -337,11 +306,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         heading: "Catatan Kompatibilitas",
         body: "AVIF tampil dengan benar di semua versi terbaru Chrome, Firefox, Safari, dan Edge. Beberapa alat lama, klien email, dan perangkat lunak desain mungkin belum mendukungnya, jadi format ini paling cocok untuk dipakai langsung di situs web, bukan untuk file yang akan Anda serahkan ke sistem pihak ketiga dengan kompatibilitas yang tidak diketahui.",
       },
-    ],
-    relatedTools: [
-      { label: "PNG ke WEBP", href: "/id/tools/png-to-webp" },
-      { label: "AVIF ke PNG", href: "/id/tools/avif-to-png" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
     ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar PNG ke AVIF.",
     faq: [
@@ -381,11 +345,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "Jika WEBP aslinya berlatar transparan, transparansi itu akan diisi dengan warna polos pada hasil JPG, karena JPG tidak mendukung kanal alfa. Untuk foto biasa dan gambar web tanpa transparansi, konversinya mulus secara visual.",
       },
     ],
-    relatedTools: [
-      { label: "WEBP ke PNG", href: "/id/tools/webp-to-png" },
-      { label: "JPG ke WEBP", href: "/id/tools/jpg-to-webp" },
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar WEBP ke JPG.",
     faq: [
       {
@@ -423,11 +382,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         heading: "Pertimbangan Ukuran File",
         body: "File PNG umumnya lebih besar daripada WEBP, karena kompresi WEBP lebih efisien. Untuk grafik dan ikon perbedaannya biasanya kecil; untuk foto besar PNG bisa jauh lebih besar, timbal balik yang masuk akal ketika transparansi atau kualitas tanpa kehilangan data menjadi prioritas.",
       },
-    ],
-    relatedTools: [
-      { label: "WEBP ke JPG", href: "/id/tools/webp-to-jpg" },
-      { label: "PNG ke WEBP", href: "/id/tools/png-to-webp" },
-      { label: "Potong Gambar", href: "/id/tools/crop-image" },
     ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar WEBP ke PNG.",
     faq: [
@@ -471,11 +425,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "Unggahan dibatasi hingga 100 MB. File Anda dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia.",
       },
     ],
-    relatedTools: [
-      { label: "JPG ke AVIF", href: "/id/tools/jpg-to-avif" },
-      { label: "AVIF ke WEBP", href: "/id/tools/avif-to-webp" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar WEBP ke AVIF.",
     faq: [
       {
@@ -513,11 +462,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         heading: "Apa yang Berubah dalam Konversi",
         body: "JPG tidak mendukung transparansi, jadi jika file AVIF berlatar transparan, latar itu akan diisi dengan warna polos pada hasilnya. Untuk foto standar tanpa transparansi, hasil visualnya pada dasarnya identik dengan aslinya.",
       },
-    ],
-    relatedTools: [
-      { label: "AVIF ke PNG", href: "/id/tools/avif-to-png" },
-      { label: "AVIF ke WEBP", href: "/id/tools/avif-to-webp" },
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
     ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar AVIF ke JPG.",
     faq: [
@@ -561,11 +505,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "Unggahan dibatasi hingga 100 MB. File Anda dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia.",
       },
     ],
-    relatedTools: [
-      { label: "AVIF ke JPG", href: "/id/tools/avif-to-jpg" },
-      { label: "PNG ke AVIF", href: "/id/tools/png-to-avif" },
-      { label: "Ubah Ukuran Gambar", href: "/id/tools/resize-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar AVIF ke PNG.",
     faq: [
       {
@@ -607,11 +546,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         heading: "Batas dan Privasi",
         body: "Unggahan dibatasi hingga 100 MB. File Anda dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia.",
       },
-    ],
-    relatedTools: [
-      { label: "WEBP ke AVIF", href: "/id/tools/webp-to-avif" },
-      { label: "AVIF ke JPG", href: "/id/tools/avif-to-jpg" },
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
     ],
     faqDescription: "Pertanyaan umum tentang cara mengonversi gambar AVIF ke WEBP.",
     faq: [
@@ -718,12 +652,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "Unggahan dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasilnya dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Satu gambar per unggahan, hingga 100 MB, gratis, tanpa akun.",
       },
     ],
-    relatedTools: [
-      { label: "Potong Gambar", href: "/id/tools/crop-image" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-      { label: "Pembesar Gambar AI", href: "/id/tools/ai-upscaler" },
-      { label: "Putar Gambar", href: "/id/tools/rotate-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara mengubah ukuran gambar ke dimensi yang tepat.",
     faq: [
       {
@@ -772,11 +700,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "Pemotongan berguna untuk menghapus latar yang tidak diinginkan dari foto, mengisolasi objek, menyesuaikan rasio aspek yang dibutuhkan untuk foto profil atau banner, atau memangkas dokumen hasil pindai hingga hanya area isinya. Ini alternatif yang presisi dibanding mengubah ukuran ketika tujuannya mengurangi, bukan menskalakan.",
       },
     ],
-    relatedTools: [
-      { label: "Ubah Ukuran Gambar", href: "/id/tools/resize-image" },
-      { label: "Putar Gambar", href: "/id/tools/rotate-image" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara memotong gambar ke area tertentu.",
     faq: [
       {
@@ -814,11 +737,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         heading: "Memutar Dokumen Hasil Pindai",
         body: "Halaman yang dimasukkan ke pemindai dalam posisi miring atau terbalik adalah salah satu kasus paling umum untuk alat ini. Memutar gambar sebelum diproses lebih lanjut, seperti dikonversi ke PDF atau dijalankan lewat OCR, memastikan dokumen akhir terbaca dengan benar.",
       },
-    ],
-    relatedTools: [
-      { label: "Potong Gambar", href: "/id/tools/crop-image" },
-      { label: "Putar PDF", href: "/id/tools/rotate-pdf" },
-      { label: "JPG ke PDF", href: "/id/tools/jpg-to-pdf" },
     ],
     faqDescription: "Pertanyaan umum tentang cara memutar gambar online.",
     faq: [
@@ -858,11 +776,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         body: "Alat putar ConvertBrio menerapkan rotasi yang sama ke setiap halaman dalam file. Jika hanya sebagian halaman yang perlu diperbaiki, pisahkan PDF terlebih dahulu dengan Pisah PDF, putar halaman yang bermasalah satu per satu, lalu gabungkan kembali semuanya dengan Gabung PDF.",
       },
     ],
-    relatedTools: [
-      { label: "Pisah PDF", href: "/id/tools/split-pdf" },
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-      { label: "Putar Gambar", href: "/id/tools/rotate-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara memutar halaman PDF online.",
     faq: [
       {
@@ -900,11 +813,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         heading: "Kapan Menggunakan Alat Ini",
         body: "Membuka kunci berguna untuk dokumen yang Anda buat atau berhak Anda ubah secara eksplisit tetapi diekspor dengan pembatasan yang aktif secara bawaan, seperti laporan dari perangkat lunak tertentu atau formulir yang tanpa sengaja mengunci penyuntingan. Buka kunci hanya file yang secara hukum berhak Anda ubah.",
       },
-    ],
-    relatedTools: [
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-      { label: "PDF ke Word", href: "/id/tools/pdf-to-word" },
     ],
     faqDescription: "Pertanyaan umum tentang cara menghapus pembatasan kata sandi PDF.",
     faq: [
@@ -947,11 +855,6 @@ export const toolContentIdMoreA: Record<string, ToolContentEntry> = {
         heading: "Gaya Penomoran dan Batasan",
         body: "Nomor dibubuhkan di tengah bawah setiap halaman dengan gaya sans-serif polos, dimulai dari 1: saat ini belum ada opsi untuk mengubah posisi, nomor awal, atau format seperti «Halaman X dari Y». Unggahan dibatasi hingga 100 MB. File asli Anda dihapus segera setelah dibaca untuk diproses. Hasilnya dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia.",
       },
-    ],
-    relatedTools: [
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-      { label: "Word ke PDF", href: "/id/tools/word-to-pdf" },
     ],
     faqDescription: "Pertanyaan umum tentang cara menambahkan nomor halaman ke PDF.",
     faq: [

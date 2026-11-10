@@ -62,12 +62,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "La foto viene cifrata durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente, senza alcuna revisione umana, sui server dei nostri provider di hosting (Vercel e Supabase). Nulla viene conservato, indicizzato o usato per scopi diversi dalla conversione.",
       },
     ],
-    relatedTools: [
-      { label: "Convertitore di Immagini", href: "/it/tools/image-converter" },
-      { label: "Immagine in PDF", href: "/it/tools/image-to-pdf" },
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
-      { label: "Ridimensionare Immagine", href: "/it/tools/resize-image" },
-    ],
     faqDescription: "Domande frequenti sulla conversione delle foto HEIC dell'iPhone in JPG.",
     faq: [
       {
@@ -121,11 +115,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "I file PNG sono in genere più grandi del JPG di partenza, perché il PNG non scarta dati come fa la compressione con perdita del JPG. Per le foto molto ricche di dettagli o di texture, aspettati un PNG di diverse volte più grande del JPG originale: è il compromesso normale per avere una qualità senza perdita.",
       },
     ],
-    relatedTools: [
-      { label: "PNG in JPG", href: "/it/tools/png-to-jpg" },
-      { label: "Convertitore di Immagini", href: "/it/tools/image-converter" },
-      { label: "Ritagliare Immagine", href: "/it/tools/crop-image" },
-    ],
     faqDescription: "Domande frequenti sulla conversione di immagini JPG in PNG.",
     faq: [
       {
@@ -163,11 +152,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         heading: "Quando il JPG può essere ancora la scelta migliore",
         body: "Se l'immagine deve funzionare in programmi o contesti che non supportano WEBP, come alcuni client di posta meno recenti, certi strumenti di grafica o flussi di stampa, tieni a portata di mano anche una versione JPG. Per l'uso generale sul web, invece, WEBP è l'opzione predefinita più efficiente.",
       },
-    ],
-    relatedTools: [
-      { label: "PNG in WEBP", href: "/it/tools/png-to-webp" },
-      { label: "WEBP in JPG", href: "/it/tools/webp-to-jpg" },
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
     ],
     faqDescription: "Domande frequenti sulla conversione di immagini JPG in WEBP.",
     faq: [
@@ -207,11 +191,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "Tutti i principali browser moderni supportano la visualizzazione dell'AVIF, ma alcuni programmi meno recenti, editor di immagini e piattaforme social non lo accettano ancora in caricamento. Se pubblichi sul tuo sito, in generale l'AVIF è sicuro; se carichi in un posto di cui non conosci la compatibilità, tieni a portata di mano una versione JPG o WEBP di riserva.",
       },
     ],
-    relatedTools: [
-      { label: "PNG in AVIF", href: "/it/tools/png-to-avif" },
-      { label: "AVIF in JPG", href: "/it/tools/avif-to-jpg" },
-      { label: "Convertitore di Immagini", href: "/it/tools/image-converter" },
-    ],
     faqDescription: "Domande frequenti sulla conversione di immagini JPG in AVIF.",
     faq: [
       {
@@ -249,11 +228,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         heading: "Cosa si perde (e cosa no)",
         body: "Convertendo in JPG si perde la trasparenza e si applica una compressione con perdita, quindi non è la scelta giusta per loghi o grafiche che richiedono uno sfondo trasparente. Per le normali foto la compressione è appena percettibile e la riduzione delle dimensioni è di solito notevole, spesso del 50-80% rispetto al PNG originale.",
       },
-    ],
-    relatedTools: [
-      { label: "JPG in PNG", href: "/it/tools/jpg-to-png" },
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
-      { label: "Ridimensionare Immagine", href: "/it/tools/resize-image" },
     ],
     faqDescription: "Domande frequenti sulla conversione di immagini PNG in JPG.",
     faq: [
@@ -293,11 +267,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "Il WEBP è supportato in modo nativo da tutti i principali browser moderni, ed è quindi una scelta sicura per le immagini del sito, le favicon e la grafica delle interfacce. Se ti serve il file per la stampa, per programmi meno recenti o per una piattaforma con un supporto WEBP poco chiaro, conserva il PNG originale come copia di riserva.",
       },
     ],
-    relatedTools: [
-      { label: "JPG in WEBP", href: "/it/tools/jpg-to-webp" },
-      { label: "WEBP in PNG", href: "/it/tools/webp-to-png" },
-      { label: "PNG in AVIF", href: "/it/tools/png-to-avif" },
-    ],
     faqDescription: "Domande frequenti sulla conversione di immagini PNG in WEBP.",
     faq: [
       {
@@ -335,11 +304,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         heading: "Note sulla compatibilità",
         body: "L'AVIF viene visualizzato correttamente in tutte le versioni attuali di Chrome, Firefox, Safari ed Edge. Alcuni strumenti meno recenti, client di posta e software di grafica potrebbero non supportarlo ancora, quindi è più adatto all'uso diretto sul sito che ai file da consegnare a sistemi di terzi di cui non conosci la compatibilità.",
       },
-    ],
-    relatedTools: [
-      { label: "PNG in WEBP", href: "/it/tools/png-to-webp" },
-      { label: "AVIF in PNG", href: "/it/tools/avif-to-png" },
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
     ],
     faqDescription: "Domande frequenti sulla conversione di immagini PNG in AVIF.",
     faq: [
@@ -379,11 +343,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "Se il WEBP originale aveva uno sfondo trasparente, nel JPG di output la trasparenza verrà riempita con un colore pieno, perché il JPG non supporta i canali alfa. Per le normali foto e immagini web senza trasparenza, la conversione è visivamente impercettibile.",
       },
     ],
-    relatedTools: [
-      { label: "WEBP in PNG", href: "/it/tools/webp-to-png" },
-      { label: "JPG in WEBP", href: "/it/tools/jpg-to-webp" },
-      { label: "Convertitore di Immagini", href: "/it/tools/image-converter" },
-    ],
     faqDescription: "Domande frequenti sulla conversione di immagini WEBP in JPG.",
     faq: [
       {
@@ -421,11 +380,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         heading: "Considerazioni sulle dimensioni",
         body: "I file PNG sono in genere più grandi dei WEBP, perché la compressione del WEBP è più efficiente. Per grafiche e icone la differenza di solito è piccola; per le foto grandi il PNG può essere sensibilmente più pesante, un compromesso ragionevole quando la priorità sono la trasparenza o la qualità senza perdita.",
       },
-    ],
-    relatedTools: [
-      { label: "WEBP in JPG", href: "/it/tools/webp-to-jpg" },
-      { label: "PNG in WEBP", href: "/it/tools/png-to-webp" },
-      { label: "Ritagliare Immagine", href: "/it/tools/crop-image" },
     ],
     faqDescription: "Domande frequenti sulla conversione di immagini WEBP in PNG.",
     faq: [
@@ -469,11 +423,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "I caricamenti sono limitati a 100 MB. I file vengono cifrati durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente, senza alcuna revisione umana, sui server dei nostri provider di hosting (Vercel e Supabase).",
       },
     ],
-    relatedTools: [
-      { label: "JPG in AVIF", href: "/it/tools/jpg-to-avif" },
-      { label: "AVIF in WEBP", href: "/it/tools/avif-to-webp" },
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
-    ],
     faqDescription: "Domande frequenti sulla conversione di immagini WEBP in AVIF.",
     faq: [
       {
@@ -511,11 +460,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         heading: "Cosa cambia con la conversione",
         body: "Il JPG non supporta la trasparenza, quindi se il file AVIF aveva uno sfondo trasparente, nell'output verrà riempito con un colore pieno. Per le normali foto senza trasparenza, il risultato visivo è praticamente identico all'originale.",
       },
-    ],
-    relatedTools: [
-      { label: "AVIF in PNG", href: "/it/tools/avif-to-png" },
-      { label: "AVIF in WEBP", href: "/it/tools/avif-to-webp" },
-      { label: "Convertitore di Immagini", href: "/it/tools/image-converter" },
     ],
     faqDescription: "Domande frequenti sulla conversione di immagini AVIF in JPG.",
     faq: [
@@ -559,11 +503,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "I caricamenti sono limitati a 100 MB. I file vengono cifrati durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente, senza alcuna revisione umana, sui server dei nostri provider di hosting (Vercel e Supabase).",
       },
     ],
-    relatedTools: [
-      { label: "AVIF in JPG", href: "/it/tools/avif-to-jpg" },
-      { label: "PNG in AVIF", href: "/it/tools/png-to-avif" },
-      { label: "Ridimensionare Immagine", href: "/it/tools/resize-image" },
-    ],
     faqDescription: "Domande frequenti sulla conversione di immagini AVIF in PNG.",
     faq: [
       {
@@ -605,11 +544,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         heading: "Limiti e privacy",
         body: "I caricamenti sono limitati a 100 MB. I file vengono cifrati durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente, senza alcuna revisione umana, sui server dei nostri provider di hosting (Vercel e Supabase).",
       },
-    ],
-    relatedTools: [
-      { label: "WEBP in AVIF", href: "/it/tools/webp-to-avif" },
-      { label: "AVIF in JPG", href: "/it/tools/avif-to-jpg" },
-      { label: "Convertitore di Immagini", href: "/it/tools/image-converter" },
     ],
     faqDescription: "Domande frequenti sulla conversione di immagini AVIF in WEBP.",
     faq: [
@@ -716,12 +650,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "I caricamenti sono cifrati durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per l'elaborazione. Il risultato viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente, senza alcuna revisione umana, sui server dei nostri provider di hosting (Vercel e Supabase). Un'immagine per caricamento, fino a 100 MB, gratis, senza account.",
       },
     ],
-    relatedTools: [
-      { label: "Ritagliare Immagine", href: "/it/tools/crop-image" },
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
-      { label: "Upscaler con IA", href: "/it/tools/ai-upscaler" },
-      { label: "Ruotare Immagine", href: "/it/tools/rotate-image" },
-    ],
     faqDescription: "Domande frequenti su come ridimensionare le immagini a dimensioni esatte.",
     faq: [
       {
@@ -770,11 +698,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "Il ritaglio serve a togliere lo sfondo indesiderato da una foto, a isolare un soggetto, a ottenere il rapporto d'aspetto richiesto per una foto profilo o un banner, o a ridurre un documento scansionato alla sola area del contenuto. È un'alternativa precisa al ridimensionamento quando l'obiettivo è sottrarre e non scalare.",
       },
     ],
-    relatedTools: [
-      { label: "Ridimensionare Immagine", href: "/it/tools/resize-image" },
-      { label: "Ruotare Immagine", href: "/it/tools/rotate-image" },
-      { label: "Comprimere Immagine", href: "/it/tools/compress-image" },
-    ],
     faqDescription: "Domande frequenti su come ritagliare le immagini in un'area specifica.",
     faq: [
       {
@@ -812,11 +735,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         heading: "Ruotare i documenti scansionati",
         body: "Le pagine inserite nello scanner di lato o capovolte sono uno dei casi più comuni per questo strumento. Ruotare l'immagine prima di altre elaborazioni, come la conversione in PDF o l'OCR, garantisce che il documento finale si legga correttamente.",
       },
-    ],
-    relatedTools: [
-      { label: "Ritagliare Immagine", href: "/it/tools/crop-image" },
-      { label: "Ruotare PDF", href: "/it/tools/rotate-pdf" },
-      { label: "JPG in PDF", href: "/it/tools/jpg-to-pdf" },
     ],
     faqDescription: "Domande frequenti su come ruotare le immagini online.",
     faq: [
@@ -856,11 +774,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         body: "Lo strumento di rotazione di ConvertBrio applica la stessa rotazione a ogni pagina del file. Se solo alcune pagine vanno corrette, dividi prima il PDF con Dividere PDF, ruota singolarmente le pagine interessate, poi riunisci tutto con Unire PDF.",
       },
     ],
-    relatedTools: [
-      { label: "Dividere PDF", href: "/it/tools/split-pdf" },
-      { label: "Unire PDF", href: "/it/tools/merge-pdf" },
-      { label: "Ruotare Immagine", href: "/it/tools/rotate-image" },
-    ],
     faqDescription: "Domande frequenti su come ruotare le pagine di un PDF online.",
     faq: [
       {
@@ -898,11 +811,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         heading: "Quando usare questo strumento",
         body: "Lo sblocco è utile per i documenti che hai creato o che hai il diritto esplicito di modificare, ma che sono stati esportati con restrizioni attive per impostazione predefinita, come i report di alcuni programmi o i moduli che hanno bloccato la modifica senza volerlo. Sblocca solo i file che hai il diritto legale di modificare.",
       },
-    ],
-    relatedTools: [
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
-      { label: "Unire PDF", href: "/it/tools/merge-pdf" },
-      { label: "PDF in Word", href: "/it/tools/pdf-to-word" },
     ],
     faqDescription: "Domande frequenti su come rimuovere le restrizioni di password dai PDF.",
     faq: [
@@ -945,11 +853,6 @@ export const toolContentItMoreA: Record<string, ToolContentEntry> = {
         heading: "Stile della numerazione e limiti",
         body: "I numeri vengono applicati in basso al centro di ogni pagina, con un semplice carattere sans-serif, partendo da 1: al momento non c'è modo di cambiare la posizione, il numero iniziale o il formato, per esempio «Pagina X di Y». I caricamenti sono limitati a 100 MB. Il file originale viene eliminato subito dopo essere stato letto per l'elaborazione. Il risultato viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente, senza alcuna revisione umana, sui server dei nostri provider di hosting (Vercel e Supabase).",
       },
-    ],
-    relatedTools: [
-      { label: "Unire PDF", href: "/it/tools/merge-pdf" },
-      { label: "Comprimere PDF", href: "/it/tools/compress-pdf" },
-      { label: "Word in PDF", href: "/it/tools/word-to-pdf" },
     ],
     faqDescription: "Domande frequenti su come aggiungere i numeri di pagina a un PDF.",
     faq: [

@@ -64,12 +64,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         body: "PDF Anda dienkripsi saat diunggah, diproses otomatis di server ConvertBrio tanpa tinjauan manusia, dan baik asli maupun salinan terkompresi dihapus dalam 24 jam. Satu file per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
-    relatedTools: [
-      { label: "Pisah PDF", href: "/id/tools/split-pdf" },
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-      { label: "PDF ke Word", href: "/id/tools/pdf-to-word" },
-    ],
     faqDescription: "Pertanyaan umum tentang cara mengompres ukuran PDF online.",
     faq: [
       {
@@ -156,11 +150,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         body: "Setiap unggahan dienkripsi dan dihapus otomatis dari server ConvertBrio dalam 24 jam, diunduh atau tidak. Alat ini mengompres satu gambar per proses, hingga 100 MB, gratis, tanpa akun dan tanpa watermark.",
       },
     ],
-    relatedTools: [
-      { label: "Konverter Gambar", href: "/id/tools/image-converter" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-      { label: "JPG ke PDF", href: "/id/tools/jpg-to-pdf" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengompres dan memperkecil ukuran gambar.",
     faq: [
       {
@@ -230,11 +219,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         body: "File dienkripsi saat diunggah, digabungkan otomatis tanpa tinjauan manusia, dan semuanya, sumber dan hasil, dihapus dalam 24 jam. Beberapa file per penggabungan, masing-masing hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
-    relatedTools: [
-      { label: "Pisah PDF", href: "/id/tools/split-pdf" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-      { label: "JPG ke PDF", href: "/id/tools/jpg-to-pdf" },
-    ],
     faqDescription: "Pertanyaan umum tentang menggabungkan beberapa file PDF menjadi satu.",
     faq: [
       {
@@ -289,11 +273,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         heading: "Privasi dan batasan",
         body: "Unggahan dienkripsi, diproses otomatis tanpa tinjauan manusia, dan baik asli maupun halaman hasil dihapus dari server ConvertBrio dalam 24 jam. Batas 100 MB per file.",
       },
-    ],
-    relatedTools: [
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-      { label: "PDF ke JPG", href: "/id/tools/pdf-to-jpg" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
     ],
     faqDescription: "Pertanyaan umum tentang memisahkan PDF menjadi halaman terpisah.",
     faq: [
@@ -356,12 +335,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         body: "PDF dienkripsi saat diunggah, dikonversi otomatis tanpa tinjauan manusia, dan kedua file dihapus dalam 24 jam. Satu dokumen per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
-    relatedTools: [
-      { label: "Word ke PDF", href: "/id/tools/word-to-pdf" },
-      { label: "OCR PDF", href: "/id/tools/ocr-pdf" },
-      { label: "PDF ke JPG", href: "/id/tools/pdf-to-jpg" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengonversi file PDF menjadi dokumen Word yang bisa diedit.",
     faq: [
       {
@@ -415,11 +388,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         heading: "Privasi dan batasan",
         body: "Dokumen Anda dienkripsi saat diunggah, dikonversi otomatis tanpa tinjauan manusia, dan kedua file dihapus dalam 24 jam. Satu .docx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF ke Word", href: "/id/tools/pdf-to-word" },
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
     ],
     faqDescription: "Pertanyaan umum tentang mengonversi dokumen Word ke PDF.",
     faq: [
@@ -477,11 +445,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         body: "PDF Anda dienkripsi saat diunggah, dirender otomatis tanpa tinjauan manusia, dan baik unggahan maupun gambar dihapus dalam 24 jam. Satu file per proses, hingga 100 MB, gratis, tanpa akun.",
       },
     ],
-    relatedTools: [
-      { label: "JPG ke PDF", href: "/id/tools/jpg-to-pdf" },
-      { label: "Pisah PDF", href: "/id/tools/split-pdf" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-    ],
     faqDescription: "Pertanyaan umum tentang mengonversi halaman PDF menjadi gambar JPG.",
     faq: [
       {
@@ -533,11 +496,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         heading: "Privasi dan batasan",
         body: "Gambar dienkripsi saat diunggah, digabungkan otomatis tanpa tinjauan manusia, dan baik sumber maupun PDF akhir dihapus dalam 24 jam. Beberapa gambar per proses, 100 MB gabungan, gratis, tanpa akun, tanpa watermark.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF ke JPG", href: "/id/tools/pdf-to-jpg" },
-      { label: "Gabung PDF", href: "/id/tools/merge-pdf" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
     ],
     faqDescription: "Pertanyaan umum tentang mengonversi gambar JPG menjadi PDF.",
     faq: [
@@ -593,11 +551,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         heading: "Privasi dan batasan",
         body: "Setiap unggahan dienkripsi dan diproses otomatis tanpa tinjauan manusia. Baik asli maupun gambar hasil konversi dihapus dari server ConvertBrio dalam 24 jam. File hingga 100 MB, gratis, tanpa akun dan tanpa watermark.",
       },
-    ],
-    relatedTools: [
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-      { label: "JPG ke PDF", href: "/id/tools/jpg-to-pdf" },
-      { label: "PDF ke JPG", href: "/id/tools/pdf-to-jpg" },
     ],
     faqDescription: "Pertanyaan umum tentang konverter gambar ConvertBrio.",
     faq: [
@@ -656,11 +609,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         heading: "Privasi dan batasan",
         body: "Dokumen Anda dienkripsi saat diunggah, diproses otomatis tanpa tinjauan manusia, dan baik unggahan maupun hasil OCR dihapus dalam 24 jam. Satu PDF per proses, hingga 100 MB, gratis, tanpa akun.",
       },
-    ],
-    relatedTools: [
-      { label: "PDF ke Word", href: "/id/tools/pdf-to-word" },
-      { label: "PDF ke JPG", href: "/id/tools/pdf-to-jpg" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
     ],
     faqDescription: "Pertanyaan umum tentang menjalankan OCR pada PDF dan memindahkan teks hasil scan ke Word.",
     faq: [
@@ -731,11 +679,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         body: "Presentasi Anda dienkripsi saat diunggah, diproses otomatis di server ConvertBrio tanpa tinjauan manusia, dan baik unggahan maupun salinan terkompresi dihapus dalam 24 jam. Satu .pptx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
-    relatedTools: [
-      { label: "Kompres Word", href: "/id/tools/compress-word" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-      { label: "Kompres Gambar", href: "/id/tools/compress-image" },
-    ],
     faqDescription: "Pertanyaan umum tentang memperkecil ukuran presentasi PowerPoint.",
     faq: [
       {
@@ -804,11 +747,6 @@ export const toolContentId: Record<string, ToolContentEntry> = {
         heading: "Privasi dan batasan",
         body: "Dokumen Anda dienkripsi saat diunggah, diproses otomatis di server ConvertBrio tanpa tinjauan manusia, dan baik unggahan maupun salinan terkompresi dihapus dalam 24 jam. Satu .docx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
-    ],
-    relatedTools: [
-      { label: "Word ke PDF", href: "/id/tools/word-to-pdf" },
-      { label: "Kompres PDF", href: "/id/tools/compress-pdf" },
-      { label: "Kompres PowerPoint", href: "/id/tools/compress-powerpoint" },
     ],
     faqDescription: "Pertanyaan umum tentang memperkecil ukuran dokumen Word.",
     faq: [
