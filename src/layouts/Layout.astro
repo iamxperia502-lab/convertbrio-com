@@ -5,7 +5,8 @@ import Footer from "../components/Footer.astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 import { withBrand } from "../lib/title-fit";
-import { ui, HTML_LANG, HREFLANG, LOCALES, DEFAULT_LOCALE, type Locale } from "../data/i18n";
+import { ui, HTML_LANG, HREFLANG, LOCALES, DEFAULT_LOCALE, localePath, type Locale } from "../data/i18n";
+import { breadcrumbList, graph, HOME_LABEL, type Node } from "../lib/structured-data";
 
 interface Props {
   title: string;
@@ -19,6 +20,11 @@ interface Props {
   imageAlt?: string;
   // Open Graph type; blog posts pass "article".
   ogType?: "website" | "article";
+  // Extra JSON-LD nodes for this page (see src/lib/structured-data.ts).
+  jsonLd?: (Node | null | undefined | false)[];
+  // Breadcrumb trail after "Home". When omitted, indexable non-home pages
+  // get Home > <title> automatically, so every page has a BreadcrumbList.
+  breadcrumbs?: { name: string; path: string }[];
   noindex?: boolean;
   // Only meaningful when noindex is true — pages that shouldn't be indexed
   // (e.g. coming-soon tools, error pages) but still link to real content
@@ -47,6 +53,8 @@ const {
   imageHeight = 630,
   imageAlt,
   ogType = "website",
+  jsonLd = [],
+  breadcrumbs,
   noindex = false,
   follow = true,
   noCanonical = false,
@@ -68,6 +76,15 @@ const pageTitle = seoTitle
 const canonicalUrl = new URL(canonical ?? Astro.url.pathname, Astro.site);
 const ogImageUrl = new URL(image, Astro.site);
 const robotsContent = `${noindex ? "noindex" : "index"}, ${follow ? "follow" : "nofollow"}`;
+
+const siteBase = (Astro.site?.toString() ?? "https://www.convertbrio.com/").replace(/\/$/, "");
+const homePath = localePath("/", lang);
+const isHomePage = canonicalUrl.pathname === homePath || canonicalUrl.pathname === "/";
+const trail =
+  noindex || noCanonical || isHomePage ? [] : (breadcrumbs ?? [{ name: title, path: canonicalUrl.pathname }]);
+const breadcrumbNode = trail.length > 0 ? breadcrumbList(siteBase, [{ name: HOME_LABEL[lang], path: homePath }, ...trail]) : null;
+const structuredData = graph([...jsonLd, breadcrumbNode]);
+const hasStructuredData = jsonLd.some(Boolean) || breadcrumbNode !== null;
 
 const hreflangs = alternates
   ? [
@@ -161,6 +178,8 @@ const hreflangs = alternates
         if (meta) meta.setAttribute("content", dark ? "#0a0a0a" : "#ffffff");
       })();
     </script>
+
+    {hasStructuredData && <script type="application/ld+json" set:html={structuredData} is:inline />}
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content="ConvertBrio" />

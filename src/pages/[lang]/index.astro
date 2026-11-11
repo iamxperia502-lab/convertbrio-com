@@ -5,6 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 import Icon from "../../components/Icon.astro";
 import FaqSection from "../../components/FaqSection.astro";
 import { NON_DEFAULT_LOCALES, alternatesFor, toolMetaByLocale, type Locale } from "../../data/i18n";
+import { organization, webSite, faqPage } from "../../lib/structured-data";
 import { homepageByLocale, HOME_POPULAR_SLUGS } from "../../data/i18n-home";
 
 export function getStaticPaths() {
@@ -30,22 +31,8 @@ const iconFor: Record<string, string> = {
   document: "word",
 };
 
-const websiteSchema = { "@context": "https://schema.org", "@type": "WebSite", name: "ConvertBrio", url, description: c.description, inLanguage: lang };
-const appSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "ConvertBrio",
-  url,
-  applicationCategory: "UtilitiesApplication",
-  operatingSystem: "Any (web-based)",
-  description: c.description,
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-};
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: c.faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
-};
+const siteBase = url.replace(/\/[a-z]{2}\/?$/, "").replace(/\/$/, "");
+const jsonLd = [organization(siteBase), webSite(siteBase, { description: c.description, lang, url }), faqPage(c.faq)];
 
 const card =
   "flex flex-col gap-2 rounded-2xl border border-hairline bg-canvas-soft p-5 shadow-card transition-transform duration-150 hover:-translate-y-0.5";
@@ -58,13 +45,8 @@ const card =
   canonical={`/${lang}`}
   lang={lang}
   alternates={alternatesFor("/")}
+  jsonLd={jsonLd}
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} is:inline />
-    <script type="application/ld+json" set:html={JSON.stringify(appSchema)} is:inline />
-    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
-  </Fragment>
-
   <section class="border-b border-hairline bg-canvas-soft">
     <div class="container-page grid gap-10 py-16 sm:py-20 lg:grid-cols-2 lg:items-center">
       <div class="flex flex-col items-start gap-5">

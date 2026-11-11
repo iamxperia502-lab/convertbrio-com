@@ -13,6 +13,7 @@ import { getTool, isComingSoon } from "../data/tools";
 import { toolContent } from "../data/toolContent";
 import { relatedToolsFor } from "../data/related-tools";
 import { ogPath } from "../lib/og-paths";
+import { webApplication, faqPage, howTo } from "../lib/structured-data";
 import { toolContentByLocale } from "../data/tool-content";
 import { ui, localePath, toolMetaByLocale, LOCALIZED_TOOL_SLUGS, NON_DEFAULT_LOCALES, type Locale } from "../data/i18n";
 
@@ -72,57 +73,17 @@ const alternates = isLocalized
     }
   : undefined;
 
-const HOME_LABEL: Record<Locale, string> = {
-  en: "Home", pt: "Início", es: "Inicio", fr: "Accueil", de: "Startseite", it: "Home", id: "Beranda",
-};
-const homeLabel = HOME_LABEL[lang];
-const faqSchema = content && {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: content.faq.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: { "@type": "Answer", text: item.answer },
-  })),
-};
-
-const howToSchema =
-  content && content.howTo && content.howTo.length > 0
-    ? {
-        "@context": "https://schema.org",
-        "@type": "HowTo",
-        name: `${t.howToHeading}: ${name} · ConvertBrio`,
-        step: content.howTo.map((item, index) => ({
-          "@type": "HowToStep",
-          position: index + 1,
-          name: item.step,
-          text: item.detail ? `${item.step} ${item.detail}` : item.step,
-        })),
-      }
-    : null;
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: homeLabel, item: `${base}${pfx("/")}` },
-    { "@type": "ListItem", position: 2, name: ui[lang].nav.allTools, item: `${base}${pfx("/all-tools")}` },
-    { "@type": "ListItem", position: 3, name, item: `${base}${pfx(`/tools/${slug}`)}` },
-  ],
-};
-
-const softwareApplicationSchema = isComingSoon(tool)
-  ? null
-  : {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name,
-      url: `${base}${pfx(`/tools/${slug}`)}`,
-      applicationCategory: "UtilitiesApplication",
-      operatingSystem: "Any (web-based)",
-      description,
-      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-    };
+const toolUrl = `${base}${pfx(`/tools/${slug}`)}`;
+// All schema is built from the same data the page renders (see lib/structured-data.ts).
+const jsonLd = [
+  isComingSoon(tool) ? null : webApplication({ name, description, url: toolUrl, lang }),
+  content && faqPage(content.faq),
+  content && howTo(`${t.howToHeading}: ${name} · ConvertBrio`, content.howTo),
+];
+const breadcrumbs = [
+  { name: ui[lang].nav.allTools, path: pfx("/all-tools") },
+  { name, path: pfx(`/tools/${slug}`) },
+];
 ---
 
 <Layout
@@ -135,14 +96,9 @@ const softwareApplicationSchema = isComingSoon(tool)
   imageAlt={`${name} · ConvertBrio`}
   lang={lang}
   alternates={alternates}
+  jsonLd={jsonLd}
+  breadcrumbs={breadcrumbs}
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
-    {softwareApplicationSchema && <script type="application/ld+json" set:html={JSON.stringify(softwareApplicationSchema)} is:inline />}
-    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />}
-    {howToSchema && <script type="application/ld+json" set:html={JSON.stringify(howToSchema)} is:inline />}
-  </Fragment>
-
   <PageIntro eyebrow={isGuide ? t.eyebrowGuide : t.eyebrowTool} title={name} description={description} />
 
   <section class="bg-canvas">

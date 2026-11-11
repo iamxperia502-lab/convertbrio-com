@@ -9,6 +9,7 @@ import { getTool } from "../../data/tools";
 import { hubForTool } from "../../data/hubs";
 import { assertPostImages } from "../../lib/assert-post-images";
 import { ogPath } from "../../lib/og-paths";
+import { article } from "../../lib/structured-data";
 
 export const prerender = true;
 
@@ -31,37 +32,16 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", { year: "numeric", month:
 const base = Astro.site?.toString().replace(/\/$/, "") ?? "https://www.convertbrio.com";
 const postUrl = `${base}/blog/${post.id}`;
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: base },
-    { "@type": "ListItem", position: 2, name: "Blog", item: `${base}/blog` },
-    { "@type": "ListItem", position: 3, name: post.data.title, item: postUrl },
-  ],
-};
-
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
+const articleNode = article({
+  base,
+  url: postUrl,
   headline: post.data.title,
   description: post.data.description,
+  datePublished: post.data.pubDate,
+  dateModified: post.data.updatedDate,
+  authorName: post.data.author,
   image: heroOg ? new URL(heroOg.src, base).toString() : `${base}${ogPath.blog(post.id)}`,
-  datePublished: post.data.pubDate.toISOString(),
-  dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
-  url: postUrl,
-  mainEntityOfPage: postUrl,
-  author: {
-    "@type": "Person",
-    name: post.data.author,
-    url: `${base}/about`,
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "ConvertBrio",
-    url: base,
-  },
-};
+});
 
 const relatedTools = post.data.relatedTools.map((slug) => getTool(slug)).filter((tool) => tool !== undefined);
 const hub = relatedTools[0] ? hubForTool(relatedTools[0]) : undefined;
@@ -73,12 +53,9 @@ const hub = relatedTools[0] ? hubForTool(relatedTools[0]) : undefined;
   imageHeight={heroOg ? heroOg.attributes.height : undefined}
   imageAlt={hero ? hero.alt : post.data.title}
   ogType="article"
+  jsonLd={[articleNode]}
+  breadcrumbs={[{ name: "Blog", path: "/blog" }, { name: post.data.title, path: `/blog/${post.id}` }]}
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
-    <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} is:inline />
-  </Fragment>
-
   <div class="border-b border-hairline bg-canvas-soft">
     <div class="container-page flex flex-col items-start gap-3 py-14 sm:py-16">
       <p class="font-mono text-xs uppercase tracking-wide text-mute">

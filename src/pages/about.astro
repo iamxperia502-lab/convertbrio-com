@@ -7,6 +7,7 @@ import Icon from "../components/Icon.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import { alternatesFor } from "../data/i18n";
 import { liveToolCount } from "../data/tools";
+import { organization, founderId, orgId } from "../lib/structured-data";
 
 // ─────────────────────────────────────────────────────────────────────────
 // CONTENT ONLY SUBHAM CAN SUPPLY. Fill these in; each section below appears
@@ -41,45 +42,26 @@ const values = [
   { icon: "sparkle", title: "Genuinely useful AI", desc: "AI tools that solve real problems, enhancement, restoration, and cleanup, not gimmicks." },
 ] as const;
 
-const companyProfiles = [
-  "https://www.linkedin.com/company/convertbrio/",
-  "https://www.instagram.com/convertbrio/",
-  "https://www.facebook.com/61594943638956",
-  "https://www.threads.com/@convertbrio",
+const structuredData = [
+  organization(base),
+  {
+    "@type": "Person",
+    "@id": founderId(base),
+    name: founderName,
+    url: `${base}/about`,
+    jobTitle: "Founder and developer",
+    worksFor: { "@id": orgId(base) },
+    ...(founderPhoto ? { image: `${base}${founderPhoto}` } : {}),
+    ...(personalLinkedIn ? { sameAs: [personalLinkedIn] } : {}),
+  },
+  {
+    "@type": "AboutPage",
+    "@id": `${base}/about#page`,
+    url: `${base}/about`,
+    name: "About ConvertBrio",
+    about: { "@id": orgId(base) },
+  },
 ];
-
-const structuredData = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${base}/#organization`,
-      name: "ConvertBrio",
-      url: base,
-      logo: `${base}/web-app-manifest-512x512.png`,
-      email: "hello@convertbrio.com",
-      founder: { "@id": `${base}/about#founder` },
-      sameAs: companyProfiles,
-    },
-    {
-      "@type": "Person",
-      "@id": `${base}/about#founder`,
-      name: founderName,
-      url: `${base}/about`,
-      jobTitle: "Founder and developer",
-      worksFor: { "@id": `${base}/#organization` },
-      ...(founderPhoto ? { image: `${base}${founderPhoto}` } : {}),
-      ...(personalLinkedIn ? { sameAs: [personalLinkedIn] } : {}),
-    },
-    {
-      "@type": "AboutPage",
-      "@id": `${base}/about`,
-      url: `${base}/about`,
-      name: "About ConvertBrio",
-      about: { "@id": `${base}/#organization` },
-    },
-  ],
-};
 
 const missing = [
   !founderPhoto && "founder photo",
@@ -93,13 +75,10 @@ const link = "font-medium text-brand-600 underline underline-offset-2 hover:text
 
 <Layout
   alternates={alternatesFor("/about")}
+  jsonLd={structuredData}
   title="About"
   description="ConvertBrio is a free online file converter built and run by Subham Sharma: fast, private tools for images, PDFs, and documents."
 >
-  <Fragment slot="head">
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
-  </Fragment>
-
   <PageIntro
     eyebrow="About ConvertBrio"
     title="File tools that get out of your way"
