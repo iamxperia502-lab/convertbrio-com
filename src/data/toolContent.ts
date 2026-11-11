@@ -119,7 +119,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and file limits",
-        body: "Every upload is encrypted in transit over HTTPS and processed automatically: no one reviews your files. Both the original and the converted image are deleted from ConvertBrio's servers within about 24 hours, whether or not you download the result. Files up to 100 MB are supported, free, with no account and no watermark.",
+        body: "Every upload is encrypted in transit over HTTPS. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. Files up to 100 MB are supported, free, with no account and no watermark.",
       },
     ],
     relatedTools: [
@@ -167,7 +167,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     title: "HEIC to JPG Converter: Open iPhone Photos Anywhere",
     intro: [
       "iPhones and iPads save photos as HEIC by default: a format that compresses beautifully but refuses to open in a lot of everyday software, from older Windows PCs to certain upload forms and photo editors. ConvertBrio's HEIC to JPG converter fixes that instantly: upload the photo, and it comes back as a standard JPG that opens in any browser, app, or device without a plugin or codec pack.",
-      "You don't need to change any settings on your phone or install anything. The conversion runs on ConvertBrio's servers, keeps the photo at its original resolution, and preserves the orientation so portrait photos don't come out sideways. The result is a plain JPG you can email, upload to a government or job portal, drop into a document, or open in any photo editor.",
+      "You don't need to change any settings on your phone or install anything. The conversion runs on our hosting providers' servers, keeps the photo at its original resolution, and preserves the orientation so portrait photos don't come out sideways. The result is a plain JPG you can email, upload to a government or job portal, drop into a document, or open in any photo editor.",
     ],
     howTo: [
       {
@@ -221,7 +221,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "The photo is encrypted in transit, decoded on ConvertBrio's servers with no human review, and both the original HEIC and the converted JPG are deleted within about 24 hours. Nothing is kept, indexed, or used for any purpose beyond the conversion.",
+        body: "The photo is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. Nothing is kept, indexed, or used for any purpose beyond the conversion.",
       },
     ],
     relatedTools: [
@@ -491,7 +491,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "How the Conversion Works",
-        body: "Upload your PNG file and ConvertBrio outputs an AVIF version, preserving transparency and resolution. Conversion runs on ConvertBrio's servers and completes in seconds for typical image sizes.",
+        body: "Upload your PNG file and ConvertBrio outputs an AVIF version, preserving transparency and resolution. Conversion runs on our hosting providers' servers and completes in seconds for typical image sizes.",
       },
       {
         heading: "Compatibility Notes",
@@ -628,7 +628,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within about 24 hours of processing.",
+        body: "Uploads are capped at 100 MB, and conversion happens on the server, not in your browser. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -718,7 +718,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within about 24 hours of processing.",
+        body: "Uploads are capped at 100 MB, and conversion happens on the server, not in your browser. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -765,7 +765,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "Uploads are capped at 100 MB. Conversion happens on ConvertBrio's servers, not in your browser, and both the original and converted files are deleted within about 24 hours of processing.",
+        body: "Uploads are capped at 100 MB, and conversion happens on the server, not in your browser. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -829,7 +829,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Reducing an image to a size limit (like 100 KB)",
-        body: "Enter your limit in the target-size field and ConvertBrio works backward to it: it searches for a quality setting (a binary search, re-checking the encoded size each time), and only if the smallest reasonable quality still overshoots does it reduce the pixel dimensions as well. The result is the best-looking version it found that fits at or under the ceiling, so a 100 KB limit may produce, say, a 99 KB file rather than exactly 100 KB. If even the lowest quality doesn't fit, you'll see the smallest size it reached.",
+        body: "Enter your limit in the target-size field and ConvertBrio works backward to it: it searches for the highest quality that fits (a binary search between 10% and 95% quality, re-checking the encoded size each time), and only if even 10% quality still overshoots does it reduce the pixel dimensions as well, cutting the width by 15% at a time, up to six times. The result is the best-looking version it found that fits at or under the ceiling, so a 100 KB limit may produce, say, a 99 KB file rather than exactly 100 KB. If even the lowest quality doesn't fit, you'll see the smallest size it reached.",
         list: [
           "Passport / visa photo uploads: often 100 KB or a 10 KB–240 KB range",
           "Government and tax portals: commonly 100 KB or 200 KB per document scan",
@@ -847,7 +847,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Every upload is encrypted in transit and automatically deleted from ConvertBrio's servers within about 24 hours, downloaded or not. This tool compresses one image per upload, up to 100 MB, free, with no account and no watermark.",
+        body: "Every upload is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. This tool compresses one image per upload, up to 100 MB, free, with no account and no watermark.",
       },
     ],
     relatedTools: [
@@ -892,10 +892,10 @@ export const toolContent: Record<string, ToolContentEntry> = {
   },
 
   "resize-image": {
-    title: "Image Resizer: Fit Exact Pixel Dimensions Online",
+    title: "How do I reduce the pixel size of a photo?",
     intro: [
-      "Whether a website demands a specific banner size, a form requires an exact photo dimension, or you just need to shrink an oversized phone photo, ConvertBrio's resize tool lets you set an exact width and height in pixels and get a correctly-sized file back in seconds: no design software required.",
-      "Resizing changes how many pixels the image is made of. Making an image smaller (downscaling) is clean and lossless-looking, and it cuts the file size significantly. Making an image larger (upscaling) with a plain resize spreads existing pixels over more area and looks soft, if that's what you need, the AI Upscaler reconstructs detail instead and gives a far better result.",
+      "Enter the largest width and height you want, in pixels, and ConvertBrio scales the photo down to fit inside them. Pixel size is the number of pixels across and down an image (for example 4000 × 3000). Reducing it makes the picture smaller on screen and also cuts its file size, with no design software required.",
+      "The tool keeps the photo's proportions, so it can't stretch or squash the picture, and it only makes images smaller: it will not enlarge a photo past its original size. If you need an exact width and height that differ from the photo's shape, or a maximum size in KB, use the Photo & Signature Resizer. To enlarge a small photo, use the AI Upscaler.",
     ],
     howTo: [
       {
@@ -903,13 +903,18 @@ export const toolContent: Record<string, ToolContentEntry> = {
         detail: "JPG, PNG, WEBP, HEIC, AVIF, or GIF, up to 100 MB.",
       },
       {
-        step: "Enter the target width and height",
+        step: "Enter a width, a height, or both",
         detail:
-          "Type the pixel dimensions the platform or form requires. To avoid distortion, keep the same width-to-height ratio as the original.",
+          "Type the pixel size you want. You can fill in just one: leave the other blank and it is worked out from the photo's proportions. If you fill in both, the photo is scaled to fit inside that box.",
       },
       {
         step: "Resize and download",
-        detail: "ConvertBrio scales the image to your dimensions and the file downloads automatically.",
+        detail: "ConvertBrio scales the image down and the file downloads automatically.",
+      },
+      {
+        step: "Check the result",
+        detail:
+          "Open the downloaded file and look at its dimensions (right-click > Properties on Windows, Get Info on Mac). Zoom to 100% to confirm it still looks sharp.",
       },
     ],
     sections: [
@@ -929,16 +934,46 @@ export const toolContent: Record<string, ToolContentEntry> = {
         },
       },
       {
-        heading: "Resizing without distorting the image",
-        body: "If the width and height you enter don't match the original's proportions, the image stretches or squashes. To keep it looking right, work out one dimension from the other using the original ratio: for a 4000 × 3000 photo (a 4:3 ratio) that you want 1200 wide, the height should be 900. If you need a different shape entirely (a square from a rectangle, say), crop the image to that shape first with the Crop Image tool, then resize.",
+        heading: "Example: 4000 × 3000 down to 1200 × 900",
+        body: "A typical phone photo is 4000 × 3000 pixels (a 4:3 shape). To get it to 1200 pixels wide, enter 1200 in the width box and leave height blank: the height is worked out as 900, giving 1200 × 900. If you enter 1200 × 1200 instead, the photo is scaled to fit inside that square, which gives 1200 × 900 again, not a stretched square. The new file has 9 times fewer pixels, so it is far smaller to store and send.",
       },
       {
-        heading: "Resizing to reduce file size",
-        body: "Pixel count is the biggest driver of image file size, so halving both dimensions roughly quarters the data. If your goal is a smaller file for email or an upload limit rather than a specific shape, resize to the largest size you'll actually display the image at, then run it through Compress Image for the final squeeze. Resizing first also means the compressor doesn't have to work as hard, so quality holds up better.",
+        heading: "How do I resize an image without stretching it?",
+        body: [
+          "Stretching happens when a tool forces a photo into a box with a different shape, so a face or a circle ends up oval. This tool avoids it by keeping the original aspect ratio (the width-to-height proportion): the result fits within the width and height you enter and the leftover dimension is calculated for you.",
+          "That means the output may be smaller than the box you typed in one direction. If a form demands an exact shape such as 600 × 600, crop the photo to a square first with the Crop Image tool, then resize it. Cropping removes the edges; resizing alone never does. For exact width and height in one step, with either cropping or white margins, use the Photo & Signature Resizer.",
+        ],
+        table: {
+          headers: ["Starting from 4000 × 3000", "What you get", "Looks right?"],
+          rows: [
+            ["Width 1200, height blank", "1200 × 900", "Yes: proportions kept"],
+            ["Width 1200, height 1200", "1200 × 900", "Yes: fits inside the box, not stretched"],
+            ["Crop to a square, then resize to 1200 × 1200", "1200 × 1200", "Yes: edges cropped, nothing distorted"],
+            ["Forcing 1200 × 1200 without cropping (other tools)", "1200 × 1200", "No: the picture is squashed"],
+          ],
+        },
+      },
+      {
+        heading: "Is reducing pixels the same as reducing file size?",
+        body: [
+          "They are related but not the same. Pixel size is how many pixels the image has. File size is how many bytes it takes up, and it depends on the pixel count and on how strongly the image is compressed. Fewer pixels usually means a smaller file, but halving both dimensions does not exactly quarter the file, because compression and image content also matter.",
+          "Choose by goal: to fit a size on a page or a platform's required dimensions, resize. To get under an upload limit in KB or MB, compress, or resize first and then run it through Compress Image for the final squeeze. Resizing first means the compressor doesn't have to work as hard, so quality holds up better. To hit an exact pixel size and a KB limit together, use the Photo & Signature Resizer.",
+        ],
+      },
+      {
+        heading: "Troubleshooting",
+        list: [
+          "The photo didn't get bigger: this tool only reduces size. Use the AI Upscaler to enlarge.",
+          "The result isn't the exact size I typed: the photo was scaled to fit inside your box without changing its shape. Crop first, or use the Photo & Signature Resizer for exact dimensions.",
+          "The file is still too large in KB: compress it after resizing, or set a target in the Photo & Signature Resizer.",
+          "A HEIC photo came back as JPG: HEIC can't be saved by the tool, so it is returned as JPG. A photo from a camera or phone keeps its upright orientation.",
+          "The photo looks soft: shrinking a photo a lot and then viewing it enlarged will look soft. Resize to the size you'll actually display it at.",
+        ],
+        body: "If the result isn't what you expected, check these first.",
       },
       {
         heading: "Privacy and limits",
-        body: "Uploads are encrypted in transit, processed automatically with no human review, and deleted from ConvertBrio's servers within about 24 hours. One image per upload, up to 100 MB, free, no account.",
+        body: "Uploads are encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. One image per upload, up to 100 MB, free, no account.",
       },
     ],
     relatedTools: [
@@ -1107,7 +1142,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Files are encrypted in transit, merged automatically on ConvertBrio's servers with no human review, and every file, sources and the merged output, is deleted within about 24 hours. Multiple files per merge, each up to 100 MB, free, no account, no watermark.",
+        body: "Files are encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. Multiple files per merge, each up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -1165,7 +1200,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Download Format and Limits",
-        body: "Because splitting produces one file per page, the result downloads as a single ZIP archive containing every page as its own PDF, ready to extract. Uploads are capped at 100 MB, and both the original and the resulting pages are deleted from ConvertBrio's servers within about 24 hours of processing.",
+        body: "Because splitting produces one file per page, the result downloads as a single ZIP archive containing every page as its own PDF, ready to extract. Uploads are capped at 100 MB. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -1254,7 +1289,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your PDF is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the original and the compressed copy are deleted within about 24 hours. One file per run, up to 100 MB, free, no account, no watermark.",
+        body: "Your PDF is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. One file per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -1403,7 +1438,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Numbering Style and Limits",
-        body: "Numbers are stamped bottom-center on every page in a plain sans-serif style, starting at 1: there's currently no option to change position, starting number, or format like \"Page X of Y\". Uploads are capped at 100 MB and the file is deleted from ConvertBrio's servers within about 24 hours of processing.",
+        body: "Numbers are stamped bottom-center on every page in a plain sans-serif style, starting at 1: there's currently no option to change position, starting number, or format like \"Page X of Y\". Uploads are capped at 100 MB. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -1473,7 +1508,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your PDF is encrypted in transit, rendered automatically with no human review, and both the upload and the images are deleted within about 24 hours. One file per run, up to 100 MB, free, no account.",
+        body: "Your PDF is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. One file per run, up to 100 MB, free, no account.",
       },
     ],
     relatedTools: [
@@ -1601,7 +1636,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Images are encrypted in transit, combined automatically with no human review, and both the source images and the finished PDF are deleted within about 24 hours. Multiple images per run, 100 MB combined, free, no account, no watermark.",
+        body: "Images are encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. Multiple images per run, 100 MB combined, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -1688,7 +1723,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     title: "OCR PDF: Make a Scanned Document Searchable and Editable",
     intro: [
       "A scanned page or a photo of a document is just an image to a computer: you can't search it, copy text from it, or get a scanned document into Word without retyping every line. Optical character recognition (OCR) fixes that: it reads the text inside the image and turns it into real, selectable characters. ConvertBrio's OCR PDF tool runs recognition on every page you upload and hands back a searchable PDF, with the recognised text ready to copy straight into Word, Google Docs, or an email.",
-      "This is the tool people mean when they search for how to scan a document into Word, or how to convert a scanned document to editable text. Scan or photograph the pages, save them as a PDF, run them through here, then copy the text out, or pass the searchable PDF to the PDF to Word tool for a formatted DOCX.",
+      "If your goal is an editable Word file, use the Scan to Word tool instead: it runs the same kind of recognition but returns a DOCX directly, in seven languages. Use OCR PDF when you want to keep the original look of the pages and add searchable, copyable text behind it. Note that OCR PDF recognises English text only.",
     ],
     howTo: [
       {
@@ -1698,7 +1733,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         step: "Upload the PDF to OCR PDF",
-        detail: "One file per run, up to 100 MB. Multi-page documents are fine: every page is processed.",
+        detail: "One file per run, up to 100 MB and 100 pages. Every page is processed.",
       },
       {
         step: "Run the recognition",
@@ -1706,9 +1741,9 @@ export const toolContent: Record<string, ToolContentEntry> = {
           "ConvertBrio reads each page and builds a text layer behind the original image. Larger documents take longer because every page is recognised individually.",
       },
       {
-        step: "Get your text into Word",
+        step: "Copy the text out, or use Scan to Word for a DOCX",
         detail:
-          "Open the returned PDF, select all (Ctrl/Cmd+A), and paste into Word, or send the searchable PDF through PDF to Word for a DOCX that keeps basic formatting.",
+          "Open the returned PDF, select the text you need, and paste it into Word. If you want a Word file built for you, upload the original scan to Scan to Word instead.",
       },
     ],
     sections: [
@@ -1720,8 +1755,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
         heading: "Getting a scanned document into Word",
         body: [
           "There are two routes, depending on how much formatting you need to keep.",
-          "For plain text, OCR the PDF here, then open it and copy the text directly into a blank Word document. Fast, and works for letters, notes, and single-column pages.",
-          "For a document that should keep its headings, paragraphs, and simple tables, run the OCR'd PDF through the PDF to Word tool afterward. It rebuilds the recognised content as an editable DOCX. Complex multi-column or heavily designed layouts won't map perfectly: that's a limitation of turning any fixed page back into flowing text.",
+          "The most direct route is the Scan to Word tool: upload the scan and download a DOCX of the recognised text as plain paragraphs. It does not reproduce tables, columns, fonts, or images, so expect to re-apply formatting by hand.",
+          "If you would rather keep the page images and just make them searchable, OCR the PDF here, then open it and copy the text you need into a blank Word document. Fast, and works for letters, notes, and single-column pages.",
         ],
       },
       {
@@ -1734,12 +1769,13 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your document is encrypted in transit, processed automatically with no human review, and both the upload and the OCR'd result are deleted within about 24 hours. One PDF per run, up to 100 MB, free, no account.",
+        body: "Your document is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. One PDF per run, up to 100 MB, free, no account.",
       },
     ],
     relatedTools: [
+      { label: "Scan to Word", href: "/tools/scan-to-word" },
+      { label: "Image to Text", href: "/tools/image-to-text" },
       { label: "PDF to Word", href: "/tools/pdf-to-word" },
-      { label: "PDF to JPG", href: "/tools/pdf-to-jpg" },
       { label: "Compress PDF", href: "/tools/compress-pdf" },
       { label: "Image to PDF", href: "/tools/image-to-pdf" },
     ],
@@ -1748,7 +1784,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I get a scanned document into Word?",
         answer:
-          "Save the scan as a PDF, run it through OCR PDF to add a text layer, then either copy the text straight into a Word document, or send the OCR'd PDF through ConvertBrio's PDF to Word tool for an editable DOCX that keeps basic formatting.",
+          "Upload the scan to ConvertBrio's Scan to Word tool for an editable DOCX of the recognised text. Alternatively, run the PDF through OCR PDF to add a text layer, then copy the text into a Word document.",
       },
       {
         question: "Can I scan a document into editable text for free?",
@@ -1773,7 +1809,16 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How long does OCR take?",
         answer:
-          "A few seconds per page. A long multi-page document takes proportionally longer because each page runs through recognition on its own.",
+          "It depends on the page count. Each page runs through recognition on its own, so a long document takes proportionally longer.",
+      },
+      {
+        question: "Which languages does OCR PDF recognise?",
+        answer:
+          "English only. For Portuguese, Spanish, French, German, Italian, or Indonesian text, use Scan to Word, which lets you choose the language.",
+      },
+      {
+        question: "Is there a page limit?",
+        answer: "Yes: up to 100 pages per PDF. Split a longer document first with the Split PDF tool.",
       },
     ],
   },
@@ -1821,7 +1866,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your document is encrypted in transit, converted automatically with no human review, and both files are deleted within about 24 hours. One .docx per run, up to 100 MB, free, no account, no watermark.",
+        body: "Your document is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. One .docx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -1870,7 +1915,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         step: "Check whether your PDF has real text",
         detail:
-          "Open it and try to highlight a sentence with your cursor. If you can, go straight to step 2. If the text is a scanned image, run it through OCR PDF first.",
+          "Open it and try to highlight a sentence with your cursor. If you can, go straight to step 2. If the text is a scanned image, use Scan to Word instead.",
       },
       {
         step: "Upload the PDF",
@@ -1905,7 +1950,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Converting a scanned document to Word",
-        body: "If your PDF is a scan, a photo of each page rather than real text, this converter has no text to extract and will produce an empty or image-only document. Run the scan through ConvertBrio's OCR PDF tool first: it recognises the printed text and adds a text layer. Then convert that OCR'd PDF here to get an editable DOCX. This two-step route is how you turn a paper document into a Word file you can actually edit.",
+        body: "If your PDF is a scan, a photo of each page rather than real text, this converter has no text to extract, so the Word file will contain the page pictures rather than editable words. Use ConvertBrio's Scan to Word tool instead: it reads the printed text with OCR and gives you a DOCX of the recognised text as plain paragraphs. It does not reproduce the original layout, tables, or fonts, so expect to proofread and re-format.",
       },
       {
         heading: "When this tool is the right fit",
@@ -1913,10 +1958,11 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "The PDF is encrypted in transit, converted automatically with no human review, and both files are deleted within about 24 hours. One document per run, up to 100 MB, free, no account, no watermark.",
+        body: "The PDF is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. One document per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
+      { label: "Scan to Word", href: "/tools/scan-to-word" },
       { label: "Word to PDF", href: "/tools/word-to-pdf" },
       { label: "OCR PDF", href: "/tools/ocr-pdf" },
       { label: "PDF to JPG", href: "/tools/pdf-to-jpg" },
@@ -1932,7 +1978,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "How do I convert a scanned document to Word?",
         answer:
-          "First run the scan through ConvertBrio's OCR PDF tool to recognise the text and add a text layer. Then convert that OCR'd PDF here to get an editable DOCX. A raw scan on its own has no text for this tool to extract.",
+          "Use ConvertBrio's Scan to Word tool, which runs OCR and returns an editable DOCX. A raw scan has no text for this PDF to Word tool to extract.",
       },
       {
         question: "Will complex layouts and images convert correctly?",
@@ -2014,7 +2060,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Layout, Downloads, and Limits",
-        body: "Your DOCX is first laid out on a standard A4 page, so complex Word-specific formatting like headers/footers, footnotes, or unusual page sizes may render slightly differently than in Word itself. A single-page document downloads as one PNG; multi-page documents download as a ZIP file containing one PNG per page. Uploads are capped at 100 MB and files are deleted from ConvertBrio's servers within about 24 hours.",
+        body: "Your DOCX is first laid out on a standard A4 page, so complex Word-specific formatting like headers/footers, footnotes, or unusual page sizes may render slightly differently than in Word itself. A single-page document downloads as one PNG; multi-page documents download as a ZIP file containing one PNG per page. Uploads are capped at 100 MB. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -2211,7 +2257,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "The file is encrypted in transit, converted automatically with no human review, and both the upload and the PDF are deleted within about 24 hours. One .pptx per run, up to 100 MB, free, no account, no watermark.",
+        body: "The file is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. One .pptx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -2304,7 +2350,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your document is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the upload and the compressed copy are deleted within about 24 hours. One .docx per run, up to 100 MB, free, no account, no watermark.",
+        body: "Your document is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. One .docx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -2398,7 +2444,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Your presentation is encrypted in transit, processed automatically on ConvertBrio's servers with no human review, and both the upload and the compressed copy are deleted within about 24 hours. One .pptx per run, up to 100 MB, free, no account, no watermark.",
+        body: "Your presentation is encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. One .pptx per run, up to 100 MB, free, no account, no watermark.",
       },
     ],
     relatedTools: [
@@ -2456,7 +2502,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Limits and Privacy",
-        body: "You can combine up to 25 files with a combined size of 100 MB in one pass. Each file is converted and processed on ConvertBrio's servers, not in your browser, and every file, originals and the merged output, is deleted within about 24 hours of processing.",
+        body: "You can combine up to 25 files with a combined size of 100 MB in one pass. Each file is converted on the server, not in your browser. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -2488,7 +2534,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
     title: "AI Background Remover: Automatic Transparent Cutouts",
     intro: [
       "Cutting a subject out of its background usually means design software and careful manual masking around every strand of hair. ConvertBrio's AI background remover does it automatically: upload a photo, and get the subject back on a transparent background in seconds, as a PNG ready to drop onto any new backdrop.",
-      "It's free, needs no account, and adds no watermark. The model runs on ConvertBrio's own servers, so your photo isn't sent to a third-party service.",
+      "It's free, needs no account, and adds no watermark. The model is open-source software that runs inside our own processing, so your photo isn't sent to a third-party AI service.",
     ],
     howTo: [
       {
@@ -2522,7 +2568,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "The background-removal model is self-hosted and open-source: your photo is never sent to an external API or seen by a person. Uploads are capped at 100 MB, and both the original and the cutout are deleted within about 24 hours whether or not you download.",
+        body: "The background-removal model is open-source and runs inside our own processing: your photo is never sent to an external AI API or seen by a person. Uploads are capped at 100 MB. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -2556,7 +2602,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is my photo sent to another company's AI service?",
         answer:
-          "No. The model runs on ConvertBrio's own servers using open-source software, and your photo is deleted within about 24 hours.",
+          "No. The model is open-source software that runs inside our own processing, so your photo is never sent to a third-party AI service. The original is deleted right after it is read, and the result by a daily cleanup, typically within about 24 hours.",
       },
     ],
   },
@@ -2564,8 +2610,8 @@ export const toolContent: Record<string, ToolContentEntry> = {
   "passport-photo-maker": {
     title: "Passport Photo Maker: Free Online Passport Size Photo Tool",
     intro: [
-      "A compliant passport photo needs a plain white background, the subject centred and correctly sized, and the right physical dimensions: normally a trip to a pharmacy or photo studio. ConvertBrio's passport photo maker does all three automatically: upload a selfie or any clear headshot, and get back a print-ready 2×2 inch photo with a clean white background in seconds.",
-      "It's free, with no account and no watermark, and every step, face detection and background removal, runs on ConvertBrio's own servers, so your photo is never sent to an outside service.",
+      "A compliant passport photo needs a plain white background, the subject centred and correctly sized, and the right physical dimensions: normally a trip to a pharmacy or photo studio. ConvertBrio's passport photo maker does all three automatically: upload a selfie or any clear headshot, and get back a print-ready photo with a clean white background in seconds, in either 2×2 inch or 35×45 mm.",
+      "It's free, with no account and no watermark, and every step, face detection and background removal, runs inside our own processing using open-source software, so your photo is never sent to a third-party AI service.",
     ],
     howTo: [
       {
@@ -2578,33 +2624,34 @@ export const toolContent: Record<string, ToolContentEntry> = {
         detail: "One person per photo, up to 100 MB. Group shots and tightly-cropped close-ups won't process.",
       },
       {
-        step: "Let the tool build the photo",
+        step: "Choose the photo size",
         detail:
-          "ConvertBrio finds your face, crops and centres it to passport proportions, removes the background, and fills it solid white.",
+          "Pick 2×2 inch (US-style) or 35×45 mm (the size many other countries use). Check which one your form or authority asks for.",
       },
       {
-        step: "Download and print at 2×2 inch",
+        step: "Let the tool build the photo",
         detail:
-          "You get a 1200×1200 pixel image at 600 DPI: the 2×2 inch size used for US and Indian passport and visa photos.",
+          "ConvertBrio finds your face, crops and centres it to passport proportions for the size you chose, removes the background, and fills it solid white.",
+      },
+      {
+        step: "Download and print",
+        detail:
+          "2×2 inch gives a 1200×1200 pixel image at 600 DPI; 35×45 mm gives a 413×531 pixel image at 300 DPI. Print at the matching physical size.",
       },
     ],
     sections: [
       {
         heading: "How It Works",
-        body: "Upload a photo, and ConvertBrio detects your face, crops and centers it to standard passport proportions, removes the original background, and replaces it with solid white, then outputs a 2x2 inch photo at 600 DPI (1200x1200 pixels), the size used for both US and Indian passport and visa photos. There's nothing to position or adjust manually.",
+        body: "Upload a photo, and ConvertBrio detects your face, crops and centers it to standard passport proportions, removes the original background, and replaces it with solid white, then outputs the size you chose: 2×2 inch at 600 DPI (1200×1200 pixels) or 35×45 mm at 300 DPI (413×531 pixels). The head is sized and positioned for each format separately, so the 35×45 mm photo is a proper portrait crop, not a trimmed square. There's nothing to position or adjust manually.",
       },
       {
-        heading: "Passport photo sizes by country",
-        body: "The tool outputs the 2×2 inch (51×51 mm) format. That's the exact requirement for some countries and a usable starting point you can trim for others, always check your government's current spec before submitting.",
+        heading: "Which size to choose",
+        body: "The tool offers two sizes. Passport and visa rules differ by country and even by document, so always check the issuing authority's current requirement before you pick one or submit.",
         table: {
-          headers: ["Country", "Required size", "2×2 in output fits?"],
+          headers: ["Size", "Output", "Commonly used for"],
           rows: [
-            ["United States", "2 × 2 in (51 × 51 mm)", "Yes, directly"],
-            ["India", "2 × 2 in (51 × 51 mm)", "Yes, directly"],
-            ["United Kingdom", "35 × 45 mm", "Crop from the 2×2 output"],
-            ["Schengen / EU", "35 × 45 mm", "Crop from the 2×2 output"],
-            ["Canada", "50 × 70 mm", "Re-crop; different proportions"],
-            ["Australia", "35 × 45 mm", "Crop from the 2×2 output"],
+            ["2 × 2 in (51 × 51 mm)", "1200 × 1200 px at 600 DPI", "United States passports and visas"],
+            ["35 × 45 mm", "413 × 531 px at 300 DPI", "UK, Schengen/EU and many other passports and ID documents"],
           ],
         },
       },
@@ -2618,7 +2665,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "Face detection and background removal both run on ConvertBrio's own servers using self-hosted, open-source models: your photo is never sent to a third-party API or reviewed by a person. Uploaded and generated files are automatically deleted within about 24 hours.",
+        body: "Face detection and background removal both run inside our own processing using open-source models: your photo is never sent to a third-party AI API or reviewed by a person. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -2631,7 +2678,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "What size photo does this produce?",
         answer:
-          "A 2x2 inch (1200x1200 pixel) photo at 600 DPI: the standard size for both US and Indian passport and visa photos.",
+          "Your choice of two sizes: 2×2 inch (1200×1200 pixels at 600 DPI) or 35×45 mm (413×531 pixels at 300 DPI). Check which one your form or authority requires.",
       },
       {
         question: "Is this free?",
@@ -2667,7 +2714,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "How It Works",
-        body: "Upload an image and ConvertBrio runs it through an automatic image-processing pipeline (contrast normalization, color, and sharpening) directly on our servers: a deterministic algorithm rather than a generative AI model, which is why results are consistent and processing is fast.",
+        body: "Upload an image and ConvertBrio runs it through an automatic image-processing pipeline (contrast normalization, color, and sharpening) on our hosting providers' servers: a deterministic algorithm rather than a generative AI model, which is why results are consistent and processing is fast.",
       },
       {
         heading: "What It Won't Fix",
@@ -2693,7 +2740,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a file size limit?",
         answer:
-          "Uploads are capped at 100 MB. The original and enhanced files are deleted from ConvertBrio's servers within about 24 hours of processing.",
+          "Uploads are capped at 100 MB. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
   },
@@ -2739,7 +2786,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "The model runs on ConvertBrio's own servers: no third-party AI service. Uploads are capped at 100 MB, and both the source and the upscaled result are deleted within about 24 hours.",
+        body: "The model is open-source software that runs inside our own processing, with no third-party AI service. Uploads are capped at 100 MB. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
@@ -2767,12 +2814,12 @@ export const toolContent: Record<string, ToolContentEntry> = {
       {
         question: "Is there a file size limit?",
         answer:
-          "Uploads are capped at 100 MB. Files and results are deleted within about 24 hours.",
+          "Uploads are capped at 100 MB. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
       {
         question: "Why did processing take a little while?",
         answer:
-          "The model runs on ConvertBrio's servers and processes large images in tiles to manage memory, so it takes a few seconds longer than a simple format conversion.",
+          "The model runs on our hosting providers' servers and processes large images in tiles to manage memory, so it takes a few seconds longer than a simple format conversion.",
       },
     ],
   },
@@ -2823,7 +2870,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "The tools that work today, Crop Image and Remove Background, process on ConvertBrio's own servers with no human review, and delete both the upload and the result within about 24 hours.",
+        body: "The tools that work today, Crop Image and Remove Background, process on our hosting providers' servers with no human review. The original is deleted right after it is read, and the result by a daily cleanup, typically within about 24 hours.",
       },
     ],
     relatedTools: [
@@ -2911,7 +2958,7 @@ export const toolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "AI Image Enhancer and AI Upscaler run on ConvertBrio's own servers with no human review, and delete both the upload and the result within about 24 hours. Family photos never go to a third-party service.",
+        body: "AI Image Enhancer and AI Upscaler run on our hosting providers' servers with no human review. The original is deleted right after it is read, and the result by a daily cleanup, typically within about 24 hours. Family photos never go to a third-party service.",
       },
     ],
     relatedTools: [

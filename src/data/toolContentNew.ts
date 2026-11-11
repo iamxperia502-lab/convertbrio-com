@@ -30,7 +30,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy and limits",
-        body: "Files are encrypted in transit, processed automatically with no human review, and deleted within about 24 hours. Password-protected PDFs can't be processed.",
+        body: "Files are encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. Password-protected PDFs can't be processed.",
       },
     ],
     relatedTools: [
@@ -46,7 +46,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       { question: "Does the result end up exactly at my limit?", answer: "It ends up at or below the limit, usually somewhat under it, because settings change in steps rather than continuously." },
       { question: "Why did my PDF barely shrink?", answer: "PDFs made mostly of text and vector shapes are already compact. The biggest savings come from PDFs that contain photos or scanned pages." },
       { question: "Is there a quality difference from the regular Compress PDF tool?", answer: "Compress PDF applies one fixed level. This tool starts at the same level and only gets stronger if your limit requires it." },
-      { question: "Is my document kept?", answer: "No. Uploads and results are deleted within about 24 hours and are never reviewed by a person." },
+      { question: "Is my document kept?", answer: "No. Your original file is deleted right after it is read, the result is deleted by a daily cleanup (typically within about 24 hours), and nothing is reviewed by a person." },
     ],
   },
 
@@ -137,7 +137,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       { question: "Can I download files one by one?", answer: "Yes. Every successful image has its own download link, and the ZIP is available too." },
       { question: "What happens if one file is corrupt?", answer: "It's reported as failed while the others are processed normally." },
       { question: "Does it change the format of my images?", answer: "No, except HEIC photos, which become JPG." },
-      { question: "Are my images stored?", answer: "Uploads and results are deleted within about 24 hours and never reviewed by a person." },
+      { question: "Are my images stored?", answer: "Your original is deleted right after it is read, results are deleted by a daily cleanup (typically within about 24 hours), and nothing is reviewed by a person." },
     ],
   },
 
@@ -150,7 +150,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
     howTo: [
       { step: "Upload an image", detail: "JPG, PNG, WEBP, HEIC, AVIF, or GIF. A sharp, straight photo works best." },
       { step: "Choose the language", detail: "Pick the language the text is written in for the best accuracy." },
-      { step: "Extract the text", detail: "Recognition runs on ConvertBrio's servers." },
+      { step: "Extract the text", detail: "Recognition runs on our hosting providers' servers." },
       { step: "Copy or download", detail: "Select the text on the page, use Copy text, or open the downloaded .txt file." },
     ],
     sections: [
@@ -168,7 +168,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "Images are encrypted in transit, processed automatically with no human review, and deleted within about 24 hours. The recognized text is shown only to you.",
+        body: "Images are encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review. The recognized text is shown only to you.",
       },
     ],
     relatedTools: [
@@ -189,21 +189,68 @@ export const newToolContent: Record<string, ToolContentEntry> = {
   },
 
   "scan-to-word": {
-    title: "Scan to Word: Turn a Scanned Page Into an Editable Document",
+    title: "How do I convert a scanned document to an editable Word file?",
     intro: [
-      "A scan or a photo of a page is a picture: you can't edit it. Scan to Word reads the text with optical character recognition (OCR) and builds a real Word document (DOCX) you can edit, format, and save.",
-      "Upload a photo of a page or a scanned PDF, choose the language, and download the DOCX. It's meant for getting text out of paper documents such as letters, contracts, and printed forms.",
+      "Use optical character recognition (OCR). A scan or a photo of a page is a picture, so Word has no text to edit until OCR reads the letters in the image. Scan to Word does that and builds a real Word document (DOCX) containing the recognized text, which you can then edit, format, and save.",
+      "Upload a photo of a page or a scanned PDF, choose the language of the text, and download the DOCX. It's meant for getting the words out of paper documents such as letters, contracts, and printed forms. It gives you the text, not a copy of the page's design, so plan to proofread and re-apply any formatting you need.",
     ],
     howTo: [
-      { step: "Scan or photograph the page", detail: "Flat, well-lit, and straight gives the best result." },
-      { step: "Upload the image or PDF", detail: "Images up to 100 MB, or PDFs up to 50 pages." },
-      { step: "Choose the language", detail: "This helps the recognition read accents and special characters correctly." },
-      { step: "Download the DOCX", detail: "Open it in Word, Google Docs, or LibreOffice, then proofread and edit." },
+      { step: "Scan or photograph the page", detail: "Flat, evenly lit, and straight-on gives the best result. A phone scanning app that saves a PDF or JPG works fine." },
+      { step: "Upload the image or PDF", detail: "JPG, PNG, WEBP, HEIC, AVIF, GIF, or a PDF. Files up to 100 MB; PDFs up to 50 pages." },
+      { step: "Choose the language", detail: "English, Portuguese, Spanish, French, German, Italian, or Indonesian. The right choice helps accents and special characters come out correctly." },
+      { step: "Download the DOCX", detail: "Open it in Word, Google Docs, or LibreOffice, then proofread against the original and fix any misread words." },
     ],
     sections: [
       {
+        heading: "Can I scan directly into Word?",
+        body: [
+          "Not in one step on this site, and not in Word itself either: ConvertBrio doesn't connect to a scanner, so you first create the scan with your scanner or a phone app, then upload the file here.",
+          "It helps to separate two different things. Inserting a scan into Word (Insert > Pictures) places the page in the document as an image: it looks right, but you can't edit the words. Converting the scan with OCR, as this tool does, reads the characters and gives you editable text. Choose insertion if you only need the page to appear in a document; choose conversion if you need to change, copy, or search the words.",
+        ],
+      },
+      {
+        heading: "Before and after: what to expect",
+        body: "An example of the transformation, using a scanned letter:",
+        table: {
+          headers: ["", "Your scan (before)", "The Word file (after)"],
+          rows: [
+            ["What it is", "A picture of a printed letter", "A DOCX containing the letter's text"],
+            ["Selecting a sentence", "Not possible", "Works like any Word text"],
+            ["Search with Ctrl+F / Cmd+F", "Finds nothing", "Finds every match"],
+            ["Layout", "Exactly as printed", "Plain paragraphs; one page of the scan follows another, with a page break between them"],
+            ["Letterhead logo, stamps, photos", "Visible", "Not included"],
+          ],
+        },
+      },
+      {
+        heading: "How to check and correct the output",
+        body: "OCR is accurate on clean printed text but never perfect, so proofread before you rely on the file. Open the DOCX beside the original scan and read both.",
+        list: [
+          "Check numbers, dates, amounts, and names first: digits are the most commonly misread characters (0 and O, 1 and l, 5 and S).",
+          "Look for words split or joined in the wrong place, and for stray symbols where a smudge or fold crossed the text.",
+          "Run Word's spell checker: a nonsense word often marks a misread one.",
+          "Re-apply headings, bold, tables, and columns by hand where you need them.",
+        ],
+      },
+      {
         heading: "What the Word file contains",
         body: "The recognized text, split into paragraphs, with one page of the scan following another. It's an editable text document, not a copy of the page's look. Fonts, columns, images, and tables from the original are not reproduced.",
+      },
+      {
+        heading: "Why does formatting change after conversion?",
+        body: "Because the tool reads letters, not layout. It reconstructs paragraphs from the lines it finds and does not rebuild the page's design. That is why you'll see these differences:",
+        list: [
+          "Tables come out as lines of text, not cells. Re-create the table in Word and copy the values across.",
+          "Columns are read line by line, so text from two columns can interleave. Crop or scan one column at a time if the order matters.",
+          "Fonts, sizes, colors, and spacing are replaced by Word's defaults. Select the text and restyle it.",
+          "Images, logos, and signatures are not carried over. Add them back from the original file.",
+          "A scan that is crooked, shadowed, or low resolution produces more errors. Re-scan it flat at about 300 DPI instead of trying to repair a poor result.",
+          "A sideways or upside-down page reads poorly. Photos are straightened using the orientation your camera saved, but a scan without that data should be rotated before uploading.",
+        ],
+      },
+      {
+        heading: "If you get an error or an empty result",
+        body: "If the tool finds no readable text it says so instead of returning an empty file. In that case, try a sharper and higher-resolution image of printed text, straighten the page, and make sure the language matches the document. PDFs longer than 50 pages are rejected; split them into parts with the Split PDF tool first.",
       },
       {
         heading: "Scan to Word vs. PDF to Word",
@@ -215,18 +262,22 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "Uploads are encrypted in transit, processed automatically with no human review, and deleted within about 24 hours.",
+        body: "Uploads are encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
       { label: "Image to Text", href: "/tools/image-to-text" },
       { label: "OCR PDF", href: "/tools/ocr-pdf" },
       { label: "PDF to Word", href: "/tools/pdf-to-word" },
-      { label: "Word to PDF", href: "/tools/word-to-pdf" },
+      { label: "Image to PDF", href: "/tools/image-to-pdf" },
+      { label: "Split PDF", href: "/tools/split-pdf" },
     ],
     faqDescription: "Common questions about converting scans to editable Word documents.",
     faq: [
-      { question: "How do I convert a scanned document to Word?", answer: "Upload the scan as an image or PDF, choose the language, and download the DOCX that the tool creates." },
+      { question: "How do I convert a scanned document to Word?", answer: "Upload the scan as an image or PDF, choose the language, and download the DOCX that the tool creates. Proofread it against the original, since OCR can misread characters." },
+      { question: "Can I scan a document straight into Word?", answer: "Not directly. Scan the page with a scanner or phone app first, then upload the file here. Inserting a scan into Word as a picture keeps it uneditable; converting it with OCR gives you editable text." },
+      { question: "How do I convert several photos of pages into one Word file?", answer: "Combine the photos into one PDF with Image to PDF, then upload that PDF here. Each page's text follows the previous one, up to 50 pages." },
+      { question: "Why is my table or column layout gone?", answer: "The tool outputs recognized text as plain paragraphs, so tables and columns are not rebuilt. Re-create them in Word from the text." },
       { question: "Will the Word file look like my scan?", answer: "No. You get the recognized text as editable paragraphs. Layout, fonts, and images are not reproduced." },
       { question: "Can it handle multi-page PDFs?", answer: "Yes, up to 50 pages. Each page's text follows the previous one." },
       { question: "Does it read handwriting?", answer: "Not reliably. It's built for printed text." },
@@ -309,7 +360,7 @@ export const newToolContent: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy",
-        body: "Files are encrypted in transit, processed automatically with no human review, and deleted within about 24 hours.",
+        body: "Files are encrypted in transit. Your original file is deleted right after it is read for conversion. The converted result is deleted by a daily cleanup, typically within about 24 hours. Files are processed on our hosting providers' servers (Vercel and Supabase), automatically, with no human review.",
       },
     ],
     relatedTools: [
