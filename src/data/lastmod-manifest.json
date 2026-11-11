@@ -1,0 +1,1738 @@
+{
+  "/": {
+    "hash": "0069c057275bc193",
+    "lastmod": "2026-11-11"
+  },
+  "/about": {
+    "hash": "a20ba0708a476417",
+    "lastmod": "2026-11-11"
+  },
+  "/ai-tools": {
+    "hash": "76ee2ef65d6dd2ee",
+    "lastmod": "2026-11-11"
+  },
+  "/all-tools": {
+    "hash": "4df0510a3765e76a",
+    "lastmod": "2026-11-10"
+  },
+  "/compression-tools": {
+    "hash": "617ca266592d0164",
+    "lastmod": "2026-11-11"
+  },
+  "/contact": {
+    "hash": "9bce84437ccf24a3",
+    "lastmod": "2026-11-10"
+  },
+  "/de": {
+    "hash": "11eb64ac30012362",
+    "lastmod": "2026-11-11"
+  },
+  "/de/about": {
+    "hash": "6e375b60c4b8ebeb",
+    "lastmod": "2026-11-11"
+  },
+  "/de/ai-tools": {
+    "hash": "9ddaca08bec36ff5",
+    "lastmod": "2026-11-11"
+  },
+  "/de/all-tools": {
+    "hash": "f00a40028ef87cf1",
+    "lastmod": "2026-11-11"
+  },
+  "/de/compression-tools": {
+    "hash": "4aea9baab67a7695",
+    "lastmod": "2026-11-11"
+  },
+  "/de/contact": {
+    "hash": "b148114ec5be7a31",
+    "lastmod": "2026-11-11"
+  },
+  "/de/document-tools": {
+    "hash": "35caa4cead8f697e",
+    "lastmod": "2026-11-11"
+  },
+  "/de/image-tools": {
+    "hash": "5a1198f327544e03",
+    "lastmod": "2026-11-11"
+  },
+  "/de/ocr-tools": {
+    "hash": "a6291ff885458b91",
+    "lastmod": "2026-11-11"
+  },
+  "/de/pdf-tools": {
+    "hash": "9b1c880efa3a67b9",
+    "lastmod": "2026-11-11"
+  },
+  "/de/privacy": {
+    "hash": "a5ead032af65d1af",
+    "lastmod": "2026-11-11"
+  },
+  "/de/terms": {
+    "hash": "3e2eea8edbc76a62",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/add-page-numbers": {
+    "hash": "198a770fb60e42e7",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/ai-image-enhancer": {
+    "hash": "805f7dd7b96b2bb4",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/ai-upscaler": {
+    "hash": "efe01b9309337d1a",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/avif-to-jpg": {
+    "hash": "31eef05b8fcfa5be",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/avif-to-png": {
+    "hash": "28727a10e842b9e5",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/avif-to-webp": {
+    "hash": "5df3a7d949dd5718",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/batch-image-compressor": {
+    "hash": "0044ef3e60778679",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/compress-image": {
+    "hash": "0342a9e0a2bcf8e1",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/compress-pdf": {
+    "hash": "b773acb24e94ff4d",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/compress-pdf-to-size": {
+    "hash": "a56d230a3078890f",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/compress-powerpoint": {
+    "hash": "3dd82ae5b57af32b",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/compress-word": {
+    "hash": "43e0aba4a8471a90",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/crop-image": {
+    "hash": "86c4d93c5ef24ae9",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/excel-to-pdf": {
+    "hash": "67300ca18a8f31d8",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/heic-to-jpg": {
+    "hash": "7d1fe3018e094366",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/image-converter": {
+    "hash": "8e0100e5962f214f",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/image-to-pdf": {
+    "hash": "9f80e2cf9b85a50c",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/image-to-text": {
+    "hash": "39d6f91ea419ac16",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/jpg-to-avif": {
+    "hash": "48a658b37be5a568",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/jpg-to-pdf": {
+    "hash": "e49cdec1342b8f10",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/jpg-to-png": {
+    "hash": "2115d50b3aae1f4b",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/jpg-to-webp": {
+    "hash": "b68b5b59154521d3",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/merge-documents": {
+    "hash": "f72da2a6f8175df9",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/merge-pdf": {
+    "hash": "a1b255c3ca08ca2c",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/metadata-remover": {
+    "hash": "edd1a9b86eaed874",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/ocr-pdf": {
+    "hash": "b4b6fb65eeeca833",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/passport-photo-maker": {
+    "hash": "efadde0958842635",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/pdf-page-organizer": {
+    "hash": "f3ba4217067d5645",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/pdf-to-jpg": {
+    "hash": "8fce070e6506cbc7",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/pdf-to-png": {
+    "hash": "91aeb060455ece15",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/pdf-to-word": {
+    "hash": "367999f7d8564441",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/photo-signature-resizer": {
+    "hash": "84f820c41e642b57",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/png-to-avif": {
+    "hash": "7c9ecbd9cb646941",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/png-to-jpg": {
+    "hash": "6ee345caff1037ca",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/png-to-webp": {
+    "hash": "083dc9f3ae53821e",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/powerpoint-to-pdf": {
+    "hash": "c3fd6ad4d81e53f8",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/remove-background": {
+    "hash": "5f0c8131e7c7d252",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/resize-image": {
+    "hash": "8bb5262554cb4d9c",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/rotate-image": {
+    "hash": "2ec8f3e2ba7dd8f4",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/rotate-pdf": {
+    "hash": "f57c474d4b86f4ff",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/scan-to-word": {
+    "hash": "8fbb3d7db8e0ca92",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/split-pdf": {
+    "hash": "60dc9a457cb84043",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/unlock-pdf": {
+    "hash": "5d6566b6f439f344",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/webp-to-avif": {
+    "hash": "abd458f98122fecc",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/webp-to-jpg": {
+    "hash": "0e8fcd6146f444b9",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/webp-to-png": {
+    "hash": "ec92715700ec64e8",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/word-to-jpg": {
+    "hash": "8339d149f51b470c",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/word-to-pdf": {
+    "hash": "a3b05bb25ddab111",
+    "lastmod": "2026-11-11"
+  },
+  "/de/tools/word-to-png": {
+    "hash": "78e5d0c891eec47a",
+    "lastmod": "2026-11-11"
+  },
+  "/de/trust": {
+    "hash": "1e5284b28c521bdb",
+    "lastmod": "2026-11-11"
+  },
+  "/document-tools": {
+    "hash": "fe2eff63f0bae40d",
+    "lastmod": "2026-11-11"
+  },
+  "/es": {
+    "hash": "92e9507bfbacf21d",
+    "lastmod": "2026-11-11"
+  },
+  "/es/about": {
+    "hash": "c2987055d8ea0d5b",
+    "lastmod": "2026-11-11"
+  },
+  "/es/ai-tools": {
+    "hash": "7fd22d220ad6de5a",
+    "lastmod": "2026-11-11"
+  },
+  "/es/all-tools": {
+    "hash": "d1845cd7a20ff482",
+    "lastmod": "2026-11-11"
+  },
+  "/es/compression-tools": {
+    "hash": "12f863007c0709cc",
+    "lastmod": "2026-11-11"
+  },
+  "/es/contact": {
+    "hash": "8b2335ace07d50c0",
+    "lastmod": "2026-11-11"
+  },
+  "/es/document-tools": {
+    "hash": "e877c4b0e2a51a62",
+    "lastmod": "2026-11-11"
+  },
+  "/es/image-tools": {
+    "hash": "68ea56d90b13bae1",
+    "lastmod": "2026-11-11"
+  },
+  "/es/ocr-tools": {
+    "hash": "248d764fed152816",
+    "lastmod": "2026-11-11"
+  },
+  "/es/pdf-tools": {
+    "hash": "c6e4c9067d6a28b6",
+    "lastmod": "2026-11-11"
+  },
+  "/es/privacy": {
+    "hash": "1974c2d4036ea921",
+    "lastmod": "2026-11-11"
+  },
+  "/es/terms": {
+    "hash": "dfcfb803bed97374",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/add-page-numbers": {
+    "hash": "51741d4d5fa7ce39",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/ai-image-enhancer": {
+    "hash": "b9d59bbee7e6c0ba",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/ai-upscaler": {
+    "hash": "deb07535c770691e",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/avif-to-jpg": {
+    "hash": "80b0e068c4138589",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/avif-to-png": {
+    "hash": "faab3c85cbcc336d",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/avif-to-webp": {
+    "hash": "b7c4dda255c7e2c7",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/batch-image-compressor": {
+    "hash": "3537f0fda7b93c7e",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/compress-image": {
+    "hash": "03a31f62bd20a0e4",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/compress-pdf": {
+    "hash": "4c4f0263398f24c1",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/compress-pdf-to-size": {
+    "hash": "40e8ac1578cd3573",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/compress-powerpoint": {
+    "hash": "c53db1f75fda3dce",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/compress-word": {
+    "hash": "2c60b6d636c6a420",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/crop-image": {
+    "hash": "50a8398ceed650de",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/excel-to-pdf": {
+    "hash": "34a4b2c2ae7a3f90",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/heic-to-jpg": {
+    "hash": "3c11f72db5f48efe",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/image-converter": {
+    "hash": "64dab44ebdb13aca",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/image-to-pdf": {
+    "hash": "ce155d5d2d78d9af",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/image-to-text": {
+    "hash": "35bbb521bebff4c8",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/jpg-to-avif": {
+    "hash": "7f1b677b71a57cf3",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/jpg-to-pdf": {
+    "hash": "eb69d9fd9ecf5dec",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/jpg-to-png": {
+    "hash": "5d373f6bacec47b6",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/jpg-to-webp": {
+    "hash": "875faa1dbde32830",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/merge-documents": {
+    "hash": "d6c4acd706d63141",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/merge-pdf": {
+    "hash": "f042573385e7635a",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/metadata-remover": {
+    "hash": "45598d9999d6345f",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/ocr-pdf": {
+    "hash": "1ffaf320a1765439",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/passport-photo-maker": {
+    "hash": "add61f0fa407088f",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/pdf-page-organizer": {
+    "hash": "2c7033971812a9a6",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/pdf-to-jpg": {
+    "hash": "92d5629eaaafcc76",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/pdf-to-png": {
+    "hash": "acab497eda91cfdf",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/pdf-to-word": {
+    "hash": "207e4c2970d86ca3",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/photo-signature-resizer": {
+    "hash": "fcf0f5c7647ab11d",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/png-to-avif": {
+    "hash": "e96f40c1505e6e76",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/png-to-jpg": {
+    "hash": "63609959344c085e",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/png-to-webp": {
+    "hash": "d4730cc9136201b5",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/powerpoint-to-pdf": {
+    "hash": "5553d594e9715dba",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/remove-background": {
+    "hash": "9b6198dd59214972",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/resize-image": {
+    "hash": "2769660d8351b227",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/rotate-image": {
+    "hash": "d798fc4b88e9654e",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/rotate-pdf": {
+    "hash": "a84d386750df090f",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/scan-to-word": {
+    "hash": "6bdcd9b0c6231071",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/split-pdf": {
+    "hash": "699f1f6f0a7069ae",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/unlock-pdf": {
+    "hash": "37ecf1cc92a4ad32",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/webp-to-avif": {
+    "hash": "83bb5641432a3dbe",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/webp-to-jpg": {
+    "hash": "dedacfde822450a9",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/webp-to-png": {
+    "hash": "735b053a7507a74f",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/word-to-jpg": {
+    "hash": "457f0df1adbbfc2a",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/word-to-pdf": {
+    "hash": "4350a26316ff536d",
+    "lastmod": "2026-11-11"
+  },
+  "/es/tools/word-to-png": {
+    "hash": "2e4cc38892d1c116",
+    "lastmod": "2026-11-11"
+  },
+  "/es/trust": {
+    "hash": "3fe679d2afb3c896",
+    "lastmod": "2026-11-11"
+  },
+  "/fr": {
+    "hash": "cf4ec0bde99701e7",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/about": {
+    "hash": "19cd97bfae87572d",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/ai-tools": {
+    "hash": "5e731eca0e061c67",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/all-tools": {
+    "hash": "2cd22c2db6b0f286",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/compression-tools": {
+    "hash": "92f26838781c1093",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/contact": {
+    "hash": "36e90607376dbf4f",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/document-tools": {
+    "hash": "e4f5480cb38c4d41",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/image-tools": {
+    "hash": "3737e784ba402d5a",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/ocr-tools": {
+    "hash": "3ee314cf07a4180e",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/pdf-tools": {
+    "hash": "2565cb86d9dca3c3",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/privacy": {
+    "hash": "95b1b66e45b8dfb7",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/terms": {
+    "hash": "ec09ca703aa65274",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/add-page-numbers": {
+    "hash": "8726d9859b32ea01",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/ai-image-enhancer": {
+    "hash": "5ee4e681cf3070bc",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/ai-upscaler": {
+    "hash": "cbeedc25824bd77b",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/avif-to-jpg": {
+    "hash": "f4baccefe2a8ae29",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/avif-to-png": {
+    "hash": "2313aaf09cf85cc2",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/avif-to-webp": {
+    "hash": "eb497f1aa12a65d2",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/batch-image-compressor": {
+    "hash": "fdfe3489c44e8f7d",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/compress-image": {
+    "hash": "b18487965c869157",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/compress-pdf": {
+    "hash": "75906cddefae3375",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/compress-pdf-to-size": {
+    "hash": "5951cc42fe8d1557",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/compress-powerpoint": {
+    "hash": "285ab2c6c6449000",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/compress-word": {
+    "hash": "3496e1b1f70dfdec",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/crop-image": {
+    "hash": "0ec225b2d60e542f",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/excel-to-pdf": {
+    "hash": "a09ac05380d099cc",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/heic-to-jpg": {
+    "hash": "d409da9cc2f29de3",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/image-converter": {
+    "hash": "a38e701f95d30c4b",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/image-to-pdf": {
+    "hash": "9db7ba47061f3fc6",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/image-to-text": {
+    "hash": "c65468242d532f73",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/jpg-to-avif": {
+    "hash": "7c2dcf2092350c10",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/jpg-to-pdf": {
+    "hash": "627ca8a6f55da219",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/jpg-to-png": {
+    "hash": "1d2cfe62f48bd2be",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/jpg-to-webp": {
+    "hash": "2fec73423ef29946",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/merge-documents": {
+    "hash": "0eb5efe3c015aecb",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/merge-pdf": {
+    "hash": "64a85b29e2edae89",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/metadata-remover": {
+    "hash": "40d12c1112a50ef5",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/ocr-pdf": {
+    "hash": "c13e17d1ee96375c",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/passport-photo-maker": {
+    "hash": "c97dde8b1e2bdd1e",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/pdf-page-organizer": {
+    "hash": "882cc5323a12c50a",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/pdf-to-jpg": {
+    "hash": "f16113076937fd52",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/pdf-to-png": {
+    "hash": "a08e9a9eb143c486",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/pdf-to-word": {
+    "hash": "f560f4777220d972",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/photo-signature-resizer": {
+    "hash": "9fa3e1cd5b60d7cd",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/png-to-avif": {
+    "hash": "a15e0e1cb1614f2d",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/png-to-jpg": {
+    "hash": "238496704a4a2a70",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/png-to-webp": {
+    "hash": "c2a1248dcc14cf17",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/powerpoint-to-pdf": {
+    "hash": "d428c74cfb2f8b35",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/remove-background": {
+    "hash": "a1d4ccf563ddbf84",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/resize-image": {
+    "hash": "2d6b3962b72910ba",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/rotate-image": {
+    "hash": "70ff98c0919694fa",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/rotate-pdf": {
+    "hash": "418f305fac2441cf",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/scan-to-word": {
+    "hash": "036c8d783eb032ad",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/split-pdf": {
+    "hash": "8b6283b22feec766",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/unlock-pdf": {
+    "hash": "a45a575926b01218",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/webp-to-avif": {
+    "hash": "7a83a60425d097c4",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/webp-to-jpg": {
+    "hash": "687b53b9ce9f3115",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/webp-to-png": {
+    "hash": "4c9c89857db3fc45",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/word-to-jpg": {
+    "hash": "b716b6bcffb4032a",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/word-to-pdf": {
+    "hash": "7ae438d5df67928f",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/tools/word-to-png": {
+    "hash": "2b149629cf8fecc3",
+    "lastmod": "2026-11-11"
+  },
+  "/fr/trust": {
+    "hash": "2c80ab9c2179375c",
+    "lastmod": "2026-11-11"
+  },
+  "/id": {
+    "hash": "aad114118fe03f14",
+    "lastmod": "2026-11-11"
+  },
+  "/id/about": {
+    "hash": "0fa1a7b4713ef974",
+    "lastmod": "2026-11-11"
+  },
+  "/id/ai-tools": {
+    "hash": "7e837379569f91cb",
+    "lastmod": "2026-11-11"
+  },
+  "/id/all-tools": {
+    "hash": "63cb85d66083f691",
+    "lastmod": "2026-11-11"
+  },
+  "/id/compression-tools": {
+    "hash": "3828e8eca6bdd1bb",
+    "lastmod": "2026-11-11"
+  },
+  "/id/contact": {
+    "hash": "fa907c058b74250e",
+    "lastmod": "2026-11-11"
+  },
+  "/id/document-tools": {
+    "hash": "1af75b0c8adff3e2",
+    "lastmod": "2026-11-11"
+  },
+  "/id/image-tools": {
+    "hash": "a4c4b429c1c7b8fb",
+    "lastmod": "2026-11-11"
+  },
+  "/id/ocr-tools": {
+    "hash": "b256c4b6c5673720",
+    "lastmod": "2026-11-11"
+  },
+  "/id/pdf-tools": {
+    "hash": "1e065abf2cdb8b02",
+    "lastmod": "2026-11-11"
+  },
+  "/id/privacy": {
+    "hash": "eeb189cc0948dcc7",
+    "lastmod": "2026-11-11"
+  },
+  "/id/terms": {
+    "hash": "5e2ebec0147b89c0",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/add-page-numbers": {
+    "hash": "b85531ed6bb672e9",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/ai-image-enhancer": {
+    "hash": "72359bab779b4c6e",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/ai-upscaler": {
+    "hash": "910c217f64c8a8af",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/avif-to-jpg": {
+    "hash": "52b285b1cef1c8ab",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/avif-to-png": {
+    "hash": "e2a1a6d84d36b889",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/avif-to-webp": {
+    "hash": "5c87663e51afc2bd",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/batch-image-compressor": {
+    "hash": "cc94520780258c09",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/compress-image": {
+    "hash": "2fef0a2ebdd4027e",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/compress-pdf": {
+    "hash": "39260956874074f9",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/compress-pdf-to-size": {
+    "hash": "b6d4b419887bc2bf",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/compress-powerpoint": {
+    "hash": "c55c2e1a2a0e75ec",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/compress-word": {
+    "hash": "f03ce6bd642662e5",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/crop-image": {
+    "hash": "c0b357a4da6bee39",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/excel-to-pdf": {
+    "hash": "83a942449987fa5e",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/heic-to-jpg": {
+    "hash": "a593b0bdc48931a6",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/image-converter": {
+    "hash": "c37d60828df5fd10",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/image-to-pdf": {
+    "hash": "ebeb5e79f4b95f14",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/image-to-text": {
+    "hash": "f0c1dd3c251de18b",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/jpg-to-avif": {
+    "hash": "52cc020fe1ea375a",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/jpg-to-pdf": {
+    "hash": "5bc7146d02dd731c",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/jpg-to-png": {
+    "hash": "f35fed647ab8ee42",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/jpg-to-webp": {
+    "hash": "afdf9fb209ffe5aa",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/merge-documents": {
+    "hash": "1a1d7c7cfcbf5a88",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/merge-pdf": {
+    "hash": "a82943531a3d28fd",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/metadata-remover": {
+    "hash": "2a654c6507ae0c68",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/ocr-pdf": {
+    "hash": "73ee0a396bd7fba3",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/passport-photo-maker": {
+    "hash": "6153af2fbf428b37",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/pdf-page-organizer": {
+    "hash": "b228288a39f37900",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/pdf-to-jpg": {
+    "hash": "9c73861749e242c1",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/pdf-to-png": {
+    "hash": "ba8f34bb1cf3866e",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/pdf-to-word": {
+    "hash": "ad63b56e6e894971",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/photo-signature-resizer": {
+    "hash": "a98cf32f84c0a0ff",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/png-to-avif": {
+    "hash": "b9e2b5bdffaf1bfc",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/png-to-jpg": {
+    "hash": "1620f135855c5543",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/png-to-webp": {
+    "hash": "ee06f4a50cb08ce9",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/powerpoint-to-pdf": {
+    "hash": "9e95884fd34531f6",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/remove-background": {
+    "hash": "b3ea2544366e54c3",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/resize-image": {
+    "hash": "50244e7fcbb6e1e3",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/rotate-image": {
+    "hash": "57638ac68f9032ed",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/rotate-pdf": {
+    "hash": "84e6da87e18e73e1",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/scan-to-word": {
+    "hash": "3803e5f8c4ba245e",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/split-pdf": {
+    "hash": "2d774ede732407a1",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/unlock-pdf": {
+    "hash": "33be6d16817b0c92",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/webp-to-avif": {
+    "hash": "8a4cb8e4aec793ce",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/webp-to-jpg": {
+    "hash": "ee654086551f4b2f",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/webp-to-png": {
+    "hash": "fbb38f11b13af67b",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/word-to-jpg": {
+    "hash": "3994ad04d961a14b",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/word-to-pdf": {
+    "hash": "d6f626b2d5879d16",
+    "lastmod": "2026-11-11"
+  },
+  "/id/tools/word-to-png": {
+    "hash": "16cf4b279ee55233",
+    "lastmod": "2026-11-11"
+  },
+  "/id/trust": {
+    "hash": "b33983d184c4f6ae",
+    "lastmod": "2026-11-11"
+  },
+  "/image-tools": {
+    "hash": "1cf34526864d273e",
+    "lastmod": "2026-11-11"
+  },
+  "/it": {
+    "hash": "0ecfa9d4b80720a1",
+    "lastmod": "2026-11-11"
+  },
+  "/it/about": {
+    "hash": "48783e07a104f2e3",
+    "lastmod": "2026-11-11"
+  },
+  "/it/ai-tools": {
+    "hash": "20bce4715cf0cd29",
+    "lastmod": "2026-11-11"
+  },
+  "/it/all-tools": {
+    "hash": "0b530b6a982d2412",
+    "lastmod": "2026-11-11"
+  },
+  "/it/compression-tools": {
+    "hash": "7c1f66062a611af3",
+    "lastmod": "2026-11-11"
+  },
+  "/it/contact": {
+    "hash": "a193bdfb098b732e",
+    "lastmod": "2026-11-11"
+  },
+  "/it/document-tools": {
+    "hash": "4a33c98b711ed6cf",
+    "lastmod": "2026-11-11"
+  },
+  "/it/image-tools": {
+    "hash": "08e64b9b46721808",
+    "lastmod": "2026-11-11"
+  },
+  "/it/ocr-tools": {
+    "hash": "364e17892eea332c",
+    "lastmod": "2026-11-11"
+  },
+  "/it/pdf-tools": {
+    "hash": "007c363ecfedf4b5",
+    "lastmod": "2026-11-11"
+  },
+  "/it/privacy": {
+    "hash": "e7784a0b2bf284aa",
+    "lastmod": "2026-11-11"
+  },
+  "/it/terms": {
+    "hash": "7d671a1d8b2442cd",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/add-page-numbers": {
+    "hash": "37cee6ccca88faf0",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/ai-image-enhancer": {
+    "hash": "888973c7b51ede1f",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/ai-upscaler": {
+    "hash": "84092062239fb037",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/avif-to-jpg": {
+    "hash": "a88ea353d90670a7",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/avif-to-png": {
+    "hash": "ef4f75e7a891b8be",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/avif-to-webp": {
+    "hash": "0843dada5898adae",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/batch-image-compressor": {
+    "hash": "8c1cc8b6f9017e66",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/compress-image": {
+    "hash": "9ae58fcab096d43d",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/compress-pdf": {
+    "hash": "8f7d23fc96040038",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/compress-pdf-to-size": {
+    "hash": "6a9679acccab3d00",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/compress-powerpoint": {
+    "hash": "467d4dc64fb4c38b",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/compress-word": {
+    "hash": "7261554ff05a15bf",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/crop-image": {
+    "hash": "47b61c498eb19bcf",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/excel-to-pdf": {
+    "hash": "5493d2c094f40dac",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/heic-to-jpg": {
+    "hash": "6a36c7ac851ba235",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/image-converter": {
+    "hash": "b0e45dfecd6c3245",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/image-to-pdf": {
+    "hash": "9861ee9659fe987c",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/image-to-text": {
+    "hash": "eb621ce666bd518a",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/jpg-to-avif": {
+    "hash": "614f9422f04e01a4",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/jpg-to-pdf": {
+    "hash": "cee25597fb2998f8",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/jpg-to-png": {
+    "hash": "97175cd318f93d56",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/jpg-to-webp": {
+    "hash": "af0f41393dfbe294",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/merge-documents": {
+    "hash": "0b933a98831b5088",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/merge-pdf": {
+    "hash": "d487f02b0fd4e039",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/metadata-remover": {
+    "hash": "cf14670a66110f05",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/ocr-pdf": {
+    "hash": "c45dc7666115f809",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/passport-photo-maker": {
+    "hash": "354919e4f03a9525",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/pdf-page-organizer": {
+    "hash": "8a3e7f64af89e30e",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/pdf-to-jpg": {
+    "hash": "d53d4ee773aa1cec",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/pdf-to-png": {
+    "hash": "1b9c507d481e5452",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/pdf-to-word": {
+    "hash": "8c4d450786bbeb7b",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/photo-signature-resizer": {
+    "hash": "5d472dc0db4a494d",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/png-to-avif": {
+    "hash": "0bdc7b92367cd852",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/png-to-jpg": {
+    "hash": "67dffbde50ee3bc1",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/png-to-webp": {
+    "hash": "1a8d796a81c74e92",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/powerpoint-to-pdf": {
+    "hash": "c6aa1969e827053a",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/remove-background": {
+    "hash": "05cbc486670e2a56",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/resize-image": {
+    "hash": "573ca58688769ca0",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/rotate-image": {
+    "hash": "2b5ed729c2ac7da4",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/rotate-pdf": {
+    "hash": "46726984f77f353c",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/scan-to-word": {
+    "hash": "be5f21c817cfff9b",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/split-pdf": {
+    "hash": "7980cd68c16267b8",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/unlock-pdf": {
+    "hash": "240bfefb46b7cf6a",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/webp-to-avif": {
+    "hash": "4d5ae33fa01a654d",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/webp-to-jpg": {
+    "hash": "47f6ea6bd59db8de",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/webp-to-png": {
+    "hash": "a65075f8b465dc83",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/word-to-jpg": {
+    "hash": "e07ad9dc2d89540c",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/word-to-pdf": {
+    "hash": "da8a5771ee8c980c",
+    "lastmod": "2026-11-11"
+  },
+  "/it/tools/word-to-png": {
+    "hash": "2e7668a2c4e66950",
+    "lastmod": "2026-11-11"
+  },
+  "/it/trust": {
+    "hash": "b298692391cf20d9",
+    "lastmod": "2026-11-11"
+  },
+  "/ocr-tools": {
+    "hash": "80e6483f85954cb2",
+    "lastmod": "2026-11-11"
+  },
+  "/pdf-tools": {
+    "hash": "78c8872cfa553deb",
+    "lastmod": "2026-11-11"
+  },
+  "/privacy": {
+    "hash": "f819fdc37f66113b",
+    "lastmod": "2026-11-10"
+  },
+  "/pt": {
+    "hash": "9d4a0986f10494b9",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/about": {
+    "hash": "e8b01a41d11e59b7",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/ai-tools": {
+    "hash": "7cceaf2c6d70c947",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/all-tools": {
+    "hash": "95139aa93d97be79",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/compression-tools": {
+    "hash": "d0b95900e577b268",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/contact": {
+    "hash": "7d5caa8ad70d6528",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/document-tools": {
+    "hash": "fe57ab1d2e8e7e47",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/image-tools": {
+    "hash": "63fb43c78e367ae7",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/ocr-tools": {
+    "hash": "eb78e7767f2c6d60",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/pdf-tools": {
+    "hash": "efc214c60048090f",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/privacy": {
+    "hash": "dc3b868132882c45",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/terms": {
+    "hash": "d51bdd74fc8047a6",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/add-page-numbers": {
+    "hash": "ac3d80a9cc9b291b",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/ai-image-enhancer": {
+    "hash": "7724ef998035fa0e",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/ai-upscaler": {
+    "hash": "2ce65e77c14029c8",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/avif-to-jpg": {
+    "hash": "e6a41973cc2095d5",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/avif-to-png": {
+    "hash": "dd60dc3fec7c7a68",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/avif-to-webp": {
+    "hash": "1809542b7a2d6919",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/batch-image-compressor": {
+    "hash": "8cf47758e4dc2ab3",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/compress-image": {
+    "hash": "b4639ebe0189b035",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/compress-pdf": {
+    "hash": "de7905d9ef05d03b",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/compress-pdf-to-size": {
+    "hash": "106651123feb38ad",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/compress-powerpoint": {
+    "hash": "318b2d0fcca53b2a",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/compress-word": {
+    "hash": "0882558d0ec29a9d",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/crop-image": {
+    "hash": "a53d3d3d3c807937",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/excel-to-pdf": {
+    "hash": "5584756ab2e2a25f",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/heic-to-jpg": {
+    "hash": "cd4e2fe08c241e14",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/image-converter": {
+    "hash": "9dd400a88e305c13",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/image-to-pdf": {
+    "hash": "246c3cb7817b59c0",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/image-to-text": {
+    "hash": "fa30603a9ac5bf9e",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/jpg-to-avif": {
+    "hash": "974cfd86aa0a20f1",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/jpg-to-pdf": {
+    "hash": "2ed9e930836ea50d",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/jpg-to-png": {
+    "hash": "c0d4bad6c175a9ae",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/jpg-to-webp": {
+    "hash": "fdfe9d0eee2c64cb",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/merge-documents": {
+    "hash": "6f654593d0e177f4",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/merge-pdf": {
+    "hash": "1dcf766fe83d463c",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/metadata-remover": {
+    "hash": "0bf077f874c7dcf6",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/ocr-pdf": {
+    "hash": "65f73d36ce535132",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/passport-photo-maker": {
+    "hash": "53cf7d505898c7e7",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/pdf-page-organizer": {
+    "hash": "815e6a642372fc0b",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/pdf-to-jpg": {
+    "hash": "179f69cfb1100591",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/pdf-to-png": {
+    "hash": "8ce2191e0de3bcbc",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/pdf-to-word": {
+    "hash": "7a9e9e9dbb7f298c",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/photo-signature-resizer": {
+    "hash": "a5da923d93873a42",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/png-to-avif": {
+    "hash": "adefbff9685109d0",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/png-to-jpg": {
+    "hash": "5138af0e788926eb",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/png-to-webp": {
+    "hash": "4e973fa883590a88",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/powerpoint-to-pdf": {
+    "hash": "d542017fb735b3b7",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/remove-background": {
+    "hash": "55126552b9e1f51c",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/resize-image": {
+    "hash": "3a389d8d365905cd",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/rotate-image": {
+    "hash": "7a600aa252025353",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/rotate-pdf": {
+    "hash": "19644e6fde364c60",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/scan-to-word": {
+    "hash": "f72808e6e6fd428c",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/split-pdf": {
+    "hash": "fcafb39764ada962",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/unlock-pdf": {
+    "hash": "308902f9ea6ffa5e",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/webp-to-avif": {
+    "hash": "9a21cdd75d7e8607",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/webp-to-jpg": {
+    "hash": "379b1042151cdb18",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/webp-to-png": {
+    "hash": "128070d9e39f45be",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/word-to-jpg": {
+    "hash": "a6c86e2d5f3f9d7b",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/word-to-pdf": {
+    "hash": "87a33ae06ccc2bef",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/tools/word-to-png": {
+    "hash": "3f97a6bef7bb2108",
+    "lastmod": "2026-11-11"
+  },
+  "/pt/trust": {
+    "hash": "8600a18326665dd1",
+    "lastmod": "2026-11-11"
+  },
+  "/terms": {
+    "hash": "f7a9a46f729f24e5",
+    "lastmod": "2026-11-10"
+  },
+  "/tools/add-page-numbers": {
+    "hash": "78219a11246d4993",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/ai-image-enhancer": {
+    "hash": "7ebb4538f87a7cf6",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/ai-upscaler": {
+    "hash": "62abbe7d9160ac05",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/avif-to-jpg": {
+    "hash": "287bb07f877358a8",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/avif-to-png": {
+    "hash": "aa808f43b5851a9d",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/avif-to-webp": {
+    "hash": "5b7261afc230b061",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/batch-image-compressor": {
+    "hash": "70809767b4649113",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/compress-image": {
+    "hash": "db540adda7f70973",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/compress-pdf": {
+    "hash": "cef4576a07637cd6",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/compress-pdf-to-size": {
+    "hash": "9f338ea89f050df2",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/compress-powerpoint": {
+    "hash": "1bef9088de64ada8",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/compress-word": {
+    "hash": "93e80c2c0611ad97",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/crop-image": {
+    "hash": "d6497cf16013b8ba",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/excel-to-pdf": {
+    "hash": "14b046b50d518577",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/heic-to-jpg": {
+    "hash": "7eefbd1f1f886bb8",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/image-converter": {
+    "hash": "a42b70a9c023b01d",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/image-to-pdf": {
+    "hash": "d4afdfeaf3963d5e",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/image-to-text": {
+    "hash": "bbd5e15e6a2e11b9",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/jpg-to-avif": {
+    "hash": "590d784616a30f2e",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/jpg-to-pdf": {
+    "hash": "53fa54c246592426",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/jpg-to-png": {
+    "hash": "73026fa36513f9eb",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/jpg-to-webp": {
+    "hash": "91660694e6f827c2",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/merge-documents": {
+    "hash": "dc67c8e973bd2a29",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/merge-pdf": {
+    "hash": "d280eac000969190",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/metadata-remover": {
+    "hash": "0c7b15bbd08993be",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/ocr-pdf": {
+    "hash": "e705ec07fde8ce0e",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/passport-photo-maker": {
+    "hash": "da8e7f00085f71a8",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/pdf-page-organizer": {
+    "hash": "23594194f57a3847",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/pdf-to-jpg": {
+    "hash": "ac18e389a8070210",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/pdf-to-png": {
+    "hash": "401c58d3d77a5b27",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/pdf-to-word": {
+    "hash": "ee7e11622e450966",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/photo-signature-resizer": {
+    "hash": "4d7dfe234942eac5",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/png-to-avif": {
+    "hash": "acbfb797903e56f4",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/png-to-jpg": {
+    "hash": "dc3ffcee0ea3ae58",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/png-to-webp": {
+    "hash": "5d9746984b1db751",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/powerpoint-to-pdf": {
+    "hash": "4aaf7418bfc27b66",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/remove-background": {
+    "hash": "4cd8eb52696f8db6",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/resize-image": {
+    "hash": "c02b1639ff602ed8",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/rotate-image": {
+    "hash": "cd4444d7a0c3ce71",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/rotate-pdf": {
+    "hash": "6f7bf61ca0bab0fa",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/scan-to-word": {
+    "hash": "497e3b0ecad09d32",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/split-pdf": {
+    "hash": "1750b2fc3b374965",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/unlock-pdf": {
+    "hash": "8338b871afb521ac",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/webp-to-avif": {
+    "hash": "889a7cdf86c8a790",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/webp-to-jpg": {
+    "hash": "fb11c3553021c2fd",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/webp-to-png": {
+    "hash": "17140ee2f2fb0ddb",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/word-to-jpg": {
+    "hash": "4c8ab846f5aa2ca9",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/word-to-pdf": {
+    "hash": "1c0a9a349b56ff46",
+    "lastmod": "2026-11-11"
+  },
+  "/tools/word-to-png": {
+    "hash": "aec1bae3f5385e7d",
+    "lastmod": "2026-11-11"
+  },
+  "/trust": {
+    "hash": "33f012c5bc5540a7",
+    "lastmod": "2026-11-10"
+  }
+}

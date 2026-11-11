@@ -1,11 +1,13 @@
 import type { APIRoute } from "astro";
-import { execFileSync } from "node:child_process";
 import { getCollection } from "astro:content";
 import { tools, isComingSoon } from "../data/tools";
 import { hubs } from "../data/hubs";
 import { toolContent } from "../data/toolContent";
 import { toolContentByLocale } from "../data/tool-content";
 import { pagesByLocale } from "../data/page-content";
+import { homepageByLocale } from "../data/i18n-home";
+import { relatedToolsFor } from "../data/related-tools";
+import { LastmodTracker, gitDate, readFiles } from "../lib/lastmod";
 import {
   LOCALIZED_TOOL_SLUGS,
   LOCALIZED_PAGES,
@@ -13,92 +15,26 @@ import {
   LOCALES,
   DEFAULT_LOCALE,
   HREFLANG,
+  toolMetaByLocale,
   localePath,
+  type Locale,
 } from "../data/i18n";
 
 export const prerender = true;
 
-// `astro build` runs with the project root as cwd, so this — unlike an
-// import.meta.url-based path — still resolves correctly even though this
-// module itself gets bundled to a different location before it runs.
-const repoRoot = process.cwd();
-const buildDate = new Date().toISOString().slice(0, 10);
-
-// Real lastmod per page, taken from the git history of the source file(s)
-// that actually drive that page's content. Falls back to the build date if
-// git isn't available (e.g. a shallow checkout with no history for a file).
-function lastModified(...relativePaths: string[]): string {
-  try {
-    const dates = relativePaths.map((path) =>
-      execFileSync("git", ["log", "-1", "--format=%cs", "--", path], {
-        cwd: repoRoot,
-        encoding: "utf-8",
-      }).trim()
-    );
-    const known = dates.filter(Boolean).sort();
-    return known.at(-1) || buildDate;
-  } catch {
-    return buildDate;
-  }
-}
-
 interface SitemapUrl {
   loc: string;
-  changefreq: string;
-  priority: string;
   lastmod: string;
   /** hreflang alternates for this URL (bidirectional pairs). */
   alternates?: { hreflang: string; href: string }[];
 }
 
-const staticPaths: { path: string; changefreq: string; priority: string; lastmod: string; localised?: boolean }[] = [
-  {
-    path: "",
-    changefreq: "weekly",
-    priority: "1.0",
-    lastmod: lastModified("src/pages/index.astro", "src/components/Hero.astro", "src/components/SeoContent.astro", "src/data/faq.ts"),
-    localised: true,
-  },
-  {
-    path: "/all-tools",
-    changefreq: "weekly",
-    priority: "0.9",
-    lastmod: lastModified("src/pages/all-tools.astro", "src/data/tools.ts"),
-    localised: true,
-  },
-  ...hubs.map((hub) => ({
-    path: hub.path,
-    changefreq: "weekly",
-    priority: "0.8",
-    lastmod: lastModified("src/data/hubs.ts", "src/data/tools.ts", "src/components/HubPage.astro"),
-  })),
-  { path: "/blog", changefreq: "weekly", priority: "0.7", lastmod: lastModified("src/pages/blog/index.astro") },
-  { path: "/about", changefreq: "monthly", priority: "0.5", lastmod: lastModified("src/pages/about.astro") },
-  { path: "/contact", changefreq: "monthly", priority: "0.5", lastmod: lastModified("src/pages/contact.astro") },
-  { path: "/privacy", changefreq: "yearly", priority: "0.3", lastmod: lastModified("src/pages/privacy.astro") },
-  { path: "/terms", changefreq: "yearly", priority: "0.3", lastmod: lastModified("src/pages/terms.astro") },
-  { path: "/trust", changefreq: "monthly", priority: "0.4", lastmod: lastModified("src/pages/trust.astro") },
-];
-
-const toolsLastmod = lastModified(
-  "src/pages/tools/[slug].astro",
-  "src/components/ToolPage.astro",
-  "src/data/tools.ts",
-  "src/data/toolContent.ts"
-);
-const localizedLastmod = lastModified(
-  "src/pages/[lang]/tools/[slug].astro",
-  "src/pages/[lang]/index.astro",
-  "src/data/i18n.ts",
-  "src/data/i18n-strings.ts",
-  "src/data/i18n-home.ts",
-  "src/data/tool-content",
-  "src/data/page-content",
-  "src/components/LocalizedStaticPage.astro"
-);
-
+// Google ignores <changefreq> and <priority>, so they are not emitted. <lastmod>
+// is the date the page's own content last changed (see lib/lastmod.ts), not
+// the build date.
 export const GET: APIRoute = async ({ site }) => {
   const base = (site?.toString() ?? "https://www.convertbrio.com/").replace(/\/$/, "");
+  const tracker = new LastmodTracker();
 
   // Full hreflang alternate set for a page that exists in every locale.
   const altSet = (enPath: string) => [
@@ -107,6 +43,8 @@ export const GET: APIRoute = async ({ site }) => {
   ];
 
   const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const postDate = (post: (typeof posts)[number]) => (post.data.updatedDate ?? post.data.pubDate).toISOString().slice(0, 10);
+  const newestPost = posts.map(postDate).sort().at(-1) ?? tracker.today;
 
   // Only locales whose pages AND every tool page exist are listed, so the
   // sitemap never advertises a URL that would 404 or a half-built hreflang set.
@@ -115,72 +53,95 @@ export const GET: APIRoute = async ({ site }) => {
   );
   const allReady = readyLocales.length === NON_DEFAULT_LOCALES.length;
   const localizedPageSet = new Set<string>(LOCALIZED_PAGES);
-  const localizedSlugSet = new Set<string>(allReady ? LOCALIZED_TOOL_SLUGS : []);
+
+  const liveTools = tools.filter((tool) => tool.kind !== "external" && !isComingSoon(tool));
+  const toolNames = (lang: Locale) =>
+    liveTools.map((t) => [t.slug, lang === DEFAULT_LOCALE ? t.name : toolMetaByLocale[lang]?.[t.slug]?.name ?? t.name]);
+
+  // The English static pages keep their text in the .astro files themselves,
+  // so the file text is the fingerprint; first-time entries are seeded from git.
+  const staticPage = (path: string, ...files: string[]) => tracker.stamp(path || "/", readFiles(...files), gitDate(...files));
+
+  const hubFingerprint = (hub: (typeof hubs)[number], doc: unknown, lang: Locale) => ({
+    hub: { ...hub, include: undefined },
+    doc,
+    tools: toolNames(lang),
+  });
+
+  const toolFingerprint = (slug: string, lang: Locale) => ({
+    tool: tools.find((t) => t.slug === slug),
+    meta: lang === DEFAULT_LOCALE ? undefined : toolMetaByLocale[lang]?.[slug],
+    content: lang === DEFAULT_LOCALE ? toolContent[slug] : toolContentByLocale[lang]?.[slug],
+    related: relatedToolsFor(slug, lang),
+  });
 
   const urls: SitemapUrl[] = [
-    // English canonical pages.
-    ...staticPaths.map(({ path, changefreq, priority, lastmod, localised }) => ({
-      loc: `${base}${path || "/"}`,
-      changefreq,
-      priority,
-      lastmod,
-      alternates: localised || (allReady && localizedPageSet.has(path)) ? altSet(path) : undefined,
+    // ── English pages ──────────────────────────────────────────────────
+    {
+      loc: `${base}/`,
+      lastmod: staticPage("/", "src/pages/index.astro", "src/components/Hero.astro", "src/components/SeoContent.astro", "src/data/faq.ts"),
+      alternates: altSet(""),
+    },
+    {
+      loc: `${base}/all-tools`,
+      lastmod: tracker.stamp("/all-tools", toolNames(DEFAULT_LOCALE), gitDate("src/pages/all-tools.astro", "src/data/tools.ts")),
+      alternates: altSet("/all-tools"),
+    },
+    ...hubs.map((hub) => ({
+      loc: `${base}${hub.path}`,
+      lastmod: tracker.stamp(hub.path, hubFingerprint(hub, undefined, DEFAULT_LOCALE)),
+      alternates: allReady && localizedPageSet.has(hub.path) ? altSet(hub.path) : undefined,
     })),
-    ...tools
-      .filter(
-        (tool) =>
-          tool.kind !== "external" &&
-          !isComingSoon(tool)
-      )
-      .map((tool) => {
-        const enPath = `/tools/${tool.slug}`;
-        return {
-          loc: `${base}${enPath}`,
-          changefreq: "weekly",
-          priority: "0.8",
-          lastmod: toolsLastmod,
-          alternates: localizedSlugSet.has(tool.slug) ? altSet(enPath) : undefined,
-        };
-      }),
-    ...posts.map((post) => ({
-      loc: `${base}/blog/${post.id}`,
-      changefreq: "monthly",
-      priority: "0.6",
-      lastmod: (post.data.updatedDate ?? post.data.pubDate).toISOString().slice(0, 10),
+    { loc: `${base}/blog`, lastmod: newestPost, alternates: allReady ? altSet("/blog") : undefined },
+    ...(["/about", "/contact", "/privacy", "/terms", "/trust"] as const).map((path) => ({
+      loc: `${base}${path}`,
+      lastmod: staticPage(path, `src/pages${path}.astro`),
+      alternates: allReady && localizedPageSet.has(path) ? altSet(path) : undefined,
     })),
+    ...liveTools.map((tool) => ({
+      loc: `${base}/tools/${tool.slug}`,
+      lastmod: tracker.stamp(`/tools/${tool.slug}`, toolFingerprint(tool.slug, DEFAULT_LOCALE)),
+      alternates: allReady ? altSet(`/tools/${tool.slug}`) : undefined,
+    })),
+    // Blog posts: the date comes from the post's own frontmatter.
+    ...posts.map((post) => ({ loc: `${base}/blog/${post.id}`, lastmod: postDate(post) })),
 
-    // Localised pages: home, all-tools, and each localised tool per locale.
-    ...readyLocales.flatMap((lang) => [
-      {
-        loc: `${base}/${lang}`,
-        changefreq: "weekly",
-        priority: "0.9",
-        lastmod: localizedLastmod,
-        alternates: altSet(""),
-      },
-      {
-        loc: `${base}/${lang}/all-tools`,
-        changefreq: "weekly",
-        priority: "0.7",
-        lastmod: localizedLastmod,
-        alternates: altSet("/all-tools"),
-      },
-      ...LOCALIZED_PAGES.map((path) => ({
-        loc: `${base}/${lang}${path}`,
-        changefreq: "monthly",
-        priority: "0.5",
-        lastmod: localizedLastmod,
-        alternates: altSet(path),
-      })),
-      ...LOCALIZED_TOOL_SLUGS.map((slug) => ({
-        loc: `${base}/${lang}/tools/${slug}`,
-        changefreq: "weekly",
-        priority: "0.8",
-        lastmod: localizedLastmod,
-        alternates: altSet(`/tools/${slug}`),
-      })),
-    ]),
+    // ── Localised pages ────────────────────────────────────────────────
+    ...readyLocales.flatMap((lang) => {
+      const pages = pagesByLocale[lang]!;
+      const docFor = (path: string) =>
+        ({ "/about": pages.about, "/contact": pages.contact, "/privacy": pages.privacy, "/terms": pages.terms, "/trust": pages.trust })[path];
+      return [
+        {
+          loc: `${base}/${lang}`,
+          lastmod: tracker.stamp(`/${lang}`, homepageByLocale[lang as Exclude<Locale, "en">]),
+          alternates: altSet(""),
+        },
+        {
+          loc: `${base}/${lang}/all-tools`,
+          lastmod: tracker.stamp(`/${lang}/all-tools`, { ui: pages.hubUi, names: toolNames(lang) }),
+          alternates: altSet("/all-tools"),
+        },
+        ...LOCALIZED_PAGES.map((path) => {
+          const hub = hubs.find((h) => h.path === path);
+          const lastmod =
+            path === "/blog"
+              ? newestPost
+              : hub
+                ? tracker.stamp(`/${lang}${path}`, hubFingerprint(hub, pages.hubs[hub.id], lang))
+                : tracker.stamp(`/${lang}${path}`, docFor(path));
+          return { loc: `${base}/${lang}${path}`, lastmod, alternates: altSet(path) };
+        }),
+        ...LOCALIZED_TOOL_SLUGS.map((slug) => ({
+          loc: `${base}/${lang}/tools/${slug}`,
+          lastmod: tracker.stamp(`/${lang}/tools/${slug}`, toolFingerprint(slug, lang)),
+          alternates: altSet(`/tools/${slug}`),
+        })),
+      ];
+    }),
   ];
+
+  tracker.save();
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
@@ -189,7 +150,7 @@ ${urls
     const alts = (url.alternates ?? [])
       .map((alt) => `\n    <xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${alt.href}" />`)
       .join("");
-    return `  <url>\n    <loc>${url.loc}</loc>\n    <lastmod>${url.lastmod}</lastmod>\n    <changefreq>${url.changefreq}</changefreq>\n    <priority>${url.priority}</priority>${alts}\n  </url>`;
+    return `  <url>\n    <loc>${url.loc}</loc>\n    <lastmod>${url.lastmod}</lastmod>${alts}\n  </url>`;
   })
   .join("\n")}
 </urlset>
