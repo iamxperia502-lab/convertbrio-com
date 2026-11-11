@@ -129,7 +129,7 @@ export const toolContentFr: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Réduire une image à une taille exacte (comme 100 Ko)",
-        body: "Saisissez votre limite dans le champ de taille cible et ConvertBrio travaille à rebours : il baisse la qualité du JPG/WEBP par paliers, en revérifiant la taille après chacun, et ne réduit les dimensions que si la plus basse qualité raisonnable dépasse encore. Le résultat est la version la plus grande et la plus nette de votre image qui tient encore sous le plafond.",
+        body: "Saisissez votre limite dans le champ de taille cible et ConvertBrio travaille à rebours : il cherche la meilleure qualité possible par recherche dichotomique entre 10 % et 95 %, en revérifiant la taille après chaque essai, et ne réduit les dimensions que si même 10 % de qualité dépasse encore : la largeur diminue alors de 15 % à chaque fois, jusqu'à six fois. Le résultat est la version la plus grande et la plus nette de votre image qui tient encore sous le plafond.",
         list: [
           "Photo de visa ou de passeport : souvent 100 Ko, ou une plage de 10 Ko à 240 Ko",
           "Portails administratifs et fiscaux : généralement 100 Ko ou 200 Ko par scan",

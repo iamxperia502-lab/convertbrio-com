@@ -129,7 +129,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Ridurre un'immagine a una dimensione esatta (come 100 KB)",
-        body: "Scrivi il tuo limite nel campo dimensione target e ConvertBrio lavora a ritroso: abbassa la qualità JPG/WEBP a passi, ricontrollando la dimensione dopo ognuno, e riduce le dimensioni solo se la qualità più bassa ragionevole supera ancora. Il risultato è la versione più grande e nitida della tua immagine che rientra ancora sotto il tetto.",
+        body: "Scrivi il tuo limite nel campo dimensione target e ConvertBrio lavora a ritroso: cerca la qualità più alta possibile con una ricerca binaria tra il 10% e il 95%, ricontrollando la dimensione a ogni tentativo, e riduce le dimensioni solo se anche la qualità al 10% supera ancora: in quel caso la larghezza cala del 15% alla volta, fino a sei volte. Il risultato è la versione più grande e nitida della tua immagine che rientra ancora sotto il tetto.",
         list: [
           "Foto per visto o passaporto: spesso 100 KB, o un intervallo da 10 KB a 240 KB",
           "Portali della pubblica amministrazione e del fisco: comunemente 100 KB o 200 KB per scansione",

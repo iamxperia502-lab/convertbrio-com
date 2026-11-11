@@ -129,7 +129,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Memperkecil gambar ke ukuran pasti (seperti 100 KB)",
-        body: "Ketik batas Anda di kolom target ukuran dan ConvertBrio bekerja mundur: ia menurunkan kualitas JPG/WEBP bertahap, memeriksa ulang ukuran setelah tiap langkah, dan hanya mengurangi dimensi jika kualitas terendah yang wajar pun masih melebihi. Hasilnya adalah versi terbesar dan tertajam dari gambar Anda yang masih muat di bawah batas.",
+        body: "Ketik batas Anda di kolom target ukuran dan ConvertBrio bekerja mundur: ia mencari kualitas tertinggi lewat pencarian biner antara 10% dan 95%, memeriksa ulang ukuran setelah tiap percobaan, dan hanya mengurangi dimensi jika kualitas 10% pun masih melebihi: lebar lalu dikurangi 15% setiap kali, hingga enam kali. Hasilnya adalah versi terbesar dan tertajam dari gambar Anda yang masih muat di bawah batas.",
         list: [
           "Foto visa atau paspor: sering 100 KB, atau rentang 10 KB hingga 240 KB",
           "Portal pemerintah dan pajak: umumnya 100 KB atau 200 KB per scan",

@@ -18,7 +18,7 @@ Because there are two levers, there are two things to adjust, and doing them in 
 ## The right order: resize first, then compress
 
 1. **Resize to the dimensions the form actually needs.** If the instructions say 600 × 600 pixels, or 413 × 531, use [Resize Image](/tools/resize-image) to set exactly that. If no dimensions are given, 600–1000 pixels on the longest side is plenty for any ID photo. Cutting the pixel count is the single biggest size reduction available, and it's lossless-looking.
-2. **Compress to the target file size.** Now run it through [Compress Image](/tools/compress-image) and enter the maximum size in KB. The tool lowers quality in steps until the file fits under your limit, so you don't guess quality percentages and re-export five times.
+2. **Compress to the target file size.** Now run it through [Compress Image](/tools/compress-image) and enter the maximum size in KB. The tool searches for the highest quality that fits under your limit (a binary search between 10% and 95% quality, checking the real file size each time), and only shrinks the pixel dimensions, by 15% at a time, if even 10% quality is still too big. So you don't guess quality percentages and re-export five times.
 
 <!-- TODO: screenshot of the Resize Image tool with 600 and 600 typed into the width and height fields and a photo selected. Save as src/assets/blog/reduce-photo-size-for-online-forms/resize-600.png (PNG, at least 1200 px wide, no personal data visible) and insert with ![The Resize Image tool set to 600 by 600 pixels](../../assets/blog/reduce-photo-size-for-online-forms/resize-600.png) -->
 

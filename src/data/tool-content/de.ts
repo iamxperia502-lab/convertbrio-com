@@ -129,7 +129,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Ein Bild auf eine exakte Größe reduzieren (wie 100 KB)",
-        body: "Gib dein Limit in das Zielgrößen-Feld ein, und ConvertBrio arbeitet rückwärts: Es senkt die JPG/WEBP-Qualität stufenweise, prüft die Größe nach jedem Schritt und reduziert die Abmessungen nur, wenn die niedrigste sinnvolle Qualität noch überschreitet. Das Ergebnis ist die größte, schärfste Version deines Bildes, die noch unter die Grenze passt.",
+        body: "Gib dein Limit in das Zielgrößen-Feld ein, und ConvertBrio arbeitet rückwärts: Es sucht die höchstmögliche Qualität per binärer Suche zwischen 10 % und 95 %, prüft die Größe nach jedem Versuch und reduziert die Abmessungen nur, wenn selbst 10 % Qualität noch überschreitet: Dann wird die Breite jeweils um 15 % verkleinert, bis zu sechsmal. Das Ergebnis ist die größte, schärfste Version deines Bildes, die noch unter die Grenze passt.",
         list: [
           "Visum- oder Passfoto – oft 100 KB, oder ein Bereich von 10 KB bis 240 KB",
           "Behörden- und Finanzamtsportale – üblich 100 KB oder 200 KB pro Scan",
