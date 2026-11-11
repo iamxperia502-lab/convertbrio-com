@@ -12,6 +12,7 @@ import CompressImageBenchmark from "./CompressImageBenchmark.astro";
 import { getTool, isComingSoon } from "../data/tools";
 import { toolContent } from "../data/toolContent";
 import { relatedToolsFor } from "../data/related-tools";
+import { ogPath } from "../lib/og-paths";
 import { toolContentByLocale } from "../data/tool-content";
 import { ui, localePath, toolMetaByLocale, LOCALIZED_TOOL_SLUGS, NON_DEFAULT_LOCALES, type Locale } from "../data/i18n";
 
@@ -130,6 +131,8 @@ const softwareApplicationSchema = isComingSoon(tool)
   description={seoDescription}
   noindex={isComingSoon(tool)}
   follow
+  image={isComingSoon(tool) ? undefined : ogPath.tool(slug, lang)}
+  imageAlt={`${name} · ConvertBrio`}
   lang={lang}
   alternates={alternates}
 >

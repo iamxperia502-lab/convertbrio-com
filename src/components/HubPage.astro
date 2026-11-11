@@ -7,6 +7,7 @@ import { hubs, hubToolsFor, type Hub } from "../data/hubs";
 import { getTool } from "../data/tools";
 import { alternatesFor, localePath, routePath, toolMetaByLocale, type Locale } from "../data/i18n";
 import { pagesByLocale } from "../data/page-content";
+import { ogPath } from "../lib/og-paths";
 
 interface Props {
   hub: Hub;
@@ -46,7 +47,7 @@ const breadcrumbSchema = {
 const link = "font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700";
 ---
 
-<Layout title={hub.name} seoTitle={hub.seoTitle} description={hub.description} canonical={L(hub.path)} lang={lang} alternates={alternatesFor(hub.path)}>
+<Layout title={hub.name} seoTitle={hub.seoTitle} description={hub.description} canonical={L(hub.path)} image={ogPath.hub(hub.path, lang)} imageAlt={`${hub.name} · ConvertBrio`} lang={lang} alternates={alternatesFor(hub.path)}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
   </Fragment>

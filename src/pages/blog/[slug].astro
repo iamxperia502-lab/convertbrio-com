@@ -8,6 +8,7 @@ import { getCollection, render } from "astro:content";
 import { getTool } from "../../data/tools";
 import { hubForTool } from "../../data/hubs";
 import { assertPostImages } from "../../lib/assert-post-images";
+import { ogPath } from "../../lib/og-paths";
 
 export const prerender = true;
 
@@ -45,7 +46,7 @@ const articleSchema = {
   "@type": "BlogPosting",
   headline: post.data.title,
   description: post.data.description,
-  ...(heroOg ? { image: new URL(heroOg.src, base).toString() } : {}),
+  image: heroOg ? new URL(heroOg.src, base).toString() : `${base}${ogPath.blog(post.id)}`,
   datePublished: post.data.pubDate.toISOString(),
   dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
   url: postUrl,
@@ -66,7 +67,13 @@ const relatedTools = post.data.relatedTools.map((slug) => getTool(slug)).filter(
 const hub = relatedTools[0] ? hubForTool(relatedTools[0]) : undefined;
 ---
 
-<Layout title={post.data.title} seoTitle={post.data.seoTitle} description={post.data.description} canonical={`/blog/${post.id}`} image={heroOg?.src}>
+<Layout title={post.data.title} seoTitle={post.data.seoTitle} description={post.data.description} canonical={`/blog/${post.id}`}
+  image={heroOg?.src ?? ogPath.blog(post.id)}
+  imageWidth={heroOg ? heroOg.attributes.width : undefined}
+  imageHeight={heroOg ? heroOg.attributes.height : undefined}
+  imageAlt={hero ? hero.alt : post.data.title}
+  ogType="article"
+>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
     <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} is:inline />
