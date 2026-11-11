@@ -7,7 +7,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
     title: "PDF online komprimieren: Größe für E-Mail und Portale reduzieren",
     intro: [
       "Große PDFs – vor allem solche voller gescannter Seiten oder hochauflösender Fotos – überschreiten das Anhang-Limit von E-Mails, laden langsam hoch und werden von Portalen mit Größenbeschränkung abgelehnt. Der PDF-Kompressor von ConvertBrio kodiert die im Dokument eingebetteten Bilder mit effizienterer Qualität und Auflösung neu und entfernt unnötige Metadaten, sodass dieselben Seiten in einer kleineren Datei zurückkommen.",
-      "Es ist kostenlos, läuft im Browser ohne Anmeldung und ohne Wasserzeichen. Die Komprimierung ist verlustfrei für Text und Vektorgrafiken – die bleiben scharf – und betrifft nur eingebettete Fotos und Scans, wo eine minimale, fast immer unsichtbare Qualitätsminderung einen großen Größenrückgang bringt.",
+      "Es ist kostenlos, braucht keine Anmeldung und fügt kein Wasserzeichen hinzu. Die Komprimierung ist verlustfrei für Text und Vektorgrafiken – die bleiben scharf – und betrifft nur eingebettete Fotos und Scans, wo eine minimale, fast immer unsichtbare Qualitätsminderung einen großen Größenrückgang bringt.",
     ],
     howTo: [
       { step: "PDF hochladen", detail: "Ziehe die Datei in das Feld oder klicke zum Durchsuchen. Eine PDF pro Vorgang, bis zu 100 MB." },
@@ -61,7 +61,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Deine PDF wird beim Upload verschlüsselt, auf den Servern von ConvertBrio automatisch ohne menschliche Prüfung verarbeitet, und sowohl das Original als auch die komprimierte Kopie werden innerhalb von 24 Stunden gelöscht. Eine Datei pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
+        body: "Deine PDF wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Eine Datei pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
     faqDescription: "Häufige Fragen zum Komprimieren der Größe einer PDF online.",
@@ -147,7 +147,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Jeder Upload wird verschlüsselt und innerhalb von 24 Stunden automatisch von den Servern von ConvertBrio gelöscht, ob heruntergeladen oder nicht. Dieses Tool komprimiert ein Bild pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto und ohne Wasserzeichen.",
+        body: "Jeder Upload wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Dieses Tool komprimiert ein Bild pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto und ohne Wasserzeichen.",
       },
     ],
     faqDescription: "Häufige Fragen zum Komprimieren und Verkleinern der Bildgröße.",
@@ -183,7 +183,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
   "merge-pdf": {
     title: "PDF zusammenfügen online: mehrere PDFs zu einer Datei verbinden",
     intro: [
-      "Gescannte Seiten, Rechnungen, Berichte oder Kapitel zu einem Dokument zusammenzufügen, erfordert meist Desktop-Software oder ein Abo. Das Zusammenfügen-Tool von ConvertBrio macht das im Browser, ohne Installation: Lade mehrere PDFs hoch, bring sie in die gewünschte Reihenfolge und lade in Sekunden eine kombinierte Datei herunter.",
+      "Gescannte Seiten, Rechnungen, Berichte oder Kapitel zu einem Dokument zusammenzufügen, erfordert meist Desktop-Software oder ein Abo. Das Zusammenfügen-Tool von ConvertBrio macht das ohne Installation: Lade mehrere PDFs hoch, bring sie in die gewünschte Reihenfolge und lade in Sekunden eine kombinierte Datei herunter.",
       "Jede Seite jeder Datei bleibt genau so, wie sie ist: keine Neukomprimierung, kein Qualitätsverlust, kein Wasserzeichen. Die einzige Änderung: Aus getrennten Dateien wird eine.",
     ],
     howTo: [
@@ -216,7 +216,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Die Dateien werden beim Upload verschlüsselt, automatisch ohne menschliche Prüfung zusammengefügt, und alle – Quellen und Ergebnis – innerhalb von 24 Stunden gelöscht. Mehrere Dateien pro Zusammenführung, je bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
+        body: "Die Dateien werden verschlüsselt übertragen. Deine Originaldateien werden gelöscht, sobald sie für die Umwandlung gelesen wurden. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Mehrere Dateien pro Zusammenführung, je bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
     faqDescription: "Häufige Fragen zum Zusammenfügen mehrerer PDF-Dateien zu einer.",
@@ -253,7 +253,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
     title: "PDF teilen online: ein Dokument in einzelne Seiten trennen",
     intro: [
       "Du musst eine Seite aus einer größeren PDF ziehen oder ein mehrseitiges Dokument in separate Dateien zerlegen? Das Teilen-Tool von ConvertBrio trennt jede Seite deiner PDF in eine eigene Datei, bereit zum Herunterladen und unabhängigen Verwenden.",
-      "Es ist kostenlos, läuft im Browser und ohne Wasserzeichen. Das Ergebnis kommt als ZIP mit einer Seite pro Datei.",
+      "Es ist kostenlos, braucht keine Anmeldung und fügt kein Wasserzeichen hinzu. Das Ergebnis kommt als ZIP mit einer Seite pro Datei.",
     ],
     howTo: [
       { step: "Deine PDF hochladen", detail: "Ziehe sie in das Feld oder durchsuche. Eine Datei pro Vorgang, bis zu 100 MB." },
@@ -271,7 +271,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Der Upload wird verschlüsselt, automatisch ohne menschliche Prüfung verarbeitet, und sowohl das Original als auch die entstandenen Seiten werden innerhalb von 24 Stunden von den Servern von ConvertBrio gelöscht. Limit 100 MB pro Datei.",
+        body: "Der Upload wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Limit 100 MB pro Datei.",
       },
     ],
     faqDescription: "Häufige Fragen zum Teilen einer PDF in einzelne Seiten.",
@@ -332,7 +332,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Die PDF wird beim Upload verschlüsselt, automatisch ohne menschliche Prüfung umgewandelt, und beide Dateien werden innerhalb von 24 Stunden gelöscht. Ein Dokument pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
+        body: "Die PDF wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Ein Dokument pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
     faqDescription: "Häufige Fragen zum Umwandeln von PDF-Dateien in bearbeitbare Word-Dokumente.",
@@ -368,7 +368,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
     title: "Word in PDF umwandeln: die Formatierung für den Versand festhalten",
     intro: [
       "Ein Word-Dokument kann je nach Schriften, Word-Version oder Betriebssystem anders aussehen – ein echtes Problem, wenn ein Lebenslauf, Vertrag oder Bericht für alle Empfänger gleich aussehen soll. Der Word-in-PDF-Konverter von ConvertBrio verwandelt dein DOCX in ein druckfertiges PDF, das überall gleich aussieht und nicht versehentlich bearbeitet werden kann.",
-      "Es ist kostenlos, läuft im Browser, braucht kein installiertes Microsoft Word und fügt kein Wasserzeichen hinzu.",
+      "Es ist kostenlos, braucht kein installiertes Microsoft Word und fügt kein Wasserzeichen hinzu.",
     ],
     howTo: [
       { step: "Dokument als .docx speichern", detail: "In Word: Datei → Speichern unter und Word-Dokument (.docx) wählen. Alte .doc-Dateien werden nicht akzeptiert." },
@@ -386,7 +386,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Dein Dokument wird beim Upload verschlüsselt, automatisch ohne menschliche Prüfung umgewandelt, und beide Dateien werden innerhalb von 24 Stunden gelöscht. Ein .docx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
+        body: "Dein Dokument wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Ein .docx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
     faqDescription: "Häufige Fragen zum Umwandeln von Word-Dokumenten in PDF.",
@@ -442,7 +442,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Deine PDF wird beim Upload verschlüsselt, automatisch ohne menschliche Prüfung gerendert, und Upload wie Bilder werden innerhalb von 24 Stunden gelöscht. Eine Datei pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto.",
+        body: "Deine PDF wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Eine Datei pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto.",
       },
     ],
     faqDescription: "Häufige Fragen zum Umwandeln von PDF-Seiten in JPG-Bilder.",
@@ -494,7 +494,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Die Bilder werden beim Upload verschlüsselt, automatisch ohne menschliche Prüfung verbunden, und Quellen wie fertige PDF werden innerhalb von 24 Stunden gelöscht. Mehrere Bilder pro Vorgang, 100 MB kombiniert, kostenlos, ohne Konto, ohne Wasserzeichen.",
+        body: "Die Bilder werden verschlüsselt übertragen. Deine Originaldateien werden gelöscht, sobald sie für die Umwandlung gelesen wurden. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Mehrere Bilder pro Vorgang, 100 MB kombiniert, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
     faqDescription: "Häufige Fragen zum Umwandeln von JPG-Bildern in eine PDF.",
@@ -520,7 +520,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
   "image-converter": {
     title: "Bildkonverter: online zwischen beliebigen Formaten umwandeln",
     intro: [
-      "Der Bildkonverter von ConvertBrio wandelt ein Foto, eine Grafik oder einen Screenshot in einem Schritt zwischen JPG, PNG, WEBP, AVIF, HEIC und GIF um, direkt im Browser. Nichts zu installieren, kein Konto zu erstellen: Datei hochladen, Format wählen, Ergebnis in Sekunden herunterladen.",
+      "Der Bildkonverter von ConvertBrio wandelt ein Foto, eine Grafik oder einen Screenshot in einem Schritt zwischen JPG, PNG, WEBP, AVIF, HEIC und GIF um. Nichts zu installieren, kein Konto zu erstellen: Datei hochladen, Format wählen, Ergebnis in Sekunden herunterladen.",
       "Der häufigste Grund, ein Bild umzuwandeln, ist Kompatibilität: ein HEIC-iPhone-Foto, das Windows nicht öffnet, ein von einer Website gespeichertes WEBP, das ein Editor ablehnt, oder ein AVIF, das ein altes E-Mail-Programm nicht anzeigt.",
     ],
     howTo: [
@@ -549,7 +549,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Jeder Upload wird verschlüsselt und automatisch ohne menschliche Prüfung verarbeitet. Original wie umgewandeltes Bild werden innerhalb von 24 Stunden von den Servern von ConvertBrio gelöscht. Dateien bis zu 100 MB, kostenlos, ohne Konto und ohne Wasserzeichen.",
+        body: "Jeder Upload wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Dateien bis zu 100 MB, kostenlos, ohne Konto und ohne Wasserzeichen.",
       },
     ],
     faqDescription: "Häufige Fragen zum Bildkonverter von ConvertBrio.",
@@ -607,7 +607,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Dein Dokument wird beim Upload verschlüsselt, automatisch ohne menschliche Prüfung verarbeitet, und Upload wie OCR-Ergebnis werden innerhalb von 24 Stunden gelöscht. Eine PDF pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto.",
+        body: "Dein Dokument wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Eine PDF pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto.",
       },
     ],
     faqDescription: "Häufige Fragen zu OCR auf einer PDF und dem Übernehmen von gescanntem Text in Word.",
@@ -643,7 +643,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
     title: "PowerPoint online komprimieren: ein .pptx für die E-Mail verkleinern",
     intro: [
       "PowerPoint-Dateien wachsen schnell: ein paar Handy-Fotos, zwei Screenshots, ein exportiertes Diagramm, und ein .pptx überschreitet 40 MB und geht nicht per E-Mail. Das Tool PowerPoint komprimieren von ConvertBrio öffnet die Präsentation, kodiert die enthaltenen Bilder mit effizienter Qualität und Auflösung neu und gibt ein kleineres .pptx zurück, das voll bearbeitbar bleibt.",
-      "Es ist kostenlos, läuft im Browser ohne Anmeldung und ohne Wasserzeichen. Folientext, Layout, Animationen, Diagramme und Notizen bleiben unangetastet – nur eingebettete Fotos und Screenshots werden neu kodiert.",
+      "Es ist kostenlos, braucht keine Anmeldung und fügt kein Wasserzeichen hinzu. Folientext, Layout, Animationen, Diagramme und Notizen bleiben unangetastet – nur eingebettete Fotos und Screenshots werden neu kodiert.",
     ],
     howTo: [
       { step: "Präsentation als .pptx speichern", detail: "In PowerPoint: Datei → Speichern unter → PowerPoint-Präsentation (.pptx). Das alte .ppt-Format wird nicht akzeptiert." },
@@ -676,7 +676,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Deine Präsentation wird beim Upload verschlüsselt, auf den Servern von ConvertBrio automatisch ohne menschliche Prüfung verarbeitet, und Upload wie komprimierte Kopie werden innerhalb von 24 Stunden gelöscht. Ein .pptx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
+        body: "Deine Präsentation wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Ein .pptx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
     faqDescription: "Häufige Fragen zum Verkleinern der Größe einer PowerPoint-Präsentation.",
@@ -713,7 +713,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
     title: "Word-Dokument online komprimieren: ein .docx für die E-Mail verkleinern",
     intro: [
       "Ein Word-Dokument, das nicht per E-Mail geht, trägt fast immer Bilder in voller Auflösung. Ein einziges Handy-Foto in einem Bericht kann allein 5 MB wiegen; ein paar davon und ein fast reines Text-.docx überschreitet 30 MB. Das Tool Word-Dokument komprimieren von ConvertBrio öffnet das Dokument, kodiert die enthaltenen Bilder mit effizienter Qualität und Auflösung neu und gibt ein kleineres .docx zurück, das voll bearbeitbar bleibt.",
-      "Es ist kostenlos, läuft im Browser ohne Anmeldung und ohne Wasserzeichen. Text, Überschriften, Tabellen, Formatvorlagen und Layout bleiben unangetastet – nur eingebettete Fotos und Screenshots werden neu kodiert.",
+      "Es ist kostenlos, braucht keine Anmeldung und fügt kein Wasserzeichen hinzu. Text, Überschriften, Tabellen, Formatvorlagen und Layout bleiben unangetastet – nur eingebettete Fotos und Screenshots werden neu kodiert.",
     ],
     howTo: [
       { step: "Dokument als .docx speichern", detail: "In Word: Datei → Speichern unter → Word-Dokument (.docx). Das alte .doc-Format wird nicht akzeptiert." },
@@ -745,7 +745,7 @@ export const toolContentDe: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Datenschutz und Grenzen",
-        body: "Dein Dokument wird beim Upload verschlüsselt, auf den Servern von ConvertBrio automatisch ohne menschliche Prüfung verarbeitet, und Upload wie komprimierte Kopie werden innerhalb von 24 Stunden gelöscht. Ein .docx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
+        body: "Dein Dokument wird verschlüsselt übertragen. Deine Originaldatei wird gelöscht, sobald sie für die Umwandlung gelesen wurde. Das Ergebnis wird durch eine tägliche Bereinigung gelöscht, in der Regel innerhalb von etwa 24 Stunden. Die Dateien werden automatisch und ohne menschliche Prüfung auf den Servern unserer Hosting-Anbieter (Vercel und Supabase) verarbeitet. Ein .docx pro Vorgang, bis zu 100 MB, kostenlos, ohne Konto, ohne Wasserzeichen.",
       },
     ],
     faqDescription: "Häufige Fragen zum Verkleinern der Größe eines Word-Dokuments.",

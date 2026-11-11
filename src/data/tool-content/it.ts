@@ -7,7 +7,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
     title: "Comprimere PDF online: riduci le dimensioni per e-mail e portali",
     intro: [
       "I PDF grandi, soprattutto quelli pieni di pagine scansionate o foto ad alta risoluzione, superano il limite degli allegati, sono lenti da caricare e vengono rifiutati dai portali che limitano le dimensioni dei file. Il compressore PDF di ConvertBrio ricodifica le immagini incorporate nel documento con una qualità e una risoluzione più efficienti e rimuove i metadati inutili, così le stesse pagine tornano in un file più piccolo.",
-      "È gratis, funziona nel browser senza registrazione e senza filigrana. La compressione è senza perdita per testo e grafica vettoriale, restano nitidi, e riguarda solo le foto e le scansioni incorporate, dove un calo di qualità minimo e quasi sempre invisibile si traduce in una forte riduzione delle dimensioni.",
+      "È gratis, funziona senza registrazione e senza filigrana. La compressione è senza perdita per testo e grafica vettoriale, restano nitidi, e riguarda solo le foto e le scansioni incorporate, dove un calo di qualità minimo e quasi sempre invisibile si traduce in una forte riduzione delle dimensioni.",
     ],
     howTo: [
       { step: "Carica il PDF", detail: "Trascina il file nel riquadro o clicca per sfogliare. Un PDF per volta, fino a 100 MB." },
@@ -61,7 +61,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Il tuo PDF viene cifrato durante il caricamento, elaborato automaticamente sui server di ConvertBrio senza revisione umana, e sia l'originale che la copia compressa vengono eliminati entro 24 ore. Un file per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
+        body: "Il tuo PDF è cifrato durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Un file per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
     ],
     faqDescription: "Domande frequenti su come comprimere le dimensioni di un PDF online.",
@@ -147,7 +147,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Ogni caricamento viene cifrato ed eliminato automaticamente dai server di ConvertBrio entro 24 ore, scaricato o meno. Questo strumento comprime un'immagine per volta, fino a 100 MB, gratis, senza account e senza filigrana.",
+        body: "Ogni caricamento è cifrato durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Questo strumento comprime un'immagine per volta, fino a 100 MB, gratis, senza account e senza filigrana.",
       },
     ],
     faqDescription: "Domande frequenti su comprimere e ridurre le dimensioni delle immagini.",
@@ -183,7 +183,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
   "merge-pdf": {
     title: "Unire PDF online: combina più PDF in un unico file",
     intro: [
-      "Unire pagine scansionate, fatture, report o capitoli in un unico documento di solito richiede software desktop o un abbonamento a pagamento. Lo strumento di unione di ConvertBrio lo fa dal browser, senza installare nulla: carica più PDF, mettili nell'ordine che vuoi e scarica un file combinato in pochi secondi.",
+      "Unire pagine scansionate, fatture, report o capitoli in un unico documento di solito richiede software desktop o un abbonamento a pagamento. Lo strumento di unione di ConvertBrio lo fa online, senza installare nulla: carica più PDF, mettili nell'ordine che vuoi e scarica un file combinato in pochi secondi.",
       "Ogni pagina di ogni file viene mantenuta esattamente com'è: nessuna ricompressione, nessuna perdita di qualità, nessuna filigrana. L'unico cambiamento è che file separati diventano uno solo.",
     ],
     howTo: [
@@ -216,7 +216,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "I file vengono cifrati al caricamento, uniti automaticamente senza revisione umana, e tutti, origini e risultato, vengono eliminati entro 24 ore. Più file per unione, fino a 100 MB ciascuno, gratis, senza account, senza filigrana.",
+        body: "I file sono cifrati durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Più file per unione, fino a 100 MB ciascuno, gratis, senza account, senza filigrana.",
       },
     ],
     faqDescription: "Domande frequenti sull'unione di più file PDF in uno solo.",
@@ -253,7 +253,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
     title: "Dividere PDF online: separa un documento in pagine singole",
     intro: [
       "Devi estrarre una pagina da un PDF più grande o spezzare un documento multipagina in file separati? Lo strumento di divisione di ConvertBrio separa ogni pagina del tuo PDF in un file proprio, pronto da scaricare e usare in modo indipendente.",
-      "È gratis, funziona nel browser e senza filigrana. Il risultato arriva come uno ZIP con una pagina per file.",
+      "È gratis, funziona senza registrazione e senza filigrana. Il risultato arriva come uno ZIP con una pagina per file.",
     ],
     howTo: [
       { step: "Carica il tuo PDF", detail: "Trascinalo nel riquadro o sfoglia. Un file per volta, fino a 100 MB." },
@@ -271,7 +271,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Il caricamento viene cifrato, elaborato automaticamente senza revisione umana, e sia l'originale che le pagine risultanti vengono eliminati dai server di ConvertBrio entro 24 ore. Limite di 100 MB per file.",
+        body: "Il file è cifrato durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Limite di 100 MB per file.",
       },
     ],
     faqDescription: "Domande frequenti sulla divisione di un PDF in pagine singole.",
@@ -332,7 +332,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Il PDF viene cifrato al caricamento, convertito automaticamente senza revisione umana, e i due file vengono eliminati entro 24 ore. Un documento per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
+        body: "Il PDF è cifrato durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Un documento per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
     ],
     faqDescription: "Domande frequenti sulla conversione di file PDF in documenti Word modificabili.",
@@ -368,7 +368,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
     title: "Convertire Word in PDF: blocca la formattazione per la condivisione",
     intro: [
       "Un documento Word può apparire diverso a seconda dei font, della versione di Word o del sistema in cui viene aperto: un vero problema quando un CV, un contratto o un report deve apparire identico per chi lo riceve. Il convertitore Word in PDF di ConvertBrio trasforma il tuo DOCX in un PDF pronto per la stampa che appare uguale ovunque e non può essere modificato per sbaglio.",
-      "È gratis, funziona nel browser, non serve Microsoft Word installato e non aggiunge filigrana.",
+      "È gratis, funziona senza registrazione, non serve Microsoft Word installato e non aggiunge filigrana.",
     ],
     howTo: [
       { step: "Salva il documento come .docx", detail: "In Word, usa File → Salva con nome e scegli Documento di Word (.docx). I file .doc vecchi non sono accettati." },
@@ -386,7 +386,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Il tuo documento viene cifrato al caricamento, convertito automaticamente senza revisione umana, e i due file vengono eliminati entro 24 ore. Un .docx per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
+        body: "Il tuo documento è cifrato durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Un .docx per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
     ],
     faqDescription: "Domande frequenti sulla conversione di documenti Word in PDF.",
@@ -442,7 +442,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Il tuo PDF viene cifrato al caricamento, renderizzato automaticamente senza revisione umana, e sia il caricamento che le immagini vengono eliminati entro 24 ore. Un file per volta, fino a 100 MB, gratis, senza account.",
+        body: "Il tuo PDF è cifrato durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Un file per volta, fino a 100 MB, gratis, senza account.",
       },
     ],
     faqDescription: "Domande frequenti sulla conversione di pagine di PDF in immagini JPG.",
@@ -494,7 +494,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Le immagini vengono cifrate al caricamento, combinate automaticamente senza revisione umana, e sia le origini che il PDF finale vengono eliminati entro 24 ore. Più immagini per volta, 100 MB combinati, gratis, senza account, senza filigrana.",
+        body: "Le immagini sono cifrate durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Più immagini per volta, 100 MB combinati, gratis, senza account, senza filigrana.",
       },
     ],
     faqDescription: "Domande frequenti sulla conversione di immagini JPG in un PDF.",
@@ -520,7 +520,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
   "image-converter": {
     title: "Convertitore di immagini: converti tra qualsiasi formato online",
     intro: [
-      "Il convertitore di immagini di ConvertBrio sposta una foto, un grafico o uno screenshot tra JPG, PNG, WEBP, AVIF, HEIC e GIF in un passaggio, direttamente nel browser. Niente da installare, nessun account da creare: carica un file, scegli il formato e scarica il risultato in pochi secondi.",
+      "Il convertitore di immagini di ConvertBrio sposta una foto, un grafico o uno screenshot tra JPG, PNG, WEBP, AVIF, HEIC e GIF in un passaggio. Niente da installare, nessun account da creare: carica un file, scegli il formato e scarica il risultato in pochi secondi.",
       "Il motivo più comune per convertire un'immagine è la compatibilità: una foto HEIC da iPhone che Windows non apre, un WEBP salvato da un sito che un editor rifiuta, o un AVIF che un vecchio client di posta non mostra.",
     ],
     howTo: [
@@ -549,7 +549,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Ogni caricamento viene cifrato ed elaborato automaticamente senza revisione umana. Sia l'originale che l'immagine convertita vengono eliminati dai server di ConvertBrio entro 24 ore. File fino a 100 MB, gratis, senza account e senza filigrana.",
+        body: "Ogni caricamento è cifrato durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. File fino a 100 MB, gratis, senza account e senza filigrana.",
       },
     ],
     faqDescription: "Domande frequenti sul convertitore di immagini di ConvertBrio.",
@@ -607,7 +607,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Il tuo documento viene cifrato al caricamento, elaborato automaticamente senza revisione umana, e sia il caricamento che il risultato OCR vengono eliminati entro 24 ore. Un PDF per volta, fino a 100 MB, gratis, senza account.",
+        body: "Il tuo documento è cifrato durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Un PDF per volta, fino a 100 MB, gratis, senza account.",
       },
     ],
     faqDescription: "Domande frequenti sull'OCR di un PDF e sul portare il testo scansionato in Word.",
@@ -643,7 +643,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
     title: "Comprimere PowerPoint online: riduci un .pptx per l'e-mail",
     intro: [
       "I file PowerPoint crescono in fretta: qualche foto dal telefono, un paio di screenshot, un grafico esportato, e un .pptx supera i 40 MB e non parte via e-mail. Lo strumento Comprimere PowerPoint di ConvertBrio apre la presentazione, ricodifica le immagini al suo interno con qualità e risoluzione efficienti, e restituisce un .pptx più piccolo che resta pienamente modificabile.",
-      "È gratis, funziona nel browser senza registrazione e senza filigrana. Il testo delle diapositive, il layout, le animazioni, i grafici e le note restano intatti: solo le foto e gli screenshot incorporati vengono ricodificati.",
+      "È gratis, funziona senza registrazione e senza filigrana. Il testo delle diapositive, il layout, le animazioni, i grafici e le note restano intatti: solo le foto e gli screenshot incorporati vengono ricodificati.",
     ],
     howTo: [
       { step: "Salva la presentazione come .pptx", detail: "In PowerPoint, File → Salva con nome → Presentazione di PowerPoint (.pptx). Il formato .ppt vecchio non è accettato." },
@@ -676,7 +676,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "La tua presentazione viene cifrata al caricamento, elaborata automaticamente sui server di ConvertBrio senza revisione umana, e sia il caricamento che la copia compressa vengono eliminati entro 24 ore. Un .pptx per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
+        body: "La tua presentazione è cifrata durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Un .pptx per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
     ],
     faqDescription: "Domande frequenti sulla riduzione delle dimensioni di una presentazione PowerPoint.",
@@ -713,7 +713,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
     title: "Comprimere documento Word online: riduci un .docx per l'e-mail",
     intro: [
       "Un documento Word che non parte via e-mail porta quasi sempre immagini a piena risoluzione. Una sola foto dal telefono incollata in un report può pesare 5 MB da sola; qualcuna e un .docx quasi tutto testo supera i 30 MB. Lo strumento Comprimere Documento Word di ConvertBrio apre il documento, ricodifica le immagini al suo interno con qualità e risoluzione efficienti, e restituisce un .docx più piccolo che resta pienamente modificabile.",
-      "È gratis, funziona nel browser senza registrazione e senza filigrana. Testo, titoli, tabelle, stili e layout restano intatti: solo le foto e gli screenshot incorporati vengono ricodificati.",
+      "È gratis, funziona senza registrazione e senza filigrana. Testo, titoli, tabelle, stili e layout restano intatti: solo le foto e gli screenshot incorporati vengono ricodificati.",
     ],
     howTo: [
       { step: "Salva il documento come .docx", detail: "In Word, File → Salva con nome → Documento di Word (.docx). Il formato .doc vecchio non è accettato." },
@@ -745,7 +745,7 @@ export const toolContentIt: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privacy e limiti",
-        body: "Il tuo documento viene cifrato al caricamento, elaborato automaticamente sui server di ConvertBrio senza revisione umana, e sia il caricamento che la copia compressa vengono eliminati entro 24 ore. Un .docx per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
+        body: "Il tuo documento è cifrato durante il trasferimento. Il file originale viene eliminato subito dopo essere stato letto per la conversione. Il risultato convertito viene eliminato da una pulizia giornaliera, in genere entro circa 24 ore. I file vengono elaborati automaticamente sui server dei nostri provider di hosting (Vercel e Supabase), senza revisione umana. Un .docx per volta, fino a 100 MB, gratis, senza account, senza filigrana.",
       },
     ],
     faqDescription: "Domande frequenti sulla riduzione delle dimensioni di un documento Word.",

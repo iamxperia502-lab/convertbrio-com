@@ -7,7 +7,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     title: "Kompres PDF online: perkecil ukuran untuk email dan portal",
     intro: [
       "PDF besar, apalagi yang penuh halaman hasil scan atau foto resolusi tinggi, melewati batas lampiran email, lambat diunggah, dan ditolak portal yang membatasi ukuran file. Kompresor PDF ConvertBrio mengodekan ulang gambar yang tertanam di dokumen dengan kualitas dan resolusi yang lebih efisien serta menghapus metadata yang tidak perlu, sehingga halaman yang sama kembali dalam file yang lebih kecil.",
-      "Gratis, berjalan di browser tanpa daftar dan tanpa watermark. Kompresi bersifat tanpa kehilangan untuk teks dan grafik vektor, keduanya tetap tajam, dan hanya memengaruhi foto serta scan yang tertanam, di mana penurunan kualitas kecil yang hampir selalu tak terlihat menghasilkan penurunan ukuran yang besar.",
+      "Gratis, berjalan online tanpa daftar dan tanpa watermark. Kompresi bersifat tanpa kehilangan untuk teks dan grafik vektor, keduanya tetap tajam, dan hanya memengaruhi foto serta scan yang tertanam, di mana penurunan kualitas kecil yang hampir selalu tak terlihat menghasilkan penurunan ukuran yang besar.",
     ],
     howTo: [
       { step: "Unggah PDF", detail: "Seret file ke kotak atau klik untuk menjelajah. Satu PDF per proses, hingga 100 MB." },
@@ -61,7 +61,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "PDF Anda dienkripsi saat diunggah, diproses otomatis di server ConvertBrio tanpa tinjauan manusia, dan baik asli maupun salinan terkompresi dihapus dalam 24 jam. Satu file per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Satu file per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang cara mengompres ukuran PDF online.",
@@ -147,7 +147,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "Setiap unggahan dienkripsi dan dihapus otomatis dari server ConvertBrio dalam 24 jam, diunduh atau tidak. Alat ini mengompres satu gambar per proses, hingga 100 MB, gratis, tanpa akun dan tanpa watermark.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. File hingga 100 MB, satu gambar per proses, gratis, tanpa akun dan tanpa watermark.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang mengompres dan memperkecil ukuran gambar.",
@@ -183,7 +183,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
   "merge-pdf": {
     title: "Gabung PDF online: satukan beberapa PDF menjadi satu file",
     intro: [
-      "Menyatukan halaman hasil scan, faktur, laporan, atau bab menjadi satu dokumen biasanya butuh software desktop atau langganan berbayar. Alat penggabungan ConvertBrio melakukannya dari browser, tanpa memasang apa pun: unggah beberapa PDF, susun dalam urutan yang Anda mau, dan unduh satu file gabungan dalam hitungan detik.",
+      "Menyatukan halaman hasil scan, faktur, laporan, atau bab menjadi satu dokumen biasanya butuh software desktop atau langganan berbayar. Alat penggabungan ConvertBrio melakukannya online, tanpa memasang apa pun: unggah beberapa PDF, susun dalam urutan yang Anda mau, dan unduh satu file gabungan dalam hitungan detik.",
       "Setiap halaman tiap file dipertahankan persis apa adanya: tanpa kompresi ulang, tanpa kehilangan kualitas, tanpa watermark. Satu-satunya perubahan: file yang terpisah menjadi satu.",
     ],
     howTo: [
@@ -216,7 +216,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "File dienkripsi saat diunggah, digabungkan otomatis tanpa tinjauan manusia, dan semuanya, sumber dan hasil, dihapus dalam 24 jam. Beberapa file per penggabungan, masing-masing hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Beberapa file per penggabungan, masing-masing hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang menggabungkan beberapa file PDF menjadi satu.",
@@ -253,7 +253,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     title: "Pisah PDF online: pisahkan dokumen menjadi halaman terpisah",
     intro: [
       "Perlu mengambil satu halaman dari PDF yang lebih besar, atau memecah dokumen banyak halaman menjadi file terpisah? Alat pemisah ConvertBrio memisahkan tiap halaman PDF Anda ke filenya sendiri, siap diunduh dan dipakai secara mandiri.",
-      "Gratis, berjalan di browser dan tanpa watermark. Hasilnya berupa ZIP dengan satu halaman per file.",
+      "Gratis, berjalan online dan tanpa watermark. Hasilnya berupa ZIP dengan satu halaman per file.",
     ],
     howTo: [
       { step: "Unggah PDF Anda", detail: "Seret ke kotak atau jelajahi. Satu file per proses, hingga 100 MB." },
@@ -271,7 +271,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "Unggahan dienkripsi, diproses otomatis tanpa tinjauan manusia, dan baik asli maupun halaman hasil dihapus dari server ConvertBrio dalam 24 jam. Batas 100 MB per file.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Batas 100 MB per file.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang memisahkan PDF menjadi halaman terpisah.",
@@ -332,7 +332,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "PDF dienkripsi saat diunggah, dikonversi otomatis tanpa tinjauan manusia, dan kedua file dihapus dalam 24 jam. Satu dokumen per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Satu dokumen per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang mengonversi file PDF menjadi dokumen Word yang bisa diedit.",
@@ -368,7 +368,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     title: "Konversi Word ke PDF: kunci format untuk dibagikan",
     intro: [
       "Dokumen Word bisa tampil berbeda tergantung font, versi Word, atau sistem tempat dibuka: masalah nyata saat CV, kontrak, atau laporan harus tampil sama bagi setiap penerimanya. Konverter Word ke PDF ConvertBrio mengubah DOCX Anda menjadi PDF siap cetak yang tampil sama di mana pun dan tidak bisa diedit tanpa sengaja.",
-      "Gratis, berjalan di browser, tidak butuh Microsoft Word terpasang, dan tanpa watermark.",
+      "Gratis, berjalan online, tidak butuh Microsoft Word terpasang, dan tanpa watermark.",
     ],
     howTo: [
       { step: "Simpan dokumen sebagai .docx", detail: "Di Word, pakai File → Save As dan pilih Word Document (.docx). File .doc lama tidak diterima." },
@@ -386,7 +386,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "Dokumen Anda dienkripsi saat diunggah, dikonversi otomatis tanpa tinjauan manusia, dan kedua file dihapus dalam 24 jam. Satu .docx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Satu .docx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang mengonversi dokumen Word ke PDF.",
@@ -442,7 +442,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "PDF Anda dienkripsi saat diunggah, dirender otomatis tanpa tinjauan manusia, dan baik unggahan maupun gambar dihapus dalam 24 jam. Satu file per proses, hingga 100 MB, gratis, tanpa akun.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Satu file per proses, hingga 100 MB, gratis, tanpa akun.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang mengonversi halaman PDF menjadi gambar JPG.",
@@ -494,7 +494,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "Gambar dienkripsi saat diunggah, digabungkan otomatis tanpa tinjauan manusia, dan baik sumber maupun PDF akhir dihapus dalam 24 jam. Beberapa gambar per proses, 100 MB gabungan, gratis, tanpa akun, tanpa watermark.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Beberapa gambar per proses, 100 MB gabungan, gratis, tanpa akun, tanpa watermark.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang mengonversi gambar JPG menjadi PDF.",
@@ -520,7 +520,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
   "image-converter": {
     title: "Konverter gambar: konversi antar format apa pun secara online",
     intro: [
-      "Konverter gambar ConvertBrio memindahkan foto, grafik, atau tangkapan layar antara JPG, PNG, WEBP, AVIF, HEIC, dan GIF dalam satu langkah, langsung di browser. Tidak ada yang perlu dipasang, tidak ada akun yang perlu dibuat: unggah file, pilih format, dan unduh hasilnya dalam hitungan detik.",
+      "Konverter gambar ConvertBrio memindahkan foto, grafik, atau tangkapan layar antara JPG, PNG, WEBP, AVIF, HEIC, dan GIF dalam satu langkah, langsung online. Tidak ada yang perlu dipasang, tidak ada akun yang perlu dibuat: unggah file, pilih format, dan unduh hasilnya dalam hitungan detik.",
       "Alasan paling umum mengonversi gambar adalah kompatibilitas: foto HEIC iPhone yang tidak dibuka Windows, WEBP yang disimpan dari situs yang ditolak editor, atau AVIF yang tidak ditampilkan klien email lama.",
     ],
     howTo: [
@@ -549,7 +549,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "Setiap unggahan dienkripsi dan diproses otomatis tanpa tinjauan manusia. Baik asli maupun gambar hasil konversi dihapus dari server ConvertBrio dalam 24 jam. File hingga 100 MB, gratis, tanpa akun dan tanpa watermark.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. File hingga 100 MB, gratis, tanpa akun dan tanpa watermark.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang konverter gambar ConvertBrio.",
@@ -607,7 +607,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "Dokumen Anda dienkripsi saat diunggah, diproses otomatis tanpa tinjauan manusia, dan baik unggahan maupun hasil OCR dihapus dalam 24 jam. Satu PDF per proses, hingga 100 MB, gratis, tanpa akun.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Satu PDF per proses, hingga 100 MB, gratis, tanpa akun.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang menjalankan OCR pada PDF dan memindahkan teks hasil scan ke Word.",
@@ -643,7 +643,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     title: "Kompres PowerPoint online: perkecil .pptx untuk email",
     intro: [
       "File PowerPoint membesar dengan cepat: beberapa foto ponsel, dua tangkapan layar, satu grafik yang diekspor, dan .pptx melewati 40 MB dan tidak bisa lewat email. Alat Kompres PowerPoint ConvertBrio membuka presentasi, mengodekan ulang gambar di dalamnya dengan kualitas dan resolusi efisien, dan mengembalikan .pptx lebih kecil yang tetap sepenuhnya bisa diedit.",
-      "Gratis, berjalan di browser tanpa daftar dan tanpa watermark. Teks slide, tata letak, animasi, grafik, dan catatan tetap utuh: hanya foto dan tangkapan layar tertanam yang dikodekan ulang.",
+      "Gratis, berjalan online tanpa daftar dan tanpa watermark. Teks slide, tata letak, animasi, grafik, dan catatan tetap utuh: hanya foto dan tangkapan layar tertanam yang dikodekan ulang.",
     ],
     howTo: [
       { step: "Simpan presentasi sebagai .pptx", detail: "Di PowerPoint, File → Save As → PowerPoint Presentation (.pptx). Format .ppt lama tidak diterima." },
@@ -676,7 +676,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "Presentasi Anda dienkripsi saat diunggah, diproses otomatis di server ConvertBrio tanpa tinjauan manusia, dan baik unggahan maupun salinan terkompresi dihapus dalam 24 jam. Satu .pptx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Satu .pptx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang memperkecil ukuran presentasi PowerPoint.",
@@ -713,7 +713,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
     title: "Kompres dokumen Word online: perkecil .docx untuk email",
     intro: [
       "Dokumen Word yang tidak bisa lewat email hampir selalu membawa gambar resolusi penuh. Satu foto ponsel yang ditempel di laporan bisa 5 MB sendiri; beberapa dan .docx yang hampir seluruhnya teks melewati 30 MB. Alat Kompres Dokumen Word ConvertBrio membuka dokumen, mengodekan ulang gambar di dalamnya dengan kualitas dan resolusi efisien, dan mengembalikan .docx lebih kecil yang tetap sepenuhnya bisa diedit.",
-      "Gratis, berjalan di browser tanpa daftar dan tanpa watermark. Teks, judul, tabel, gaya, dan tata letak tetap utuh: hanya foto dan tangkapan layar tertanam yang dikodekan ulang.",
+      "Gratis, berjalan online tanpa daftar dan tanpa watermark. Teks, judul, tabel, gaya, dan tata letak tetap utuh: hanya foto dan tangkapan layar tertanam yang dikodekan ulang.",
     ],
     howTo: [
       { step: "Simpan dokumen sebagai .docx", detail: "Di Word, File → Save As → Word Document (.docx). Format .doc lama tidak diterima." },
@@ -745,7 +745,7 @@ export const toolContentId: Record<string, ToolContentEntry> = {
       },
       {
         heading: "Privasi dan batasan",
-        body: "Dokumen Anda dienkripsi saat diunggah, diproses otomatis di server ConvertBrio tanpa tinjauan manusia, dan baik unggahan maupun salinan terkompresi dihapus dalam 24 jam. Satu .docx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
+        body: "File dienkripsi saat dikirim. File asli Anda dihapus segera setelah dibaca untuk konversi. Hasil konversi dihapus oleh pembersihan harian, biasanya dalam sekitar 24 jam. File diproses secara otomatis di server penyedia hosting kami (Vercel dan Supabase), tanpa tinjauan manusia. Satu .docx per proses, hingga 100 MB, gratis, tanpa akun, tanpa watermark.",
       },
     ],
     faqDescription: "Pertanyaan umum tentang memperkecil ukuran dokumen Word.",
