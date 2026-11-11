@@ -3,6 +3,7 @@ export const prerender = true;
 
 import LocalizedStaticPage from "../../components/LocalizedStaticPage.astro";
 import HubPage from "../../components/HubPage.astro";
+import AboutPage from "../../components/AboutPage.astro";
 import { NON_DEFAULT_LOCALES, type Locale } from "../../data/i18n";
 import { pagesByLocale } from "../../data/page-content";
 import { hubs } from "../../data/hubs";
@@ -25,7 +26,9 @@ const hub = hubs.find((h) => h.path === `/${page}`);
 {
   hub ? (
     <HubPage hub={hub} lang={lang} />
+  ) : page === "about" ? (
+    <AboutPage lang={lang} />
   ) : (
-    <LocalizedStaticPage doc={pages[page as "about" | "privacy" | "terms" | "trust"]} lang={lang} enPath={`/${page}`} />
+    <LocalizedStaticPage doc={pages[page as "privacy" | "terms" | "trust"]} lang={lang} enPath={`/${page}`} />
   )
 }

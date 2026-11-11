@@ -1,39 +1,5 @@
-import type { LocalePages, AboutDoc, StaticPageDoc, ContactDoc, BlogIndexDoc } from "./types";
+import type { LocalePages, StaticPageDoc, ContactDoc, BlogIndexDoc } from "./types";
 import { hubsEs, hubUiEs } from "./es-hubs";
-
-const about: AboutDoc = {
-  seoTitle: "Acerca de ConvertBrio | ConvertBrio",
-  title: "Acerca de",
-  description:
-    "ConvertBrio crea herramientas de conversión de archivos rápidas, privadas y sencillas para imágenes, PDF y documentos.",
-  eyebrow: "Acerca de ConvertBrio",
-  heading: "Herramientas de archivos que no se interponen en tu camino",
-  intro:
-    "ConvertBrio nació de una idea sencilla: convertir un archivo no debería exigirte instalar software, crear una cuenta ni esperar en una cola.",
-  values: [
-    {
-      title: "Rápido de serie",
-      desc: "Cada herramienta está pensada para procesar archivos en segundos, no en minutos, sin importar la cola.",
-    },
-    {
-      title: "Privado por diseño",
-      desc: "Los archivos se cifran y se eliminan automáticamente. Nunca vendemos ni revisamos tus datos.",
-    },
-    {
-      title: "IA realmente útil",
-      desc: "Herramientas de IA que resuelven problemas reales (mejora, restauración y limpieza), no simples trucos.",
-    },
-  ],
-  blocks: [
-    {
-      heading: "Nuestro enfoque",
-      paragraphs: [
-        "Nos centramos en las herramientas que la gente usa de verdad cada día (conversión de imágenes, edición de PDF, formato de documentos y compresión) y hacemos que cada una sea rápida, precisa y gratuita. Hoy hay {liveToolCount} herramientas disponibles, y seguimos sumando más con regularidad. Donde la IA mejora de verdad un resultado, como al realzar una foto de baja resolución, la usamos. Donde no ayudaría, la dejamos fuera.",
-        "ConvertBrio es un proyecto independiente, creado y gestionado por Subham Sharma. Si tienes comentarios, una preocupación de seguridad o una herramienta que te gustaría ver, <a href=\"/contact\" class=\"font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700\">escríbenos</a> o consulta cómo tratamos tus archivos en nuestra <a href=\"/privacy\" class=\"font-medium text-brand-600 underline underline-offset-2 hover:text-brand-700\">Política de privacidad</a>.",
-      ],
-    },
-  ],
-};
 
 const privacy: StaticPageDoc = {
   seoTitle: "Política de privacidad | ConvertBrio",
@@ -294,7 +260,6 @@ const blogIndex: BlogIndexDoc = {
 };
 
 export const pagesEs: LocalePages | undefined = {
-  about,
   privacy,
   terms,
   trust,

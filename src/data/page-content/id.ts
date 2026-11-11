@@ -1,37 +1,5 @@
-import type { LocalePages, AboutDoc, StaticPageDoc, ContactDoc, BlogIndexDoc } from "./types";
+import type { LocalePages, StaticPageDoc, ContactDoc, BlogIndexDoc } from "./types";
 import { hubsId, hubUiId } from "./id-hubs";
-
-const about: AboutDoc = {
-  seoTitle: `Tentang Kami | ConvertBrio`,
-  title: `Tentang Kami`,
-  description: `ConvertBrio membuat alat konversi file yang cepat, privat, dan sederhana untuk gambar, PDF, dan dokumen.`,
-  eyebrow: `Tentang ConvertBrio`,
-  heading: `Alat file yang tidak merepotkan`,
-  intro: `ConvertBrio berawal dari ide sederhana: mengonversi file seharusnya tidak perlu memasang aplikasi, membuat akun, atau menunggu antrean.`,
-  values: [
-    {
-      title: `Cepat sejak awal`,
-      desc: `Setiap alat dirancang untuk memproses file dalam hitungan detik, bukan menit, berapa pun antreannya.`,
-    },
-    {
-      title: `Privat sejak dirancang`,
-      desc: `File dienkripsi dan dihapus secara otomatis. Kami tidak pernah menjual atau memeriksa data Anda.`,
-    },
-    {
-      title: `AI yang benar-benar berguna`,
-      desc: `Alat AI yang menyelesaikan masalah nyata, seperti peningkatan kualitas, restorasi, dan pembersihan, bukan sekadar gimik.`,
-    },
-  ],
-  blocks: [
-    {
-      heading: `Pendekatan kami`,
-      paragraphs: [
-        `Kami berfokus pada alat yang memang dipakai orang setiap hari, yaitu konversi gambar, pengeditan PDF, pemformatan dokumen, dan kompresi, lalu membuat masing-masing alat itu cepat, akurat, dan gratis dipakai. Saat ini {liveToolCount} alat sudah aktif, dan akan terus bertambah secara berkala. Di mana AI benar-benar memperbaiki hasil, misalnya untuk meningkatkan kualitas foto beresolusi rendah, kami memakainya. Di mana AI tidak membantu, kami tidak memaksakannya.`,
-        `ConvertBrio dibangun dan dijalankan secara mandiri oleh Subham Sharma. Jika Anda punya masukan, kekhawatiran soal keamanan, atau alat yang ingin Anda lihat hadir, silakan <a href="/contact">hubungi kami</a> atau baca cara kami menangani file Anda di <a href="/privacy">Kebijakan Privasi</a> kami.`,
-      ],
-    },
-  ],
-};
 
 const privacy: StaticPageDoc = {
   seoTitle: `Kebijakan Privasi | ConvertBrio`,
@@ -287,7 +255,6 @@ const blogIndex: BlogIndexDoc = {
 };
 
 export const pagesId: LocalePages | undefined = {
-  about,
   privacy,
   terms,
   trust,

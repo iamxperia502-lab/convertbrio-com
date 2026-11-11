@@ -33,11 +33,6 @@ export interface StaticPageDoc {
   blocks: PageBlock[];
 }
 
-export interface AboutDoc extends StaticPageDoc {
-  /** Three value cards (icons are fixed: shrink, shield, sparkle). */
-  values: { title: string; desc: string }[];
-}
-
 export interface ContactDoc {
   seoTitle: string;
   title: string;
@@ -99,7 +94,6 @@ export interface HubUiStrings {
 }
 
 export interface LocalePages {
-  about: AboutDoc;
   privacy: StaticPageDoc;
   terms: StaticPageDoc;
   trust: StaticPageDoc;

@@ -6,6 +6,8 @@ import { toolContent } from "../data/toolContent";
 import { toolContentByLocale } from "../data/tool-content";
 import { pagesByLocale } from "../data/page-content";
 import { homepageByLocale } from "../data/i18n-home";
+import { aboutByLocale } from "../data/about-content";
+import { founderBio, businessDetails, founderPhoto, personalLinkedIn } from "../data/about-profile";
 import { relatedToolsFor } from "../data/related-tools";
 import { LastmodTracker, gitDate, readFiles } from "../lib/lastmod";
 import {
@@ -95,7 +97,11 @@ export const GET: APIRoute = async ({ site }) => {
     { loc: `${base}/blog`, lastmod: newestPost, alternates: allReady ? altSet("/blog") : undefined },
     ...(["/about", "/contact", "/privacy", "/terms", "/trust"] as const).map((path) => ({
       loc: `${base}${path}`,
-      lastmod: staticPage(path, `src/pages${path}.astro`),
+      // About's text lives in data files (shared by every language), not the page file.
+      lastmod:
+        path === "/about"
+          ? tracker.stamp(path, { text: aboutByLocale.en, bio: founderBio.en, businessDetails, founderPhoto, personalLinkedIn })
+          : staticPage(path, `src/pages${path}.astro`),
       alternates: allReady && localizedPageSet.has(path) ? altSet(path) : undefined,
     })),
     ...liveTools.map((tool) => ({
@@ -110,7 +116,7 @@ export const GET: APIRoute = async ({ site }) => {
     ...readyLocales.flatMap((lang) => {
       const pages = pagesByLocale[lang]!;
       const docFor = (path: string) =>
-        ({ "/about": pages.about, "/contact": pages.contact, "/privacy": pages.privacy, "/terms": pages.terms, "/trust": pages.trust })[path];
+        ({ "/about": { text: aboutByLocale[lang], bio: founderBio[lang], businessDetails, founderPhoto, personalLinkedIn }, "/contact": pages.contact, "/privacy": pages.privacy, "/terms": pages.terms, "/trust": pages.trust })[path];
       return [
         {
           loc: `${base}/${lang}`,

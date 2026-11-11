@@ -1,39 +1,5 @@
-import type { LocalePages, AboutDoc, StaticPageDoc, ContactDoc, BlogIndexDoc } from "./types";
+import type { LocalePages, StaticPageDoc, ContactDoc, BlogIndexDoc } from "./types";
 import { hubsDe, hubUiDe } from "./de-hubs";
-
-const about: AboutDoc = {
-  seoTitle: "Über uns | ConvertBrio",
-  title: "Über uns",
-  description:
-    "ConvertBrio entwickelt schnelle, private und einfache Werkzeuge zur Dateikonvertierung für Bilder, PDFs und Dokumente.",
-  eyebrow: "Über ConvertBrio",
-  heading: "Dateitools, die Ihnen nicht im Weg stehen",
-  intro:
-    "ConvertBrio begann mit einer einfachen Idee: Eine Datei zu konvertieren sollte nicht bedeuten, Software zu installieren, ein Konto anzulegen oder in einer Warteschlange zu warten.",
-  values: [
-    {
-      title: "Von Haus aus schnell",
-      desc: "Jedes Tool ist darauf ausgelegt, Dateien in Sekunden statt Minuten zu verarbeiten, ganz ohne Warteschlange.",
-    },
-    {
-      title: "Privat von Grund auf",
-      desc: "Dateien werden verschlüsselt übertragen und automatisch gelöscht. Wir verkaufen Ihre Daten nicht und sehen sie uns nicht an.",
-    },
-    {
-      title: "KI, die wirklich nützt",
-      desc: "KI-Tools, die echte Probleme lösen – Verbesserung, Restaurierung und Bereinigung statt Spielerei.",
-    },
-  ],
-  blocks: [
-    {
-      heading: "Unser Ansatz",
-      paragraphs: [
-        "Wir konzentrieren uns auf die Werkzeuge, die Menschen im Alltag tatsächlich nutzen: Bildkonvertierung, PDF-Bearbeitung, Dokumentformatierung und Komprimierung. Jedes davon soll schnell, präzise und kostenlos nutzbar sein. Aktuell sind {liveToolCount} Tools online, und regelmäßig kommen neue hinzu. Wo KI ein Ergebnis wirklich verbessert, etwa beim Aufwerten eines niedrig aufgelösten Fotos, setzen wir sie ein. Wo sie nichts brächte, lassen wir sie weg.",
-        "ConvertBrio wird unabhängig von Subham Sharma entwickelt und betrieben. Wenn Sie Feedback, ein Sicherheitsanliegen oder einen Tool-Wunsch haben, <a href=\"/contact\">melden Sie sich bei uns</a> oder lesen Sie in unserer <a href=\"/privacy\">Datenschutzerklärung</a> nach, wie wir mit Ihren Dateien umgehen.",
-      ],
-    },
-  ],
-};
 
 const privacy: StaticPageDoc = {
   seoTitle: "Datenschutzerklärung | ConvertBrio",
@@ -286,7 +252,6 @@ const blogIndex: BlogIndexDoc = {
 };
 
 export const pagesDe: LocalePages | undefined = {
-  about,
   privacy,
   terms,
   trust,
