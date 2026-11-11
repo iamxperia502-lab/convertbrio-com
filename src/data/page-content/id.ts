@@ -275,7 +275,7 @@ const contact: ContactDoc = {
 };
 
 const blogIndex: BlogIndexDoc = {
-  seoTitle: `Blog | ConvertBrio`,
+  seoTitle: "Panduan file, format, dan konversi | ConvertBrio",
   title: `Blog`,
   description: `Panduan praktis tentang format file, PDF, gambar, dan konversi dokumen: cara kerjanya, apa yang benar-benar memperkecil atau merusaknya, dan cara mengatasi masalah umum.`,
   eyebrow: `Blog`,

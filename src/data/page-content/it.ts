@@ -281,7 +281,7 @@ const contact: ContactDoc = {
 };
 
 const blogIndex: BlogIndexDoc = {
-  seoTitle: "Blog | ConvertBrio",
+  seoTitle: "Guide su file, formati e conversione | ConvertBrio",
   title: "Blog",
   description:
     "Guide pratiche su formati di file, PDF, immagini e conversione di documenti: come funzionano, cosa li fa ridurre o rompere e come risolvere i problemi più comuni.",

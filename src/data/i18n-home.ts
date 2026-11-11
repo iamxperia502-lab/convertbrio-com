@@ -67,7 +67,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ],
     seoHeading: "ConvertBrio: um conversor grátis para imagens, PDFs e documentos",
     seoIntro:
-      "O ConvertBrio é um conversor de arquivos online e gratuito, feito para quem precisa converter, comprimir ou organizar um arquivo sem instalar programa nem criar conta. Envie do navegador e os servidores do ConvertBrio fazem a conversão em segundos.",
+      "O ConvertBrio é um conversor de arquivos online e gratuito, feito para quem precisa converter, comprimir ou organizar um arquivo sem instalar programa nem criar conta. Envie do navegador e os servidores dos nossos provedores de hospedagem fazem a conversão em segundos.",
     seoBlocks: [
       {
         h3: "Comprimir PDF e imagem para um tamanho exato",
@@ -128,7 +128,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ],
     seoHeading: "ConvertBrio: un conversor gratis para imágenes, PDF y documentos",
     seoIntro:
-      "ConvertBrio es un conversor de archivos online y gratuito, hecho para quien necesita convertir, comprimir u organizar un archivo sin instalar programas ni crear cuenta. Sube desde el navegador y los servidores de ConvertBrio hacen la conversión en segundos.",
+      "ConvertBrio es un conversor de archivos online y gratuito, hecho para quien necesita convertir, comprimir u organizar un archivo sin instalar programas ni crear cuenta. Sube desde el navegador y los servidores de nuestros proveedores de alojamiento hacen la conversión en segundos.",
     seoBlocks: [
       {
         h3: "Comprimir PDF e imagen a un tamaño exacto",
@@ -189,7 +189,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ],
     seoHeading: "ConvertBrio : un convertisseur gratuit pour images, PDF et documents",
     seoIntro:
-      "ConvertBrio est un convertisseur de fichiers en ligne et gratuit, conçu pour ceux qui doivent convertir, compresser ou organiser un fichier sans installer de logiciel ni créer de compte. Envoyez depuis le navigateur et les serveurs de ConvertBrio font la conversion en quelques secondes.",
+      "ConvertBrio est un convertisseur de fichiers en ligne et gratuit, conçu pour ceux qui doivent convertir, compresser ou organiser un fichier sans installer de logiciel ni créer de compte. Envoyez depuis le navigateur et les serveurs de nos hébergeurs font la conversion en quelques secondes.",
     seoBlocks: [
       {
         h3: "Compresser un PDF et une image à une taille exacte",
@@ -311,7 +311,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ],
     seoHeading: "ConvertBrio: un convertitore gratis per immagini, PDF e documenti",
     seoIntro:
-      "ConvertBrio è un convertitore di file online e gratuito, pensato per chi deve convertire, comprimere o organizzare un file senza installare programmi né creare un account. Carica dal browser e i server di ConvertBrio fanno la conversione in pochi secondi.",
+      "ConvertBrio è un convertitore di file online e gratuito, pensato per chi deve convertire, comprimere o organizzare un file senza installare programmi né creare un account. Carica dal browser e i server dei nostri provider di hosting fanno la conversione in pochi secondi.",
     seoBlocks: [
       {
         h3: "Comprimere PDF e immagine a una dimensione esatta",
@@ -372,7 +372,7 @@ export const homepageByLocale: Record<Exclude<Locale, "en">, HomeContent> = {
     ],
     seoHeading: "ConvertBrio: konverter gratis untuk gambar, PDF, dan dokumen",
     seoIntro:
-      "ConvertBrio adalah konverter file online dan gratis, dibuat untuk siapa saja yang perlu mengonversi, mengompres, atau menata file tanpa memasang program atau membuat akun. Unggah dari browser dan server ConvertBrio melakukan konversi dalam hitungan detik.",
+      "ConvertBrio adalah konverter file online dan gratis, dibuat untuk siapa saja yang perlu mengonversi, mengompres, atau menata file tanpa memasang program atau membuat akun. Unggah dari browser dan server penyedia hosting kami melakukan konversi dalam hitungan detik.",
     seoBlocks: [
       {
         h3: "Kompres PDF dan gambar ke ukuran yang tepat",

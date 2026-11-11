@@ -731,7 +731,7 @@ export const toolContentPtMoreB: Record<string, ToolContentEntry> = {
     howTo: [
       { step: "Envie uma imagem", detail: "JPG, PNG, WEBP, HEIC, AVIF ou GIF. Uma foto nítida e reta funciona melhor." },
       { step: "Escolha o idioma", detail: "Selecione o idioma em que o texto está escrito para obter a melhor precisão." },
-      { step: "Extraia o texto", detail: "O reconhecimento roda nos servidores do ConvertBrio." },
+      { step: "Extraia o texto", detail: "O reconhecimento roda nos servidores dos nossos provedores de hospedagem." },
       { step: "Copie ou baixe", detail: "Selecione o texto na página, use Copiar texto ou abra o arquivo .txt baixado." },
     ],
     sections: [

@@ -273,7 +273,7 @@ const contact: ContactDoc = {
 };
 
 const blogIndex: BlogIndexDoc = {
-  seoTitle: "Blog | ConvertBrio",
+  seoTitle: "Ratgeber zu Dateien, Formaten und Konvertierung | ConvertBrio",
   title: "Blog",
   description:
     "Praktische Ratgeber zu Dateiformaten, PDFs, Bildern und Dokumentkonvertierung: wie sie funktionieren, was sie wirklich verkleinert oder kaputt macht und wie sich typische Probleme beheben lassen.",

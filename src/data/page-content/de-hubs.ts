@@ -9,7 +9,7 @@ export const hubsDe: Record<"pdf" | "image" | "document" | "compress" | "ocr" | 
       "PDFs online zusammenfügen, teilen, neu ordnen, drehen, entsperren, komprimieren und konvertieren. Kostenlose PDF-Tools von ConvertBrio ohne Anmeldung.",
     intro: [
       "PDFs sollen überall gleich aussehen, und genau deshalb lassen sie sich so schwer verändern. Diese Tools decken die Aufgaben ab, die im Alltag wirklich anfallen: mehrere Dateien kombinieren, Seiten herauslösen, in die richtige Reihenfolge bringen, eine Datei auf ein Upload-Limit verkleinern sowie Seiten in Bilder oder Bilder in Seiten verwandeln.",
-      "Jedes Tool läuft in Ihrer Browsersitzung auf den Servern von ConvertBrio, verarbeitet Dateien bis 100 MB und braucht kein Konto. Wählen Sie unten die passende Aufgabe oder folgen Sie einem der Abläufe, wenn Ihr Vorhaben aus mehreren Schritten besteht.",
+      "Jedes Tool läuft auf den Servern unserer Hosting-Anbieter (Vercel und Supabase), verarbeitet Dateien bis 100 MB und braucht kein Konto. Wählen Sie unten die passende Aufgabe oder folgen Sie einem der Abläufe, wenn Ihr Vorhaben aus mehreren Schritten besteht.",
     ],
     workflows: [
       {

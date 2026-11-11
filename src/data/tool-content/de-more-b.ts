@@ -583,7 +583,7 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
       {
         question: "Warum hat die Verarbeitung etwas gedauert?",
         answer:
-          "Das Modell läuft auf den Servern von ConvertBrio und verarbeitet große Bilder in Kacheln, um den Speicher zu schonen, daher dauert es einige Sekunden länger als eine einfache Formatumwandlung.",
+          "Das Modell läuft auf den Servern unserer Hosting-Anbieter und verarbeitet große Bilder in Kacheln, um den Speicher zu schonen, daher dauert es einige Sekunden länger als eine einfache Formatumwandlung.",
       },
     ],
   },
@@ -717,7 +717,7 @@ export const toolContentDeMoreB: Record<string, ToolContentEntry> = {
     howTo: [
       { step: "Bild hochladen", detail: "JPG, PNG, WEBP, HEIC, AVIF oder GIF. Am besten funktioniert ein scharfes, gerades Foto." },
       { step: "Sprache wählen", detail: "Wähle die Sprache, in der der Text geschrieben ist, für die beste Genauigkeit." },
-      { step: "Text auslesen", detail: "Die Erkennung läuft auf den Servern von ConvertBrio." },
+      { step: "Text auslesen", detail: "Die Erkennung läuft auf den Servern unserer Hosting-Anbieter." },
       { step: "Kopieren oder herunterladen", detail: "Markiere den Text auf der Seite, nutze „Text kopieren“ oder öffne die heruntergeladene .txt-Datei." },
     ],
     sections: [

@@ -112,7 +112,7 @@ const pt: BenchmarkText = {
   methodologyBefore:
     "O arquivo de teste é um JPEG sintético de 2000 × 1500 e 814,8 KB que nós mesmos geramos: uma composição de retrato em degradê suave com ruído de grão fotográfico por cima, feita para comprimir como uma foto real de celular sem usar a foto de ninguém (por privacidade) nem uma imagem de banco de imagens (por licenciamento). Enviamos o arquivo para ",
   methodologyAfter:
-    " com cada tamanho-alvo abaixo e registramos a resposta exata. Testado no Chrome, em macOS: a conversão roda inteiramente nos servidores do ConvertBrio, então o resultado é idêntico, seja qual for o navegador ou dispositivo que envia a requisição.",
+    " com cada tamanho-alvo abaixo e registramos a resposta exata. Testado no Chrome, em macOS: a conversão roda inteiramente nos servidores dos nossos provedores de hospedagem, então o resultado é idêntico, seja qual for o navegador ou dispositivo que envia a requisição.",
   beforeAfterHeading: "Antes / depois em cada tamanho-alvo",
   originalLabel: "Original",
   originalAlt: "Imagem de teste original antes da compressão, 814,8 KB",
@@ -171,7 +171,7 @@ const es: BenchmarkText = {
   methodologyBefore:
     "El archivo de prueba es un JPEG sintético de 2000 × 1500 y 814,8 KB que generamos nosotros mismos: una composición de retrato con degradado suave y ruido de grano fotográfico encima, pensada para comprimirse como una foto real de móvil sin usar la foto de nadie (por privacidad) ni una imagen de stock descargada (por licencias). Lo enviamos a ",
   methodologyAfter:
-    " con cada tamaño objetivo de abajo y registramos la respuesta exacta. Probado en Chrome en macOS: la conversión se ejecuta por completo en los servidores de ConvertBrio, así que el resultado es idéntico sea cual sea el navegador o dispositivo que envía la solicitud.",
+    " con cada tamaño objetivo de abajo y registramos la respuesta exacta. Probado en Chrome en macOS: la conversión se ejecuta por completo en los servidores de nuestros proveedores de alojamiento, así que el resultado es idéntico sea cual sea el navegador o dispositivo que envía la solicitud.",
   beforeAfterHeading: "Antes / después con cada tamaño objetivo",
   originalLabel: "Original",
   originalAlt: "Imagen de prueba original antes de comprimir, 814,8 KB",
@@ -230,7 +230,7 @@ const fr: BenchmarkText = {
   methodologyBefore:
     "Le fichier de test est un JPEG synthétique de 2000 × 1500 et 814,8 Ko que nous avons généré nous-mêmes : une composition de portrait en dégradé doux avec du grain photographique en surcouche, conçue pour se compresser comme une vraie photo de téléphone sans utiliser la photo de qui que ce soit (pour la confidentialité) ni une image de banque d'images téléchargée (pour les licences). Nous l'avons envoyé à ",
   methodologyAfter:
-    " avec chacune des tailles cibles ci-dessous et noté la réponse exacte. Testé dans Chrome sous macOS : la conversion s'exécute entièrement sur les serveurs de ConvertBrio, le résultat est donc identique quel que soit le navigateur ou l'appareil qui envoie la requête.",
+    " avec chacune des tailles cibles ci-dessous et noté la réponse exacte. Testé dans Chrome sous macOS : la conversion s'exécute entièrement sur les serveurs de nos hébergeurs, le résultat est donc identique quel que soit le navigateur ou l'appareil qui envoie la requête.",
   beforeAfterHeading: "Avant / après pour chaque taille cible",
   originalLabel: "Original",
   originalAlt: "Image de test originale avant compression, 814,8 Ko",
@@ -289,7 +289,7 @@ const de: BenchmarkText = {
   methodologyBefore:
     "Die Testdatei ist ein synthetisches JPEG mit 2000 × 1500 Pixeln und 814,8 KB, das wir selbst erzeugt haben: ein Porträt mit weichem Farbverlauf und darübergelegtem fotografischem Filmkorn, gebaut, um sich wie ein echtes Handyfoto zu komprimieren, ohne das Foto einer realen Person (aus Datenschutzgründen) oder ein heruntergeladenes Stockbild (aus Lizenzgründen) zu verwenden. Wir haben sie mit jeder der folgenden Zielgrößen an ",
   methodologyAfter:
-    " geschickt und die genaue Antwort festgehalten. Getestet in Chrome unter macOS: Die Konvertierung läuft vollständig auf den Servern von ConvertBrio, das Ergebnis ist also unabhängig davon, welcher Browser oder welches Gerät die Anfrage sendet.",
+    " geschickt und die genaue Antwort festgehalten. Getestet in Chrome unter macOS: Die Konvertierung läuft vollständig auf den Servern unserer Hosting-Anbieter, das Ergebnis ist also unabhängig davon, welcher Browser oder welches Gerät die Anfrage sendet.",
   beforeAfterHeading: "Vorher / nachher bei jeder Zielgröße",
   originalLabel: "Original",
   originalAlt: "Originales Testbild vor der Kompression, 814,8 KB",
@@ -348,7 +348,7 @@ const it: BenchmarkText = {
   methodologyBefore:
     "Il file di test è un JPEG sintetico di 2000 × 1500 e 814,8 KB che abbiamo generato noi: una composizione di ritratto con sfumatura morbida e rumore di grana fotografica sovrapposto, pensata per comprimersi come una vera foto da smartphone senza usare la foto di nessuno (per la privacy) né un'immagine di stock scaricata (per le licenze). L'abbiamo inviato a ",
   methodologyAfter:
-    " con ciascuna delle dimensioni obiettivo qui sotto e registrato la risposta esatta. Testato in Chrome su macOS: la conversione avviene interamente sui server di ConvertBrio, quindi il risultato è identico qualunque sia il browser o il dispositivo che invia la richiesta.",
+    " con ciascuna delle dimensioni obiettivo qui sotto e registrato la risposta esatta. Testato in Chrome su macOS: la conversione avviene interamente sui server dei nostri provider di hosting, quindi il risultato è identico qualunque sia il browser o il dispositivo che invia la richiesta.",
   beforeAfterHeading: "Prima / dopo per ogni dimensione obiettivo",
   originalLabel: "Originale",
   originalAlt: "Immagine di test originale prima della compressione, 814,8 KB",
@@ -407,7 +407,7 @@ const id: BenchmarkText = {
   methodologyBefore:
     "File uji adalah JPEG sintetis berukuran 2000 × 1500 dan 814,8 KB yang kami buat sendiri: komposisi potret dengan gradasi lembut dan derau butiran fotografis di atasnya, dirancang agar terkompresi seperti foto ponsel sungguhan tanpa memakai foto milik siapa pun (demi privasi) atau gambar stok unduhan (demi lisensi). Kami mengirimkannya ke ",
   methodologyAfter:
-    " dengan tiap ukuran target di bawah ini dan mencatat respons persisnya. Diuji di Chrome pada macOS: konversi berjalan sepenuhnya di server ConvertBrio, sehingga hasilnya sama apa pun browser atau perangkat yang mengirim permintaan.",
+    " dengan tiap ukuran target di bawah ini dan mencatat respons persisnya. Diuji di Chrome pada macOS: konversi berjalan sepenuhnya di server penyedia hosting kami, sehingga hasilnya sama apa pun browser atau perangkat yang mengirim permintaan.",
   beforeAfterHeading: "Sebelum / sesudah pada tiap ukuran target",
   originalLabel: "Asli",
   originalAlt: "Gambar uji asli sebelum kompresi, 814,8 KB",
