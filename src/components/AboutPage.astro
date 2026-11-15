@@ -84,7 +84,9 @@ const icons = ["shrink", "shield", "sparkle"] as const;
       <div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-[18rem_1fr] lg:gap-14">
         {
           founderPhoto ? (
-            <img src={founderPhoto} alt={fill(s.photoAlt)} width="288" height="360" loading="lazy" class="mx-auto aspect-[4/5] w-56 rounded-2xl object-cover object-top shadow-card sm:w-72 lg:mx-0" />
+            <div class="mx-auto aspect-[4/5] w-56 overflow-hidden rounded-2xl shadow-card sm:w-72 lg:mx-0">
+              <img src={founderPhoto} alt={fill(s.photoAlt)} width="288" height="360" loading="lazy" class="h-full w-full scale-[1.02] object-cover object-top" />
+            </div>
           ) : (
             <div aria-hidden="true" class="mx-auto flex aspect-[4/5] w-56 items-center justify-center rounded-2xl bg-canvas-soft-2 text-4xl font-semibold text-ink sm:w-72 lg:mx-0">SS</div>
           )
