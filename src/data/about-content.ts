@@ -46,10 +46,10 @@ const en: AboutStrings = {
   eyebrow: "About ConvertBrio",
   heading: "File tools that get out of your way",
   intro: "ConvertBrio started with a simple idea: converting a file shouldn't require installing software, creating an account, or waiting in a queue.",
-  role: "Founder and developer",
+  role: "Founder, business consultant, media strategist and full-stack developer",
   founderHeading: "Who builds ConvertBrio",
   founderIntro:
-    'ConvertBrio is independently built and run by {name}. There is no large team behind it: the same person who writes the code reads the messages that come in through the <a href="/contact">contact page</a>.',
+    'ConvertBrio is built and run by {name}, founder, together with co-founder Kaibalya Vilash. It is a small team based in India, working remotely and available worldwide, and the people who write the code read the messages that come in through the <a href="/contact">contact page</a>.',
   photoAlt: "Portrait of {name}, founder of ConvertBrio",
   whyHeading: "Why ConvertBrio exists",
   whyP1:
@@ -81,10 +81,10 @@ const pt: AboutStrings = {
   eyebrow: "Sobre o ConvertBrio",
   heading: "Ferramentas de arquivo que não atrapalham",
   intro: "O ConvertBrio nasceu de uma ideia simples: converter um arquivo não deveria exigir instalar programas, criar uma conta ou esperar numa fila.",
-  role: "Fundador e desenvolvedor",
+  role: "Fundador, consultor de negócios, estrategista de mídia e desenvolvedor full-stack",
   founderHeading: "Quem faz o ConvertBrio",
   founderIntro:
-    'O ConvertBrio é criado e mantido de forma independente por {name}. Não há uma grande equipe por trás: a mesma pessoa que escreve o código lê as mensagens que chegam pela <a href="/contact">página de contato</a>.',
+    'O ConvertBrio é criado e mantido por {name}, fundador, junto com o cofundador Kaibalya Vilash. É uma equipe pequena, sediada na Índia, que trabalha remotamente e atende no mundo todo, e quem escreve o código lê as mensagens que chegam pela <a href="/contact">página de contato</a>.',
   photoAlt: "Retrato de {name}, fundador do ConvertBrio",
   whyHeading: "Por que o ConvertBrio existe",
   whyP1:
@@ -116,10 +116,10 @@ const es: AboutStrings = {
   eyebrow: "Acerca de ConvertBrio",
   heading: "Herramientas de archivos que no estorban",
   intro: "ConvertBrio nació de una idea sencilla: convertir un archivo no debería exigir instalar programas, crear una cuenta ni esperar en una cola.",
-  role: "Fundador y desarrollador",
+  role: "Fundador, consultor de negocios, estratega de medios y desarrollador full-stack",
   founderHeading: "Quién hace ConvertBrio",
   founderIntro:
-    'ConvertBrio está creado y gestionado de forma independiente por {name}. No hay un gran equipo detrás: la misma persona que escribe el código lee los mensajes que llegan por la <a href="/contact">página de contacto</a>.',
+    'ConvertBrio está creado y gestionado por {name}, fundador, junto con el cofundador Kaibalya Vilash. Es un equipo pequeño con base en la India, que trabaja de forma remota y atiende en todo el mundo; quienes escriben el código leen los mensajes que llegan por la <a href="/contact">página de contacto</a>.',
   photoAlt: "Retrato de {name}, fundador de ConvertBrio",
   whyHeading: "Por qué existe ConvertBrio",
   whyP1:
@@ -151,10 +151,10 @@ const fr: AboutStrings = {
   eyebrow: "À propos de ConvertBrio",
   heading: "Des outils de fichiers qui ne vous gênent pas",
   intro: "ConvertBrio est né d'une idée simple : convertir un fichier ne devrait pas exiger d'installer un logiciel, de créer un compte ou de faire la queue.",
-  role: "Fondateur et développeur",
+  role: "Fondateur, consultant en stratégie d'entreprise, stratège média et développeur full-stack",
   founderHeading: "Qui construit ConvertBrio",
   founderIntro:
-    'ConvertBrio est conçu et exploité de manière indépendante par {name}. Il n\'y a pas de grande équipe derrière : la personne qui écrit le code lit aussi les messages reçus via la <a href="/contact">page de contact</a>.',
+    'ConvertBrio est conçu et exploité par {name}, fondateur, avec le cofondateur Kaibalya Vilash. C\'est une petite équipe basée en Inde, qui travaille à distance et intervient dans le monde entier ; les personnes qui écrivent le code lisent les messages reçus via la <a href="/contact">page de contact</a>.',
   photoAlt: "Portrait de {name}, fondateur de ConvertBrio",
   whyHeading: "Pourquoi ConvertBrio existe",
   whyP1:
@@ -186,10 +186,10 @@ const de: AboutStrings = {
   eyebrow: "Über ConvertBrio",
   heading: "Datei-Tools, die nicht im Weg stehen",
   intro: "ConvertBrio begann mit einer einfachen Idee: Eine Datei umzuwandeln sollte weder Software-Installation noch ein Konto noch Warten in einer Warteschlange erfordern.",
-  role: "Gründer und Entwickler",
+  role: "Gründer, Unternehmensberater, Medienstratege und Full-Stack-Entwickler",
   founderHeading: "Wer ConvertBrio baut",
   founderIntro:
-    'ConvertBrio wird unabhängig von {name} entwickelt und betrieben. Hinter dem Projekt steht kein großes Team: Dieselbe Person, die den Code schreibt, liest auch die Nachrichten, die über die <a href="/contact">Kontaktseite</a> eingehen.',
+    'ConvertBrio wird von {name}, Gründer, gemeinsam mit Mitgründer Kaibalya Vilash entwickelt und betrieben. Es ist ein kleines Team mit Sitz in Indien, das remote arbeitet und weltweit verfügbar ist; die Personen, die den Code schreiben, lesen auch die Nachrichten, die über die <a href="/contact">Kontaktseite</a> eingehen.',
   photoAlt: "Porträt von {name}, Gründer von ConvertBrio",
   whyHeading: "Warum es ConvertBrio gibt",
   whyP1:
@@ -221,10 +221,10 @@ const it: AboutStrings = {
   eyebrow: "Chi è ConvertBrio",
   heading: "Strumenti per i file che non intralciano",
   intro: "ConvertBrio è nato da un'idea semplice: convertire un file non dovrebbe richiedere di installare software, creare un account o aspettare in coda.",
-  role: "Fondatore e sviluppatore",
+  role: "Fondatore, consulente aziendale, stratega dei media e sviluppatore full-stack",
   founderHeading: "Chi costruisce ConvertBrio",
   founderIntro:
-    'ConvertBrio è creato e gestito in modo indipendente da {name}. Non c\'è un grande team dietro: la stessa persona che scrive il codice legge i messaggi che arrivano dalla <a href="/contact">pagina dei contatti</a>.',
+    'ConvertBrio è creato e gestito da {name}, fondatore, insieme al cofondatore Kaibalya Vilash. È un piccolo team con sede in India, che lavora da remoto ed è disponibile in tutto il mondo; chi scrive il codice legge i messaggi che arrivano dalla <a href="/contact">pagina dei contatti</a>.',
   photoAlt: "Ritratto di {name}, fondatore di ConvertBrio",
   whyHeading: "Perché esiste ConvertBrio",
   whyP1:
@@ -256,10 +256,10 @@ const id: AboutStrings = {
   eyebrow: "Tentang ConvertBrio",
   heading: "Alat file yang tidak merepotkan",
   intro: "ConvertBrio berawal dari ide sederhana: mengonversi file tidak seharusnya mengharuskan Anda memasang perangkat lunak, membuat akun, atau mengantre.",
-  role: "Pendiri dan pengembang",
+  role: "Pendiri, konsultan bisnis, ahli strategi media, dan pengembang full-stack",
   founderHeading: "Siapa di balik ConvertBrio",
   founderIntro:
-    'ConvertBrio dibangun dan dijalankan secara mandiri oleh {name}. Tidak ada tim besar di baliknya: orang yang menulis kodenya juga membaca pesan yang masuk lewat <a href="/contact">halaman kontak</a>.',
+    'ConvertBrio dibangun dan dijalankan oleh {name}, pendiri, bersama co-founder Kaibalya Vilash. Ini adalah tim kecil yang berbasis di India, bekerja secara remote, dan melayani seluruh dunia; orang yang menulis kodenya juga membaca pesan yang masuk lewat <a href="/contact">halaman kontak</a>.',
   photoAlt: "Potret {name}, pendiri ConvertBrio",
   whyHeading: "Mengapa ConvertBrio ada",
   whyP1:
