@@ -11,7 +11,7 @@ export const founderName = "Subham Sharma";
 
 // TODO: photo — put a square image (at least 400×400 px) in /public/about/
 // and set the path here, e.g. "/about/subham-sharma.jpg".
-export const founderPhoto: string | null = null;
+export const founderPhoto: string | null = "/about/subham-sharma.webp";
 
 // TODO: 2–3 sentences about your developer background, one string per
 // paragraph. Do not include a city or country of residence. Add English first;

@@ -16,7 +16,7 @@ const privacy: StaticPageDoc = {
     {
       heading: `1. Siapa kami`,
       paragraphs: [
-        `ConvertBrio dioperasikan secara mandiri oleh Subham Sharma dari India. Untuk pertanyaan privasi, permintaan koreksi, atau permintaan terkait hak Anda, hubungi <a href="mailto:privacy@convertbrio.com">privacy@convertbrio.com</a> atau gunakan <a href="/contact">halaman kontak</a> kami.`,
+        `ConvertBrio dioperasikan secara mandiri oleh Subham Sharma dari India. Untuk pertanyaan privasi, permintaan koreksi, atau permintaan terkait hak Anda, hubungi <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a> atau gunakan <a href="/contact">halaman kontak</a> kami.`,
       ],
     },
     {
@@ -79,13 +79,13 @@ const privacy: StaticPageDoc = {
     {
       heading: `7. Dasar hukum dan hak Anda (EEA, Inggris, dan Swiss)`,
       paragraphs: [
-        `Jika GDPR atau UK GDPR berlaku, kami memproses informasi Anda berdasarkan: pelaksanaan kontrak kami dengan Anda (menyediakan alat yang Anda gunakan), kepentingan sah kami (keamanan, pencegahan penipuan, dan peningkatan layanan), serta persetujuan Anda (cookie analitik dan iklan). Anda berhak mengakses, memperbaiki, menghapus, membatasi, atau menolak pemrosesan informasi pribadi Anda oleh kami, menerima salinannya dalam format yang dapat dipindahkan, dan menarik persetujuan kapan saja tanpa memengaruhi pemrosesan yang dilakukan sebelum penarikan. Anda juga berhak mengajukan keluhan kepada otoritas pengawas perlindungan data setempat. Untuk menggunakan hak-hak ini, hubungi <a href="mailto:privacy@convertbrio.com">privacy@convertbrio.com</a>.`,
+        `Jika GDPR atau UK GDPR berlaku, kami memproses informasi Anda berdasarkan: pelaksanaan kontrak kami dengan Anda (menyediakan alat yang Anda gunakan), kepentingan sah kami (keamanan, pencegahan penipuan, dan peningkatan layanan), serta persetujuan Anda (cookie analitik dan iklan). Anda berhak mengakses, memperbaiki, menghapus, membatasi, atau menolak pemrosesan informasi pribadi Anda oleh kami, menerima salinannya dalam format yang dapat dipindahkan, dan menarik persetujuan kapan saja tanpa memengaruhi pemrosesan yang dilakukan sebelum penarikan. Anda juga berhak mengajukan keluhan kepada otoritas pengawas perlindungan data setempat. Untuk menggunakan hak-hak ini, hubungi <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>.`,
       ],
     },
     {
       heading: `8. Hak privasi negara bagian AS`,
       paragraphs: [
-        `Jika Anda penduduk negara bagian AS yang memiliki undang-undang privasi komprehensif (seperti California, Colorado, Connecticut, Virginia, atau lainnya), Anda mungkin berhak mengetahui, mengakses, menghapus, atau mengoreksi informasi pribadi Anda, serta menolak penjualan atau “pembagian” informasi tersebut (termasuk untuk iklan perilaku lintas konteks, yang di sebagian negara bagian dianggap mencakup cookie iklan). Kami tidak menjual informasi pribadi. Jika kami menampilkan iklan melalui Google AdSense, hal itu dapat dianggap sebagai “pembagian” menurut hukum sebagian negara bagian; Anda dapat menolaknya kapan saja melalui tautan preferensi cookie di footer, halaman <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Setelan Iklan Google</a>, atau dengan mengirim sinyal Global Privacy Control (GPC) dari browser Anda, yang kami hormati sebagai permintaan penolakan. Untuk menggunakan hak-hak ini, hubungi <a href="mailto:privacy@convertbrio.com">privacy@convertbrio.com</a>.`,
+        `Jika Anda penduduk negara bagian AS yang memiliki undang-undang privasi komprehensif (seperti California, Colorado, Connecticut, Virginia, atau lainnya), Anda mungkin berhak mengetahui, mengakses, menghapus, atau mengoreksi informasi pribadi Anda, serta menolak penjualan atau “pembagian” informasi tersebut (termasuk untuk iklan perilaku lintas konteks, yang di sebagian negara bagian dianggap mencakup cookie iklan). Kami tidak menjual informasi pribadi. Jika kami menampilkan iklan melalui Google AdSense, hal itu dapat dianggap sebagai “pembagian” menurut hukum sebagian negara bagian; Anda dapat menolaknya kapan saja melalui tautan preferensi cookie di footer, halaman <a href="https://adssettings.google.com/" target="_blank" rel="noopener noreferrer">Setelan Iklan Google</a>, atau dengan mengirim sinyal Global Privacy Control (GPC) dari browser Anda, yang kami hormati sebagai permintaan penolakan. Untuk menggunakan hak-hak ini, hubungi <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>.`,
       ],
     },
     {
@@ -103,7 +103,7 @@ const privacy: StaticPageDoc = {
     {
       heading: `11. Privasi anak`,
       paragraphs: [
-        `ConvertBrio ditujukan bagi pengguna berusia 18 tahun ke atas dan tidak diperuntukkan bagi anak-anak. Kami tidak dengan sengaja mengumpulkan informasi pribadi dari siapa pun yang berusia di bawah 18 tahun. Jika Anda yakin seorang anak telah memberikan informasi pribadi kepada kami, hubungi <a href="mailto:privacy@convertbrio.com">privacy@convertbrio.com</a> dan kami akan menghapusnya.`,
+        `ConvertBrio ditujukan bagi pengguna berusia 18 tahun ke atas dan tidak diperuntukkan bagi anak-anak. Kami tidak dengan sengaja mengumpulkan informasi pribadi dari siapa pun yang berusia di bawah 18 tahun. Jika Anda yakin seorang anak telah memberikan informasi pribadi kepada kami, hubungi <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a> dan kami akan menghapusnya.`,
       ],
     },
     {
@@ -115,7 +115,7 @@ const privacy: StaticPageDoc = {
     {
       heading: `13. Hubungi kami`,
       paragraphs: [
-        `Pertanyaan tentang kebijakan ini, atau permintaan untuk menggunakan hak privasi Anda, dapat dikirim ke <a href="mailto:privacy@convertbrio.com">privacy@convertbrio.com</a> atau melalui <a href="/contact">halaman kontak</a> kami.`,
+        `Pertanyaan tentang kebijakan ini, atau permintaan untuk menggunakan hak privasi Anda, dapat dikirim ke <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a> atau melalui <a href="/contact">halaman kontak</a> kami.`,
       ],
     },
   ],
@@ -178,7 +178,7 @@ const terms: StaticPageDoc = {
     {
       heading: `8. Hubungi kami`,
       paragraphs: [
-        `Pertanyaan tentang Ketentuan ini dapat dikirim ke <a href="mailto:legal@convertbrio.com">legal@convertbrio.com</a> atau melalui <a href="/contact">halaman kontak</a> kami.`,
+        `Pertanyaan tentang Ketentuan ini dapat dikirim ke <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a> atau melalui <a href="/contact">halaman kontak</a> kami.`,
       ],
     },
   ],
@@ -206,14 +206,14 @@ const trust: StaticPageDoc = {
     {
       heading: `Melaporkan penyalahgunaan`,
       paragraphs: [
-        `Layanan unggah file bisa disalahgunakan: untuk memproses konten yang tidak berhak diproses seseorang, atau untuk bentuk penyalahgunaan lainnya. Jika Anda yakin file yang diproses melalui ConvertBrio mengandung konten ilegal, pelanggaran hak cipta, atau bentuk penyalahgunaan lain, laporkan melalui <a href="/contact">formulir kontak kami</a> atau <a href="mailto:abuse@convertbrio.com">abuse@convertbrio.com</a>. Kami tidak menampilkan nama file atau hasil unggahan secara publik, dan kami meninjau laporan penyalahgunaan secara langsung, bukan melalui antrean otomatis.`,
+        `Layanan unggah file bisa disalahgunakan: untuk memproses konten yang tidak berhak diproses seseorang, atau untuk bentuk penyalahgunaan lainnya. Jika Anda yakin file yang diproses melalui ConvertBrio mengandung konten ilegal, pelanggaran hak cipta, atau bentuk penyalahgunaan lain, laporkan melalui <a href="/contact">formulir kontak kami</a> atau <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>. Kami tidak menampilkan nama file atau hasil unggahan secara publik, dan kami meninjau laporan penyalahgunaan secara langsung, bukan melalui antrean otomatis.`,
         `Alat seperti Buka Kunci PDF dibuat hanya untuk menghapus pembatasan tingkat pemilik dari dokumen yang memang berhak Anda edit. Lihat <a href="/tools/unlock-pdf">alat Buka Kunci PDF</a> dan panduan kami tentang <a href="/blog/pdf-password-restrictions-explained">pembatasan kata sandi PDF</a> untuk mengetahui persis apa yang dicakup dan tidak dicakup. Alat ini tidak dibuat atau dimaksudkan untuk menembus perlindungan pada file yang bukan milik Anda atau yang tidak berwenang Anda ubah.`,
       ],
     },
     {
       heading: `Melaporkan masalah keamanan`,
       paragraphs: [
-        `Jika Anda menemukan celah keamanan di ConvertBrio, mulai dari masalah kontrol akses hingga cara untuk melihat data pengguna lain, mohon laporkan ke <a href="mailto:security@convertbrio.com">security@convertbrio.com</a> atau melalui <a href="/contact">formulir kontak</a> sebelum mengungkapkannya secara publik. Sebagai proyek yang dijalankan secara mandiri, waktu respons kami tidak akan sebanding dengan tim keamanan perusahaan besar, tetapi setiap laporan dibaca dan ditanggapi dengan serius.`,
+        `Jika Anda menemukan celah keamanan di ConvertBrio, mulai dari masalah kontrol akses hingga cara untuk melihat data pengguna lain, mohon laporkan ke <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a> atau melalui <a href="/contact">formulir kontak</a> sebelum mengungkapkannya secara publik. Sebagai proyek yang dijalankan secara mandiri, waktu respons kami tidak akan sebanding dengan tim keamanan perusahaan besar, tetapi setiap laporan dibaca dan ditanggapi dengan serius.`,
       ],
     },
     {

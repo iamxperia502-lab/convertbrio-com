@@ -43,7 +43,7 @@ export function organization(base: string): Node {
     name: "ConvertBrio",
     url: base,
     logo: `${base}/web-app-manifest-512x512.png`,
-    email: "hello@convertbrio.com",
+    email: "subhamsharma@convertbrio.com",
     founder: { "@type": "Person", "@id": founderId(base), name: "Subham Sharma", url: `${base}/about` },
     sameAs: SOCIAL_PROFILES,
   };

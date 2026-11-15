@@ -17,7 +17,7 @@ const privacy: StaticPageDoc = {
     {
       heading: "1. Quem somos",
       paragraphs: [
-        "O ConvertBrio é operado de forma independente por Subham Sharma, a partir da Índia. Para qualquer dúvida sobre privacidade, pedido de correção ou solicitação relacionada aos seus direitos, escreva para <a href=\"mailto:privacy@convertbrio.com\">privacy@convertbrio.com</a> ou use a nossa <a href=\"/contact\">página de contato</a>.",
+        "O ConvertBrio é operado de forma independente por Subham Sharma, a partir da Índia. Para qualquer dúvida sobre privacidade, pedido de correção ou solicitação relacionada aos seus direitos, escreva para <a href=\"mailto:subhamsharma@convertbrio.com\">subhamsharma@convertbrio.com</a> ou use a nossa <a href=\"/contact\">página de contato</a>.",
       ],
     },
     {
@@ -80,13 +80,13 @@ const privacy: StaticPageDoc = {
     {
       heading: "7. Base legal e seus direitos (EEE, Reino Unido e Suíça)",
       paragraphs: [
-        "Quando o GDPR ou o GDPR do Reino Unido se aplica, tratamos as suas informações com base na execução do nosso contrato com você (fornecer as ferramentas que você usa), nos nossos interesses legítimos (segurança, prevenção de fraudes e melhoria do serviço) e no seu consentimento (cookies de análise e de publicidade). Você tem o direito de acessar, corrigir, apagar, restringir ou se opor ao tratamento das suas informações pessoais, de receber uma cópia delas em formato portátil e de retirar o consentimento a qualquer momento, sem afetar o tratamento feito antes da retirada. Você também tem o direito de apresentar uma reclamação à autoridade local de proteção de dados. Para exercer qualquer um desses direitos, escreva para <a href=\"mailto:privacy@convertbrio.com\">privacy@convertbrio.com</a>.",
+        "Quando o GDPR ou o GDPR do Reino Unido se aplica, tratamos as suas informações com base na execução do nosso contrato com você (fornecer as ferramentas que você usa), nos nossos interesses legítimos (segurança, prevenção de fraudes e melhoria do serviço) e no seu consentimento (cookies de análise e de publicidade). Você tem o direito de acessar, corrigir, apagar, restringir ou se opor ao tratamento das suas informações pessoais, de receber uma cópia delas em formato portátil e de retirar o consentimento a qualquer momento, sem afetar o tratamento feito antes da retirada. Você também tem o direito de apresentar uma reclamação à autoridade local de proteção de dados. Para exercer qualquer um desses direitos, escreva para <a href=\"mailto:subhamsharma@convertbrio.com\">subhamsharma@convertbrio.com</a>.",
       ],
     },
     {
       heading: "8. Direitos de privacidade em estados dos EUA",
       paragraphs: [
-        "Se você mora em um estado dos EUA com lei de privacidade abrangente (como Califórnia, Colorado, Connecticut, Virgínia ou outros), pode ter o direito de saber, acessar, apagar ou corrigir as suas informações pessoais e de recusar a venda ou o “compartilhamento” delas (inclusive para publicidade comportamental entre contextos, categoria em que alguns estados incluem os cookies de publicidade). Não vendemos informações pessoais. Se exibirmos publicidade pelo Google AdSense, isso pode ser considerado “compartilhamento” em algumas leis estaduais. Você pode recusar a qualquer momento pelo link de preferências de cookies no rodapé, pela página <a href=\"https://adssettings.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Configurações de anúncios do Google</a> ou enviando um sinal Global Privacy Control (GPC) pelo navegador, que respeitamos como um pedido de exclusão. Para exercer esses direitos, escreva para <a href=\"mailto:privacy@convertbrio.com\">privacy@convertbrio.com</a>.",
+        "Se você mora em um estado dos EUA com lei de privacidade abrangente (como Califórnia, Colorado, Connecticut, Virgínia ou outros), pode ter o direito de saber, acessar, apagar ou corrigir as suas informações pessoais e de recusar a venda ou o “compartilhamento” delas (inclusive para publicidade comportamental entre contextos, categoria em que alguns estados incluem os cookies de publicidade). Não vendemos informações pessoais. Se exibirmos publicidade pelo Google AdSense, isso pode ser considerado “compartilhamento” em algumas leis estaduais. Você pode recusar a qualquer momento pelo link de preferências de cookies no rodapé, pela página <a href=\"https://adssettings.google.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Configurações de anúncios do Google</a> ou enviando um sinal Global Privacy Control (GPC) pelo navegador, que respeitamos como um pedido de exclusão. Para exercer esses direitos, escreva para <a href=\"mailto:subhamsharma@convertbrio.com\">subhamsharma@convertbrio.com</a>.",
       ],
     },
     {
@@ -104,7 +104,7 @@ const privacy: StaticPageDoc = {
     {
       heading: "11. Privacidade de crianças",
       paragraphs: [
-        "O ConvertBrio é destinado a usuários com 18 anos ou mais e não é direcionado a crianças. Não coletamos intencionalmente informações pessoais de menores de 18 anos. Se você acredita que uma criança nos forneceu informações pessoais, escreva para <a href=\"mailto:privacy@convertbrio.com\">privacy@convertbrio.com</a> e nós as apagaremos.",
+        "O ConvertBrio é destinado a usuários com 18 anos ou mais e não é direcionado a crianças. Não coletamos intencionalmente informações pessoais de menores de 18 anos. Se você acredita que uma criança nos forneceu informações pessoais, escreva para <a href=\"mailto:subhamsharma@convertbrio.com\">subhamsharma@convertbrio.com</a> e nós as apagaremos.",
       ],
     },
     {
@@ -116,7 +116,7 @@ const privacy: StaticPageDoc = {
     {
       heading: "13. Fale conosco",
       paragraphs: [
-        "Dúvidas sobre esta política ou pedidos para exercer os seus direitos de privacidade podem ser enviados para <a href=\"mailto:privacy@convertbrio.com\">privacy@convertbrio.com</a> ou pela nossa <a href=\"/contact\">página de contato</a>.",
+        "Dúvidas sobre esta política ou pedidos para exercer os seus direitos de privacidade podem ser enviados para <a href=\"mailto:subhamsharma@convertbrio.com\">subhamsharma@convertbrio.com</a> ou pela nossa <a href=\"/contact\">página de contato</a>.",
       ],
     },
   ],
@@ -180,7 +180,7 @@ const terms: StaticPageDoc = {
     {
       heading: "8. Fale conosco",
       paragraphs: [
-        "Dúvidas sobre estes Termos podem ser enviadas para <a href=\"mailto:legal@convertbrio.com\">legal@convertbrio.com</a> ou pela nossa <a href=\"/contact\">página de contato</a>.",
+        "Dúvidas sobre estes Termos podem ser enviadas para <a href=\"mailto:subhamsharma@convertbrio.com\">subhamsharma@convertbrio.com</a> ou pela nossa <a href=\"/contact\">página de contato</a>.",
       ],
     },
   ],
@@ -209,14 +209,14 @@ const trust: StaticPageDoc = {
     {
       heading: "Denunciar abuso ou mau uso",
       paragraphs: [
-        "Serviços de envio de arquivos podem ser usados de forma indevida: para processar conteúdo sobre o qual a pessoa não tem direitos ou para outros abusos. Se você acredita que um arquivo processado pelo ConvertBrio envolve conteúdo ilegal, violação de direitos autorais ou outra forma de mau uso, denuncie pelo <a href=\"/contact\">nosso formulário de contato</a> ou por <a href=\"mailto:abuse@convertbrio.com\">abuse@convertbrio.com</a>. Não exibimos publicamente nomes de arquivos enviados nem resultados, e analisamos as denúncias de abuso diretamente, e não por meio de uma fila automatizada.",
+        "Serviços de envio de arquivos podem ser usados de forma indevida: para processar conteúdo sobre o qual a pessoa não tem direitos ou para outros abusos. Se você acredita que um arquivo processado pelo ConvertBrio envolve conteúdo ilegal, violação de direitos autorais ou outra forma de mau uso, denuncie pelo <a href=\"/contact\">nosso formulário de contato</a> ou por <a href=\"mailto:subhamsharma@convertbrio.com\">subhamsharma@convertbrio.com</a>. Não exibimos publicamente nomes de arquivos enviados nem resultados, e analisamos as denúncias de abuso diretamente, e não por meio de uma fila automatizada.",
         "Ferramentas como Desbloquear PDF foram criadas apenas para remover restrições de proprietário de documentos que você já tem o direito de editar. Veja a <a href=\"/tools/unlock-pdf\">ferramenta Desbloquear PDF</a> e o nosso guia sobre <a href=\"/blog/pdf-password-restrictions-explained\">restrições de senha em PDF</a> para saber exatamente o que isso cobre e o que não cobre. Elas não foram feitas, nem se destinam, a contornar a proteção de arquivos que não são seus ou que você não está autorizado a modificar.",
       ],
     },
     {
       heading: "Denunciar um problema de segurança",
       paragraphs: [
-        "Se você encontrar uma vulnerabilidade de segurança no ConvertBrio, de um problema de controle de acesso a uma forma de ver os dados de outro usuário, avise por <a href=\"mailto:security@convertbrio.com\">security@convertbrio.com</a> ou pelo <a href=\"/contact\">formulário de contato</a> antes de divulgá-la publicamente. Por ser um projeto operado de forma independente, os prazos de resposta não se comparam aos da equipe de segurança de uma grande empresa, mas todo relato é lido e levado a sério.",
+        "Se você encontrar uma vulnerabilidade de segurança no ConvertBrio, de um problema de controle de acesso a uma forma de ver os dados de outro usuário, avise por <a href=\"mailto:subhamsharma@convertbrio.com\">subhamsharma@convertbrio.com</a> ou pelo <a href=\"/contact\">formulário de contato</a> antes de divulgá-la publicamente. Por ser um projeto operado de forma independente, os prazos de resposta não se comparam aos da equipe de segurança de uma grande empresa, mas todo relato é lido e levado a sério.",
       ],
     },
     {

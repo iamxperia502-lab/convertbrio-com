@@ -69,7 +69,7 @@ const en: AboutStrings = {
   businessHeading: "Business details",
   contactHeading: "Get in touch",
   contactP1:
-    'Feedback, a security concern, or a tool you\'d like to see? Use the <a href="/contact">contact form</a> or write to <a href="mailto:hello@convertbrio.com">hello@convertbrio.com</a>. You can also find ConvertBrio on LinkedIn, Instagram, Facebook, and Threads:',
+    'Feedback, a security concern, or a tool you\'d like to see? Use the <a href="/contact">contact form</a> or write to <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>. You can also find ConvertBrio on LinkedIn, Instagram, Facebook, and Threads:',
   linkedinLine: '{name} is also on <a href="{url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>.',
   servicesLine: '{name} also takes on development work for clients at <a href="https://convertbrio.info" target="_blank" rel="noopener">convertbrio.info</a>.',
   schemaName: "About ConvertBrio",
@@ -104,7 +104,7 @@ const pt: AboutStrings = {
   businessHeading: "Dados da empresa",
   contactHeading: "Fale conosco",
   contactP1:
-    'Tem um comentário, uma preocupação de segurança ou uma ferramenta que gostaria de ver? Use o <a href="/contact">formulário de contato</a> ou escreva para <a href="mailto:hello@convertbrio.com">hello@convertbrio.com</a>. Você também encontra o ConvertBrio no LinkedIn, Instagram, Facebook e Threads:',
+    'Tem um comentário, uma preocupação de segurança ou uma ferramenta que gostaria de ver? Use o <a href="/contact">formulário de contato</a> ou escreva para <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>. Você também encontra o ConvertBrio no LinkedIn, Instagram, Facebook e Threads:',
   linkedinLine: '{name} também está no <a href="{url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>.',
   servicesLine: '{name} também faz trabalhos de desenvolvimento para clientes em <a href="https://convertbrio.info" target="_blank" rel="noopener">convertbrio.info</a>.',
   schemaName: "Sobre o ConvertBrio",
@@ -139,7 +139,7 @@ const es: AboutStrings = {
   businessHeading: "Datos de la empresa",
   contactHeading: "Ponte en contacto",
   contactP1:
-    '¿Tienes comentarios, una preocupación de seguridad o una herramienta que te gustaría ver? Usa el <a href="/contact">formulario de contacto</a> o escribe a <a href="mailto:hello@convertbrio.com">hello@convertbrio.com</a>. También puedes encontrar ConvertBrio en LinkedIn, Instagram, Facebook y Threads:',
+    '¿Tienes comentarios, una preocupación de seguridad o una herramienta que te gustaría ver? Usa el <a href="/contact">formulario de contacto</a> o escribe a <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>. También puedes encontrar ConvertBrio en LinkedIn, Instagram, Facebook y Threads:',
   linkedinLine: '{name} también está en <a href="{url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>.',
   servicesLine: '{name} también realiza trabajos de desarrollo para clientes en <a href="https://convertbrio.info" target="_blank" rel="noopener">convertbrio.info</a>.',
   schemaName: "Acerca de ConvertBrio",
@@ -174,7 +174,7 @@ const fr: AboutStrings = {
   businessHeading: "Informations sur l'entreprise",
   contactHeading: "Nous contacter",
   contactP1:
-    'Un retour, un problème de sécurité ou un outil que vous aimeriez voir ? Utilisez le <a href="/contact">formulaire de contact</a> ou écrivez à <a href="mailto:hello@convertbrio.com">hello@convertbrio.com</a>. Vous pouvez aussi retrouver ConvertBrio sur LinkedIn, Instagram, Facebook et Threads :',
+    'Un retour, un problème de sécurité ou un outil que vous aimeriez voir ? Utilisez le <a href="/contact">formulaire de contact</a> ou écrivez à <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>. Vous pouvez aussi retrouver ConvertBrio sur LinkedIn, Instagram, Facebook et Threads :',
   linkedinLine: '{name} est aussi sur <a href="{url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>.',
   servicesLine: '{name} réalise aussi des travaux de développement pour des clients sur <a href="https://convertbrio.info" target="_blank" rel="noopener">convertbrio.info</a>.',
   schemaName: "À propos de ConvertBrio",
@@ -209,7 +209,7 @@ const de: AboutStrings = {
   businessHeading: "Angaben zum Unternehmen",
   contactHeading: "Kontakt aufnehmen",
   contactP1:
-    'Feedback, ein Sicherheitsanliegen oder ein Tool-Wunsch? Nutzen Sie das <a href="/contact">Kontaktformular</a> oder schreiben Sie an <a href="mailto:hello@convertbrio.com">hello@convertbrio.com</a>. ConvertBrio finden Sie auch auf LinkedIn, Instagram, Facebook und Threads:',
+    'Feedback, ein Sicherheitsanliegen oder ein Tool-Wunsch? Nutzen Sie das <a href="/contact">Kontaktformular</a> oder schreiben Sie an <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>. ConvertBrio finden Sie auch auf LinkedIn, Instagram, Facebook und Threads:',
   linkedinLine: '{name} ist auch auf <a href="{url}" target="_blank" rel="noopener noreferrer">LinkedIn</a> zu finden.',
   servicesLine: '{name} übernimmt außerdem Entwicklungsarbeiten für Kunden unter <a href="https://convertbrio.info" target="_blank" rel="noopener">convertbrio.info</a>.',
   schemaName: "Über ConvertBrio",
@@ -244,7 +244,7 @@ const it: AboutStrings = {
   businessHeading: "Dati dell'attività",
   contactHeading: "Contattaci",
   contactP1:
-    'Hai un suggerimento, una segnalazione di sicurezza o uno strumento che vorresti vedere? Usa il <a href="/contact">modulo di contatto</a> o scrivi a <a href="mailto:hello@convertbrio.com">hello@convertbrio.com</a>. Puoi trovare ConvertBrio anche su LinkedIn, Instagram, Facebook e Threads:',
+    'Hai un suggerimento, una segnalazione di sicurezza o uno strumento che vorresti vedere? Usa il <a href="/contact">modulo di contatto</a> o scrivi a <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>. Puoi trovare ConvertBrio anche su LinkedIn, Instagram, Facebook e Threads:',
   linkedinLine: '{name} è anche su <a href="{url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>.',
   servicesLine: '{name} si occupa anche di sviluppo per clienti su <a href="https://convertbrio.info" target="_blank" rel="noopener">convertbrio.info</a>.',
   schemaName: "Chi è ConvertBrio",
@@ -279,7 +279,7 @@ const id: AboutStrings = {
   businessHeading: "Data usaha",
   contactHeading: "Hubungi kami",
   contactP1:
-    'Punya masukan, kekhawatiran soal keamanan, atau alat yang ingin Anda lihat? Gunakan <a href="/contact">formulir kontak</a> atau kirim email ke <a href="mailto:hello@convertbrio.com">hello@convertbrio.com</a>. ConvertBrio juga ada di LinkedIn, Instagram, Facebook, dan Threads:',
+    'Punya masukan, kekhawatiran soal keamanan, atau alat yang ingin Anda lihat? Gunakan <a href="/contact">formulir kontak</a> atau kirim email ke <a href="mailto:subhamsharma@convertbrio.com">subhamsharma@convertbrio.com</a>. ConvertBrio juga ada di LinkedIn, Instagram, Facebook, dan Threads:',
   linkedinLine: '{name} juga ada di <a href="{url}" target="_blank" rel="noopener noreferrer">LinkedIn</a>.',
   servicesLine: '{name} juga menerima pekerjaan pengembangan untuk klien di <a href="https://convertbrio.info" target="_blank" rel="noopener">convertbrio.info</a>.',
   schemaName: "Tentang ConvertBrio",
